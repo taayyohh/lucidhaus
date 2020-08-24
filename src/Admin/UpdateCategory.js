@@ -1,0 +1,141 @@
+import React, {
+    useEffect,
+    useState
+}                        from 'react'
+import {connect}         from 'react-redux'
+import {
+    Link,
+    Redirect
+}                        from 'react-router-dom'
+import {
+    getCategory,
+    updateCategory
+}                        from '../api/apiAdmin'
+import {isAuthenticated} from '../api/apiAuth'
+
+const UpdateCategory = ({pathname}) => {
+    const [values, setValues] = useState({
+        name: '',
+        error: '',
+        redirectToProfile: false,
+        formData: ''
+    })
+
+    // destructure User and token from localStorage
+    const {user, token} = isAuthenticated()
+
+    const {name, error, redirectToProfile} = values
+
+    const init = categoryId => {
+        getCategory(categoryId, token).then(data => {
+            if (data.error) {
+                setValues({...values, error: data.error})
+            } else {
+                // populate the state
+                setValues({
+                    ...values,
+                    name: data.name
+                })
+            }
+        })
+    }
+
+    useEffect(() => {
+        init(pathname)
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
+    const handleChange = name => event => {
+        setValues({...values, error: false, [name]: event.target.value})
+    }
+
+    const submitCategoryForm = e => {
+        e.preventDefault()
+        // update with ? you should send category name otherwise what to update?
+        const category = {
+            name: name
+        }
+        updateCategory(pathname, user._id, token, category).then(data => {
+            if (data.error) {
+                setValues({...values, error: data.error})
+            } else {
+                setValues({
+                    ...values,
+                    name: data.name,
+                    error: false,
+                    redirectToProfile: true
+                })
+            }
+        })
+    }
+
+    const updateCategoryForm = () => (
+        <div className="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
+            <form className="mb-5" onSubmit={submitCategoryForm}>
+                <span className="login100-form-title p-b-32 m-b-7">Update Category Form</span>
+                <span className="txt1 p-b-11">Category Name</span>
+                <br/>
+                <br/>
+                <div className="wrap-input100 validate-input m-b-36">
+                    <input
+                        onChange={handleChange('name')}
+                        value={name}
+                        className="input100"
+                        type="text"
+                        required
+                        name="name"
+                    />
+                </div>
+                <div className="w-size25">
+                    <button type="submit" className="flex-c-m size2 bg1 bo-rad-23 hov1 m-text3 trans-0-4">
+                        Save Changes
+                    </button>
+                </div>
+            </form>
+        </div>
+    )
+
+    const showError = () => (
+        <div className={'alert alert-danger'} role="alert" style={{display: error ? '' : 'none'}}>
+            <button type="button" className="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            {error}
+        </div>
+    )
+
+    const redirectUser = () => {
+        if (redirectToProfile) {
+            if (!error) {
+                return <Redirect to="/admin/categories"/>
+            }
+        }
+    }
+
+    const goBackBTN = () => {
+        return (
+            <div className="mt-5">
+                <Link to="/admin/categories" className="text-info">
+                    Back To Admin Home
+                </Link>
+            </div>
+        )
+    }
+
+    return (
+        <div>
+            {showError()}
+            {updateCategoryForm()}
+            {goBackBTN()}
+            {redirectUser()}
+        </div>
+    )
+}
+
+const mapStateToProps = state => ({
+    pathname: state.router.location.pathname,
+})
+
+
+export default connect(mapStateToProps)(UpdateCategory)
