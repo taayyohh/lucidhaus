@@ -1,18 +1,22 @@
 import React, {useState}    from 'react'
+import {useDispatch}        from 'react-redux'
 import {Redirect}           from 'react-router-dom'
-import Div                  from '../Basic/Div'
-import Fieldset             from '../Basic/Fieldset'
-import H3                   from '../Basic/H3'
 import {
     authenticate,
     isAuthenticated,
     signin
 }                           from '../api/apiAuth'
+import Div                  from '../Basic/Div'
+import Fieldset             from '../Basic/Fieldset'
+import H3                   from '../Basic/H3'
 import {genericButtonStyle} from '../themes/elements'
 import {signInFormStyle}    from '../themes/signup'
 
 
 const SignIn = () => {
+    const dispatch = useDispatch();
+
+
     const [values, setValues] = useState({
         email: '',
         password: '',
@@ -24,13 +28,20 @@ const SignIn = () => {
     const {user} = isAuthenticated()
 
     const handleChange = name => event => {
-        setValues({...values, error: false, [name]: event.target.value})
+        setValues({
+            ...values,
+            error: false,
+            [name]: event.target.value
+        })
     }
-
 
     const clickSubmit = (event) => {
         event.preventDefault()
-        setValues({...values, error: false, loading: true})
+        setValues({
+            ...values,
+            error: false,
+            loading: true
+        })
         signin({email, password})
             .then(data => {
                 if (data.error) {
@@ -46,50 +57,6 @@ const SignIn = () => {
             })
     }
 
-    const signInForm = () => (
-        <Div as="form" theme={signInFormStyle}>
-            <H3 theme={signInFormStyle.heading}>Sign In</H3>
-            <Fieldset theme={signInFormStyle.fieldset}>
-                <legend />
-                <label>Email</label>
-                <input
-                    onChange={handleChange('email')}
-                    type="email"
-                    value={email}
-                />
-            </Fieldset>
-
-            <Fieldset theme={signInFormStyle.fieldset}>
-                <legend />
-                <label>Password</label>
-                <input
-                    onChange={handleChange('password')}
-                    type="password"
-                    value={password}
-                />
-            </Fieldset>
-            <Div
-                as="button"
-                onClick={clickSubmit}
-                theme={{...genericButtonStyle, ...signInFormStyle.button}}>
-                Submit
-            </Div>
-        </Div>
-    )
-
-
-    const showError = () => (
-        <Div theme={{display: error ? '' : 'none'}}>
-            {error}
-        </Div>
-    )
-
-    const showLoading = () => (
-        loading && (
-            <Div>loading</Div>
-        )
-    )
-
     const redirectUser = () => {
         if (redirectToReferrer) {
             if (user && user.role === 1) {
@@ -103,6 +70,52 @@ const SignIn = () => {
             return <Redirect to="/"/>
         }
     }
+
+    const showError = () => (
+        <Div theme={{display: error ? '' : 'none'}}>
+            {error}
+        </Div>
+    )
+
+    const showLoading = () => (
+        loading && (
+            <Div>loading</Div>
+        )
+    )
+
+    const signInForm = () => (
+        <Div as="form" theme={signInFormStyle}>
+            <H3 theme={signInFormStyle.heading}>Sign In</H3>
+            <Fieldset theme={signInFormStyle.fieldset}>
+                <legend/>
+                <label>Email</label>
+                <input
+                    onChange={handleChange('email')}
+                    type="email"
+                    value={email}
+                />
+            </Fieldset>
+
+            <Fieldset theme={signInFormStyle.fieldset}>
+                <legend/>
+                <label>Password</label>
+                <input
+                    onChange={handleChange('password')}
+                    type="password"
+                    value={password}
+                />
+            </Fieldset>
+
+            <Div
+                as="button"
+                onClick={clickSubmit}
+                theme={{...genericButtonStyle, ...signInFormStyle.button}}>
+                Submit
+            </Div>
+
+        </Div>
+    )
+
 
     return (
         <>

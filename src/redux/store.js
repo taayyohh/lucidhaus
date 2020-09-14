@@ -10,6 +10,7 @@ import {createBrowserHistory} from 'history'
 import {createLogger}         from 'redux-logger'
 import createSagaMiddleware   from 'redux-saga'
 import counterReducer         from '../features/counter/counterSlice'
+import userReducer         from '../features/user/userSlice'
 import rootSaga               from './sagas'
 
 
@@ -36,6 +37,7 @@ if (!['production'].includes(process.env.NODE_ENV)) {
 export default configureStore({
     reducer: {
         counter: counterReducer,
+        user: userReducer,
         router: connectRouter(history)
     },
     middleware,

@@ -1,44 +1,67 @@
-import {takeLatest}         from '@redux-saga/core/effects'
 import {
     all,
-    put,
-    takeEvery
-}                           from 'redux-saga/effects'
+    takeEvery,
+    takeLatest,
+    call,
+    put
+}               from 'redux-saga/effects'
+import {signin} from '../services/api'
+
 import {stripTrailingSlash} from '../utils/url'
 
 const delay = (ms) => new Promise(res => setTimeout(res, ms))
 
-function* helloSaga() {
-    console.log('Hello Sagas!')
-}
-
-/**
- * Generator function that manages what should happen when the URL changes via react-router.
- *
- * @param {object} payload
- */
-function* pathChange({payload}) {
+function* navigate({payload}) {
     // stripping trailing slash by default
     const {pathname, search} = payload.location
 
     let slug = stripTrailingSlash(pathname)
 
-    yield put({
-        type: 'REQUEST_DATA',
-        pathname: slug,
-        search: search
-    })
+    yield console.log('slug', slug)
+    yield console.log('slug', search)
+
+    // how to dispatch an action
+
+    // yield put({
+    //     type: 'REQUEST_DATA',
+    //     pathname: slug,
+    //     search: search
+    // })
+}
+
+function* signIn({email, password}) {
+    try {
+        const payload = yield call(signin, {email, password})
+        if(payload.error) {
+            yield console.log('ERROR', payload)
+            yield put({type: 'user/signInFailure', payload})
+        } else {
+            yield console.log('SUCCES', payload)
+            yield put({type: 'user/signInSuccess', payload})
+        }
+    } catch(error) {
+        yield put({type: 'user/signInFailure', error})
+    }
 }
 
 
+/******************************************************************************/
+/******************************* WATCHERS *************************************/
+/******************************************************************************/
+function* watchSignIn() {
+    yield takeEvery('user/signIn', signIn)
+}
+
+function* watchNavigate() {
+    yield takeLatest('@@router/LOCATION_CHANGE', navigate)
+}
 
 // notice how we now only export the rootSaga
 // single entry point to start all Sagas at once
 export default function* rootSaga() {
- //   yield takeLatest('@@router/LOCATION_CHANGE', pathChange)
-
     yield all([
-        helloSaga(),
-       // watchIncrementAsync()
+        watchSignIn(),
+        watchNavigate()
+        // watchIncrementAsync()
     ])
 }
