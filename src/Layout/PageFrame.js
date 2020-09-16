@@ -1,11 +1,26 @@
-import React            from 'react'
-import Div              from '../Basic/Div'
-import {pageFrameStyle} from '../themes/layout'
-import Footer           from './Footer'
-import Header           from './Header'
-import Main             from './Main'
+import React, {useEffect} from 'react'
+import {useDispatch}      from 'react-redux'
+import Div                from '../Basic/Div'
+import {pageFrameStyle}   from '../themes/layout'
+import Footer             from './Footer'
+import Header             from './Header'
+import Main               from './Main'
 
 const PageFrame = () => {
+    const dispatch = useDispatch()
+
+    const initPageLoad = () => {
+        dispatch({
+            type: 'user/isAuthenticated',
+        })
+    }
+
+    useEffect(() => {
+        initPageLoad()
+
+        // eslint-disable-next-line consistent-return
+    }, [])
+
     return (
         <Div theme={pageFrameStyle} className="page">
             <Div id="header-left-margin" theme={pageFrameStyle.hlm}/>

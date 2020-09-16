@@ -1,12 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
+    name: '',
     email: '',
     error: '',
     loading: false,
     redirectToReferrer: false,
     isAuthenticated: false,
-    isAdmin: false
+    isAdmin: false,
+    token: ''
 }
 
 export const userSlice = createSlice({
@@ -18,11 +20,31 @@ export const userSlice = createSlice({
             state.error = false
         },
         signInSuccess: (state, action) => {
-
+            state.loading = false
+            state.error = false
+            state.name = action.payload.user.name
+            state.email = action.payload.user.email
+            state.isAdmin = action.payload.user.role === 1
         },
         signInFailure: (state, action) => {
+            state.loading = false
             state.error = action.payload.error
-           // console.log('ACTION', action.payload.error)
+        },
+        authenticate: (state, action) => {
+            state.redirectToReferrer = true
+        },
+        authenticateSuccess: (state, action) => {
+            state.redirectToReferrer = false
+            state.isAuthenticated = true
+            state.token = action.payload.payload.token
+        },
+        isAuthenticatedSuccess: (state, action) => {
+            console.log('TION', action)
+            state.token = action.payload.token
+            state.isAuthenticated = true
+        },
+        isAuthenticatedFailure: (state, action) => {
+            state.isAuthenticated = false
         }
     },
 });

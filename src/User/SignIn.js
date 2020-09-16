@@ -47,6 +47,7 @@ const SignIn = () => {
                 if (data.error) {
                     setValues({...values, error: data.error, loading: false})
                 } else {
+                    console.log('DATA', data)
                     authenticate(data, () => {
                         setValues({
                             ...values,

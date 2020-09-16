@@ -1,32 +1,20 @@
-import React, {
-    useEffect,
-    useState
-} from 'react'
-import {
-    useDispatch,
-    useSelector
-}                        from 'react-redux'
-import {
-    authenticate,
-    signin
-}                        from '../../api/apiAuth'
-import Div                  from '../../Basic/Div'
-import Fieldset             from '../../Basic/Fieldset'
-import H3                   from '../../Basic/H3'
+import React, {useState} from 'react'
+import {useDispatch, useSelector} from 'react-redux'
+import Div from '../../Basic/Div'
+import Fieldset from '../../Basic/Fieldset'
+import H3 from '../../Basic/H3'
 import {genericButtonStyle} from '../../themes/elements'
-import {signInFormStyle}    from '../../themes/signup'
-import {userError}          from './userSlice'
+import {signInFormStyle} from '../../themes/signup'
+import {Redirect} from "react-router-dom";
 
 const SignIn = () => {
     const dispatch = useDispatch()
-    const { error } = useSelector(state => state.user);
+    const {error, redirectToReferrer, isAuthenticated, isAdmin} = useSelector(state => state.user)
     const [values, setValues] = useState({
         email: '',
         password: '',
-        loading: false,
-        redirectToReferrer: false
     })
-    const {email, password, loading, redirectToReferrer} = values
+    const {email, password} = values
     const handleChange = name => event => {
         setValues({
             ...values,
@@ -36,19 +24,30 @@ const SignIn = () => {
 
     const clickSubmit = (event) => {
         event.preventDefault()
-        setValues({
-            ...values,
-            loading: true
-        })
         dispatch({
             type: 'user/signIn',
             payload: {email, password}
         })
     }
 
+    const redirectUser = () => {
+        if (redirectToReferrer) {
+            if (isAdmin) {
+                return <Redirect to="/admin/dashboard"/>
+            } else {
+                return <Redirect to="/user/dashboard"/>
+            }
+        }
+
+        if (isAuthenticated) {
+            return <Redirect to="/"/>
+        }
+    }
+
 
     return (
         <Div as="form" theme={signInFormStyle}>
+            {redirectUser()}
             <H3 theme={signInFormStyle.heading}>Sign In</H3>
             {error && (
                 <Div>

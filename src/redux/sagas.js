@@ -1,11 +1,15 @@
 import {
     all,
-    takeEvery,
-    takeLatest,
     call,
-    put
-}               from 'redux-saga/effects'
-import {signin} from '../services/api'
+    put,
+    takeEvery,
+    takeLatest
+} from 'redux-saga/effects'
+import {
+    authenticate,
+    signin,
+    isAuthenticated
+} from '../services/api'
 
 import {stripTrailingSlash} from '../utils/url'
 
@@ -17,30 +21,35 @@ function* navigate({payload}) {
 
     let slug = stripTrailingSlash(pathname)
 
-    yield console.log('slug', slug)
-    yield console.log('slug', search)
-
-    // how to dispatch an action
-
-    // yield put({
-    //     type: 'REQUEST_DATA',
-    //     pathname: slug,
-    //     search: search
-    // })
+  //  yield put({type: 'user/isAuthenticated', payload})
 }
 
-function* signIn({email, password}) {
+function* signIn(user) {
     try {
-        const payload = yield call(signin, {email, password})
-        if(payload.error) {
-            yield console.log('ERROR', payload)
-            yield put({type: 'user/signInFailure', payload})
-        } else {
-            yield console.log('SUCCES', payload)
+        const payload = yield call(signin, user.payload)
+        if (!payload.error) {
             yield put({type: 'user/signInSuccess', payload})
+            yield put({type: 'user/authenticate', payload})
+        } else {
+            yield put({type: 'user/signInFailure', payload})
         }
-    } catch(error) {
+    } catch (error) {
         yield put({type: 'user/signInFailure', error})
+    }
+}
+
+function* authenticateUser(payload) {
+    yield delete payload.payload['user']
+    yield call(authenticate, payload.payload)
+    yield put({type: 'user/authenticateSuccess', payload})
+}
+
+function* isAuth() {
+    const payload = yield call(isAuthenticated)
+    if(payload.token) {
+        yield put({type: 'user/isAuthenticatedSuccess', payload})
+    } else {
+        yield put({type: 'user/isAuthenticatedFailure', payload})
     }
 }
 
@@ -48,20 +57,34 @@ function* signIn({email, password}) {
 /******************************************************************************/
 /******************************* WATCHERS *************************************/
 /******************************************************************************/
-function* watchSignIn() {
-    yield takeEvery('user/signIn', signIn)
-}
+
 
 function* watchNavigate() {
     yield takeLatest('@@router/LOCATION_CHANGE', navigate)
 }
 
+function* watchSignIn() {
+    yield takeEvery('user/signIn', signIn)
+}
+
+function* watchAuthenticate() {
+    yield takeEvery('user/authenticate', authenticateUser)
+}
+
+function* watchIsAuthenticated() {
+    yield takeEvery('user/isAuthenticated', isAuth)
+}
+
+
 // notice how we now only export the rootSaga
 // single entry point to start all Sagas at once
 export default function* rootSaga() {
     yield all([
+        watchNavigate(),
         watchSignIn(),
-        watchNavigate()
+        watchAuthenticate(),
+        watchIsAuthenticated()
+
         // watchIncrementAsync()
     ])
 }

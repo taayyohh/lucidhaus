@@ -13,11 +13,13 @@ import {
     headerMenu,
     headerMenuAuth
 }                  from '../themes/header'
+import {useSelector} from "react-redux";
 
 
 // const isActive = (history, path) => history.location.pathname === path
 
 const HeaderMenu = () => {
+    const {isAuthenticated, isAdmin} = useSelector(state => state.user)
 
     return (
 
@@ -50,7 +52,7 @@ const HeaderMenu = () => {
             </Ul>
             <Div theme={headerMenuAuth}>
                 <Ul theme={headerMenuAuth.list}>
-                    {!isAuthenticated() && ( //// should be implemented with Redux
+                    {!isAuthenticated && ( //// should be implemented with Redux
                         <>
                             <li>
                                 <StyledLink
@@ -68,7 +70,7 @@ const HeaderMenu = () => {
                             </li>
                         </>
                     )}
-                    {isAuthenticated() && (
+                    {isAuthenticated && (
                         <li>
                             <Span
                                 to="/signout"
@@ -81,7 +83,7 @@ const HeaderMenu = () => {
                             </Span>
                         </li>
                     )}
-                    {isAuthenticated() && isAuthenticated().user.role === 0 && (
+                    {isAuthenticated && !isAdmin && (
                         <li>
                             <StyledLink
                                 to="/user/dashboard"
@@ -90,7 +92,7 @@ const HeaderMenu = () => {
                             </StyledLink>
                         </li>
                     )}
-                    {isAuthenticated() && isAuthenticated().user.role === 1 && (
+                    {isAuthenticated && isAdmin && (
                         <li>
                             <StyledLink
                                 to="/admin/dashboard"
