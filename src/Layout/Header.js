@@ -6,7 +6,7 @@ import {headerStyle} from '../themes/header'
 
 const Header = ({theme}) =>
     <MotionDiv as="header" theme={{...headerStyle, ...theme}} exit={'exit'}>
-        <StyledLink to="/signup" theme={{...headerStyle.logoLink}}>
+        <StyledLink to="/" theme={{...headerStyle.logoLink}}>
             IJ
         </StyledLink>
         <HeaderMenu/>

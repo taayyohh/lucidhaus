@@ -1,13 +1,13 @@
-import React                 from 'react'
-import {isAuthenticated}     from '../api/apiAuth'
-import Div                   from '../Basic/Div'
-import H3                    from '../Basic/H3'
-import Li                    from '../Basic/Li'
-import Ul                    from '../Basic/Ul'
+import React from 'react'
+import Div from '../Basic/Div'
+import H3 from '../Basic/H3'
+import Li from '../Basic/Li'
+import Ul from '../Basic/Ul'
 import {adminDashboardStyle} from '../themes/admin'
+import {useSelector} from "react-redux";
 
 const AdminDashboard = () => {
-    const {user: {name, email, role}} = isAuthenticated()
+    const {name, email, isAdmin} = useSelector(state => state.user)
 
 
     return (
@@ -15,7 +15,7 @@ const AdminDashboard = () => {
             <H3 theme={adminDashboardStyle.heading}>Hey, {name}</H3>
             <Ul>
                 <Li>{email}</Li>
-                <Li>{role === 1 ? 'Admin' : 'Registerd User'}</Li>
+                <Li>{isAdmin ? 'Admin' : 'Registerd User'}</Li>
             </Ul>
         </Div>
     )

@@ -1,6 +1,5 @@
 import React       from 'react'
 import {
-    isAuthenticated,
     signout
 }                  from '../api/apiAuth'
 import Div         from '../Basic/Div'
@@ -13,12 +12,13 @@ import {
     headerMenu,
     headerMenuAuth
 }                  from '../themes/header'
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 
 
 // const isActive = (history, path) => history.location.pathname === path
 
 const HeaderMenu = () => {
+    const dispatch = useDispatch()
     const {isAuthenticated, isAdmin} = useSelector(state => state.user)
 
     return (
@@ -52,7 +52,7 @@ const HeaderMenu = () => {
             </Ul>
             <Div theme={headerMenuAuth}>
                 <Ul theme={headerMenuAuth.list}>
-                    {!isAuthenticated && ( //// should be implemented with Redux
+                    {!isAuthenticated && (
                         <>
                             <li>
                                 <StyledLink
@@ -75,10 +75,7 @@ const HeaderMenu = () => {
                             <Span
                                 to="/signout"
                                 theme={headerMenuAuth.listItem}
-                                onClick={() => signout(() => {
-                                    history.push('/')
-
-                                })}>
+                                onClick={() => dispatch({type: 'user/signOut'})}>
                                 Sign Out
                             </Span>
                         </li>

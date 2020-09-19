@@ -93,7 +93,6 @@ const Orders = () => {
     )
 
     return (
-        <Content>
             <Div theme={{margin: '0 auto', width: '70%'}}>
                 {showOrdersLength(orders)}
                 {orders.map((o, oIndex) => {
@@ -131,7 +130,6 @@ const Orders = () => {
                     )
                 })}
             </Div>
-        </Content>
     )
 }
 

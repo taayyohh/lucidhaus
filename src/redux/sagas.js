@@ -1,15 +1,5 @@
-import {
-    all,
-    call,
-    put,
-    takeEvery,
-    takeLatest
-} from 'redux-saga/effects'
-import {
-    authenticate,
-    signin,
-    isAuthenticated
-} from '../services/api'
+import {all, call, put, takeEvery, takeLatest} from 'redux-saga/effects'
+import {authenticate, isAuthenticated, signin, signout} from '../services/api'
 
 import {stripTrailingSlash} from '../utils/url'
 
@@ -21,7 +11,7 @@ function* navigate({payload}) {
 
     let slug = stripTrailingSlash(pathname)
 
-  //  yield put({type: 'user/isAuthenticated', payload})
+    //  yield put({type: 'user/isAuthenticated', payload})
 }
 
 function* signIn(user) {
@@ -39,23 +29,28 @@ function* signIn(user) {
 }
 
 function* authenticateUser(payload) {
-    yield delete payload.payload['user']
     yield call(authenticate, payload.payload)
     yield put({type: 'user/authenticateSuccess', payload})
 }
 
 function* isAuth() {
     const payload = yield call(isAuthenticated)
-    if(payload.token) {
+    if (payload.token) {
         yield put({type: 'user/isAuthenticatedSuccess', payload})
     } else {
         yield put({type: 'user/isAuthenticatedFailure', payload})
     }
 }
 
+function* signOut() {
+    yield call(signout)
+}
+
 
 /******************************************************************************/
+
 /******************************* WATCHERS *************************************/
+
 /******************************************************************************/
 
 
@@ -75,6 +70,10 @@ function* watchIsAuthenticated() {
     yield takeEvery('user/isAuthenticated', isAuth)
 }
 
+function* watchSignOut() {
+    yield takeEvery('user/signOut', signOut)
+}
+
 
 // notice how we now only export the rootSaga
 // single entry point to start all Sagas at once
@@ -83,7 +82,8 @@ export default function* rootSaga() {
         watchNavigate(),
         watchSignIn(),
         watchAuthenticate(),
-        watchIsAuthenticated()
+        watchIsAuthenticated(),
+        watchSignOut()
 
         // watchIncrementAsync()
     ])

@@ -1,5 +1,6 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
+import {history} from '../../redux/store'
 import Div from '../../Basic/Div'
 import Fieldset from '../../Basic/Fieldset'
 import H3 from '../../Basic/H3'
@@ -30,6 +31,19 @@ const SignIn = () => {
         })
     }
 
+    useEffect(() => {
+        if(redirectToReferrer)
+            if(isAdmin) {
+                history.push('/admin/dashboard')
+            } else {
+                history.push('/user/dashboard')
+            }
+
+        if(isAuthenticated)
+            history.push('/')
+
+    }, [redirectToReferrer, isAuthenticated, isAdmin])
+
     const redirectUser = () => {
         if (redirectToReferrer) {
             if (isAdmin) {
@@ -47,7 +61,7 @@ const SignIn = () => {
 
     return (
         <Div as="form" theme={signInFormStyle}>
-            {redirectUser()}
+            {/*{redirectUser()}*/}
             <H3 theme={signInFormStyle.heading}>Sign In</H3>
             {error && (
                 <Div>

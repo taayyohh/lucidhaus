@@ -1,22 +1,16 @@
-import moment               from 'moment'
-import React, {
-    useEffect,
-    useState
-}                           from 'react'
-import {isAuthenticated}    from '../api/apiAuth'
+import moment from 'moment'
+import React, {useEffect, useState} from 'react'
 import {getPurchaseHistory} from '../api/apiUser'
-import Div                  from '../Basic/Div'
-import H2                   from '../Basic/H2'
-import H3                   from '../Basic/H3'
+import Div from '../Basic/Div'
+import H2 from '../Basic/H2'
+import H3 from '../Basic/H3'
 import {userDashboardStyle} from '../themes/user'
+import {useSelector} from "react-redux";
 
 const UserDashboard = () => {
     const [history, setHistory] = useState([])
+    const {name, email, token, _id} = useSelector(state => state.user)
 
-    const {
-        user: {_id, name, email} //role
-    } = isAuthenticated()
-    const token = isAuthenticated().token
 
     const init = (userId, token) => {
         getPurchaseHistory(userId, token).then(data => {
@@ -30,6 +24,8 @@ const UserDashboard = () => {
 
     useEffect(() => {
         init(_id, token)
+        console.log('TOKEN', token)
+        console.log('ID', _id)
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
