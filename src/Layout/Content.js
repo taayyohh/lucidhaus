@@ -16,11 +16,11 @@ import Businesses from '../Business/Businessess'
 import Cart from '../Shop/Cart'
 import Product from '../Shop/Product'
 import Shop from '../Shop/Shop'
-import AdminDashboard from '../User/AdminDashboard'
-import Profile from '../User/Profile'
+import AdminDashboard from '../features/user/AdminDashboard'
+import Profile from '../features/user/Profile'
 import SignIn from '../features/user/SignIn'
 import SignUp from '../User/SignUp'
-import UserDashboard from '../User/UserDashboard'
+import UserDashboard from '../features/user/UserDashboard'
 
 const Content = () => {
     return (

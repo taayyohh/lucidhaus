@@ -1,6 +1,8 @@
 import {createSlice} from '@reduxjs/toolkit'
 
 const initialState = {
+    _id: '',
+    token: '',
     name: '',
     email: '',
     error: false,
@@ -8,8 +10,7 @@ const initialState = {
     redirectToReferrer: false,
     isAuthenticated: false,
     isAdmin: false,
-    token: '',
-    _id: ''
+    purchaseHistory: []
 }
 
 export const userSlice = createSlice({
@@ -31,9 +32,6 @@ export const userSlice = createSlice({
             state.loading = false
             state.error = action.payload.error
         },
-        authenticate: (state, action) => {
-            // state.redirectToReferrer = true
-        },
         authenticateSuccess: (state, action) => {
             state.redirectToReferrer = true
             state.isAuthenticated = true
@@ -44,10 +42,10 @@ export const userSlice = createSlice({
             state.token = action.payload.token
             state.isAuthenticated = true
         },
-        isAuthenticatedFailure: (state, action) => {
+        isAuthenticatedFailure: state => {
             state.isAuthenticated = false
         },
-        signOut: (state, action) => {
+        signOut: state => {
             state.name = ''
             state.email = ''
             state.error = false
@@ -57,15 +55,19 @@ export const userSlice = createSlice({
             state.isAdmin = false
             state.token = ''
             state._id = ''
+        },
+        signUpSuccess: (state, action) => {
+            state.redirectToReferrer = true
+        },
+        getPurchaseSuccess: (state, action) => {
+            state.purchaseHistory = action.payload
+        },
+        getPurchaseFailure: (state, action) => {
+            state.error = action.payload.error
         }
     },
 })
 
 export const {} = userSlice.actions
-
-// The function below is called a selector and allows us to select a value from
-// the state. Selectors can also be defined inline where they're used instead of
-// in the slice file. For example: `useSelector((state) => state.counter.value)`
-
 
 export default userSlice.reducer

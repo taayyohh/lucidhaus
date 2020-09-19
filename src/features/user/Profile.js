@@ -4,17 +4,17 @@ import React, {
 }                        from 'react'
 import {Redirect}        from 'react-router'
 import {Link}            from 'react-router-dom'
-import {isAuthenticated} from '../api/apiAuth'
+import {isAuthenticated} from '../../api/apiAuth'
 import {
     read,
     update,
     updateUser
-}                        from '../api/apiUser'
-import Div               from '../Basic/Div'
-import H2                from '../Basic/H2'
-import Li                from '../Basic/Li'
-import Ul                from '../Basic/Ul'
-import {userLinksStyle}  from '../themes/user'
+}                        from '../../api/apiUser'
+import Div               from '../../Basic/Div'
+import H2                from '../../Basic/H2'
+import Li                from '../../Basic/Li'
+import Ul                from '../../Basic/Ul'
+import {userLinksStyle}  from '../../themes/user'
 
 const Profile = ({match}) => {
     const [values, setValues] = useState({

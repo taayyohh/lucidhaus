@@ -1,17 +1,13 @@
-import {all, call, put, takeEvery, takeLatest} from 'redux-saga/effects'
-import {authenticate, isAuthenticated, signin, signout} from '../services/api'
+import {all, call, put, fork, takeEvery, takeLatest} from 'redux-saga/effects'
+import {authenticate, getPurchaseHistory, isAuthenticated, signin, signout, signup} from '../services/api'
 
 import {stripTrailingSlash} from '../utils/url'
-
-const delay = (ms) => new Promise(res => setTimeout(res, ms))
 
 function* navigate({payload}) {
     // stripping trailing slash by default
     const {pathname, search} = payload.location
 
     let slug = stripTrailingSlash(pathname)
-
-    //  yield put({type: 'user/isAuthenticated', payload})
 }
 
 function* signIn(user) {
@@ -46,6 +42,32 @@ function* signOut() {
     yield call(signout)
 }
 
+function* signUp(user) {
+    const payload = yield call(signup, user.payload)
+    console.log('PAY', payload)
+    if(!payload.error) {
+        yield put({type: 'user/signUpSuccess', payload})
+      //  yield put({type: 'user/signIn', payload})
+    } else {
+        yield put({type: 'user/signUpFailure', payload})
+    }
+}
+
+function* purchaseHistory(user) {
+    try {
+        console.log('purchase', user)
+        const payload = yield call(getPurchaseHistory, user.payload)
+        if(!payload.error) {
+            yield put({type: 'user/getPurchaseSuccess', payload})
+        } else {
+            yield put({type: 'user/getPurchaseFailure', payload})
+        }
+    } catch (error) {
+        yield put({type: 'user/getPurchaseFailure', error})
+    }
+
+}
+
 
 /******************************************************************************/
 
@@ -74,17 +96,25 @@ function* watchSignOut() {
     yield takeEvery('user/signOut', signOut)
 }
 
+function* watchSignUp() {
+    yield takeEvery('user/signUp', signUp)
+}
+
+function* watchUserHistory() {
+    yield takeEvery('user/getPurchaseHistory', purchaseHistory)
+}
+
 
 // notice how we now only export the rootSaga
 // single entry point to start all Sagas at once
 export default function* rootSaga() {
     yield all([
-        watchNavigate(),
-        watchSignIn(),
-        watchAuthenticate(),
-        watchIsAuthenticated(),
-        watchSignOut()
-
-        // watchIncrementAsync()
+        fork(watchNavigate),
+        fork(watchSignIn),
+        fork(watchAuthenticate),
+        fork(watchIsAuthenticated),
+        fork(watchSignOut),
+        fork(watchSignUp),
+        fork(watchUserHistory)
     ])
 }

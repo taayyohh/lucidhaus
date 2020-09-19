@@ -27,8 +27,7 @@ export const signin = user => {
     }).then(response => {
         return response.json()
     }).catch(err => {
-        console.log('ERROR', err)
-        //return err
+        return err
     })
 }
 
@@ -38,7 +37,7 @@ export const authenticate = (data) => {
     }
 }
 
-export const signout = (next) => {
+export const signout = () => {
     if (typeof window !== 'undefined') {
         localStorage.removeItem('jwt')
         return fetch(`${API}/signout`, {
@@ -46,7 +45,9 @@ export const signout = (next) => {
         }).then(response => {
             console.log('signout', response)
             return response.json()
-        }).catch(err => console.log(err))
+        }).catch(err => {
+            return err
+        })
     }
 }
 
@@ -58,5 +59,66 @@ export const isAuthenticated = () => {
         return JSON.parse(localStorage.getItem('jwt'))
     } else {
         return false
+    }
+}
+
+export const read = (userId, token) => {
+    return fetch(`${API}/user/${userId}`, {
+        method: 'GET',
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+        },
+    })
+        .then(response => {
+            console.log(response)
+            return response.json()
+        }).catch(err => {
+            console.log(err)
+        })
+}
+
+export const getPurchaseHistory = ({userId, token}) => {
+    return fetch(`${API}/orders/by/user/${userId}`, {
+        method: 'GET',
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+        },
+    })
+        .then(response => {
+            console.log(response)
+            return response.json()
+        }).catch(err => {
+            console.log(err)
+        })
+}
+
+export const update = (userId, token, user) => {
+    return fetch(`${API}/user/${userId}`, {
+        method: "PUT",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify(user)
+    })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+}
+
+export const updateUser = (user, next) => {
+    if(typeof window !== 'undefined') {
+        if(localStorage.getItem('jwt')) {
+            let auth = JSON.parse(localStorage.getItem('jwt'))
+            auth.user = user
+            localStorage.setItem('jwt', JSON.stringify(auth))
+            next()
+        }
     }
 }

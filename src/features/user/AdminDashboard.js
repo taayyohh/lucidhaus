@@ -1,9 +1,9 @@
 import React from 'react'
-import Div from '../Basic/Div'
-import H3 from '../Basic/H3'
-import Li from '../Basic/Li'
-import Ul from '../Basic/Ul'
-import {adminDashboardStyle} from '../themes/admin'
+import Div from '../../Basic/Div'
+import H3 from '../../Basic/H3'
+import Li from '../../Basic/Li'
+import Ul from '../../Basic/Ul'
+import {adminDashboardStyle} from '../../themes/admin'
 import {useSelector} from "react-redux";
 
 const AdminDashboard = () => {

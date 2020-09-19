@@ -6,46 +6,57 @@ import StyledLink           from '../Basic/StyledLink'
 import {genericButtonStyle} from '../themes/elements'
 import {signUpFormStyle}    from '../themes/signup'
 import {signup}             from '../api/apiAuth'
+import {useDispatch, useSelector} from "react-redux";
 
 
 
 const SignUp = () => {
+    const dispatch = useDispatch()
+    const {error, redirectToReferrer, isAuthenticated, isAdmin} = useSelector(state => state.user)
     const [values, setValues] = useState({
         name: '',
         email: '',
         password: '',
-        error: '',
         success: false
     })
 
 
-    const {name, email, password, success, error} = values
+    const {name, email, password, success,} = values
 
     const handleChange = name => event => {
-        setValues({...values, error: false, [name]: event.target.value})
+        setValues({
+            ...values,
+            error: false,
+            [name]: event.target.value
+        })
     }
-
-    //const labelWidth = useMeasure()
-
 
     const clickSubmit = (event) => {
         event.preventDefault()
         setValues({...values, error: false})
-        signup({name, email, password})
-            .then(data => {
-                if (data.error) {
-                    setValues({...values, error: data.error, success: false})
-                } else {
-                    setValues({
-                        ...values,
-                        name: '',
-                        email: '',
-                        password: '',
-                        error: '',
-                        success: true
-                    })
-                }
-            })
+        dispatch({
+            type: 'user/signUp',
+            payload: {
+                name,
+                email,
+                password
+            }
+        })
+        // signup({name, email, password})
+        //     .then(data => {
+        //         if (data.error) {
+        //             setValues({...values, error: data.error, success: false})
+        //         } else {
+        //             setValues({
+        //                 ...values,
+        //                 name: '',
+        //                 email: '',
+        //                 password: '',
+        //                 error: '',
+        //                 success: true
+        //             })
+        //         }
+        //     })
     }
 
     const signUpForm = () => (
@@ -56,8 +67,6 @@ const SignUp = () => {
                 <label>Name</label>
                 <input
                     onChange={handleChange('name')}
-                    onFocus={() => console.log('hii')}
-                    onBlur={() => console.log('blur')}
                     type="text"
                     value={name}
                 />
