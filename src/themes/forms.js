@@ -37,17 +37,16 @@ export const defaultFieldsetStyle = {
 export const defaultFieldStyle = {
     display: inlineBlock,
     position: relative,
-    border: `1px solid ${globals.colors.borderColor}`,
     height: 50,
     width: '100%',
     padding: `0 ${sv(25)}`,
-    marginBottom: 30,
+    border: none,
     margin: 0,
     font: globals.fonts.heading,
     fontSize: 15,
     fontWeight: 600,
     textOverflow: 'ellipsis',
-    backgroundColor: white,
+    backgroundColor: transparent,
     color: globals.colors.black,
     boxSizing: borderBox,
     webkitAppearance: none,
@@ -77,10 +76,11 @@ export const defaultFieldStyle = {
 
 
 export const defaultInputLabelStyle = {
-    color: globals.colors.gray,
+    color: globals.colors.inputLabelColor,
     position: absolute,
+    top: 0,
     left: 25,
-    transform: 'translate(0px, 46%) scale(1)',
+    transform: 'translate(0px, 100%) scale(1)',
     zIndex: 1,
     border: 0,
     weight: 300,
@@ -88,11 +88,12 @@ export const defaultInputLabelStyle = {
         'transform 300ms cubic-bezier(0.0, 0, 0.3, 1) 0ms',
     transformOrigin: 'top left',
     pointerEvents: none,
-    size: 18,
+    size: [16, .7, 16],
+    lineHeight: [16, .7, 16]
 }
 
 export const defaultFocusedInputLabelStyle = {
-    transform: `translate(0, 5%) scale(${globals.style.inputLabelShrinkRatio})`,
+    transform: `translate(-6%,-44%) scale(${globals.style.inputLabelShrinkRatio})`,
     color: globals.colors.orange,
 }
 
@@ -100,14 +101,10 @@ export const defaultFocusedInputLabelStyle = {
 export const defaultLegendStyle = {
     marginLeft: 17,
     padding: 0,
+    height: 0,
+    width: 0,
+    margin: 0,
     transition: 'width 300ms cubic-bezier(0.0, 0, 0.3, 1) 0ms',
-    ie: {
-        position: absolute,
-        height: 20,
-        top: -11,
-        zIndex: 0,
-        backgroundColor: '#fff'
-    }
 }
 
 export const defaultCKEditorStyle = {

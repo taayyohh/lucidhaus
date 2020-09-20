@@ -29,7 +29,8 @@ export const globals = {
     },
     colors: {
         linkColor: colorPalette.red,
-        linkHoverColor: colorPalette.orange
+        linkHoverColor: colorPalette.orange,
+        inputLabelColor: colorPalette.black
     },
     extensions: [
         '.png',

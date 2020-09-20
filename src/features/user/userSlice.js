@@ -5,11 +5,11 @@ const initialState = {
     token: '',
     name: '',
     email: '',
+    isAuthenticated: false,
+    isAdmin: false,
     error: false,
     loading: false,
     redirectToReferrer: false,
-    isAuthenticated: false,
-    isAdmin: false,
     purchaseHistory: []
 }
 
@@ -19,7 +19,6 @@ export const userSlice = createSlice({
     reducers: {
         signIn: state => {
             state.loading = true
-            state.error = false
         },
         signInSuccess: (state, action) => {
             state.loading = false
@@ -58,6 +57,9 @@ export const userSlice = createSlice({
         },
         signUpSuccess: (state, action) => {
             state.redirectToReferrer = true
+        },
+        signUpFailure: (state, action) => {
+            state.error = action.payload.error
         },
         getPurchaseSuccess: (state, action) => {
             state.purchaseHistory = action.payload

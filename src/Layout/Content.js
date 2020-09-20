@@ -19,7 +19,7 @@ import Shop from '../Shop/Shop'
 import AdminDashboard from '../features/user/AdminDashboard'
 import Profile from '../features/user/Profile'
 import SignIn from '../features/user/SignIn'
-import SignUp from '../User/SignUp'
+import SignUp from '../features/user/SignUp'
 import UserDashboard from '../features/user/UserDashboard'
 
 const Content = () => {

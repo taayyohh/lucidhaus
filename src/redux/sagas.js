@@ -44,13 +44,16 @@ function* signOut() {
 
 function* signUp(user) {
     const payload = yield call(signup, user.payload)
-    console.log('PAY', payload)
-    if(!payload.error) {
-        yield put({type: 'user/signUpSuccess', payload})
-      //  yield put({type: 'user/signIn', payload})
-    } else {
+    try {
+        if(!payload.error) {
+            yield put({type: 'user/signUpSuccess', payload})
+        } else {
+            yield put({type: 'user/signUpFailure', payload})
+        }
+    } catch (error) {
         yield put({type: 'user/signUpFailure', payload})
     }
+
 }
 
 function* purchaseHistory(user) {

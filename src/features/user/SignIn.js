@@ -44,24 +44,9 @@ const SignIn = () => {
 
     }, [redirectToReferrer, isAuthenticated, isAdmin])
 
-    const redirectUser = () => {
-        if (redirectToReferrer) {
-            if (isAdmin) {
-                return <Redirect to="/admin/dashboard"/>
-            } else {
-                return <Redirect to="/user/dashboard"/>
-            }
-        }
-
-        if (isAuthenticated) {
-            return <Redirect to="/"/>
-        }
-    }
-
 
     return (
         <Div as="form" theme={signInFormStyle}>
-            {/*{redirectUser()}*/}
             <H3 theme={signInFormStyle.heading}>Sign In</H3>
             {error && (
                 <Div>
