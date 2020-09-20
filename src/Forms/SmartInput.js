@@ -7,7 +7,7 @@ import useMeasure from "../utils/useMeasure";
 import {globals} from "../variables/styles";
 import {defaultFocusedInputLabelStyle} from "../themes/forms";
 
-const SmartInput = ({inputLabel, onChange, value, theme}) => {
+const SmartInput = ({inputLabel, onChange, value, type, theme}) => {
     const legendRef = useRef()
     const inputLabelRef = useRef()
     const inputLabelWidth = useMeasure(inputLabelRef).width * globals.style.inputLabelShrinkRatio
@@ -18,8 +18,9 @@ const SmartInput = ({inputLabel, onChange, value, theme}) => {
     useEffect(() => {
         setHasValue(value.length > 0)
         setIsInputLabelFocused(value.length > 0)
+        setLegendWidth(value.length < 1 ? 0 : inputLabelWidth)
 
-    }, [setHasValue, setIsInputLabelFocused, value])
+    }, [setHasValue, setIsInputLabelFocused, inputLabelWidth, value])
 
     const handleBlur = () => {
         if (!hasValue) {
@@ -55,7 +56,7 @@ const SmartInput = ({inputLabel, onChange, value, theme}) => {
                 onChange={onChange}
                 onFocus={handleFocus}
                 onBlur={handleBlur}
-                type="text"
+                type={type || "text"}
                 value={value}
                 theme={theme.field}
             />

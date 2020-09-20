@@ -32,7 +32,8 @@ const SignUp = () => {
         {
             inputLabel: 'Password',
             onChange: 'password',
-            value: password
+            value: password,
+            type: 'password'
         }
     ]
 
@@ -78,6 +79,7 @@ const SignUp = () => {
                         onChange={handleChange(f.onChange)}
                         value={f.value}
                         theme={signUpFormStyle.fieldset}
+                        type={f.type}
                     />
                 )}
                 <SubmitButton
