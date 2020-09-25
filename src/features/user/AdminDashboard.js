@@ -14,7 +14,6 @@ const AdminDashboard = () => {
             <H3 theme={adminDashboardStyle.heading}>Hey, {name}</H3>
             <Ul>
                 <Li>{email}</Li>
-                <Li>{isAdmin ? 'Admin' : 'Registerd User'}</Li>
             </Ul>
         </Div>
     )

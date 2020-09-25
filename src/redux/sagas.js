@@ -1,5 +1,7 @@
 import {all, call, put, fork, takeEvery, takeLatest} from 'redux-saga/effects'
 import {authenticate, getPurchaseHistory, isAuthenticated, signin, signout, signup} from '../services/api'
+import {history} from '../redux/store'
+
 
 import {stripTrailingSlash} from '../utils/url'
 
@@ -65,7 +67,6 @@ function* signUp(user) {
 
 function* purchaseHistory(user) {
     try {
-        console.log('purchase', user)
         const payload = yield call(getPurchaseHistory, user.payload)
         if(!payload.error) {
             yield put({type: 'user/getPurchaseSuccess', payload})

@@ -7,8 +7,6 @@ import {history} from '../redux/store'
 const PrivateRoute = ({component: Component, ...rest}) => {
     const {isAuthenticated} = useSelector(state => state.user)
 
-    console.log('hi')
-
     if (!isAuthenticated)
         history.push("/signin")
 

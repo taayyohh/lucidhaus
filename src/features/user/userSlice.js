@@ -31,8 +31,11 @@ export const userSlice = createSlice({
             state.loading = false
             state.error = action.payload.error
         },
-        authenticateSuccess: (state, action) => {
+        authenticate: state => {
             state.redirectToReferrer = true
+        },
+        authenticateSuccess: (state, action) => {
+            state.redirectToReferrer = false
             state.isAuthenticated = true
             state.token = action.payload.payload.token
             state._id = action.payload.payload.user._id
@@ -41,7 +44,7 @@ export const userSlice = createSlice({
             state.token = action.payload.token
             state.isAuthenticated = true
             state.email = action.payload.user.email
-            state.name = action.payload.user.email
+            state.name = action.payload.user.name
             state.token = action.payload.token
             state._id = action.payload.user._id
             state.isAdmin = action.payload.user.role === 1

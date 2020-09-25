@@ -21,8 +21,7 @@ const UserDashboard = () => {
     }
 
     useEffect(() => {
-
-        if(_id.length > 0 && token.length > 0)
+        if(_id.length > 0 && token.length > 0) //temporary need to prevent from being called on signout
             init(_id, token)
 
         // eslint-disable-next-line react-hooks/exhaustive-deps

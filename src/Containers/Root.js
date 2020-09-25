@@ -8,17 +8,10 @@ const Root = () => {
     const {isInitialized} = useSelector(state => state.site)
     const dispatch = useDispatch()
 
-    const init = () => {
-        dispatch({
-            type: 'site/loadConfig',
-        })
-    }
-
     useEffect(() => {
-        init()
+        dispatch({type: 'site/loadConfig'})
         // eslint-disable-next-line consistent-return
     }, [])
-
 
     return (
         <>
