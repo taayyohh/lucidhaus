@@ -64,31 +64,29 @@ const SignUp = () => {
 
 
     return (
-        <>
+        <Div as="form" theme={signUpFormStyle}>
+            <H3 theme={signUpFormStyle.heading}>Sign Up</H3>
+            {fieldTypes.map(f =>
+                <SmartInput
+                    key={f.inputLabel}
+                    inputLabel={f.inputLabel}
+                    onChange={handleChange(f.onChange)}
+                    value={f.value}
+                    theme={signUpFormStyle.fieldset}
+                    type={f.type}
+                />
+            )}
+            <SubmitButton
+                onClick={clickSubmit}
+                theme={{...genericButtonStyle, ...signUpFormStyle.button}}
+                children={'Submit'}
+            />
             {error && (
                 <Div theme={signUpFormStyle.error}>
                     {error}
                 </Div>
             )}
-            <Div as="form" theme={signUpFormStyle}>
-                <H3 theme={signUpFormStyle.heading}>Sign Up</H3>
-                {fieldTypes.map(f =>
-                    <SmartInput
-                        key={f.inputLabel}
-                        inputLabel={f.inputLabel}
-                        onChange={handleChange(f.onChange)}
-                        value={f.value}
-                        theme={signUpFormStyle.fieldset}
-                        type={f.type}
-                    />
-                )}
-                <SubmitButton
-                    onClick={clickSubmit}
-                    theme={{...genericButtonStyle, ...signUpFormStyle.button}}
-                    children={'Submit'}
-                />
-            </Div>
-        </>
+        </Div>
     )
 }
 

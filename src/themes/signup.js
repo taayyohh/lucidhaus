@@ -25,18 +25,13 @@ export const signUpFormStyle = {
     // border: '1px solid #000',
     heading: {
         margin: 0,
-        fontFamily: globals.fonts.fancyFont,
+        fontFamily: globals.fonts.script,
         alignSelf: center,
         size: 48,
         marginBottom: 20
     },
     fieldset: {
-        position: relative,
-        width: '100%',
-        border: '1px solid #000',
-        borderRadius: '5px',
         marginBottom: [20, .7, 20],
-        boxSizing: borderBox,
     },
     button: {
         padding: '20px 60px',

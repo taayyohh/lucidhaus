@@ -9,7 +9,6 @@ import {useSelector} from "react-redux";
 const AdminDashboard = () => {
     const {name, email, isAdmin} = useSelector(state => state.user)
 
-
     return (
         <Div theme={adminDashboardStyle}>
             <H3 theme={adminDashboardStyle.heading}>Hey, {name}</H3>

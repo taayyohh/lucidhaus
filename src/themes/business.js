@@ -11,7 +11,7 @@ export const businessWrapperStyle = {
 
 export const businessStyle = {
     title: {
-        font: globals.fonts.fancyFont,
+        font: globals.fonts.script,
         size: 42,
         margin: 0,
         marginBottom: 15

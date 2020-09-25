@@ -27,9 +27,12 @@ export const defaultFormStyle = {
 
 export const defaultFieldsetStyle = {
     position: relative,
+    width: '100%',
+    border: '1px solid #000',
+    borderRadius: '5px',
+    boxSizing: borderBox,
     padding: 0,
     margin: 0,
-    border: 0,
     transition: 'padding-left 300ms cubic-bezier(0.0, 0, 0.3, 1) 0ms, ' +
         'border-width 300ms cubic-bezier(0.0, 0, 0.3, 1) 0ms'
 }
@@ -42,9 +45,10 @@ export const defaultFieldStyle = {
     padding: `0 ${sv(25)}`,
     border: none,
     margin: 0,
-    font: globals.fonts.heading,
-    fontSize: 15,
-    fontWeight: 600,
+    font: globals.fonts.header,
+    size: [16, .7, 16],
+    lineHeight: [16, .7, 16],
+    fontWeight: 300,
     textOverflow: 'ellipsis',
     backgroundColor: transparent,
     color: globals.colors.black,
@@ -112,7 +116,7 @@ export const defaultCKEditorStyle = {
     child: [
         {
             selector: '.ck.ck-editor',
-            font: globals.fonts.typeFont,
+            font: globals.fonts.type,
             height: '100%',
             minHeight: inherit,
             child: {
@@ -134,7 +138,7 @@ export const defaultFieldHeadingStyle = {
 
 export const defaultNewFormStyle = {
     heading: {
-        font: globals.fonts.fancyFont,
+        font: globals.fonts.script,
         size: [38, .7, 38],
         marginBottom: [20, .7, 20]
 

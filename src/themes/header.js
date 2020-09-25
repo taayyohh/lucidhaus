@@ -19,7 +19,7 @@ export const headerStyle = {
     alignItems: center,
     justifyContent: center,
     position: 'sticky; position: -webkit-sticky;',
-    font: globals.fonts.headerFont,
+    font: globals.fonts.header,
     textTransform: uppercase,
     borderBottom: '1px solid #000',
     backgroundColor: '#fff',
@@ -103,7 +103,7 @@ export const headerMenu = {
     listItem: {
         display: block,
         color: globals.colors.black,
-        fontFamily: globals.fonts.headerFont,
+        fontFamily: globals.fonts.header,
         textDecoration: 'none',
         size: [20, .6, 20],
         paddingTop: [50, .7, '0'],

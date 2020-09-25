@@ -19,9 +19,9 @@ export const colorPalette = {
 
 export const globals = {
     fonts: {
-        fancyFont: '\'Shrikhand\', cursive',
-        headerFont: '\'Teko\', sans-serif',
-        typeFont: "'EB Garamond', serif"
+        script: '\'Shrikhand\', cursive',
+        header: '\'Teko\', sans-serif',
+        type: "'EB Garamond', serif"
     },
     style: {
         layoutScalingValue: .45,

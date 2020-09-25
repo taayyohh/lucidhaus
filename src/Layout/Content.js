@@ -1,5 +1,5 @@
-import React from 'react'
-import {Route} from 'react-router'
+import React, {useMemo} from 'react'
+import {Route, Switch} from 'react-router'
 import AddBusiness from '../Admin/AddBusiness'
 import AddCategory from '../Admin/AddCategory'
 import AddProduct from '../Admin/AddProduct'
@@ -24,7 +24,7 @@ import UserDashboard from '../features/user/UserDashboard'
 
 const Content = () => {
     return (
-        <>
+        <Switch>
             <Route path="/signup" exact component={SignUp}/>
             <Route path="/signin" exact component={SignIn}/>
             <Route path="/businesses" exact component={Businesses}/>
@@ -44,7 +44,7 @@ const Content = () => {
             <AdminRoute path="/create/category" exact component={AddCategory}/>
             <AdminRoute path="/create/product" exact component={AddProduct}/>
             <AdminRoute path="/create/business" exact component={AddBusiness}/>
-        </>
+        </Switch>
     )
 }
 

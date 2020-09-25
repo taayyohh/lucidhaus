@@ -40,11 +40,16 @@ export const userSlice = createSlice({
         isAuthenticatedSuccess: (state, action) => {
             state.token = action.payload.token
             state.isAuthenticated = true
+            state.email = action.payload.user.email
+            state.name = action.payload.user.email
+            state.token = action.payload.token
+            state._id = action.payload.user._id
+            state.isAdmin = action.payload.user.role === 1
         },
         isAuthenticatedFailure: state => {
             state.isAuthenticated = false
         },
-        signOut: state => {
+        signOutSuccess: state => {
             state.name = ''
             state.email = ''
             state.error = false
@@ -54,6 +59,9 @@ export const userSlice = createSlice({
             state.isAdmin = false
             state.token = ''
             state._id = ''
+        },
+        signOutFailure: (state, action) => {
+            state.error = action.payload.message
         },
         signUpSuccess: (state, action) => {
             state.redirectToReferrer = true
@@ -66,6 +74,11 @@ export const userSlice = createSlice({
         },
         getPurchaseFailure: (state, action) => {
             state.error = action.payload.error
+        },
+        reset: state => {
+            state.error = false
+            state.loading = false
+            state.redirectToReferrer = false
         }
     },
 })

@@ -2,6 +2,7 @@ import {
     borderBox,
     center,
     flex,
+    fixed,
     none,
     pointer,
     relative,
@@ -10,10 +11,17 @@ import {
 }                from '../utils/themer'
 import {globals} from '../variables/styles'
 
+export const menuPanelStyle = {
+    height: '100vh',
+    position: fixed,
+    width: [400, .7]
+
+}
+
 export const adminDashboardStyle = {
     heading: {
         margin: 0,
-        fontFamily: globals.fonts.fancyFont,
+        fontFamily: globals.fonts.script,
         tablet: {
             size: 60
         },
@@ -23,6 +31,7 @@ export const adminDashboardStyle = {
 }
 
 export const adminMenuStyle = {
+    ...menuPanelStyle,
     list: {
         display: flex,
         margin: 0,

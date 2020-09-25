@@ -20,7 +20,7 @@ export const defaultLinkStyle = {
 }
 
 export const richTextDefaultStyle = {
-    font: globals.fonts.typeFont,
+    font: globals.fonts.type,
     size: [18, .7, 18]
 }
 
@@ -39,7 +39,7 @@ export const genericButtonStyle = {
     color: '#fff',
     padding: '10px 20px',
     cursor: pointer,
-    fontFamily: globals.fonts.fancyFont,
+    fontFamily: globals.fonts.script,
     marginTop: 20,
     focus: {
         outline: none,

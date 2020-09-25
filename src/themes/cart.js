@@ -20,7 +20,7 @@ export const cartStyle = {
 }
 
 export const cartTitleStyle = {
-    font: globals.fonts.fancyFont,
+    font: globals.fonts.script,
     textAlign: center,
     size: [44, .7, 36],
     marginTop: 0,

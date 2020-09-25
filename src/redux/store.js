@@ -4,6 +4,7 @@ import {createBrowserHistory} from 'history'
 import {createLogger} from 'redux-logger'
 import createSagaMiddleware from 'redux-saga'
 import userReducer from '../features/user/userSlice'
+import siteReducer from '../features/site/siteSlice'
 import rootSaga from './sagas'
 
 
@@ -29,6 +30,7 @@ if (!['production'].includes(process.env.NODE_ENV)) {
 export default configureStore({
     reducer: {
         user: userReducer,
+        site: siteReducer,
         router: connectRouter(history)
     },
     middleware,

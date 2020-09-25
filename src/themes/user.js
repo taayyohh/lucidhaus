@@ -14,7 +14,7 @@ export const userLinksStyle = {
 
 export const userDashboardStyle = {
     greeting: {
-        font: globals.fonts.fancyFont,
+        font: globals.fonts.script,
         textAlign: center,
         size: [44,.7, 36]
     }

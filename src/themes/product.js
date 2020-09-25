@@ -17,7 +17,7 @@ export const ShopListStyle = {
 }
 
 export const cardTitleStyle = {
-    font: globals.fonts.fancyFont,
+    font: globals.fonts.script,
     textAlign: center,
     size: 30,
     marginBottom: [20, .5]

@@ -28,7 +28,7 @@ const AdminMenu = ({theme}) => {
     }
 
     return (
-        <MotionDiv as="nav" theme={{...adminMenuStyle, ...theme}} exit={"exits"}>
+        <MotionDiv as="nav" theme={adminMenuStyle} exit={"exits"}>
             <Ul theme={adminMenuStyle.list}>
                 <Li theme={adminMenuStyle.listItem}>
                     <StyledLink theme={adminMenuStyle.link} to="/admin/businesses">

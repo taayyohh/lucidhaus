@@ -33,13 +33,20 @@ function* isAuth() {
     const payload = yield call(isAuthenticated)
     if (payload.token) {
         yield put({type: 'user/isAuthenticatedSuccess', payload})
+        yield put ({type: 'site/initializeSuccess'})
     } else {
         yield put({type: 'user/isAuthenticatedFailure', payload})
+        yield put ({type: 'site/initializeSuccess'})
     }
 }
 
 function* signOut() {
-    yield call(signout)
+    const payload = yield call(signout)
+    if (!payload.error) {
+        yield put({type: 'user/signOutSuccess', payload})
+    } else {
+        yield put({type: 'user/signOutFailure', payload})
+    }
 }
 
 function* signUp(user) {
@@ -68,7 +75,10 @@ function* purchaseHistory(user) {
     } catch (error) {
         yield put({type: 'user/getPurchaseFailure', error})
     }
+}
 
+function* loadConfig() {
+    yield put({type: 'user/isAuthenticated'})
 }
 
 
@@ -107,12 +117,16 @@ function* watchUserHistory() {
     yield takeEvery('user/getPurchaseHistory', purchaseHistory)
 }
 
+function* watchLoadConfig() {
+    yield takeEvery('site/loadConfig', loadConfig)
+}
 
 // notice how we now only export the rootSaga
 // single entry point to start all Sagas at once
 export default function* rootSaga() {
     yield all([
         fork(watchNavigate),
+        fork(watchLoadConfig),
         fork(watchSignIn),
         fork(watchAuthenticate),
         fork(watchIsAuthenticated),

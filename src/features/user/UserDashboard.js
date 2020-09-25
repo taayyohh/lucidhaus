@@ -21,10 +21,12 @@ const UserDashboard = () => {
     }
 
     useEffect(() => {
-        init(_id, token)
+
+        if(_id.length > 0 && token.length > 0)
+            init(_id, token)
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, [_id, token])
 
     return (
         <Div>
