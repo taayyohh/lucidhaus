@@ -7,16 +7,9 @@ import {
     pointer,
     relative,
     row,
-    sv
-}                from '../utils/themer'
+    sv, column
+} from '../utils/themer'
 import {globals} from '../variables/styles'
-
-export const menuPanelStyle = {
-    height: '100vh',
-    position: fixed,
-    width: [400, .7]
-
-}
 
 export const adminDashboardStyle = {
     heading: {
@@ -30,29 +23,35 @@ export const adminDashboardStyle = {
     }
 }
 
+export const menuPanelStyle = {
+    paddingTop: [150, .7, 50],
+    height: '100%',
+    width: '100%'
+}
+
+export const menuPanelHeaderStyle = {
+    font: globals.fonts.script,
+    size: [48, .6, 24],
+    marginBottom: [30, .6, 30]
+}
+
 export const adminMenuStyle = {
     ...menuPanelStyle,
     list: {
         display: flex,
+        flexDirection: column,
         margin: 0,
         padding: 0,
     },
     listItem: {
         position: relative,
         listStyleType: none,
-        margin: 0,
-        width: '100%',
+        marginBottom: [10, .7, 10],
+      //  width: '100%',
     },
     link: {
-        display: flex,
-        alignItems: center,
-        justifyContent: center,
         textDecoration: none,
-        color: '#fff',
-        background: '#000',
-        padding: `${sv(30)} ${sv(20)}`,
-        boxSizing: borderBox,
-        width: '100%',
+        color: globals.colors.linkColor,
         transition: 'background 500ms ease',
         hover: {
             background: globals.colors.orange,

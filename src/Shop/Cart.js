@@ -72,7 +72,6 @@ const Cart = () => {
                 {cartSummary()}
                 {items.length > 0 ? showItems(items) : noItemsMessage()}
             </Div>
-
         </Div>
     )
 }

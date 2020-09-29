@@ -30,7 +30,8 @@ export const globals = {
     colors: {
         linkColor: colorPalette.red,
         linkHoverColor: colorPalette.orange,
-        inputLabelColor: colorPalette.black
+        inputLabelColor: colorPalette.black,
+        menuPanelCloseButtonBackgroundColor: colorPalette.orange
     },
     extensions: [
         '.png',

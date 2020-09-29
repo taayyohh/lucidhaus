@@ -82,6 +82,14 @@ export const userSlice = createSlice({
             state.error = false
             state.loading = false
             state.redirectToReferrer = false
+        },
+        updateSuccess: (state, action) => {
+            console.log('ACTION', action)
+            console.log('STATE'. state)
+        },
+        updateFailure: (state, action) => {
+            console.log('ACTION', action)
+            console.log('STATE'. state)
         }
     },
 })

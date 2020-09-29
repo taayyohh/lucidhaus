@@ -11,7 +11,7 @@ const PrivateRoute = ({component: Component, ...rest}) => {
         history.push("/signin")
 
     return (
-        <Route {...rest} render={props =>
+        <Route {...rest} render={props => isAuthenticated &&
             <Component {...props} />
         }/>
     )

@@ -32,7 +32,7 @@ const Content = () => {
             <Route path="/cart" exact component={Cart}/>
             <Route path="/shop" exact component={Shop}/>
             <Route path="/shop/:slug" exact component={Product}/>
-            <PrivateRoute path="/profile/:userId" exact component={Profile}/>
+            <PrivateRoute path="/settings/profile" exact component={Profile}/>
             <PrivateRoute path="/user/dashboard" exact component={UserDashboard}/>
             <AdminRoute path="/admin/dashboard" exact component={AdminDashboard}/>
             <AdminRoute path="/admin/products" exact component={ManageProducts}/>

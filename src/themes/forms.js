@@ -3,18 +3,7 @@
  *     FORMS & FIELDS
  *
  */
-import {
-    absolute,
-    borderBox,
-    inherit,
-    flex,
-    inlineBlock,
-    none,
-    relative,
-    sv,
-    transparent,
-    white
-}                from '../utils/themer'
+import {absolute, borderBox, flex, inherit, inlineBlock, none, relative, sv, transparent} from '../utils/themer'
 import {globals} from '../variables/styles'
 
 

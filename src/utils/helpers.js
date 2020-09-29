@@ -1,4 +1,4 @@
-import {postTypeConfig} from '../variables/postTypes'
+import {postTypeConfig} from '../variables/fieldTypes'
 
 /**
  * Appends the appropriate article before a string.

@@ -1,17 +1,11 @@
-import React       from 'react'
-import {
-    signout
-}                  from '../api/apiAuth'
-import Div         from '../Basic/Div'
-import Ul          from '../Basic/Div'
-import Span        from '../Basic/Span'
-import StyledLink  from '../Basic/StyledLink'
-import {history}   from '../redux/store'
+import React, {useContext} from 'react'
+import Div from '../Basic/Div'
+import Ul from '../Basic/Div'
+import Span from '../Basic/Span'
+import StyledLink from '../Basic/StyledLink'
+import {menuPanelContext} from '../Containers/MenuPanelController'
 import {itemTotal} from '../Shop/cartHelpers'
-import {
-    headerMenu,
-    headerMenuAuth
-}                  from '../themes/header'
+import {headerMenu, headerMenuAuth} from '../themes/header'
 import {useDispatch, useSelector} from "react-redux";
 
 
@@ -20,6 +14,8 @@ import {useDispatch, useSelector} from "react-redux";
 const HeaderMenu = () => {
     const dispatch = useDispatch()
     const {isAuthenticated, isAdmin} = useSelector(state => state.user)
+    const {setPanel} = useContext(menuPanelContext)
+
 
     return (
 
@@ -40,14 +36,14 @@ const HeaderMenu = () => {
                     </StyledLink>
                 </li>
                 <li>
-                    <StyledLink
-                        to="/cart"
+                    <Div
+                        onClick={() => setPanel({name: 'cart-menu-panel'})}
                         theme={{...headerMenu.listItem}}>
                         Cart
                         <sup>
                             {itemTotal()}
                         </sup>
-                    </StyledLink>
+                    </Div>
                 </li>
             </Ul>
             <Div theme={headerMenuAuth}>
@@ -98,6 +94,17 @@ const HeaderMenu = () => {
                             </StyledLink>
                         </li>
                     )}
+                    {(isAuthenticated && isAdmin) && (
+                        <li>
+                            <Div
+                                onClick={() => setPanel({name: 'admin-menu-panel'})}
+                                theme={headerMenuAuth.listItem}
+                            >
+                                Admin Menu
+                            </Div>
+                        </li>
+                    )}
+
 
                 </Ul>
             </Div>

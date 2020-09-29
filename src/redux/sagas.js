@@ -1,5 +1,5 @@
 import {all, call, put, fork, takeEvery, takeLatest} from 'redux-saga/effects'
-import {authenticate, getPurchaseHistory, isAuthenticated, signin, signout, signup} from '../services/api'
+import {authenticate, getPurchaseHistory, isAuthenticated, signin, signout, signup, update, updateUser} from '../services/api'
 import {history} from '../redux/store'
 
 
@@ -82,6 +82,40 @@ function* loadConfig() {
     yield put({type: 'user/isAuthenticated'})
 }
 
+function* updateProfile(user) {
+    try {
+        const {_id, updatedUser, token} = user.payload
+        const payload = yield call(update, _id, token, updatedUser)
+        console.log('PAYLOAD', payload)
+        if(!payload.error) {
+       //     const updatedPayload = yield call(updateUser, payload)
+          //  console.log('payyy', updatedPayload)
+       //     yield put({type: 'user/updateSuccess', updatedPayload})
+        } else {
+            yield({type: 'user/updateFailure', payload})
+        }
+
+    } catch(error) {
+        yield({type: 'user/updateFailure', error})
+    }
+  //  yield put({type: 'user/updateProfile'})
+
+
+    // update(_id, token, {updatedName, updatedEmail, updatedPassword}).then(data => {
+    //     if (data.error) {
+    //         console.log(data.error)
+    //     } else {
+    //         updateUser(data, () => {
+    //             setValues({
+    //                 ...values,
+    //                 name: data.name,
+    //                 email: data.email,
+    //                 success: true
+    //             })
+    //         })
+    //     }
+    // })
+}
 
 /******************************************************************************/
 
@@ -122,6 +156,10 @@ function* watchLoadConfig() {
     yield takeEvery('site/loadConfig', loadConfig)
 }
 
+function* watchUpdateProfile() {
+    yield takeEvery('user/updateProfile', updateProfile)
+}
+
 // notice how we now only export the rootSaga
 // single entry point to start all Sagas at once
 export default function* rootSaga() {
@@ -133,6 +171,7 @@ export default function* rootSaga() {
         fork(watchIsAuthenticated),
         fork(watchSignOut),
         fork(watchSignUp),
-        fork(watchUserHistory)
+        fork(watchUserHistory),
+        fork(watchUpdateProfile)
     ])
 }

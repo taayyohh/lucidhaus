@@ -7,13 +7,11 @@ import {history} from '../redux/store'
 const AdminRoute = ({component: Component, ...rest}) => {
     const {isAuthenticated, isAdmin} = useSelector(state => state.user)
 
-    console.log('hi')
-
     if (!isAuthenticated || !isAdmin)
         history.push("/signin")
 
     return (
-        <Route {...rest} render={props =>
+        <Route {...rest} render={props => isAuthenticated && isAdmin &&
             <Component {...props} />
         }/>
     )

@@ -3,6 +3,7 @@ import PageFrame from '../Layout/PageFrame'
 import TransitionController from './TransitionController'
 import {useDispatch, useSelector} from "react-redux";
 import Div from "../Basic/Div";
+import MenuPanelController from "./MenuPanelController";
 
 const Root = () => {
     const {isInitialized} = useSelector(state => state.site)
@@ -10,15 +11,19 @@ const Root = () => {
 
     useEffect(() => {
         dispatch({type: 'site/loadConfig'})
-        // eslint-disable-next-line consistent-return
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (
         <>
             {(isInitialized && (
-                <TransitionController>
-                    <PageFrame/>
-                </TransitionController>
+                <MenuPanelController>
+                    <TransitionController>
+                        <PageFrame/>
+                    </TransitionController>
+                </MenuPanelController>
+
             )) || <Div>loading</Div>}
         </>
     )

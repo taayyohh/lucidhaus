@@ -148,6 +148,7 @@ export const headerMenuAuth = {
         width: '100%,',
         flexDirection: 'row',
         flexWrap: 'nowrap',
+        alignItems: center,
         mobile: {
             display: flex,
             width: '100%',
