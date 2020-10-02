@@ -1,9 +1,8 @@
-import {all, call, put, fork, takeEvery, takeLatest} from 'redux-saga/effects'
-import {authenticate, getPurchaseHistory, isAuthenticated, signin, signout, signup, update, updateUser} from '../services/api'
-import {history} from '../redux/store'
-
-
+import {all, call, fork, put, takeEvery, takeLatest} from 'redux-saga/effects'
+import {authenticate, getPurchaseHistory, isAuthenticated, signin, signout, signup, update} from '../services/api'
+import {push} from 'connected-react-router'
 import {stripTrailingSlash} from '../utils/url'
+
 
 function* navigate({payload}) {
     // stripping trailing slash by default
@@ -35,10 +34,10 @@ function* isAuth() {
     const payload = yield call(isAuthenticated)
     if (payload.token) {
         yield put({type: 'user/isAuthenticatedSuccess', payload})
-        yield put ({type: 'site/initializeSuccess'})
+        yield put({type: 'site/initializeSuccess'})
     } else {
         yield put({type: 'user/isAuthenticatedFailure', payload})
-        yield put ({type: 'site/initializeSuccess'})
+        yield put({type: 'site/initializeSuccess'})
     }
 }
 
@@ -46,6 +45,7 @@ function* signOut() {
     const payload = yield call(signout)
     if (!payload.error) {
         yield put({type: 'user/signOutSuccess', payload})
+        yield put(push('/'))
     } else {
         yield put({type: 'user/signOutFailure', payload})
     }
@@ -54,7 +54,7 @@ function* signOut() {
 function* signUp(user) {
     const payload = yield call(signup, user.payload)
     try {
-        if(!payload.error) {
+        if (!payload.error) {
             yield put({type: 'user/signUpSuccess', payload})
         } else {
             yield put({type: 'user/signUpFailure', payload})
@@ -68,7 +68,7 @@ function* signUp(user) {
 function* purchaseHistory(user) {
     try {
         const payload = yield call(getPurchaseHistory, user.payload)
-        if(!payload.error) {
+        if (!payload.error) {
             yield put({type: 'user/getPurchaseSuccess', payload})
         } else {
             yield put({type: 'user/getPurchaseFailure', payload})
@@ -87,18 +87,18 @@ function* updateProfile(user) {
         const {_id, updatedUser, token} = user.payload
         const payload = yield call(update, _id, token, updatedUser)
         console.log('PAYLOAD', payload)
-        if(!payload.error) {
-       //     const updatedPayload = yield call(updateUser, payload)
-          //  console.log('payyy', updatedPayload)
-       //     yield put({type: 'user/updateSuccess', updatedPayload})
+        if (!payload.error) {
+            //     const updatedPayload = yield call(updateUser, payload)
+            //  console.log('payyy', updatedPayload)
+            //     yield put({type: 'user/updateSuccess', updatedPayload})
         } else {
             yield({type: 'user/updateFailure', payload})
         }
 
-    } catch(error) {
+    } catch (error) {
         yield({type: 'user/updateFailure', error})
     }
-  //  yield put({type: 'user/updateProfile'})
+    //  yield put({type: 'user/updateProfile'})
 
 
     // update(_id, token, {updatedName, updatedEmail, updatedPassword}).then(data => {

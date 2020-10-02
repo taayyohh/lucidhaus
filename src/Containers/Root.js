@@ -3,7 +3,7 @@ import PageFrame from '../Layout/PageFrame'
 import TransitionController from './TransitionController'
 import {useDispatch, useSelector} from "react-redux";
 import MenuPanelController from "./MenuPanelController";
-import MotionDiv from "../Basic/MotionDiv";
+import TransitionOverlay from "../Layout/TransitionOverlay";
 
 const Root = () => {
     const {isInitialized} = useSelector(state => state.site)
@@ -25,11 +25,10 @@ const Root = () => {
                 </MenuPanelController>
 
             )) ||
-            <MotionDiv theme={{height: '100vh', width: '100vw', backgroundColor: '#afe'}}/>
+                <TransitionOverlay theme={{zIndex: 20}}/>
             }
         </>
     )
 }
-
 
 export default Root

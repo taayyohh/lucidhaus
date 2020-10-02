@@ -33,6 +33,16 @@ export const addArtistFormStyle = {}
 
 export const videoOverlayStyles = {}
 
+export const transitionOverlayStyle = {
+    backgroundColor: globals.colors.transitionOverlayBackground,
+    width: '100%',
+    position: 'fixed',
+    bottom: 0,
+    height: 0,
+    zIndex: 12,
+    display: 'static'
+}
+
 export const genericButtonStyle = {
     border: none,
     background: '#000',

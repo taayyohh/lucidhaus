@@ -8,9 +8,6 @@ import {itemTotal} from '../Shop/cartHelpers'
 import {headerMenu, headerMenuAuth} from '../themes/header'
 import {useDispatch, useSelector} from "react-redux";
 
-
-// const isActive = (history, path) => history.location.pathname === path
-
 const HeaderMenu = () => {
     const dispatch = useDispatch()
     const {isAuthenticated, isAdmin} = useSelector(state => state.user)
@@ -18,34 +15,28 @@ const HeaderMenu = () => {
 
 
     return (
-
         <Div theme={headerMenu}>
-            <Ul theme={headerMenu.list}>
-                <li>
-                    <StyledLink
-                        to="/businesses"
-                        theme={{...headerMenu.listItem}}>
-                        Businesses
-                    </StyledLink>
-                </li>
-                <li>
-                    <StyledLink
-                        to="/shop"
-                        theme={{...headerMenu.listItem}}>
-                        Shop
-                    </StyledLink>
-                </li>
-                <li>
-                    <Div
-                        onClick={() => setPanel({name: 'cart-menu-panel'})}
-                        theme={{...headerMenu.listItem}}>
-                        Cart
-                        <sup>
-                            {itemTotal()}
-                        </sup>
-                    </Div>
-                </li>
-            </Ul>
+            <Div theme={headerMenu.list}>
+                <StyledLink
+                    to="/businesses"
+                    theme={{...headerMenu.listItem}}>
+                    Businesses
+                </StyledLink>
+
+                <StyledLink
+                    to="/shop"
+                    theme={{...headerMenu.listItem}}>
+                    Shop
+                </StyledLink>
+                <Div
+                    onClick={() => setPanel({name: 'cart-menu-panel'})}
+                    theme={{...headerMenu.listItem}}>
+                    Cart
+                    <sup>
+                        {itemTotal()}
+                    </sup>
+                </Div>
+            </Div>
             <Div theme={headerMenuAuth}>
                 <Ul theme={headerMenuAuth.list}>
                     {!isAuthenticated && (
