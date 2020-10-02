@@ -3,47 +3,75 @@ import {useAnimation} from "framer-motion"
 import {useSelector} from "react-redux"
 import {menuPanelContext} from "./MenuPanelController"
 import {overlayFadeout} from '../animations/transitions'
+import {createSelector} from 'reselect'
 
 export const TransitionAnimations = createContext({})
 
 const TransitionController = props => {
     const overlayAnimation = useAnimation()
-    const [currentPath, setCurrentPath] = useState()
-    const {pathname} = useSelector(state => state.router.location)
+    const contentAnimation = useAnimation()
     const {setPanel} = useContext(menuPanelContext)
+    const [transitionInProgress, setTransitionInProgress] = useState(false)
+    const [transitionComplete, setTransitionComplete] = useState(false)
+    const pathSelector = createSelector(
+        ({router}) => router.location.pathname,
+        pathname => pathname
+    )
+    const pathname = useSelector(pathSelector)
+    const [currentPath, setCurrentPath] = useState(pathname)
 
 
     const pageInit = useMemo(() => async () => {
-        setCurrentPath(pathname)
         await overlayAnimation.start(overlayFadeout)
+        await contentAnimation.start({
+            opacity: 1,
+            translateX: 0,
+            transition: {
+                duration: .2,
+                ease: 'easeOut',
+            }
+        })
+        await setTransitionInProgress(false)
+        await setTransitionComplete(true)
 
-    }, [overlayAnimation, pathname])
+    }, [overlayAnimation, pathname, setCurrentPath])
 
-    const pageOut = useMemo(() => async () => {
+    const pageOut = useMemo(() => async (currentPathName) => {
         await setPanel('')
+        await setTransitionInProgress(true)
         await overlayAnimation.set({height: 0, opacity: 0})
         await overlayAnimation.start({
             opacity: 1,
             height: '100vh',
             transition: {
-                duration: .3,
-                ease: 'easeOut',
+                duration: .5,
+              //  ease: 'easeOut',
             }
         })
-
-        pageInit()
+        await setCurrentPath(currentPathName)
+        await contentAnimation.set({opacity: 0, translateX: '-10%'})
+        await pageInit()
     }, [overlayAnimation])
 
     useEffect(() => {
         if (pathname !== currentPath) {
-            pageOut()
+            pageOut(pathname)
         }
 
     }, [pathname, currentPath])
 
+    useEffect(() => {
+         pageInit()
+    }, [])
+
+
     return (
         <TransitionAnimations.Provider value={{
-            overlayAnimation
+            overlayAnimation,
+            transitionComplete,
+            transitionInProgress,
+            contentAnimation,
+            currentPath
         }} {...props}/>
     )
 }

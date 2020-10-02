@@ -24,7 +24,7 @@ export const headerStyle = {
     borderBottom: '1px solid #000',
     backgroundColor: '#fff',
     top: 0,
-    zIndex: 10,
+    zIndex: 13,
     height: [150, .7, 120],
     marginBottom: 50,
     mobile: {
@@ -35,10 +35,21 @@ export const headerStyle = {
     },
     logo: {},
     logoLink: {
-        size: [60, .7, 60],
-        width: [80, .7, 80],
-        zIndex: 2,
+
     }
+}
+
+export const headerInnerStyle = {
+    display: flex,
+    position: relative,
+    margin: '0 auto',
+    width: [1480, globals.style.layoutScalingValue, '100%']
+}
+
+export const headerLogoLinkStyle = {
+    size: [60, .7, 60],
+    width: [80, .7, 80],
+    zIndex: 2,
 }
 
 export const headerMenuWrapper = {

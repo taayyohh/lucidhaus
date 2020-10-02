@@ -7,5 +7,4 @@ const Main = ({theme}) =>
         <Content/>
     </Div>
 
-
 export default Main

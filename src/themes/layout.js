@@ -30,7 +30,7 @@ export const pageFrameStyle = {
         flexDirection: column
     },
     header: {
-        gridColumn: '2 / 6',
+        gridColumn: '1 / 7',
         gridColumnSpan: 4,
         msGridRow: 1,
         gridRow: 1,

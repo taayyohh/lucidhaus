@@ -3,6 +3,7 @@ import {createSlice} from '@reduxjs/toolkit'
 const initialState = {
     isInitialized: false,
     loading: false,
+    slug: ''
 }
 
 export const siteSlice = createSlice({

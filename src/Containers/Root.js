@@ -2,8 +2,8 @@ import React, {useEffect} from 'react'
 import PageFrame from '../Layout/PageFrame'
 import TransitionController from './TransitionController'
 import {useDispatch, useSelector} from "react-redux";
-import Div from "../Basic/Div";
 import MenuPanelController from "./MenuPanelController";
+import MotionDiv from "../Basic/MotionDiv";
 
 const Root = () => {
     const {isInitialized} = useSelector(state => state.site)
@@ -24,7 +24,9 @@ const Root = () => {
                     </TransitionController>
                 </MenuPanelController>
 
-            )) || <Div>loading</Div>}
+            )) ||
+            <MotionDiv theme={{height: '100vh', width: '100vw', backgroundColor: '#afe'}}/>
+            }
         </>
     )
 }

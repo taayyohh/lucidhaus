@@ -2,15 +2,18 @@ import React         from 'react'
 import MotionDiv     from '../Basic/MotionDiv'
 import StyledLink    from '../Basic/StyledLink'
 import HeaderMenu    from '../Menus/HeaderMenu'
-import {headerStyle} from '../themes/header'
+import {headerInnerStyle, headerLogoLinkStyle, headerStyle} from '../themes/header'
+import Div from "../Basic/Div";
 
 const Header = ({theme}) =>
-    <MotionDiv as="header" theme={{...headerStyle, ...theme}} exit={'exit'}>
-        <StyledLink to="/" theme={{...headerStyle.logoLink}}>
-            IJ
-        </StyledLink>
-        <HeaderMenu/>
-    </MotionDiv>
+    <Div as="header" theme={{...headerStyle, ...theme}}>
+        <Div theme={{...headerInnerStyle, ...theme.innerStyle}}>
+            <StyledLink to="/" theme={{...headerLogoLinkStyle, ...theme.logoLink}}>
+                IJ
+            </StyledLink>
+            <HeaderMenu/>
+        </Div>
+    </Div>
 
 
 Header.defaultProps = {
