@@ -39,6 +39,8 @@ const HeaderMenu = () => {
             </Div>
             <Div theme={headerMenuAuth}>
                 <Ul theme={headerMenuAuth.list}>
+
+
                     {!isAuthenticated && (
                         <>
                             <li>
@@ -95,8 +97,6 @@ const HeaderMenu = () => {
                             </Div>
                         </li>
                     )}
-
-
                 </Ul>
             </Div>
         </Div>

@@ -1,7 +1,8 @@
 import {all, call, fork, put, takeEvery, takeLatest} from 'redux-saga/effects'
-import {authenticate, getPurchaseHistory, isAuthenticated, signin, signout, signup, update} from '../services/api'
+import {authenticate, getPurchaseHistory, isAuthenticated, signin, signout, signup, update} from '../services/apiAuth'
 import {push} from 'connected-react-router'
 import {stripTrailingSlash} from '../utils/url'
+import {getBusinesses} from "../services/apiAdmin";
 
 
 function* navigate({payload}) {
@@ -17,6 +18,7 @@ function* signIn(user) {
         if (!payload.error) {
             yield put({type: 'user/signInSuccess', payload})
             yield put({type: 'user/authenticate', payload})
+            yield put(push(payload?.user?.role === 1 ? '/admin/dashboard' : '/user/dashboard'))
         } else {
             yield put({type: 'user/signInFailure', payload})
         }
@@ -117,6 +119,22 @@ function* updateProfile(user) {
     // })
 }
 
+
+function* getAllBusinesses() {
+    try {
+        const payload = yield call(getBusinesses)
+        console.log('payload', payload)
+        if (!payload.error) {
+            yield put({type: 'admin/getBusinessesSuccess', payload})
+        } else {
+            yield put({type: 'admin/getBusinessesFailure', payload})
+        }
+    } catch (error) {
+        yield put({type: 'admin/getBusinessFailure', error})
+    }
+}
+
+
 /******************************************************************************/
 
 /******************************* WATCHERS *************************************/
@@ -160,6 +178,10 @@ function* watchUpdateProfile() {
     yield takeEvery('user/updateProfile', updateProfile)
 }
 
+function* watchGetBusiness() {
+    yield takeEvery('admin/getAllBusinesses', getAllBusinesses)
+}
+
 // notice how we now only export the rootSaga
 // single entry point to start all Sagas at once
 export default function* rootSaga() {
@@ -172,6 +194,7 @@ export default function* rootSaga() {
         fork(watchSignOut),
         fork(watchSignUp),
         fork(watchUserHistory),
-        fork(watchUpdateProfile)
+        fork(watchUpdateProfile),
+        fork(watchGetBusiness)
     ])
 }

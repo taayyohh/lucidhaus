@@ -46,17 +46,17 @@ const SignIn = () => {
     }
 
     useEffect(() => {
-        if (redirectToReferrer)
-            if (isAdmin) {
-                history.push('/admin/dashboard')
-            } else {
-                history.push('/user/dashboard')
-            }
+        // if (redirectToReferrer)
+        //     if (isAdmin) {
+        //         history.push('/admin/dashboard')
+        //     } else {
+        //         history.push('/user/dashboard')
+        //     }
 
         if (isAuthenticated)
             history.push('/')
 
-    }, [redirectToReferrer, isAuthenticated, isAdmin])
+    }, [])
 
 
     return (

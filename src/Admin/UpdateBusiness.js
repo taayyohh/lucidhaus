@@ -87,7 +87,6 @@ const UpdateBusiness = ({pathname}) => {
                 setValues({...values, error: data.error})
             } else {
                 // populate the state
-                console.log('DATA', data)
                 setValues({
                     ...values,
                     business: data,
@@ -102,6 +101,16 @@ const UpdateBusiness = ({pathname}) => {
             }
         })
     }
+
+    // const destroy = businessId => {
+    //     deleteBusiness(businessId, _id, token).then(data => {
+    //         if (data.error) {
+    //             console.log(data.error)
+    //         } else {
+    //             //loadBusinesses()
+    //         }
+    //     })
+    // }
 
 
     useEffect(() => {

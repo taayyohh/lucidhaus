@@ -39,12 +39,13 @@ const TransitionController = props => {
     const pageOut = useMemo(() => async (currentPathName) => {
         await setPanel('')
         await setTransitionInProgress(true)
-        await overlayAnimation.set({height: 0, opacity: 0})
+        await overlayAnimation.set({height: 0, opacity: 1})
         await overlayAnimation.start({
             opacity: 1,
             height: '100vh',
+            zIndex: 10,
             transition: {
-                duration: .5,
+                duration: .3,
               //  ease: 'easeOut',
             }
         })

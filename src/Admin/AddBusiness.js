@@ -198,9 +198,7 @@ const AddBusiness = () => {
         formData.set('profileImageUrl', uploadedFileName)
 
         // SUBMIT TO S3 AND GET URL
-        console.log('cropped', croppedImage)
-        console.log('form data', formData)
-        getSignedRequest(user._id, token, croppedImage, 'business-profile')
+        getSignedRequest(user._id, token, croppedImage, 'artist-profile')
 
 
         createBusiness(user._id, token, formData)

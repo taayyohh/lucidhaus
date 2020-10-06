@@ -1,8 +1,10 @@
 import {
+    black,
     column,
     fixed,
     flex,
     none,
+    pointer,
     relative,
     sv,
     white,
@@ -27,11 +29,12 @@ export const pageFrameStyle = {
     width: 'auto',
     mobile: {
         display: flex,
-        flexDirection: column
+        flexDirection: column,
+        width: '100%'
     },
     header: {
         gridColumn: '1 / 7',
-        gridColumnSpan: 4,
+        gridColumnSpan: 6,
         msGridRow: 1,
         gridRow: 1,
     },
@@ -108,7 +111,7 @@ export const pageFrameStyle = {
         gridColumnSpan: 4,
         backgroundColor: white,
         zIndex: 3,
-        minHeight: '50vh',
+        minHeight: '80vh',
         print: {
             paddingTop: 0
         },
@@ -122,8 +125,8 @@ export const pageFrameStyle = {
         marginTop: 50
     },
     footer: {
-        gridColumn: '2 / 6',
-        gridColumnSpan: 4,
+        gridColumn: '1 / 7',
+        gridColumnSpan: 6,
         msGridRow: 4,
         gridRow: 4,
     }
@@ -137,8 +140,11 @@ export const overlayStyle = {
     right: 0,
     top: 0,
     bottom: 0,
-    backgroundColor: '#ffcb00',
-    zIndex: 11,
+    backgroundColor: black,
+    zIndex: -1,
+    hover: {
+        cursor: pointer
+    }
 }
 
 export const microCardStyle = {

@@ -29,7 +29,7 @@ export const defaultFieldsetStyle = {
 export const defaultFieldStyle = {
     display: inlineBlock,
     position: relative,
-    height: 50,
+    height: [50, .7, 50],
     width: '100%',
     padding: `0 ${sv(25)}`,
     border: none,
@@ -46,6 +46,9 @@ export const defaultFieldStyle = {
     letterSpacing: none,
     zIndex: 1,
     borderRadius: 10,
+    mobile: {
+        padding: '0 25px'
+    },
     placeholder: {
         color: transparent,
         textTransform: none,

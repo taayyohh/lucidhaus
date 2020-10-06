@@ -3,7 +3,7 @@ import {globals} from "../variables/styles";
 
 export const headerMenuPanelWrapperStyle = {
     position: absolute,
-    zIndex: 25
+   // zIndex: 25
 }
 
 
@@ -13,19 +13,16 @@ export const headerMenuPanelStyle = {
     flexDirection: column,
     font: globals.fonts.header,
     height: '100vh',
-    width: [940, .5],
-    maxWidth: [940, .5],
+    width: [940, .5, '100vw'],
+    maxWidth: [940, .5, '100vw'],
     top: 0,
     right: 0,
     paddingLeft: [120, globals.style.layoutScalingValue],
     paddingRight: [60, globals.style.layoutScalingValue],
     backgroundColor: white,
-    borderLeft: `1px solid #000`,
+   // borderLeft: `1px solid #000`,
     boxSizing: borderBox,
     zIndex: 22,
-    mobile: {
-        display: none
-    },
     heading: {
         font: globals.fonts.header,
         size: [72, .5],

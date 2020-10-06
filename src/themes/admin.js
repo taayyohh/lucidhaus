@@ -7,7 +7,7 @@ import {
     pointer,
     relative,
     row,
-    sv, column
+    sv, column, uppercase
 } from '../utils/themer'
 import {globals} from '../variables/styles'
 
@@ -33,6 +33,27 @@ export const menuPanelHeaderStyle = {
     font: globals.fonts.script,
     size: [48, .6, 24],
     marginBottom: [30, .6, 30]
+}
+
+export const adminMenuToggleStyle = {
+    height: [50, .7, 50],
+    width: [50, .7, 50],
+    borderRadius: [25, .7, 25],
+    backgroundColor: '#afe',
+    position: fixed,
+    top: 100,
+    right: 50
+}
+
+export const adminHeadingStyle = {
+    size: [42, .7, 26],
+    paddingBottom: [50, .7, 50],
+    marginBottom: [50, .7, 50],
+    font: globals.fonts.script
+}
+
+export const adminCreateButtonStyle = {
+
 }
 
 export const adminMenuStyle = {

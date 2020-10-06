@@ -1,9 +1,13 @@
-import React, {useEffect} from 'react'
-import PageFrame from '../Layout/PageFrame'
+import React, {useEffect}   from 'react'
+import {
+    useDispatch,
+    useSelector
+}                           from 'react-redux'
+import PageFrame            from '../Layout/PageFrame'
+import TransitionOverlay    from '../Layout/TransitionOverlay'
+import LayoutSwitch         from './LayoutSwitch'
+import MenuPanelController  from './MenuPanelController'
 import TransitionController from './TransitionController'
-import {useDispatch, useSelector} from "react-redux";
-import MenuPanelController from "./MenuPanelController";
-import TransitionOverlay from "../Layout/TransitionOverlay";
 
 const Root = () => {
     const {isInitialized} = useSelector(state => state.site)
@@ -18,14 +22,16 @@ const Root = () => {
     return (
         <>
             {(isInitialized && (
-                <MenuPanelController>
-                    <TransitionController>
-                        <PageFrame/>
-                    </TransitionController>
-                </MenuPanelController>
+                <LayoutSwitch>
+                    <MenuPanelController>
+                        <TransitionController>
+                            <PageFrame/>
+                        </TransitionController>
+                    </MenuPanelController>
+                </LayoutSwitch>
 
             )) ||
-                <TransitionOverlay theme={{zIndex: 20}}/>
+            <TransitionOverlay/>
             }
         </>
     )

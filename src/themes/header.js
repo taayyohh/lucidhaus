@@ -1,18 +1,25 @@
 import {
+    absolute,
+    block,
     borderBox,
     center,
     column,
     flex,
-    uppercase,
-    absolute,
     none,
-    pointer,
     relative,
-    white,
-    block
+    spaceBetween,
+    uppercase,
+    white
 } from '../utils/themer'
 import {globals} from '../variables/styles'
 
+export const mobileHeaderMenuToggleStyle = {
+    mobile: {
+        height: 50,
+        width: 50,
+        backgroundColor: '#000'
+    }
+}
 
 export const headerStyle = {
     display: flex,
@@ -22,9 +29,9 @@ export const headerStyle = {
     font: globals.fonts.header,
     textTransform: uppercase,
     borderBottom: '1px solid #000',
-    backgroundColor: '#fff',
+    backgroundColor: white,
     top: 0,
-    zIndex: 13,
+    zIndex: 11,
     height: [150, .7, 120],
     marginBottom: 50,
     mobile: {
@@ -34,16 +41,21 @@ export const headerStyle = {
         boxSizing: borderBox
     },
     logo: {},
-    logoLink: {
-
-    }
+    logoLink: {}
 }
 
 export const headerInnerStyle = {
     display: flex,
+    alignItems: center,
     position: relative,
     margin: '0 auto',
-    width: [1480, globals.style.layoutScalingValue, '100%']
+    width: [globals.style.siteInnerWidth, globals.style.layoutScalingValue, '100%'],
+    mobile: {
+        paddingLeft: 25,
+        paddingRight: 25,
+        justifyContent: spaceBetween,
+        boxSizing: borderBox
+    }
 }
 
 export const headerLogoLinkStyle = {
@@ -52,46 +64,10 @@ export const headerLogoLinkStyle = {
     zIndex: 2,
 }
 
-export const headerMenuWrapper = {
-    mobile: {
-        position: relative,
-        width: '100%',
-        overflow: 'hidden',
-        boxShadow: '10px 10px 0px #000'
-    }
-}
-
-export const headerMenuToggle = {
-    mobile: {
-        height: 40,
-        width: 40,
-        top: -63,
-        right: 0,
-        background: globals.colors.black,
-        position: absolute,
-        hover: {
-            cursor: pointer
-        }
-    }
-}
-
 export const headerMenu = {
     zIndex: 1,
-    backgroundColor: '#fff',
     width: '100%',
     position: relative,
-    //overflow: hidden,
-    mobile: {
-        display: flex,
-        flexDirection: column,
-        position: absolute,
-        width: '90%',
-        left: '5%',
-        top: 80,
-        borderTop: '3px solid #000',
-        borderLeft: '1px solid #000',
-        borderRight: '1px solid #000',
-    },
     list: {
         display: flex,
         flexDirection: 'row',
@@ -105,7 +81,6 @@ export const headerMenu = {
             listStyleType: 'none',
             mobile: {
                 width: '100%',
-                //backgroundColor: '#eeceda',
                 textAlign: center,
                 borderBottom: '1px solid #000'
             }
@@ -121,7 +96,6 @@ export const headerMenu = {
         paddingBottom: [50, .7, '0'],
         paddingRight: [40, .7, '0'],
         paddingLeft: [40, .7, '0'],
-        // backgroundColor: '#f0e9ff',
         transition: 'background-color 500ms ease',
         mobile: {
             width: '100%',

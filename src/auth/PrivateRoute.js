@@ -7,8 +7,11 @@ import {history} from '../redux/store'
 const PrivateRoute = ({component: Component, ...rest}) => {
     const {isAuthenticated} = useSelector(state => state.user)
 
-    if (!isAuthenticated)
-        history.push("/signin")
+    useEffect(() => {
+        if (!isAuthenticated)
+            history.push("/signin")
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     return (
         <Route {...rest} render={props => isAuthenticated &&

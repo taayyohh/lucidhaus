@@ -2,11 +2,12 @@ import PropTypes     from 'prop-types'
 import React, {memo} from 'react'
 import Div           from '../Basic/Div'
 import {footerStyle} from '../themes/footer'
+import moment from "moment";
 
 const Footer = memo(({theme}) =>
     <Div as="footer" theme={{...footerStyle, ...theme}}>
         <Div theme={footerStyle.inner}>
-            Footer
+           &copy; {moment().format('YYYY')} InclusiveJourneys
         </Div>
     </Div>
 )

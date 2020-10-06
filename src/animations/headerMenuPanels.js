@@ -4,12 +4,14 @@ export const headerMenuPanelVariants = {
     closed: {
         translateX: 960,
         overflowY: auto,
+        zIndex: -1,
         transition: {
             duration: .5,
             ease: [.22, .62, .13, 1.04]
         }
     },
     open: {
+        zIndex: 25,
         translateX: 0,
         overflowY: 'scroll',
         transition: {

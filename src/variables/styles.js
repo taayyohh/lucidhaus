@@ -1,7 +1,8 @@
 export const breakpointUpperLimit = {
     mobile: 768,
-    tablet: 1280,
-    small: 1630,
+    tablet: 1024,
+    desktop: 1280,
+    small: 1680,
     large: 1920
 }
 
@@ -25,7 +26,8 @@ export const globals = {
     },
     style: {
         layoutScalingValue: .45,
-        inputLabelShrinkRatio: .7
+        inputLabelShrinkRatio: .7,
+        siteInnerWidth: 1480
     },
     colors: {
         linkColor: colorPalette.red,

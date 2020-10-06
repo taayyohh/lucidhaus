@@ -1,14 +1,18 @@
-import React, {useContext} from 'react'
-import {Route, Switch} from 'react-router'
-import AddBusiness from '../Admin/AddBusiness'
-import AddCategory from '../Admin/AddCategory'
-import AddProduct from '../Admin/AddProduct'
-import ManageBusinesses from '../Admin/ManageBusinesses'
-import ManageProducts from '../Admin/ManageProducts'
-import Orders from '../Admin/Orders'
-import UpdateBusiness from '../Admin/UpdateBusiness'
-import UpdateCategory from '../Admin/UpdateCategory'
-import UpdateProduct from '../Admin/UpdateProduct'
+import React, {
+    useContext,
+    useEffect
+}                       from 'react'
+import {useDispatch}    from 'react-redux'
+import {Route, Switch}  from 'react-router'
+import AddBusiness      from '../Admin/AddBusiness'
+import AddCategory      from '../Admin/AddCategory'
+import AddProduct       from '../Admin/AddProduct'
+import ManageBusinesses from '../features/admin/ManageBusinesses'
+import ManageProducts   from '../Admin/ManageProducts'
+import Orders           from '../Admin/Orders'
+import UpdateBusiness   from '../Admin/UpdateBusiness'
+import UpdateCategory   from '../Admin/UpdateCategory'
+import UpdateProduct    from '../Admin/UpdateProduct'
 import AdminRoute from '../auth/AdminRoute'
 import PrivateRoute from '../auth/PrivateRoute'
 import Business from '../Business/Business'
@@ -27,6 +31,12 @@ import MotionDiv from "../Basic/MotionDiv";
 
 const Content = () => {
     const {contentAnimation, currentPath} = useContext(TransitionAnimations)
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch({type: 'site/setPath', payload: currentPath})
+
+    }, [currentPath])
 
     return (
         <AnimatePresence>
