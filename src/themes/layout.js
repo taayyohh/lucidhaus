@@ -136,6 +136,7 @@ export const overlayStyle = {
     position: fixed,
     height: '100vh',
     width: '100vw',
+    maxWidth: '100%',
     left: 0,
     right: 0,
     top: 0,

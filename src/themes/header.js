@@ -32,7 +32,7 @@ export const headerStyle = {
     backgroundColor: white,
     top: 0,
     zIndex: 11,
-    height: [150, .7, 120],
+    height: [100, .7, 120],
     marginBottom: 50,
     mobile: {
         display: flex,
@@ -49,6 +49,7 @@ export const headerInnerStyle = {
     alignItems: center,
     position: relative,
     margin: '0 auto',
+    height: '100%',
     width: [globals.style.siteInnerWidth, globals.style.layoutScalingValue, '100%'],
     mobile: {
         paddingLeft: 25,
@@ -118,7 +119,7 @@ export const headerMenu = {
 export const headerMenuAuth = {
     display: flex,
     position: absolute,
-    top: 0,
+    top: 10,
     right: 0,
     listStyle: none,
     padding: '10px 25px',

@@ -1,88 +1,62 @@
-import React, {useEffect, useState} from 'react'
-import {useDispatch, useSelector} from 'react-redux'
-import {history} from '../../redux/store'
-import Div from '../../Basic/Div'
-import H3 from '../../Basic/H3'
+import {Formik}             from 'formik'
+import React, {useEffect}   from 'react'
+import {
+    useDispatch,
+    useSelector
+}                           from 'react-redux'
+import Div                  from '../../Basic/Div'
+import H3                   from '../../Basic/H3'
+import SubmitButton         from '../../Basic/SubmitButton'
+import SmartInput           from '../../Forms/SmartInput'
+import {history}            from '../../redux/store'
 import {genericButtonStyle} from '../../themes/elements'
-import {signInFormStyle, signUpFormStyle} from '../../themes/signup'
-import SmartInput from "../../Forms/SmartInput";
-import SubmitButton from "../../Basic/SubmitButton";
+import {
+    signInFormStyle,
+    signUpFormStyle
+}                           from '../../themes/signup'
+import {signInFieldTypes}   from '../../variables/fieldTypes'
 
 const SignIn = () => {
     const dispatch = useDispatch()
-    const {error, redirectToReferrer, isAuthenticated, isAdmin} = useSelector(state => state.user)
-    const [values, setValues] = useState({
-        email: '',
-        password: '',
-    })
-    const {email, password} = values
-    const fieldTypes = [
-        {
-            inputLabel: 'Email',
-            onChange: 'email',
-            value: email
-        },
-        {
-            inputLabel: 'Password',
-            onChange: 'password',
-            value: password,
-            type: 'password'
-        }
-    ]
-
-    const handleChange = name => event => {
-        setValues({
-            ...values,
-            [name]: event.target.value
-        })
-    }
-
-    const clickSubmit = (event) => {
-        event.preventDefault()
-        dispatch({
-            type: 'user/signIn',
-            payload: {email, password}
-        })
-    }
+    const {error, isAuthenticated} = useSelector(state => state.user)
 
     useEffect(() => {
-        // if (redirectToReferrer)
-        //     if (isAdmin) {
-        //         history.push('/admin/dashboard')
-        //     } else {
-        //         history.push('/user/dashboard')
-        //     }
-
         if (isAuthenticated)
             history.push('/')
 
     }, [])
 
-
     return (
-        <Div as="form" theme={signInFormStyle}>
-            <H3 theme={signInFormStyle.heading}>Sign In</H3>
-            {fieldTypes.map(f =>
-                <SmartInput
-                    key={f.inputLabel}
-                    inputLabel={f.inputLabel}
-                    onChange={handleChange(f.onChange)}
-                    value={f.value}
-                    theme={signInFormStyle.fieldset}
-                    type={f.type}
-                />
-            )}
-            <SubmitButton
-                onClick={clickSubmit}
-                theme={{...genericButtonStyle, ...signUpFormStyle.button}}
-                children={'Submit'}
-            />
-            {error && (
-                <Div>
-                    {error}
+        /// TODO: use Formik to validate and error check, remove that logic from express
+        <Formik
+            initialValues={{email: '', password: ''}}
+            onSubmit={values => dispatch({type: 'user/signIn', payload: values})}
+        >
+            {formik => (
+                <Div as="form" theme={signInFormStyle} onSubmit={formik.handleSubmit}>
+                    <H3 theme={signInFormStyle.heading}>Sign In</H3>
+                    {signInFieldTypes.map(f =>
+                        <SmartInput
+                            {...formik.getFieldProps(f.name)}
+                            id={f.name}
+                            key={f.name}
+                            inputLabel={f.inputLabel}
+                            type={f.type}
+                            theme={signInFormStyle.fieldset}
+                        />
+                    )}
+                    <SubmitButton
+                        theme={{...genericButtonStyle, ...signUpFormStyle.button}}
+                        children={'Submit'}
+                    />
+                    {error && (
+                        <Div>
+                            {error}
+                        </Div>
+                    )}
                 </Div>
             )}
-        </Div>
+        </Formik>
     )
 }
 

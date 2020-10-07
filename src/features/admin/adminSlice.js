@@ -1,18 +1,20 @@
 import {createSlice} from '@reduxjs/toolkit'
 
 const initialState = {
-    name: '',
-    slug: '',
-    description: '',
-    photo: '',
-    uploadedFile: undefined,
-    uploadedFileName: '',
-    loading: false,
-    error: '',
-    createdBusiness: '',
-    redirectToProfile: false,
-    formData: '',
-    marketPlace: []
+    marketPlace: [],
+    businessForm: {
+        name: '',
+        slug: '',
+        description: '',
+        photo: '',
+        uploadedFile: undefined,
+        uploadedFileName: '',
+        loading: false,
+        error: '',
+        createdBusiness: '',
+        redirectToProfile: false,
+        formData: ''
+    }
 }
 
 export const adminSlice = createSlice({

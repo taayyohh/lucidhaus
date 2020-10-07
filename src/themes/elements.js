@@ -16,7 +16,7 @@ import {
 import {globals} from '../variables/styles'
 
 export const defaultLinkStyle = {
-    color: globals.colors.black
+    color: globals.colors.linkColor
 }
 
 export const richTextDefaultStyle = {

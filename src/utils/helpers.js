@@ -1,5 +1,3 @@
-import {postTypeConfig} from '../variables/fieldTypes'
-
 /**
  * Appends the appropriate article before a string.
  * This is not a robust solution, but it will work for what we need.
@@ -134,13 +132,6 @@ export const isEqual = (a, b) => JSON.stringify(a) === JSON.stringify(b)
  */
 export const isString = a => typeof a === 'string' || a instanceof String
 
-/**
- * Returns the plural label for the given post type
- *
- * @param {string} postType
- * @returns {string}
- */
-export const plural = postType => postTypeConfig.find(item => item.name === postType).plural
 
 /**
  * Randomizes an array
@@ -156,13 +147,6 @@ export const shuffle = a => {
     return a
 }
 
-/**
- * Returns the singular label for the given post type
- *
- * @param {string} postType
- * @returns {string}
- */
-export const singular = postType => postTypeConfig.find(item => item.name === postType).singular
 
 /**
  * Sorts the given object alphabetically by the given property key

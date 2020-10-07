@@ -26,7 +26,7 @@ export const defaultFieldsetStyle = {
         'border-width 300ms cubic-bezier(0.0, 0, 0.3, 1) 0ms'
 }
 
-export const defaultFieldStyle = {
+export const defaultInputStyle = {
     display: inlineBlock,
     position: relative,
     height: [50, .7, 50],

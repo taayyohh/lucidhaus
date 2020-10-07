@@ -4,7 +4,7 @@ import React, {
     useState
 }                                      from 'react'
 import {defaultFocusedInputLabelStyle} from '../themes/forms'
-import Field                           from './Field'
+import Input                           from './Input'
 import Fieldset                        from './Fieldset'
 import InputLabel                      from './InputLabel'
 import Legend                          from './Legend'
@@ -32,7 +32,7 @@ const SmartInput = ({label, handleChange, theme}) => {
 
     return (
         <Fieldset theme={{...theme}}>
-            <Field
+            <Input
                 onChange={onChange}
                 onFocus={handleFocus}
                 onBlur={handleBlur}

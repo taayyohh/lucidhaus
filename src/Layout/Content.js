@@ -3,9 +3,9 @@ import React, {
     useEffect
 }                       from 'react'
 import {useDispatch}    from 'react-redux'
-import {Route, Switch}  from 'react-router'
-import AddBusiness      from '../Admin/AddBusiness'
-import AddCategory      from '../Admin/AddCategory'
+import {Route, Switch} from 'react-router'
+import AddBusiness     from '../features/admin/AddBusiness'
+import AddCategory     from '../Admin/AddCategory'
 import AddProduct       from '../Admin/AddProduct'
 import ManageBusinesses from '../features/admin/ManageBusinesses'
 import ManageProducts   from '../Admin/ManageProducts'
@@ -40,7 +40,7 @@ const Content = () => {
 
     return (
         <AnimatePresence>
-            <MotionDiv animate={contentAnimation}>
+            <MotionDiv animate={contentAnimation} theme={{width: '100%'}}>
                 <Switch location={{pathname: currentPath}}>
                     <Route path="/signup" exact component={SignUp}/>
                     <Route path="/signin" exact component={SignIn}/>

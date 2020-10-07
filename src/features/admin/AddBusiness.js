@@ -9,47 +9,45 @@ import React, {
 import Dropzone          from 'react-dropzone-uploader'
 import ReactCrop         from 'react-image-crop'
 import 'react-image-crop/dist/ReactCrop.css'
+import {
+    useDispatch,
+    useSelector
+} from 'react-redux'
 import {Redirect}        from 'react-router-dom'
 import {
     createBusiness,
     getSignedRequest
-}                        from '../api/apiAdmin'
-import {isAuthenticated} from '../api/apiAuth'
-import Div               from '../Basic/Div'
-import Form              from '../Basic/Form'
-import H2                from '../Basic/H2'
-import H3                from '../Basic/H3'
-import Img               from '../Basic/Img'
-import SmartInput        from '../Basic/SmartInput'
-import FormPortal        from '../Elements/FormPortal'
+}                        from '../../api/apiAdmin'
+import Div               from '../../Basic/Div'
+import Form              from '../../Basic/Form'
+import H2                from '../../Basic/H2'
+import H3                from '../../Basic/H3'
+import Img               from '../../Basic/Img'
+import SmartInput        from '../../Basic/SmartInput'
+import FormPortal        from '../../Elements/FormPortal'
 import {
     dropZoneStyle,
     genericButtonStyle
-}                        from '../themes/elements'
+}                        from '../../themes/elements'
 import {
     defaultCKEditorStyle,
     defaultFieldHeadingStyle,
     defaultNewFormStyle
-}                        from '../themes/forms'
+}                        from '../../themes/forms'
+import {signInFormStyle} from '../../themes/signup'
 
 import {
     showError,
     showLoading,
     showSuccess
-}                from '../utils/notifications'
-import {slugify} from '../utils/slugify'
-import {globals} from '../variables/styles'
+}                from '../../utils/notifications'
+import {slugify} from '../../utils/slugify'
+import {globals} from '../../variables/styles'
 
 const AddBusiness = () => {
-    const {user, token} = isAuthenticated()
-    const [isFormPortalOpen, setIsFormPortalOpen] = useState(false)
-    const [crop, setCrop] = useState({
-        width: 600,
-        aspect: 1
-    })
-    const [croppedImage, setCroppedImage] = useState('')
-    const [ImagePreviewMeta, setImagePreviewMeta] = useState()
-    const [previewUrl, setPreviewUrl] = useState()
+    const dispatch = useDispatch()
+    const {_id, token} = useSelector(state => state.user)
+    const s3UploadDirectory = 'business-profile'
 
 
     const [values, setValues] = useState({
@@ -79,6 +77,29 @@ const AddBusiness = () => {
         redirectToProfile,
         formData,
     } = values
+
+    const fieldTypes = [
+        {
+            inputLabel: 'Name',
+            onChange: 'name',
+            value: name
+        },
+    ]
+
+
+
+
+    const [isFormPortalOpen, setIsFormPortalOpen] = useState(false)
+    const [crop, setCrop] = useState({
+        width: 600,
+        aspect: 1
+    })
+    const [croppedImage, setCroppedImage] = useState('')
+    const [ImagePreviewMeta, setImagePreviewMeta] = useState()
+    const [previewUrl, setPreviewUrl] = useState()
+
+
+
 
 
     useEffect(() => {
@@ -114,6 +135,13 @@ const AddBusiness = () => {
                 }
             })
     }, [uploadedFile])
+
+    const handleChange = name => event => {
+        setValues({
+            ...values,
+            [name]: event.target.value
+        })
+    }
 
     const handleInputChange = (label, value) => {
         formData.set(label, value)
@@ -198,26 +226,28 @@ const AddBusiness = () => {
         formData.set('profileImageUrl', uploadedFileName)
 
         // SUBMIT TO S3 AND GET URL
-        getSignedRequest(user._id, token, croppedImage, 'artist-profile')
+        getSignedRequest(_id, token, croppedImage, s3UploadDirectory)
+
+        dispatch({type: 'admin/createBusiness', payload: {formData: formData, user: {_id, token}}})
 
 
-        createBusiness(user._id, token, formData)
-            .then(data => {
-                if (data.error) {
-                    setValues({...values, error: data.error})
-                } else {
-                    setValues({
-                        ...values,
-                        name: '',
-                        slug: slugify(name),
-                        description: '',
-                        photo: '',
-                        loading: false,
-                        redirectToProfile: true,
-                        createdBusiness: data.name
-                    })
-                }
-            })
+        // createBusiness(_id, token, formData)
+        //     .then(data => {
+        //         if (data.error) {
+        //             setValues({...values, error: data.error})
+        //         } else {
+        //             setValues({
+        //                 ...values,
+        //                 name: '',
+        //                 slug: slugify(name),
+        //                 description: '',
+        //                 photo: '',
+        //                 loading: false,
+        //                 redirectToProfile: true,
+        //                 createdBusiness: data.name
+        //             })
+        //         }
+        //     })
     }
 
 
@@ -269,10 +299,20 @@ const AddBusiness = () => {
                     </Div>
 
                     <Div theme={defaultNewFormStyle.innerRight}>
-                        <SmartInput
-                            label={'name'}
-                            handleChange={handleInputChange}
-                        />
+                        {/*<SmartInput*/}
+                        {/*    label={'name'}*/}
+                        {/*    handleChange={handleInputChange}*/}
+                        {/*/>*/}
+                        {fieldTypes.map(f =>
+                            <SmartInput
+                                key={f.inputLabel}
+                                inputLabel={f.inputLabel}
+                                onChange={handleChange(f.onChange)}
+                                value={f.value}
+                                theme={signInFormStyle.fieldset}
+                            />
+                        )}
+
                         <H3 theme={defaultFieldHeadingStyle}>Business Description</H3>
                         <Div theme={defaultCKEditorStyle}>
                             <CKEditor
@@ -307,6 +347,7 @@ const AddBusiness = () => {
                 isOpen={isFormPortalOpen}
                 setIsOpen={setIsFormPortalOpen}
             >
+                {/*<Overlay isOpen={isFormPortalOpen} />*/}
                 <ReactCrop
                     src={photo}
                     crop={crop}

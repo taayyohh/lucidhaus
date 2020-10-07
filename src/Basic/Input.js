@@ -1,17 +1,17 @@
 import PropTypes           from 'prop-types'
 import styled              from 'styled-components'
-import {defaultFieldStyle} from '../themes/forms'
+import {defaultInputStyle} from '../themes/forms'
 import {themer}            from '../utils/themer'
 
-const Field = styled.input`${props => themer({...defaultFieldStyle, ...props.theme})}`
+const Input = styled.input`${props => themer({...defaultInputStyle, ...props.theme})}`
 
-Field.propTypes = {
+Input.propTypes = {
     theme: PropTypes.object,
     name: PropTypes.string
 }
 
-Field.defaultProps = {
+Input.defaultProps = {
     theme: {}
 }
 
-export default Field
+export default Input

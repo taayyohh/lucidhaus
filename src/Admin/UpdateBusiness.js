@@ -114,7 +114,7 @@ const UpdateBusiness = ({pathname}) => {
 
 
     useEffect(() => {
-        init(currentSlug)
+      //  init(currentSlug)
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])

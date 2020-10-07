@@ -1,13 +1,13 @@
 import React, {useEffect, useRef, useState} from 'react'
 import Legend from "../Basic/Legend";
 import InputLabel from "../Basic/InputLabel";
-import Field from "../Basic/Field";
-import Fieldset from "../Basic/Fieldset";
+import Input      from "../Basic/Input";
+import Fieldset   from "../Basic/Fieldset";
 import useMeasure from "../utils/useMeasure";
 import {globals} from "../variables/styles";
 import {defaultFocusedInputLabelStyle} from "../themes/forms";
 
-const SmartInput = ({inputLabel, onChange, value, type, theme}) => {
+const SmartInput = ({inputLabel, value, type, theme, id,  onChange, ...props}) => {
     const legendRef = useRef()
     const inputLabelRef = useRef()
     const inputLabelWidth = useMeasure(inputLabelRef).width * globals.style.inputLabelShrinkRatio
@@ -19,6 +19,8 @@ const SmartInput = ({inputLabel, onChange, value, type, theme}) => {
         setHasValue(value.length > 0)
         setIsInputLabelFocused(value.length > 0)
         setLegendWidth(value.length < 1 ? 0 : inputLabelWidth)
+
+        {console.log('FORMIK', props)}
 
     }, [setHasValue, setIsInputLabelFocused, inputLabelWidth, value])
 
@@ -52,7 +54,8 @@ const SmartInput = ({inputLabel, onChange, value, type, theme}) => {
                 ref={inputLabelRef}
                 children={inputLabel}
             />
-            <Field
+            <Input
+                id={id}
                 onChange={onChange}
                 onFocus={handleFocus}
                 onBlur={handleBlur}
