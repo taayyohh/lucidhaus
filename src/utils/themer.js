@@ -487,6 +487,7 @@ const cssPseudoClasses = {
     focus: 'focus',
     hover: 'hover',
     inRange: 'in-range',
+    internalAutoFillSelected: '-internal-autofill-selected',
     invalid: 'invalid',
     lang: 'lang',
     lastChild: 'last-child',
@@ -510,7 +511,7 @@ const cssPseudoClasses = {
     visited: 'visited',
     firstLetter: 'first-letter',
     firstLine: 'first-line',
-    selection: 'selection'
+    selection: 'selection',
 }
 
 const placeholderSelectors = [

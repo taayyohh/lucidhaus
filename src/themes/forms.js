@@ -56,6 +56,9 @@ export const defaultInputStyle = {
     focus: {
         outline: 'none'
     },
+    internalAutoFillSelected: {
+        backgroundColor: transparent + '!important'
+    },
     icon: {
         color: globals.colors.black,
         position: absolute,

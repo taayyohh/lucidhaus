@@ -9,3 +9,19 @@ export const signInFieldTypes = [
         type: 'password'
     }
 ]
+
+export const signUpFieldTypes = [
+    {
+        inputLabel: 'Name',
+        name: 'name'
+    },
+    {
+        inputLabel: 'Email',
+        name: 'email'
+    },
+    {
+        inputLabel: 'Password',
+        name: 'password',
+        type: 'password'
+    }
+]
