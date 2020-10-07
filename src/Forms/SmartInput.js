@@ -20,8 +20,6 @@ const SmartInput = ({inputLabel, value, type, theme, id,  onChange, ...props}) =
         setIsInputLabelFocused(value.length > 0)
         setLegendWidth(value.length < 1 ? 0 : inputLabelWidth)
 
-        {console.log('FORMIK', props)}
-
     }, [setHasValue, setIsInputLabelFocused, inputLabelWidth, value])
 
     const handleBlur = () => {

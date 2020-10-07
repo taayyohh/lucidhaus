@@ -25,3 +25,10 @@ export const signUpFieldTypes = [
         type: 'password'
     }
 ]
+
+export const userFieldTypes = [
+    {
+        inputLabel: 'Name',
+        name: 'name'
+    }
+]

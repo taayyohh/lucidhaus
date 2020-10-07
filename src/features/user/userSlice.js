@@ -5,6 +5,7 @@ const initialState = {
     token: '',
     name: '',
     email: '',
+    slug: '',
     isAuthenticated: false,
     isAdmin: false,
     error: false,
@@ -84,12 +85,12 @@ export const userSlice = createSlice({
             state.redirectToReferrer = false
         },
         updateSuccess: (state, action) => {
-            console.log('ACTION', action)
-            console.log('STATE'. state)
+            state.name = action.payload.name
+            state.email = action.payload.email
+            state.slug = action.payload.slug
         },
         updateFailure: (state, action) => {
-            console.log('ACTION', action)
-            console.log('STATE'. state)
+            state.error = action.payload.error
         }
     },
 })

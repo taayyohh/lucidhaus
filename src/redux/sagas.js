@@ -1,8 +1,24 @@
-import {all, call, fork, put, takeEvery, takeLatest} from 'redux-saga/effects'
-import {authenticate, getPurchaseHistory, isAuthenticated, signin, signout, signup, update} from '../services/apiAuth'
-import {push} from 'connected-react-router'
+import {push}               from 'connected-react-router'
+import {
+    all,
+    call,
+    fork,
+    put,
+    takeEvery,
+    takeLatest
+}                           from 'redux-saga/effects'
+import {getBusinesses}      from '../services/apiAdmin'
+import {
+    authenticate,
+    getPurchaseHistory,
+    isAuthenticated,
+    signin,
+    signout,
+    signup,
+    update,
+    updateUser
+}                           from '../services/apiUser'
 import {stripTrailingSlash} from '../utils/url'
-import {getBusinesses} from "../services/apiAdmin";
 
 
 function* navigate({payload}) {
@@ -86,44 +102,26 @@ function* loadConfig() {
 
 function* updateProfile(user) {
     try {
-        const {_id, updatedUser, token} = user.payload
-        const payload = yield call(update, _id, token, updatedUser)
-        console.log('PAYLOAD', payload)
+        const {_id, token, updatedUser} = user.payload
+        const payload = yield call(update, _id, token, updatedUser.values)
+
         if (!payload.error) {
-            //     const updatedPayload = yield call(updateUser, payload)
-            //  console.log('payyy', updatedPayload)
-            //     yield put({type: 'user/updateSuccess', updatedPayload})
+            yield call(updateUser, {name: payload.name, email: payload.email, _id: payload._id, role: payload.role})
+            yield put({type: 'user/updateSuccess', payload})
+            yield put(push(payload?.user?.role === 1 ? '/admin/dashboard' : '/user/dashboard'))
         } else {
-            yield({type: 'user/updateFailure', payload})
+            yield put ({type: 'user/updateFailure', payload})
         }
 
     } catch (error) {
-        yield({type: 'user/updateFailure', error})
+        yield put ({type: 'user/updateFailure', error})
     }
-    //  yield put({type: 'user/updateProfile'})
-
-
-    // update(_id, token, {updatedName, updatedEmail, updatedPassword}).then(data => {
-    //     if (data.error) {
-    //         console.log(data.error)
-    //     } else {
-    //         updateUser(data, () => {
-    //             setValues({
-    //                 ...values,
-    //                 name: data.name,
-    //                 email: data.email,
-    //                 success: true
-    //             })
-    //         })
-    //     }
-    // })
 }
 
 
 function* getAllBusinesses() {
     try {
         const payload = yield call(getBusinesses)
-        console.log('payload', payload)
         if (!payload.error) {
             yield put({type: 'admin/getBusinessesSuccess', payload})
         } else {
