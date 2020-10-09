@@ -7,7 +7,7 @@ import useMeasure from "../utils/useMeasure";
 import {globals} from "../variables/styles";
 import {defaultFocusedInputLabelStyle} from "../themes/forms";
 
-const SmartInput = ({inputLabel, value, type, theme, id,  onChange, ...props}) => {
+const SmartInput = ({inputLabel, value, type, theme, id,  onChange}) => {
     const legendRef = useRef()
     const inputLabelRef = useRef()
     const inputLabelWidth = useMeasure(inputLabelRef).width * globals.style.inputLabelShrinkRatio

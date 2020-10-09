@@ -32,3 +32,10 @@ export const userFieldTypes = [
         name: 'name'
     }
 ]
+
+export const businessFieldTypes = [
+    {
+        inputLabel: 'Name',
+        name: 'name'
+    },
+]

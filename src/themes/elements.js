@@ -62,6 +62,12 @@ export const genericButtonStyle = {
 
 export const dropZoneStyle = {
     position: relative,
+    display: block,
+    minHeight: [300, .7, "100%"],
+    width: [300, .7, "100%"],
+    background: '#fff',
+    border: `1px solid ${globals.colors.borderColor}`,
+    borderRadius: 10,
     portal: {
         position: fixed,
         top: 0,
@@ -128,16 +134,6 @@ export const dropZoneStyle = {
         {
             selector: 'input',
             height: '100%',
-        },
-        {
-            selector: '.dzu-dropzone',
-            display: block,
-            height: [300, .7, "100%"],
-            width: [300, .7, "100%"],
-            background: '#fff',
-            border: `1px solid ${globals.colors.borderColor}`,
-            borderRadius: 10,
-            overflow: hidden
         },
         {
             selector: '.dzu-inputLabel',

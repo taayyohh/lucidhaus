@@ -132,6 +132,10 @@ function* getAllBusinesses() {
     }
 }
 
+function* createBusiness(business) {
+    yield console.log('business', business)
+}
+
 
 /******************************************************************************/
 
@@ -180,6 +184,10 @@ function* watchGetBusiness() {
     yield takeEvery('admin/getAllBusinesses', getAllBusinesses)
 }
 
+function* watchCreateBusiness() {
+    yield takeEvery('admin/createBusinesses', createBusiness)
+}
+
 // notice how we now only export the rootSaga
 // single entry point to start all Sagas at once
 export default function* rootSaga() {
@@ -193,6 +201,7 @@ export default function* rootSaga() {
         fork(watchSignUp),
         fork(watchUserHistory),
         fork(watchUpdateProfile),
-        fork(watchGetBusiness)
+        fork(watchGetBusiness),
+        fork(watchCreateBusiness)
     ])
 }

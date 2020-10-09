@@ -3,7 +3,18 @@
  *     FORMS & FIELDS
  *
  */
-import {absolute, borderBox, flex, inherit, inlineBlock, none, relative, sv, transparent} from '../utils/themer'
+import {
+    absolute,
+    borderBox,
+    column,
+    flex,
+    inherit,
+    inlineBlock,
+    none,
+    relative,
+    sv,
+    transparent
+} from '../utils/themer'
 import {globals} from '../variables/styles'
 
 
@@ -140,7 +151,7 @@ export const defaultNewFormStyle = {
     },
     inner: {
         display: flex,
-        flexWrap: 'wrap'
+        flexDirection: column
         // display: '-ms-grid; display: grid',
         // gridTemplateColumns: '30% 65%',
         // columnGap: '5%'
