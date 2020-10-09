@@ -28,7 +28,7 @@ const AddBusiness = () => {
         event.preventDefault()
 
         // SUBMIT TO S3 AND GET URL
-        getSignedRequest(_id, token, croppedImage, s3UploadDirectory)
+     //   getSignedRequest(_id, token, croppedImage, s3UploadDirectory)
 
         //  dispatch({type: 'admin/createBusiness', payload: {formData: formData, user: {_id, token}}})
         // createBusiness(_id, token, formData)
@@ -47,7 +47,7 @@ const AddBusiness = () => {
                 <Form onSubmit={formik.handleSubmit} theme={defaultNewFormStyle}>
                     <H2 theme={defaultNewFormStyle.heading}>Create Business</H2>
                     <Div theme={defaultNewFormStyle.inner}>
-                        
+
                         {/* TODO: integrate all form types into switch based on fieldTypes type property */}
                         <SmartFileInput
                             formik={formik}
