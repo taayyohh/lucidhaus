@@ -1,5 +1,4 @@
 import {
-    absolute,
     auto,
     borderBox,
     center,
@@ -7,10 +6,9 @@ import {
     fixed,
     flex,
     flexStart,
-    none,
     relative,
     sv
-} from '../utils/themer'
+}                from '../utils/themer'
 import {globals} from '../variables/styles'
 
 export const signUpFormStyle = {

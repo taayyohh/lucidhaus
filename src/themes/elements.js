@@ -8,7 +8,6 @@ import {
     flex,
     flexEnd,
     flexStart,
-    hidden,
     none,
     pointer,
     relative,
@@ -16,7 +15,7 @@ import {
     spaceBetween,
     transparent,
     white
-} from '../utils/themer'
+}                from '../utils/themer'
 import {globals} from '../variables/styles'
 
 export const defaultLinkStyle = {
@@ -76,22 +75,27 @@ export const imageDropZoneWrapperStyle = {
     display: flex,
     flexWrap: 'nowrap',
     flexDirection: row,
-    justifyContent: spaceBetween
+    justifyContent: spaceBetween,
+    marginBottom: [50, .7, 50],
 }
 
-export const imageDropZonePreviewWrapperStyle = {
-    width: [500, globals.style.layoutScalingValue, '100%']
-}
 
 export const imageDropZonePreviewStyle = {
     width: '100%'
 }
 
-export const dropZoneStyle = {
+export const imageDropZonePreviewWrapperStyle = {
+    width: [500, globals.style.layoutScalingValue, '100%'],
+    border: '1px solid #000',
+    boxSizing: borderBox,
+    padding: [20, globals.style.layoutScalingValue, 20]
+}
+
+export const imageDropZoneStyle = {
     position: relative,
     display: block,
-    minHeight: [500, globals.style.layoutScalingValue, "100%"],
-    width: [500, globals.style.layoutScalingValue, "100%"],
+    minHeight: [500, globals.style.layoutScalingValue, '100%'],
+    width: [500, globals.style.layoutScalingValue, '100%'],
     background: '#fff',
     border: `1px solid ${globals.colors.borderColor}`,
     borderRadius: 10,

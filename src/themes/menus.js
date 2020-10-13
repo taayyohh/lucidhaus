@@ -1,9 +1,18 @@
-import {absolute, borderBox, center, fixed, flex, none, pointer, white, column} from "../utils/themer";
-import {globals} from "../variables/styles";
+import {
+    absolute,
+    borderBox,
+    center,
+    column,
+    fixed,
+    flex,
+    pointer,
+    white
+}                from '../utils/themer'
+import {globals} from '../variables/styles'
 
 export const headerMenuPanelWrapperStyle = {
     position: absolute,
-   // zIndex: 25
+    // zIndex: 25
 }
 
 
@@ -20,7 +29,7 @@ export const headerMenuPanelStyle = {
     paddingLeft: [120, globals.style.layoutScalingValue],
     paddingRight: [60, globals.style.layoutScalingValue],
     backgroundColor: white,
-   // borderLeft: `1px solid #000`,
+    // borderLeft: `1px solid #000`,
     boxSizing: borderBox,
     zIndex: 22,
     heading: {
@@ -31,7 +40,7 @@ export const headerMenuPanelStyle = {
         lineHeight: 66,
         letterSpacing: -1,
         weight: 800,
-      //  color: globals.colors.headingColor
+        //  color: globals.colors.headingColor
     },
     closeButton: {
         position: absolute,
@@ -43,10 +52,10 @@ export const headerMenuPanelStyle = {
         height: [80, .7],
         width: [80, .7],
         backgroundColor: globals.colors.menuPanelCloseButtonBackgroundColor,
-      //  backgroundColor: colorPalette.offBlue,
+        //  backgroundColor: colorPalette.offBlue,
         transition: 'background-color 250ms ease',
         hover: {
-           // backgroundColor: colorPalette.lightBlue,
+            // backgroundColor: colorPalette.lightBlue,
             cursor: pointer
         }
     },

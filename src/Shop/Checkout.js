@@ -33,7 +33,7 @@ const Checkout = ({products, setRun = f => f, run = undefined}) => {
     })
 
 
-    const [showConfirmed, setShowConfirmed] = useState(false)
+   // const [showConfirmed, setShowConfirmed] = useState(false)
 
 
     const userId = isAuthenticated() && isAuthenticated().user._id
@@ -53,6 +53,8 @@ const Checkout = ({products, setRun = f => f, run = undefined}) => {
 
     useEffect(() => {
         getToken(userId, token)
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
 
@@ -106,14 +108,6 @@ const Checkout = ({products, setRun = f => f, run = undefined}) => {
                 //and also total to be charged
 
 
-                confirm.then(value => {
-                //    console.log('VALUE', value)
-                })
-                    .catch(error => {
-                        console.log(error)
-                    })
-
-
                 const paymentData = {
                     paymentMethodNonce: nonce,
                     amount: getTotal(products)
@@ -157,18 +151,6 @@ const Checkout = ({products, setRun = f => f, run = undefined}) => {
 
 
     }
-
-
-    const confirm = new Promise(function (resolve, reject) {
-        if (showConfirmed) {
-
-        } else {
-
-        }
-        // setShowConfirmed(true)
-       // console.log('confirm22inng')
-        reject('sorry')
-    })
 
 
     const showDropIn = () => (

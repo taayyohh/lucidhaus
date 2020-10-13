@@ -4,9 +4,9 @@ import {Portal}        from 'react-portal'
 import Div             from '../Basic/Div'
 import Img             from '../Basic/Img'
 import MotionDiv       from '../Basic/MotionDiv'
-import {dropZoneStyle} from '../themes/elements'
+import {imageDropZoneStyle} from '../themes/elements'
 
-const CropPortal = ({isOpen, uploadBlob, setCrop, crop, setCropPortalOpen, makeClientCrop, previewBlob}) => {
+const CropPortal = ({isOpen, setIsOpen, uploadBlob, setCrop, crop, makeClientCrop, previewBlob}) => {
     const cropPortalVariants = {
         initial: {
             top: '100vh',
@@ -24,10 +24,15 @@ const CropPortal = ({isOpen, uploadBlob, setCrop, crop, setCropPortalOpen, makeC
                 variants={cropPortalVariants}
                 initial="initial"
                 animate={isOpen ? 'animate' : 'initial'}
-                theme={dropZoneStyle.portal}
+                theme={imageDropZoneStyle.portal}
             >
-                <Div theme={dropZoneStyle.portalInner}>
-                    <Div theme={{height: 50, width: 50, borderRadius: 25, backgroundColor: '#AFE'}} onClick={() => setCropPortalOpen(false)}>close</Div>
+                <Div theme={imageDropZoneStyle.portalInner}>
+                    <Div
+                        theme={{height: 50, width: 50, borderRadius: 25, backgroundColor: '#AFE'}}
+                         onClick={() => setIsOpen(false)}
+                    >
+                        close
+                    </Div>
                     {uploadBlob && (
                         <ReactCrop
                             src={uploadBlob}
@@ -38,7 +43,7 @@ const CropPortal = ({isOpen, uploadBlob, setCrop, crop, setCropPortalOpen, makeC
                     )}
 
                     {previewBlob && (
-                        <Div theme={dropZoneStyle.cropPreview}>
+                        <Div theme={imageDropZoneStyle.cropPreview}>
                             <Img
                                 alt="Crop preview"
                                 src={previewBlob}

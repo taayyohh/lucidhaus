@@ -1,12 +1,18 @@
 import React, {useContext} from 'react'
-import Div from '../Basic/Div'
-import Ul from '../Basic/Div'
-import Span from '../Basic/Span'
-import StyledLink from '../Basic/StyledLink'
-import {menuPanelContext} from '../Containers/MenuPanelController'
-import {itemTotal} from '../Shop/cartHelpers'
-import {headerMenu, headerMenuAuth} from '../themes/header'
-import {useDispatch, useSelector} from "react-redux";
+import {
+    useDispatch,
+    useSelector
+}                          from 'react-redux'
+import Div                 from '../Basic/Div'
+import Ul                  from '../Basic/Div'
+import Span                from '../Basic/Span'
+import StyledLink          from '../Basic/StyledLink'
+import {menuPanelContext}  from '../Containers/MenuPanelController'
+import {itemTotal}         from '../Shop/cartHelpers'
+import {
+    headerMenu,
+    headerMenuAuth
+}                          from '../themes/header'
 
 const HeaderMenu = () => {
     const dispatch = useDispatch()

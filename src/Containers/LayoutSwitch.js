@@ -29,7 +29,7 @@ const LayoutSwitch = ({children}) => {
         if (getLayout() !== layout)
             dispatch({type: 'site/setLayout', payload: getLayout()})
 
-    }, [layout])
+    }, [layout, dispatch])
 
     useEffect(() => {
         window.addEventListener('resize', setLayout)

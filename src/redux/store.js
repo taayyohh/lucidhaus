@@ -22,7 +22,12 @@ if (!['production'].includes(process.env.NODE_ENV)) {
     const loggerMiddleware = createLogger()
     middleware = [
         ...middleware,
-        ...getDefaultMiddleware(),
+        ...getDefaultMiddleware({
+            serializableCheck: {
+                // Ignore these action types
+                ignoredActions: ['admin/createBusiness'],
+            }
+        }),
         loggerMiddleware
     ]
 }

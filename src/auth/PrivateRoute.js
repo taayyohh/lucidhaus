@@ -1,7 +1,7 @@
-import React, {Component, useEffect} from 'react'
-import {Route} from 'react-router-dom'
-import {useSelector} from "react-redux"
-import {history} from '../redux/store'
+import React, {useEffect} from 'react'
+import {useSelector}      from 'react-redux'
+import {Route}            from 'react-router-dom'
+import {history}          from '../redux/store'
 
 
 const PrivateRoute = ({component: Component, ...rest}) => {
@@ -9,7 +9,7 @@ const PrivateRoute = ({component: Component, ...rest}) => {
 
     useEffect(() => {
         if (!isAuthenticated)
-            history.push("/signin")
+            history.push('/signin')
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 

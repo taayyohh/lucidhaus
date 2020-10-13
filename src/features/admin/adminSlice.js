@@ -26,10 +26,14 @@ export const adminSlice = createSlice({
         },
         getBusinessesFailure: (state, action) => {
             state.error = action.payload
+        },
+        createBusinessSuccess: (state, action) => {
+            console.log('success', action)
+        },
+        createBusinessFailure: (state, action) => {
+            console.log('failure', action)
         }
     },
 })
-
-export const {} = adminSlice.actions
 
 export default adminSlice.reducer

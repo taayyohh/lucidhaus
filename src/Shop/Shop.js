@@ -24,6 +24,11 @@ const Shop = () => {
     useEffect(() => {
         //    init()
         loadFilteredResults(skip, limit, myFilters.filters)
+        setLimit(6)
+
+        if(error)
+            console.log('error', error)
+            console.log('set', setMyFilters)
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
@@ -33,7 +38,7 @@ const Shop = () => {
         getFilteredProducts(skip, limit, newFilters).then(data => {
             if (data.error) {
                 setError(data.error)
-                console.log(error)
+                //  console.log(error)
             } else {
                 setFilteredResults(data.data)
                 setSize(data.size)
@@ -78,14 +83,14 @@ const Shop = () => {
 
 
     // const handlePrice = value => {
-    //     const data = prices
+    //     //  const data = prices
     //     let array = []
     //
-    //     for (let key in data) {
-    //         if (data[key]._id === parseInt(value)) {
-    //             array = data[key].array
-    //         }
-    //     }
+    //     // for (let key in data) {
+    //     //     if (data[key]._id === parseInt(value)) {
+    //     //         array = data[key].array
+    //     //     }
+    //     // }
     //
     //     return array
     // }

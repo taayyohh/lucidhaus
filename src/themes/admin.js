@@ -1,14 +1,12 @@
 import {
-    borderBox,
-    center,
-    flex,
+    column,
     fixed,
+    flex,
     none,
     pointer,
     relative,
-    row,
-    sv, column, uppercase
-} from '../utils/themer'
+    row
+}                from '../utils/themer'
 import {globals} from '../variables/styles'
 
 export const adminDashboardStyle = {
@@ -52,9 +50,7 @@ export const adminHeadingStyle = {
     font: globals.fonts.script
 }
 
-export const adminCreateButtonStyle = {
-
-}
+export const adminCreateButtonStyle = {}
 
 export const adminMenuStyle = {
     ...menuPanelStyle,
@@ -68,7 +64,7 @@ export const adminMenuStyle = {
         position: relative,
         listStyleType: none,
         marginBottom: [10, .7, 10],
-      //  width: '100%',
+        //  width: '100%',
     },
     link: {
         textDecoration: none,

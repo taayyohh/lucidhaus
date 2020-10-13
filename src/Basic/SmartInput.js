@@ -1,11 +1,10 @@
 import React, {
-    useEffect,
     useRef,
     useState
 }                                      from 'react'
 import {defaultFocusedInputLabelStyle} from '../themes/forms'
-import Input                           from './Input'
 import Fieldset                        from './Fieldset'
+import Input                           from './Input'
 import InputLabel                      from './InputLabel'
 import Legend                          from './Legend'
 

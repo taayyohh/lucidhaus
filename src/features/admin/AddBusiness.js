@@ -1,10 +1,7 @@
 import {Formik}              from 'formik'
 import React                 from 'react'
 import 'react-image-crop/dist/ReactCrop.css'
-import {
-    useDispatch,
-    useSelector
-}                            from 'react-redux'
+import {useDispatch}         from 'react-redux'
 import Div                   from '../../Basic/Div'
 import Form                  from '../../Basic/Form'
 import H2                    from '../../Basic/H2'
@@ -14,19 +11,18 @@ import SmartInput            from '../../Forms/SmartInput'
 import {genericButtonStyle}  from '../../themes/elements'
 import {defaultNewFormStyle} from '../../themes/forms'
 import {signInFormStyle}     from '../../themes/signup'
-import {businessFieldTypes} from '../../variables/fieldTypes'
+import {businessFieldTypes}  from '../../variables/fieldTypes'
 
 const AddBusiness = () => {
     const dispatch = useDispatch()
-    const {_id, token} = useSelector(state => state.user)
-    const s3Path = 'business-profile'
+    const s3Path = 'artist-profile'
 
     return (
         <Formik
             initialValues={{name: '', description: '', key: '', image: ''}}
             onSubmit={values => dispatch({
                 type: 'admin/createBusiness',
-                payload: {_id: _id, token: token, values: values}
+                payload: {s3Path: s3Path, values: values}
             })}
         >
             {formik => (
@@ -38,12 +34,9 @@ const AddBusiness = () => {
 
                         <SmartFileInput
                             formik={formik}
-                            name={'key'}
                             id={'key'}
-                            s3Path={s3Path}
                             cropWidth={500}
                             cropHeight={500}
-
                         />
 
                         {businessFieldTypes.map(f =>
@@ -58,8 +51,8 @@ const AddBusiness = () => {
 
 
                         <RichTextEditor
-                            name={'description'}
                             formik={formik}
+                            name={'description'}
                             label={'Business Description'}
                         />
 

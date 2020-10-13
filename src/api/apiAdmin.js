@@ -10,7 +10,6 @@ export const uploadFile = (file, signedRequest, url) => {
         body: file
     })
         .then(response => {
-            console.log('upload', file)
             return response.json()
         })
         .catch(err => console.log(err))

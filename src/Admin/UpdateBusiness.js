@@ -7,22 +7,20 @@ import React, {
 import Dropzone          from 'react-dropzone-uploader'
 import ReactCrop         from 'react-image-crop'
 import {connect}         from 'react-redux'
-import {
-    getBusiness,
-    updateBusiness
-}                        from '../api/apiAdmin'
+import {updateBusiness}  from '../api/apiAdmin'
 import {isAuthenticated} from '../api/apiAuth'
 import Div               from '../Basic/Div'
 import Form              from '../Basic/Form'
 import H2                from '../Basic/H2'
 import H3                from '../Basic/H3'
 import Img               from '../Basic/Img'
-import SmartInput from '../Basic/SmartInput'
-import CropPortal from '../Elements/CropPortal'
-import GetS3Image from '../Elements/GetS3Image'
+import SmartInput        from '../Basic/SmartInput'
+import CropPortal        from '../Elements/CropPortal'
+import GetS3Image        from '../Elements/GetS3Image'
 import {
-    dropZoneStyle,
-    genericButtonStyle
+    genericButtonStyle,
+    imageDropZonePreviewStyle,
+    imageDropZoneStyle
 }                        from '../themes/elements'
 import {
     defaultCKEditorStyle,
@@ -45,7 +43,7 @@ const UpdateBusiness = ({pathname}) => {
     const [croppedImage, setCroppedImage] = useState('')
     const [ImagePreviewMeta, setImagePreviewMeta] = useState()
     const [previewUrl, setPreviewUrl] = useState()
-    const currentSlug = pathname.split("/").pop()
+    const currentSlug = pathname.split('/').pop()
 
 
     const [values, setValues] = useState({
@@ -68,7 +66,6 @@ const UpdateBusiness = ({pathname}) => {
         name,
         business,
         profileImageUrl,
-        slug,
         description,
         photo,
         uploadedFile,
@@ -76,31 +73,30 @@ const UpdateBusiness = ({pathname}) => {
         loading,
         error,
         createdBusiness,
-        redirectToProfile,
         formData,
     } = values
 
 
-    const init = slug => {
-        getBusiness(slug).then(data => {
-            if (data.error) {
-                setValues({...values, error: data.error})
-            } else {
-                // populate the state
-                setValues({
-                    ...values,
-                    business: data,
-                    name: data.name,
-                    slug: data.slug,
-                    description: data.description,
-                    profileImageUrl: data.profileImageUrl,
-                    formData: new FormData()
-                })
-
-
-            }
-        })
-    }
+    // const init = slug => {
+    //     getBusiness(slug).then(data => {
+    //         if (data.error) {
+    //             setValues({...values, error: data.error})
+    //         } else {
+    //             // populate the state
+    //             setValues({
+    //                 ...values,
+    //                 business: data,
+    //                 name: data.name,
+    //                 slug: data.slug,
+    //                 description: data.description,
+    //                 profileImageUrl: data.profileImageUrl,
+    //                 formData: new FormData()
+    //             })
+    //
+    //
+    //         }
+    //     })
+    // }
 
     // const destroy = businessId => {
     //     deleteBusiness(businessId, _id, token).then(data => {
@@ -114,7 +110,8 @@ const UpdateBusiness = ({pathname}) => {
 
 
     useEffect(() => {
-      //  init(currentSlug)
+        //  init(currentSlug)
+        console.log('cropped', croppedImage)
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
@@ -125,10 +122,10 @@ const UpdateBusiness = ({pathname}) => {
         setValues({...values, [name]: value})
     }
 
-    const handleInputChange = (label, value) => {
-        formData.set(label, value)
-        setValues({...values, [label]: value})
-    }
+    // const handleInputChange = (label, value) => {
+    //     formData.set(label, value)
+    //     setValues({...values, [label]: value})
+    // }
 
 
     const handleRichTextChange = (value) => {
@@ -136,13 +133,13 @@ const UpdateBusiness = ({pathname}) => {
         //    setValues({...values, [name]: value})
     }
 
-    const handlePhotoChange = ({file}) => {
-        setValues({
-            ...values,
-            ['uploadedFile']: file,
-            ['photo']: URL.createObjectURL(file)
-        })
-    }
+    // const handlePhotoChange = ({file}) => {
+    //     setValues({
+    //         ...values,
+    //         ['uploadedFile']: file,
+    //         ['photo']: URL.createObjectURL(file)
+    //     })
+    // }
 
     const makeClientCrop = async (crop, percentageCrop) => {
         if (photo && crop.width && crop.height) {
@@ -226,9 +223,11 @@ const UpdateBusiness = ({pathname}) => {
                 >
                     <H2 theme={defaultNewFormStyle.heading}>EditBusiness</H2>
                     <Div theme={defaultNewFormStyle.inner}>
-                        <Div theme={dropZoneStyle}>
+                        <Div theme={imageDropZoneStyle}>
                             <Dropzone
-                                onChangeStatus={handlePhotoChange}
+                                onChangeStatus={
+                                    console.log('')
+                                }
                                 accept="image/*"
                                 inputContent="Drag Image or Click to Add"
                                 maxFiles={1}
@@ -252,7 +251,7 @@ const UpdateBusiness = ({pathname}) => {
                                     onClick={() => {
                                         ImagePreviewMeta.remove()
                                     }}
-                                    theme={dropZoneStyle.removeButton}
+                                    theme={imageDropZoneStyle.removeButton}
                                 >
                                     Remove
                                 </Div>
@@ -271,7 +270,7 @@ const UpdateBusiness = ({pathname}) => {
                                     onComplete={makeClientCrop}
                                 />
                                 {previewUrl && (
-                                    <Div theme={dropZoneStyle.cropPreview}>
+                                    <Div theme={imageDropZonePreviewStyle}>
                                         <Img
                                             alt="Crop preview"
                                             src={previewUrl}

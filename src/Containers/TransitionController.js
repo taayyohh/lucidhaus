@@ -1,27 +1,24 @@
-import React, {createContext, useContext, useEffect, useMemo, useState} from 'react'
-import {useAnimation} from "framer-motion"
-import {useSelector} from "react-redux"
-import {menuPanelContext} from "./MenuPanelController"
-import {overlayFadeout} from '../animations/transitions'
-import {createSelector} from 'reselect'
+import {useAnimation}     from 'framer-motion'
+import React, {
+    createContext,
+    useContext,
+    useEffect,
+    useMemo,
+    useState
+}                         from 'react'
+import {useSelector}      from 'react-redux'
+import {createSelector}   from 'reselect'
+import {overlayFadeout}   from '../animations/transitions'
+import {menuPanelContext} from './MenuPanelController'
 
 export const TransitionAnimations = createContext({})
 
 const scrollToTop = () => {
     const c = document.documentElement.scrollTop || document.body.scrollTop
-    const smoothness = 8
-    let val = c - c / smoothness
     if (c > 0) {
         window.requestAnimationFrame(scrollToTop)
         window.scrollTo(0, c - c / 8)
     }
-
-    // if (isInternetExplorer()) {
-    //     if (val < smoothness) {
-    //         val = 0
-    //         window.scrollTo(0, val)
-    //     }
-    // }
 }
 
 const TransitionController = props => {
@@ -52,7 +49,7 @@ const TransitionController = props => {
         await setTransitionInProgress(false)
         await setTransitionComplete(true)
 
-    }, [overlayAnimation, pathname, setCurrentPath])
+    }, [overlayAnimation, contentAnimation])
 
     const pageOut = useMemo(() => async (currentPathName) => {
         await setPanel('')
@@ -64,23 +61,25 @@ const TransitionController = props => {
             zIndex: 10,
             transition: {
                 duration: .3,
-              //  ease: 'easeOut',
+                //  ease: 'easeOut',
             }
         })
         await setCurrentPath(currentPathName)
         await contentAnimation.set({opacity: 0, translateX: '-10%'})
         await pageInit()
-    }, [overlayAnimation])
+    }, [overlayAnimation, contentAnimation, setPanel, pageInit])
 
     useEffect(() => {
         if (pathname !== currentPath) {
             pageOut(pathname)
         }
 
-    }, [pathname, currentPath])
+    }, [pathname, currentPath, pageOut])
 
     useEffect(() => {
-         pageInit()
+        pageInit()
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
 

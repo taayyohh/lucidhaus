@@ -27,8 +27,6 @@ export const siteSlice = createSlice({
     },
 })
 
-export const {} = siteSlice.actions
-
 export const mobileFlag = createSelector(
     ({site}) => site.layout,
     layout => layout === 'mobile'

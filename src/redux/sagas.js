@@ -9,7 +9,8 @@ import {
 } from 'redux-saga/effects'
 import {
     getBusinesses,
-    getSignedRequest
+    getSignedRequest,
+    uploadFile
 } from '../services/apiAdmin'
 import {
     authenticate,
@@ -135,11 +136,16 @@ function* getAllBusinesses() {
     }
 }
 
-function* createBusiness(payload) {
-    const {_id, token, values} = payload.payload
+function* createBusiness(business) {
+    const {_id, token, s3Path, values} = business.payload
+    const {key, name, image, description} = values
 
-    yield console.log('business', {_id : _id, token: token, croppedImage: values.image, s3Path: 'business-profile'})
-  //  yield call(getSignedRequest, {_id : _id, token: token, croppedImage: values.image, s3Path: 'business-profile'})
+    const payload = yield call(getSignedRequest, {croppedImage: values.image, s3Path: s3Path})
+    if(!!payload.signedRequest) {
+        const uploadImage = yield call(uploadFile, {file: image, signedRequest: payload.signedRequest})
+        console.log('upload', uploadImage)
+    }
+    console.log('payload', payload)
 
     //   getSignedRequest(_id, token, croppedImage, s3Path)
 

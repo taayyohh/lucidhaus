@@ -4,36 +4,41 @@ import {API} from '../config'
 /**
  s3
  */
-export const uploadFile = (file, signedRequest, url) => {
+export const uploadFile = request => {
+    const {file, signedRequest} = request
+
     return fetch(signedRequest, {
         method: 'PUT',
         body: file
+    }).then(response => {
+        return response.json()
+    }).catch(error => {
+        return error
     })
-        .then(response => {
-            console.log('upload', file)
-            return response.json()
-        })
-        .catch(err => console.log(err))
-
 }
 
 export const getSignedRequest = request => {
     const croppedImage = request.croppedImage
-    const _id = request._id
     const s3Path = request.s3Path
-    const token = request.token
 
-    console.log('request', request)
     return fetch(`${API}/sign-s3?file-name=${encodeURIComponent(croppedImage.name)}&file-type=${croppedImage.type}&directory=${s3Path}`, {
         method: 'GET',
     }).then(response => {
         return response.json()
-    }).then(response => {
-        uploadFile(croppedImage, response.signedRequest, response.url)
-    }).catch(err => {
-        console.log(err)
+    }).catch(error => {
+        return error
     })
 }
+
+
+// export const getSignedRequest = request => {
+//     const croppedImage = request.croppedImage
+//     const s3Path = request.s3Path
+//
+//     return
+// fetch(`${API}/sign-s3?file-name=${encodeURIComponent(croppedImage.name)}&file-type=${croppedImage.type}&directory=${s3Path}`,
+// { method: 'GET', }).then(response => { console.log('response', response) return response.json() }).then(response =>
+// { uploadFile(croppedImage, response.signedRequest, response.url) }).catch(error => { return error }) }
 
 
 /**
@@ -97,8 +102,6 @@ export const getCategory = categoryId => {
         })
         .catch(err => console.log(err))
 }
-
-
 
 
 /**
