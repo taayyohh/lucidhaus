@@ -151,10 +151,7 @@ export const defaultNewFormStyle = {
     },
     inner: {
         display: flex,
-        flexDirection: column
-        // display: '-ms-grid; display: grid',
-        // gridTemplateColumns: '30% 65%',
-        // columnGap: '5%'
+        flexDirection: column,
     },
     innerLeft: {
         width: [400, .7, '100%']

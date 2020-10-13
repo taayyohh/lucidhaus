@@ -1,11 +1,10 @@
 import {Formik}              from 'formik'
-import React, {useState}     from 'react'
+import React                 from 'react'
 import 'react-image-crop/dist/ReactCrop.css'
 import {
     useDispatch,
     useSelector
 }                            from 'react-redux'
-import {getSignedRequest}    from '../../api/apiAdmin'
 import Div                   from '../../Basic/Div'
 import Form                  from '../../Basic/Form'
 import H2                    from '../../Basic/H2'
@@ -15,29 +14,16 @@ import SmartInput            from '../../Forms/SmartInput'
 import {genericButtonStyle}  from '../../themes/elements'
 import {defaultNewFormStyle} from '../../themes/forms'
 import {signInFormStyle}     from '../../themes/signup'
-
 import {businessFieldTypes} from '../../variables/fieldTypes'
 
 const AddBusiness = () => {
     const dispatch = useDispatch()
     const {_id, token} = useSelector(state => state.user)
-    const s3UploadDirectory = 'business-profile'
-
-
-    const clickSubmit = event => {
-        event.preventDefault()
-
-        // SUBMIT TO S3 AND GET URL
-     //   getSignedRequest(_id, token, croppedImage, s3UploadDirectory)
-
-        //  dispatch({type: 'admin/createBusiness', payload: {formData: formData, user: {_id, token}}})
-        // createBusiness(_id, token, formData)
-    }
-
+    const s3Path = 'business-profile'
 
     return (
         <Formik
-            initialValues={{name: '', description: '', photo: ''}}
+            initialValues={{name: '', description: '', key: '', image: ''}}
             onSubmit={values => dispatch({
                 type: 'admin/createBusiness',
                 payload: {_id: _id, token: token, values: values}
@@ -49,10 +35,15 @@ const AddBusiness = () => {
                     <Div theme={defaultNewFormStyle.inner}>
 
                         {/* TODO: integrate all form types into switch based on fieldTypes type property */}
+
                         <SmartFileInput
                             formik={formik}
-                            name={'photo'}
-                            id={'photo'}
+                            name={'key'}
+                            id={'key'}
+                            s3Path={s3Path}
+                            cropWidth={500}
+                            cropHeight={500}
+
                         />
 
                         {businessFieldTypes.map(f =>
@@ -64,6 +55,8 @@ const AddBusiness = () => {
                                 theme={signInFormStyle.fieldset}
                             />
                         )}
+
+
                         <RichTextEditor
                             name={'description'}
                             formik={formik}
@@ -72,7 +65,7 @@ const AddBusiness = () => {
 
                         <Div
                             as="button"
-                            theme={{...genericButtonStyle, ...defaultNewFormStyle.button}}
+                            theme={{...genericButtonStyle}}
                         >
                             Create Business
                         </Div>

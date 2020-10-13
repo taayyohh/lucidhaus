@@ -1,33 +1,36 @@
+import {AnimatePresence}      from 'framer-motion'
 import React, {
     useContext,
     useEffect
-}                       from 'react'
-import {useDispatch}    from 'react-redux'
-import {Route, Switch} from 'react-router'
-import AddBusiness     from '../features/admin/AddBusiness'
-import AddCategory     from '../Admin/AddCategory'
-import AddProduct       from '../Admin/AddProduct'
-import ManageBusinesses from '../features/admin/ManageBusinesses'
-import ManageProducts   from '../Admin/ManageProducts'
-import Orders           from '../Admin/Orders'
-import UpdateBusiness   from '../Admin/UpdateBusiness'
-import UpdateCategory   from '../Admin/UpdateCategory'
-import UpdateProduct    from '../Admin/UpdateProduct'
-import AdminRoute from '../auth/AdminRoute'
-import PrivateRoute from '../auth/PrivateRoute'
-import Business from '../Business/Business'
-import Businesses from '../Business/Businessess'
-import Cart from '../Shop/Cart'
-import Product from '../Shop/Product'
-import Shop from '../Shop/Shop'
-import AdminDashboard from '../features/user/AdminDashboard'
-import Profile from '../features/user/Profile'
-import SignIn from '../features/user/SignIn'
-import SignUp from '../features/user/SignUp'
-import UserDashboard from '../features/user/UserDashboard'
-import {TransitionAnimations} from "../Containers/TransitionController";
-import {AnimatePresence} from "framer-motion";
-import MotionDiv from "../Basic/MotionDiv";
+}                             from 'react'
+import {useDispatch}          from 'react-redux'
+import {
+    Route,
+    Switch
+}                             from 'react-router'
+import AddCategory            from '../Admin/AddCategory'
+import AddProduct             from '../Admin/AddProduct'
+import ManageProducts         from '../Admin/ManageProducts'
+import Orders                 from '../Admin/Orders'
+import UpdateBusiness         from '../Admin/UpdateBusiness'
+import UpdateCategory         from '../Admin/UpdateCategory'
+import UpdateProduct          from '../Admin/UpdateProduct'
+import AdminRoute             from '../auth/AdminRoute'
+import PrivateRoute           from '../auth/PrivateRoute'
+import MotionDiv              from '../Basic/MotionDiv'
+import Business               from '../Business/Business'
+import Businesses             from '../Business/Businessess'
+import {TransitionAnimations} from '../Containers/TransitionController'
+import AddBusiness            from '../features/admin/AddBusiness'
+import ManageBusinesses       from '../features/admin/ManageBusinesses'
+import AdminDashboard         from '../features/user/AdminDashboard'
+import Profile                from '../features/user/Profile'
+import SignIn                 from '../features/user/SignIn'
+import SignUp                 from '../features/user/SignUp'
+import UserDashboard          from '../features/user/UserDashboard'
+import Cart                   from '../Shop/Cart'
+import Product                from '../Shop/Product'
+import Shop                   from '../Shop/Shop'
 
 const Content = () => {
     const {contentAnimation, currentPath} = useContext(TransitionAnimations)

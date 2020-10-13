@@ -6,8 +6,11 @@ import {
     put,
     takeEvery,
     takeLatest
-}                           from 'redux-saga/effects'
-import {getBusinesses}      from '../services/apiAdmin'
+} from 'redux-saga/effects'
+import {
+    getBusinesses,
+    getSignedRequest
+} from '../services/apiAdmin'
 import {
     authenticate,
     getPurchaseHistory,
@@ -17,7 +20,7 @@ import {
     signup,
     update,
     updateUser
-}                           from '../services/apiUser'
+} from '../services/apiUser'
 import {stripTrailingSlash} from '../utils/url'
 
 
@@ -132,8 +135,14 @@ function* getAllBusinesses() {
     }
 }
 
-function* createBusiness(business) {
-    yield console.log('business', business)
+function* createBusiness(payload) {
+    const {_id, token, values} = payload.payload
+
+    yield console.log('business', {_id : _id, token: token, croppedImage: values.image, s3Path: 'business-profile'})
+  //  yield call(getSignedRequest, {_id : _id, token: token, croppedImage: values.image, s3Path: 'business-profile'})
+
+    //   getSignedRequest(_id, token, croppedImage, s3Path)
+
 }
 
 
@@ -185,7 +194,7 @@ function* watchGetBusiness() {
 }
 
 function* watchCreateBusiness() {
-    yield takeEvery('admin/createBusinesses', createBusiness)
+    yield takeEvery('admin/createBusiness', createBusiness)
 }
 
 // notice how we now only export the rootSaga

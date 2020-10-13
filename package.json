@@ -23,7 +23,7 @@
     "react-dropzone-uploader": "^2.11.0",
     "react-ga": "^3.1.2",
     "react-html-parser": "^2.0.2",
-    "react-image-crop": "^8.6.5",
+    "react-image-crop": "^8.6.6",
     "react-places-autocomplete": "^7.3.0",
     "react-portal": "^4.2.1",
     "react-redux": "^7.2.1",
@@ -57,6 +57,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.10.4",
     "@ckeditor/ckeditor5-build-classic": "^21.0.0",
     "@ckeditor/ckeditor5-react": "^2.1.0",
     "history": "4.10.1",

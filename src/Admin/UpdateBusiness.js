@@ -17,9 +17,9 @@ import Form              from '../Basic/Form'
 import H2                from '../Basic/H2'
 import H3                from '../Basic/H3'
 import Img               from '../Basic/Img'
-import SmartInput        from '../Basic/SmartInput'
-import FormPortal        from '../Elements/FormPortal'
-import GetS3Image        from '../Elements/GetS3Image'
+import SmartInput from '../Basic/SmartInput'
+import CropPortal from '../Elements/CropPortal'
+import GetS3Image from '../Elements/GetS3Image'
 import {
     dropZoneStyle,
     genericButtonStyle
@@ -263,7 +263,7 @@ const UpdateBusiness = ({pathname}) => {
                             )}
 
 
-                            <FormPortal isOpen={isFormPortalOpen} setIsOpen={setIsFormPortalOpen}>
+                            <CropPortal isOpen={isFormPortalOpen} setIsOpen={setIsFormPortalOpen}>
                                 <ReactCrop
                                     src={photo}
                                     crop={crop}
@@ -278,7 +278,7 @@ const UpdateBusiness = ({pathname}) => {
                                         />
                                     </Div>
                                 )}
-                            </FormPortal>
+                            </CropPortal>
 
                         </Div>
 

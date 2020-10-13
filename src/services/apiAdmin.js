@@ -17,13 +17,19 @@ export const uploadFile = (file, signedRequest, url) => {
 
 }
 
-export const getSignedRequest = (userId, token, file, directory) => {
-    return fetch(`${API}/sign-s3?file-name=${encodeURIComponent(file.name)}&file-type=${file.type}&directory=${directory}`, {
+export const getSignedRequest = request => {
+    const croppedImage = request.croppedImage
+    const _id = request._id
+    const s3Path = request.s3Path
+    const token = request.token
+
+    console.log('request', request)
+    return fetch(`${API}/sign-s3?file-name=${encodeURIComponent(croppedImage.name)}&file-type=${croppedImage.type}&directory=${s3Path}`, {
         method: 'GET',
     }).then(response => {
         return response.json()
     }).then(response => {
-        uploadFile(file, response.signedRequest, response.url)
+        uploadFile(croppedImage, response.signedRequest, response.url)
     }).catch(err => {
         console.log(err)
     })

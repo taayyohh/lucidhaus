@@ -6,13 +6,17 @@ import {
     center,
     fixed,
     flex,
+    flexEnd,
     flexStart,
     hidden,
     none,
     pointer,
     relative,
+    row,
+    spaceBetween,
+    transparent,
     white
-}                from '../utils/themer'
+} from '../utils/themer'
 import {globals} from '../variables/styles'
 
 export const defaultLinkStyle = {
@@ -44,10 +48,16 @@ export const transitionOverlayStyle = {
 }
 
 export const genericButtonStyle = {
-    border: none,
-    background: '#000',
-    color: '#fff',
-    padding: '10px 20px',
+    border: `1px solid #000`,
+    font: globals.fonts.header,
+    borderRadius: [10, .7, 10],
+    background: transparent,
+    color: black,
+    alignSelf: flexEnd,
+    paddingTop: [20, .7, 20],
+    paddingBottom: [20, .7, 20],
+    paddingLeft: [30, .7, 30],
+    paddingRight: [30, .7, 30],
     cursor: pointer,
     fontFamily: globals.fonts.script,
     marginTop: 20,
@@ -56,15 +66,32 @@ export const genericButtonStyle = {
     },
     hover: {
         cursor: 'pointer',
-        backgroundColor: globals.colors.orange
+        backgroundColor: globals.colors.buttonHoverColor,
+        borderColor: globals.colors.borderHoverColor,
+        color: globals.colors.borderHoverColor
     }
+}
+
+export const imageDropZoneWrapperStyle = {
+    display: flex,
+    flexWrap: 'nowrap',
+    flexDirection: row,
+    justifyContent: spaceBetween
+}
+
+export const imageDropZonePreviewWrapperStyle = {
+    width: [500, globals.style.layoutScalingValue, '100%']
+}
+
+export const imageDropZonePreviewStyle = {
+    width: '100%'
 }
 
 export const dropZoneStyle = {
     position: relative,
     display: block,
-    minHeight: [300, .7, "100%"],
-    width: [300, .7, "100%"],
+    minHeight: [500, globals.style.layoutScalingValue, "100%"],
+    width: [500, globals.style.layoutScalingValue, "100%"],
     background: '#fff',
     border: `1px solid ${globals.colors.borderColor}`,
     borderRadius: 10,

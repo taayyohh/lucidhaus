@@ -34,7 +34,9 @@ export const globals = {
         linkHoverColor: colorPalette.orange,
         inputLabelColor: colorPalette.black,
         menuPanelCloseButtonBackgroundColor: colorPalette.orange,
-        transitionOverlayBackground: colorPalette.tan
+        transitionOverlayBackground: colorPalette.tan,
+        buttonHoverColor: colorPalette.salmon,
+        borderHoverColor: colorPalette.orange
     },
     extensions: [
         '.png',
