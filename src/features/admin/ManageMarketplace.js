@@ -1,17 +1,23 @@
 import React, {useEffect} from 'react'
-import {Link}                                   from 'react-router-dom'
-import Div                                      from '../../Basic/Div'
-import ShowImage                                from '../../Shop/ShowImage'
-import {adminHeadingStyle, manageBusinessStyle} from '../../themes/admin'
-import H2                                       from "../../Basic/H2";
-import {useDispatch, useSelector}               from "react-redux";
+import {
+    useDispatch,
+    useSelector
+}                         from 'react-redux'
+import {Link}             from 'react-router-dom'
+import Div                from '../../Basic/Div'
+import H2                 from '../../Basic/H2'
+import ShowImage          from '../../Shop/ShowImage'
+import {
+    adminHeadingStyle,
+    manageBusinessStyle
+}                         from '../../themes/admin'
 
-const ManageBusinesses = () => {
-    const {marketPlace} = useSelector(state => state.admin)
+const ManageMarketplace = () => {
+    const {marketplace} = useSelector(state => state.business)
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch({type: 'admin/getAllBusinesses'})
+        dispatch({type: 'business/getMarketplace'})
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
@@ -22,7 +28,7 @@ const ManageBusinesses = () => {
 
             <Link to="/create/business">Create Business</Link>
 
-            {marketPlace && marketPlace.map(business => (
+            {marketplace && marketplace.map(business => (
                 <Div key={business.slug}>
                     <Div theme={manageBusinessStyle.imageWrapper}>
                         <ShowImage url="business" item={business}/>
@@ -35,4 +41,4 @@ const ManageBusinesses = () => {
     )
 }
 
-export default ManageBusinesses
+export default ManageMarketplace

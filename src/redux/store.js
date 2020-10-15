@@ -6,6 +6,7 @@ import createSagaMiddleware from 'redux-saga'
 import userReducer from '../features/user/userSlice'
 import siteReducer     from '../features/site/siteSlice'
 import adminReducer from '../features/admin/adminSlice'
+import businessReducer from '../features/business/businessSlice'
 import rootSaga        from './sagas'
 
 
@@ -38,6 +39,7 @@ export default configureStore({
         user: userReducer,
         site: siteReducer,
         admin: adminReducer,
+        business: businessReducer,
         router: connectRouter(history)
     },
     middleware,

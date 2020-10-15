@@ -1,7 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit'
 
 const initialState = {
-    marketPlace: [],
     businessForm: {
         name: '',
         slug: '',
@@ -21,12 +20,6 @@ export const adminSlice = createSlice({
     name: 'admin',
     initialState: initialState,
     reducers: {
-        getBusinessesSuccess: (state, action) => {
-            state.marketPlace = action.payload
-        },
-        getBusinessesFailure: (state, action) => {
-            state.error = action.payload
-        },
         createBusinessSuccess: (state, action) => {
             console.log('success', action)
         },

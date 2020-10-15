@@ -3,16 +3,16 @@ import React, {
     useState
 }                    from 'react'
 import {connect}     from 'react-redux'
-import {getBusiness} from '../api/apiAdmin'
-import Div           from '../Basic/Div'
-import H2            from '../Basic/H2'
-import RichText      from '../Basic/RichText'
-import ShowImage     from '../Shop/ShowImage'
+import {getBusiness} from '../../api/apiAdmin'
+import Div           from '../../Basic/Div'
+import H2            from '../../Basic/H2'
+import RichText      from '../../Basic/RichText'
+import ShowImage     from '../../Shop/ShowImage'
 import {
     businessLeftStyle,
     businessStyle,
     businessWrapperStyle
-}                    from '../themes/business'
+}                    from '../../themes/business'
 
 
 const Business = ({pathname}) => {

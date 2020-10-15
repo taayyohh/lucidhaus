@@ -17,13 +17,13 @@ import UpdateCategory         from '../Admin/UpdateCategory'
 import UpdateProduct          from '../Admin/UpdateProduct'
 import AdminRoute             from '../auth/AdminRoute'
 import PrivateRoute           from '../auth/PrivateRoute'
-import MotionDiv              from '../Basic/MotionDiv'
-import Business               from '../Business/Business'
-import Businesses             from '../Business/Businessess'
+import MotionDiv  from '../Basic/MotionDiv'
+import Business               from '../features/business/Business'
+import Marketplace            from '../features/business/Marketplace'
 import {TransitionAnimations} from '../Containers/TransitionController'
-import AddBusiness            from '../features/admin/AddBusiness'
-import ManageBusinesses       from '../features/admin/ManageBusinesses'
-import AdminDashboard         from '../features/user/AdminDashboard'
+import AddBusiness       from '../features/admin/AddBusiness'
+import ManageMarketplace from '../features/admin/ManageMarketplace'
+import AdminDashboard    from '../features/user/AdminDashboard'
 import Profile                from '../features/user/Profile'
 import SignIn                 from '../features/user/SignIn'
 import SignUp                 from '../features/user/SignUp'
@@ -47,7 +47,7 @@ const Content = () => {
                 <Switch location={{pathname: currentPath}}>
                     <Route path="/signup" exact component={SignUp}/>
                     <Route path="/signin" exact component={SignIn}/>
-                    <Route path="/businesses" exact component={Businesses}/>
+                    <Route path="/businesses" exact component={Marketplace}/>
                     <Route path="/businesses/:slug" exact component={Business}/>
                     <Route path="/cart" exact component={Cart}/>
                     <Route path="/shop" exact component={Shop}/>
@@ -56,7 +56,7 @@ const Content = () => {
                     <PrivateRoute path="/user/dashboard" exact component={UserDashboard}/>
                     <AdminRoute path="/admin/dashboard" exact component={AdminDashboard}/>
                     <AdminRoute path="/admin/products" exact component={ManageProducts}/>
-                    <AdminRoute path="/admin/businesses" exact component={ManageBusinesses}/>
+                    <AdminRoute path="/admin/businesses" exact component={ManageMarketplace}/>
                     <AdminRoute path="/admin/product/update/:slug" exact component={UpdateProduct}/>
                     <AdminRoute path="/admin/business/update/:slug" exact component={UpdateBusiness}/>
                     <AdminRoute path="/admin/category/update/:categoryId" exact component={UpdateCategory}/>

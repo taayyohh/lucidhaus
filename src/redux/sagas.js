@@ -115,13 +115,13 @@ function* updateProfile(user) {
 }
 
 
-function* getAllBusinesses() {
+function* getMarketplace() {
     try {
         const payload = yield call(getBusinesses)
         if (!payload.error) {
-            yield put({type: 'admin/getBusinessesSuccess', payload})
+            yield put({type: 'business/getMarketplaceSuccess', payload})
         } else {
-            yield put({type: 'admin/getBusinessesFailure', payload})
+            yield put({type: 'business/getMarketplaceFailure', payload})
         }
     } catch (error) {
         yield put({type: 'admin/getBusinessFailure', error})
@@ -131,6 +131,8 @@ function* getAllBusinesses() {
 function* createBusiness(business) {
     const {_id, token, s3Path, values} = business.payload
     const {name, description, key, image} = values
+
+    //add to formdata so api can read
     const newBusiness = new FormData()
     newBusiness.set('name', name)
     newBusiness.set('description', description)
@@ -197,8 +199,8 @@ function* watchUpdateProfile() {
     yield takeEvery('user/updateProfile', updateProfile)
 }
 
-function* watchGetBusiness() {
-    yield takeEvery('admin/getAllBusinesses', getAllBusinesses)
+function* watchGetMarketplace() {
+    yield takeEvery('business/getMarketplace', getMarketplace)
 }
 
 function* watchCreateBusiness() {
@@ -217,7 +219,7 @@ export default function* rootSaga() {
         fork(watchSignUp),
         fork(watchUserHistory),
         fork(watchUpdateProfile),
-        fork(watchGetBusiness),
+        fork(watchGetMarketplace),
         fork(watchCreateBusiness)
     ])
 }
