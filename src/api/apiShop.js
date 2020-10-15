@@ -6,7 +6,6 @@ export const getProducts = (sortBy) => {
         method: 'GET'
     })
         .then(response => {
-            console.log(response)
             return response.json()
         }).catch(err => {
             console.log(err)
@@ -18,7 +17,6 @@ export const getCategories = () => {
         method: 'GET'
     })
         .then(response => {
-            console.log(response)
             return response.json()
         }).catch(err => {
             console.log(err)
@@ -50,7 +48,6 @@ export const list = params => {
         method: 'GET'
     })
         .then(response => {
-            console.log(response)
             return response.json()
         }).catch(err => {
             console.log(err)
@@ -62,7 +59,6 @@ export const read = productId => {
         method: 'GET'
     })
         .then(response => {
-            console.log(response)
             return response.json()
         }).catch(err => {
             console.log(err)
@@ -74,7 +70,6 @@ export const getProduct = slug => {
         method: 'GET'
     })
         .then(response => {
-            console.log(response)
             return response.json()
         }).catch(err => {
             console.log(err)
@@ -86,7 +81,6 @@ export const listRelated = slug => {
         method: 'GET'
     })
         .then(response => {
-            console.log(response)
             return response.json()
         }).catch(err => {
             console.log(err)
@@ -103,7 +97,6 @@ export const getBraintreeClientToken = (userId, token) => {
         },
     })
         .then(response => {
-            console.log(response)
             return response.json()
         }).catch(err => {
             console.log(err)
@@ -121,7 +114,6 @@ export const processPayment = (userId, token, paymentData) => {
         body: JSON.stringify(paymentData)
     })
         .then(response => {
-            console.log(response)
             return response.json()
         }).catch(err => {
             console.log(err)

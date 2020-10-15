@@ -90,6 +90,7 @@ const SmartFileInput = ({formik, id, cropWidth, cropHeight}) => {
         formik.setFieldValue('image', croppedImage)
         formik.setFieldValue('key', sanitizedName)
 
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [croppedImage, sanitizedName])
 
     return (

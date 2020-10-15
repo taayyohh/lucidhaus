@@ -185,7 +185,9 @@ export const updateProduct = (productId, userId, token, product) => {
  * update single admin
  * delete single admin
  */
-export const createBusiness = (userId, token, business) => {
+export const addBusiness = request => {
+    const {userId, token, business} = request
+
     return fetch(`${API}/business/create/${userId}`, {
         method: 'POST',
         headers: {

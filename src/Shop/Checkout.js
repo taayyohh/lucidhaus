@@ -7,6 +7,11 @@ import React, {
 import PlacesAutocomplete   from 'react-places-autocomplete'
 import {Link}               from 'react-router-dom'
 import {isAuthenticated}    from '../api/apiAuth'
+import {
+    createOrder,
+    getBraintreeClientToken,
+    processPayment
+}                           from '../api/apiShop'
 import Div                  from '../Basic/Div'
 import {genericButtonStyle} from '../themes/elements'
 import {
@@ -14,11 +19,6 @@ import {
     checkoutDropIn
 }                           from '../themes/shop'
 import {flex}               from '../utils/themer'
-import {
-    createOrder,
-    getBraintreeClientToken,
-    processPayment
-}                           from '../api/apiShop'
 import {emptyCart}          from './cartHelpers'
 
 
@@ -33,7 +33,7 @@ const Checkout = ({products, setRun = f => f, run = undefined}) => {
     })
 
 
-   // const [showConfirmed, setShowConfirmed] = useState(false)
+    // const [showConfirmed, setShowConfirmed] = useState(false)
 
 
     const userId = isAuthenticated() && isAuthenticated().user._id
@@ -98,10 +98,10 @@ const Checkout = ({products, setRun = f => f, run = undefined}) => {
 
 
         let nonce
-        let getNonce = data.instance
+        data.instance
             .requestPaymentMethod()
             .then(data => {
-               // console.log('DATA', data)
+                console.log('DATA', data)
                 nonce = data.nonce
                 //once you have nonce (card type, card number)
                 //send nonce as 'paymentMethodNonce'
@@ -148,8 +148,6 @@ const Checkout = ({products, setRun = f => f, run = undefined}) => {
                 console.log('dropin error: ', error)
                 setData({...data, error: error.message})
             })
-
-
     }
 
 

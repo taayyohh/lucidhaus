@@ -39,7 +39,7 @@ const Content = () => {
     useEffect(() => {
         dispatch({type: 'site/setPath', payload: currentPath})
 
-    }, [currentPath])
+    }, [currentPath, dispatch])
 
     return (
         <AnimatePresence>

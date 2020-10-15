@@ -1,17 +1,17 @@
-import {push}               from 'connected-react-router'
+import {push} from 'connected-react-router'
 import {
     all,
     call,
     fork,
     put,
-    takeEvery,
-    takeLatest
-} from 'redux-saga/effects'
+    takeEvery
+}             from 'redux-saga/effects'
 import {
+    addBusiness,
     getBusinesses,
     getSignedRequest,
     uploadFile
-} from '../services/apiAdmin'
+}             from '../services/apiAdmin'
 import {
     authenticate,
     getPurchaseHistory,
@@ -21,16 +21,8 @@ import {
     signup,
     update,
     updateUser
-} from '../services/apiUser'
-import {stripTrailingSlash} from '../utils/url'
+}             from '../services/apiUser'
 
-
-function* navigate({payload}) {
-    // stripping trailing slash by default
-    const {pathname, search} = payload.location
-
-    let slug = stripTrailingSlash(pathname)
-}
 
 function* signIn(user) {
     try {
@@ -114,11 +106,11 @@ function* updateProfile(user) {
             yield put({type: 'user/updateSuccess', payload})
             yield put(push(payload?.user?.role === 1 ? '/admin/dashboard' : '/user/dashboard'))
         } else {
-            yield put ({type: 'user/updateFailure', payload})
+            yield put({type: 'user/updateFailure', payload})
         }
 
     } catch (error) {
-        yield put ({type: 'user/updateFailure', error})
+        yield put({type: 'user/updateFailure', error})
     }
 }
 
@@ -138,14 +130,28 @@ function* getAllBusinesses() {
 
 function* createBusiness(business) {
     const {_id, token, s3Path, values} = business.payload
-    const {key, name, image, description} = values
+    const {name, description, key, image} = values
+    const newBusiness = new FormData()
+    newBusiness.set('name', name)
+    newBusiness.set('description', description)
+    newBusiness.set('photo', s3Path + '/' + key)
 
     const payload = yield call(getSignedRequest, {croppedImage: values.image, s3Path: s3Path})
-    if(!!payload.signedRequest) {
+    if (!!payload.signedRequest) {
         const uploadImage = yield call(uploadFile, {file: image, signedRequest: payload.signedRequest})
         console.log('upload', uploadImage)
+
+        const created = yield call(addBusiness, {userId: _id, token: token, business: newBusiness})
+        console.log('created', created)
+        if(!created.error) {
+            yield put({type: 'admin/createBusinessesSuccess', payload})
+
+        } else {
+            yield put({type: 'admin/createBusinessesFailure', payload})
+
+        }
+
     }
-    console.log('payload', payload)
 
     //   getSignedRequest(_id, token, croppedImage, s3Path)
 
@@ -158,10 +164,6 @@ function* createBusiness(business) {
 
 /******************************************************************************/
 
-
-function* watchNavigate() {
-    yield takeLatest('@@router/LOCATION_CHANGE', navigate)
-}
 
 function* watchSignIn() {
     yield takeEvery('user/signIn', signIn)
@@ -207,7 +209,6 @@ function* watchCreateBusiness() {
 // single entry point to start all Sagas at once
 export default function* rootSaga() {
     yield all([
-        fork(watchNavigate),
         fork(watchLoadConfig),
         fork(watchSignIn),
         fork(watchAuthenticate),
