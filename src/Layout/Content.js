@@ -17,13 +17,14 @@ import UpdateCategory         from '../Admin/UpdateCategory'
 import UpdateProduct          from '../Admin/UpdateProduct'
 import AdminRoute             from '../auth/AdminRoute'
 import PrivateRoute           from '../auth/PrivateRoute'
-import MotionDiv  from '../Basic/MotionDiv'
+import MotionDiv              from '../Basic/MotionDiv'
 import Business               from '../features/business/Business'
 import Marketplace            from '../features/business/Marketplace'
 import {TransitionAnimations} from '../Containers/TransitionController'
-import AddBusiness       from '../features/admin/AddBusiness'
-import ManageMarketplace from '../features/admin/ManageMarketplace'
-import AdminDashboard    from '../features/user/AdminDashboard'
+import AddBusiness            from '../features/admin/AddBusiness'
+import ManageMarketplace      from '../features/admin/ManageMarketplace'
+import NotFound               from '../features/site/NotFound'
+import AdminDashboard         from '../features/user/AdminDashboard'
 import Profile                from '../features/user/Profile'
 import SignIn                 from '../features/user/SignIn'
 import SignUp                 from '../features/user/SignUp'
@@ -58,7 +59,7 @@ const Content = () => {
                     <PrivateRoute path="/user/dashboard" exact component={UserDashboard}/>
                     <AdminRoute path="/admin/dashboard" exact component={AdminDashboard}/>
                     <AdminRoute path="/admin/products" exact component={ManageProducts}/>
-                    <AdminRoute path="/admin/businesses" exact component={ManageMarketplace}/>
+                    <AdminRoute path="/admin/marketplace" exact component={ManageMarketplace}/>
                     <AdminRoute path="/admin/product/update/:slug" exact component={UpdateProduct}/>
                     <AdminRoute path="/admin/business/update/:slug" exact component={UpdateBusiness}/>
                     <AdminRoute path="/admin/category/update/:categoryId" exact component={UpdateCategory}/>
@@ -66,6 +67,7 @@ const Content = () => {
                     <AdminRoute path="/create/category" exact component={AddCategory}/>
                     <AdminRoute path="/create/product" exact component={AddProduct}/>
                     <AdminRoute path="/create/business" exact component={AddBusiness}/>
+                    <Route component={NotFound} />
                 </Switch>
             </MotionDiv>
         </AnimatePresence>

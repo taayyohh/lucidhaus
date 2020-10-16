@@ -9,8 +9,6 @@ export const footerStyle = {
     inner: {
         margin: '0 auto',
         width: [globals.style.siteInnerWidth, globals.style.layoutScalingValue, '100%'],
-        paddingLeft: 25,
-        paddingRight: 25,
         boxSizing: borderBox
     }
 }

@@ -23,7 +23,7 @@ const PageFrame = () => {
             <Footer theme={pageFrameStyle.footer}/>
             <MenuPanels/>
             <TransitionOverlay/>
-            <Div id="modal" theme={{position: 'absolute'}}/>
+            <Div id="modal" theme={pageFrameStyle.modal}/>
         </Div>
     )
 }

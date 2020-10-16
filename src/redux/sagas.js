@@ -78,10 +78,26 @@ function* createBusiness(business) {
     }
 }
 
-function* destroyBusiness(business) {
-    const destroyed = yield call(deleteBusiness, business.payload)
-    console.log('destroyed', destroyed)
+function* attemptDestroyBusiness(business) {
+    const {slug} = business.payload
+    yield put({type: 'admin/confirmDestroyBusiness', payload: slug})
 }
+
+function* destroyBusiness(business) {
+    console.log('business', business)
+    const destroyed = yield call(deleteBusiness, business.payload)
+    if(!destroyed.error) {
+        yield put({type: 'admin/destroyBusinessSuccess'})
+    } else {
+        yield put({type: 'admin/destroyBusinessFailure'})
+    }
+}
+
+function* destroyBusinessSuccess() {
+    yield put(push('/admin/marketplace'))
+}
+
+
 
 
 /**
@@ -234,8 +250,16 @@ function* watchCreateBusiness() {
     yield takeEvery('admin/createBusiness', createBusiness)
 }
 
+function* watchAttemptDestroyBusiness() {
+    yield takeEvery('admin/attemptDestroyBusiness', attemptDestroyBusiness)
+}
+
 function* watchDestroyBusiness() {
-    yield takeEvery('admin/destroyBusiness', destroyBusiness)
+    yield takeEvery('admin/attemptDestroyBusiness', destroyBusiness)
+}
+
+function* watchDestroyBusinessSuccess() {
+    yield takeEvery('admin/attemptDestroyBusinessSuccess', destroyBusinessSuccess)
 }
 
 function* watchAuthenticate() {
@@ -319,7 +343,9 @@ export default function* rootSaga() {
         fork(watchUpdateProfile),
         fork(watchGetMarketplace),
         fork(watchCreateBusiness),
+        fork(watchAttemptDestroyBusiness),
         fork(watchDestroyBusiness),
+        fork(watchDestroyBusinessSuccess),
         fork(watchGetBusinessDetail)
     ])
 }

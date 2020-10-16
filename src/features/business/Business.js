@@ -13,6 +13,7 @@ import {
     businessStyle,
     businessWrapperStyle
 }                         from '../../themes/business'
+import {postContentStyle} from '../../themes/layout'
 
 
 const Business = () => {
@@ -31,17 +32,19 @@ const Business = () => {
 
 
     return (
-        <Div theme={businessWrapperStyle}>
-            <Div theme={businessLeftStyle}>
-                <H2 theme={businessStyle.title}>{name}</H2>
-                <S3Image
-                    url={photo}
-                    alt={name}
-                    theme={businessCardImageStyle}
-                />
-            </Div>
-            <Div>
-                <RichText children={description}/>
+        <Div theme={postContentStyle(slug)}>
+            <Div theme={businessWrapperStyle}>
+                <Div theme={businessLeftStyle}>
+                    <H2 theme={businessStyle.title}>{name}</H2>
+                    <S3Image
+                        url={photo}
+                        alt={name}
+                        theme={businessCardImageStyle}
+                    />
+                </Div>
+                <Div>
+                    <RichText children={description}/>
+                </Div>
             </Div>
         </Div>
     )

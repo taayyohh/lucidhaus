@@ -2,6 +2,7 @@ import React, {
     useEffect,
     useState
 }                           from 'react'
+import {useSelector}        from 'react-redux'
 import {Link}               from 'react-router-dom'
 import {
     deleteProduct,
@@ -11,8 +12,10 @@ import {isAuthenticated}    from '../api/apiAuth'
 import Div                  from '../Basic/Div'
 import S3Image              from '../Shop/S3Image'
 import {manageProductStyle} from '../themes/admin'
+import {postContentStyle}   from '../themes/layout'
 
 const ManageProducts = () => {
+    const {slug} = useSelector(state => state.site)
     const [products, setProducts] = useState([])
 
     const {user, token} = isAuthenticated()
@@ -42,7 +45,7 @@ const ManageProducts = () => {
     }, [])
 
     return (
-        <Div>
+        <Div theme={postContentStyle(slug)}>
             <span>You currently have {products.length} products</span>
 
             <Link to="/create/product">

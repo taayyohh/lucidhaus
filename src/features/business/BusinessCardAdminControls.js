@@ -7,22 +7,21 @@ import {
     adminCardControlsButtonWrapperStyle
 }                    from '../../themes/admin'
 
-const BusinessCardAdminControls = ({slug, _id, token}) => {
+const BusinessCardAdminControls = ({slug}) => {
     const dispatch = useDispatch()
 
     return (
         <Div theme={adminCardControlsButtonWrapperStyle}>
             <StyledLink
                 theme={adminCardControlsButtonStyle}
-                to={`/admin/business/update/${slug}`}>
+                to={`/admin/business/update/${slug}`}
+            >
                 Edit
             </StyledLink>
             <Div
                 theme={adminCardControlsButtonStyle}
-                onClick={() => dispatch({
-                    type: 'admin/destroyBusiness',
-                    payload: {_id: _id, token: token, slug: slug}
-                })}>
+                onClick={() => dispatch({type: 'admin/attemptDestroyBusiness', payload: {slug: slug}})}
+            >
                 Delete
             </Div>
         </Div>

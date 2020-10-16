@@ -4,15 +4,17 @@ import {
     useSelector
 }                          from 'react-redux'
 import Div                 from '../Basic/Div'
-import Ul                  from '../Basic/Div'
 import Span                from '../Basic/Span'
 import StyledLink          from '../Basic/StyledLink'
 import {menuPanelContext}  from '../Containers/MenuPanelController'
 import {itemTotal}         from '../Shop/cartHelpers'
 import {
-    headerMenu,
-    headerMenuAuth
-}                          from '../themes/header'
+    headerMenuAuthStyle,
+    headerMenuAuthStyleListItemStyle,
+    headerMenuListItemStyle,
+    headerMenuListStyle,
+    headerMenuStyle
+} from '../themes/header'
 
 const HeaderMenu = () => {
     const dispatch = useDispatch()
@@ -21,89 +23,67 @@ const HeaderMenu = () => {
 
 
     return (
-        <Div theme={headerMenu}>
-            <Div theme={headerMenu.list}>
+        <Div theme={headerMenuStyle}>
+            <Div as="nav" theme={headerMenuListStyle}>
                 <StyledLink
                     to="/marketplace"
-                    theme={{...headerMenu.listItem}}>
+                    theme={headerMenuListItemStyle}>
                     Businesses
                 </StyledLink>
 
                 <StyledLink
                     to="/shop"
-                    theme={{...headerMenu.listItem}}>
+                    theme={headerMenuListItemStyle}>
                     Shop
                 </StyledLink>
                 <Div
                     onClick={() => setPanel({name: 'cart-menu-panel'})}
-                    theme={{...headerMenu.listItem}}>
+                    theme={headerMenuListItemStyle}>
                     Cart
                     <sup>
                         {itemTotal()}
                     </sup>
                 </Div>
             </Div>
-            <Div theme={headerMenuAuth}>
-                <Ul theme={headerMenuAuth.list}>
+            <Div as="nav" theme={headerMenuAuthStyle}>
+                {!isAuthenticated && (
+                    <>
+                        <StyledLink
+                            to="/signin"
+                            theme={headerMenuAuthStyleListItemStyle}>
+                            Sign in
+                        </StyledLink>
+                        <StyledLink
+                            to="/signup"
+                            theme={headerMenuAuthStyleListItemStyle}>
+                            Sign Up
+                        </StyledLink>
 
-
-                    {!isAuthenticated && (
-                        <>
-                            <li>
-                                <StyledLink
-                                    to="/signin"
-                                    theme={headerMenuAuth.listItem}>
-                                    Sign in
-                                </StyledLink>
-                            </li>
-                            <li>
-                                <StyledLink
-                                    to="/signup"
-                                    theme={headerMenuAuth.listItem}>
-                                    Sign Up
-                                </StyledLink>
-                            </li>
-                        </>
-                    )}
-                    {isAuthenticated && (
-                        <li>
-                            <Span
-                                to="/signout"
-                                theme={headerMenuAuth.listItem}
-                                onClick={() => dispatch({type: 'user/signOut'})}>
-                                Sign Out
-                            </Span>
-                        </li>
-                    )}
-                    {isAuthenticated && !isAdmin && (
-                        <li>
-                            <StyledLink
-                                to="/user/dashboard"
-                                theme={headerMenuAuth.listItem}>
-                                Profile
-                            </StyledLink>
-                        </li>
-                    )}
-                    {isAuthenticated && isAdmin && (
-                        <li>
-                            <StyledLink
-                                to="/admin/dashboard"
-                                theme={headerMenuAuth.listItem}>
-                                Dashboard
-                            </StyledLink>
-                        </li>
-                    )}
-                    {(isAuthenticated && isAdmin) && (
-                        <li>
-                            <Div
-                                onClick={() => setPanel({name: 'admin-menu-panel'})}
-                                theme={headerMenuAuth.listItem}
-                            >
-                                Admin Menu
-                            </Div>
-                        </li>
-                    )}
-                </Ul>
+                    </>
+                )}
+                {isAuthenticated && (
+                    <Span
+                        to="/signout"
+                        theme={headerMenuAuthStyleListItemStyle}
+                        onClick={() => dispatch({type: 'user/signOut'})}>
+                        Sign Out
+                    </Span>
+                )}
+                {isAuthenticated && !isAdmin && (
+                    <StyledLink
+                        to="/user/dashboard"
+                        theme={headerMenuAuthStyleListItemStyle}>
+                        Profile
+                    </StyledLink>
+                )}
+                {(isAuthenticated && isAdmin) && (
+                    <Div
+                        onClick={() => setPanel({name: 'admin-menu-panel'})}
+                        theme={headerMenuAuthStyleListItemStyle}
+                    >
+                        Admin Menu
+                    </Div>
+                )}
             </Div>
         </Div>
 

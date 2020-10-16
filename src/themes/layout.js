@@ -1,5 +1,8 @@
+import {useSelector}   from 'react-redux'
+import {isMarketplace} from '../utils/flags'
 import {
     black,
+    center,
     column,
     fixed,
     flex,
@@ -10,7 +13,10 @@ import {
     white,
     wrap
 } from '../utils/themer'
-import {genericMobileContainerStyles} from '../variables/styles'
+import {
+    genericMobileContainerStyles,
+    globals
+} from '../variables/styles'
 
 const contentRow = 2
 
@@ -20,9 +26,9 @@ export const pageFrameStyle = {
     gridTemplateColumns: `
             [begin] minmax(3vw, 1fr)
             ${sv(920, .45)}
-            ${sv(110, .45)}
-            ${sv(110, .45)}
-            ${sv(180, .45)}
+            ${sv(230, .45)}
+            ${sv(230, .45)}
+            ${sv(190, .45)}
             minmax(3vw, 1fr) [end]`,
     maxWidth: '1920px',
     margin: '0 auto',
@@ -129,6 +135,15 @@ export const pageFrameStyle = {
         gridColumnSpan: 6,
         msGridRow: 4,
         gridRow: 4,
+    },
+    modal: {
+        position: fixed,
+        height: '100vh',
+        width: '100vw',
+        zIndex: 3,
+        empty: {
+            zIndex: -1
+        }
     }
 }
 
@@ -180,6 +195,45 @@ export const microCardStyle = {
             marginRight: 15
         }
     }
+}
+
+export const postContentStyle = slug => {
+    const baseStyle = {
+        margin: '0 auto',
+        width: [globals.style.contentWidth, globals.style.layoutScalingValue, '100%']
+    }
+
+    if(isMarketplace(slug))
+        return {
+            ...baseStyle,
+            width: [globals.style.siteInnerWidth, globals.style.layoutScalingValue, '100%']
+        }
+
+    return {
+        ...baseStyle
+    }
+}
+
+export const notFoundStyle = {
+    textAlign: center,
+    size: 90,
+    font: globals.fonts.script,
+    maxWidth: [800, globals.style.layoutScalingValue, 'none'],
+    margin: '0 auto'
+
+}
+
+export const defaultModalStyle = {
+    position: fixed,
+    top: '50%',
+    left: '50%',
+    height: '20vw',
+    width: '20vw',
+    marginLeft: '-10vw',
+    marginTop: '-10vw',
+    padding: sv(50),
+    backgroundColor: '#cdcdcd',
+    borderColor: `1px solid ${globals.colors.borderColor}`
 }
 
 

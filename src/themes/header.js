@@ -1,5 +1,6 @@
 import {
     absolute,
+    auto,
     block,
     borderBox,
     center,
@@ -65,102 +66,65 @@ export const headerLogoLinkStyle = {
     zIndex: 2,
 }
 
-export const headerMenu = {
+export const headerMenuStyle = {
     zIndex: 1,
     width: '100%',
     position: relative,
-    list: {
-        display: flex,
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'center',
+    display: flex,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+}
+
+export const headerMenuListItemStyle = {
+    display: block,
+    color: globals.colors.black,
+    fontFamily: globals.fonts.header,
+    textDecoration: 'none',
+    size: [20, .6, 20],
+    paddingRight: [40, .7, '0'],
+    paddingLeft: [40, .7, '0'],
+    transition: 'background-color 500ms ease',
+    mobile: {
+        width: '100%',
+        padding: '15px 0'
+    },
+    hover: {
+        color: globals.colors.orange,
         mobile: {
-            flexDirection: column,
-        },
-        child: {
-            selector: '> li',
-            listStyleType: 'none',
-            mobile: {
-                width: '100%',
-                textAlign: center,
-                borderBottom: '1px solid #000'
-            }
+            backgroundColor: '#e0c678',
+            color: white,
         }
     },
-    listItem: {
-        display: block,
-        color: globals.colors.black,
-        fontFamily: globals.fonts.header,
-        textDecoration: 'none',
-        size: [20, .6, 20],
-        paddingTop: [50, .7, '0'],
-        paddingBottom: [50, .7, '0'],
-        paddingRight: [40, .7, '0'],
-        paddingLeft: [40, .7, '0'],
-        transition: 'background-color 500ms ease',
-        mobile: {
-            width: '100%',
-            padding: '15px 0'
-        },
-        hover: {
-            color: globals.colors.orange,
-            mobile: {
-                backgroundColor: '#e0c678',
-                color: white,
-            }
-        },
-        child: {
-            selector: 'sup',
-            position: absolute
-        }
+    child: {
+        selector: 'sup',
+        position: absolute
     }
 }
 
-export const headerMenuAuth = {
+export const headerMenuListStyle = {
     display: flex,
-    position: absolute,
-    top: 10,
-    right: 0,
-    listStyle: none,
-    padding: '10px 25px',
+    marginLeft: auto,
+}
+
+export const headerMenuAuthStyle = {
+    display: flex,
+    marginLeft: auto,
     mobile: {
         display: flex,
         position: relative,
         justifyContent: 'center',
         padding: 0,
-    },
-    list: {
-        display: flex,
-        width: '100%,',
-        flexDirection: 'row',
-        flexWrap: 'nowrap',
-        alignItems: center,
-        mobile: {
-            display: flex,
-            width: '100%',
-            flexDirection: 'row',
-            boxShadow: '9px 7px 0px 0px #000;'
-        },
-        child: {
-            selector: '> li',
-            mobile: {
-                width: '50%',
-                textAlign: center,
-                borderBottom: '1px solid #000',
-                firstChild: {
-                    borderRight: '1px solid #000',
-                }
-            }
-        }
-    },
-    listItem: {
-        fontSize: [16, .6, 20],
-        textDecoration: none,
-        marginLeft: [10, .7, '0'],
-        mobile: {
-            display: block,
-            width: '100%',
-            padding: '15px 0'
-        },
     }
+}
+
+export const headerMenuAuthStyleListItemStyle = {
+    fontSize: [16, .6, 20],
+    textDecoration: none,
+    marginLeft: [10, .7, '0'],
+    mobile: {
+        display: block,
+        width: '100%',
+        padding: '15px 0'
+    },
 }

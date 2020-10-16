@@ -14,7 +14,6 @@ export const marketplaceWrapperStyle = {
     display: 'grid',
     gridTemplateColumns: '1fr 1fr 1fr',
     gridGap: sv(30),
-    width: [1200, globals.style.layoutScalingValue, '100%'],
     margin: '0 auto',
     mobile: {
         display: flex,

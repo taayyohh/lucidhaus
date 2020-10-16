@@ -8,6 +8,7 @@ import {
     flexEnd,
     flexStart,
     grid,
+    inlineFlex,
     none,
     pointer,
     relative,
@@ -19,13 +20,21 @@ import {globals}                 from '../variables/styles'
 import {marketplaceWrapperStyle} from './business'
 
 export const adminMarketplaceWrapperStyle = {
+    width: '100%',
+    display: 'grid',
+    gridTemplateColumns: '1fr 3fr',
+    gridGap: sv(30),
+}
+
+export const adminMarketplaceInnerWrapperStyle = {
     ...marketplaceWrapperStyle,
+    width: '100%',
     display: 'grid',
     gridTemplateColumns: '1fr 1fr 1fr',
     gridGap: sv(30),
 }
 
-export const adminMarketplaceInnerWrapperStyle = {
+export const adminBusinessCardWrapperStyle = {
 
 }
 
@@ -71,7 +80,7 @@ export const adminCardControlsButtonWrapperStyle = {
     justifyContent: flexEnd
 }
 
-export const adminCardControlsButtonStyle = {
+export const genericButtonStyle = {
     border: `1px solid ${globals.colors.borderColor}`,
     alignSelf: flexStart,
     paddingTop: [10, .7, 10],
@@ -89,6 +98,12 @@ export const adminCardControlsButtonStyle = {
         backgroundColor: globals.colors.linkHoverColor,
         color: white
     }
+}
+
+export const adminCardControlsButtonStyle = {
+    ...genericButtonStyle,
+    marginLeft: [10, globals.style.layoutScalingValue, '0'],
+    marginTop: [20, globals.style.layoutScalingValue, 20],
 }
 
 export const menuPanelStyle = {
@@ -121,7 +136,32 @@ export const adminHeadingStyle = {
     font: globals.fonts.script
 }
 
-export const adminCreateButtonStyle = {}
+export const adminCreateButtonStyle = {
+    ...adminCardControlsButtonStyle,
+    display: inlineFlex,
+    alignSelf: flexStart,
+    marginBottom: [50, .7, 50],
+    marginLeft: 0,
+    marginTop: 0
+}
+
+export const adminControlPanelStyle = {
+    position: relative,
+    display: flex,
+    flexDirection: column,
+    background: '#f8f8f8',
+    border: `1px solid ${globals.colors.borderColor}`,
+    height: [500, .7, 'auto'],
+    padding: sv(20, globals.style.layoutScalingValue),
+    mobile: {
+        padding: 20
+    }
+}
+
+export const adminControlPanelInnerStyle = {
+    display: flex,
+    flexDirection: column,
+}
 
 export const adminMenuStyle = {
     ...menuPanelStyle,

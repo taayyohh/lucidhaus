@@ -28,7 +28,8 @@ export const globals = {
     style: {
         layoutScalingValue: .45,
         inputLabelShrinkRatio: .7,
-        siteInnerWidth: 1480
+        siteInnerWidth: 1570,
+        contentWidth: 1320
     },
     colors: {
         linkColor: colorPalette.red,

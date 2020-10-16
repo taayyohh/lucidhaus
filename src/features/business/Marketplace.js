@@ -5,10 +5,12 @@ import {
 }                                from 'react-redux'
 import Div                       from '../../Basic/Div'
 import {marketplaceWrapperStyle} from '../../themes/business'
+import {postContentStyle}        from '../../themes/layout'
 import BusinessCard              from './BusinessCard'
 
 
 const Marketplace = () => {
+    const {slug} = useSelector(state => state.site)
     const {marketplace} = useSelector(state => state.business)
     const dispatch = useDispatch()
 
@@ -19,8 +21,7 @@ const Marketplace = () => {
     }, [])
 
     return (
-        <Div>
-
+        <Div theme={postContentStyle(slug)}>
             <Div theme={marketplaceWrapperStyle}>
                 {marketplace && marketplace.map(business => (
                     <BusinessCard
@@ -31,7 +32,6 @@ const Marketplace = () => {
                     />
                 ))}
             </Div>
-
         </Div>
     )
 }
