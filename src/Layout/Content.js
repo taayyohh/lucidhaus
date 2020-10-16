@@ -35,9 +35,11 @@ import Shop                   from '../Shop/Shop'
 const Content = () => {
     const {contentAnimation, currentPath} = useContext(TransitionAnimations)
     const dispatch = useDispatch()
+    const getSlug = path => path.substring(path.lastIndexOf('/') + 1)
+
 
     useEffect(() => {
-        dispatch({type: 'site/setPath', payload: currentPath})
+        dispatch({type: 'site/setConfig', payload: {path: currentPath, slug: getSlug(currentPath)}})
 
     }, [currentPath, dispatch])
 
@@ -47,8 +49,8 @@ const Content = () => {
                 <Switch location={{pathname: currentPath}}>
                     <Route path="/signup" exact component={SignUp}/>
                     <Route path="/signin" exact component={SignIn}/>
-                    <Route path="/businesses" exact component={Marketplace}/>
-                    <Route path="/businesses/:slug" exact component={Business}/>
+                    <Route path="/marketplace" exact component={Marketplace}/>
+                    <Route path="/marketplace/:slug" exact component={Business}/>
                     <Route path="/cart" exact component={Cart}/>
                     <Route path="/shop" exact component={Shop}/>
                     <Route path="/shop/:slug" exact component={Product}/>

@@ -1,13 +1,57 @@
 import {
+    auto,
+    black,
+    center,
     column,
     fixed,
     flex,
+    flexEnd,
+    flexStart,
+    grid,
     none,
     pointer,
     relative,
-    row
-}                from '../utils/themer'
-import {globals} from '../variables/styles'
+    row,
+    sv,
+    white
+} from '../utils/themer'
+import {globals}                 from '../variables/styles'
+import {marketplaceWrapperStyle} from './business'
+
+export const adminMarketplaceWrapperStyle = {
+    ...marketplaceWrapperStyle,
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr 1fr',
+    gridGap: sv(30),
+}
+
+export const adminMarketplaceInnerWrapperStyle = {
+
+}
+
+export const adminBusinessCardStyle = {
+    display: grid,
+    gridTemplateColumns: `${sv(100)} 1fr`,
+    gridGap: sv(15),
+    width: '100%',
+    mobile: {
+        display: flex
+    },
+    imageWrapper: {
+        display: flex,
+        justifyContent: center,
+        maxHeight: 'none',
+        width: auto
+    },
+    image: {
+        maxWidth: [90, .7, '100%']
+    },
+    name: {
+        paddingTop: 0,
+        size: [20, .7, 20],
+        lineHeight: [22, .7, 22]
+    }
+}
 
 export const adminDashboardStyle = {
     heading: {
@@ -18,6 +62,32 @@ export const adminDashboardStyle = {
         },
         small: {},
         large: {}
+    }
+}
+
+export const adminCardControlsButtonWrapperStyle = {
+    display: flex,
+    flexDirection: 'row',
+    justifyContent: flexEnd
+}
+
+export const adminCardControlsButtonStyle = {
+    border: `1px solid ${globals.colors.borderColor}`,
+    alignSelf: flexStart,
+    paddingTop: [10, .7, 10],
+    paddingBottom: [10, .7, 10],
+    paddingLeft: [20, .7, 20],
+    paddingRight: [20, .7, 20],
+    color: black,
+    textDecoration: none,
+    transition: 'background-color 250ms ease, color 250ms ease',
+    marginLeft: [10, globals.style.layoutScalingValue, '0'],
+    marginTop: [20, globals.style.layoutScalingValue, 20],
+    borderRadius: 5,
+    hover: {
+        cursor: pointer,
+        backgroundColor: globals.colors.linkHoverColor,
+        color: white
     }
 }
 
@@ -45,8 +115,9 @@ export const adminMenuToggleStyle = {
 
 export const adminHeadingStyle = {
     size: [42, .7, 26],
-    paddingBottom: [50, .7, 50],
-    marginBottom: [50, .7, 50],
+    paddingBottom: [25, .7, 25],
+    marginBottom: [25, .7, 25],
+    borderBottom: `${sv(5)} solid #000`,
     font: globals.fonts.script
 }
 

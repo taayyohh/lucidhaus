@@ -1,62 +1,50 @@
-import React, {
-    useEffect,
-    useState
-}                    from 'react'
-import {connect}     from 'react-redux'
-import {getBusiness} from '../../api/apiAdmin'
-import Div           from '../../Basic/Div'
-import H2            from '../../Basic/H2'
-import RichText      from '../../Basic/RichText'
-import ShowImage     from '../../Shop/ShowImage'
+import React, {useEffect} from 'react'
 import {
+    useDispatch,
+    useSelector
+}                         from 'react-redux'
+import Div                from '../../Basic/Div'
+import H2                 from '../../Basic/H2'
+import RichText           from '../../Basic/RichText'
+import S3Image            from '../../Shop/S3Image'
+import {
+    businessCardImageStyle,
     businessLeftStyle,
     businessStyle,
     businessWrapperStyle
-}                    from '../../themes/business'
+}                         from '../../themes/business'
 
 
-const Business = ({pathname}) => {
-    const [business, setBusiness] = useState([])
-    const [error, setError] = useState(false)
-    const {name, description} = business
-    const currentSlug = pathname.split("/").pop()
-
-
-    const init = slug => {
-        getBusiness(slug).then(data => {
-            if (data.error) {
-                setError(data.error)
-                console.log(error)
-            } else {
-                setBusiness(data)
-            }
-        })
-    }
+const Business = () => {
+    const dispatch = useDispatch()
+    const {business} = useSelector(state => state.business)
+    const {_id, token} = useSelector(state => state.user)
+    const {slug} = useSelector(state => state.site)
+    const {name, description, photo} = business
 
     useEffect(() => {
-        init((currentSlug))
+        if (slug.length > 0)
+            dispatch({type: 'business/getBusiness', payload: {slug: slug}})
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, [slug])
+
 
     return (
-            <Div theme={businessWrapperStyle}>
-                <Div theme={businessLeftStyle}>
-                    <H2 theme={businessStyle.title}>{name}</H2>
-                    <ShowImage item={business} url="business"/>
-                </Div>
-                <Div>
-                    <RichText children={description}/>
-                </Div>
-
-
+        <Div theme={businessWrapperStyle}>
+            <Div theme={businessLeftStyle}>
+                <H2 theme={businessStyle.title}>{name}</H2>
+                <S3Image
+                    url={photo}
+                    alt={name}
+                    theme={businessCardImageStyle}
+                />
             </Div>
+            <Div>
+                <RichText children={description}/>
+            </Div>
+        </Div>
     )
 }
 
-const mapStateToProps = state => ({
-    pathname: state.router.location.pathname,
-})
-
-
-export default connect(mapStateToProps)(Business)
+export default Business

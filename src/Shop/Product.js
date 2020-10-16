@@ -16,8 +16,8 @@ import {
     relatedProductStyle
 }                           from '../themes/product'
 import {addItem}            from './cartHelpers'
-import ProductCard          from './ProductCard'
-import ShowImage            from './ShowImage'
+import ProductCard from './ProductCard'
+import S3Image     from './S3Image'
 
 const Product = ({pathname}) => {
     const [product, setProduct] = useState({})
@@ -66,7 +66,7 @@ const Product = ({pathname}) => {
                         <H2 theme={{...productCardStyle.title}}>
                             {product.name}
                         </H2>
-                        <ShowImage
+                        <S3Image
                             item={product}
                             url="product"
                             theme={{...productCardStyle.image}}

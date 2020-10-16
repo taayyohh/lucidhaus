@@ -24,7 +24,7 @@ const HeaderMenu = () => {
         <Div theme={headerMenu}>
             <Div theme={headerMenu.list}>
                 <StyledLink
-                    to="/businesses"
+                    to="/marketplace"
                     theme={{...headerMenu.listItem}}>
                     Businesses
                 </StyledLink>

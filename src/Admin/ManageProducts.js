@@ -9,7 +9,7 @@ import {
 }                           from '../api/apiAdmin'
 import {isAuthenticated}    from '../api/apiAuth'
 import Div                  from '../Basic/Div'
-import ShowImage            from '../Shop/ShowImage'
+import S3Image              from '../Shop/S3Image'
 import {manageProductStyle} from '../themes/admin'
 
 const ManageProducts = () => {
@@ -52,7 +52,7 @@ const ManageProducts = () => {
             {products.map((p, i) => (
                 <Div key={i}>
                     <Div theme={manageProductStyle.imageWrapper}>
-                        <ShowImage url="product" item={p}/>
+                        <S3Image url="product" item={p}/>
                     </Div>
                     <strong>{p.name}</strong>
                     <Link to={`/admin/product/update/${p._id}`}>

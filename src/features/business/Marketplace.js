@@ -1,11 +1,11 @@
-import React, {useEffect}    from 'react'
+import React, {useEffect}        from 'react'
 import {
     useDispatch,
     useSelector
-}                            from 'react-redux'
-import Div                   from '../../Basic/Div'
-import ShowImage             from '../../Shop/ShowImage'
-import {manageBusinessStyle} from '../../themes/admin'
+}                                from 'react-redux'
+import Div                       from '../../Basic/Div'
+import {marketplaceWrapperStyle} from '../../themes/business'
+import BusinessCard              from './BusinessCard'
 
 
 const Marketplace = () => {
@@ -20,14 +20,18 @@ const Marketplace = () => {
 
     return (
         <Div>
-            {marketplace && marketplace.map(business => (
-                <Div key={business.slug}>
-                    <Div theme={manageBusinessStyle.imageWrapper}>
-                        <ShowImage url={business.photo} alt={business.name} />
-                    </Div>
-                    <strong>{business.name}</strong>
-                </Div>
-            ))}
+
+            <Div theme={marketplaceWrapperStyle}>
+                {marketplace && marketplace.map(business => (
+                    <BusinessCard
+                        key={business.slug}
+                        slug={business.slug}
+                        name={business.name}
+                        photo={business.photo}
+                    />
+                ))}
+            </Div>
+
         </Div>
     )
 }

@@ -4,6 +4,7 @@ const initialState = {
     isInitialized: false,
     loading: false,
     path: '',
+    slug: '',
     layout: ''
 }
 
@@ -21,8 +22,9 @@ export const siteSlice = createSlice({
         setLayout: (state, action) => {
             state.layout = action.payload
         },
-        setPath: (state, action) => {
-            state.path = action.payload
+        setConfig: (state, action) => {
+            state.path = action.payload.path
+            state.slug = action.payload.slug
         }
     },
 })

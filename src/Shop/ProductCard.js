@@ -12,8 +12,8 @@ import {
     addItem,
     removeItem,
     updateItem
-}                           from './cartHelpers'
-import ShowImage            from './ShowImage'
+}              from './cartHelpers'
+import S3Image from './S3Image'
 
 
 const ProductCard = ({
@@ -110,7 +110,7 @@ const ProductCard = ({
                     {product.name}
                 </H2>
                 {shouldRedirect(redirect)}
-                <ShowImage
+                <S3Image
                     item={product}
                     url="product"
                     theme={{...productCardStyle.image, ...theme.image}}

@@ -8,10 +8,12 @@ import {
 }             from 'redux-saga/effects'
 import {
     addBusiness,
+    deleteBusiness,
+    getBusiness,
     getBusinesses,
     getSignedRequest,
     uploadFile
-}             from '../services/apiAdmin'
+} from '../services/apiAdmin'
 import {
     authenticate,
     getPurchaseHistory,
@@ -24,20 +26,13 @@ import {
 }             from '../services/apiUser'
 
 
-function* signIn(user) {
-    try {
-        const payload = yield call(signin, user.payload)
-        if (!payload.error) {
-            yield put({type: 'user/signInSuccess', payload})
-            yield put({type: 'user/authenticate', payload})
-            yield put(push(payload?.user?.role === 1 ? '/admin/dashboard' : '/user/dashboard'))
-        } else {
-            yield put({type: 'user/signInFailure', payload})
-        }
-    } catch (error) {
-        yield put({type: 'user/signInFailure', error})
-    }
-}
+/**
+ *
+ *
+ * @param ADMIN
+ *
+ *
+ */
 
 function* authenticateUser(payload) {
     yield call(authenticate, payload.payload)
@@ -52,6 +47,63 @@ function* isAuth() {
     } else {
         yield put({type: 'user/isAuthenticatedFailure', payload})
         yield put({type: 'site/initializeSuccess'})
+    }
+}
+
+function* createBusiness(business) {
+    const {_id, token, s3Path, values} = business.payload
+    const {name, description, key, image} = values
+
+    //add to formdata so api can read
+    const newBusiness = new FormData()
+    newBusiness.set('name', name)
+    newBusiness.set('description', description)
+    newBusiness.set('photo', s3Path + '/' + key)
+
+    const payload = yield call(getSignedRequest, {croppedImage: values.image, s3Path: s3Path})
+    if (!!payload.signedRequest) {
+        const uploadImage = yield call(uploadFile, {file: image, signedRequest: payload.signedRequest})
+        console.log('upload', uploadImage)
+
+        const created = yield call(addBusiness, {userId: _id, token: token, business: newBusiness})
+        console.log('created', created)
+        if (!created.error) {
+            yield put({type: 'admin/createBusinessesSuccess', payload})
+
+        } else {
+            yield put({type: 'admin/createBusinessesFailure', payload})
+
+        }
+
+    }
+}
+
+function* destroyBusiness(business) {
+    const destroyed = yield call(deleteBusiness, business.payload)
+    console.log('destroyed', destroyed)
+}
+
+
+/**
+ *
+ *
+ * @param USER
+ *
+ *
+ */
+
+function* signIn(user) {
+    try {
+        const payload = yield call(signin, user.payload)
+        if (!payload.error) {
+            yield put({type: 'user/signInSuccess', payload})
+            yield put({type: 'user/authenticate', payload})
+            yield put(push(payload?.user?.role === 1 ? '/admin/dashboard' : '/user/dashboard'))
+        } else {
+            yield put({type: 'user/signInFailure', payload})
+        }
+    } catch (error) {
+        yield put({type: 'user/signInFailure', error})
     }
 }
 
@@ -79,23 +131,6 @@ function* signUp(user) {
 
 }
 
-function* purchaseHistory(user) {
-    try {
-        const payload = yield call(getPurchaseHistory, user.payload)
-        if (!payload.error) {
-            yield put({type: 'user/getPurchaseSuccess', payload})
-        } else {
-            yield put({type: 'user/getPurchaseFailure', payload})
-        }
-    } catch (error) {
-        yield put({type: 'user/getPurchaseFailure', error})
-    }
-}
-
-function* loadConfig() {
-    yield put({type: 'user/isAuthenticated'})
-}
-
 function* updateProfile(user) {
     try {
         const {_id, token, updatedUser} = user.payload
@@ -114,6 +149,42 @@ function* updateProfile(user) {
     }
 }
 
+function* purchaseHistory(user) {
+    try {
+        const payload = yield call(getPurchaseHistory, user.payload)
+        if (!payload.error) {
+            yield put({type: 'user/getPurchaseSuccess', payload})
+        } else {
+            yield put({type: 'user/getPurchaseFailure', payload})
+        }
+    } catch (error) {
+        yield put({type: 'user/getPurchaseFailure', error})
+    }
+}
+
+
+/**
+ *
+ *
+ * @param SITE
+ *
+ *
+ */
+
+function* loadConfig() {
+    yield put({type: 'user/isAuthenticated'})
+}
+
+
+/**
+ *
+ *
+ * @param BUSINESS
+ *
+ *
+ */
+
+
 
 function* getMarketplace() {
     try {
@@ -128,47 +199,43 @@ function* getMarketplace() {
     }
 }
 
-function* createBusiness(business) {
-    const {_id, token, s3Path, values} = business.payload
-    const {name, description, key, image} = values
 
-    //add to formdata so api can read
-    const newBusiness = new FormData()
-    newBusiness.set('name', name)
-    newBusiness.set('description', description)
-    newBusiness.set('photo', s3Path + '/' + key)
-
-    const payload = yield call(getSignedRequest, {croppedImage: values.image, s3Path: s3Path})
-    if (!!payload.signedRequest) {
-        const uploadImage = yield call(uploadFile, {file: image, signedRequest: payload.signedRequest})
-        console.log('upload', uploadImage)
-
-        const created = yield call(addBusiness, {userId: _id, token: token, business: newBusiness})
-        console.log('created', created)
-        if(!created.error) {
-            yield put({type: 'admin/createBusinessesSuccess', payload})
-
+function* getBusinessDetail(business) {
+    try {
+        const payload =  yield call(getBusiness, business.payload)
+        if (!payload.error) {
+            yield put({type: 'business/getBusinessSuccess', payload})
         } else {
-            yield put({type: 'admin/createBusinessesFailure', payload})
-
+            yield put({type: 'business/getBusinessFailure', payload})
         }
-
+    } catch (error) {
+        yield put({type: 'business/getBusinessFailure'})
     }
-
-    //   getSignedRequest(_id, token, croppedImage, s3Path)
-
 }
 
 
-/******************************************************************************/
+/**
+ * ****************************************************************************/
 
 /******************************* WATCHERS *************************************/
 
-/******************************************************************************/
+/****************************************************************************
+ **/
 
+/**
+ *
+ *
+ * ADMIN WATCHERS
+ *
+ *
+ */
 
-function* watchSignIn() {
-    yield takeEvery('user/signIn', signIn)
+function* watchCreateBusiness() {
+    yield takeEvery('admin/createBusiness', createBusiness)
+}
+
+function* watchDestroyBusiness() {
+    yield takeEvery('admin/destroyBusiness', destroyBusiness)
 }
 
 function* watchAuthenticate() {
@@ -177,6 +244,19 @@ function* watchAuthenticate() {
 
 function* watchIsAuthenticated() {
     yield takeEvery('user/isAuthenticated', isAuth)
+}
+
+
+/**
+ *
+ *
+ * USER WATCHERS
+ *
+ *
+ */
+
+function* watchSignIn() {
+    yield takeEvery('user/signIn', signIn)
 }
 
 function* watchSignOut() {
@@ -191,6 +271,15 @@ function* watchUserHistory() {
     yield takeEvery('user/getPurchaseHistory', purchaseHistory)
 }
 
+
+/**
+ *
+ *
+ * SITE WATCHERS
+ *
+ *
+ */
+
 function* watchLoadConfig() {
     yield takeEvery('site/loadConfig', loadConfig)
 }
@@ -199,16 +288,25 @@ function* watchUpdateProfile() {
     yield takeEvery('user/updateProfile', updateProfile)
 }
 
+
+/**
+ *
+ *
+ * BUSINESS WATCHERS
+ *
+ *
+ */
+
 function* watchGetMarketplace() {
     yield takeEvery('business/getMarketplace', getMarketplace)
 }
 
-function* watchCreateBusiness() {
-    yield takeEvery('admin/createBusiness', createBusiness)
+function* watchGetBusinessDetail() {
+    yield takeEvery('business/getBusiness', getBusinessDetail)
 }
 
-// notice how we now only export the rootSaga
-// single entry point to start all Sagas at once
+
+//TODO: determine best method of combining rootSaga
 export default function* rootSaga() {
     yield all([
         fork(watchLoadConfig),
@@ -220,6 +318,8 @@ export default function* rootSaga() {
         fork(watchUserHistory),
         fork(watchUpdateProfile),
         fork(watchGetMarketplace),
-        fork(watchCreateBusiness)
+        fork(watchCreateBusiness),
+        fork(watchDestroyBusiness),
+        fork(watchGetBusinessDetail)
     ])
 }

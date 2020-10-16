@@ -10,6 +10,7 @@ export const colorPalette = {
     red: '#8C141E',
     black: '#0A1626',
     gray: '#b5b5b5',
+    lightGray: '#e9e8e8',
     tan: '#D9D7BA',
     orange: '#BF622C',
     brown: '#73462C',
@@ -36,7 +37,8 @@ export const globals = {
         menuPanelCloseButtonBackgroundColor: colorPalette.orange,
         transitionOverlayBackground: colorPalette.tan,
         buttonHoverColor: colorPalette.salmon,
-        borderHoverColor: colorPalette.orange
+        borderHoverColor: colorPalette.orange,
+        borderColor: colorPalette.lightGray
     },
     extensions: [
         '.png',

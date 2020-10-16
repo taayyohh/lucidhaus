@@ -2,8 +2,14 @@ import {API} from '../config'
 
 
 /**
+ *
+ *
+ *
  s3
- */
+ *
+ *
+ *
+ **/
 export const uploadFile = request => {
     const {file, signedRequest} = request
 
@@ -12,8 +18,8 @@ export const uploadFile = request => {
         body: file
     }).then(response => {
         return response.json()
-    }).catch(error => {
-        return error
+    }).catch(erroror => {
+        return erroror
     })
 }
 
@@ -25,29 +31,25 @@ export const getSignedRequest = request => {
         method: 'GET',
     }).then(response => {
         return response.json()
-    }).catch(error => {
-        return error
+    }).catch(erroror => {
+        return erroror
     })
 }
 
-
-// export const getSignedRequest = request => {
-//     const croppedImage = request.croppedImage
-//     const s3Path = request.s3Path
-//
-//     return
-// fetch(`${API}/sign-s3?file-name=${encodeURIComponent(croppedImage.name)}&file-type=${croppedImage.type}&directory=${s3Path}`,
-// { method: 'GET', }).then(response => { console.log('response', response) return response.json() }).then(response =>
-// { uploadFile(croppedImage, response.signedRequest, response.url) }).catch(error => { return error }) }
-
-
 /**
+ *
+ *
+ *
  * to perform crud on category
  * get all categories
  * get a single category
  * update single category
  * delete single category
- */
+ *
+ *
+ *
+ **/
+
 export const createCategory = (userId, token, category) => {
     return fetch(`${API}/category/create/${userId}`, {
         method: 'POST',
@@ -60,8 +62,8 @@ export const createCategory = (userId, token, category) => {
     }).then(response => {
         console.log(response)
         return response.json()
-    }).catch(err => {
-        console.log(err)
+    }).catch(error => {
+        console.log(error)
     })
 }
 
@@ -79,7 +81,7 @@ export const updateCategory = (categoryId, userId, token, category) => {
         .then(response => {
             return response.json()
         })
-        .catch(err => console.log(err))
+        .catch(error => console.log(error))
 }
 
 export const getCategories = () => {
@@ -88,8 +90,8 @@ export const getCategories = () => {
     })
         .then(response => {
             return response.json()
-        }).catch(err => {
-            console.log(err)
+        }).catch(error => {
+            console.log(error)
         })
 }
 
@@ -100,7 +102,7 @@ export const getCategory = categoryId => {
         .then(response => {
             return response.json()
         })
-        .catch(err => console.log(err))
+        .catch(error => console.log(error))
 }
 
 
@@ -122,8 +124,8 @@ export const createProduct = (userId, token, product) => {
     }).then(response => {
         console.log(response)
         return response.json()
-    }).catch(err => {
-        console.log(err)
+    }).catch(error => {
+        console.log(error)
     })
 }
 
@@ -134,7 +136,7 @@ export const getProducts = () => {
         .then(response => {
             return response.json()
         })
-        .catch(err => console.log(err))
+        .catch(error => console.log(error))
 }
 
 export const deleteProduct = (productId, userId, token) => {
@@ -149,7 +151,7 @@ export const deleteProduct = (productId, userId, token) => {
         .then(response => {
             return response.json()
         })
-        .catch(err => console.log(err))
+        .catch(error => console.log(error))
 }
 
 export const getProduct = productId => {
@@ -159,7 +161,7 @@ export const getProduct = productId => {
         .then(response => {
             return response.json()
         })
-        .catch(err => console.log(err))
+        .catch(error => console.log(error))
 }
 
 export const updateProduct = (productId, userId, token, product) => {
@@ -174,7 +176,7 @@ export const updateProduct = (productId, userId, token, product) => {
         .then(response => {
             return response.json()
         })
-        .catch(err => console.log(err))
+        .catch(error => console.log(error))
 }
 
 
@@ -196,10 +198,9 @@ export const addBusiness = request => {
         },
         body: business
     }).then(response => {
-        console.log('responnseee', response)
         return response.json()
-    }).catch(err => {
-        console.log(err)
+    }).catch(error => {
+        console.log(error)
     })
 }
 
@@ -210,11 +211,12 @@ export const getBusinesses = () => {
         .then(response => {
             return response.json()
         })
-        .catch(err => console.log(err))
+        .catch(error => console.log(error))
 }
 
-export const deleteBusiness = (businessId, userId, token) => {
-    return fetch(`${API}/business/${businessId}/${userId}`, {
+export const deleteBusiness = ({_id, token, slug}) => {
+
+    return fetch(`${API}/business/${slug}/${_id}`, {
         method: 'DELETE',
         headers: {
             Accept: 'application/json',
@@ -225,17 +227,17 @@ export const deleteBusiness = (businessId, userId, token) => {
         .then(response => {
             return response.json()
         })
-        .catch(err => console.log(err))
+        .catch(error => console.log(error))
 }
 
-export const getBusiness = slug => {
+export const getBusiness = ({slug}) => {
     return fetch(`${API}/business/${slug}`, {
         method: 'GET'
     })
         .then(response => {
             return response.json()
         })
-        .catch(err => console.log(err))
+        .catch(error => console.log(error))
 }
 
 export const updateBusiness = (slug, userId, token, business) => {
@@ -250,7 +252,7 @@ export const updateBusiness = (slug, userId, token, business) => {
         .then(response => {
             return response.json()
         })
-        .catch(err => console.log(err))
+        .catch(error => console.log(error))
 }
 
 
@@ -269,8 +271,8 @@ export const listOrders = (userId, token) => {
         .then(response => {
             console.log(response)
             return response.json()
-        }).catch(err => {
-            console.log(err)
+        }).catch(error => {
+            console.log(error)
         })
 }
 
@@ -285,8 +287,8 @@ export const getStatusValues = (userId, token) => {
         .then(response => {
             console.log(response)
             return response.json()
-        }).catch(err => {
-            console.log(err)
+        }).catch(error => {
+            console.log(error)
         })
 }
 
@@ -303,7 +305,7 @@ export const updateOrderStatus = (userId, token, orderId, status) => {
         .then(response => {
             console.log(response)
             return response.json()
-        }).catch(err => {
-            console.log(err)
+        }).catch(error => {
+            console.log(error)
         })
 }
