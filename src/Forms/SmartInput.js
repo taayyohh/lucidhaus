@@ -1,13 +1,17 @@
 import React, {useEffect, useRef, useState} from 'react'
-import Legend from "../Basic/Legend";
-import InputLabel from "../Basic/InputLabel";
-import Input      from "../Basic/Input";
-import Fieldset   from "../Basic/Fieldset";
-import useMeasure from "../utils/useMeasure";
-import {globals} from "../variables/styles";
-import {defaultFocusedInputLabelStyle} from "../themes/forms";
+import Legend                               from "../Basic/Legend";
+import InputLabel                           from "../Basic/InputLabel";
+import Input                                from "../Basic/Input";
+import Fieldset                             from "../Basic/Fieldset";
+import Span                                 from '../Basic/Span'
+import useMeasure                           from "../utils/useMeasure";
+import {globals}                            from "../variables/styles";
+import {
+    defaultFieldErrorStyle,
+    defaultFocusedInputLabelStyle
+} from '../themes/forms'
 
-const SmartInput = ({inputLabel, value, type, theme, id,  onChange}) => {
+const SmartInput = ({inputLabel, type, theme, id, className, errorMessage, onChange, value}) => {
     const legendRef = useRef()
     const inputLabelRef = useRef()
     const inputLabelWidth = useMeasure(inputLabelRef).width * globals.style.inputLabelShrinkRatio
@@ -35,7 +39,7 @@ const SmartInput = ({inputLabel, value, type, theme, id,  onChange}) => {
     }
 
     return (
-        <Fieldset theme={theme}>
+        <Fieldset theme={theme} className={className}>
             <Legend
                 theme={{
                     ...theme.legend,
@@ -61,6 +65,7 @@ const SmartInput = ({inputLabel, value, type, theme, id,  onChange}) => {
                 value={value}
                 theme={theme.field}
             />
+            <Span theme={defaultFieldErrorStyle}>{errorMessage}</Span>
         </Fieldset>
     )
 }

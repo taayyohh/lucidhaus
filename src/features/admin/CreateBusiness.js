@@ -17,7 +17,7 @@ import {postContentStyle}    from '../../themes/layout'
 import {signInFormStyle}     from '../../themes/signup'
 import {businessFieldTypes}  from '../../variables/fieldTypes'
 
-const AddBusiness = () => {
+const CreateBusiness = () => {
     const dispatch = useDispatch()
     const {_id, token} = useSelector(state => state.user)
     const s3Path = 'business-profile'
@@ -77,4 +77,4 @@ const AddBusiness = () => {
     )
 }
 
-export default AddBusiness
+export default CreateBusiness

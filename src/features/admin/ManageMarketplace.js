@@ -1,32 +1,22 @@
-import {AnimatePresence}         from 'framer-motion'
-import React, {useEffect}        from 'react'
-import {Portal}                  from 'react-portal'
+import {AnimatePresence} from 'framer-motion'
+import React, {useEffect} from 'react'
+import {Portal} from 'react-portal'
 import {
     useDispatch,
     useSelector
-}                                from 'react-redux'
-import Div                       from '../../Basic/Div'
-import H2                        from '../../Basic/H2'
-import MotionDiv                 from '../../Basic/MotionDiv'
-import Span                      from '../../Basic/Span'
-import StyledLink                from '../../Basic/StyledLink'
+} from 'react-redux'
+import Div from '../../Basic/Div'
+import MotionDiv from '../../Basic/MotionDiv'
 import {
-    adminBusinessCardStyle,
-    adminBusinessCardWrapperStyle,
-    adminControlPanelInnerStyle,
-    adminControlPanelStyle,
-    adminCreateButtonStyle,
-    adminHeadingStyle,
-    adminMarketplaceInnerWrapperStyle,
     adminMarketplaceWrapperStyle,
     genericButtonStyle
-}                                from '../../themes/admin'
+} from '../../themes/admin'
 import {
     defaultModalStyle,
     postContentStyle
-}                                from '../../themes/layout'
-import BusinessCard              from '../business/BusinessCard'
-import BusinessCardAdminControls from '../business/BusinessCardAdminControls'
+} from '../../themes/layout'
+import AdminControls from './AdminControls'
+import AdminMarketplace from './AdminMarketplace'
 
 const ManageMarketplace = () => {
     const {slug} = useSelector(state => state.site)
@@ -45,33 +35,12 @@ const ManageMarketplace = () => {
     return (
         <Div theme={postContentStyle(slug)}>
             <Div theme={adminMarketplaceWrapperStyle}>
-                <Div theme={adminControlPanelStyle}>
-                    <Div theme={adminControlPanelInnerStyle}>
-                        <H2 theme={adminHeadingStyle}>Manage Businesses</H2>
-                        <StyledLink theme={adminCreateButtonStyle} to="/create/business">
-                            Create Business
-                        </StyledLink>
-                        <Span>Total: {marketplace.length}</Span>
-                    </Div>
-
-
-                </Div>
-                <Div theme={adminMarketplaceInnerWrapperStyle}>
-                    {marketplace && marketplace.map(business => (
-                        <Div
-                            key={business.slug}
-                            theme={adminBusinessCardWrapperStyle}
-                        >
-                            <BusinessCard
-                                slug={business.slug}
-                                name={business.name}
-                                photo={business.photo}
-                                theme={adminBusinessCardStyle}
-                            />
-                            <BusinessCardAdminControls slug={business.slug} />
-                        </Div>
-                    ))}
-                </Div>
+                <AdminControls
+                    data={marketplace}
+                    title={'Manage Business'}
+                    create={'/create/business'}
+                />
+                <AdminMarketplace marketplace={marketplace}/>
             </Div>
             {shouldDelete && (
                 <Portal node={document && document.getElementById('modal')}>
@@ -100,7 +69,10 @@ const ManageMarketplace = () => {
                                     <Div>Clicking this button will permanently delete this business</Div>
                                     <Div
                                         theme={genericButtonStyle}
-                                        onClick={() => dispatch({type: 'admin/destroyBusiness',  payload: {_id: _id, token: token, slug: slug}})}
+                                        onClick={() => dispatch({
+                                            type: 'admin/destroyBusiness',
+                                            payload: {_id: _id, token: token, slug: slug}
+                                        })}
                                     >
                                         Delete
                                     </Div>

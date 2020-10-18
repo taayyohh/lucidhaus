@@ -12,10 +12,11 @@ import {history}            from '../../redux/store'
 import {genericButtonStyle} from '../../themes/elements'
 import {signUpFormStyle}    from '../../themes/signup'
 import {signUpFieldTypes}   from '../../variables/fieldTypes'
+import {validateSignup}     from '../../variables/fieldValidation'
 
 const SignUp = () => {
     const dispatch = useDispatch()
-    const {error, redirectToReferrer} = useSelector(state => state.user)
+    const {redirectToReferrer} = useSelector(state => state.user)
 
     useEffect(() => {
         if (redirectToReferrer)
@@ -24,10 +25,10 @@ const SignUp = () => {
     }, [redirectToReferrer])
 
     return (
-        /// TODO: use Formik to validate and error check, remove that logic from express
         <Formik
             initialValues={{name: '', email: '', password: ''}}
             onSubmit={values => dispatch({type: 'user/signUp', payload: values})}
+            validationSchema={validateSignup}
         >
             {formik => (
                 <Div as="form" theme={signUpFormStyle} onSubmit={formik.handleSubmit}>
@@ -40,17 +41,14 @@ const SignUp = () => {
                             inputLabel={f.inputLabel}
                             type={f.type}
                             theme={signUpFormStyle.fieldset}
+                            className={formik.touched[f.name] && formik.errors[f.name] ? 'error' : ''}
+                            errorMessage={formik.touched[f.name] && formik.errors[f.name] ? formik.errors[f.name] : null}
                         />
                     )}
                     <SubmitButton
                         theme={{...genericButtonStyle, ...signUpFormStyle.button}}
                         children={'Submit'}
                     />
-                    {error && (
-                        <Div theme={signUpFormStyle.error}>
-                            {error}
-                        </Div>
-                    )}
                 </Div>
             )}
         </Formik>

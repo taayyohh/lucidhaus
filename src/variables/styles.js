@@ -7,6 +7,7 @@ export const breakpointUpperLimit = {
 }
 
 export const colorPalette = {
+    brightRed: '#d11',
     red: '#8C141E',
     black: '#0A1626',
     gray: '#b5b5b5',
@@ -39,7 +40,8 @@ export const globals = {
         transitionOverlayBackground: colorPalette.tan,
         buttonHoverColor: colorPalette.salmon,
         borderHoverColor: colorPalette.orange,
-        borderColor: colorPalette.lightGray
+        borderColor: colorPalette.lightGray,
+        errorColor: colorPalette.brightRed
     },
     extensions: [
         '.png',

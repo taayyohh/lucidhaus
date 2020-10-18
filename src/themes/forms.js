@@ -13,8 +13,9 @@ import {
     none,
     relative,
     sv,
-    transparent
-} from '../utils/themer'
+    transparent,
+    uppercase
+}                from '../utils/themer'
 import {globals} from '../variables/styles'
 
 
@@ -34,7 +35,11 @@ export const defaultFieldsetStyle = {
     padding: 0,
     margin: 0,
     transition: 'padding-left 300ms cubic-bezier(0.0, 0, 0.3, 1) 0ms, ' +
-        'border-width 300ms cubic-bezier(0.0, 0, 0.3, 1) 0ms'
+        'border 300ms cubic-bezier(0.0, 0, 0.3, 1) 0ms',
+    class: {
+        name: 'error',
+        borderColor: globals.colors.errorColor
+    }
 }
 
 export const defaultInputStyle = {
@@ -115,6 +120,15 @@ export const defaultLegendStyle = {
     width: 0,
     margin: 0,
     transition: 'width 300ms cubic-bezier(0.0, 0, 0.3, 1) 0ms',
+}
+
+export const defaultFieldErrorStyle = {
+    position: absolute,
+    right: [10, globals.style.layoutScalingValue, 10],
+    top: [5, globals.style.layoutScalingValue, 5],
+    textTransform: uppercase,
+    size: [10, .7, 10],
+    color: globals.colors.errorColor
 }
 
 export const defaultCKEditorStyle = {

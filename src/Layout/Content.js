@@ -21,7 +21,7 @@ import MotionDiv              from '../Basic/MotionDiv'
 import Business               from '../features/business/Business'
 import Marketplace            from '../features/business/Marketplace'
 import {TransitionAnimations} from '../Containers/TransitionController'
-import AddBusiness            from '../features/admin/AddBusiness'
+import CreateBusiness         from '../features/admin/CreateBusiness'
 import ManageMarketplace      from '../features/admin/ManageMarketplace'
 import NotFound               from '../features/site/NotFound'
 import AdminDashboard         from '../features/user/AdminDashboard'
@@ -66,7 +66,7 @@ const Content = () => {
                     <AdminRoute path="/admin/orders" exact component={Orders}/>
                     <AdminRoute path="/create/category" exact component={AddCategory}/>
                     <AdminRoute path="/create/product" exact component={AddProduct}/>
-                    <AdminRoute path="/create/business" exact component={AddBusiness}/>
+                    <AdminRoute path="/create/business" exact component={CreateBusiness}/>
                     <Route component={NotFound} />
                 </Switch>
             </MotionDiv>

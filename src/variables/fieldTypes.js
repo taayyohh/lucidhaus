@@ -2,6 +2,7 @@ export const signInFieldTypes = [
     {
         name: 'email',
         inputLabel: 'Email',
+        type: 'email'
     },
     {
         name: 'password',
@@ -13,11 +14,13 @@ export const signInFieldTypes = [
 export const signUpFieldTypes = [
     {
         inputLabel: 'Name',
-        name: 'name'
+        name: 'name',
+        type: 'text'
     },
     {
         inputLabel: 'Email',
-        name: 'email'
+        name: 'email',
+        type: 'email'
     },
     {
         inputLabel: 'Password',

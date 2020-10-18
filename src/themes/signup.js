@@ -33,11 +33,10 @@ export const signUpFormStyle = {
     },
     button: {
         padding: '20px 60px',
-        background: '#139080',
-        transition: 'background 500ms ease',
+        transition: 'background 250ms ease',
         size: [16, .7, 16],
         hover: {
-            background: '#54cebe'
+            background: globals.colors.buttonHoverColor
         }
     },
     error: {
