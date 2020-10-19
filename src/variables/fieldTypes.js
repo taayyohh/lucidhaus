@@ -1,3 +1,10 @@
+/**
+ *
+ * Array used in FieldSwitch
+ *
+ *
+ */
+
 export const signInFieldTypes = [
     {
         name: 'email',
@@ -38,7 +45,19 @@ export const userFieldTypes = [
 
 export const businessFieldTypes = [
     {
+        name: 'key',
+        type: 'singleImageUpload',
+        cropWidth: 500,
+        cropHeight: 500
+    },
+    {
         inputLabel: 'Name',
-        name: 'name'
+        name: 'name',
+        type: 'text'
+    },
+    {
+        inputLabel: 'Business Description',
+        name: 'description',
+        type: 'richText'
     },
 ]

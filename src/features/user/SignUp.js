@@ -7,9 +7,10 @@ import {
 import Div                  from '../../Basic/Div'
 import H3                   from '../../Basic/H3'
 import SubmitButton         from '../../Basic/SubmitButton'
-import SmartInput           from '../../Forms/SmartInput'
+import FieldSwitch          from '../../Forms/FieldSwitch'
 import {history}            from '../../redux/store'
 import {genericButtonStyle} from '../../themes/elements'
+import {postContentStyle}   from '../../themes/layout'
 import {signUpFormStyle}    from '../../themes/signup'
 import {signUpFieldTypes}   from '../../variables/fieldTypes'
 import {validateSignup}     from '../../variables/fieldValidation'
@@ -25,33 +26,30 @@ const SignUp = () => {
     }, [redirectToReferrer])
 
     return (
-        <Formik
-            initialValues={{name: '', email: '', password: ''}}
-            onSubmit={values => dispatch({type: 'user/signUp', payload: values})}
-            validationSchema={validateSignup}
-        >
-            {formik => (
-                <Div as="form" theme={signUpFormStyle} onSubmit={formik.handleSubmit}>
-                    <H3 theme={signUpFormStyle.heading}>Sign Up</H3>
-                    {signUpFieldTypes.map(f =>
-                        <SmartInput
-                            {...formik.getFieldProps(f.name)}
-                            id={f.name}
-                            key={f.name}
-                            inputLabel={f.inputLabel}
-                            type={f.type}
-                            theme={signUpFormStyle.fieldset}
-                            className={formik.touched[f.name] && formik.errors[f.name] ? 'error' : ''}
-                            errorMessage={formik.touched[f.name] && formik.errors[f.name] ? formik.errors[f.name] : null}
+        <Div theme={postContentStyle()}>
+            <Formik
+                initialValues={{name: '', email: '', password: ''}}
+                onSubmit={values => dispatch({type: 'user/signUp', payload: values})}
+                validationSchema={validateSignup}
+            >
+                {formik => (
+                    <Div as="form" theme={signUpFormStyle} onSubmit={formik.handleSubmit}>
+                        <H3 theme={signUpFormStyle.heading}>Sign Up</H3>
+                        {signUpFieldTypes.map((f, i) =>
+                            <FieldSwitch
+                                key={i}
+                                formik={formik}
+                                field={f}
+                            />
+                        )}
+                        <SubmitButton
+                            theme={{...genericButtonStyle, ...signUpFormStyle.button}}
+                            children={'Submit'}
                         />
-                    )}
-                    <SubmitButton
-                        theme={{...genericButtonStyle, ...signUpFormStyle.button}}
-                        children={'Submit'}
-                    />
-                </Div>
-            )}
-        </Formik>
+                    </Div>
+                )}
+            </Formik>
+        </Div>
     )
 }
 

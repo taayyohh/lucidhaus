@@ -20,9 +20,9 @@ const SmartInput = ({inputLabel, type, theme, id, className, errorMessage, onCha
     const [legendWidth, setLegendWidth] = useState(0)
 
     useEffect(() => {
-        setHasValue(value.length > 0)
-        setIsInputLabelFocused(value.length > 0)
-        setLegendWidth(value.length < 1 ? 0 : inputLabelWidth)
+        setHasValue(value?.length > 0)
+        setIsInputLabelFocused(value?.length > 0)
+        setLegendWidth(value?.length < 1 ? 0 : inputLabelWidth)
 
     }, [setHasValue, setIsInputLabelFocused, inputLabelWidth, value])
 
@@ -62,7 +62,7 @@ const SmartInput = ({inputLabel, type, theme, id, className, errorMessage, onCha
                 onFocus={handleFocus}
                 onBlur={handleBlur}
                 type={type || "text"}
-                value={value}
+                value={value || ''}
                 theme={theme.field}
             />
             <Span theme={defaultFieldErrorStyle}>{errorMessage}</Span>

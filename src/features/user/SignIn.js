@@ -10,6 +10,7 @@ import SubmitButton         from '../../Basic/SubmitButton'
 import FieldSwitch          from '../../Forms/FieldSwitch'
 import {history}            from '../../redux/store'
 import {genericButtonStyle} from '../../themes/elements'
+import {postContentStyle}   from '../../themes/layout'
 import {
     signInFormStyle,
     signUpFormStyle
@@ -31,31 +32,30 @@ const SignIn = () => {
 
 
     return (
-        <Formik
-            initialValues={{email: '', password: ''}}
-            validationSchema={validateSignin}
-            onSubmit={values => dispatch({type: 'user/signIn', payload: values})}
-        >
-            {formik => (
-                <Div as="form" theme={signInFormStyle} onSubmit={formik.handleSubmit}>
-                    <H3 theme={signInFormStyle.heading}>Sign In</H3>
-                    {signInFieldTypes.map(f =>
-                        <>
-                            {console.log('f', f)}
+        <Div theme={postContentStyle()}>
+            <Formik
+                initialValues={{email: '', password: ''}}
+                validationSchema={validateSignin}
+                onSubmit={values => dispatch({type: 'user/signIn', payload: values})}
+            >
+                {formik => (
+                    <Div as="form" theme={signInFormStyle} onSubmit={formik.handleSubmit}>
+                        <H3 theme={signInFormStyle.heading}>Sign In</H3>
+                        {signInFieldTypes.map((f, i) =>
                             <FieldSwitch
+                                key={i}
                                 formik={formik}
-                                fieldType={f}
+                                field={f}
                             />
-                        </>
-                    )}
-
-                    <SubmitButton
-                        theme={{...genericButtonStyle, ...signUpFormStyle.button}}
-                        children={'Submit'}
-                    />
-                </Div>
-            )}
-        </Formik>
+                        )}
+                        <SubmitButton
+                            theme={{...genericButtonStyle, ...signUpFormStyle.button}}
+                            children={'Submit'}
+                        />
+                    </Div>
+                )}
+            </Formik>
+        </Div>
     )
 }
 

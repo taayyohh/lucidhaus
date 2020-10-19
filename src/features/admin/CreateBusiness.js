@@ -8,19 +8,17 @@ import {
 import Div                   from '../../Basic/Div'
 import Form                  from '../../Basic/Form'
 import H2                    from '../../Basic/H2'
-import RichTextEditor        from '../../Forms/RichTextEditor'
-import SmartFileInput        from '../../Forms/SmartFileInput'
-import SmartInput            from '../../Forms/SmartInput'
+import FieldSwitch           from '../../Forms/FieldSwitch'
 import {genericButtonStyle}  from '../../themes/elements'
 import {defaultNewFormStyle} from '../../themes/forms'
 import {postContentStyle}    from '../../themes/layout'
-import {signInFormStyle}     from '../../themes/signup'
 import {businessFieldTypes}  from '../../variables/fieldTypes'
+import {businessUploadPath}  from '../../variables/s3'
 
 const CreateBusiness = () => {
     const dispatch = useDispatch()
     const {_id, token} = useSelector(state => state.user)
-    const s3Path = 'business-profile'
+    const s3Path = businessUploadPath
 
 
     return (
@@ -33,36 +31,16 @@ const CreateBusiness = () => {
                 })}
             >
                 {formik => (
-                    <Form onSubmit={formik.handleSubmit} theme={defaultNewFormStyle}>
+                    <Form onSubmit={formik.handleSubmit}>
                         <H2 theme={defaultNewFormStyle.heading}>Create Business</H2>
                         <Div theme={defaultNewFormStyle.inner}>
-
-                            {/* TODO: integrate all form types into switch based on fieldTypes type property */}
-
-                            <SmartFileInput
-                                formik={formik}
-                                id={'key'}
-                                cropWidth={500}
-                                cropHeight={500}
-                            />
-
-                            {businessFieldTypes.map(f =>
-                                <SmartInput
-                                    {...formik.getFieldProps(f.name)}
-                                    id={f.name}
-                                    key={f.name}
-                                    inputLabel={f.inputLabel}
-                                    theme={signInFormStyle.fieldset}
+                            {businessFieldTypes.map((f, i) =>
+                                <FieldSwitch
+                                    key={i}
+                                    formik={formik}
+                                    field={f}
                                 />
                             )}
-
-
-                            <RichTextEditor
-                                formik={formik}
-                                name={'description'}
-                                label={'Business Description'}
-                            />
-
                             <Div
                                 as="button"
                                 theme={{...genericButtonStyle}}

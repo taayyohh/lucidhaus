@@ -6,8 +6,6 @@
 import {
     absolute,
     borderBox,
-    column,
-    flex,
     inherit,
     inlineBlock,
     none,
@@ -162,36 +160,6 @@ export const defaultNewFormStyle = {
         size: [38, .7, 38],
         marginBottom: [20, .7, 20]
 
-    },
-    inner: {
-        display: flex,
-        flexDirection: column,
-    },
-    innerLeft: {
-        width: [400, .7, '100%']
-    },
-    innerRight: {
-        width: [830, .7, '100%']
-    },
-    topSectionFieldWrapper: {
-        flexGrow: 1
-    },
-    imageSection: {
-        display: flex,
-        marginBottom: 40,
-        width: [300, .7, '100%'],
-        child: [
-            {
-                selector: '> div',
-                flexGrow: 1
-            }
-        ]
-    },
-    cropImage: {
-        width: '100%'
-    },
-    button: {
-        width: '100%'
     }
 }
 

@@ -1,23 +1,37 @@
 import React             from 'react'
 import SmartInput        from '../Forms/SmartInput'
 import {signInFormStyle} from '../themes/signup'
+import RichTextEditor    from './RichTextEditor'
+import SmartFileInput    from './SmartFileInput'
 
-const FieldSwitch = ({fieldType, formik}) => {
-
+const FieldSwitch = ({field, formik}) => {
     const getField = () => {
-        switch (fieldType.type) {
+        switch (field.type) {
             case 'text':
             case 'password':
             case 'email':
                 return <SmartInput
-                    {...formik.getFieldProps(fieldType.name)}
-                    id={fieldType.name}
-                    key={fieldType.name}
-                    inputLabel={fieldType.inputLabel}
-                    type={fieldType.type}
+                    {...formik.getFieldProps(field.name)}
+                    id={field.name}
+                    key={field.name}
+                    inputLabel={field.inputLabel}
+                    type={field.type}
                     theme={signInFormStyle.fieldset}
-                    className={formik.touched[fieldType.name] && formik.errors[fieldType.name] ? 'error' : ''}
-                    errorMessage={formik.touched[fieldType.name] && formik.errors[fieldType.name] ? formik.errors[fieldType.name] : null}
+                    className={formik.touched[field.name] && formik.errors[field.name] ? 'error' : ''}
+                    errorMessage={formik.touched[field.name] && formik.errors[field.name] ? formik.errors[field.name] : null}
+                />
+            case 'richText':
+                return <RichTextEditor
+                    formik={formik}
+                    name={field.name}
+                    label={field.inputLabel}
+                />
+            case 'singleImageUpload':
+                return <SmartFileInput
+                    formik={formik}
+                    id={field.name}
+                    cropWidth={field.cropWidth}
+                    cropHeight={field.cropHeight}
                 />
             default:
                 return null

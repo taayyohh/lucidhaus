@@ -1,21 +1,23 @@
-import moment     from 'moment'
+import moment                   from 'moment'
 import React, {
     useEffect,
     useState
-}                 from 'react'
-import Dropzone   from 'react-dropzone'
+}                               from 'react'
+import Dropzone                 from 'react-dropzone'
 import 'react-image-crop/dist/ReactCrop.css'
-import Div        from '../Basic/Div'
-import Img        from '../Basic/Img'
-import CropPortal from '../Elements/CropPortal'
+import Div                      from '../Basic/Div'
+import Img                      from '../Basic/Img'
+import CropPortal               from '../Elements/CropPortal'
+import S3Image                  from '../Shop/S3Image'
+import {businessCardImageStyle} from '../themes/business'
 import {
     imageDropZonePreviewStyle,
     imageDropZonePreviewWrapperStyle,
     imageDropZoneStyle,
     imageDropZoneWrapperStyle
-}                 from '../themes/elements'
-import {slugify}  from '../utils/slugify'
-import {globals}  from '../variables/styles'
+}                               from '../themes/elements'
+import {slugify}                from '../utils/slugify'
+import {globals}                from '../variables/styles'
 
 const SmartFileInput = ({formik, id, cropWidth, cropHeight}) => {
     const [cropPortalOpen, setCropPortalOpen] = useState(false)
@@ -28,6 +30,8 @@ const SmartFileInput = ({formik, id, cropWidth, cropHeight}) => {
     const [croppedImage, setCroppedImage] = useState()
 
     const [previewBlob, setPreviewBlob] = useState('')
+
+    const {key} = formik.values
 
 
     const makeClientCrop = async (crop, percentageCrop) => {
@@ -120,6 +124,13 @@ const SmartFileInput = ({formik, id, cropWidth, cropHeight}) => {
                         alt="Crop preview"
                         src={previewBlob}
                         theme={imageDropZonePreviewStyle}
+                    />
+                )}
+                {key && (
+                    <S3Image
+                        url={key}
+                        alt={'Business Image Preview'}
+                        theme={businessCardImageStyle}
                     />
                 )}
             </Div>

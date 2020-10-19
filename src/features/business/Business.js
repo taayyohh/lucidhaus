@@ -19,7 +19,6 @@ import {postContentStyle} from '../../themes/layout'
 const Business = () => {
     const dispatch = useDispatch()
     const {business} = useSelector(state => state.business)
-    const {_id, token} = useSelector(state => state.user)
     const {slug} = useSelector(state => state.site)
     const {name, description, photo} = business
 

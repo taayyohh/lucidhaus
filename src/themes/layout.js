@@ -1,4 +1,3 @@
-import {useSelector}   from 'react-redux'
 import {isMarketplace} from '../utils/flags'
 import {
     black,
@@ -12,11 +11,11 @@ import {
     sv,
     white,
     wrap
-} from '../utils/themer'
+}                      from '../utils/themer'
 import {
     genericMobileContainerStyles,
     globals
-} from '../variables/styles'
+}                      from '../variables/styles'
 
 const contentRow = 2
 
@@ -203,7 +202,7 @@ export const postContentStyle = slug => {
         width: [globals.style.contentWidth, globals.style.layoutScalingValue, '100%']
     }
 
-    if(isMarketplace(slug))
+    if (isMarketplace(slug))
         return {
             ...baseStyle,
             width: [globals.style.siteInnerWidth, globals.style.layoutScalingValue, '100%']
