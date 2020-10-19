@@ -1,9 +1,12 @@
+import {businessUploadPath} from './s3'
+
 /**
  *
  * Array used in FieldSwitch
  *
  *
  */
+const s3Path = businessUploadPath
 
 export const signInFieldTypes = [
     {
@@ -48,7 +51,8 @@ export const businessFieldTypes = [
         name: 'key',
         type: 'singleImageUpload',
         cropWidth: 500,
-        cropHeight: 500
+        cropHeight: 500,
+        s3Path: businessUploadPath
     },
     {
         inputLabel: 'Name',

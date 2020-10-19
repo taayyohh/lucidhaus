@@ -1,22 +1,22 @@
-import {AnimatePresence} from 'framer-motion'
+import {AnimatePresence}  from 'framer-motion'
 import React, {useEffect} from 'react'
-import {Portal} from 'react-portal'
+import {Portal}           from 'react-portal'
 import {
     useDispatch,
     useSelector
-} from 'react-redux'
-import Div from '../../Basic/Div'
-import MotionDiv from '../../Basic/MotionDiv'
+}                         from 'react-redux'
+import Div                from '../../Basic/Div'
+import MotionDiv          from '../../Basic/MotionDiv'
 import {
     adminMarketplaceWrapperStyle,
     genericButtonStyle
-} from '../../themes/admin'
+}                         from '../../themes/admin'
 import {
     defaultModalStyle,
     postContentStyle
-} from '../../themes/layout'
-import AdminControls from './AdminControls'
-import AdminMarketplace from './AdminMarketplace'
+}                         from '../../themes/layout'
+import AdminControls      from './AdminControls'
+import AdminMarketplace   from './AdminMarketplace'
 
 const ManageMarketplace = () => {
     const {slug} = useSelector(state => state.site)

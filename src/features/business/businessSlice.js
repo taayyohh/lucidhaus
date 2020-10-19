@@ -18,6 +18,12 @@ export const businessSlice = createSlice({
         },
         getMarketplaceSFailure: (state, action) => {
             state.error = action.payload
+        },
+        updateBusinessFailure: (state, action) => {
+            state.error = action.updated.error
+        },
+        updateBusinessSuccess: (state, action) => {
+            state.business = action.updated
         }
     },
 })

@@ -9,7 +9,6 @@ import RichText           from '../../Basic/RichText'
 import S3Image            from '../../Shop/S3Image'
 import {
     businessCardImageStyle,
-    businessLeftStyle,
     businessStyle,
     businessWrapperStyle
 }                         from '../../themes/business'
@@ -33,17 +32,13 @@ const Business = () => {
     return (
         <Div theme={postContentStyle(slug)}>
             <Div theme={businessWrapperStyle}>
-                <Div theme={businessLeftStyle}>
-                    <H2 theme={businessStyle.title}>{name}</H2>
-                    <S3Image
-                        url={photo}
-                        alt={name}
-                        theme={businessCardImageStyle}
-                    />
-                </Div>
-                <Div>
-                    <RichText children={description}/>
-                </Div>
+                <H2 theme={businessStyle.title}>{name}</H2>
+                <S3Image
+                    url={photo}
+                    alt={name}
+                    theme={businessCardImageStyle}
+                />
+                <RichText children={description}/>
             </Div>
         </Div>
     )

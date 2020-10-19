@@ -1,1 +1,1 @@
-export const businessUploadPath = 'business-profile'
+export const businessUploadPath = 'business-profile/'

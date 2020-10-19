@@ -12,8 +12,9 @@ import {
     getBusiness,
     getBusinesses,
     getSignedRequest,
+    updateBusiness,
     uploadFile
-} from '../services/apiAdmin'
+}             from '../services/apiAdmin'
 import {
     authenticate,
     getPurchaseHistory,
@@ -51,16 +52,16 @@ function* isAuth() {
 }
 
 function* createBusiness(business) {
-    const {_id, token, s3Path, values} = business.payload
+    const {_id, token, values} = business.payload
     const {name, description, key, image} = values
 
     //add to formdata so api can read
     const newBusiness = new FormData()
     newBusiness.set('name', name)
     newBusiness.set('description', description)
-    newBusiness.set('photo', s3Path + '/' + key)
+    newBusiness.set('photo', key)
 
-    const payload = yield call(getSignedRequest, {croppedImage: values.image, s3Path: s3Path})
+    const payload = yield call(getSignedRequest, {croppedImage: image})
     if (!!payload.signedRequest) {
         const uploadImage = yield call(uploadFile, {file: image, signedRequest: payload.signedRequest})
         console.log('upload', uploadImage)
@@ -78,6 +79,39 @@ function* createBusiness(business) {
     }
 }
 
+function* updateBusinessDetail(business) {
+    const {slug, _id, token, s3Path, values} = business.payload
+    const {name, description, key, image} = values
+
+    //add to formdata so api can read
+    const newBusiness = new FormData()
+    newBusiness.set('name', name)
+    newBusiness.set('description', description)
+    newBusiness.set('photo', key)
+    console.log('slug', slug)
+    console.log('key', key)
+    if (!!image) {
+        const s3Payload = yield call(getSignedRequest, {croppedImage: image})
+        if (!!s3Payload.signedRequest) {
+            const uploadImage = yield call(uploadFile, {file: image, signedRequest: s3Payload.signedRequest})
+            console.log('upload', uploadImage)
+        }
+    }
+
+
+    try {
+        const updated = yield call(updateBusiness, {slug: slug, userId: _id, token: token, business: newBusiness})
+        console.log('updated', updated)
+        if (!updated.error) {
+            yield put({type: 'business/updateBusinessSuccess', updated})
+        } else {
+            yield put({type: 'business/updateBusinessFailure', updated})
+        }
+    } catch (error) {
+        yield put({type: 'business/updateBusinessFailure'})
+    }
+}
+
 function* attemptDestroyBusiness(business) {
     const {slug} = business.payload
     yield put({type: 'admin/confirmDestroyBusiness', payload: slug})
@@ -86,7 +120,7 @@ function* attemptDestroyBusiness(business) {
 function* destroyBusiness(business) {
     console.log('business', business)
     const destroyed = yield call(deleteBusiness, business.payload)
-    if(!destroyed.error) {
+    if (!destroyed.error) {
         yield put({type: 'admin/destroyBusinessSuccess'})
     } else {
         yield put({type: 'admin/destroyBusinessFailure'})
@@ -96,8 +130,6 @@ function* destroyBusiness(business) {
 function* destroyBusinessSuccess() {
     yield put(push('/admin/marketplace'))
 }
-
-
 
 
 /**
@@ -218,7 +250,7 @@ function* getMarketplace() {
 
 function* getBusinessDetail(business) {
     try {
-        const payload =  yield call(getBusiness, business.payload)
+        const payload = yield call(getBusiness, business.payload)
         if (!payload.error) {
             yield put({type: 'business/getBusinessSuccess', payload})
         } else {
@@ -260,6 +292,10 @@ function* watchDestroyBusiness() {
 
 function* watchDestroyBusinessSuccess() {
     yield takeEvery('admin/attemptDestroyBusinessSuccess', destroyBusinessSuccess)
+}
+
+function* watchUpdateBusiness() {
+    yield takeEvery('admin/updateBusiness', updateBusinessDetail)
 }
 
 function* watchAuthenticate() {
@@ -346,6 +382,7 @@ export default function* rootSaga() {
         fork(watchAttemptDestroyBusiness),
         fork(watchDestroyBusiness),
         fork(watchDestroyBusinessSuccess),
+        fork(watchUpdateBusiness),
         fork(watchGetBusinessDetail)
     ])
 }

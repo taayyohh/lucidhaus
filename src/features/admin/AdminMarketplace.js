@@ -17,7 +17,7 @@ const AdminMarketplace = ({marketplace}) => {
                     theme={adminBusinessCardWrapperStyle}
                 >
                     <BusinessCard
-                        slug={business.slug}
+                        slug={`update/${business.slug}`}
                         name={business.name}
                         photo={business.photo}
                         theme={adminBusinessCardStyle}

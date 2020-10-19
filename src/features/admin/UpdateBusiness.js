@@ -38,12 +38,12 @@ const UpdateBusiness = () => {
                     enableReinitialize={true}
                     onSubmit={values => dispatch({
                         type: 'admin/updateBusiness',
-                        payload: {_id: _id, token: token, values: values, s3Path: s3Path}
+                        payload: {slug: slug, _id: _id, token: token, values: values, s3Path: s3Path}
                     })}
                 >
                     {formik => (
                         <Form onSubmit={formik.handleSubmit}>
-                            <H2 theme={defaultNewFormStyle.heading}>Create Business</H2>
+                            <H2 theme={defaultNewFormStyle.heading}>Update Business</H2>
                             <Div theme={defaultNewFormStyle.inner}>
                                 {businessFieldTypes.map((f, i) =>
                                     <FieldSwitch

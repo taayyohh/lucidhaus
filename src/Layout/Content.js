@@ -61,7 +61,7 @@ const Content = () => {
                     <AdminRoute path="/admin/products" exact component={ManageProducts}/>
                     <AdminRoute path="/admin/marketplace" exact component={ManageMarketplace}/>
                     <AdminRoute path="/admin/product/update/:slug" exact component={UpdateProduct}/>
-                    <AdminRoute path="/admin/business/update/:slug" exact component={UpdateBusiness}/>
+                    <AdminRoute path="/admin/marketplace/update/:slug" exact component={UpdateBusiness}/>
                     <AdminRoute path="/admin/category/update/:categoryId" exact component={UpdateCategory}/>
                     <AdminRoute path="/admin/orders" exact component={Orders}/>
                     <AdminRoute path="/create/category" exact component={AddCategory}/>

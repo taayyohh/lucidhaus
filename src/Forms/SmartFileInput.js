@@ -19,7 +19,7 @@ import {
 import {slugify}                from '../utils/slugify'
 import {globals}                from '../variables/styles'
 
-const SmartFileInput = ({formik, id, cropWidth, cropHeight}) => {
+const SmartFileInput = ({formik, id, cropWidth, cropHeight, s3Path}) => {
     const [cropPortalOpen, setCropPortalOpen] = useState(false)
 
     const [uploadedImage, setUploadedImage] = useState({})
@@ -83,7 +83,7 @@ const SmartFileInput = ({formik, id, cropWidth, cropHeight}) => {
         setUploadedImage({
             uploadBlob: URL.createObjectURL(acceptedFiles[0]),
             uploadType: acceptedFiles[0].type,
-            sanitizedName: slugify(acceptedFiles[0].name + '_' + moment().format())
+            sanitizedName: s3Path + slugify(acceptedFiles[0].name + '_' + moment().format())
         })
 
         //open crop portal

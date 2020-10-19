@@ -13,12 +13,10 @@ import {genericButtonStyle}  from '../../themes/elements'
 import {defaultNewFormStyle} from '../../themes/forms'
 import {postContentStyle}    from '../../themes/layout'
 import {businessFieldTypes}  from '../../variables/fieldTypes'
-import {businessUploadPath}  from '../../variables/s3'
 
 const CreateBusiness = () => {
     const dispatch = useDispatch()
     const {_id, token} = useSelector(state => state.user)
-    const s3Path = businessUploadPath
 
 
     return (
@@ -27,7 +25,7 @@ const CreateBusiness = () => {
                 initialValues={{name: '', description: '', key: '', image: ''}}
                 onSubmit={values => dispatch({
                     type: 'admin/createBusiness',
-                    payload: {_id: _id, token: token, values: values, s3Path: s3Path}
+                    payload: {_id: _id, token: token, values: values}
                 })}
             >
                 {formik => (

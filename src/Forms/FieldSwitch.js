@@ -32,6 +32,7 @@ const FieldSwitch = ({field, formik}) => {
                     id={field.name}
                     cropWidth={field.cropWidth}
                     cropHeight={field.cropHeight}
+                    s3Path={field.s3Path}
                 />
             default:
                 return null

@@ -10,29 +10,25 @@ import {API} from '../config'
  *
  *
  **/
-export const uploadFile = request => {
-    const {file, signedRequest} = request
-
+export const uploadFile = ({file, signedRequest}) => {
     return fetch(signedRequest, {
         method: 'PUT',
         body: file
     }).then(response => {
         return response.json()
-    }).catch(erroror => {
-        return erroror
+    }).catch(error => {
+        return error
     })
 }
 
-export const getSignedRequest = request => {
-    const croppedImage = request.croppedImage
-    const s3Path = request.s3Path
-
-    return fetch(`${API}/sign-s3?file-name=${encodeURIComponent(croppedImage.name)}&file-type=${croppedImage.type}&directory=${s3Path}`, {
+export const getSignedRequest = ({croppedImage}) => {
+    console.log('cropped', croppedImage)
+    return fetch(`${API}/sign-s3?file-name=${encodeURIComponent(croppedImage.name)}&file-type=${croppedImage.type}`, {
         method: 'GET',
     }).then(response => {
         return response.json()
-    }).catch(erroror => {
-        return erroror
+    }).catch(error => {
+        return error
     })
 }
 
@@ -187,9 +183,7 @@ export const updateProduct = (productId, userId, token, product) => {
  * update single admin
  * delete single admin
  */
-export const addBusiness = request => {
-    const {userId, token, business} = request
-
+export const addBusiness = ({userId, token, business}) => {
     return fetch(`${API}/business/create/${userId}`, {
         method: 'POST',
         headers: {
@@ -240,7 +234,7 @@ export const getBusiness = ({slug}) => {
         .catch(error => console.log(error))
 }
 
-export const updateBusiness = (slug, userId, token, business) => {
+export const updateBusiness = ({slug, userId, token, business}) => {
     return fetch(`${API}/business/${slug}/${userId}`, {
         method: 'PUT',
         headers: {
