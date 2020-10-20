@@ -1,6 +1,6 @@
 import PropTypes     from 'prop-types'
 import React, {memo} from 'react'
-import Div           from '../Basic/Div'
+import Div           from '../shared/Basic/Div'
 import {footerStyle} from '../themes/footer'
 import moment from "moment";
 

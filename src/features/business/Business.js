@@ -2,11 +2,11 @@ import React, {useEffect} from 'react'
 import {
     useDispatch,
     useSelector
-}                         from 'react-redux'
-import Div                from '../../Basic/Div'
-import H2                 from '../../Basic/H2'
-import RichText           from '../../Basic/RichText'
-import S3Image            from '../../Shop/S3Image'
+}               from 'react-redux'
+import Div      from '../../shared/Basic/Div'
+import H2       from '../../shared/Basic/H2'
+import RichText from '../../shared/Basic/RichText'
+import S3Image  from '../../Shop/S3Image'
 import {
     genericCardImageStyle,
     businessStyle,

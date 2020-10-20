@@ -3,9 +3,9 @@ import React, {
     useState
 }                    from 'react'
 import {getProducts} from '../services/apiShop'
-import Div           from '../Basic/Div'
-import H2               from '../Basic/H2'
-import ProductCard      from './ProductCard'
+import Div           from '../shared/Basic/Div'
+import H2            from '../shared/Basic/H2'
+import ProductCard   from './ProductCard'
 import SiteWrapper      from '../Layout/SiteWrapper'
 import {innerContainer} from '../themes/layout'
 import Search           from './Search'

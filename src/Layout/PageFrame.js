@@ -1,5 +1,5 @@
-import React from 'react'
-import Div from '../Basic/Div'
+import React            from 'react'
+import Div              from '../shared/Basic/Div'
 import {pageFrameStyle} from '../themes/layout'
 import Footer from './Footer'
 import Header from './Header'

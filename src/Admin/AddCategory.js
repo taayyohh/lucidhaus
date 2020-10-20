@@ -2,8 +2,8 @@ import React, {useState} from 'react'
 import {Link}            from 'react-router-dom'
 import {createCategory}  from '../api/apiAdmin'
 import {isAuthenticated} from '../api/apiAuth'
-import Div               from '../Basic/Div'
-import H3                from '../Basic/H3'
+import Div               from '../shared/Basic/Div'
+import H3                from '../shared/Basic/H3'
 
 const AddCategory = () => {
     const [name, setName] = useState('')

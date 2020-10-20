@@ -1,9 +1,9 @@
 import React, {useEffect, useRef, useState} from 'react'
-import Legend                               from "../Basic/Legend";
-import InputLabel                           from "../Basic/InputLabel";
-import Input                                from "../Basic/Input";
-import Fieldset                             from "../Basic/Fieldset";
-import Span                                 from '../Basic/Span'
+import Legend                               from "../shared/Basic/Legend";
+import InputLabel                           from "../shared/Basic/InputLabel";
+import Input                                from "../shared/Basic/Input";
+import Fieldset                             from "../shared/Basic/Fieldset";
+import Span                                 from '../shared/Basic/Span'
 import useMeasure                           from "../utils/useMeasure";
 import {globals}                            from "../variables/styles";
 import {

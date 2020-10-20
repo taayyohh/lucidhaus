@@ -1,7 +1,7 @@
 import React         from 'react'
 import {useDispatch} from 'react-redux'
-import Div           from '../../Basic/Div'
-import LinkSwitch    from '../../Elements/LinkSwitch'
+import Div           from '../../shared/Basic/Div'
+import LinkSwitch    from '../../shared/Basic/LinkSwitch'
 import {
     adminCardControlsButtonStyle,
     adminCardControlsButtonWrapperStyle

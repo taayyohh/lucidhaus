@@ -1,8 +1,8 @@
-import React from 'react'
-import Div from '../../Basic/Div'
-import H3 from '../../Basic/H3'
-import Li from '../../Basic/Li'
-import Ul from '../../Basic/Ul'
+import React                 from 'react'
+import Div                   from '../../shared/Basic/Div'
+import H3                    from '../../shared/Basic/H3'
+import Li                    from '../../shared/Basic/Li'
+import Ul                    from '../../shared/Basic/Ul'
 import {adminDashboardStyle} from '../../themes/admin'
 import {useSelector} from "react-redux";
 

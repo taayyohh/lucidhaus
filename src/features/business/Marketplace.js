@@ -3,7 +3,7 @@ import {
     useDispatch,
     useSelector
 }                                from 'react-redux'
-import Div                       from '../../Basic/Div'
+import Div                       from '../../shared/Basic/Div'
 import {marketplaceWrapperStyle} from '../../themes/business'
 import {postContentStyle}        from '../../themes/layout'
 import BusinessCard              from './BusinessCard'

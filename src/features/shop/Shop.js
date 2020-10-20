@@ -3,7 +3,7 @@ import React, {
     useState
 }                            from 'react'
 import {getFilteredProducts} from '../../services/apiShop'
-import Div                   from '../../Basic/Div'
+import Div                   from '../../shared/Basic/Div'
 import ProductCard           from '../../Shop/ProductCard'
 import {postContentStyle}    from '../../themes/layout'
 import {ShopListStyle}       from '../../themes/product'

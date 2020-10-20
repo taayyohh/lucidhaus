@@ -1,13 +1,13 @@
 import idx                 from 'idx'
 import React               from 'react'
-import ReactHtmlParser     from 'react-html-parser'
-import Blockquote          from '../Basic/Blockquote'
-import BulletedList        from '../Basic/BulletedList'
-import H3                  from '../Basic/H3'
-import Img                 from '../Basic/Img'
-import NumberedList        from '../Basic/NumberedList'
-import LinkSwitch          from '../Elements/LinkSwitch'
-import {cssToReact}        from './cssToReactStyle'
+import ReactHtmlParser from 'react-html-parser'
+import Blockquote      from '../shared/Basic/Blockquote'
+import BulletedList    from '../shared/Basic/BulletedList'
+import H3              from '../shared/Basic/H3'
+import Img             from '../shared/Basic/Img'
+import NumberedList    from '../shared/Basic/NumberedList'
+import LinkSwitch      from '../shared/Basic/LinkSwitch'
+import {cssToReact}    from './cssToReactStyle'
 
 /**
  * Converts a string with HTML (typically produced by a richtext editor from the CMS) into React Components.

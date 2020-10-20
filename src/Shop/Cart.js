@@ -2,13 +2,13 @@ import React, {
     useEffect,
     useState
 }                       from 'react'
-import {Link}           from 'react-router-dom'
-import Div              from '../Basic/Div'
-import H2               from '../Basic/H2'
+import {Link} from 'react-router-dom'
+import Div    from '../shared/Basic/Div'
+import H2     from '../shared/Basic/H2'
 import {
     cartStyle,
     cartTitleStyle
-}                       from '../themes/cart'
+}             from '../themes/cart'
 import {microCardStyle} from '../themes/layout'
 import {getCart}        from './cartHelpers'
 import Checkout         from './Checkout'

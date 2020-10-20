@@ -9,7 +9,7 @@ import {
     updateOrderStatus
 }                        from '../api/apiAdmin'
 import {isAuthenticated} from '../api/apiAuth'
-import Div               from '../Basic/Div'
+import Div               from '../shared/Basic/Div'
 import {adminOrderStyle} from '../themes/admin'
 
 const Orders = () => {

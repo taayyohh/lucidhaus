@@ -1,6 +1,6 @@
 import React      from 'react'
-import Div        from '../../Basic/Div'
-import LinkSwitch from '../../Elements/LinkSwitch'
+import Div        from '../../shared/Basic/Div'
+import LinkSwitch from '../../shared/Basic/LinkSwitch'
 import S3Image    from '../../Shop/S3Image'
 import {
     genericCardImageStyle,

@@ -1,12 +1,12 @@
-import React                     from 'react'
-import Div                       from '../../Basic/Div'
+import React from 'react'
+import Div   from '../../shared/Basic/Div'
 import {
     adminBusinessCardStyle,
     adminBusinessCardWrapperStyle,
     adminMarketplaceInnerWrapperStyle,
     adminShopCardStyle,
     adminShopCardWrapperStyle
-} from '../../themes/admin'
+}            from '../../themes/admin'
 import BusinessCardAdminControls from '../business/BusinessCardAdminControls'
 import ShopCard                  from '../shop/ShopCard'
 

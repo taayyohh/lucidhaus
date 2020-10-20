@@ -11,8 +11,8 @@ import {
     createOrder,
     getBraintreeClientToken,
     processPayment
-}                        from '../services/apiShop'
-import Div               from '../Basic/Div'
+}                           from '../services/apiShop'
+import Div                  from '../shared/Basic/Div'
 import {genericButtonStyle} from '../themes/elements'
 import {
     checkoutAddress,

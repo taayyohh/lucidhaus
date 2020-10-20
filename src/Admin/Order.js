@@ -4,9 +4,9 @@ import React, {
     useState
 }                        from 'react'
 import {isAuthenticated} from '../api/apiAuth'
-import Div               from '../Basic/Div'
-import Ul                from '../Basic/Ul'
-import Content       from '../Layout/Content'
+import Div               from '../shared/Basic/Div'
+import Ul                from '../shared/Basic/Ul'
+import Content           from '../Layout/Content'
 import {adminOrderStyle} from '../themes/admin'
 import {
     getStatusValues,

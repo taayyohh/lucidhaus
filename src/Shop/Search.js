@@ -3,9 +3,9 @@ import React, {
     useState
 }                      from 'react'
 import {getCategories} from '../api/apiAdmin'
-import Div             from '../Basic/Div'
-import Span        from '../Basic/Span'
-import {list}      from '../services/apiShop'
+import Div             from '../shared/Basic/Div'
+import Span            from '../shared/Basic/Span'
+import {list}          from '../services/apiShop'
 import ProductCard from './ProductCard'
 
 const Search = () => {

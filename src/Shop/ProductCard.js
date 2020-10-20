@@ -1,9 +1,9 @@
 import React, {useState}    from 'react'
 import {Redirect}           from 'react-router-dom'
-import Div                  from '../Basic/Div'
-import H2                   from '../Basic/H2'
-import Span                 from '../Basic/Span'
-import LinkSwitch           from '../Elements/LinkSwitch'
+import Div                  from '../shared/Basic/Div'
+import H2                   from '../shared/Basic/H2'
+import Span                 from '../shared/Basic/Span'
+import LinkSwitch           from '../shared/Basic/LinkSwitch'
 import {genericButtonStyle} from '../themes/elements'
 import {
     productCardStyle

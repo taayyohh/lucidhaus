@@ -6,10 +6,10 @@ import {connect} from 'react-redux'
 import {
     getProduct,
     listRelated
-}                from '../services/apiShop'
-import Div       from '../Basic/Div'
-import H2                   from '../Basic/H2'
-import Span                 from '../Basic/Span'
+}                           from '../services/apiShop'
+import Div                  from '../shared/Basic/Div'
+import H2                   from '../shared/Basic/H2'
+import Span                 from '../shared/Basic/Span'
 import {genericButtonStyle} from '../themes/elements'
 import {
     productCardStyle,

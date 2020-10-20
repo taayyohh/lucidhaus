@@ -3,11 +3,11 @@ import React                from 'react'
 import {
     useDispatch,
     useSelector
-}                           from 'react-redux'
-import Div                  from '../../Basic/Div'
-import H3                   from '../../Basic/H3'
-import SubmitButton         from '../../Basic/SubmitButton'
-import SmartInput           from '../../Forms/SmartInput'
+}                   from 'react-redux'
+import Div          from '../../shared/Basic/Div'
+import H3           from '../../shared/Basic/H3'
+import SubmitButton from '../../shared/Basic/SubmitButton'
+import SmartInput   from '../../Forms/SmartInput'
 import {genericButtonStyle} from '../../themes/elements'
 import {
     signInFormStyle,

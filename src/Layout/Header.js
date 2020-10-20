@@ -1,10 +1,10 @@
 import React            from 'react'
-import {useSelector}    from 'react-redux'
-import Div              from '../Basic/Div'
-import LinkSwitch       from '../Elements/LinkSwitch'
+import {useSelector} from 'react-redux'
+import Div           from '../shared/Basic/Div'
+import LinkSwitch    from '../shared/Basic/LinkSwitch'
 import {mobileFlag}     from '../features/site/siteSlice'
-import HeaderMenu       from '../Menus/HeaderMenu'
-import MobileHeaderMenu from '../Menus/MobileHeaderMenu'
+import HeaderMenu       from '../shared/Menus/HeaderMenu'
+import MobileHeaderMenu from '../shared/Menus/MobileHeaderMenu'
 import {
     headerInnerStyle,
     headerLogoLinkStyle,

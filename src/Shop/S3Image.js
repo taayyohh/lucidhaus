@@ -1,5 +1,5 @@
 import React from 'react'
-import Img   from '../Basic/Img'
+import Img   from '../shared/Basic/Img'
 import {CDN} from '../config'
 
 const S3Image = ({url, alt, theme}) =>

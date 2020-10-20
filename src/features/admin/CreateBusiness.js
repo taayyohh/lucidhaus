@@ -4,11 +4,11 @@ import 'react-image-crop/dist/ReactCrop.css'
 import {
     useDispatch,
     useSelector
-}                            from 'react-redux'
-import Div                   from '../../Basic/Div'
-import Form                  from '../../Basic/Form'
-import H2                    from '../../Basic/H2'
-import FieldSwitch           from '../../Forms/FieldSwitch'
+}                  from 'react-redux'
+import Div         from '../../shared/Basic/Div'
+import Form        from '../../shared/Basic/Form'
+import H2          from '../../shared/Basic/H2'
+import FieldSwitch from '../../Forms/FieldSwitch'
 import {genericButtonStyle}  from '../../themes/elements'
 import {defaultNewFormStyle} from '../../themes/forms'
 import {postContentStyle}    from '../../themes/layout'

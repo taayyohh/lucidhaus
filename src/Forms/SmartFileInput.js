@@ -5,10 +5,10 @@ import React, {
 }                               from 'react'
 import Dropzone                 from 'react-dropzone'
 import 'react-image-crop/dist/ReactCrop.css'
-import Div                      from '../Basic/Div'
-import Img                      from '../Basic/Img'
-import CropPortal               from '../Elements/CropPortal'
-import S3Image                 from '../Shop/S3Image'
+import Div        from '../shared/Basic/Div'
+import Img        from '../shared/Basic/Img'
+import CropPortal from '../shared/Elements/CropPortal'
+import S3Image    from '../Shop/S3Image'
 import {genericCardImageStyle} from '../themes/business'
 import {
     imageDropZonePreviewStyle,
