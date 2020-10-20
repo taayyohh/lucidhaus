@@ -1,6 +1,5 @@
 import React      from 'react'
 import Div        from '../../Basic/Div'
-import LinkSwitch from '../../Elements/LinkSwitch'
 import S3Image    from '../../Shop/S3Image'
 import {
     genericCardImageStyle,
@@ -8,8 +7,9 @@ import {
     genericCardNameStyle,
     genericCardStyle
 }                 from '../../themes/business'
+import LinkSwitch from './LinkSwitch'
 
-const BusinessCard = ({photo, name, slug, theme}) => {
+const GenericCard = ({photo, name, slug, theme}) => {
     return (
         <LinkSwitch
             url={`marketplace/${slug}`}
@@ -28,8 +28,8 @@ const BusinessCard = ({photo, name, slug, theme}) => {
     )
 }
 
-BusinessCard.defaultProps = {
+GenericCard.defaultProps = {
     theme: {}
 }
 
-export default BusinessCard
+export default GenericCard

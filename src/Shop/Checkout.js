@@ -6,13 +6,13 @@ import React, {
 }                           from 'react'
 import PlacesAutocomplete   from 'react-places-autocomplete'
 import {Link}               from 'react-router-dom'
-import {isAuthenticated}    from '../api/apiAuth'
+import {isAuthenticated} from '../api/apiAuth'
 import {
     createOrder,
     getBraintreeClientToken,
     processPayment
-}                           from '../api/apiShop'
-import Div                  from '../Basic/Div'
+}                        from '../services/apiShop'
+import Div               from '../Basic/Div'
 import {genericButtonStyle} from '../themes/elements'
 import {
     checkoutAddress,

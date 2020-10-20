@@ -21,7 +21,7 @@ export const marketplaceWrapperStyle = {
     }
 }
 
-export const businessCardStyle = {
+export const genericCardStyle = {
     boxSizing: borderBox,
     background: '#f8f8f8',
     border: `1px solid ${globals.colors.borderColor}`,
@@ -38,15 +38,15 @@ export const businessCardStyle = {
     }
 }
 
-export const businessCardImageStyle = {}
+export const genericCardImageStyle = {}
 
-export const businessCardImageWrapperStyle= {
+export const genericCardImageWrapperStyle= {
     overflow: hidden,
     border: '1px solid #e9e8e8',
     maxHeight: [200, .7, 200]
 }
 
-export const businessCardNameStyle = {
+export const genericCardNameStyle = {
     font: globals.fonts.type,
     size: [24, .7, 24],
     lineHeight: [32, .7, 32],

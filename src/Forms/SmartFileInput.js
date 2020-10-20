@@ -8,14 +8,14 @@ import 'react-image-crop/dist/ReactCrop.css'
 import Div                      from '../Basic/Div'
 import Img                      from '../Basic/Img'
 import CropPortal               from '../Elements/CropPortal'
-import S3Image                  from '../Shop/S3Image'
-import {businessCardImageStyle} from '../themes/business'
+import S3Image                 from '../Shop/S3Image'
+import {genericCardImageStyle} from '../themes/business'
 import {
     imageDropZonePreviewStyle,
     imageDropZonePreviewWrapperStyle,
     imageDropZoneStyle,
     imageDropZoneWrapperStyle
-}                               from '../themes/elements'
+}                              from '../themes/elements'
 import {slugify}                from '../utils/slugify'
 import {globals}                from '../variables/styles'
 
@@ -31,7 +31,7 @@ const SmartFileInput = ({formik, id, cropWidth, cropHeight, s3Path}) => {
 
     const [previewBlob, setPreviewBlob] = useState('')
 
-    const {key} = formik.values
+    const {photo} = formik.values
 
 
     const makeClientCrop = async (crop, percentageCrop) => {
@@ -92,7 +92,7 @@ const SmartFileInput = ({formik, id, cropWidth, cropHeight, s3Path}) => {
 
     useEffect(() => {
         formik.setFieldValue('image', croppedImage)
-        formik.setFieldValue('key', sanitizedName)
+        formik.setFieldValue('photo', sanitizedName)
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [croppedImage, sanitizedName])
@@ -126,11 +126,11 @@ const SmartFileInput = ({formik, id, cropWidth, cropHeight, s3Path}) => {
                         theme={imageDropZonePreviewStyle}
                     />
                 )}
-                {key && (
+                {photo && (
                     <S3Image
-                        url={key}
+                        url={photo}
                         alt={'Business Image Preview'}
-                        theme={businessCardImageStyle}
+                        theme={genericCardImageStyle}
                     />
                 )}
             </Div>

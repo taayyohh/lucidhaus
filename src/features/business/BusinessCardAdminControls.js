@@ -1,7 +1,7 @@
 import React         from 'react'
 import {useDispatch} from 'react-redux'
 import Div           from '../../Basic/Div'
-import StyledLink    from '../../Basic/StyledLink'
+import LinkSwitch    from '../../Elements/LinkSwitch'
 import {
     adminCardControlsButtonStyle,
     adminCardControlsButtonWrapperStyle
@@ -12,12 +12,12 @@ const BusinessCardAdminControls = ({slug}) => {
 
     return (
         <Div theme={adminCardControlsButtonWrapperStyle}>
-            <StyledLink
+            <LinkSwitch
                 theme={adminCardControlsButtonStyle}
-                to={`/admin/business/update/${slug}`}
+                url={`/admin/marketplace/update/${slug}`}
             >
                 Edit
-            </StyledLink>
+            </LinkSwitch>
             <Div
                 theme={adminCardControlsButtonStyle}
                 onClick={() => dispatch({type: 'admin/attemptDestroyBusiness', payload: {slug: slug}})}

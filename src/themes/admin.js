@@ -80,6 +80,14 @@ export const adminCardControlsButtonWrapperStyle = {
     justifyContent: flexEnd
 }
 
+export const adminShopCardWrapperStyle = {
+    ...adminBusinessCardWrapperStyle
+}
+
+export const adminShopCardStyle = {
+    ...adminBusinessCardStyle
+}
+
 export const genericButtonStyle = {
     border: `1px solid ${globals.colors.borderColor}`,
     alignSelf: flexStart,

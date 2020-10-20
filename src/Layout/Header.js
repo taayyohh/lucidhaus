@@ -1,7 +1,7 @@
 import React            from 'react'
 import {useSelector}    from 'react-redux'
 import Div              from '../Basic/Div'
-import StyledLink       from '../Basic/StyledLink'
+import LinkSwitch       from '../Elements/LinkSwitch'
 import {mobileFlag}     from '../features/site/siteSlice'
 import HeaderMenu       from '../Menus/HeaderMenu'
 import MobileHeaderMenu from '../Menus/MobileHeaderMenu'
@@ -17,9 +17,9 @@ const Header = ({theme}) => {
     return (
         <Div as="header" theme={{...headerStyle, ...theme}}>
             <Div theme={{...headerInnerStyle, ...theme.innerStyle}}>
-                <StyledLink to="/" theme={{...headerLogoLinkStyle, ...theme.logoLink}}>
+                <LinkSwitch url="/" theme={{...headerLogoLinkStyle, ...theme.logoLink}}>
                     IJ
-                </StyledLink>
+                </LinkSwitch>
                 {(!isMobile && (
                     <HeaderMenu/>
                 )) || (
@@ -30,7 +30,6 @@ const Header = ({theme}) => {
         </Div>
     )
 }
-
 
 
 Header.defaultProps = {

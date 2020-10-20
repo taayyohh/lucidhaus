@@ -22,7 +22,6 @@ export const uploadFile = ({file, signedRequest}) => {
 }
 
 export const getSignedRequest = ({croppedImage}) => {
-    console.log('cropped', croppedImage)
     return fetch(`${API}/sign-s3?file-name=${encodeURIComponent(croppedImage.name)}&file-type=${croppedImage.type}`, {
         method: 'GET',
     }).then(response => {
@@ -109,7 +108,7 @@ export const getCategory = categoryId => {
  * update single product
  * delete single product
  */
-export const createProduct = (userId, token, product) => {
+export const addProduct = ({userId, token, product}) => {
     return fetch(`${API}/product/create/${userId}`, {
         method: 'POST',
         headers: {
@@ -209,7 +208,6 @@ export const getBusinesses = () => {
 }
 
 export const deleteBusiness = ({_id, token, slug}) => {
-
     return fetch(`${API}/business/${slug}/${_id}`, {
         method: 'DELETE',
         headers: {

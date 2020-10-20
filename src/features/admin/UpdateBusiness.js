@@ -8,12 +8,12 @@ import {
 import Div                   from '../../Basic/Div'
 import Form                  from '../../Basic/Form'
 import H2                    from '../../Basic/H2'
+import SubmitButton          from '../../Basic/SubmitButton'
 import FieldSwitch           from '../../Forms/FieldSwitch'
 import {genericButtonStyle}  from '../../themes/elements'
 import {defaultNewFormStyle} from '../../themes/forms'
 import {postContentStyle}    from '../../themes/layout'
 import {businessFieldTypes}  from '../../variables/fieldTypes'
-import {businessUploadPath}  from '../../variables/s3'
 
 const UpdateBusiness = () => {
     const dispatch = useDispatch()
@@ -21,7 +21,6 @@ const UpdateBusiness = () => {
     const {slug} = useSelector(state => state.site)
     const {business} = useSelector(state => state.business)
     const {name, description, photo} = business
-    const s3Path = businessUploadPath
 
     useEffect(() => {
         if (slug.length > 0)
@@ -34,11 +33,21 @@ const UpdateBusiness = () => {
         <Div theme={postContentStyle()}>
             {business && (
                 <Formik
-                    initialValues={{name: name, description: description, key: photo, image: ''}}
+                    initialValues={{
+                        name: name,
+                        description: description,
+                        photo: photo,
+                        image: ''
+                    }}
                     enableReinitialize={true}
                     onSubmit={values => dispatch({
                         type: 'admin/updateBusiness',
-                        payload: {slug: slug, _id: _id, token: token, values: values, s3Path: s3Path}
+                        payload: {
+                            slug: slug,
+                            _id: _id,
+                            token: token,
+                            values: values
+                        }
                     })}
                 >
                     {formik => (
@@ -52,12 +61,11 @@ const UpdateBusiness = () => {
                                         field={f}
                                     />
                                 )}
-                                <Div
-                                    as="button"
+                                <SubmitButton
                                     theme={{...genericButtonStyle}}
                                 >
                                     Updated Business
-                                </Div>
+                                </SubmitButton>
                             </Div>
                         </Form>
                     )}

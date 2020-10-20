@@ -1,12 +1,17 @@
-import {businessUploadPath} from './s3'
+import {
+    businessUploadPath,
+    shopUploadPath
+} from './s3'
 
 /**
  *
  * Array used in FieldSwitch
+ * name: api model field name
+ * inputLabel: text that appears in input
+ * type: used to determine component type in FieldSwitch
  *
  *
  */
-const s3Path = businessUploadPath
 
 export const signInFieldTypes = [
     {
@@ -23,45 +28,75 @@ export const signInFieldTypes = [
 
 export const signUpFieldTypes = [
     {
-        inputLabel: 'Name',
         name: 'name',
+        inputLabel: 'Name',
         type: 'text'
     },
     {
-        inputLabel: 'Email',
         name: 'email',
+        inputLabel: 'Email',
         type: 'email'
     },
     {
-        inputLabel: 'Password',
         name: 'password',
+        inputLabel: 'Password',
         type: 'password'
     }
 ]
 
 export const userFieldTypes = [
     {
+        name: 'name',
         inputLabel: 'Name',
-        name: 'name'
+        type: 'text'
     }
 ]
 
 export const businessFieldTypes = [
     {
-        name: 'key',
-        type: 'singleImageUpload',
+        name: 'photo', //not neccesary
         cropWidth: 500,
         cropHeight: 500,
-        s3Path: businessUploadPath
+        s3Path: businessUploadPath,
+        type: 'singleImageUpload',
     },
     {
-        inputLabel: 'Name',
         name: 'name',
+        inputLabel: 'Name',
         type: 'text'
     },
     {
-        inputLabel: 'Business Description',
         name: 'description',
+        inputLabel: 'Business Description',
         type: 'richText'
     },
+]
+
+export const productFieldTypes = [
+    {
+        cropWidth: 500,
+        cropHeight: 500,
+        s3Path: shopUploadPath,
+        type: 'singleImageUpload',
+    },
+    {
+        name: 'name',
+        inputLabel: 'Name',
+        type: 'text'
+    },
+    {
+        name: 'description',
+        inputLabel: 'Product Description',
+        type: 'richText'
+    },
+    {
+        name: 'price',
+        inputLabel: 'Price',
+        type: 'number'
+    },
+    {
+        name: 'quantity',
+        inputLabel: 'Quantity',
+        type: 'number'
+    }
 ]

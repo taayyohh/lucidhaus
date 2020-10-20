@@ -2,7 +2,7 @@ import React      from 'react'
 import Div        from '../../Basic/Div'
 import H2         from '../../Basic/H2'
 import Span       from '../../Basic/Span'
-import StyledLink from '../../Basic/StyledLink'
+import LinkSwitch from '../../Elements/LinkSwitch'
 import {
     adminControlPanelInnerStyle,
     adminControlPanelStyle,
@@ -15,10 +15,10 @@ const AdminControls = ({data, title, create}) => {
     return (
         <Div theme={adminControlPanelStyle}>
             <Div theme={adminControlPanelInnerStyle}>
-                <H2 theme={adminHeadingStyle}>{title}</H2>
-                <StyledLink theme={adminCreateButtonStyle} to={create}>
-                    Create Business
-                </StyledLink>
+                <H2 theme={adminHeadingStyle}>Manage {title}</H2>
+                <LinkSwitch theme={adminCreateButtonStyle} url={create}>
+                    Create {title}
+                </LinkSwitch>
                 <Span>Total: {data.length}</Span>
             </Div>
         </Div>

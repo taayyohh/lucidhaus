@@ -18,11 +18,10 @@ const CreateBusiness = () => {
     const dispatch = useDispatch()
     const {_id, token} = useSelector(state => state.user)
 
-
     return (
         <Div theme={postContentStyle()}>
             <Formik
-                initialValues={{name: '', description: '', key: '', image: ''}}
+                initialValues={{name: '', description: '', photo: '', image: ''}}
                 onSubmit={values => dispatch({
                     type: 'admin/createBusiness',
                     payload: {_id: _id, token: token, values: values}

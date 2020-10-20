@@ -5,8 +5,8 @@ import {
 }                          from 'react-redux'
 import Div                 from '../Basic/Div'
 import Span                from '../Basic/Span'
-import StyledLink          from '../Basic/StyledLink'
 import {menuPanelContext}  from '../Containers/MenuPanelController'
+import LinkSwitch          from '../Elements/LinkSwitch'
 import {itemTotal}         from '../Shop/cartHelpers'
 import {
     headerMenuAuthStyle,
@@ -14,7 +14,7 @@ import {
     headerMenuListItemStyle,
     headerMenuListStyle,
     headerMenuStyle
-} from '../themes/header'
+}                          from '../themes/header'
 
 const HeaderMenu = () => {
     const dispatch = useDispatch()
@@ -25,17 +25,17 @@ const HeaderMenu = () => {
     return (
         <Div theme={headerMenuStyle}>
             <Div as="nav" theme={headerMenuListStyle}>
-                <StyledLink
-                    to="/marketplace"
+                <LinkSwitch
+                    url="/marketplace"
                     theme={headerMenuListItemStyle}>
                     Businesses
-                </StyledLink>
+                </LinkSwitch>
 
-                <StyledLink
-                    to="/shop"
+                <LinkSwitch
+                    url="/shop"
                     theme={headerMenuListItemStyle}>
                     Shop
-                </StyledLink>
+                </LinkSwitch>
                 <Div
                     onClick={() => setPanel({name: 'cart-menu-panel'})}
                     theme={headerMenuListItemStyle}>
@@ -48,16 +48,16 @@ const HeaderMenu = () => {
             <Div as="nav" theme={headerMenuAuthStyle}>
                 {!isAuthenticated && (
                     <>
-                        <StyledLink
-                            to="/signin"
+                        <LinkSwitch
+                            url="/signin"
                             theme={headerMenuAuthStyleListItemStyle}>
                             Sign in
-                        </StyledLink>
-                        <StyledLink
-                            to="/signup"
+                        </LinkSwitch>
+                        <LinkSwitch
+                            url="/signup"
                             theme={headerMenuAuthStyleListItemStyle}>
                             Sign Up
-                        </StyledLink>
+                        </LinkSwitch>
 
                     </>
                 )}
@@ -70,11 +70,11 @@ const HeaderMenu = () => {
                     </Span>
                 )}
                 {isAuthenticated && !isAdmin && (
-                    <StyledLink
-                        to="/user/dashboard"
+                    <LinkSwitch
+                        url="/user/dashboard"
                         theme={headerMenuAuthStyleListItemStyle}>
                         Profile
-                    </StyledLink>
+                    </LinkSwitch>
                 )}
                 {(isAuthenticated && isAdmin) && (
                     <Div

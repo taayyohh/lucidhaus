@@ -1,9 +1,9 @@
 import React, {
     useEffect,
     useState
-}                       from 'react'
-import {getProducts}    from '../api/apiShop'
-import Div              from '../Basic/Div'
+}                    from 'react'
+import {getProducts} from '../services/apiShop'
+import Div           from '../Basic/Div'
 import H2               from '../Basic/H2'
 import ProductCard      from './ProductCard'
 import SiteWrapper      from '../Layout/SiteWrapper'

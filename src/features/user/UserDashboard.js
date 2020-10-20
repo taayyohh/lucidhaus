@@ -1,11 +1,14 @@
-import React, {useEffect} from 'react'
-import Div from '../../Basic/Div'
-import H2 from '../../Basic/H2'
-import H3 from '../../Basic/H3'
+import React, {useEffect}   from 'react'
+import {
+    useDispatch,
+    useSelector
+}                           from 'react-redux'
+import Div                  from '../../Basic/Div'
+import H2                   from '../../Basic/H2'
+import H3                   from '../../Basic/H3'
+import LinkSwitch           from '../../Elements/LinkSwitch'
 import {userDashboardStyle} from '../../themes/user'
-import {useDispatch, useSelector} from "react-redux";
-import UserPurchaseHistory from "./UserPurchaseHistory";
-import StyledLink from "../../Basic/StyledLink";
+import UserPurchaseHistory  from './UserPurchaseHistory'
 
 const UserDashboard = () => {
     const {name, email, token, _id, error, purchaseHistory} = useSelector(state => state.user)
@@ -32,7 +35,7 @@ const UserDashboard = () => {
         <Div>
             <H2 theme={userDashboardStyle.greeting}>Hey, {name}</H2>
             <H3>Your email is: {email}</H3>
-            <StyledLink to={`/settings/profile`} children={'profile'}/>
+            <LinkSwitch url={`/settings/profile`} children={'profile'}/>
             <UserPurchaseHistory
                 purchaseHistory={purchaseHistory}
                 error={error}

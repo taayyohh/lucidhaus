@@ -4,9 +4,9 @@ import React, {
 }                      from 'react'
 import {getCategories} from '../api/apiAdmin'
 import Div             from '../Basic/Div'
-import Span            from '../Basic/Span'
-import {list}          from '../api/apiShop'
-import ProductCard     from './ProductCard'
+import Span        from '../Basic/Span'
+import {list}      from '../services/apiShop'
+import ProductCard from './ProductCard'
 
 const Search = () => {
     const [data, setData] = useState({

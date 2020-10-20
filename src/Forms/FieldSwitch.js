@@ -10,10 +10,10 @@ const FieldSwitch = ({field, formik}) => {
             case 'text':
             case 'password':
             case 'email':
+            case 'number':
                 return <SmartInput
                     {...formik.getFieldProps(field.name)}
                     id={field.name}
-                    key={field.name}
                     inputLabel={field.inputLabel}
                     type={field.type}
                     theme={signInFormStyle.fieldset}

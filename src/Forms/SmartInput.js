@@ -62,7 +62,7 @@ const SmartInput = ({inputLabel, type, theme, id, className, errorMessage, onCha
                 onFocus={handleFocus}
                 onBlur={handleBlur}
                 type={type || "text"}
-                value={value || ''}
+                value={value}
                 theme={theme.field}
             />
             <Span theme={defaultFieldErrorStyle}>{errorMessage}</Span>

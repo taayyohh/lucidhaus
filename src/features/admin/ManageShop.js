@@ -7,33 +7,34 @@ import Div                            from '../../Basic/Div'
 import {adminMarketplaceWrapperStyle} from '../../themes/admin'
 import {postContentStyle}             from '../../themes/layout'
 import AdminControls                  from './AdminControls'
-import AdminMarketplace               from './AdminMarketplace'
+import AdminShop                      from './AdminShop'
 import DeletePrompt                   from './DeletePrompt'
 
-const ManageMarketplace = () => {
+const ManageShop = () => {
     const {slug} = useSelector(state => state.site)
-    const {marketplace} = useSelector(state => state.business)
+    const {shop} = useSelector(state => state.shop)
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch({type: 'business/getMarketplace'})
+        dispatch({type: 'business/getShop'})
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [marketplace])
+    }, [])
+
 
     return (
         <Div theme={postContentStyle(slug)}>
             <Div theme={adminMarketplaceWrapperStyle}>
                 <AdminControls
-                    data={marketplace}
-                    title={'Business'}
-                    create={'/create/business'}
+                    data={shop}
+                    title={'Shop'}
+                    create={'/create/product'}
                 />
-                <AdminMarketplace marketplace={marketplace}/>
+                <AdminShop shop={shop}/>
                 <DeletePrompt/>
             </Div>
         </Div>
     )
 }
 
-export default ManageMarketplace
+export default ManageShop

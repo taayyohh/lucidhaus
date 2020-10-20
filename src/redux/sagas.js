@@ -8,9 +8,11 @@ import {
 }             from 'redux-saga/effects'
 import {
     addBusiness,
+    addProduct,
     deleteBusiness,
     getBusiness,
     getBusinesses,
+    getProducts,
     getSignedRequest,
     updateBusiness,
     uploadFile
@@ -25,6 +27,10 @@ import {
     update,
     updateUser
 }             from '../services/apiUser'
+import {
+    updateBusinessPath,
+    updateProductPath
+}             from '../variables/pathnames'
 
 
 /**
@@ -34,6 +40,8 @@ import {
  *
  *
  */
+
+/* Auth */
 
 function* authenticateUser(payload) {
     yield call(authenticate, payload.payload)
@@ -51,15 +59,18 @@ function* isAuth() {
     }
 }
 
+
+/* Business */
+
 function* createBusiness(business) {
     const {_id, token, values} = business.payload
-    const {name, description, key, image} = values
+    const {name, description, photo, image} = values
 
     //add to formdata so api can read
     const newBusiness = new FormData()
     newBusiness.set('name', name)
     newBusiness.set('description', description)
-    newBusiness.set('photo', key)
+    newBusiness.set('photo', photo)
 
     const payload = yield call(getSignedRequest, {croppedImage: image})
     if (!!payload.signedRequest) {
@@ -70,6 +81,7 @@ function* createBusiness(business) {
         console.log('created', created)
         if (!created.error) {
             yield put({type: 'admin/createBusinessesSuccess', payload})
+            yield put(push(updateBusinessPath + created.slug))
 
         } else {
             yield put({type: 'admin/createBusinessesFailure', payload})
@@ -80,28 +92,24 @@ function* createBusiness(business) {
 }
 
 function* updateBusinessDetail(business) {
-    const {slug, _id, token, s3Path, values} = business.payload
-    const {name, description, key, image} = values
+    const {slug, _id, token, values} = business.payload
+    const {name, description, photo, image} = values
 
-    //add to formdata so api can read
+    //add to formData so api can read
     const newBusiness = new FormData()
     newBusiness.set('name', name)
     newBusiness.set('description', description)
-    newBusiness.set('photo', key)
-    console.log('slug', slug)
-    console.log('key', key)
+    newBusiness.set('photo', photo)
+
     if (!!image) {
         const s3Payload = yield call(getSignedRequest, {croppedImage: image})
         if (!!s3Payload.signedRequest) {
             const uploadImage = yield call(uploadFile, {file: image, signedRequest: s3Payload.signedRequest})
-            console.log('upload', uploadImage)
         }
     }
 
-
     try {
         const updated = yield call(updateBusiness, {slug: slug, userId: _id, token: token, business: newBusiness})
-        console.log('updated', updated)
         if (!updated.error) {
             yield put({type: 'business/updateBusinessSuccess', updated})
         } else {
@@ -113,15 +121,14 @@ function* updateBusinessDetail(business) {
 }
 
 function* attemptDestroyBusiness(business) {
-    const {slug} = business.payload
-    yield put({type: 'admin/confirmDestroyBusiness', payload: slug})
+    yield put({type: 'admin/confirmDestroyBusiness', payload: business.payload})
 }
 
 function* destroyBusiness(business) {
-    console.log('business', business)
     const destroyed = yield call(deleteBusiness, business.payload)
     if (!destroyed.error) {
         yield put({type: 'admin/destroyBusinessSuccess'})
+        yield put(push('/admin/marketplace'))
     } else {
         yield put({type: 'admin/destroyBusinessFailure'})
     }
@@ -129,6 +136,38 @@ function* destroyBusiness(business) {
 
 function* destroyBusinessSuccess() {
     yield put(push('/admin/marketplace'))
+}
+
+/* Product */
+function* createProduct(product) {
+    const {_id, token, values} = product.payload
+    const {name, description, photo, image, quantity, price} = values
+
+    //add to formdata so api can read
+    const newProduct = new FormData()
+    newProduct.set('name', name)
+    newProduct.set('description', description)
+    newProduct.set('photo', photo)
+    newProduct.set('quantity', quantity)
+    newProduct.set('price', price)
+
+    const payload = yield call(getSignedRequest, {croppedImage: image})
+    if (!!payload.signedRequest) {
+        const uploadImage = yield call(uploadFile, {file: image, signedRequest: payload.signedRequest})
+        console.log('upload', uploadImage)
+
+        const created = yield call(addProduct, {userId: _id, token: token, product: newProduct})
+        console.log('created', created)
+        if (!created.error) {
+            yield put({type: 'admin/createProductSuccess', payload})
+            yield put(push(updateProductPath + created.slug))
+
+        } else {
+            yield put({type: 'admin/createProductFailure', payload})
+
+        }
+
+    }
 }
 
 
@@ -233,7 +272,6 @@ function* loadConfig() {
  */
 
 
-
 function* getMarketplace() {
     try {
         const payload = yield call(getBusinesses)
@@ -243,10 +281,22 @@ function* getMarketplace() {
             yield put({type: 'business/getMarketplaceFailure', payload})
         }
     } catch (error) {
-        yield put({type: 'admin/getBusinessFailure', error})
+        yield put({type: 'admin/getMarketplaceFailure', error})
     }
 }
 
+function* getShop() {
+    try {
+        const payload = yield call(getProducts)
+        if (!payload.error) {
+            yield put({type: 'shop/getShopSuccess', payload})
+        } else {
+            yield put({type: 'shop/getShopFailure', payload})
+        }
+    } catch (error) {
+        yield put({type: 'admin/getShopFailure', error})
+    }
+}
 
 function* getBusinessDetail(business) {
     try {
@@ -278,6 +328,17 @@ function* getBusinessDetail(business) {
  *
  */
 
+/* Auth */
+function* watchAuthenticate() {
+    yield takeEvery('user/authenticate', authenticateUser)
+}
+
+function* watchIsAuthenticated() {
+    yield takeEvery('user/isAuthenticated', isAuth)
+}
+
+
+/* Business */
 function* watchCreateBusiness() {
     yield takeEvery('admin/createBusiness', createBusiness)
 }
@@ -287,7 +348,7 @@ function* watchAttemptDestroyBusiness() {
 }
 
 function* watchDestroyBusiness() {
-    yield takeEvery('admin/attemptDestroyBusiness', destroyBusiness)
+    yield takeEvery('admin/destroyBusiness', destroyBusiness)
 }
 
 function* watchDestroyBusinessSuccess() {
@@ -298,12 +359,10 @@ function* watchUpdateBusiness() {
     yield takeEvery('admin/updateBusiness', updateBusinessDetail)
 }
 
-function* watchAuthenticate() {
-    yield takeEvery('user/authenticate', authenticateUser)
-}
 
-function* watchIsAuthenticated() {
-    yield takeEvery('user/isAuthenticated', isAuth)
+/* Product*/
+function* watchCreateProduct() {
+    yield takeEvery('admin/createProduct', createProduct)
 }
 
 
@@ -361,6 +420,10 @@ function* watchGetMarketplace() {
     yield takeEvery('business/getMarketplace', getMarketplace)
 }
 
+function* watchGetShop() {
+    yield takeEvery('business/getShop', getShop)
+}
+
 function* watchGetBusinessDetail() {
     yield takeEvery('business/getBusiness', getBusinessDetail)
 }
@@ -383,6 +446,8 @@ export default function* rootSaga() {
         fork(watchDestroyBusiness),
         fork(watchDestroyBusinessSuccess),
         fork(watchUpdateBusiness),
-        fork(watchGetBusinessDetail)
+        fork(watchGetBusinessDetail),
+        fork(watchGetShop),
+        fork(watchCreateProduct),
     ])
 }

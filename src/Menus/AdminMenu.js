@@ -2,8 +2,8 @@ import React      from 'react'
 import Div        from '../Basic/Div'
 import H2         from '../Basic/H2'
 import Li         from '../Basic/Li'
-import StyledLink from '../Basic/StyledLink'
 import Ul         from '../Basic/Ul'
+import LinkSwitch from '../Elements/LinkSwitch'
 import {
     adminMenuStyle,
     menuPanelHeaderStyle
@@ -14,26 +14,26 @@ const AdminMenu = () =>
         <H2 theme={menuPanelHeaderStyle}>Admin Menu</H2>
         <Ul theme={adminMenuStyle.list}>
             <Li theme={adminMenuStyle.listItem}>
-                <StyledLink
-                    to="/admin/dashboard"
+                <LinkSwitch
+                    url="/admin/dashboard"
                     theme={adminMenuStyle.link}>
                     Dashboard
-                </StyledLink>
+                </LinkSwitch>
             </Li>
             <Li theme={adminMenuStyle.listItem}>
-                <StyledLink theme={adminMenuStyle.link} to="/admin/marketplace">
+                <LinkSwitch theme={adminMenuStyle.link} url="/admin/marketplace">
                     Manage Businesses
-                </StyledLink>
+                </LinkSwitch>
             </Li>
             <Li theme={adminMenuStyle.listItem}>
-                <StyledLink theme={adminMenuStyle.link} to="/admin/products">
+                <LinkSwitch theme={adminMenuStyle.link} url="/admin/products">
                     Manage Products
-                </StyledLink>
+                </LinkSwitch>
             </Li>
             <Li theme={adminMenuStyle.listItem}>
-                <StyledLink theme={adminMenuStyle.link} to="/admin/orders">
+                <LinkSwitch theme={adminMenuStyle.link} url="/admin/orders">
                     Manage Orders
-                </StyledLink>
+                </LinkSwitch>
             </Li>
         </Ul>
     </Div>

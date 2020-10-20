@@ -2,14 +2,15 @@ import React, {
     useEffect,
     useState
 }                            from 'react'
-import {getFilteredProducts} from '../api/apiShop'
-import Div                   from '../Basic/Div'
-import {ShopListStyle}       from '../themes/product'
+import {getFilteredProducts} from '../../services/apiShop'
+import Div                   from '../../Basic/Div'
+import ProductCard           from '../../Shop/ProductCard'
+import {postContentStyle}    from '../../themes/layout'
+import {ShopListStyle}       from '../../themes/product'
 import {
     shopInnerStyle,
     shopStyle
-}                            from '../themes/shop'
-import ProductCard           from './ProductCard'
+}                            from '../../themes/shop'
 
 const Shop = () => {
     const [error, setError] = useState(false)
@@ -26,9 +27,9 @@ const Shop = () => {
         loadFilteredResults(skip, limit, myFilters.filters)
         setLimit(6)
 
-        if(error)
+        if (error)
             console.log('error', error)
-            console.log('set', setMyFilters)
+        console.log('set', setMyFilters)
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
@@ -97,14 +98,16 @@ const Shop = () => {
 
 
     return (
-        <Div theme={shopStyle}>
-            <Div theme={shopInnerStyle}>
-                <Div theme={ShopListStyle}>
-                    {filteredResults.map((product, i) => (
-                        <ProductCard key={i} product={product}/>
-                    ))}
+        <Div theme={postContentStyle()}>
+            <Div theme={shopStyle}>
+                <Div theme={shopInnerStyle}>
+                    <Div theme={ShopListStyle}>
+                        {filteredResults.map((product, i) => (
+                            <ProductCard key={i} product={product}/>
+                        ))}
 
-                    {loadMoreButton()}
+                        {loadMoreButton()}
+                    </Div>
                 </Div>
             </Div>
         </Div>

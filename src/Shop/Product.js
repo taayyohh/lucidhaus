@@ -2,12 +2,12 @@ import React, {
     useEffect,
     useState
 }                           from 'react'
-import {connect}            from 'react-redux'
+import {connect} from 'react-redux'
 import {
     getProduct,
     listRelated
-}                           from '../api/apiShop'
-import Div                  from '../Basic/Div'
+}                from '../services/apiShop'
+import Div       from '../Basic/Div'
 import H2                   from '../Basic/H2'
 import Span                 from '../Basic/Span'
 import {genericButtonStyle} from '../themes/elements'

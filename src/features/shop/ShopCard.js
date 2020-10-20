@@ -9,7 +9,7 @@ import {
     genericCardStyle
 }                 from '../../themes/business'
 
-const BusinessCard = ({photo, name, slug, theme}) => {
+const ShopCard = ({photo, name, slug, theme}) => {
     return (
         <LinkSwitch
             url={`marketplace/${slug}`}
@@ -28,8 +28,8 @@ const BusinessCard = ({photo, name, slug, theme}) => {
     )
 }
 
-BusinessCard.defaultProps = {
+ShopCard.defaultProps = {
     theme: {}
 }
 
-export default BusinessCard
+export default ShopCard

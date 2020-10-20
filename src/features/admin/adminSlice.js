@@ -14,7 +14,8 @@ const initialState = {
         formData: '',
         confirmDelete: {
             shouldDelete: false,
-            destroy: false
+            destroy: false,
+            slug: ''
         }
 }
 
@@ -30,12 +31,18 @@ export const adminSlice = createSlice({
         },
         confirmDestroyBusiness: (state, action) => {
             state.confirmDelete.shouldDelete = true
+            state.confirmDelete.slug = action.payload.slug
         },
         denyDestroyBusiness: (state, action) => {
             state.confirmDelete.shouldDelete = false
         },
         acceptDestroyBusiness: (state, action) => {
             state.confirmDelete.destroy = true
+        },
+        destroyBusinessSuccess: (state) => {
+            state.confirmDelete.shouldDelete = false
+            state.confirmDelete.destroy = false
+            state.confirmDelete.slug = ''
         }
     },
 })

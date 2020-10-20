@@ -8,7 +8,7 @@ import H2                 from '../../Basic/H2'
 import RichText           from '../../Basic/RichText'
 import S3Image            from '../../Shop/S3Image'
 import {
-    businessCardImageStyle,
+    genericCardImageStyle,
     businessStyle,
     businessWrapperStyle
 }                         from '../../themes/business'
@@ -36,7 +36,7 @@ const Business = () => {
                 <S3Image
                     url={photo}
                     alt={name}
-                    theme={businessCardImageStyle}
+                    theme={genericCardImageStyle}
                 />
                 <RichText children={description}/>
             </Div>
