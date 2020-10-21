@@ -71,13 +71,13 @@ const UpdateCategory = ({pathname}) => {
     }
 
     const updateCategoryForm = () => (
-        <div className="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
-            <form className="mb-5" onSubmit={submitCategoryForm}>
-                <span className="login100-form-title p-b-32 m-b-7">Update Category Form</span>
-                <span className="txt1 p-b-11">Category Name</span>
+        <div>
+            <form onSubmit={submitCategoryForm}>
+                <span>Update Category Form</span>
+                <span>Category Name</span>
                 <br/>
                 <br/>
-                <div className="wrap-input100 validate-input m-b-36">
+                <div>
                     <input
                         onChange={handleChange('name')}
                         value={name}
@@ -87,8 +87,8 @@ const UpdateCategory = ({pathname}) => {
                         name="name"
                     />
                 </div>
-                <div className="w-size25">
-                    <button type="submit" className="flex-c-m size2 bg1 bo-rad-23 hov1 m-text3 trans-0-4">
+                <div>
+                    <button type="submit">
                         Save Changes
                     </button>
                 </div>
@@ -96,14 +96,7 @@ const UpdateCategory = ({pathname}) => {
         </div>
     )
 
-    const showError = () => (
-        <div className={'alert alert-danger'} role="alert" style={{display: error ? '' : 'none'}}>
-            <button type="button" className="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-            {error}
-        </div>
-    )
+
 
     const redirectUser = () => {
         if (redirectToProfile) {
@@ -125,7 +118,6 @@ const UpdateCategory = ({pathname}) => {
 
     return (
         <div>
-            {showError()}
             {updateCategoryForm()}
             {goBackBTN()}
             {redirectUser()}

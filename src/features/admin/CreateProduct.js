@@ -3,12 +3,12 @@ import React                 from 'react'
 import {
     useDispatch,
     useSelector
-}                  from 'react-redux'
-import Div         from '../../shared/Basic/Div'
-import Form        from '../../shared/Basic/Form'
-import H2          from '../../shared/Basic/H2'
-import FieldSwitch from '../../Forms/FieldSwitch'
-import {genericButtonStyle}  from '../../themes/elements'
+}                            from 'react-redux'
+import FieldSwitch           from '../../Forms/FieldSwitch'
+import Button                from '../../shared/Basic/Button'
+import Div                   from '../../shared/Basic/Div'
+import Form                  from '../../shared/Basic/Form'
+import H2                    from '../../shared/Basic/H2'
 import {defaultNewFormStyle} from '../../themes/forms'
 import {postContentStyle}    from '../../themes/layout'
 import {productFieldTypes}   from '../../variables/fieldTypes'
@@ -103,12 +103,9 @@ const CreateProduct = () => {
                                     field={f}
                                 />
                             )}
-                            <Div
-                                as="button"
-                                theme={{...genericButtonStyle}}
-                            >
+                            <Button>
                                 Create Product
-                            </Div>
+                            </Button>
                         </Div>
                     </Form>
                 )}

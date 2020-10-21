@@ -6,12 +6,12 @@ import {
 import Div      from '../../shared/Basic/Div'
 import H2       from '../../shared/Basic/H2'
 import RichText from '../../shared/Basic/RichText'
-import S3Image  from '../../Shop/S3Image'
+import S3Img    from '../../shared/Basic/S3Img'
 import {
     genericCardImageStyle,
     businessStyle,
     businessWrapperStyle
-}                         from '../../themes/business'
+}               from '../../themes/business'
 import {postContentStyle} from '../../themes/layout'
 
 
@@ -33,7 +33,7 @@ const Business = () => {
         <Div theme={postContentStyle(slug)}>
             <Div theme={businessWrapperStyle}>
                 <H2 theme={businessStyle.title}>{name}</H2>
-                <S3Image
+                <S3Img
                     url={photo}
                     alt={name}
                     theme={genericCardImageStyle}

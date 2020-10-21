@@ -7,8 +7,8 @@ import Dropzone                 from 'react-dropzone'
 import 'react-image-crop/dist/ReactCrop.css'
 import Div        from '../shared/Basic/Div'
 import Img        from '../shared/Basic/Img'
-import CropPortal from '../shared/Elements/CropPortal'
-import S3Image    from '../Shop/S3Image'
+import CropPortal              from '../shared/Elements/CropPortal'
+import S3Img                   from '../shared/Basic/S3Img'
 import {genericCardImageStyle} from '../themes/business'
 import {
     imageDropZonePreviewStyle,
@@ -127,7 +127,7 @@ const SmartFileInput = ({formik, id, cropWidth, cropHeight, s3Path}) => {
                     />
                 )}
                 {photo && (
-                    <S3Image
+                    <S3Img
                         url={photo}
                         alt={'Business Image Preview'}
                         theme={genericCardImageStyle}

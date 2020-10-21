@@ -18,8 +18,8 @@ import {
     checkoutAddress,
     checkoutDropIn
 }                           from '../themes/shop'
-import {flex}               from '../utils/themer'
-import {emptyCart}          from './cartHelpers'
+import {flex}      from '../utils/themer'
+import {emptyCart} from '../features/shop/cartHelpers'
 
 
 const Checkout = ({products, setRun = f => f, run = undefined}) => {

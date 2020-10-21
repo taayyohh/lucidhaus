@@ -58,6 +58,7 @@ export const genericCardNameStyle = {
 
 export const businessWrapperStyle = {
     display: flex,
+    flexDirection: column
 }
 
 export const businessStyle = {
@@ -68,5 +69,3 @@ export const businessStyle = {
         marginBottom: 15
     }
 }
-
-export const businessLeftStyle = {}

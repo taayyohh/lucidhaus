@@ -6,6 +6,8 @@ import {
 /**
  *
  * Array used in FieldSwitch
+ *
+ * structure of object in array:
  * name: api model field name
  * inputLabel: text that appears in input
  * type: used to determine component type in FieldSwitch
@@ -97,6 +99,11 @@ export const productFieldTypes = [
     {
         name: 'quantity',
         inputLabel: 'Quantity',
+        type: 'number'
+    },
+    {
+        name: 'sold',
+        inputLabel: 'Sold',
         type: 'number'
     }
 ]

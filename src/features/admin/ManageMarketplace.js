@@ -13,13 +13,14 @@ import DeletePrompt                   from './DeletePrompt'
 const ManageMarketplace = () => {
     const {slug} = useSelector(state => state.site)
     const {marketplace} = useSelector(state => state.business)
+    const {confirmDelete} = useSelector(state => state.admin)
     const dispatch = useDispatch()
 
     useEffect(() => {
         dispatch({type: 'business/getMarketplace'})
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [marketplace])
+    }, [confirmDelete])
 
     return (
         <Div theme={postContentStyle(slug)}>
@@ -30,7 +31,7 @@ const ManageMarketplace = () => {
                     create={'/create/business'}
                 />
                 <AdminMarketplace marketplace={marketplace}/>
-                <DeletePrompt/>
+                <DeletePrompt destroyAction={'admin/destroyBusiness'}/>
             </Div>
         </Div>
     )

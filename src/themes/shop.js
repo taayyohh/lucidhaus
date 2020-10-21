@@ -1,26 +1,13 @@
 import {
     borderBox,
-    column,
-    flex,
     none
-} from '../utils/themer'
-
-export const shopStyle = {
-    display: flex,
-    flexDirection: column
-}
-
-export const shopInnerStyle = {
-    width: '100%',
-    mobile: {
-        width: '100%'
-    }
-}
+}                                from '../utils/themer'
+import {marketplaceWrapperStyle} from './business'
 
 
 export const checkoutAddress = {
     child: {
-        selector: "> input",
+        selector: '> input',
         width: '100%',
         height: 50,
         border: none,
@@ -37,4 +24,8 @@ export const checkoutDropIn = {
             display: none
         }
     ]
+}
+
+export const shopWrapperStyle = {
+    ...marketplaceWrapperStyle
 }

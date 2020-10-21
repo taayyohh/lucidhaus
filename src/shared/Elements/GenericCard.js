@@ -1,22 +1,22 @@
-import React      from 'react'
-import Div        from '../../Basic/Div'
-import S3Image    from '../../Shop/S3Image'
+import React from 'react'
+import S3Img from '../Basic/S3Img'
 import {
     genericCardImageStyle,
     genericCardImageWrapperStyle,
     genericCardNameStyle,
     genericCardStyle
-}                 from '../../themes/business'
+}            from '../../themes/business'
+import Div        from '../Basic/Div'
 import LinkSwitch from '../Basic/LinkSwitch'
 
 const GenericCard = ({photo, name, slug, theme}) => {
     return (
         <LinkSwitch
-            url={`marketplace/${slug}`}
+            url={slug}
             theme={{...genericCardStyle, ...theme}}
         >
             <Div theme={{...genericCardImageWrapperStyle, ...theme.imageWrapper}}>
-                <S3Image
+                <S3Img
                     url={photo}
                     alt={name}
                     theme={{...genericCardImageStyle, ...theme.image}}

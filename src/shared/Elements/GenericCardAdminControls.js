@@ -1,26 +1,26 @@
 import React         from 'react'
 import {useDispatch} from 'react-redux'
-import Div           from '../../shared/Basic/Div'
-import LinkSwitch    from '../../shared/Basic/LinkSwitch'
+import Div           from '../Basic/Div'
+import LinkSwitch    from '../Basic/LinkSwitch'
 import {
     adminCardControlsButtonStyle,
     adminCardControlsButtonWrapperStyle
 }                    from '../../themes/admin'
 
-const BusinessCardAdminControls = ({slug}) => {
+const GenericCardAdminControls = ({slug, edit, destroyAction}) => {
     const dispatch = useDispatch()
 
     return (
         <Div theme={adminCardControlsButtonWrapperStyle}>
             <LinkSwitch
                 theme={adminCardControlsButtonStyle}
-                url={`/admin/marketplace/update/${slug}`}
+                url={`${edit}/${slug}`}
             >
                 Edit
             </LinkSwitch>
             <Div
                 theme={adminCardControlsButtonStyle}
-                onClick={() => dispatch({type: 'admin/attemptDestroyBusiness', payload: {slug: slug}})}
+                onClick={() => dispatch({type: destroyAction, payload: {slug: slug}})}
             >
                 Delete
             </Div>
@@ -28,4 +28,4 @@ const BusinessCardAdminControls = ({slug}) => {
     )
 }
 
-export default BusinessCardAdminControls
+export default GenericCardAdminControls

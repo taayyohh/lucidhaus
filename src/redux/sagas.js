@@ -10,13 +10,18 @@ import {
     addBusiness,
     addProduct,
     deleteBusiness,
+    deleteProduct,
     getBusiness,
     getBusinesses,
+    getProduct,
     getProducts,
     getSignedRequest,
+    listOrders,
+    listStatusValues,
     updateBusiness,
+    updateProduct,
     uploadFile
-}             from '../services/apiAdmin'
+} from '../services/apiAdmin'
 import {
     authenticate,
     getPurchaseHistory,
@@ -105,6 +110,7 @@ function* updateBusinessDetail(business) {
         const s3Payload = yield call(getSignedRequest, {croppedImage: image})
         if (!!s3Payload.signedRequest) {
             const uploadImage = yield call(uploadFile, {file: image, signedRequest: s3Payload.signedRequest})
+            console.log('upload', uploadImage)
         }
     }
 
@@ -138,6 +144,7 @@ function* destroyBusinessSuccess() {
     yield put(push('/admin/marketplace'))
 }
 
+
 /* Product */
 function* createProduct(product) {
     const {_id, token, values} = product.payload
@@ -168,6 +175,57 @@ function* createProduct(product) {
         }
 
     }
+}
+
+function* updateProductDetail(product) {
+    const {slug, _id, token, values} = product.payload
+    const {name, description, photo, image, quantity, price} = values
+
+    //add to formData so api can read
+    const newProduct = new FormData()
+    newProduct.set('name', name)
+    newProduct.set('description', description)
+    newProduct.set('photo', photo)
+    newProduct.set('quantity', quantity)
+    newProduct.set('price', price)
+
+    if (!!image) {
+        const s3Payload = yield call(getSignedRequest, {croppedImage: image})
+        if (!!s3Payload.signedRequest) {
+            const uploadImage = yield call(uploadFile, {file: image, signedRequest: s3Payload.signedRequest})
+            console.log('upload', uploadImage)
+        }
+    }
+
+    try {
+        const updated = yield call(updateProduct, {slug: slug, userId: _id, token: token, product: newProduct})
+        if (!updated.error) {
+            yield put({type: 'product/updateProductSuccess', updated})
+        } else {
+            yield put({type: 'product/updateProductFailure', updated})
+        }
+    } catch (error) {
+        yield put({type: 'product/updateProductFailure'})
+    }
+}
+
+function* attemptDestroyProduct(product) {
+    yield put({type: 'admin/confirmDestroyProduct', payload: product.payload})
+}
+
+function* destroyProduct(product) {
+    console.log('DDDD', product.payload)
+    const destroyed = yield call(deleteProduct, product.payload)
+    if (!destroyed.error) {
+        yield put({type: 'admin/destroyProductSuccess'})
+        yield put(push('/admin/shop'))
+    } else {
+        yield put({type: 'admin/destroyProductFailure'})
+    }
+}
+
+function* destroyProductSuccess() {
+    yield put(push('/admin/shop'))
 }
 
 
@@ -285,6 +343,29 @@ function* getMarketplace() {
     }
 }
 
+function* getBusinessDetail(business) {
+    try {
+        const payload = yield call(getBusiness, business.payload)
+        if (!payload.error) {
+            yield put({type: 'business/getBusinessSuccess', payload})
+        } else {
+            yield put({type: 'business/getBusinessFailure', payload})
+        }
+    } catch (error) {
+        yield put({type: 'business/getBusinessFailure'})
+    }
+}
+
+
+/**
+ *
+ *
+ * @param SHOP
+ *
+ *
+ */
+
+
 function* getShop() {
     try {
         const payload = yield call(getProducts)
@@ -298,18 +379,45 @@ function* getShop() {
     }
 }
 
-function* getBusinessDetail(business) {
+function* getProductDetail(product) {
     try {
-        const payload = yield call(getBusiness, business.payload)
+        const payload = yield call(getProduct, product.payload)
         if (!payload.error) {
-            yield put({type: 'business/getBusinessSuccess', payload})
+            yield put({type: 'shop/getProductSuccess', payload})
         } else {
-            yield put({type: 'business/getBusinessFailure', payload})
+            yield put({type: 'shop/getProductFailure', payload})
         }
     } catch (error) {
-        yield put({type: 'business/getBusinessFailure'})
+        yield put({type: 'shop/getProductFailure'})
     }
 }
+
+function* getOrders(request) {
+    try {
+        const payload = yield call(listOrders, request.payload)
+        if (!payload.error) {
+            yield put({type: 'shop/getOrdersSuccess', payload})
+        } else {
+            yield put({type: 'shop/getOrdersFailure', payload})
+        }
+    } catch (error) {
+        yield put({type: 'admin/getOrdersFailure', error})
+    }
+}
+
+function* getStatusValues(request) {
+    try {
+        const payload = yield call(listStatusValues, request.payload)
+        if (!payload.error) {
+            yield put({type: 'shop/getStatusValuesSuccess', payload})
+        } else {
+            yield put({type: 'shop/getStatusValuesFailure', payload})
+        }
+    } catch (error) {
+        yield put({type: 'admin/getStatusValuesFailure', error})
+    }
+}
+
 
 
 /**
@@ -363,6 +471,22 @@ function* watchUpdateBusiness() {
 /* Product*/
 function* watchCreateProduct() {
     yield takeEvery('admin/createProduct', createProduct)
+}
+
+function* watchAttemptDestroyProduct() {
+    yield takeEvery('admin/attemptDestroyProduct', attemptDestroyProduct)
+}
+
+function* watchDestroyProduct() {
+    yield takeEvery('admin/destroyProduct', destroyProduct)
+}
+
+function* watchDestroyProductSuccess() {
+    yield takeEvery('admin/attemptDestroyProductSuccess', destroyProductSuccess)
+}
+
+function* watchUpdateProduct() {
+    yield takeEvery('admin/updateProduct', updateProductDetail)
 }
 
 
@@ -420,12 +544,33 @@ function* watchGetMarketplace() {
     yield takeEvery('business/getMarketplace', getMarketplace)
 }
 
-function* watchGetShop() {
-    yield takeEvery('business/getShop', getShop)
-}
-
 function* watchGetBusinessDetail() {
     yield takeEvery('business/getBusiness', getBusinessDetail)
+}
+
+
+/**
+ *
+ *
+ * SHOP WATCHERS
+ *
+ *
+ */
+
+function* watchGetShop() {
+    yield takeEvery('shop/getShop', getShop)
+}
+
+function* watchGetProductDetail() {
+    yield takeEvery('shop/getProduct', getProductDetail)
+}
+
+function* watchGetOrders() {
+    yield takeEvery('shop/getOrders', getOrders)
+}
+
+function* watchGetStatusValues() {
+    yield takeEvery('shop/getStatusValues', getStatusValues)
 }
 
 
@@ -449,5 +594,12 @@ export default function* rootSaga() {
         fork(watchGetBusinessDetail),
         fork(watchGetShop),
         fork(watchCreateProduct),
+        fork(watchAttemptDestroyProduct),
+        fork(watchDestroyProduct),
+        fork(watchDestroyProductSuccess),
+        fork(watchUpdateProduct),
+        fork(watchGetProductDetail),
+        fork(watchGetOrders),
+        fork(watchGetStatusValues),
     ])
 }

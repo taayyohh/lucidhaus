@@ -6,15 +6,15 @@ import {
 import Div                from '../Basic/Div'
 import Span               from '../Basic/Span'
 import {menuPanelContext} from '../../Containers/MenuPanelController'
-import LinkSwitch         from '../Basic/LinkSwitch'
-import {itemTotal}        from '../../Shop/cartHelpers'
+import LinkSwitch  from '../Basic/LinkSwitch'
+import {itemTotal} from '../../features/shop/cartHelpers'
 import {
     headerMenuAuthStyle,
     headerMenuAuthStyleListItemStyle,
     headerMenuListItemStyle,
     headerMenuListStyle,
     headerMenuStyle
-}                         from '../../themes/header'
+}                  from '../../themes/header'
 
 const HeaderMenu = () => {
     const dispatch = useDispatch()

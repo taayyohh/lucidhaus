@@ -4,9 +4,9 @@ import HeaderMenu                    from '../shared/Menus/HeaderMenu'
 import {headerMenuPanelWrapperStyle} from '../themes/menus'
 import HeaderMenuPanelWrapper        from '../shared/Menus/MenuPanelWrapper'
 import AdminMenu                     from "../shared/Menus/AdminMenu";
-import {menuPanelContext}            from "../Containers/MenuPanelController";
-import Cart                          from "../Shop/Cart";
-import Overlay                       from "./Overlay";
+import {menuPanelContext} from "../Containers/MenuPanelController";
+import Cart               from "../features/shop/Cart";
+import Overlay            from "./Overlay";
 
 const MenuPanels = () => {
     const {currentPanel, setPanel} = useContext(menuPanelContext)

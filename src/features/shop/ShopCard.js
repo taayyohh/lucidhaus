@@ -1,7 +1,7 @@
 import React      from 'react'
 import Div        from '../../shared/Basic/Div'
 import LinkSwitch from '../../shared/Basic/LinkSwitch'
-import S3Image    from '../../Shop/S3Image'
+import S3Img      from '../../shared/Basic/S3Img'
 import {
     genericCardImageStyle,
     genericCardImageWrapperStyle,
@@ -16,7 +16,7 @@ const ShopCard = ({photo, name, slug, theme}) => {
             theme={{...genericCardStyle, ...theme}}
         >
             <Div theme={{...genericCardImageWrapperStyle, ...theme.imageWrapper}}>
-                <S3Image
+                <S3Img
                     url={photo}
                     alt={name}
                     theme={{...genericCardImageStyle, ...theme.image}}

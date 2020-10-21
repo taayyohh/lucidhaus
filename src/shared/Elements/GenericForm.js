@@ -5,16 +5,17 @@ import {
     useDispatch,
     useSelector
 }                            from 'react-redux'
-import FieldSwitch           from '../../Forms/FieldSwitch'
-import Button                from '../../shared/Basic/Button'
 import Div                   from '../../shared/Basic/Div'
 import Form                  from '../../shared/Basic/Form'
 import H2                    from '../../shared/Basic/H2'
+import FieldSwitch           from '../../Forms/FieldSwitch'
+import {genericButtonStyle}  from '../../themes/elements'
 import {defaultNewFormStyle} from '../../themes/forms'
 import {postContentStyle}    from '../../themes/layout'
-import {businessFieldTypes}  from '../../variables/fieldTypes'
+import {businessFieldTypes} from '../../variables/fieldTypes'
+import Button               from '../Basic/Button'
 
-const CreateBusiness = () => {
+const GenericForm = () => {
     const dispatch = useDispatch()
     const {_id, token} = useSelector(state => state.user)
 
@@ -49,4 +50,4 @@ const CreateBusiness = () => {
     )
 }
 
-export default CreateBusiness
+export default GenericForm

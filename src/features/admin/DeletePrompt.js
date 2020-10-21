@@ -10,7 +10,7 @@ import MotionDiv            from '../../shared/Basic/MotionDiv'
 import {genericButtonStyle} from '../../themes/admin'
 import {defaultModalStyle}  from '../../themes/layout'
 
-const DeletePrompt = () => {
+const DeletePrompt = ({destroyAction}) => {
     const {_id, token} = useSelector(state => state.user)
     const {confirmDelete} = useSelector(state => state.admin)
     const {shouldDelete, destroy} = confirmDelete
@@ -27,13 +27,13 @@ const DeletePrompt = () => {
                                     Are you sure you want to delete?
                                     <Div
                                         theme={genericButtonStyle}
-                                        onClick={() => dispatch({type: 'admin/denyDestroyBusiness'})}
+                                        onClick={() => dispatch({type: 'admin/denyDestroyItem'})}
                                     >
                                         Do <strong>not</strong> delete this business
                                     </Div>
                                     <Div
                                         theme={genericButtonStyle}
-                                        onClick={() => dispatch({type: 'admin/acceptDestroyBusiness'})}
+                                        onClick={() => dispatch({type: 'admin/acceptDestroyItem'})}
                                     >
                                         Yes, delete this business
                                     </Div>
@@ -46,7 +46,7 @@ const DeletePrompt = () => {
                                     <Div
                                         theme={genericButtonStyle}
                                         onClick={() => dispatch({
-                                            type: 'admin/destroyBusiness',
+                                            type: destroyAction, ///abstract
                                             payload: {_id: _id, token: token, slug: confirmDelete.slug}
                                         })}
                                     >

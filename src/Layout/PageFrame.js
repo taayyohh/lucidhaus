@@ -1,12 +1,11 @@
-import React            from 'react'
-import Div              from '../shared/Basic/Div'
-import {pageFrameStyle} from '../themes/layout'
-import Footer from './Footer'
-import Header from './Header'
-import Main from './Main'
-import MenuPanels from "./MenuPanel";
-import TransitionOverlay from "./TransitionOverlay";
-
+import React             from 'react'
+import Div               from '../shared/Basic/Div'
+import {pageFrameStyle}  from '../themes/layout'
+import Footer            from './Footer'
+import Header            from './Header'
+import Main              from './Main'
+import MenuPanels        from './MenuPanel'
+import TransitionOverlay from './TransitionOverlay'
 
 const PageFrame = () => {
 

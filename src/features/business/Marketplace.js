@@ -4,9 +4,9 @@ import {
     useSelector
 }                                from 'react-redux'
 import Div                       from '../../shared/Basic/Div'
+import GenericCard               from '../../shared/Elements/GenericCard'
 import {marketplaceWrapperStyle} from '../../themes/business'
 import {postContentStyle}        from '../../themes/layout'
-import BusinessCard              from './BusinessCard'
 
 
 const Marketplace = () => {
@@ -24,9 +24,9 @@ const Marketplace = () => {
         <Div theme={postContentStyle(slug)}>
             <Div theme={marketplaceWrapperStyle}>
                 {marketplace && marketplace.map(business => (
-                    <BusinessCard
+                    <GenericCard
                         key={business.slug}
-                        slug={business.slug}
+                        slug={`marketplace/${business.slug}`}
                         name={business.name}
                         photo={business.photo}
                     />

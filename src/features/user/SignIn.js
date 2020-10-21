@@ -5,9 +5,9 @@ import {
     useSelector
 }                   from 'react-redux'
 import Div          from '../../shared/Basic/Div'
-import H3           from '../../shared/Basic/H3'
-import SubmitButton from '../../shared/Basic/SubmitButton'
-import FieldSwitch  from '../../Forms/FieldSwitch'
+import H3          from '../../shared/Basic/H3'
+import Button      from '../../shared/Basic/Button'
+import FieldSwitch from '../../Forms/FieldSwitch'
 import {history}            from '../../redux/store'
 import {genericButtonStyle} from '../../themes/elements'
 import {postContentStyle}   from '../../themes/layout'
@@ -48,7 +48,7 @@ const SignIn = () => {
                                 field={f}
                             />
                         )}
-                        <SubmitButton
+                        <Button
                             theme={{...genericButtonStyle, ...signUpFormStyle.button}}
                             children={'Submit'}
                         />

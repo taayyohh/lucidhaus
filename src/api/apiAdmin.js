@@ -243,7 +243,7 @@ export const updateBusiness = (slug, userId, token, business) => {
 
 
 /**
- * Manage Orders
+ * Manage ManageOrders
  */
 
 export const listOrders = (userId, token) => {

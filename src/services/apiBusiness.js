@@ -1,4 +1,12 @@
+/**
+ * to perform crud on admin
+ * get all businesses
+ * get a single admin
+ * update single admin
+ * delete single admin
+ */
 import {API} from '../config'
+
 
 export const getBusinesses = () => {
     return fetch(`${API}/businesses?limit=undefined`, {
@@ -7,11 +15,37 @@ export const getBusinesses = () => {
         .then(response => {
             return response.json()
         })
-        .catch(err => console.log(err))
+        .catch(error => console.log(error))
 }
 
-export const deleteBusiness = (businessId, userId, token) => {
-    return fetch(`${API}/business/${businessId}/${userId}`, {
+export const getBusiness = ({slug}) => {
+    return fetch(`${API}/business/${slug}`, {
+        method: 'GET'
+    })
+        .then(response => {
+            return response.json()
+        })
+        .catch(error => console.log(error))
+}
+
+export const addBusiness = ({userId, token, business}) => {
+    return fetch(`${API}/business/create/${userId}`, {
+        method: 'POST',
+        headers: {
+            Accept: 'application/json',
+            Authorization: `Bearer ${token}`
+        },
+        body: business
+    }).then(response => {
+        return response.json()
+    }).catch(error => {
+        console.log(error)
+    })
+}
+
+
+export const deleteBusiness = ({_id, token, slug}) => {
+    return fetch(`${API}/business/${slug}/${_id}`, {
         method: 'DELETE',
         headers: {
             Accept: 'application/json',
@@ -22,20 +56,10 @@ export const deleteBusiness = (businessId, userId, token) => {
         .then(response => {
             return response.json()
         })
-        .catch(err => console.log(err))
+        .catch(error => console.log(error))
 }
 
-export const getBusiness = slug => {
-    return fetch(`${API}/business/${slug}`, {
-        method: 'GET'
-    })
-        .then(response => {
-            return response.json()
-        })
-        .catch(err => console.log(err))
-}
-
-export const updateBusiness = (slug, userId, token, business) => {
+export const updateBusiness = ({slug, userId, token, business}) => {
     return fetch(`${API}/business/${slug}/${userId}`, {
         method: 'PUT',
         headers: {
@@ -47,5 +71,5 @@ export const updateBusiness = (slug, userId, token, business) => {
         .then(response => {
             return response.json()
         })
-        .catch(err => console.log(err))
+        .catch(error => console.log(error))
 }

@@ -4,18 +4,22 @@ import H3                    from '../../shared/Basic/H3'
 import Li                    from '../../shared/Basic/Li'
 import Ul                    from '../../shared/Basic/Ul'
 import {adminDashboardStyle} from '../../themes/admin'
-import {useSelector} from "react-redux";
+import {useSelector}         from "react-redux";
+import {postContentStyle}    from '../../themes/layout'
 
 const AdminDashboard = () => {
     const {name, email} = useSelector(state => state.user)
 
     return (
-        <Div theme={adminDashboardStyle}>
-            <H3 theme={adminDashboardStyle.heading}>Hey, {name}</H3>
-            <Ul>
-                <Li>{email}</Li>
-            </Ul>
+        <Div theme={postContentStyle()}>
+            <Div theme={adminDashboardStyle}>
+                <H3 theme={adminDashboardStyle.heading}>Hey, {name}</H3>
+                <Ul>
+                    <Li>{email}</Li>
+                </Ul>
+            </Div>
         </Div>
+
     )
 }
 

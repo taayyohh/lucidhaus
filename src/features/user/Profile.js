@@ -5,9 +5,9 @@ import {
     useSelector
 }                   from 'react-redux'
 import Div          from '../../shared/Basic/Div'
-import H3           from '../../shared/Basic/H3'
-import SubmitButton from '../../shared/Basic/SubmitButton'
-import SmartInput   from '../../Forms/SmartInput'
+import H3         from '../../shared/Basic/H3'
+import Button     from '../../shared/Basic/Button'
+import SmartInput from '../../Forms/SmartInput'
 import {genericButtonStyle} from '../../themes/elements'
 import {
     signInFormStyle,
@@ -45,7 +45,7 @@ const Profile = () => {
                             theme={signInFormStyle.fieldset}
                         />
                     )}
-                    <SubmitButton
+                    <Button
                         theme={{...genericButtonStyle, ...signUpFormStyle.button}}
                         children={'Submit'}
                     />

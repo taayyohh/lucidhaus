@@ -13,13 +13,14 @@ import DeletePrompt                   from './DeletePrompt'
 const ManageShop = () => {
     const {slug} = useSelector(state => state.site)
     const {shop} = useSelector(state => state.shop)
+    const {confirmDelete} = useSelector(state => state.admin)
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch({type: 'business/getShop'})
+        dispatch({type: 'shop/getShop'})
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, [confirmDelete])
 
 
     return (
@@ -31,7 +32,7 @@ const ManageShop = () => {
                     create={'/create/product'}
                 />
                 <AdminShop shop={shop}/>
-                <DeletePrompt/>
+                <DeletePrompt destroyAction={'admin/destroyProduct'}/>
             </Div>
         </Div>
     )

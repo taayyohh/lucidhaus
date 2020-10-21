@@ -23,27 +23,37 @@ export const adminSlice = createSlice({
     name: 'admin',
     initialState: initialState,
     reducers: {
-        createBusinessSuccess: (state, action) => {
-            console.log('success', action)
-        },
-        createBusinessFailure: (state, action) => {
-            console.log('failure', action)
-        },
         confirmDestroyBusiness: (state, action) => {
             state.confirmDelete.shouldDelete = true
             state.confirmDelete.slug = action.payload.slug
         },
-        denyDestroyBusiness: (state, action) => {
+        denyDestroyItem: (state, action) => {
             state.confirmDelete.shouldDelete = false
         },
-        acceptDestroyBusiness: (state, action) => {
+        acceptDestroyItem: (state, action) => {
             state.confirmDelete.destroy = true
         },
         destroyBusinessSuccess: (state) => {
             state.confirmDelete.shouldDelete = false
             state.confirmDelete.destroy = false
             state.confirmDelete.slug = ''
-        }
+        },
+
+        confirmDestroyProduct: (state, action) => {
+            state.confirmDelete.shouldDelete = true
+            state.confirmDelete.slug = action.payload.slug
+        },
+        denyDestroyProduct: (state, action) => {
+            state.confirmDelete.shouldDelete = false
+        },
+        acceptDestroyProduct: (state, action) => {
+            state.confirmDelete.destroy = true
+        },
+        destroyProductSuccess: (state) => {
+            state.confirmDelete.shouldDelete = false
+            state.confirmDelete.destroy = false
+            state.confirmDelete.slug = ''
+        },
     },
 })
 

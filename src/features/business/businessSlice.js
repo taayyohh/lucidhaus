@@ -16,7 +16,7 @@ export const businessSlice = createSlice({
         getMarketplaceSuccess: (state, action) => {
             state.marketplace = action.payload
         },
-        getMarketplaceSFailure: (state, action) => {
+        getMarketplaceFailure: (state, action) => {
             state.error = action.payload
         },
         updateBusinessFailure: (state, action) => {

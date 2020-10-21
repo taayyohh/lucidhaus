@@ -134,8 +134,8 @@ export const getProducts = () => {
         .catch(error => console.log(error))
 }
 
-export const deleteProduct = (productId, userId, token) => {
-    return fetch(`${API}/product/${productId}/${userId}`, {
+export const deleteProduct = ({slug, _id, token}) => {
+    return fetch(`${API}/product/${slug}/${_id}`, {
         method: 'DELETE',
         headers: {
             Accept: 'application/json',
@@ -149,8 +149,8 @@ export const deleteProduct = (productId, userId, token) => {
         .catch(error => console.log(error))
 }
 
-export const getProduct = productId => {
-    return fetch(`${API}/product/${productId}`, {
+export const getProduct = ({slug}) => {
+    return fetch(`${API}/product/${slug}`, {
         method: 'GET'
     })
         .then(response => {
@@ -159,8 +159,8 @@ export const getProduct = productId => {
         .catch(error => console.log(error))
 }
 
-export const updateProduct = (productId, userId, token, product) => {
-    return fetch(`${API}/product/${productId}/${userId}`, {
+export const updateProduct = ({slug, userId, token, product}) => {
+    return fetch(`${API}/product/${slug}/${userId}`, {
         method: 'PUT',
         headers: {
             Accept: 'application/json',
@@ -249,11 +249,11 @@ export const updateBusiness = ({slug, userId, token, business}) => {
 
 
 /**
- * Manage Orders
+ * Manage ManageOrders
  */
 
-export const listOrders = (userId, token) => {
-    return fetch(`${API}/order/list/${userId}`, {
+export const listOrders = ({_id, token}) => {
+    return fetch(`${API}/order/list/${_id}`, {
         method: 'GET',
         headers: {
             Accept: 'application/json',
@@ -268,8 +268,8 @@ export const listOrders = (userId, token) => {
         })
 }
 
-export const getStatusValues = (userId, token) => {
-    return fetch(`${API}/order/status-values/${userId}`, {
+export const listStatusValues = ({_id, token}) => {
+    return fetch(`${API}/order/status-values/${_id}`, {
         method: 'GET',
         headers: {
             Accept: 'application/json',

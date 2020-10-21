@@ -7,13 +7,13 @@ import LinkSwitch           from '../shared/Basic/LinkSwitch'
 import {genericButtonStyle} from '../themes/elements'
 import {
     productCardStyle
-}                           from '../themes/product'
+}            from '../themes/product'
 import {
     addItem,
     removeItem,
     updateItem
-}              from './cartHelpers'
-import S3Image from './S3Image'
+}            from '../features/shop/cartHelpers'
+import S3Img from '../shared/Basic/S3Img'
 
 
 const ProductCard = ({
@@ -110,7 +110,7 @@ const ProductCard = ({
                     {product.name}
                 </H2>
                 {shouldRedirect(redirect)}
-                <S3Image
+                <S3Img
                     item={product}
                     url="product"
                     theme={{...productCardStyle.image, ...theme.image}}

@@ -1,4 +1,4 @@
-import {auto} from '../utils/themer'
+import {auto} from '../../utils/themer'
 
 export const headerMenuPanelVariants = {
     closed: {

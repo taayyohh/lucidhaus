@@ -1,117 +1,40 @@
-import React, {
-    useEffect,
-    useState
-}                            from 'react'
-import {getFilteredProducts} from '../../services/apiShop'
-import Div                   from '../../shared/Basic/Div'
-import ProductCard           from '../../Shop/ProductCard'
-import {postContentStyle}    from '../../themes/layout'
-import {ShopListStyle}       from '../../themes/product'
+import React, {useEffect} from 'react'
 import {
-    shopInnerStyle,
-    shopStyle
-}                            from '../../themes/shop'
+    useDispatch,
+    useSelector
+}                         from 'react-redux'
+import Div                from '../../shared/Basic/Div'
+import GenericCard        from '../../shared/Elements/GenericCard'
+import {postContentStyle} from '../../themes/layout'
+import {shopWrapperStyle} from '../../themes/shop'
+
 
 const Shop = () => {
-    const [error, setError] = useState(false)
-    const [limit, setLimit] = useState(6)
-    const [skip, setSkip] = useState(0)
-    const [size, setSize] = useState(0)
-    const [filteredResults, setFilteredResults] = useState([])
-    const [myFilters, setMyFilters] = useState({
-        filters: {category: [], price: []}
-    })
+    const {slug} = useSelector(state => state.site)
+    const {shop} = useSelector(state => state.shop)
+    const dispatch = useDispatch()
 
     useEffect(() => {
-        //    init()
-        loadFilteredResults(skip, limit, myFilters.filters)
-        setLimit(6)
-
-        if (error)
-            console.log('error', error)
-        console.log('set', setMyFilters)
+        dispatch({type: 'shop/getShop'})
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-
-    const loadFilteredResults = newFilters => {
-        getFilteredProducts(skip, limit, newFilters).then(data => {
-            if (data.error) {
-                setError(data.error)
-                //  console.log(error)
-            } else {
-                setFilteredResults(data.data)
-                setSize(data.size)
-            }
-        })
-    }
-
-    const loadMore = () => {
-        let toSkip = skip + limit
-
-        getFilteredProducts(toSkip, limit, myFilters.filters).then(data => {
-            if (data.error) {
-                setError(data.error)
-            } else {
-                setFilteredResults([...filteredResults, ...data.data])
-                setSize(data.size)
-                setSkip(toSkip)
-            }
-        })
-    }
-
-    const loadMoreButton = () => {
-        return (
-            size > 0 && size >= limit && (
-                <button onClick={loadMore}>Load More</button>
-            )
-        )
-    }
-
-
-    // const handleFilters = (filters, filterBy) => {
-    //     const newFilters = {...myFilters}
-    //     newFilters.filters[filterBy] = filters
-    //
-    //     if (filterBy === 'price') {
-    //         newFilters.filters[filterBy] = handlePrice(filters)
-    //     }
-    //
-    //     loadFilteredResults(myFilters.filters)
-    //     setMyFilters(newFilters)
-    // }
-
-
-    // const handlePrice = value => {
-    //     //  const data = prices
-    //     let array = []
-    //
-    //     // for (let key in data) {
-    //     //     if (data[key]._id === parseInt(value)) {
-    //     //         array = data[key].array
-    //     //     }
-    //     // }
-    //
-    //     return array
-    // }
-
-
     return (
-        <Div theme={postContentStyle()}>
-            <Div theme={shopStyle}>
-                <Div theme={shopInnerStyle}>
-                    <Div theme={ShopListStyle}>
-                        {filteredResults.map((product, i) => (
-                            <ProductCard key={i} product={product}/>
-                        ))}
-
-                        {loadMoreButton()}
-                    </Div>
-                </Div>
+        <Div theme={postContentStyle(slug)}>
+            <Div theme={shopWrapperStyle}>
+                {shop && shop.map(shop => (
+                    <GenericCard
+                        key={shop.slug}
+                        slug={`shop/${shop.slug}`}
+                        name={shop.name}
+                        photo={shop.photo}
+                    />
+                ))}
             </Div>
         </Div>
     )
 }
+
 
 export default Shop

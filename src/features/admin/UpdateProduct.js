@@ -4,44 +4,46 @@ import 'react-image-crop/dist/ReactCrop.css'
 import {
     useDispatch,
     useSelector
-}                   from 'react-redux'
-import Div          from '../../shared/Basic/Div'
-import Form         from '../../shared/Basic/Form'
-import H2          from '../../shared/Basic/H2'
-import Button      from '../../shared/Basic/Button'
-import FieldSwitch from '../../Forms/FieldSwitch'
-import {genericButtonStyle}  from '../../themes/elements'
+}                            from 'react-redux'
+import FieldSwitch           from '../../Forms/FieldSwitch'
+import Div                   from '../../shared/Basic/Div'
+import Form   from '../../shared/Basic/Form'
+import Button from '../../shared/Basic/Button'
+import H2     from '../../shared/Basic/H2'
 import {defaultNewFormStyle} from '../../themes/forms'
 import {postContentStyle}    from '../../themes/layout'
-import {businessFieldTypes}  from '../../variables/fieldTypes'
+import {productFieldTypes}   from '../../variables/fieldTypes'
 
-const UpdateBusiness = () => {
+const UpdateProduct = () => {
     const dispatch = useDispatch()
     const {_id, token} = useSelector(state => state.user)
     const {slug} = useSelector(state => state.site)
-    const {business} = useSelector(state => state.business)
-    const {name, description, photo} = business
+    const {product} = useSelector(state => state.shop)
+    const {name, description, photo, quantity, price, sold} = product
 
     useEffect(() => {
         if (slug.length > 0)
-            dispatch({type: 'business/getBusiness', payload: {slug: slug}})
+            dispatch({type: 'shop/getProduct', payload: {slug: slug}})
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [slug])
 
     return (
         <Div theme={postContentStyle()}>
-            {business && (
+            {product && (
                 <Formik
                     initialValues={{
                         name: name,
                         description: description,
                         photo: photo,
-                        image: ''
+                        image: '',
+                        quantity: quantity,
+                        price: price,
+                        sold: sold
                     }}
                     enableReinitialize={true}
                     onSubmit={values => dispatch({
-                        type: 'admin/updateBusiness',
+                        type: 'admin/updateProduct',
                         payload: {
                             slug: slug,
                             _id: _id,
@@ -52,18 +54,16 @@ const UpdateBusiness = () => {
                 >
                     {formik => (
                         <Form onSubmit={formik.handleSubmit}>
-                            <H2 theme={defaultNewFormStyle.heading}>Update Business</H2>
+                            <H2 theme={defaultNewFormStyle.heading}>Update Product</H2>
                             <Div theme={defaultNewFormStyle.inner}>
-                                {businessFieldTypes.map((f, i) =>
+                                {productFieldTypes.map((f, i) =>
                                     <FieldSwitch
                                         key={i}
                                         formik={formik}
                                         field={f}
                                     />
                                 )}
-                                <Button
-                                    theme={{...genericButtonStyle}}
-                                >
+                                <Button>
                                     Updated Business
                                 </Button>
                             </Div>
@@ -75,4 +75,4 @@ const UpdateBusiness = () => {
     )
 }
 
-export default UpdateBusiness
+export default UpdateProduct

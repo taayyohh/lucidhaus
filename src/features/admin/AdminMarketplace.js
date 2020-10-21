@@ -1,12 +1,12 @@
-import React from 'react'
-import Div   from '../../shared/Basic/Div'
+import React                     from 'react'
+import Div                       from '../../shared/Basic/Div'
+import GenericCard               from '../../shared/Elements/GenericCard'
 import {
     adminBusinessCardStyle,
     adminBusinessCardWrapperStyle,
     adminMarketplaceInnerWrapperStyle
-}            from '../../themes/admin'
-import BusinessCard              from '../business/BusinessCard'
-import BusinessCardAdminControls from '../business/BusinessCardAdminControls'
+}                               from '../../themes/admin'
+import GenericCardAdminControls from '../../shared/Elements/GenericCardAdminControls'
 
 const AdminMarketplace = ({marketplace}) =>
     <Div theme={adminMarketplaceInnerWrapperStyle}>
@@ -15,13 +15,17 @@ const AdminMarketplace = ({marketplace}) =>
                 key={business.slug}
                 theme={adminBusinessCardWrapperStyle}
             >
-                <BusinessCard
-                    slug={`update/${business.slug}`}
+                <GenericCard
+                    slug={`marketplace/update/${business.slug}`}
                     name={business.name}
                     photo={business.photo}
                     theme={adminBusinessCardStyle}
                 />
-                <BusinessCardAdminControls slug={business.slug}/>
+                <GenericCardAdminControls
+                    edit={'/admin/marketplace/update'}
+                    destroy={'admin/attemptDestroyBusiness'}
+                    slug={business.slug}
+                />
             </Div>
         ))}
     </Div>
