@@ -2,7 +2,7 @@ import PropTypes       from 'prop-types'
 import React, {memo}   from 'react'
 import {isString}      from '../../utils/helpers'
 import mouseOverDetect from '../../utils/mouseOverDetect'
-import validURL        from '../../utils/validURL'
+import validUrl        from '../../utils/validUrl'
 import Anchor          from './Anchor'
 import ExternalLink    from './ExternalLink'
 import NavigationLink  from './NavigationLink'
@@ -32,7 +32,7 @@ const LinkSwitch = memo(({children, className, data, onClick, onFocus, theme, ti
     url = url.trim().replace(process.env.REACT_APP_SITE_URL, '')
 
     // Display normal anchor tag for external URL
-    if (validURL.test(url) || download)
+    if (validUrl.test(url) || download)
         return <ExternalLink
             children={children}
             className={className}

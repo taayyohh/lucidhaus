@@ -1,28 +1,27 @@
 import 'braintree-web'
-import DropIn               from 'braintree-web-drop-in-react'
+import DropIn             from 'braintree-web-drop-in-react'
 import React, {
     useEffect,
     useState
-}                           from 'react'
-import PlacesAutocomplete   from 'react-places-autocomplete'
-import {Link}               from 'react-router-dom'
-import {isAuthenticated} from '../api/apiAuth'
+}                         from 'react'
+import PlacesAutocomplete from 'react-places-autocomplete'
+import {useSelector} from 'react-redux'
+import {emptyCart}   from './cartHelpers'
+
 import {
     createOrder,
     getBraintreeClientToken,
     processPayment
-}                           from '../services/apiShop'
-import Div                  from '../shared/Basic/Div'
-import {genericButtonStyle} from '../themes/elements'
+}                           from '../../services/apiShop'
+import Div                  from '../../shared/Basic/Div'
+import {genericButtonStyle} from '../../themes/elements'
 import {
     checkoutAddress,
     checkoutDropIn
-}                           from '../themes/shop'
-import {flex}      from '../utils/themer'
-import {emptyCart} from '../features/shop/cartHelpers'
+}                           from '../../themes/shop'
 
 
-const Checkout = ({products, setRun = f => f, run = undefined}) => {
+const Checkout = ({products}) => {
     const [data, setData] = useState({
         loading: false,
         success: false,
@@ -31,17 +30,13 @@ const Checkout = ({products, setRun = f => f, run = undefined}) => {
         instance: {},
         address: ''
     })
+    const {_id, token} = useSelector(state => state.user)
+    const {isAuthenticated} = useSelector(state => state.user)
 
-
-    // const [showConfirmed, setShowConfirmed] = useState(false)
-
-
-    const userId = isAuthenticated() && isAuthenticated().user._id
-    const token = isAuthenticated() && isAuthenticated().token
 
     //get Braintree token
-    const getToken = (userId, token) => {
-        getBraintreeClientToken(userId, token).then(data => {
+    const getToken = (_id, token) => {
+        getBraintreeClientToken(_id, token).then(data => {
             if (data.error) {
                 setData({...data, error: data.error})
             } else {
@@ -52,7 +47,7 @@ const Checkout = ({products, setRun = f => f, run = undefined}) => {
     }
 
     useEffect(() => {
-        getToken(userId, token)
+        getToken(_id, token)
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
@@ -69,19 +64,13 @@ const Checkout = ({products, setRun = f => f, run = undefined}) => {
     }
 
     const showCheckout = () => {
-        return isAuthenticated() ? (
-            <Div theme={{display: flex}}>
+        return isAuthenticated ? (
+            <Div>
                 {showDropIn()}
             </Div>
         ) : (
             <>
-                <Link to="/signin">
-                    Sign in to checkout
-                </Link> or
-
-                <Link to="/signin">
-                    checkout as guest
-                </Link>
+                Create Account? auto checked yesji
             </>
 
         )
@@ -112,7 +101,7 @@ const Checkout = ({products, setRun = f => f, run = undefined}) => {
                     paymentMethodNonce: nonce,
                     amount: getTotal(products)
                 }
-                processPayment(userId, token, paymentData)
+                processPayment(_id, token, paymentData)
                     .then(response => {
 
                         //create order
@@ -123,13 +112,12 @@ const Checkout = ({products, setRun = f => f, run = undefined}) => {
                             address: deliveryAddress
                         }
 
-                        createOrder(userId, token, createOrderData)
+                        createOrder(_id, token, createOrderData)
 
 
                         //empty cart
                         setData({...data, success: response.success})
                         emptyCart(() => {
-                            setRun(!run) // run useEffect in parent Cart
                             console.log('payment success and empty cart')
                             setData({
                                 loading: false,
@@ -160,7 +148,7 @@ const Checkout = ({products, setRun = f => f, run = undefined}) => {
                         <label>Delivery Address</label>
 
                         <PlacesAutocomplete
-                            value={data.address}
+                            value={data.address || ''}
                             onChange={handleAddress}
                             onSelect={handleAddress}
                             placeholder="Type your delivery Address"

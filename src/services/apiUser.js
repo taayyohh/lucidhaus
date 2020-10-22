@@ -31,12 +31,6 @@ export const signin = user => {
     })
 }
 
-export const authenticate = (data) => {
-    if (typeof window !== 'undefined') {
-        localStorage.setItem('jwt', JSON.stringify(data))
-    }
-}
-
 export const signout = () => {
     if (typeof window !== 'undefined') {
         localStorage.removeItem('jwt')
@@ -47,6 +41,12 @@ export const signout = () => {
         }).catch(error => {
             return error
         })
+    }
+}
+
+export const authenticate = (data) => {
+    if (typeof window !== 'undefined') {
+        localStorage.setItem('jwt', JSON.stringify(data))
     }
 }
 

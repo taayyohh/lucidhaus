@@ -1,17 +1,17 @@
 import React, {useState} from 'react'
-import {Link}            from 'react-router-dom'
-import {createCategory}  from '../api/apiAdmin'
-import {isAuthenticated} from '../api/apiAuth'
-import Div               from '../shared/Basic/Div'
-import H3                from '../shared/Basic/H3'
+import {useSelector}     from 'react-redux'
+import {Link} from 'react-router-dom'
+import Div    from '../../shared/Basic/Div'
+import H3     from '../../shared/Basic/H3'
 
-const AddCategory = () => {
+const CreateCategory = () => {
     const [name, setName] = useState('')
     const [error, setError] = useState(false)
     const [success, setSucceess] = useState(false)
 
     /// destructure User and info from local storage
-    const {user, token} = isAuthenticated()
+    const {_id, token} = useSelector(state => state.user)
+
 
     const handleChange = (e) => {
         setError('')
@@ -24,14 +24,14 @@ const AddCategory = () => {
         setSucceess(false)
         // make request to API to create category
 
-        createCategory(user._id, token, {name}).then(data => {
-            if (data.error) {
-                setError(true)
-            } else {
-                setError('')
-                setSucceess(true)
-            }
-        })
+        // createCategory(_id, token, {name}).then(data => {
+        //     if (data.error) {
+        //         setError(true)
+        //     } else {
+        //         setError('')
+        //         setSucceess(true)
+        //     }
+        // })
     }
 
     const newCategoryForm = () => (
@@ -80,4 +80,4 @@ const AddCategory = () => {
     )
 }
 
-export default AddCategory
+export default CreateCategory

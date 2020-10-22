@@ -1,17 +1,15 @@
 import React, {
     useEffect,
     useState
-}                        from 'react'
-import {connect}         from 'react-redux'
+} from 'react'
+import {
+    connect,
+    useSelector
+} from 'react-redux'
 import {
     Link,
     Redirect
-}                        from 'react-router-dom'
-import {
-    getCategory,
-    updateCategory
-}                        from '../api/apiAdmin'
-import {isAuthenticated} from '../api/apiAuth'
+} from 'react-router-dom'
 
 const UpdateCategory = ({pathname}) => {
     const [values, setValues] = useState({
@@ -22,22 +20,24 @@ const UpdateCategory = ({pathname}) => {
     })
 
     // destructure User and token from localStorage
-    const {user, token} = isAuthenticated()
+
 
     const {name, error, redirectToProfile} = values
+    const {_id, token} = useSelector(state => state.user)
+
 
     const init = categoryId => {
-        getCategory(categoryId, token).then(data => {
-            if (data.error) {
-                setValues({...values, error: data.error})
-            } else {
-                // populate the state
-                setValues({
-                    ...values,
-                    name: data.name
-                })
-            }
-        })
+        // getCategory(categoryId, token).then(data => {
+        //     if (data.error) {
+        //         setValues({...values, error: data.error})
+        //     } else {
+        //         // populate the state
+        //         setValues({
+        //             ...values,
+        //             name: data.name
+        //         })
+        //     }
+        // })
     }
 
     useEffect(() => {
@@ -56,18 +56,18 @@ const UpdateCategory = ({pathname}) => {
         const category = {
             name: name
         }
-        updateCategory(pathname, user._id, token, category).then(data => {
-            if (data.error) {
-                setValues({...values, error: data.error})
-            } else {
-                setValues({
-                    ...values,
-                    name: data.name,
-                    error: false,
-                    redirectToProfile: true
-                })
-            }
-        })
+        // updateCategory(pathname, _id, token, category).then(data => {
+        //     if (data.error) {
+        //         setValues({...values, error: data.error})
+        //     } else {
+        //         setValues({
+        //             ...values,
+        //             name: data.name,
+        //             error: false,
+        //             redirectToProfile: true
+        //         })
+        //     }
+        // })
     }
 
     const updateCategoryForm = () => (
@@ -95,7 +95,6 @@ const UpdateCategory = ({pathname}) => {
             </form>
         </div>
     )
-
 
 
     const redirectUser = () => {

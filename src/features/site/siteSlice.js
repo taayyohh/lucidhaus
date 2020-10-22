@@ -5,7 +5,7 @@ const initialState = {
     loading: false,
     path: '',
     slug: '',
-    layout: ''
+    layout: '',
 }
 
 export const siteSlice = createSlice({

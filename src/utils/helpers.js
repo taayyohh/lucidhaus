@@ -7,13 +7,6 @@
  */
 export const articlize = text => (['a', 'e', 'i', 'o', 'u'].includes(text.toLowerCase().charAt(0)) ? 'an ' : 'a ') + text
 
-/**
- * Composes a person's title from their post object
- *
- * @param {object} post
- * @returns {string}
- */
-export const composePersonTitle = post => post.alternate_title || post.position?.[0].term
 
 /**
  * Decodes HTML entities. Must have trailing semicolon.
@@ -41,25 +34,6 @@ export const decodeEntities = html => {
 }
 
 /**
- * Converts a base64 data URI to a Blob so that it can be downloaded via IE11.
- *
- * @param dataUri
- * @returns {Blob}
- */
-export const dataUriToBlob = dataUri => {
-    let b64 = btoa(dataUri),
-        parts = b64.split(/[:;,]/),
-        type = parts[1],
-        binData = atob(parts.pop()),
-        mx = binData.length,
-        uiArr = new Uint8Array(mx)
-
-    for (let i = 0; i < mx; ++i)
-        uiArr[i] = binData.charCodeAt(i)
-    return new Blob([uiArr], {type: type})
-}
-
-/**
  *  Returns the first 40 words of a string.
  *
  * @param {string} source
@@ -83,24 +57,6 @@ export const intersperse = (sourceArray, separator) =>
         ? sourceArray.slice(1).reduce((xs, x) => xs.concat([separator, x]), [sourceArray[0]])
         : []
 
-/**
- * Determines whether the given node is a child of the given parent.
- *
- * @param parent
- * @param child
- * @returns {boolean}
- */
-export const isDescendant = (parent, child) => {
-    let node = child.parentNode
-    while (node !== null) {
-        if (node === parent)
-            return true
-
-        node = node.parentNode
-    }
-
-    return false
-}
 
 /**
  * Determines whether an object is empty or not.
@@ -148,7 +104,6 @@ export const shuffle = a => {
 }
 
 
-
 /**
  * Sorts the given object alphabetically by the given property key
  *
@@ -172,14 +127,6 @@ export const sortAlpha = (object, key) =>
  * @returns {string}
  */
 export const stripHtml = html => html.replace(/<(?:.|\n)*?>/gm, '')
-
-
-export const getEvenFontSize = () => {
-    let scalingPct = .5
-    let baseValue = 10
-    let vw = Math.floor(window.innerWidth * scalingPct / 100)
-    return ((baseValue + vw) % 2) + baseValue + vw
-}
 
 
 /**

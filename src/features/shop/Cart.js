@@ -1,76 +1,43 @@
-import React, {
-    useEffect,
-    useState
-}                       from 'react'
-import {Link}           from 'react-router-dom'
+import React            from 'react'
+import {useSelector}    from 'react-redux'
 import Div              from '../../shared/Basic/Div'
-import H2               from '../../shared/Basic/H2'
+import H2          from '../../shared/Basic/H2'
+import Checkout    from './Checkout'
+import ProductCard from './ProductCard'
 import {
     cartStyle,
     cartTitleStyle
-}                       from '../../themes/cart'
+}                  from '../../themes/cart'
 import {microCardStyle} from '../../themes/layout'
-import {getCart}        from './cartHelpers'
-import Checkout         from '../../Shop/Checkout'
-import ProductCard      from '../../Shop/ProductCard'
 
 const Cart = () => {
-    const [items, setItems] = useState([])
-    const [run, setRun] = useState(false)
-
-    useEffect(() => {
-        setItems(getCart())
-    }, [run])
-
-    const showItems = items => {
-        return (
-            <div>
-                <h2>Your cart has {`${items.length}`} items</h2>
-                <hr/>
-                <Div theme={cartStyle.showItems}>
-                    {items.map((product, i) => (
-                        <ProductCard
-                            key={i}
-                            product={product}
-                            showAddToCartButton={false}
-                            cartUpdate={true}
-                            showRemoveProductButton={true}
-                            setRun={setRun}
-                            run={run}
-                            theme={microCardStyle}
-                        />
-                    ))}
-                </Div>
-            </div>
-        )
-    }
-
-    const noItemsMessage = () => (
-        <h2>
-            Your cart is empty. <br/> <Link to="/shop">Continue shopping</Link>
-        </h2>
-    )
-
-    const cartSummary = () => {
-        return (
-            <Div>
-                <Div theme={cartStyle.checkOut}>
-                    <H2 theme={cartTitleStyle}>Cart Summary</H2>
-                    <Checkout
-                        products={items}
-                        setRun={setRun}
-                        run={run}
-                    />
-                </Div>
-            </Div>
-        )
-    }
+    const {cart} = useSelector(state => state.shop)
 
     return (
         <Div theme={cartStyle}>
             <Div>
-                {cartSummary()}
-                {items.length > 0 ? showItems(items) : noItemsMessage()}
+                <Div theme={cartStyle.checkOut}>
+                    <H2 theme={cartTitleStyle}>Cart Summary</H2>
+                    <Checkout products={cart}/>
+                </Div>
+
+                {cart.length > 0 && (
+                    <div>
+                        <h2>Your cart has {`${cart.length}`} items</h2>
+                        <Div theme={cartStyle.showItems}>
+                            {cart.map((product, i) => (
+                                <ProductCard
+                                    key={i}
+                                    product={product}
+                                    showAddToCartButton={false}
+                                    cartUpdate={true}
+                                    showRemoveProductButton={true}
+                                    theme={microCardStyle}
+                                />
+                            ))}
+                        </Div>
+                    </div>
+                )}
             </Div>
         </Div>
     )

@@ -1,6 +1,7 @@
 import {createSlice} from '@reduxjs/toolkit'
 
 const initialState = {
+    cart: [],
     shop: [],
     product: [],
     orders: [],
@@ -39,6 +40,9 @@ export const shopSlice = createSlice({
         },
         updateStatusValue: (state) => {
             state.updatedOrder = false
+        },
+        updateCartSuccess: (state, action) => {
+            state.cart = action.payload.cart
         }
     },
 })

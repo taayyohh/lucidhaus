@@ -7,11 +7,11 @@ import {useDispatch}          from 'react-redux'
 import {
     Route,
     Switch
-}                             from 'react-router'
-import AddCategory            from '../../Admin/AddCategory'
-import ManageOrders           from '../../features/admin/ManageOrders'
-import UpdateCategory         from '../../Admin/UpdateCategory'
-import AdminRoute             from '../auth/AdminRoute'
+}                     from 'react-router'
+import CreateCategory from '../../features/admin/CreateCategory'
+import ManageOrders   from '../../features/admin/ManageOrders'
+import UpdateCategory from '../../features/admin/UpdateCategory'
+import AdminRoute     from '../auth/AdminRoute'
 import PrivateRoute           from '../auth/PrivateRoute'
 import {TransitionAnimations} from '../Containers/TransitionController'
 import AdminDashboard         from '../../features/admin/AdminDashboard'
@@ -68,7 +68,7 @@ const Content = () => {
                     <AdminRoute path="/admin/marketplace/update/:slug" exact component={UpdateBusiness}/>
                     <AdminRoute path="/admin/category/update/:categoryId" exact component={UpdateCategory}/>
                     <AdminRoute path="/admin/orders" exact component={ManageOrders}/>
-                    <AdminRoute path="/create/category" exact component={AddCategory}/>
+                    <AdminRoute path="/create/category" exact component={CreateCategory}/>
                     <AdminRoute path="/create/product" exact component={CreateProduct}/>
                     <AdminRoute path="/create/business" exact component={CreateBusiness}/>
                     <Route component={NotFound}/>

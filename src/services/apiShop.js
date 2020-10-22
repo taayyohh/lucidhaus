@@ -65,16 +65,6 @@ export const read = productId => {
         })
 }
 
-export const getProduct = slug => {
-    return fetch(`${API}/product/${slug}`, {
-        method: 'GET'
-    })
-        .then(response => {
-            return response.json()
-        }).catch(err => {
-            console.log(err)
-        })
-}
 
 export const listRelated = slug => {
     return fetch(`${API}/products/related/${slug}`, {

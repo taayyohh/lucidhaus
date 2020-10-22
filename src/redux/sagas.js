@@ -1,11 +1,12 @@
-import {push} from 'connected-react-router'
+import {push}    from 'connected-react-router'
 import {
     all,
     call,
     fork,
     put,
     takeEvery
-}             from 'redux-saga/effects'
+}                from 'redux-saga/effects'
+import {getCart} from '../features/shop/cartHelpers'
 import {
     addBusiness,
     addProduct,
@@ -22,7 +23,7 @@ import {
     updateOrderStatus,
     updateProduct,
     uploadFile
-} from '../services/apiAdmin'
+}                from '../services/apiAdmin'
 import {
     authenticate,
     getPurchaseHistory,
@@ -319,6 +320,10 @@ function* purchaseHistory(user) {
 
 function* loadConfig() {
     yield put({type: 'user/isAuthenticated'})
+    const cart = yield getCart()
+    if(cart.length > 0) {
+        yield put({type: 'shop/updateCartSuccess', payload: {cart: cart}})
+    }
 }
 
 
