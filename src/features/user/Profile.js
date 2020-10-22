@@ -6,8 +6,8 @@ import {
 }                   from 'react-redux'
 import Div          from '../../shared/Basic/Div'
 import H3         from '../../shared/Basic/H3'
-import Button     from '../../shared/Basic/Button'
-import SmartInput from '../../Forms/SmartInput'
+import Button               from '../../shared/Basic/Button'
+import SmartInput           from '../../shared/Forms/SmartInput'
 import {genericButtonStyle} from '../../themes/elements'
 import {
     signInFormStyle,

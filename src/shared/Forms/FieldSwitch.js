@@ -1,6 +1,6 @@
 import React             from 'react'
-import SmartInput        from '../Forms/SmartInput'
-import {signInFormStyle} from '../themes/signup'
+import SmartInput        from './SmartInput'
+import {signInFormStyle} from '../../themes/signup'
 import RichTextEditor    from './RichTextEditor'
 import SmartFileInput    from './SmartFileInput'
 

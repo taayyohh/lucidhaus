@@ -4,9 +4,9 @@ import 'react-image-crop/dist/ReactCrop.css'
 import {
     useDispatch,
     useSelector
-}                            from 'react-redux'
-import FieldSwitch           from '../../Forms/FieldSwitch'
-import Div                   from '../../shared/Basic/Div'
+}                  from 'react-redux'
+import FieldSwitch from '../../shared/Forms/FieldSwitch'
+import Div         from '../../shared/Basic/Div'
 import Form   from '../../shared/Basic/Form'
 import Button from '../../shared/Basic/Button'
 import H2     from '../../shared/Basic/H2'

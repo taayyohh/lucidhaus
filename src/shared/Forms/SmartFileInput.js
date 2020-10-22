@@ -5,19 +5,19 @@ import React, {
 }                               from 'react'
 import Dropzone                 from 'react-dropzone'
 import 'react-image-crop/dist/ReactCrop.css'
-import Div        from '../shared/Basic/Div'
-import Img        from '../shared/Basic/Img'
-import CropPortal              from '../shared/Elements/CropPortal'
-import S3Img                   from '../shared/Basic/S3Img'
-import {genericCardImageStyle} from '../themes/business'
+import Div                     from '../Basic/Div'
+import Img                     from '../Basic/Img'
+import CropPortal              from '../Elements/CropPortal'
+import S3Img                   from '../Basic/S3Img'
+import {genericCardImageStyle} from '../../themes/business'
 import {
     imageDropZonePreviewStyle,
     imageDropZonePreviewWrapperStyle,
     imageDropZoneStyle,
     imageDropZoneWrapperStyle
-}                              from '../themes/elements'
-import {slugify}                from '../utils/slugify'
-import {globals}                from '../variables/styles'
+}                              from '../../themes/elements'
+import {slugify}               from '../../utils/slugify'
+import {globals}               from '../../variables/styles'
 
 const SmartFileInput = ({formik, id, cropWidth, cropHeight, s3Path}) => {
     const [cropPortalOpen, setCropPortalOpen] = useState(false)
