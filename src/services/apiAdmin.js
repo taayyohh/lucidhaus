@@ -58,7 +58,7 @@ export const createCategory = (userId, token, category) => {
         console.log(response)
         return response.json()
     }).catch(error => {
-        console.log(error)
+        return error
     })
 }
 
@@ -76,7 +76,9 @@ export const updateCategory = (categoryId, userId, token, category) => {
         .then(response => {
             return response.json()
         })
-        .catch(error => console.log(error))
+        .catch(error => {
+            return error
+        })
 }
 
 export const getCategories = () => {
@@ -86,7 +88,7 @@ export const getCategories = () => {
         .then(response => {
             return response.json()
         }).catch(error => {
-            console.log(error)
+            return error
         })
 }
 
@@ -97,7 +99,9 @@ export const getCategory = categoryId => {
         .then(response => {
             return response.json()
         })
-        .catch(error => console.log(error))
+        .catch(error => {
+            return error
+        })
 }
 
 
@@ -120,7 +124,7 @@ export const addProduct = ({userId, token, product}) => {
         console.log(response)
         return response.json()
     }).catch(error => {
-        console.log(error)
+        return error
     })
 }
 
@@ -131,7 +135,9 @@ export const getProducts = () => {
         .then(response => {
             return response.json()
         })
-        .catch(error => console.log(error))
+        .catch(error => {
+            return error
+        })
 }
 
 export const deleteProduct = ({slug, _id, token}) => {
@@ -146,7 +152,9 @@ export const deleteProduct = ({slug, _id, token}) => {
         .then(response => {
             return response.json()
         })
-        .catch(error => console.log(error))
+        .catch(error => {
+            return error
+        })
 }
 
 export const getProduct = ({slug}) => {
@@ -156,7 +164,9 @@ export const getProduct = ({slug}) => {
         .then(response => {
             return response.json()
         })
-        .catch(error => console.log(error))
+        .catch(error => {
+            return error
+        })
 }
 
 export const updateProduct = ({slug, userId, token, product}) => {
@@ -171,7 +181,9 @@ export const updateProduct = ({slug, userId, token, product}) => {
         .then(response => {
             return response.json()
         })
-        .catch(error => console.log(error))
+        .catch(error => {
+            return error
+        })
 }
 
 
@@ -193,7 +205,7 @@ export const addBusiness = ({userId, token, business}) => {
     }).then(response => {
         return response.json()
     }).catch(error => {
-        console.log(error)
+        return error
     })
 }
 
@@ -204,7 +216,9 @@ export const getBusinesses = () => {
         .then(response => {
             return response.json()
         })
-        .catch(error => console.log(error))
+        .catch(error => {
+            return error
+        })
 }
 
 export const deleteBusiness = ({_id, token, slug}) => {
@@ -219,7 +233,9 @@ export const deleteBusiness = ({_id, token, slug}) => {
         .then(response => {
             return response.json()
         })
-        .catch(error => console.log(error))
+        .catch(error => {
+            return error
+        })
 }
 
 export const getBusiness = ({slug}) => {
@@ -229,7 +245,9 @@ export const getBusiness = ({slug}) => {
         .then(response => {
             return response.json()
         })
-        .catch(error => console.log(error))
+        .catch(error => {
+            return error
+        })
 }
 
 export const updateBusiness = ({slug, userId, token, business}) => {
@@ -244,7 +262,9 @@ export const updateBusiness = ({slug, userId, token, business}) => {
         .then(response => {
             return response.json()
         })
-        .catch(error => console.log(error))
+        .catch(error => {
+            return error
+        })
 }
 
 
@@ -261,10 +281,9 @@ export const listOrders = ({_id, token}) => {
         },
     })
         .then(response => {
-            console.log(response)
             return response.json()
         }).catch(error => {
-            console.log(error)
+            return error
         })
 }
 
@@ -277,27 +296,26 @@ export const listStatusValues = ({_id, token}) => {
         },
     })
         .then(response => {
-            console.log(response)
             return response.json()
         }).catch(error => {
-            console.log(error)
+            return error
         })
 }
 
-export const updateOrderStatus = (userId, token, orderId, status) => {
-    return fetch(`${API}/order/${orderId}/status/${userId}`, {
+export const updateOrderStatus = ({_id, token, orderId, status}) => {
+    return fetch(`${API}/order/${orderId}/status/${_id}`, {
         method: 'PUT',
         headers: {
             Accept: 'application/json',
             'Content-type': 'application/json',
             Authorization: `Bearer ${token}`
         },
-        body: JSON.stringify({status, orderId})
+        body: JSON.stringify(status)
     })
         .then(response => {
-            console.log(response)
             return response.json()
-        }).catch(error => {
-            console.log(error)
+        })
+        .catch(error => {
+            return error
         })
 }

@@ -184,7 +184,6 @@ export const createBusiness = (userId, token, business) => {
         },
         body: business
     }).then(response => {
-        console.log('responnseee', response)
         return response.json()
     }).catch(err => {
         console.log(err)
@@ -271,7 +270,6 @@ export const getStatusValues = (userId, token) => {
         },
     })
         .then(response => {
-            console.log(response)
             return response.json()
         }).catch(err => {
             console.log(err)

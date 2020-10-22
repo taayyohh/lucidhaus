@@ -15,9 +15,15 @@ import {
     row,
     sv,
     white
-} from '../utils/themer'
-import {globals}                 from '../variables/styles'
-import {marketplaceWrapperStyle} from './business'
+}                                from '../utils/themer'
+import {
+    colorPalette,
+    globals
+} from '../variables/styles'
+import {
+    genericCardStyle,
+    marketplaceWrapperStyle
+} from './business'
 
 export const adminMarketplaceWrapperStyle = {
     width: '100%',
@@ -34,9 +40,7 @@ export const adminMarketplaceInnerWrapperStyle = {
     gridGap: sv(30),
 }
 
-export const adminBusinessCardWrapperStyle = {
-
-}
+export const adminBusinessCardWrapperStyle = {}
 
 export const adminBusinessCardStyle = {
     display: grid,
@@ -76,7 +80,7 @@ export const adminDashboardStyle = {
 
 export const adminCardControlsButtonWrapperStyle = {
     display: flex,
-    flexDirection: 'row',
+    flexDirection: row,
     justifyContent: flexEnd
 }
 
@@ -213,25 +217,20 @@ export const adminMenuStyle = {
 
 export const adminOrderStyle = {
     display: flex,
-    flexDirection: row
+    flexDirection: column
 }
 
-export const manageProductStyle = {
-    imageWrapper: {
-        width: 50,
-        child: {
-            selector: 'img',
-            width: '100%'
-        }
-    }
+export const adminOrderWrapperStyle = {
+    width: '100%',
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr 1fr',
+    gridGap: sv(30),
 }
 
-export const manageBusinessStyle = {
-    imageWrapper: {
-        width: 50,
-        child: {
-            selector: 'img',
-            width: '100%'
-        }
+export const orderCardWrapperStyle = {
+    ...genericCardStyle,
+    hover: {
+        ...genericCardStyle.hover,
+        cursor: pointer
     }
 }

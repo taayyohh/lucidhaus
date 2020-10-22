@@ -32,7 +32,8 @@ if (!['production'].includes(process.env.NODE_ENV)) {
             serializableCheck: {
                 // Ignore these action types
                 ignoredActions: ['admin/createBusiness', 'admin/createProduct'],
-            }
+            },
+            immutableCheck: false
         }),
         loggerMiddleware
     ]

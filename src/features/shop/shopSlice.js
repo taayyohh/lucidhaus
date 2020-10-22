@@ -5,7 +5,8 @@ const initialState = {
     product: [],
     orders: [],
     statusValues: [],
-    error: false
+    error: false,
+    updatedOrder: false
 }
 
 export const shopSlice = createSlice({
@@ -33,6 +34,12 @@ export const shopSlice = createSlice({
         getProductSuccess: (state, action) => {
             state.product = action.payload
         },
+        updateStatusValueSuccess: (state) => {
+            state.updatedOrder = true
+        },
+        updateStatusValue: (state) => {
+            state.updatedOrder = false
+        }
     },
 })
 

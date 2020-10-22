@@ -19,6 +19,7 @@ import {
     listOrders,
     listStatusValues,
     updateBusiness,
+    updateOrderStatus,
     updateProduct,
     uploadFile
 } from '../services/apiAdmin'
@@ -418,6 +419,21 @@ function* getStatusValues(request) {
     }
 }
 
+function* updateStatusValue(request) {
+    const {_id, token, orderId, status} = request.payload
+
+    try {
+        const payload = yield call(updateOrderStatus, {_id, token, orderId, status: {status, orderId}})
+        if (!payload.error) {
+            yield put({type: 'shop/updateStatusValueSuccess', payload})
+        } else {
+            yield put({type: 'shop/updateStatusValueFailure', payload})
+        }
+    } catch (error) {
+        yield put({type: 'admin/updateStatusValueFailure', error})
+    }
+}
+
 
 
 /**
@@ -573,6 +589,10 @@ function* watchGetStatusValues() {
     yield takeEvery('shop/getStatusValues', getStatusValues)
 }
 
+function* watchUpdateStatusValue() {
+    yield takeEvery('shop/updateStatusValue', updateStatusValue)
+}
+
 
 //TODO: determine best method of combining rootSaga
 export default function* rootSaga() {
@@ -601,5 +621,6 @@ export default function* rootSaga() {
         fork(watchGetProductDetail),
         fork(watchGetOrders),
         fork(watchGetStatusValues),
+        fork(watchUpdateStatusValue),
     ])
 }

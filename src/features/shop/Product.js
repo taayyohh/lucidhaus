@@ -22,7 +22,7 @@ const Product = () => {
     const dispatch = useDispatch()
     const {product} = useSelector(state => state.shop)
     const {slug} = useSelector(state => state.site)
-    const {name, description, photo, quantity, price} = product
+    const {name, description, photo, price} = product
 
     useEffect(() => {
         if (slug.length > 0)

@@ -21,11 +21,11 @@ import {validateSignin}     from '../../variables/fieldValidation'
 
 const SignIn = () => {
     const dispatch = useDispatch()
-    const {isAuthenticated} = useSelector(state => state.user)
+    const {isAuthenticated, isAdmin} = useSelector(state => state.user)
 
     useEffect(() => {
         if (isAuthenticated)
-            history.push('/')
+            history.push(`/${isAdmin ? 'admin' : 'user'}/dashboard`)
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
