@@ -23,7 +23,7 @@ const AdminMarketplace = ({marketplace}) =>
                 />
                 <GenericCardAdminControls
                     edit={'/admin/marketplace/update'}
-                    destroy={'admin/attemptDestroyBusiness'}
+                    destroyAction={'admin/attemptDestroyBusiness'}
                     slug={business.slug}
                 />
             </Div>

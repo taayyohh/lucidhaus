@@ -1,14 +1,11 @@
-import moment            from 'moment'
-import React             from 'react'
+import moment                  from 'moment'
+import React                   from 'react'
 import {
     useDispatch,
     useSelector
-}                        from 'react-redux'
-import Div from '../../shared/Basic/Div'
-import {
-    adminOrderStyle,
-    orderCardWrapperStyle
-}          from '../../themes/admin'
+}                              from 'react-redux'
+import Div                     from '../../shared/Basic/Div'
+import {orderCardWrapperStyle} from '../../themes/admin'
 
 const OrderCard = ({o}) => {
     const dispatch = useDispatch()

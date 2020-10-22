@@ -27,21 +27,15 @@ const ProductCard = ({
                          theme
                      }) => {
 
-    const [redirect, setRedirect] = useState(false)
     const [count, setCount] = useState(product.count)
 
 
     const addToCart = () => {
         addItem(product, () => {
-            setRedirect(true)
+
         })
     }
 
-    const shouldRedirect = redirect => {
-        if (redirect) {
-            return <Redirect to="/cart"/>
-        }
-    }
 
     const showAddToCart = showAddToCartButton => {
         return (
@@ -109,7 +103,6 @@ const ProductCard = ({
                 <H2 theme={{...productCardStyle.title, ...theme.title}}>
                     {product.name}
                 </H2>
-                {shouldRedirect(redirect)}
                 <S3Img
                     item={product}
                     url="product"

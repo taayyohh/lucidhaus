@@ -11,6 +11,7 @@ const FieldSwitch = ({field, formik}) => {
             case 'password':
             case 'email':
             case 'number':
+            case 'tel':
                 return <SmartInput
                     {...formik.getFieldProps(field.name)}
                     id={field.name}

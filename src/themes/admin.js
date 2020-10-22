@@ -15,15 +15,12 @@ import {
     row,
     sv,
     white
-}                                from '../utils/themer'
-import {
-    colorPalette,
-    globals
-} from '../variables/styles'
+}                from '../utils/themer'
+import {globals} from '../variables/styles'
 import {
     genericCardStyle,
     marketplaceWrapperStyle
-} from './business'
+}                from './business'
 
 export const adminMarketplaceWrapperStyle = {
     width: '100%',
