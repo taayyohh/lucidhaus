@@ -2,10 +2,10 @@ import React, {useEffect}   from 'react'
 import {
     useDispatch,
     useSelector
-}                           from 'react-redux'
-import PageFrame            from '../Layout/PageFrame'
-import TransitionOverlay    from '../Layout/TransitionOverlay'
-import LayoutSwitch         from './LayoutSwitch'
+}                        from 'react-redux'
+import PageFrame         from '../Layout/PageFrame'
+import TransitionOverlay from '../Layout/TransitionOverlay'
+import LayoutSwitch      from './LayoutSwitch'
 import MenuPanelController  from './MenuPanelController'
 import TransitionController from './TransitionController'
 

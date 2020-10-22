@@ -6,7 +6,7 @@ import React, {
 import {isAuthenticated} from '../api/apiAuth'
 import Div               from '../shared/Basic/Div'
 import Ul                from '../shared/Basic/Ul'
-import Content           from '../Layout/Content'
+import Content           from '../shared/Layout/Content'
 import {adminOrderStyle} from '../themes/admin'
 import {
     getStatusValues,

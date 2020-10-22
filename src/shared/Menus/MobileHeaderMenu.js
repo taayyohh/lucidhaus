@@ -1,6 +1,6 @@
 import React, {useContext}           from 'react'
 import Div                           from '../Basic/Div'
-import {menuPanelContext}            from '../../Containers/MenuPanelController'
+import {menuPanelContext}            from '../Containers/MenuPanelController'
 import {mobileHeaderMenuToggleStyle} from '../../themes/header'
 
 const MobileHeaderMenu = () => {

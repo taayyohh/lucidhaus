@@ -3,9 +3,9 @@ import PropTypes from 'prop-types'
 import React, {useContext}       from 'react'
 import {headerMenuPanelVariants} from '../animations/headerMenuPanels'
 import MotionDiv                 from '../Basic/MotionDiv'
-import Span                      from '../Basic/Span'
-import {menuPanelContext}        from '../../Containers/MenuPanelController'
-import {headerMenuPanelStyle}    from '../../themes/menus'
+import Span                   from '../Basic/Span'
+import {menuPanelContext}     from '../Containers/MenuPanelController'
+import {headerMenuPanelStyle} from '../../themes/menus'
 
 const MenuPanelWrapper = ({children, name}) => {
     const {setPanel} = useContext(menuPanelContext)

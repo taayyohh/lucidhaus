@@ -1,6 +1,6 @@
 import React          from 'react'
-import MotionDiv      from '../shared/Basic/MotionDiv'
-import {overlayStyle} from '../themes/layout'
+import MotionDiv      from '../Basic/MotionDiv'
+import {overlayStyle} from '../../themes/layout'
 
 const Overlay = ({isOpen, onClick, theme}) => {
     const overlayVariants = {

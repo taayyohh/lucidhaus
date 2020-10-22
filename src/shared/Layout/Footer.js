@@ -1,8 +1,8 @@
 import PropTypes     from 'prop-types'
 import React, {memo} from 'react'
-import Div           from '../shared/Basic/Div'
-import {footerStyle} from '../themes/footer'
-import moment from "moment";
+import Div           from '../Basic/Div'
+import {footerStyle} from '../../themes/footer'
+import moment        from "moment";
 
 const Footer = memo(({theme}) =>
     <Div as="footer" theme={{...footerStyle, ...theme}}>

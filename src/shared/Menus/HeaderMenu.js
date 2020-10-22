@@ -5,8 +5,8 @@ import {
 }                         from 'react-redux'
 import Div                from '../Basic/Div'
 import Span               from '../Basic/Span'
-import {menuPanelContext} from '../../Containers/MenuPanelController'
-import LinkSwitch  from '../Basic/LinkSwitch'
+import {menuPanelContext} from '../Containers/MenuPanelController'
+import LinkSwitch         from '../Basic/LinkSwitch'
 import {itemTotal} from '../../features/shop/cartHelpers'
 import {
     headerMenuAuthStyle,

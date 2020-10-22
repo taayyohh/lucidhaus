@@ -1,5 +1,5 @@
 import React   from 'react'
-import Div     from '../shared/Basic/Div'
+import Div     from '../Basic/Div'
 import Content from './Content'
 
 const Main = ({theme}) =>
