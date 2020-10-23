@@ -23,7 +23,8 @@ import {
     updateOrderStatus,
     updateProduct,
     uploadFile
-}                from '../services/apiAdmin'
+}                    from '../services/apiAdmin'
+import {listRelated} from '../services/apiShop'
 import {
     authenticate,
     getPurchaseHistory,
@@ -33,7 +34,7 @@ import {
     signup,
     update,
     updateUser
-}             from '../services/apiUser'
+}                    from '../services/apiUser'
 import {
     updateBusinessPath,
     updateProductPath
@@ -64,6 +65,12 @@ function* isAuth() {
         yield put({type: 'user/isAuthenticatedFailure', payload})
         yield put({type: 'site/initializeSuccess'})
     }
+}
+
+function* navigate({payload}) {
+    const {location} = payload
+    const slug = location.pathname.substring(location.pathname.lastIndexOf('/') + 1)
+    yield put({type: 'site/setSlug', payload: {slug: slug}})
 }
 
 
@@ -195,7 +202,6 @@ function* updateProductDetail(product) {
         const s3Payload = yield call(getSignedRequest, {croppedImage: image})
         if (!!s3Payload.signedRequest) {
             const uploadImage = yield call(uploadFile, {file: image, signedRequest: s3Payload.signedRequest})
-            console.log('upload', uploadImage)
         }
     }
 
@@ -216,7 +222,6 @@ function* attemptDestroyProduct(product) {
 }
 
 function* destroyProduct(product) {
-    console.log('DDDD', product.payload)
     const destroyed = yield call(deleteProduct, product.payload)
     if (!destroyed.error) {
         yield put({type: 'admin/destroyProductSuccess'})
@@ -398,6 +403,19 @@ function* getProductDetail(product) {
     }
 }
 
+function* getRelatedProducts(product) {
+    try {
+        const payload = yield call(listRelated, product.payload)
+        if (!payload.error) {
+            yield put({type: 'shop/getRelatedProductsSuccess', payload})
+        } else {
+            yield put({type: 'shop/getRelatedProductsFailure', payload})
+        }
+    } catch (error) {
+        yield put({type: 'shop/getRelatedProductsFailure'})
+    }
+}
+
 function* getOrders(request) {
     try {
         const payload = yield call(listOrders, request.payload)
@@ -464,6 +482,10 @@ function* watchAuthenticate() {
 
 function* watchIsAuthenticated() {
     yield takeEvery('user/isAuthenticated', isAuth)
+}
+
+function* watchNavigate() {
+    yield takeEvery('@@router/LOCATION_CHANGE', navigate)
 }
 
 
@@ -586,6 +608,10 @@ function* watchGetProductDetail() {
     yield takeEvery('shop/getProduct', getProductDetail)
 }
 
+function* watchGetRelatedProducts() {
+    yield takeEvery('shop/getRelatedProducts', getRelatedProducts)
+}
+
 function* watchGetOrders() {
     yield takeEvery('shop/getOrders', getOrders)
 }
@@ -602,6 +628,7 @@ function* watchUpdateStatusValue() {
 //TODO: determine best method of combining rootSaga
 export default function* rootSaga() {
     yield all([
+        fork(watchNavigate),
         fork(watchLoadConfig),
         fork(watchSignIn),
         fork(watchAuthenticate),
@@ -624,6 +651,7 @@ export default function* rootSaga() {
         fork(watchDestroyProductSuccess),
         fork(watchUpdateProduct),
         fork(watchGetProductDetail),
+        fork(watchGetRelatedProducts),
         fork(watchGetOrders),
         fork(watchGetStatusValues),
         fork(watchUpdateStatusValue),

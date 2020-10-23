@@ -1,10 +1,10 @@
-import React             from 'react'
-import SmartInput        from './SmartInput'
+import React, {memo}     from 'react'
 import {signInFormStyle} from '../../themes/signup'
 import RichTextEditor    from './RichTextEditor'
 import SmartFileInput    from './SmartFileInput'
+import SmartInput        from './SmartInput'
 
-const FieldSwitch = ({field, formik}) => {
+const FieldSwitch = memo(({field, formik}) => {
     const getField = () => {
         switch (field.type) {
             case 'text':
@@ -44,6 +44,6 @@ const FieldSwitch = ({field, formik}) => {
         <>{getField()}</>
 
     )
-}
+})
 
 export default FieldSwitch

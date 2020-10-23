@@ -7,8 +7,9 @@ export const getProducts = (sortBy) => {
     })
         .then(response => {
             return response.json()
-        }).catch(err => {
-            console.log(err)
+        })
+        .catch(error => {
+            return error
         })
 }
 
@@ -18,8 +19,9 @@ export const getCategories = () => {
     })
         .then(response => {
             return response.json()
-        }).catch(err => {
-            console.log(err)
+        })
+        .catch(error => {
+            return error
         })
 }
 
@@ -34,23 +36,25 @@ export const getFilteredProducts = (skip, limit, filters = {}) => {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(data)
-    }).then(response => {
-        return response.json()
-    }).catch(err => {
-        console.log(err)
     })
+        .then(response => {
+            return response.json()
+        })
+        .catch(error => {
+            return error
+        })
 }
 
 export const list = params => {
     const query = queryString.stringify(params)
-    console.log(query)
     return fetch(`${API}/products/search/?${query}`, {
         method: 'GET'
     })
         .then(response => {
             return response.json()
-        }).catch(err => {
-            console.log(err)
+        })
+        .catch(error => {
+            return error
         })
 }
 
@@ -60,20 +64,22 @@ export const read = productId => {
     })
         .then(response => {
             return response.json()
-        }).catch(err => {
-            console.log(err)
+        })
+        .catch(error => {
+            return error
         })
 }
 
 
-export const listRelated = slug => {
+export const listRelated = ({slug}) => {
     return fetch(`${API}/products/related/${slug}`, {
         method: 'GET'
     })
         .then(response => {
             return response.json()
-        }).catch(err => {
-            console.log(err)
+        })
+        .catch(error => {
+            return error
         })
 }
 
@@ -88,8 +94,9 @@ export const getBraintreeClientToken = (userId, token) => {
     })
         .then(response => {
             return response.json()
-        }).catch(err => {
-            console.log(err)
+        })
+        .catch(error => {
+            return error
         })
 }
 
@@ -105,24 +112,28 @@ export const processPayment = (userId, token, paymentData) => {
     })
         .then(response => {
             return response.json()
-        }).catch(err => {
-            console.log(err)
+        })
+        .catch(error => {
+            return error
         })
 }
 
 export const createOrder = (userId, token, createOrderData) => {
     return fetch(`${API}/order/create/${userId}`, {
-        method: "POST",
+        method: 'POST',
         headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
             Authorization: `Bearer ${token}`
         },
-        body: JSON.stringify({ order: createOrderData })
+        body: JSON.stringify({order: createOrderData})
     })
         .then(response => {
-            return response.json();
+            return response.json()
         })
-        .catch(err => console.log(err));
+        .catch(error => {
+            return error
+        })
+
 }
 

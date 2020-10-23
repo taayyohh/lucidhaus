@@ -104,6 +104,7 @@ export const productFieldTypes = [
     {
         name: 'sold',
         inputLabel: 'Sold',
-        type: 'number'
+        type: 'number',
+        disabled: 'disabled'
     }
 ]

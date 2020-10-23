@@ -90,7 +90,6 @@ const Checkout = ({products}) => {
         data.instance
             .requestPaymentMethod()
             .then(data => {
-                console.log('DATA', data)
                 nonce = data.nonce
                 //once you have nonce (card type, card number)
                 //send nonce as 'paymentMethodNonce'

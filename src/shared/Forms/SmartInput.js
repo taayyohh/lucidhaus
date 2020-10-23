@@ -1,15 +1,19 @@
-import React, {useEffect, useRef, useState} from 'react'
-import Legend                               from "../Basic/Legend";
-import InputLabel                           from "../Basic/InputLabel";
-import Input                                from "../Basic/Input";
-import Fieldset                             from "../Basic/Fieldset";
-import Span                                 from '../Basic/Span'
-import useMeasure                           from "../../utils/useMeasure";
-import {globals}                            from "../../variables/styles";
+import React, {
+    useEffect,
+    useRef,
+    useState
+}                 from 'react'
 import {
     defaultFieldErrorStyle,
     defaultFocusedInputLabelStyle
-}                                           from '../../themes/forms'
+}                 from '../../themes/forms'
+import useMeasure from '../../utils/useMeasure'
+import {globals}  from '../../variables/styles'
+import Fieldset   from '../Basic/Fieldset'
+import Input      from '../Basic/Input'
+import InputLabel from '../Basic/InputLabel'
+import Legend     from '../Basic/Legend'
+import Span       from '../Basic/Span'
 
 const SmartInput = ({inputLabel, type, theme, id, className, errorMessage, onChange, value}) => {
     const legendRef = useRef()
@@ -61,8 +65,8 @@ const SmartInput = ({inputLabel, type, theme, id, className, errorMessage, onCha
                 onChange={onChange}
                 onFocus={handleFocus}
                 onBlur={handleBlur}
-                type={type || "text"}
-                value={value}
+                type={type || 'text'}
+                value={value || ''}
                 theme={theme.field}
             />
             <Span theme={defaultFieldErrorStyle}>{errorMessage}</Span>

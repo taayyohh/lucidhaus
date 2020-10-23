@@ -27,6 +27,7 @@ const Product = () => {
     useEffect(() => {
         if (slug.length > 0)
             dispatch({type: 'shop/getProduct', payload: {slug: slug}})
+            dispatch({type: 'shop/getRelatedProducts', payload: {slug: slug}})
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [slug])
@@ -36,16 +37,6 @@ const Product = () => {
 
         })
     }
-
-    //                 listRelated(data.slug).then(data => {
-//                     if (data.error) {
-//                         setError(data.error)
-//                     } else {
-//                         setRelatedProduct(data)
-//                     }
-//                 })
-
-
     return (
         <Div theme={postContentStyle(slug)}>
             <Div theme={businessWrapperStyle}>

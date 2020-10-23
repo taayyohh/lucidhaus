@@ -8,11 +8,12 @@ export const signup = user => {
             "Content-Type": "application/json"
         },
         body: JSON.stringify(user)
-    }).then(response => {
-        console.log(response)
+    })
+        .then(response => {
         return response.json()
-    }).catch(err => {
-        console.log(err)
+    })
+        .catch(error => {
+            return error
     })
 }
 
@@ -71,10 +72,10 @@ export const read = (userId, token) => {
         },
     })
         .then(response => {
-            console.log(response)
             return response.json()
-        }).catch(err => {
-            console.log(err)
+        })
+        .catch(error => {
+            return error
         })
 }
 
@@ -88,10 +89,10 @@ export const getPurchaseHistory = ({userId, token}) => {
         },
     })
         .then(response => {
-            console.log(response)
             return response.json()
-        }).catch(err => {
-            console.log(err)
+        })
+        .catch(error => {
+            return error
         })
 }
 

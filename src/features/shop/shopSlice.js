@@ -4,6 +4,7 @@ const initialState = {
     cart: [],
     shop: [],
     product: [],
+    relatedProducts: [],
     orders: [],
     statusValues: [],
     error: false,
@@ -43,6 +44,12 @@ export const shopSlice = createSlice({
         },
         updateCartSuccess: (state, action) => {
             state.cart = action.payload.cart
+        },
+        getRelatedProductsSuccess: (state, action) => {
+            state.relatedProducts = action.payload
+        },
+        getRelatedProductsFailure: (state, action) => {
+            state.error = action.payload
         }
     },
 })

@@ -14,11 +14,13 @@ export const uploadFile = ({file, signedRequest}) => {
     return fetch(signedRequest, {
         method: 'PUT',
         body: file
-    }).then(response => {
-        return response.json()
-    }).catch(error => {
-        return error
     })
+        .then(response => {
+            return response.json()
+        })
+        .catch(error => {
+            return error
+        })
 }
 
 export const getSignedRequest = ({croppedImage}) => {
@@ -55,7 +57,6 @@ export const createCategory = (userId, token, category) => {
         },
         body: JSON.stringify(category)
     }).then(response => {
-        console.log(response)
         return response.json()
     }).catch(error => {
         return error
@@ -121,7 +122,6 @@ export const addProduct = ({userId, token, product}) => {
         },
         body: product
     }).then(response => {
-        console.log(response)
         return response.json()
     }).catch(error => {
         return error

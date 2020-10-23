@@ -25,7 +25,7 @@ const SmartFileInput = ({formik, id, cropWidth, cropHeight, s3Path}) => {
     const [uploadedImage, setUploadedImage] = useState({})
     const {uploadBlob, uploadType, sanitizedName} = uploadedImage
 
-    const [crop, setCrop] = useState({width: 600, aspect: 1})
+    const [crop, setCrop] = useState({width: cropWidth, aspect: 1})
 
     const [croppedImage, setCroppedImage] = useState()
 
@@ -126,6 +126,7 @@ const SmartFileInput = ({formik, id, cropWidth, cropHeight, s3Path}) => {
                         theme={imageDropZonePreviewStyle}
                     />
                 )}
+                {console.log('PHOTO', photo)}
                 {photo && (
                     <S3Img
                         url={photo}

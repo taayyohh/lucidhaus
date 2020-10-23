@@ -3,7 +3,6 @@ import {createSlice, createSelector} from '@reduxjs/toolkit'
 const initialState = {
     isInitialized: false,
     loading: false,
-    path: '',
     slug: '',
     layout: '',
 }
@@ -22,8 +21,7 @@ export const siteSlice = createSlice({
         setLayout: (state, action) => {
             state.layout = action.payload
         },
-        setConfig: (state, action) => {
-            state.path = action.payload.path
+        setSlug: (state, action) => {
             state.slug = action.payload.slug
         }
     },
