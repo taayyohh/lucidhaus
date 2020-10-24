@@ -5,8 +5,8 @@ import {
     useDispatch,
     useSelector
 }                           from 'react-redux'
-import Div                  from '../../shared/Basic/Div'
-import MotionDiv            from '../../shared/Basic/MotionDiv'
+import Div                  from '../Basic/Div'
+import MotionDiv            from '../Basic/MotionDiv'
 import {genericButtonStyle} from '../../themes/admin'
 import {defaultModalStyle}  from '../../themes/layout'
 

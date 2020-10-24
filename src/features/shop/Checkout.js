@@ -6,7 +6,7 @@ import React, {
 }                         from 'react'
 import PlacesAutocomplete from 'react-places-autocomplete'
 import {useSelector} from 'react-redux'
-import {emptyCart}   from './cartHelpers'
+import {emptyCart}   from '../../utils/cartHelpers'
 
 import {
     createOrder,

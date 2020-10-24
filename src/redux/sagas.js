@@ -1,12 +1,17 @@
-import {push}    from 'connected-react-router'
+import {takeLatest} from '@redux-saga/core/effects'
+import {push}       from 'connected-react-router'
 import {
     all,
     call,
     fork,
     put,
     takeEvery
-}                from 'redux-saga/effects'
-import {getCart} from '../features/shop/cartHelpers'
+} from 'redux-saga/effects'
+import {
+    addItem,
+    getCart,
+    removeItem
+} from '../utils/cartHelpers'
 import {
     addBusiness,
     addProduct,
@@ -23,7 +28,7 @@ import {
     updateOrderStatus,
     updateProduct,
     uploadFile
-}                    from '../services/apiAdmin'
+} from '../services/apiAdmin'
 import {listRelated} from '../services/apiShop'
 import {
     authenticate,
@@ -457,6 +462,14 @@ function* updateStatusValue(request) {
     }
 }
 
+function* addToCart({payload}) {
+    const updateCart = yield call(addItem, payload)
+    console.log('update', updateCart)
+}
+
+function* removeFromCart({payload}) {
+    yield removeItem(payload)
+}
 
 
 /**
@@ -624,6 +637,14 @@ function* watchUpdateStatusValue() {
     yield takeEvery('shop/updateStatusValue', updateStatusValue)
 }
 
+function* watchAddToCart() {
+    yield takeLatest('shop/addToCart', addToCart)
+}
+
+function* watchRemoveFromCart() {
+    yield takeLatest('shop/removeFromCart', removeFromCart)
+}
+
 
 //TODO: determine best method of combining rootSaga
 export default function* rootSaga() {
@@ -655,5 +676,7 @@ export default function* rootSaga() {
         fork(watchGetOrders),
         fork(watchGetStatusValues),
         fork(watchUpdateStatusValue),
+        fork(watchAddToCart),
+        fork(watchRemoveFromCart)
     ])
 }

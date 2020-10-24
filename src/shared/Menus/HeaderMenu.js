@@ -1,13 +1,12 @@
-import React, {useContext} from 'react'
+import React, {
+    memo,
+    useContext
+}                         from 'react'
 import {
     useDispatch,
     useSelector
-}                         from 'react-redux'
-import Div                from '../Basic/Div'
-import Span               from '../Basic/Span'
-import {menuPanelContext} from '../Containers/MenuPanelController'
-import LinkSwitch         from '../Basic/LinkSwitch'
-import {itemTotal} from '../../features/shop/cartHelpers'
+}                  from 'react-redux'
+import {itemTotal} from '../../utils/cartHelpers'
 import {
     headerMenuAuthStyle,
     headerMenuAuthStyleListItemStyle,
@@ -15,12 +14,15 @@ import {
     headerMenuListStyle,
     headerMenuStyle
 }                  from '../../themes/header'
+import Div                from '../Basic/Div'
+import LinkSwitch         from '../Basic/LinkSwitch'
+import Span               from '../Basic/Span'
+import {menuPanelContext} from '../Containers/MenuPanelController'
 
-const HeaderMenu = () => {
+const HeaderMenu = memo(() => {
     const dispatch = useDispatch()
     const {isAuthenticated, isAdmin} = useSelector(state => state.user)
     const {setPanel} = useContext(menuPanelContext)
-
 
     return (
         <Div theme={headerMenuStyle}>
@@ -88,7 +90,7 @@ const HeaderMenu = () => {
         </Div>
 
     )
-}
+})
 
 
 export default HeaderMenu

@@ -3,7 +3,7 @@ import {useSelector}    from 'react-redux'
 import Div              from '../../shared/Basic/Div'
 import H2          from '../../shared/Basic/H2'
 import Checkout    from './Checkout'
-import ProductCard from './ProductCard'
+import ProductCard from '../../shared/Elements/ProductCard'
 import {
     cartStyle,
     cartTitleStyle

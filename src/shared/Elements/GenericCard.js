@@ -1,5 +1,5 @@
-import React from 'react'
-import S3Img from '../Basic/S3Img'
+import React, {memo} from 'react'
+import S3Img         from '../Basic/S3Img'
 import {
     genericCardImageStyle,
     genericCardImageWrapperStyle,
@@ -9,7 +9,7 @@ import {
 import Div        from '../Basic/Div'
 import LinkSwitch from '../Basic/LinkSwitch'
 
-const GenericCard = ({photo, name, slug, theme}) => {
+const GenericCard = memo(({photo, name, slug, theme}) => {
     return (
         <LinkSwitch
             url={slug}
@@ -26,7 +26,7 @@ const GenericCard = ({photo, name, slug, theme}) => {
             <Div theme={{...genericCardNameStyle, ...theme.name}}>{name}</Div>
         </LinkSwitch>
     )
-}
+})
 
 GenericCard.defaultProps = {
     theme: {}

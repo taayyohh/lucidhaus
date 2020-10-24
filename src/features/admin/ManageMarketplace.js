@@ -5,10 +5,10 @@ import {
 }                                     from 'react-redux'
 import Div                            from '../../shared/Basic/Div'
 import {adminMarketplaceWrapperStyle} from '../../themes/admin'
-import {postContentStyle}             from '../../themes/layout'
-import AdminControls                  from './AdminControls'
-import AdminMarketplace               from './AdminMarketplace'
-import DeletePrompt                   from './DeletePrompt'
+import {postContentStyle} from '../../themes/layout'
+import AdminControls    from '../../shared/Admin/AdminControls'
+import AdminMarketplace from '../../shared/Admin/AdminMarketplace'
+import DeletePrompt     from '../../shared/Admin/DeletePrompt'
 
 const ManageMarketplace = () => {
     const {slug} = useSelector(state => state.site)

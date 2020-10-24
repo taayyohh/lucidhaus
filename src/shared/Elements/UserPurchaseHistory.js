@@ -1,5 +1,5 @@
-import Div    from "../../shared/Basic/Div";
-import H3     from "../../shared/Basic/H3";
+import Div    from "../Basic/Div";
+import H3     from "../Basic/H3";
 import moment from "moment";
 import React from "react";
 import PropTypes from "prop-types";

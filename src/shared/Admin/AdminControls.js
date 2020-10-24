@@ -1,8 +1,8 @@
 import React      from 'react'
-import Div        from '../../shared/Basic/Div'
-import H2         from '../../shared/Basic/H2'
-import Span       from '../../shared/Basic/Span'
-import LinkSwitch from '../../shared/Basic/LinkSwitch'
+import Div        from '../Basic/Div'
+import H2         from '../Basic/H2'
+import Span       from '../Basic/Span'
+import LinkSwitch from '../Basic/LinkSwitch'
 import {
     adminControlPanelInnerStyle,
     adminControlPanelStyle,

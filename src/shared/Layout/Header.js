@@ -1,17 +1,18 @@
-import React            from 'react'
+import PropTypes        from 'prop-types'
+import React, {memo}    from 'react'
 import {useSelector}    from 'react-redux'
-import Div              from '../Basic/Div'
-import LinkSwitch       from '../Basic/LinkSwitch'
 import {mobileFlag}     from '../../features/site/siteSlice'
-import HeaderMenu       from '../Menus/HeaderMenu'
-import MobileHeaderMenu from '../Menus/MobileHeaderMenu'
 import {
     headerInnerStyle,
     headerLogoLinkStyle,
     headerStyle
 }                       from '../../themes/header'
+import Div              from '../Basic/Div'
+import LinkSwitch       from '../Basic/LinkSwitch'
+import HeaderMenu       from '../Menus/HeaderMenu'
+import MobileHeaderMenu from '../Menus/MobileHeaderMenu'
 
-const Header = ({theme}) => {
+const Header = memo(({theme}) => {
     const isMobile = useSelector(mobileFlag)
 
     return (
@@ -29,11 +30,15 @@ const Header = ({theme}) => {
             </Div>
         </Div>
     )
-}
+})
 
 
 Header.defaultProps = {
     theme: {},
+}
+
+Header.propTypes = {
+    theme: PropTypes.object,
 }
 
 export default Header

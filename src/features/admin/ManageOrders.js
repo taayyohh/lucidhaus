@@ -6,8 +6,8 @@ import {
 import Div                      from '../../shared/Basic/Div'
 import H2                       from '../../shared/Basic/H2'
 import {adminOrderWrapperStyle} from '../../themes/admin'
-import {postContentStyle}       from '../../themes/layout'
-import OrderCard                from '../shop/OrderCard'
+import {postContentStyle} from '../../themes/layout'
+import OrderCard          from '../../shared/Elements/OrderCard'
 
 const ManageOrders = () => {
     const dispatch = useDispatch()
