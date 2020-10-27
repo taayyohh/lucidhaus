@@ -4,6 +4,7 @@ const initialState = {
     cart: [],
     shop: [],
     product: [],
+    productCategories: [],
     relatedProducts: [],
     orders: [],
     statusValues: [],
@@ -50,6 +51,12 @@ export const shopSlice = createSlice({
         },
         getRelatedProductsFailure: (state, action) => {
             state.error = action.payload
+        },
+        removeFromCart: (state, action) => {
+            state.cart = state.cart.filter(item => item._id !== action.payload)
+        },
+        getProductCategoriesSuccess: (state, action) => {
+            state.productCategories = action.payload.productCategories
         }
     },
 })

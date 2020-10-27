@@ -1,20 +1,17 @@
-import {takeLatest} from '@redux-saga/core/effects'
-import {push}       from 'connected-react-router'
+import {takeLatest}  from '@redux-saga/core/effects'
+import {push}        from 'connected-react-router'
 import {
     all,
     call,
     fork,
     put,
     takeEvery
-} from 'redux-saga/effects'
-import {
-    addItem,
-    getCart,
-    removeItem
-} from '../utils/cartHelpers'
+}                    from 'redux-saga/effects'
 import {
     addBusiness,
     addProduct,
+    addProductCategory,
+    allProductCategories,
     deleteBusiness,
     deleteProduct,
     getBusiness,
@@ -41,9 +38,10 @@ import {
     updateUser
 }                    from '../services/apiUser'
 import {
-    updateBusinessPath,
-    updateProductPath
-}             from '../variables/pathnames'
+    addItem,
+    getCart,
+    removeItem
+}                    from '../utils/cartHelpers'
 
 
 /**
@@ -100,7 +98,7 @@ function* createBusiness(business) {
         console.log('created', created)
         if (!created.error) {
             yield put({type: 'admin/createBusinessesSuccess', payload})
-            yield put(push(updateBusinessPath + created.slug))
+            yield put(push('/admin/marketplace/update/' + created.slug))
 
         } else {
             yield put({type: 'admin/createBusinessesFailure', payload})
@@ -162,7 +160,7 @@ function* destroyBusinessSuccess() {
 /* Product */
 function* createProduct(product) {
     const {_id, token, values} = product.payload
-    const {name, description, photo, image, quantity, price} = values
+    const {name, description, photo, image, quantity, price, category} = values
 
     //add to formdata so api can read
     const newProduct = new FormData()
@@ -171,6 +169,7 @@ function* createProduct(product) {
     newProduct.set('photo', photo)
     newProduct.set('quantity', quantity)
     newProduct.set('price', price)
+    newProduct.set('category', category)
 
     const payload = yield call(getSignedRequest, {croppedImage: image})
     if (!!payload.signedRequest) {
@@ -181,7 +180,7 @@ function* createProduct(product) {
         console.log('created', created)
         if (!created.error) {
             yield put({type: 'admin/createProductSuccess', payload})
-            yield put(push(updateProductPath + created.slug))
+            yield put(push('/admin/product/update/' + created.slug))
 
         } else {
             yield put({type: 'admin/createProductFailure', payload})
@@ -190,10 +189,19 @@ function* createProduct(product) {
 
     }
 }
+function* createProductCategory({payload}) {
+    const {_id, token, values} = payload
+    const category = new FormData()
+    category.set('name', values.name)
+
+    //set up error catching
+    yield call(addProductCategory, {_id, token, category})
+}
+
 
 function* updateProductDetail(product) {
     const {slug, _id, token, values} = product.payload
-    const {name, description, photo, image, quantity, price} = values
+    const {name, description, photo, image, quantity, price, category} = values
 
     //add to formData so api can read
     const newProduct = new FormData()
@@ -202,11 +210,13 @@ function* updateProductDetail(product) {
     newProduct.set('photo', photo)
     newProduct.set('quantity', quantity)
     newProduct.set('price', price)
+    newProduct.set('category', category)
 
     if (!!image) {
         const s3Payload = yield call(getSignedRequest, {croppedImage: image})
         if (!!s3Payload.signedRequest) {
             const uploadImage = yield call(uploadFile, {file: image, signedRequest: s3Payload.signedRequest})
+            console.log('upload image', uploadImage)
         }
     }
 
@@ -331,7 +341,7 @@ function* purchaseHistory(user) {
 function* loadConfig() {
     yield put({type: 'user/isAuthenticated'})
     const cart = yield getCart()
-    if(cart.length > 0) {
+    if (cart.length > 0) {
         yield put({type: 'shop/updateCartSuccess', payload: {cart: cart}})
     }
 }
@@ -463,13 +473,19 @@ function* updateStatusValue(request) {
 }
 
 function* addToCart({payload}) {
-    const updateCart = yield call(addItem, payload)
-    console.log('update', updateCart)
+    const cart = yield call(addItem, payload)
+    yield put({type: 'shop/updateCartSuccess', payload: {cart: cart}})
 }
 
 function* removeFromCart({payload}) {
     yield removeItem(payload)
 }
+
+function* getProductCategories() {
+    const productCategories = yield call(allProductCategories)
+    yield put({type: 'shop/getProductCategoriesSuccess', payload: {productCategories: productCategories}})
+}
+
 
 
 /**
@@ -645,6 +661,14 @@ function* watchRemoveFromCart() {
     yield takeLatest('shop/removeFromCart', removeFromCart)
 }
 
+function* watchGetProductCategories() {
+    yield takeLatest('shop/getProductCategories', getProductCategories)
+}
+
+function* watchCreateProductCategory() {
+    yield takeLatest('shop/createProductCategory', createProductCategory)
+}
+
 
 //TODO: determine best method of combining rootSaga
 export default function* rootSaga() {
@@ -677,6 +701,8 @@ export default function* rootSaga() {
         fork(watchGetStatusValues),
         fork(watchUpdateStatusValue),
         fork(watchAddToCart),
-        fork(watchRemoveFromCart)
+        fork(watchRemoveFromCart),
+        fork(watchGetProductCategories),
+        fork(watchCreateProductCategory)
     ])
 }

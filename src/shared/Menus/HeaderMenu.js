@@ -1,27 +1,24 @@
-import React, {
-    memo,
-    useContext
-}                         from 'react'
+import React, {useContext} from 'react'
 import {
     useDispatch,
     useSelector
-}                  from 'react-redux'
-import {itemTotal} from '../../utils/cartHelpers'
+}                          from 'react-redux'
 import {
     headerMenuAuthStyle,
     headerMenuAuthStyleListItemStyle,
     headerMenuListItemStyle,
     headerMenuListStyle,
     headerMenuStyle
-}                  from '../../themes/header'
-import Div                from '../Basic/Div'
-import LinkSwitch         from '../Basic/LinkSwitch'
-import Span               from '../Basic/Span'
-import {menuPanelContext} from '../Containers/MenuPanelController'
+}                          from '../../themes/header'
+import Div                 from '../Basic/Div'
+import LinkSwitch          from '../Basic/LinkSwitch'
+import Span                from '../Basic/Span'
+import {menuPanelContext}  from '../Containers/MenuPanelController'
 
-const HeaderMenu = memo(() => {
+const HeaderMenu = () => {
     const dispatch = useDispatch()
     const {isAuthenticated, isAdmin} = useSelector(state => state.user)
+    const {cart} = useSelector(state => state.shop)
     const {setPanel} = useContext(menuPanelContext)
 
     return (
@@ -32,7 +29,6 @@ const HeaderMenu = memo(() => {
                     theme={headerMenuListItemStyle}>
                     Businesses
                 </LinkSwitch>
-
                 <LinkSwitch
                     url="/shop"
                     theme={headerMenuListItemStyle}>
@@ -40,11 +36,10 @@ const HeaderMenu = memo(() => {
                 </LinkSwitch>
                 <Div
                     onClick={() => setPanel({name: 'cart-menu-panel'})}
-                    theme={headerMenuListItemStyle}>
+                    theme={headerMenuListItemStyle}
+                >
                     Cart
-                    <sup>
-                        {itemTotal()}
-                    </sup>
+                    <sup>{cart.length}</sup>
                 </Div>
             </Div>
             <Div as="nav" theme={headerMenuAuthStyle}>
@@ -52,12 +47,14 @@ const HeaderMenu = memo(() => {
                     <>
                         <LinkSwitch
                             url="/signin"
-                            theme={headerMenuAuthStyleListItemStyle}>
+                            theme={headerMenuAuthStyleListItemStyle}
+                        >
                             Sign in
                         </LinkSwitch>
                         <LinkSwitch
                             url="/signup"
-                            theme={headerMenuAuthStyleListItemStyle}>
+                            theme={headerMenuAuthStyleListItemStyle}
+                        >
                             Sign Up
                         </LinkSwitch>
 
@@ -67,7 +64,8 @@ const HeaderMenu = memo(() => {
                     <Span
                         to="/signout"
                         theme={headerMenuAuthStyleListItemStyle}
-                        onClick={() => dispatch({type: 'user/signOut'})}>
+                        onClick={() => dispatch({type: 'user/signOut'})}
+                    >
                         Sign Out
                     </Span>
                 )}
@@ -88,9 +86,8 @@ const HeaderMenu = memo(() => {
                 )}
             </Div>
         </Div>
-
     )
-})
+}
 
 
 export default HeaderMenu

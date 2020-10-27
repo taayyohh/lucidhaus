@@ -1,5 +1,5 @@
 import PropTypes        from 'prop-types'
-import React, {memo}    from 'react'
+import React            from 'react'
 import {useSelector}    from 'react-redux'
 import {mobileFlag}     from '../../features/site/siteSlice'
 import {
@@ -12,13 +12,13 @@ import LinkSwitch       from '../Basic/LinkSwitch'
 import HeaderMenu       from '../Menus/HeaderMenu'
 import MobileHeaderMenu from '../Menus/MobileHeaderMenu'
 
-const Header = memo(({theme}) => {
+const Header = ({theme}) => {
     const isMobile = useSelector(mobileFlag)
 
     return (
         <Div as="header" theme={{...headerStyle, ...theme}}>
-            <Div theme={{...headerInnerStyle, ...theme.innerStyle}}>
-                <LinkSwitch url="/" theme={{...headerLogoLinkStyle, ...theme.logoLink}}>
+            <Div theme={headerInnerStyle}>
+                <LinkSwitch url="/" theme={headerLogoLinkStyle}>
                     IJ
                 </LinkSwitch>
                 {(!isMobile && (
@@ -26,12 +26,10 @@ const Header = memo(({theme}) => {
                 )) || (
                     <MobileHeaderMenu/>
                 )}
-
             </Div>
         </Div>
     )
-})
-
+}
 
 Header.defaultProps = {
     theme: {},

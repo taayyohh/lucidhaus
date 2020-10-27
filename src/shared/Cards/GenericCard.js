@@ -5,9 +5,9 @@ import {
     genericCardImageWrapperStyle,
     genericCardNameStyle,
     genericCardStyle
-}            from '../../themes/business'
-import Div        from '../Basic/Div'
-import LinkSwitch from '../Basic/LinkSwitch'
+}                    from '../../themes/business'
+import Div           from '../Basic/Div'
+import LinkSwitch    from '../Basic/LinkSwitch'
 
 const GenericCard = memo(({photo, name, slug, theme}) => {
     return (

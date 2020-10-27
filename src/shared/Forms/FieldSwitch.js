@@ -1,10 +1,11 @@
 import React, {memo}     from 'react'
 import {signInFormStyle} from '../../themes/signup'
 import RichTextEditor    from './RichTextEditor'
+import SelectField       from './SelectField'
 import SmartFileInput    from './SmartFileInput'
 import SmartInput        from './SmartInput'
 
-const FieldSwitch = memo(({field, formik}) => {
+const FieldSwitch = memo(({field, formik, options}) => {
     const getField = () => {
         switch (field.type) {
             case 'text':
@@ -20,6 +21,12 @@ const FieldSwitch = memo(({field, formik}) => {
                     theme={signInFormStyle.fieldset}
                     className={formik.touched[field.name] && formik.errors[field.name] ? 'error' : ''}
                     errorMessage={formik.touched[field.name] && formik.errors[field.name] ? formik.errors[field.name] : null}
+                />
+            case 'select':
+                return <SelectField
+                    {...formik.getFieldProps(field.name)}
+                    field={field}
+                    options={options}
                 />
             case 'richText':
                 return <RichTextEditor

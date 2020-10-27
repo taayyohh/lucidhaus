@@ -1,5 +1,5 @@
 import queryString from 'query-string'
-import {API}       from '../config'
+import {API}       from '../variables/config'
 
 export const getProducts = (sortBy) => {
     return fetch(`${API}/products?sortBy=${sortBy}&order=desc&limit=6`, {
@@ -69,7 +69,6 @@ export const read = productId => {
             return error
         })
 }
-
 
 export const listRelated = ({slug}) => {
     return fetch(`${API}/products/related/${slug}`, {

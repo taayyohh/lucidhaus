@@ -5,9 +5,9 @@ import {
     Switch
 }                             from 'react-router'
 import AdminDashboard         from '../../features/admin/AdminDashboard'
-import CreateBusiness         from '../../features/admin/CreateBusiness'
-import CreateCategory         from '../../features/admin/CreateCategory'
-import CreateProduct          from '../../features/admin/CreateProduct'
+import CreateBusiness        from '../../features/admin/CreateBusiness'
+import CreateProductCategory from '../../features/admin/CreateProductCategory'
+import CreateProduct         from '../../features/admin/CreateProduct'
 import ManageMarketplace      from '../../features/admin/ManageMarketplace'
 import ManageOrders           from '../../features/admin/ManageOrders'
 import ManageShop             from '../../features/admin/ManageShop'
@@ -22,10 +22,10 @@ import NotFound               from '../../features/site/NotFound'
 import Profile                from '../../features/user/Profile'
 import SignIn                 from '../../features/user/SignIn'
 import SignUp                 from '../../features/user/SignUp'
-import UserDashboard          from '../../features/user/UserDashboard'
-import AdminRoute             from '../auth/AdminRoute'
-import PrivateRoute           from '../auth/PrivateRoute'
-import MotionDiv              from '../Basic/MotionDiv'
+import UserDashboard from '../../features/user/UserDashboard'
+import AdminRoute   from '../Admin/AdminRoute'
+import PrivateRoute from '../Admin/PrivateRoute'
+import MotionDiv    from '../Basic/MotionDiv'
 import {TransitionAnimations} from '../Containers/TransitionController'
 
 const Content = () => {
@@ -50,8 +50,9 @@ const Content = () => {
                     <AdminRoute path="/admin/marketplace/update/:slug" exact component={UpdateBusiness}/>
                     <AdminRoute path="/admin/category/update/:categoryId" exact component={UpdateCategory}/>
                     <AdminRoute path="/admin/orders" exact component={ManageOrders}/>
-                    <AdminRoute path="/create/category" exact component={CreateCategory}/>
+                    <AdminRoute path="/create/category" exact component={CreateProductCategory}/>
                     <AdminRoute path="/create/product" exact component={CreateProduct}/>
+                    <AdminRoute path="/create/product-category" exact component={CreateProductCategory}/>
                     <AdminRoute path="/create/business" exact component={CreateBusiness}/>
                     <Route component={NotFound}/>
                 </Switch>

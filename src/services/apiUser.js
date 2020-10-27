@@ -1,4 +1,4 @@
-import {API} from "../config";
+import {API} from "../variables/config";
 
 export const signup = user => {
     return fetch(`${API}/signup`, {

@@ -7,13 +7,13 @@ import Div                from '../../shared/Basic/Div'
 import H2                 from '../../shared/Basic/H2'
 import H3                 from '../../shared/Basic/H3'
 import RichText           from '../../shared/Basic/RichText'
-import S3Img              from '../../shared/Basic/S3Img'
-import AddToCartButton    from '../../shared/Elements/AddToCartButton'
+import S3Img           from '../../shared/Basic/S3Img'
+import AddToCartButton from '../../shared/Controls/AddToCartButton'
 import {
     businessStyle,
     businessWrapperStyle,
     genericCardImageStyle
-}                         from '../../themes/business'
+}                      from '../../themes/business'
 import {postContentStyle} from '../../themes/layout'
 
 

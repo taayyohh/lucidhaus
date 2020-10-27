@@ -1,95 +1,61 @@
 import {Formik}              from 'formik'
-import React                 from 'react'
+import React, {useEffect}    from 'react'
 import {
     useDispatch,
     useSelector
-}                  from 'react-redux'
-import FieldSwitch from '../../shared/Forms/FieldSwitch'
-import Button      from '../../shared/Basic/Button'
+}                            from 'react-redux'
+import Button                from '../../shared/Basic/Button'
 import Div                   from '../../shared/Basic/Div'
 import Form                  from '../../shared/Basic/Form'
 import H2                    from '../../shared/Basic/H2'
+import FieldSwitch           from '../../shared/Forms/FieldSwitch'
 import {defaultNewFormStyle} from '../../themes/forms'
 import {postContentStyle}    from '../../themes/layout'
 import {productFieldTypes}   from '../../variables/fieldTypes'
 
-
 const CreateProduct = () => {
     const dispatch = useDispatch()
     const {_id, token} = useSelector(state => state.user)
+    const {productCategories} = useSelector(state => state.shop)
+    const options = [
+        {
+            name: 'category',
+            options: productCategories
+        }
+    ]
 
-    //load categories and set form Data
-    // const init = () => {
-    //     getCategories().then(data => {
-    //         if (data.error) {
-    //             setValues({...values, error: data.error})
-    //         } else {
-    //             setValues({...values, categories: data, formData: new FormData()})
-    //         }
-    //     })
-    // }
+    useEffect(() => {
+        dispatch({
+            type: 'shop/getProductCategories',
+            payload: {
+                _id: _id,
+                token: token
+            }
+        })
 
-
-    // const clickSubmit = event => {
-    //     event.preventDefault()
-    //     setValues({...values, error: '', loading: true})
-    //
-    //     createProduct(user._id, token, formData)
-    //         .then(data => {
-    //             if (data.error) {
-    //                 setValues({...values, error: data.error})
-    //             } else {
-    //                 setValues({
-    //                     ...values,
-    //                     name: '',
-    //                     description: '',
-    //                     photo: '',
-    //                     price: '',
-    //                     quantity: '',
-    //                     loading: false,
-    //                     createdProduct: data.name
-    //                 })
-    //             }
-    //         })
-    //
-    // }
-    //
-    // const newPostForm = () => (
-    //     <form onSubmit={clickSubmit}>
-    //
-    //         <Div>
-    //             <label>category</label>
-    //             <select onChange={handleChange('category')} type="text">
-    //                 <option>Select a Category</option>
-    //                 {categories && categories.map((c, i) => (
-    //                     <option key={i} value={c._id}>{c.name}</option>
-    //                 ))}
-    //             </select>
-    //         </Div>
-    //
-    //         <Div>
-    //             <label>shipping</label>
-    //             <select onChange={handleChange('shipping')}
-    //                     type="text"
-    //                     value={shipping}
-    //             >
-    //                 <option>Please Select</option>
-    //                 <option value="0">No</option>
-    //                 <option value="1">Yes</option>
-    //             </select>
-    //         </Div>
-    //
-    //     </form>
-    // )
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
 
     return (
         <Div theme={postContentStyle()}>
             <Formik
-                initialValues={{name: '', description: '', photo: '', image: '', quantity: 0, price: 0}}
+                initialValues={{
+                    name: '',
+                    description: '',
+                    photo: '',
+                    image: '',
+                    quantity: 0,
+                    price: 0,
+                    category: ''
+                }}
                 onSubmit={values => dispatch({
                     type: 'admin/createProduct',
-                    payload: {_id: _id, token: token, values: values}
+                    payload: {
+                        _id: _id,
+                        token: token,
+                        values: values
+                    }
                 })}
             >
                 {formik => (
@@ -101,6 +67,7 @@ const CreateProduct = () => {
                                     key={i}
                                     formik={formik}
                                     field={f}
+                                    options={options}
                                 />
                             )}
                             <Button>

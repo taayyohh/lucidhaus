@@ -1,4 +1,4 @@
-import {API} from '../config'
+import {API} from '../variables/config'
 
 
 /**
@@ -47,15 +47,14 @@ export const getSignedRequest = ({croppedImage}) => {
  *
  **/
 
-export const createCategory = (userId, token, category) => {
-    return fetch(`${API}/category/create/${userId}`, {
+export const addProductCategory = ({_id, token, category}) => {
+    return fetch(`${API}/product-category/create/${_id}`, {
         method: 'POST',
         headers: {
             Accept: 'application/json',
-            'Content-Type': 'application/json',
             Authorization: `Bearer ${token}`
         },
-        body: JSON.stringify(category)
+        body: category
     }).then(response => {
         return response.json()
     }).catch(error => {
@@ -63,8 +62,24 @@ export const createCategory = (userId, token, category) => {
     })
 }
 
-export const updateCategory = (categoryId, userId, token, category) => {
-    return fetch(`${API}/category/${categoryId}/${userId}`, {
+// export const addProduct = ({userId, token, product}) => {
+//     return fetch(`${API}/product/create/${userId}`, {
+//         method: 'POST',
+//         headers: {
+//             Accept: 'application/json',
+//             Authorization: `Bearer ${token}`
+//         },
+//         body: product
+//     }).then(response => {
+//         return response.json()
+//     }).catch(error => {
+//         return error
+//     })
+// }
+
+
+export const updateProductCategory = (categoryId, userId, token, category) => {
+    return fetch(`${API}/product-category/${categoryId}/${userId}`, {
         method: 'PUT',
         headers: {
             // content type?
@@ -72,7 +87,7 @@ export const updateCategory = (categoryId, userId, token, category) => {
             Accept: 'application/json',
             Authorization: `Bearer ${token}`
         },
-        body: JSON.stringify(category)
+        body: category
     })
         .then(response => {
             return response.json()
@@ -82,8 +97,8 @@ export const updateCategory = (categoryId, userId, token, category) => {
         })
 }
 
-export const getCategories = () => {
-    return fetch(`${API}/categories`, {
+export const allProductCategories = () => {
+    return fetch(`${API}/product-categories`, {
         method: 'GET'
     })
         .then(response => {
@@ -93,8 +108,8 @@ export const getCategories = () => {
         })
 }
 
-export const getCategory = categoryId => {
-    return fetch(`${API}/category/${categoryId}`, {
+export const getProductCategory = categoryId => {
+    return fetch(`${API}/product-category/${categoryId}`, {
         method: 'GET'
     })
         .then(response => {

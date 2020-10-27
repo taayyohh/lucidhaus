@@ -4,12 +4,12 @@ import 'react-image-crop/dist/ReactCrop.css'
 import {
     useDispatch,
     useSelector
-}                  from 'react-redux'
-import FieldSwitch from '../../shared/Forms/FieldSwitch'
-import Div         from '../../shared/Basic/Div'
-import Form   from '../../shared/Basic/Form'
-import Button from '../../shared/Basic/Button'
-import H2     from '../../shared/Basic/H2'
+}                            from 'react-redux'
+import Button                from '../../shared/Basic/Button'
+import Div                   from '../../shared/Basic/Div'
+import Form                  from '../../shared/Basic/Form'
+import H2                    from '../../shared/Basic/H2'
+import FieldSwitch           from '../../shared/Forms/FieldSwitch'
 import {defaultNewFormStyle} from '../../themes/forms'
 import {postContentStyle}    from '../../themes/layout'
 import {productFieldTypes}   from '../../variables/fieldTypes'
@@ -19,11 +19,28 @@ const UpdateProduct = () => {
     const {_id, token} = useSelector(state => state.user)
     const {slug} = useSelector(state => state.site)
     const {product} = useSelector(state => state.shop)
-    const {name, description, photo, quantity, price, sold} = product
+    const {productCategories} = useSelector(state => state.shop)
+    const {name, description, photo, quantity, price, sold, category} = product
+    const options = [
+        {
+            name: 'category',
+            options: productCategories
+        }
+    ]
 
     useEffect(() => {
-        if (slug.length > 0)
-            dispatch({type: 'shop/getProduct', payload: {slug: slug}})
+        dispatch({
+            type: 'shop/getProductCategories',
+            payload: {
+                _id: _id,
+                token: token
+            }
+        })
+        
+        dispatch({
+            type: 'shop/getProduct',
+            payload: {slug: slug}
+        })
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [slug])
@@ -38,6 +55,7 @@ const UpdateProduct = () => {
                         photo: photo,
                         image: '',
                         quantity: quantity,
+                        category: category,
                         price: price,
                         sold: sold
                     }}
@@ -61,10 +79,11 @@ const UpdateProduct = () => {
                                         key={i}
                                         formik={formik}
                                         field={f}
+                                        options={options}
                                     />
                                 )}
                                 <Button>
-                                    Updated Business
+                                    Updated Product
                                 </Button>
                             </Div>
                         </Form>

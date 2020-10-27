@@ -1,7 +1,7 @@
 import {
     businessUploadPath,
     shopUploadPath
-} from './s3'
+} from './config'
 
 /**
  *
@@ -106,5 +106,18 @@ export const productFieldTypes = [
         inputLabel: 'Sold',
         type: 'number',
         disabled: 'disabled'
+    },
+    {
+        name: 'category',
+        inputLabel: 'Category',
+        type: 'select'
+    }
+]
+
+export const productCategoryFieldTypes = [
+    {
+        name: 'name',
+        inputLabel: 'Category',
+        type: 'text',
     }
 ]

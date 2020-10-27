@@ -8,7 +8,7 @@ import H2                   from '../../shared/Basic/H2'
 import H3                   from '../../shared/Basic/H3'
 import LinkSwitch           from '../../shared/Basic/LinkSwitch'
 import {userDashboardStyle} from '../../themes/user'
-import UserPurchaseHistory  from '../../shared/Elements/UserPurchaseHistory'
+import UserPurchaseHistory  from '../../shared/User/UserPurchaseHistory'
 
 const UserDashboard = () => {
     const {name, email, token, _id, error, purchaseHistory} = useSelector(state => state.user)

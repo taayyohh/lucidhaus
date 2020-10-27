@@ -4,7 +4,7 @@ import {
     useSelector
 }                         from 'react-redux'
 import Div                from '../../shared/Basic/Div'
-import GenericCard        from '../../shared/Elements/GenericCard'
+import GenericCard        from '../../shared/Cards/GenericCard'
 import {postContentStyle} from '../../themes/layout'
 import {shopWrapperStyle} from '../../themes/shop'
 

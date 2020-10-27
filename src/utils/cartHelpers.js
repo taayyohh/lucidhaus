@@ -1,5 +1,4 @@
 export const addItem = (item) => {
-    console.log('item', item)
     let cart = []
     if (typeof window !== 'undefined') {
         if (localStorage.getItem('cart')) {
@@ -14,7 +13,6 @@ export const addItem = (item) => {
             return cart.find(p => p._id === id)
         })
         localStorage.setItem('cart', JSON.stringify(cart))
-        console.log('cuuuu', cart)
         return cart
     }
 }

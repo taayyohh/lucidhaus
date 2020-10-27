@@ -1,7 +1,7 @@
 import React                    from 'react'
 import Div                      from '../Basic/Div'
-import GenericCard              from '../Elements/GenericCard'
-import GenericCardAdminControls from '../Elements/GenericCardAdminControls'
+import GenericCard              from '../Cards/GenericCard'
+import GenericCardAdminControls from '../Controls/GenericCardAdminControls'
 import {
     adminMarketplaceInnerWrapperStyle,
     adminShopCardStyle,

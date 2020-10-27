@@ -1,25 +1,23 @@
+import moment        from 'moment'
 import PropTypes     from 'prop-types'
-import React, {memo} from 'react'
-import Div           from '../Basic/Div'
+import React         from 'react'
 import {footerStyle} from '../../themes/footer'
-import moment        from "moment";
+import Div           from '../Basic/Div'
 
-const Footer = memo(({theme}) =>
+const Footer = ({theme}) =>
     <Div as="footer" theme={{...footerStyle, ...theme}}>
         <Div theme={footerStyle.inner}>
-           &copy; {moment().format('YYYY')} InclusiveJourneys
+            &copy; {moment().format('YYYY')} InclusiveJourneys
         </Div>
     </Div>
-)
+
 
 Footer.propTypes = {
     theme: PropTypes.object,
 }
 
 Footer.defaultProps = {
-    theme: {
-        inner: {}
-    },
+    theme: {}
 }
 
 export default Footer

@@ -3,7 +3,7 @@ import Div                  from '../Basic/Div'
 import H2                   from '../Basic/H2'
 import S3Img                from '../Basic/S3Img'
 import Span                 from '../Basic/Span'
-import RemoveFromCartButton from './RemoveFromCartButton'
+import RemoveFromCartButton from '../Controls/RemoveFromCartButton'
 import {productCardStyle}   from '../../themes/product'
 import {updateItem}         from '../../utils/cartHelpers'
 
@@ -43,10 +43,7 @@ const ProductCard = ({product, theme}) => {
                     />
                 </Div>
 
-                <RemoveFromCartButton
-                    productId={product._id}
-                    dispatchAction={'shop/removeFromCart'}
-                />
+                <RemoveFromCartButton productId={product._id} />
             </Div>
         </Div>
     )
