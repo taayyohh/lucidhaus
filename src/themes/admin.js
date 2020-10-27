@@ -27,6 +27,10 @@ export const adminMarketplaceWrapperStyle = {
     display: 'grid',
     gridTemplateColumns: '1fr 3fr',
     gridGap: sv(30),
+    mobile: {
+        display: flex,
+        flexDirection: column
+    }
 }
 
 export const adminMarketplaceInnerWrapperStyle = {
@@ -212,16 +216,15 @@ export const adminMenuStyle = {
     }
 }
 
-export const adminOrderStyle = {
-    display: flex,
-    flexDirection: column
-}
-
 export const adminOrderWrapperStyle = {
     width: '100%',
     display: 'grid',
     gridTemplateColumns: '1fr 1fr 1fr',
     gridGap: sv(30),
+    mobile: {
+        display: flex,
+        flexDirection: column
+    }
 }
 
 export const orderCardWrapperStyle = {

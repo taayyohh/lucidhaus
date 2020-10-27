@@ -23,7 +23,8 @@ const AdminTaxonomy = ({productCategories}) =>
                 <GenericCardAdminControls
                     edit={'/admin/product-category/update'}
                     destroyAction={'admin/attemptDestroyProduct'}
-                    slug={cat._id}
+                    slug={cat.slug}
+                    id={cat._id}
                 />
             </Div>
         ))}

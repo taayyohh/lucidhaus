@@ -7,7 +7,7 @@ import {
     adminCardControlsButtonWrapperStyle
 }                    from '../../themes/admin'
 
-const GenericCardAdminControls = ({slug, edit, destroyAction}) => {
+const GenericCardAdminControls = ({slug, _id, edit, destroyAction}) => {
     const dispatch = useDispatch()
 
     return (
@@ -20,7 +20,7 @@ const GenericCardAdminControls = ({slug, edit, destroyAction}) => {
             </LinkSwitch>
             <Div
                 theme={adminCardControlsButtonStyle}
-                onClick={() => dispatch({type: destroyAction, payload: {slug: slug}})}
+                onClick={() => dispatch({type: destroyAction, payload: {slug: (_id || slug)}})}
             >
                 Delete
             </Div>

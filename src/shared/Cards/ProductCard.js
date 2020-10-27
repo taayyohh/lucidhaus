@@ -25,7 +25,7 @@ const ProductCard = ({product, theme}) => {
                 $: {product.price}
             </Span>
             <Div theme={{...productCardStyle.controls, ...theme.controls}}>
-                <Div>
+                <Div theme={{...productCardStyle.controlsInner, ...theme.controlsInner}}>
                     <Div>
                         <span>Adjust Quantity</span>
                     </Div>

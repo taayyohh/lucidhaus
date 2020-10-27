@@ -45,7 +45,15 @@ export const productCardStyle = {
     category: {},
     price: {},
     image: {},
-    controls: {}
+    controls: {
+        mobile: {
+            display: flex,
+            flexDirection: column
+        }
+    },
+    controlsInner: {
+
+    }
 }
 
 export const cardInnerStyle = {}

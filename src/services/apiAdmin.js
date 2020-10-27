@@ -48,8 +48,8 @@ export const getSignedRequest = ({croppedImage}) => {
  **/
 
 
-export const getProductCategory = categoryId => {
-    return fetch(`${API}/product-category/${categoryId}`, {
+export const getProductCategory = ({slug}) => {
+    return fetch(`${API}/product-category/${slug}`, {
         method: 'GET'
     })
         .then(response => {

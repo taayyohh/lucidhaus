@@ -18,6 +18,7 @@ import {
     getBusiness,
     getBusinesses,
     getProduct,
+    getProductCategory,
     getProducts,
     getSignedRequest,
     listOrders,
@@ -26,7 +27,7 @@ import {
     updateOrderStatus,
     updateProduct,
     uploadFile
-} from '../services/apiAdmin'
+}                    from '../services/apiAdmin'
 import {listRelated} from '../services/apiShop'
 import {
     authenticate,
@@ -43,7 +44,7 @@ import {
     getCart,
     removeItem,
     updateItem
-} from '../utils/cartHelpers'
+}                    from '../utils/cartHelpers'
 
 
 /**
@@ -508,6 +509,17 @@ function* getProductCategories() {
     yield put({type: 'shop/getProductCategoriesSuccess', payload: {productCategories: productCategories}})
 }
 
+function* getProductCategoryDetail({payload}) {
+    console.log('payload', payload)
+
+    const category = yield call(getProductCategory, payload)
+    if (!category.error) {
+        yield put({type: 'shop/getProductCategorySuccess', category})
+    } else {
+        yield put({type: 'shop/getProductCategoryFailure', category})
+    }
+
+}
 
 
 /**
@@ -695,6 +707,10 @@ function* watchGetProductCategories() {
     yield takeLatest('shop/getProductCategories', getProductCategories)
 }
 
+function* watchGetProductCategory() {
+    yield takeLatest('shop/getProductCategory', getProductCategoryDetail)
+}
+
 function* watchCreateProductCategory() {
     yield takeLatest('shop/createProductCategory', createProductCategory)
 }
@@ -737,6 +753,7 @@ export default function* rootSaga() {
         fork(watchAddToCart),
         fork(watchRemoveFromCart),
         fork(watchGetProductCategories),
+        fork(watchGetProductCategory),
         fork(watchCreateProductCategory),
         fork(watchDestroyProductCategory),
         fork(watchDestroyProductCategorySuccess),
