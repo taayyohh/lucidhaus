@@ -57,7 +57,7 @@ export const shopSlice = createSlice({
         },
         getProductCategoriesSuccess: (state, action) => {
             state.productCategories = action.payload.productCategories
-        }
+        },
     },
 })
 

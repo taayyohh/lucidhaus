@@ -21,6 +21,7 @@ const UpdateProduct = () => {
     const {product} = useSelector(state => state.shop)
     const {productCategories} = useSelector(state => state.shop)
     const {name, description, photo, quantity, price, sold, category} = product
+    //TODO: turn into custom fn that takes options as arguments outputs array of obj
     const options = [
         {
             name: 'category',
@@ -36,7 +37,7 @@ const UpdateProduct = () => {
                 token: token
             }
         })
-        
+
         dispatch({
             type: 'shop/getProduct',
             payload: {slug: slug}

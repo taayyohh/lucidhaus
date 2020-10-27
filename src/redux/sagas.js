@@ -40,8 +40,9 @@ import {
 import {
     addItem,
     getCart,
-    removeItem
-}                    from '../utils/cartHelpers'
+    removeItem,
+    updateItem
+} from '../utils/cartHelpers'
 
 
 /**
@@ -196,6 +197,14 @@ function* createProductCategory({payload}) {
 
     //set up error catching
     yield call(addProductCategory, {_id, token, category})
+}
+
+function* updateProductQuantity({payload}) {
+    const {productId, count} = payload
+    console.log('PAYLOAD', payload)
+    const cart = yield call(updateItem, payload)
+    yield put({type: 'shop/updateCartSuccess', payload: {cart: cart}})
+
 }
 
 
@@ -669,6 +678,10 @@ function* watchCreateProductCategory() {
     yield takeLatest('shop/createProductCategory', createProductCategory)
 }
 
+function* watchUpdateProductQuantity() {
+    yield takeLatest('shop/updateProductQuantity', updateProductQuantity)
+}
+
 
 //TODO: determine best method of combining rootSaga
 export default function* rootSaga() {
@@ -703,6 +716,7 @@ export default function* rootSaga() {
         fork(watchAddToCart),
         fork(watchRemoveFromCart),
         fork(watchGetProductCategories),
-        fork(watchCreateProductCategory)
+        fork(watchCreateProductCategory),
+        fork(watchUpdateProductQuantity)
     ])
 }

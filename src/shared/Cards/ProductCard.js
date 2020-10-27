@@ -1,22 +1,15 @@
-import React, {useState}    from 'react'
+import React                from 'react'
+import {useDispatch}        from 'react-redux'
+import {productCardStyle}   from '../../themes/product'
 import Div                  from '../Basic/Div'
 import H2                   from '../Basic/H2'
 import S3Img                from '../Basic/S3Img'
 import Span                 from '../Basic/Span'
 import RemoveFromCartButton from '../Controls/RemoveFromCartButton'
-import {productCardStyle}   from '../../themes/product'
-import {updateItem}         from '../../utils/cartHelpers'
 
 
 const ProductCard = ({product, theme}) => {
-    const [count, setCount] = useState(product.count)
-
-    const handleChange = productId => event => {
-        setCount(event.target.value < 1 ? 1 : event.target.value)
-        if (event.target.value >= 1) {
-            updateItem(productId, event.target.value)
-        }
-    }
+    const dispatch = useDispatch()
 
     return (
         <Div theme={productCardStyle}>
@@ -38,12 +31,20 @@ const ProductCard = ({product, theme}) => {
                     </Div>
                     <input
                         type="number"
-                        value={count}
-                        onChange={handleChange(product._id)}
+                        defaultValue={product.count}
+                        onChange={(e) => {
+                            dispatch({
+                                type: 'shop/updateProductQuantity',
+                                payload: {
+                                    productId: product._id,
+                                    count: e.target.value
+                                }
+                            })
+                        }}
                     />
                 </Div>
 
-                <RemoveFromCartButton productId={product._id} />
+                <RemoveFromCartButton productId={product._id}/>
             </Div>
         </Div>
     )

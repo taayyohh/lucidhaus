@@ -8,6 +8,7 @@ import {
     flex,
     none,
     relative,
+    row,
     spaceBetween,
     uppercase,
     white
@@ -71,9 +72,12 @@ export const headerMenuStyle = {
     width: '100%',
     position: relative,
     display: flex,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
+    flexDirection: row,
+    alignItems: center,
+    justifyContent: center,
+    mobile: {
+        flexDirection: column
+    }
 }
 
 export const headerMenuListItemStyle = {
@@ -105,6 +109,12 @@ export const headerMenuListItemStyle = {
 export const headerMenuListStyle = {
     display: flex,
     marginLeft: auto,
+    mobile: {
+        flexDirection: column,
+        marginRight: auto,
+        marginLeft: 0,
+        marginTop: 100
+    }
 }
 
 export const headerMenuAuthStyle = {
@@ -112,9 +122,11 @@ export const headerMenuAuthStyle = {
     marginLeft: auto,
     mobile: {
         display: flex,
+        flexDirection: column,
         position: relative,
-        justifyContent: 'center',
+        margin: 0,
         padding: 0,
+        marginRight: auto
     }
 }
 

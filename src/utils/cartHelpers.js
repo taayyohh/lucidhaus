@@ -35,7 +35,7 @@ export const getCart = () => {
     return []
 }
 
-export const updateItem = (productId, count) => {
+export const updateItem = ({productId, count}) => {
     let cart = []
     if (typeof window !== 'undefined') {
         if (localStorage.getItem('cart')) {
@@ -50,6 +50,7 @@ export const updateItem = (productId, count) => {
         })
 
         localStorage.setItem('cart', JSON.stringify(cart))
+        return cart
     }
 }
 
