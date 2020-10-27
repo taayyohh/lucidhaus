@@ -47,6 +47,20 @@ export const getSignedRequest = ({croppedImage}) => {
  *
  **/
 
+
+export const getProductCategory = categoryId => {
+    return fetch(`${API}/product-category/${categoryId}`, {
+        method: 'GET'
+    })
+        .then(response => {
+            return response.json()
+        })
+        .catch(error => {
+            return error
+        })
+}
+
+
 export const addProductCategory = ({_id, token, category}) => {
     return fetch(`${API}/product-category/create/${_id}`, {
         method: 'POST',
@@ -61,21 +75,6 @@ export const addProductCategory = ({_id, token, category}) => {
         return error
     })
 }
-
-// export const addProduct = ({userId, token, product}) => {
-//     return fetch(`${API}/product/create/${userId}`, {
-//         method: 'POST',
-//         headers: {
-//             Accept: 'application/json',
-//             Authorization: `Bearer ${token}`
-//         },
-//         body: product
-//     }).then(response => {
-//         return response.json()
-//     }).catch(error => {
-//         return error
-//     })
-// }
 
 
 export const updateProductCategory = (categoryId, userId, token, category) => {
@@ -108,9 +107,15 @@ export const allProductCategories = () => {
         })
 }
 
-export const getProductCategory = categoryId => {
-    return fetch(`${API}/product-category/${categoryId}`, {
-        method: 'GET'
+
+export const deleteProductCategory = ({slug, _id, token}) => {
+    return fetch(`${API}/product-category/${slug}/${_id}`, {
+        method: 'DELETE',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`
+        }
     })
         .then(response => {
             return response.json()

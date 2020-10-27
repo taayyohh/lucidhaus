@@ -1,14 +1,14 @@
 import React      from 'react'
-import Div        from '../Basic/Div'
-import H2         from '../Basic/H2'
-import Span       from '../Basic/Span'
-import LinkSwitch from '../Basic/LinkSwitch'
 import {
     adminControlPanelInnerStyle,
     adminControlPanelStyle,
     adminCreateButtonStyle,
     adminHeadingStyle
 }                 from '../../themes/admin'
+import Div        from '../Basic/Div'
+import H2         from '../Basic/H2'
+import LinkSwitch from '../Basic/LinkSwitch'
+import Span       from '../Basic/Span'
 
 const AdminControls = ({data, title, create}) => {
 

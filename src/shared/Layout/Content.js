@@ -3,24 +3,25 @@ import React, {useContext}    from 'react'
 import {
     Route,
     Switch
-}                             from 'react-router'
-import AdminDashboard         from '../../features/admin/AdminDashboard'
+}                            from 'react-router'
+import AdminDashboard        from '../../features/admin/AdminDashboard'
 import CreateBusiness        from '../../features/admin/CreateBusiness'
 import CreateProductCategory from '../../features/admin/CreateProductCategory'
 import CreateProduct         from '../../features/admin/CreateProduct'
-import ManageMarketplace      from '../../features/admin/ManageMarketplace'
-import ManageOrders           from '../../features/admin/ManageOrders'
-import ManageShop             from '../../features/admin/ManageShop'
-import UpdateBusiness         from '../../features/admin/UpdateBusiness'
-import UpdateCategory         from '../../features/admin/UpdateCategory'
-import UpdateProduct          from '../../features/admin/UpdateProduct'
-import Business               from '../../features/business/Business'
-import Marketplace            from '../../features/business/Marketplace'
-import Product                from '../../features/shop/Product'
-import Shop                   from '../../features/shop/Shop'
-import NotFound               from '../../features/site/NotFound'
-import Profile                from '../../features/user/Profile'
-import SignIn                 from '../../features/user/SignIn'
+import ManageMarketplace     from '../../features/admin/ManageMarketplace'
+import ManageOrders          from '../../features/admin/ManageOrders'
+import ManageShop            from '../../features/admin/ManageShop'
+import ManageTaxonomy        from '../../features/admin/ManageTaxonomy'
+import UpdateBusiness        from '../../features/admin/UpdateBusiness'
+import UpdateCategory        from '../../features/admin/UpdateCategory'
+import UpdateProduct         from '../../features/admin/UpdateProduct'
+import Business              from '../../features/business/Business'
+import Marketplace           from '../../features/business/Marketplace'
+import Product               from '../../features/shop/Product'
+import Shop                  from '../../features/shop/Shop'
+import NotFound              from '../../features/site/NotFound'
+import Profile               from '../../features/user/Profile'
+import SignIn                from '../../features/user/SignIn'
 import SignUp                 from '../../features/user/SignUp'
 import UserDashboard from '../../features/user/UserDashboard'
 import AdminRoute   from '../Admin/AdminRoute'
@@ -45,6 +46,7 @@ const Content = () => {
                     <PrivateRoute path="/user/dashboard" exact component={UserDashboard}/>
                     <AdminRoute path="/admin/dashboard" exact component={AdminDashboard}/>
                     <AdminRoute path="/admin/shop" exact component={ManageShop}/>
+                    <AdminRoute path="/admin/taxonomy" exact component={ManageTaxonomy} />
                     <AdminRoute path="/admin/marketplace" exact component={ManageMarketplace}/>
                     <AdminRoute path="/admin/product/update/:slug" exact component={UpdateProduct}/>
                     <AdminRoute path="/admin/marketplace/update/:slug" exact component={UpdateBusiness}/>

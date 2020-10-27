@@ -15,13 +15,15 @@ const GenericCard = memo(({photo, name, slug, theme}) => {
             url={slug}
             theme={{...genericCardStyle, ...theme}}
         >
-            <Div theme={{...genericCardImageWrapperStyle, ...theme.imageWrapper}}>
-                <S3Img
-                    url={photo}
-                    alt={name}
-                    theme={{...genericCardImageStyle, ...theme.image}}
-                />
-            </Div>
+            {photo && (
+                <Div theme={{...genericCardImageWrapperStyle, ...theme.imageWrapper}}>
+                    <S3Img
+                        url={photo}
+                        alt={name}
+                        theme={{...genericCardImageStyle, ...theme.image}}
+                    />
+                </Div>
+            )}
 
             <Div theme={{...genericCardNameStyle, ...theme.name}}>{name}</Div>
         </LinkSwitch>

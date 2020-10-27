@@ -46,7 +46,7 @@ const DeletePrompt = ({destroyAction}) => {
                                     <Div
                                         theme={genericButtonStyle}
                                         onClick={() => dispatch({
-                                            type: destroyAction, ///abstract
+                                            type: destroyAction,
                                             payload: {_id: _id, token: token, slug: confirmDelete.slug}
                                         })}
                                     >

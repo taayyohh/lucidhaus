@@ -14,6 +14,7 @@ import {
     allProductCategories,
     deleteBusiness,
     deleteProduct,
+    deleteProductCategory,
     getBusiness,
     getBusinesses,
     getProduct,
@@ -174,11 +175,12 @@ function* createProduct(product) {
 
     const payload = yield call(getSignedRequest, {croppedImage: image})
     if (!!payload.signedRequest) {
-        const uploadImage = yield call(uploadFile, {file: image, signedRequest: payload.signedRequest})
-        console.log('upload', uploadImage)
+        //TODO: implement error catch
+        yield call(uploadFile, {file: image, signedRequest: payload.signedRequest})
+
 
         const created = yield call(addProduct, {userId: _id, token: token, product: newProduct})
-        console.log('created', created)
+
         if (!created.error) {
             yield put({type: 'admin/createProductSuccess', payload})
             yield put(push('/admin/product/update/' + created.slug))
@@ -190,6 +192,7 @@ function* createProduct(product) {
 
     }
 }
+
 function* createProductCategory({payload}) {
     const {_id, token, values} = payload
     const category = new FormData()
@@ -200,13 +203,9 @@ function* createProductCategory({payload}) {
 }
 
 function* updateProductQuantity({payload}) {
-    const {productId, count} = payload
-    console.log('PAYLOAD', payload)
     const cart = yield call(updateItem, payload)
     yield put({type: 'shop/updateCartSuccess', payload: {cart: cart}})
-
 }
-
 
 function* updateProductDetail(product) {
     const {slug, _id, token, values} = product.payload
@@ -241,8 +240,8 @@ function* updateProductDetail(product) {
     }
 }
 
-function* attemptDestroyProduct(product) {
-    yield put({type: 'admin/confirmDestroyProduct', payload: product.payload})
+function* attemptDestroyProduct({payload}) {
+    yield put({type: 'admin/confirmDestroyProduct', payload: payload})
 }
 
 function* destroyProduct(product) {
@@ -257,6 +256,20 @@ function* destroyProduct(product) {
 
 function* destroyProductSuccess() {
     yield put(push('/admin/shop'))
+}
+
+function* destroyProductCategory(product) {
+    const destroyed = yield call(deleteProductCategory, product.payload)
+    if (!destroyed.error) {
+        yield put({type: 'admin/destroyProductCategorySuccess'})
+        yield put(push('/admin/shop'))
+    } else {
+        yield put({type: 'admin/destroyProductCategoryFailure'})
+    }
+}
+
+function* destroyProductCategorySuccess() {
+    yield put(push('/admin/taxonomy'))
 }
 
 
@@ -566,6 +579,14 @@ function* watchDestroyProductSuccess() {
     yield takeEvery('admin/attemptDestroyProductSuccess', destroyProductSuccess)
 }
 
+function* watchDestroyProductCategory() {
+    yield takeEvery('admin/destroyProductCategory', destroyProductCategory)
+}
+
+function* watchDestroyProductCategorySuccess() {
+    yield takeEvery('admin/attemptDestroyProductCategorySuccess', destroyProductCategorySuccess)
+}
+
 function* watchUpdateProduct() {
     yield takeEvery('admin/updateProduct', updateProductDetail)
 }
@@ -717,6 +738,8 @@ export default function* rootSaga() {
         fork(watchRemoveFromCart),
         fork(watchGetProductCategories),
         fork(watchCreateProductCategory),
+        fork(watchDestroyProductCategory),
+        fork(watchDestroyProductCategorySuccess),
         fork(watchUpdateProductQuantity)
     ])
 }

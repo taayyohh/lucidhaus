@@ -35,6 +35,11 @@ const AdminMenu = () =>
                     Manage Orders
                 </LinkSwitch>
             </Li>
+            <Li theme={adminMenuStyle.listItem}>
+                <LinkSwitch theme={adminMenuStyle.link} url="/admin/taxonomy">
+                    Manage Taxonomy
+                </LinkSwitch>
+            </Li>
         </Ul>
     </Div>
 

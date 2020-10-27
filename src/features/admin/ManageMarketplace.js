@@ -3,12 +3,12 @@ import {
     useDispatch,
     useSelector
 }                                     from 'react-redux'
+import AdminControls                  from '../../shared/Admin/AdminControls'
+import AdminMarketplace               from '../../shared/Admin/AdminMarketplace'
+import DeletePrompt                   from '../../shared/Admin/DeletePrompt'
 import Div                            from '../../shared/Basic/Div'
 import {adminMarketplaceWrapperStyle} from '../../themes/admin'
-import {postContentStyle} from '../../themes/layout'
-import AdminControls    from '../../shared/Admin/AdminControls'
-import AdminMarketplace from '../../shared/Admin/AdminMarketplace'
-import DeletePrompt     from '../../shared/Admin/DeletePrompt'
+import {postContentStyle}             from '../../themes/layout'
 
 const ManageMarketplace = () => {
     const {slug} = useSelector(state => state.site)

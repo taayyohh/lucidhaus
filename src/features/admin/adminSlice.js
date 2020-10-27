@@ -53,6 +53,22 @@ export const adminSlice = createSlice({
             state.confirmDelete.destroy = false
             state.confirmDelete.slug = ''
         },
+        confirmDestroyProductCategory: (state, action) => {
+            console.log('PAA', action.payload)
+            state.confirmDelete.shouldDelete = true
+            state.confirmDelete.slug = action.payload._id
+        },
+        denyDestroyProductCategory: (state, action) => {
+            state.confirmDelete.shouldDelete = false
+        },
+        acceptDestroyProductCategory: (state, action) => {
+            state.confirmDelete.destroy = true
+        },
+        destroyProductCategorySuccess: (state) => {
+            state.confirmDelete.shouldDelete = false
+            state.confirmDelete.destroy = false
+            state.confirmDelete.slug = ''
+        },
     },
 })
 

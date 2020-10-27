@@ -4,20 +4,20 @@ import {
     useSelector
 }                                     from 'react-redux'
 import AdminControls                  from '../../shared/Admin/AdminControls'
-import AdminShop                      from '../../shared/Admin/AdminShop'
+import AdminTaxonomy                  from '../../shared/Admin/AdminTaxonomy'
 import DeletePrompt                   from '../../shared/Admin/DeletePrompt'
 import Div                            from '../../shared/Basic/Div'
 import {adminMarketplaceWrapperStyle} from '../../themes/admin'
 import {postContentStyle}             from '../../themes/layout'
 
-const ManageShop = () => {
+const ManageTaxonomy = () => {
     const {slug} = useSelector(state => state.site)
-    const {shop} = useSelector(state => state.shop)
+    const {productCategories} = useSelector(state => state.shop)
     const {confirmDelete} = useSelector(state => state.admin)
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch({type: 'shop/getShop'})
+        dispatch({type: 'shop/getProductCategories'})
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [confirmDelete])
@@ -27,15 +27,15 @@ const ManageShop = () => {
         <Div theme={postContentStyle(slug)}>
             <Div theme={adminMarketplaceWrapperStyle}>
                 <AdminControls
-                    data={shop}
-                    title={'Product'}
-                    create={'/create/product'}
+                    data={productCategories}
+                    title={'Product Category'}
+                    create={'/create/product-category'}
                 />
-                <AdminShop shop={shop}/>
-                <DeletePrompt destroyAction={'admin/destroyProduct'}/>
+                <AdminTaxonomy productCategories={productCategories}/>
+                <DeletePrompt destroyAction={'admin/destroyProductCategory'}/>
             </Div>
         </Div>
     )
 }
 
-export default ManageShop
+export default ManageTaxonomy

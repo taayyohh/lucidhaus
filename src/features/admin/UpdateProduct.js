@@ -30,14 +30,7 @@ const UpdateProduct = () => {
     ]
 
     useEffect(() => {
-        dispatch({
-            type: 'shop/getProductCategories',
-            payload: {
-                _id: _id,
-                token: token
-            }
-        })
-
+        dispatch({type: 'shop/getProductCategories'})
         dispatch({
             type: 'shop/getProduct',
             payload: {slug: slug}
