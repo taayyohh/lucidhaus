@@ -27,9 +27,7 @@ const Profile = () => {
             onSubmit={values =>
                 dispatch({
                     type: 'user/updateProfile',
-                    payload: {
-                        _id, token, updatedUser: {values}
-                    }
+                    payload: {_id, token, values}
                 })}
         >
             {formik => (

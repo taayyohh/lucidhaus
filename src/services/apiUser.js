@@ -96,8 +96,8 @@ export const getPurchaseHistory = ({userId, token}) => {
         })
 }
 
-export const update = (userId, token, user) => {
-    return fetch(`${API}/user/${userId}`, {
+export const update = ({_id, token, user}) => {
+    return fetch(`${API}/user/${_id}`, {
         method: "PUT",
         headers: {
             Accept: "application/json",
@@ -107,12 +107,12 @@ export const update = (userId, token, user) => {
         body: JSON.stringify(user)
     }).then(response => {
         return response.json()
-    }).catch(err => {
-        return err
+    }).catch(error => {
+        return error
     })
 }
 
-export const updateUser = user => {
+export const updateUser = ({user}) => {
     if (typeof window !== 'undefined') {
         if (localStorage.getItem('jwt')) {
             let auth = JSON.parse(localStorage.getItem('jwt'))

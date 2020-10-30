@@ -38,17 +38,17 @@ export const userSlice = createSlice({
         authenticateSuccess: (state, action) => {
             state.redirectToReferrer = false
             state.isAuthenticated = true
-            state.token = action.payload.payload.token
-            state._id = action.payload.payload.user._id
+            state.token = action.payload.token
+            state._id = action.payload.user._id
         },
         isAuthenticatedSuccess: (state, action) => {
             state.token = action.payload.token
             state.isAuthenticated = true
-            state.email = action.payload.user.email
-            state.name = action.payload.user.name
+            state.email = action.payload.email
+            state.name = action.payload.name
             state.token = action.payload.token
-            state._id = action.payload.user._id
-            state.isAdmin = action.payload.user.role === 1
+            state._id = action.payload._id
+            state.isAdmin = action.payload.role === 1
         },
         isAuthenticatedFailure: state => {
             state.isAuthenticated = false

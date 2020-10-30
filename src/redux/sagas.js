@@ -28,7 +28,7 @@ import {
     updateProduct,
     updateProductCategory,
     uploadFile
-} from '../services/apiAdmin'
+}                    from '../services/apiAdmin'
 import {listRelated} from '../services/apiShop'
 import {
     authenticate,
@@ -45,7 +45,7 @@ import {
     getCart,
     removeItem,
     updateItem
-} from '../utils/cartHelpers'
+}                    from '../utils/cartHelpers'
 
 
 /**
@@ -58,8 +58,8 @@ import {
 
 /* Auth */
 
-function* authenticateUser(payload) {
-    yield call(authenticate, payload.payload)
+function* authenticateUser({payload}) {
+    yield call(authenticate, payload)
     yield put({type: 'user/authenticateSuccess', payload})
 }
 
@@ -83,26 +83,26 @@ function* navigate({payload}) {
 
 /* Business */
 
-function* createBusiness(business) {
-    const {_id, token, values} = business.payload
+function* createBusiness({payload}) {
+    const {_id, token, values} = payload
     const {name, description, photo, image} = values
 
     //add to formdata so api can read
-    const newBusiness = new FormData()
-    newBusiness.set('name', name)
-    newBusiness.set('description', description)
-    newBusiness.set('photo', photo)
+    const business = new FormData()
+    business.set('name', name)
+    business.set('description', description)
+    business.set('photo', photo)
 
-    const payload = yield call(getSignedRequest, {croppedImage: image})
-    if (!!payload.signedRequest) {
-        const uploadImage = yield call(uploadFile, {file: image, signedRequest: payload.signedRequest})
+    const s3Payload = yield call(getSignedRequest, {croppedImage: image})
+    if (!!s3Payload.signedRequest) {
+        const uploadImage = yield call(uploadFile, {file: image, signedRequest: s3Payload.signedRequest})
         console.log('upload', uploadImage)
 
-        const created = yield call(addBusiness, {userId: _id, token: token, business: newBusiness})
-        console.log('created', created)
-        if (!created.error) {
+        const createdBusiness = yield call(addBusiness, {userId: _id, token: token, business: business})
+        console.log('createdBusiness', createdBusiness)
+        if (!createdBusiness.error) {
             yield put({type: 'admin/createBusinessesSuccess', payload})
-            yield put(push('/admin/marketplace/update/' + created.slug))
+            yield put(push('/admin/marketplace/update/' + createdBusiness.slug))
 
         } else {
             yield put({type: 'admin/createBusinessesFailure', payload})
@@ -112,15 +112,15 @@ function* createBusiness(business) {
     }
 }
 
-function* updateBusinessDetail(business) {
-    const {slug, _id, token, values} = business.payload
+function* updateBusinessDetail({payload}) {
+    const {slug, _id, token, values} = payload
     const {name, description, photo, image} = values
 
     //add to formData so api can read
-    const newBusiness = new FormData()
-    newBusiness.set('name', name)
-    newBusiness.set('description', description)
-    newBusiness.set('photo', photo)
+    const business = new FormData()
+    business.set('name', name)
+    business.set('description', description)
+    business.set('photo', photo)
 
     if (!!image) {
         const s3Payload = yield call(getSignedRequest, {croppedImage: image})
@@ -131,23 +131,23 @@ function* updateBusinessDetail(business) {
     }
 
     try {
-        const updated = yield call(updateBusiness, {slug: slug, userId: _id, token: token, business: newBusiness})
-        if (!updated.error) {
-            yield put({type: 'business/updateBusinessSuccess', updated})
+        const updatedBusiness = yield call(updateBusiness, {slug: slug, userId: _id, token: token, business: business})
+        if (!updatedBusiness.error) {
+            yield put({type: 'business/updateBusinessSuccess', updatedBusiness})
         } else {
-            yield put({type: 'business/updateBusinessFailure', updated})
+            yield put({type: 'business/updateBusinessFailure', updatedBusiness})
         }
     } catch (error) {
         yield put({type: 'business/updateBusinessFailure'})
     }
 }
 
-function* attemptDestroyBusiness(business) {
-    yield put({type: 'admin/confirmDestroyBusiness', payload: business.payload})
+function* attemptDestroyBusiness({payload}) {
+    yield put({type: 'admin/confirmDestroyBusiness', payload: payload})
 }
 
-function* destroyBusiness(business) {
-    const destroyed = yield call(deleteBusiness, business.payload)
+function* destroyBusiness({payload}) {
+    const destroyed = yield call(deleteBusiness, payload)
     if (!destroyed.error) {
         yield put({type: 'admin/destroyBusinessSuccess'})
         yield put(push('/admin/marketplace'))
@@ -162,30 +162,30 @@ function* destroyBusinessSuccess() {
 
 
 /* Product */
-function* createProduct(product) {
-    const {_id, token, values} = product.payload
+function* createProduct({payload}) {
+    const {_id, token, values} = payload
     const {name, description, photo, image, quantity, price, category} = values
 
     //add to formdata so api can read
-    const newProduct = new FormData()
-    newProduct.set('name', name)
-    newProduct.set('description', description)
-    newProduct.set('photo', photo)
-    newProduct.set('quantity', quantity)
-    newProduct.set('price', price)
-    newProduct.set('category', category)
+    const product = new FormData()
+    product.set('name', name)
+    product.set('description', description)
+    product.set('photo', photo)
+    product.set('quantity', quantity)
+    product.set('price', price)
+    product.set('category', category)
 
-    const payload = yield call(getSignedRequest, {croppedImage: image})
-    if (!!payload.signedRequest) {
+    const s3Payload = yield call(getSignedRequest, {croppedImage: image})
+    if (!!s3Payload.signedRequest) {
         //TODO: implement error catch
-        yield call(uploadFile, {file: image, signedRequest: payload.signedRequest})
+        yield call(uploadFile, {file: image, signedRequest: s3Payload.signedRequest})
 
 
-        const created = yield call(addProduct, {userId: _id, token: token, product: newProduct})
+        const createdProduct = yield call(addProduct, {userId: _id, token: token, product: product})
 
-        if (!created.error) {
+        if (!createdProduct.error) {
             yield put({type: 'admin/createProductSuccess', payload})
-            yield put(push('/admin/product/update/' + created.slug))
+            yield put(push('/admin/product/update/' + createdProduct.slug))
 
         } else {
             yield put({type: 'admin/createProductFailure', payload})
@@ -209,18 +209,18 @@ function* updateProductQuantity({payload}) {
     yield put({type: 'shop/updateCartSuccess', payload: {cart: cart}})
 }
 
-function* updateProductDetail(product) {
-    const {slug, _id, token, values} = product.payload
+function* updateProductDetail({payload}) {
+    const {slug, _id, token, values} = payload
     const {name, description, photo, image, quantity, price, category} = values
 
     //add to formData so api can read
-    const newProduct = new FormData()
-    newProduct.set('name', name)
-    newProduct.set('description', description)
-    newProduct.set('photo', photo)
-    newProduct.set('quantity', quantity)
-    newProduct.set('price', price)
-    newProduct.set('category', category)
+    const updatedProduct = new FormData()
+    updatedProduct.set('name', name)
+    updatedProduct.set('description', description)
+    updatedProduct.set('photo', photo)
+    updatedProduct.set('quantity', quantity)
+    updatedProduct.set('price', price)
+    updatedProduct.set('category', category)
 
     if (!!image) {
         const s3Payload = yield call(getSignedRequest, {croppedImage: image})
@@ -231,7 +231,7 @@ function* updateProductDetail(product) {
     }
 
     try {
-        const updated = yield call(updateProduct, {slug: slug, userId: _id, token: token, product: newProduct})
+        const updated = yield call(updateProduct, {slug: slug, userId: _id, token: token, product: updatedProduct})
         if (!updated.error) {
             yield put({type: 'product/updateProductSuccess', updated})
         } else {
@@ -283,15 +283,15 @@ function* destroyProductCategorySuccess() {
  *
  */
 
-function* signIn(user) {
+function* signIn({payload}) {
     try {
-        const payload = yield call(signin, user.payload)
-        if (!payload.error) {
-            yield put({type: 'user/signInSuccess', payload})
-            yield put({type: 'user/authenticate', payload})
-            yield put(push(payload?.user?.role === 1 ? '/admin/dashboard' : '/user/dashboard'))
+        const user = yield call(signin, payload)
+        if (!user.error) {
+            yield put({type: 'user/signInSuccess', payload: user})
+            yield put({type: 'user/authenticate', payload: user})
+            yield put(push(user?.user?.role === 1 ? '/admin/dashboard' : '/user/dashboard'))
         } else {
-            yield put({type: 'user/signInFailure', payload})
+            yield put({type: 'user/signInFailure', payload: user})
         }
     } catch (error) {
         yield put({type: 'user/signInFailure', error})
@@ -308,31 +308,38 @@ function* signOut() {
     }
 }
 
-function* signUp(user) {
-    const payload = yield call(signup, user.payload)
+function* signUp({payload}) {
+    const user = yield call(signup, payload)
     try {
-        if (!payload.error) {
-            yield put({type: 'user/signUpSuccess', payload})
+        if (!user.error) {
+            yield put({type: 'user/signUpSuccess', payload: user})
         } else {
-            yield put({type: 'user/signUpFailure', payload})
+            yield put({type: 'user/signUpFailure', payload: user})
         }
     } catch (error) {
-        yield put({type: 'user/signUpFailure', payload})
+        yield put({type: 'user/signUpFailure', payload: error})
     }
 
 }
 
-function* updateProfile(user) {
+function* updateProfile({payload}) {
     try {
-        const {_id, token, updatedUser} = user.payload
-        const payload = yield call(update, _id, token, updatedUser.values)
+        const {_id, token, values} = payload
+        const profile = yield call(update, {_id, token, user: values})
 
-        if (!payload.error) {
-            yield call(updateUser, {name: payload.name, email: payload.email, _id: payload._id, role: payload.role})
-            yield put({type: 'user/updateSuccess', payload})
-            yield put(push(payload?.user?.role === 1 ? '/admin/dashboard' : '/user/dashboard'))
+        if (!profile.error) {
+            yield call(updateUser, {
+                user: {
+                    name: profile.name,
+                    email: profile.email,
+                    _id: profile._id,
+                    role: profile.role
+                }
+            })
+            yield put({type: 'user/updateSuccess', payload: profile})
+            yield put(push(profile?.role === 1 ? '/admin/dashboard' : '/user/dashboard'))
         } else {
-            yield put({type: 'user/updateFailure', payload})
+            yield put({type: 'user/updateFailure', profile})
         }
 
     } catch (error) {
@@ -340,13 +347,13 @@ function* updateProfile(user) {
     }
 }
 
-function* purchaseHistory(user) {
+function* purchaseHistory({payload}) {
     try {
-        const payload = yield call(getPurchaseHistory, user.payload)
-        if (!payload.error) {
-            yield put({type: 'user/getPurchaseSuccess', payload})
+        const user = yield call(getPurchaseHistory, payload)
+        if (!user.error) {
+            yield put({type: 'user/getPurchaseSuccess', payload: user})
         } else {
-            yield put({type: 'user/getPurchaseFailure', payload})
+            yield put({type: 'user/getPurchaseFailure', payload: user})
         }
     } catch (error) {
         yield put({type: 'user/getPurchaseFailure', error})
@@ -393,13 +400,13 @@ function* getMarketplace() {
     }
 }
 
-function* getBusinessDetail(business) {
+function* getBusinessDetail({payload}) {
     try {
-        const payload = yield call(getBusiness, business.payload)
-        if (!payload.error) {
-            yield put({type: 'business/getBusinessSuccess', payload})
+        const business = yield call(getBusiness, payload)
+        if (!business.error) {
+            yield put({type: 'business/getBusinessSuccess', payload: business})
         } else {
-            yield put({type: 'business/getBusinessFailure', payload})
+            yield put({type: 'business/getBusinessFailure', payload: business})
         }
     } catch (error) {
         yield put({type: 'business/getBusinessFailure'})
@@ -429,60 +436,60 @@ function* getShop() {
     }
 }
 
-function* getProductDetail(product) {
+function* getProductDetail({payload}) {
     try {
-        const payload = yield call(getProduct, product.payload)
-        if (!payload.error) {
-            yield put({type: 'shop/getProductSuccess', payload})
+        const product = yield call(getProduct, payload)
+        if (!product.error) {
+            yield put({type: 'shop/getProductSuccess', payload: product})
         } else {
-            yield put({type: 'shop/getProductFailure', payload})
+            yield put({type: 'shop/getProductFailure', payload: product})
         }
     } catch (error) {
         yield put({type: 'shop/getProductFailure'})
     }
 }
 
-function* getRelatedProducts(product) {
+function* getRelatedProducts({payload}) {
     try {
-        const payload = yield call(listRelated, product.payload)
+        const relatedProducts = yield call(listRelated, payload)
         if (!payload.error) {
-            yield put({type: 'shop/getRelatedProductsSuccess', payload})
+            yield put({type: 'shop/getRelatedProductsSuccess', payload: relatedProducts})
         } else {
-            yield put({type: 'shop/getRelatedProductsFailure', payload})
+            yield put({type: 'shop/getRelatedProductsFailure', payload: relatedProducts})
         }
     } catch (error) {
         yield put({type: 'shop/getRelatedProductsFailure'})
     }
 }
 
-function* getOrders(request) {
+function* getOrders({payload}) {
     try {
-        const payload = yield call(listOrders, request.payload)
-        if (!payload.error) {
-            yield put({type: 'shop/getOrdersSuccess', payload})
+        const orders = yield call(listOrders, payload)
+        if (!orders.error) {
+            yield put({type: 'shop/getOrdersSuccess', payload: orders})
         } else {
-            yield put({type: 'shop/getOrdersFailure', payload})
+            yield put({type: 'shop/getOrdersFailure', payload: orders})
         }
     } catch (error) {
         yield put({type: 'admin/getOrdersFailure', error})
     }
 }
 
-function* getStatusValues(request) {
+function* getStatusValues({payload}) {
     try {
-        const payload = yield call(listStatusValues, request.payload)
-        if (!payload.error) {
-            yield put({type: 'shop/getStatusValuesSuccess', payload})
+        const statusValues = yield call(listStatusValues, payload)
+        if (!statusValues.error) {
+            yield put({type: 'shop/getStatusValuesSuccess', payload: statusValues})
         } else {
-            yield put({type: 'shop/getStatusValuesFailure', payload})
+            yield put({type: 'shop/getStatusValuesFailure', payload: statusValues})
         }
     } catch (error) {
         yield put({type: 'admin/getStatusValuesFailure', error})
     }
 }
 
-function* updateStatusValue(request) {
-    const {_id, token, orderId, status} = request.payload
+function* updateStatusValue({payload}) {
+    const {_id, token, orderId, status} = payload
 
     try {
         const payload = yield call(updateOrderStatus, {_id, token, orderId, status: {status, orderId}})
@@ -694,23 +701,23 @@ function* watchGetBusinessDetail() {
  */
 
 function* watchGetShop() {
-    yield takeEvery('shop/getShop', getShop)
+    yield takeLatest('shop/getShop', getShop)
 }
 
 function* watchGetProductDetail() {
-    yield takeEvery('shop/getProduct', getProductDetail)
+    yield takeLatest('shop/getProduct', getProductDetail)
 }
 
 function* watchGetRelatedProducts() {
-    yield takeEvery('shop/getRelatedProducts', getRelatedProducts)
+    yield takeLatest('shop/getRelatedProducts', getRelatedProducts)
 }
 
 function* watchGetOrders() {
-    yield takeEvery('shop/getOrders', getOrders)
+    yield takeLatest('shop/getOrders', getOrders)
 }
 
 function* watchGetStatusValues() {
-    yield takeEvery('shop/getStatusValues', getStatusValues)
+    yield takeLatest('shop/getStatusValues', getStatusValues)
 }
 
 function* watchUpdateStatusValue() {

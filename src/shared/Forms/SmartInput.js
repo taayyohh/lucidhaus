@@ -24,8 +24,9 @@ const SmartInput = ({inputLabel, type, theme, id, className, errorMessage, onCha
     const [legendWidth, setLegendWidth] = useState(0)
 
     useEffect(() => {
-        setHasValue(value?.length > 0)
-        setIsInputLabelFocused(value?.length > 0)
+        const valueExists = Number.isInteger(value) || value?.length > 0
+        setHasValue(valueExists)
+        setIsInputLabelFocused(valueExists)
         setLegendWidth(value?.length < 1 ? 0 : inputLabelWidth)
 
     }, [setHasValue, setIsInputLabelFocused, inputLabelWidth, value])
