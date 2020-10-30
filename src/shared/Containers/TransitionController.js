@@ -65,7 +65,10 @@ const TransitionController = props => {
             }
         })
         await setCurrentPath(currentPathName)
-        await contentAnimation.set({opacity: 0, translateX: '-10%'})
+        await contentAnimation.set({
+            opacity: 0,
+            translateX: '-10%'
+        })
         await pageInit()
     }, [overlayAnimation, contentAnimation, setPanel, pageInit])
 

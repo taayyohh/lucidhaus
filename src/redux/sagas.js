@@ -26,8 +26,9 @@ import {
     updateBusiness,
     updateOrderStatus,
     updateProduct,
+    updateProductCategory,
     uploadFile
-}                    from '../services/apiAdmin'
+} from '../services/apiAdmin'
 import {listRelated} from '../services/apiShop'
 import {
     authenticate,
@@ -44,7 +45,7 @@ import {
     getCart,
     removeItem,
     updateItem
-}                    from '../utils/cartHelpers'
+} from '../utils/cartHelpers'
 
 
 /**
@@ -245,8 +246,8 @@ function* attemptDestroyProduct({payload}) {
     yield put({type: 'admin/confirmDestroyProduct', payload: payload})
 }
 
-function* destroyProduct(product) {
-    const destroyed = yield call(deleteProduct, product.payload)
+function* destroyProduct({payload}) {
+    const destroyed = yield call(deleteProduct, payload)
     if (!destroyed.error) {
         yield put({type: 'admin/destroyProductSuccess'})
         yield put(push('/admin/shop'))
@@ -259,8 +260,8 @@ function* destroyProductSuccess() {
     yield put(push('/admin/shop'))
 }
 
-function* destroyProductCategory(product) {
-    const destroyed = yield call(deleteProductCategory, product.payload)
+function* destroyProductCategory({payload}) {
+    const destroyed = yield call(deleteProductCategory, payload)
     if (!destroyed.error) {
         yield put({type: 'admin/destroyProductCategorySuccess'})
         yield put(push('/admin/shop'))
@@ -510,15 +511,36 @@ function* getProductCategories() {
 }
 
 function* getProductCategoryDetail({payload}) {
-    console.log('payload', payload)
-
-    const category = yield call(getProductCategory, payload)
-    if (!category.error) {
-        yield put({type: 'shop/getProductCategorySuccess', category})
-    } else {
-        yield put({type: 'shop/getProductCategoryFailure', category})
+    try {
+        const productCategory = yield call(getProductCategory, payload)
+        if (!productCategory.error) {
+            yield put({type: 'shop/getProductCategorySuccess', payload: {productCategory: productCategory}})
+        } else {
+            yield put({type: 'shop/getProductCategoryFailure', payload: {productCategory: productCategory}})
+        }
+    } catch (error) {
+        yield put({type: 'admin/getProductCategoryFailure', payload: error})
     }
+}
 
+function* updateProductCategoryDetail({payload}) {
+    const {categoryId, categoryName, token, _id} = payload
+    console.log('pay', payload)
+
+    const productCategory = new FormData()
+    productCategory.set('name', categoryName)
+
+
+    try {
+        const category = yield call(updateProductCategory, {categoryId, productCategory, token, _id})
+        if (!category.error) {
+            yield put({type: 'shop/updateProductCategorySuccess', category})
+        } else {
+            yield put({type: 'shop/updateProductCategoryFailure', category})
+        }
+    } catch (error) {
+        yield put({type: 'admin/updateProductCategoryFailure', error})
+    }
 }
 
 
@@ -715,6 +737,10 @@ function* watchCreateProductCategory() {
     yield takeLatest('shop/createProductCategory', createProductCategory)
 }
 
+function* watchUpdateProductCategory() {
+    yield takeLatest('shop/updateProductCategory', updateProductCategoryDetail)
+}
+
 function* watchUpdateProductQuantity() {
     yield takeLatest('shop/updateProductQuantity', updateProductQuantity)
 }
@@ -755,6 +781,7 @@ export default function* rootSaga() {
         fork(watchGetProductCategories),
         fork(watchGetProductCategory),
         fork(watchCreateProductCategory),
+        fork(watchUpdateProductCategory),
         fork(watchDestroyProductCategory),
         fork(watchDestroyProductCategorySuccess),
         fork(watchUpdateProductQuantity)

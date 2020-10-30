@@ -69,24 +69,25 @@ export const addProductCategory = ({_id, token, category}) => {
             Authorization: `Bearer ${token}`
         },
         body: category
-    }).then(response => {
+    })
+        .then(response => {
         return response.json()
-    }).catch(error => {
+    })
+        .catch(error => {
         return error
     })
 }
 
 
-export const updateProductCategory = (categoryId, userId, token, category) => {
-    return fetch(`${API}/product-category/${categoryId}/${userId}`, {
+export const updateProductCategory = ({categoryId, _id, token, productCategory}) => {
+    console.log('product', productCategory)
+    return fetch(`${API}/product-category/${categoryId}/${_id}`, {
         method: 'PUT',
         headers: {
-            // content type?
-            'Content-Type': 'application/json',
             Accept: 'application/json',
             Authorization: `Bearer ${token}`
         },
-        body: category
+        body: productCategory
     })
         .then(response => {
             return response.json()
@@ -134,6 +135,7 @@ export const deleteProductCategory = ({slug, _id, token}) => {
  * delete single product
  */
 export const addProduct = ({userId, token, product}) => {
+
     return fetch(`${API}/product/create/${userId}`, {
         method: 'POST',
         headers: {

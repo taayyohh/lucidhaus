@@ -35,20 +35,21 @@ const UpdateProductCategory = () => {
     return (
         <Div theme={postContentStyle()}>
             <Formik
-                initialValues={{name: productCategory}}
+                initialValues={{name: productCategory.name}}
                 enableReinitialize={true}
                 onSubmit={values => dispatch({
                     type: 'shop/updateProductCategory',
                     payload: {
                         _id: _id,
                         token: token,
-                        values: values
+                        categoryName: values.name,
+                        categoryId: productCategory._id
                     }
                 })}
             >
                 {formik => (
                     <Div as="form" theme={signInFormStyle} onSubmit={formik.handleSubmit}>
-                        <H3 theme={signInFormStyle.heading}>Create Product Category</H3>
+                        <H3 theme={signInFormStyle.heading}>Update Product Category</H3>
                         {productCategoryFieldTypes.map((f, i) =>
                             <FieldSwitch
                                 key={i}

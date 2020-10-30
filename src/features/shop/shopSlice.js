@@ -57,7 +57,7 @@ export const shopSlice = createSlice({
             state.cart = state.cart.filter(item => item._id !== action.payload)
         },
         getProductCategorySuccess: (state, action) => {
-            state.productCategory = action.payload
+            state.productCategory = action.payload.productCategory
         },
         getProductCategoriesSuccess: (state, action) => {
             state.productCategories = action.payload.productCategories
