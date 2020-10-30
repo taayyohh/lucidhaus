@@ -1,16 +1,16 @@
 import 'braintree-web'
-import DropIn             from 'braintree-web-drop-in-react'
+import DropIn                    from 'braintree-web-drop-in-react'
 import React, {
     useEffect,
     useState
-}                         from 'react'
-import PlacesAutocomplete from 'react-places-autocomplete'
-import {useSelector} from 'react-redux'
-import {emptyCart}   from '../../utils/cartHelpers'
+}                                from 'react'
+import PlacesAutocomplete        from 'react-places-autocomplete'
+import {useSelector}             from 'react-redux'
+import {getBraintreeClientToken} from '../../services/apiBraintree'
+import {emptyCart}               from '../../utils/cartHelpers'
 
 import {
     createOrder,
-    getBraintreeClientToken,
     processPayment
 }                           from '../../services/apiShop'
 import Div                  from '../../shared/Basic/Div'

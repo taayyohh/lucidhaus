@@ -16,7 +16,7 @@ import {
 import {userFieldTypes}     from '../../variables/fieldTypes'
 
 
-const Profile = () => {
+const UpdateProfile = () => {
     const dispatch = useDispatch()
     const {name, token, _id} = useSelector(state => state.user)
 
@@ -53,4 +53,4 @@ const Profile = () => {
     )
 }
 
-export default Profile
+export default UpdateProfile

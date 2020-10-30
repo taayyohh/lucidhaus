@@ -1,30 +1,28 @@
 import {API} from '../variables/config'
 
-
 /**
- * to perform crud on admin
- * get all businesses
- * get a single admin
- * update single admin
- * delete single admin
+ * to perform crud on product
+ * get all products
+ * get a single product
+ * update single product
+ * delete single product
  */
-export const addBusiness = ({userId, token, business}) => {
-    return fetch(`${API}/business/create/${userId}`, {
+export const addProduct = ({userId, token, product}) => {
+    return fetch(`${API}/product/create/${userId}`, {
         method: 'POST',
         headers: {
             Accept: 'application/json',
             Authorization: `Bearer ${token}`
         },
-        body: business
+        body: product
     }).then(response => {
         return response.json()
     }).catch(error => {
         return error
     })
 }
-
-export const getBusinesses = () => {
-    return fetch(`${API}/businesses?limit=undefined`, {
+export const getProducts = () => {
+    return fetch(`${API}/products?limit=undefined`, {
         method: 'GET'
     })
         .then(response => {
@@ -34,9 +32,8 @@ export const getBusinesses = () => {
             return error
         })
 }
-
-export const deleteBusiness = ({_id, token, slug}) => {
-    return fetch(`${API}/business/${slug}/${_id}`, {
+export const deleteProduct = ({slug, _id, token}) => {
+    return fetch(`${API}/product/${slug}/${_id}`, {
         method: 'DELETE',
         headers: {
             Accept: 'application/json',
@@ -51,9 +48,8 @@ export const deleteBusiness = ({_id, token, slug}) => {
             return error
         })
 }
-
-export const getBusiness = ({slug}) => {
-    return fetch(`${API}/business/${slug}`, {
+export const getProduct = ({slug}) => {
+    return fetch(`${API}/product/${slug}`, {
         method: 'GET'
     })
         .then(response => {
@@ -63,15 +59,14 @@ export const getBusiness = ({slug}) => {
             return error
         })
 }
-
-export const updateBusiness = ({slug, userId, token, business}) => {
-    return fetch(`${API}/business/${slug}/${userId}`, {
+export const updateProduct = ({slug, userId, token, product}) => {
+    return fetch(`${API}/product/${slug}/${userId}`, {
         method: 'PUT',
         headers: {
             Accept: 'application/json',
             Authorization: `Bearer ${token}`
         },
-        body: business
+        body: product
     })
         .then(response => {
             return response.json()
@@ -80,5 +75,22 @@ export const updateBusiness = ({slug, userId, token, business}) => {
             return error
         })
 }
-
-
+export const getFilteredProducts = (skip, limit, filters = {}) => {
+    const data = {
+        limit, skip, filters
+    }
+    return fetch(`${API}/products/by/search`, {
+        method: 'POST',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+    })
+        .then(response => {
+            return response.json()
+        })
+        .catch(error => {
+            return error
+        })
+}

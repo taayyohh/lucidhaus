@@ -9,26 +9,34 @@ import {
 }                    from 'redux-saga/effects'
 import {
     addBusiness,
-    addProduct,
-    addProductCategory,
-    allProductCategories,
     deleteBusiness,
-    deleteProduct,
-    deleteProductCategory,
     getBusiness,
     getBusinesses,
-    getProduct,
-    getProductCategory,
-    getProducts,
-    getSignedRequest,
+    updateBusiness
+}                    from '../services/apiAdmin'
+import {
     listOrders,
     listStatusValues,
-    updateBusiness,
-    updateOrderStatus,
-    updateProduct,
-    updateProductCategory,
+    updateOrderStatus
+} from '../services/apiOrders'
+import {
+    addProduct,
+    deleteProduct,
+    getProduct,
+    getProducts,
+    updateProduct
+} from '../services/apiProduct'
+import {
+    addProductCategory,
+    allProductCategories,
+    deleteProductCategory,
+    getProductCategory,
+    updateProductCategory
+} from '../services/apiProductCategory'
+import {
+    getSignedRequest,
     uploadFile
-}                    from '../services/apiAdmin'
+}                    from '../services/apiS3'
 import {listRelated} from '../services/apiShop'
 import {
     authenticate,
@@ -64,12 +72,12 @@ function* authenticateUser({payload}) {
 }
 
 function* isAuth() {
-    const payload = yield call(isAuthenticated)
-    if (payload.token) {
-        yield put({type: 'user/isAuthenticatedSuccess', payload})
+    const authUser = yield call(isAuthenticated)
+    if (authUser.token) {
+        yield put({type: 'user/isAuthenticatedSuccess', payload: authUser.user})
         yield put({type: 'site/initializeSuccess'})
     } else {
-        yield put({type: 'user/isAuthenticatedFailure', payload})
+        yield put({type: 'user/isAuthenticatedFailure', payload: authUser.user})
         yield put({type: 'site/initializeSuccess'})
     }
 }
@@ -757,26 +765,35 @@ function* watchUpdateProductQuantity() {
 export default function* rootSaga() {
     yield all([
         fork(watchNavigate),
+
         fork(watchLoadConfig),
+
         fork(watchSignIn),
         fork(watchAuthenticate),
         fork(watchIsAuthenticated),
         fork(watchSignOut),
         fork(watchSignUp),
+
         fork(watchUserHistory),
         fork(watchUpdateProfile),
         fork(watchGetMarketplace),
         fork(watchCreateBusiness),
+
+        //Todo: optimize
         fork(watchAttemptDestroyBusiness),
         fork(watchDestroyBusiness),
         fork(watchDestroyBusinessSuccess),
+
         fork(watchUpdateBusiness),
         fork(watchGetBusinessDetail),
         fork(watchGetShop),
         fork(watchCreateProduct),
+
+        //Todo: optimize
         fork(watchAttemptDestroyProduct),
         fork(watchDestroyProduct),
         fork(watchDestroyProductSuccess),
+
         fork(watchUpdateProduct),
         fork(watchGetProductDetail),
         fork(watchGetRelatedProducts),
@@ -789,6 +806,8 @@ export default function* rootSaga() {
         fork(watchGetProductCategory),
         fork(watchCreateProductCategory),
         fork(watchUpdateProductCategory),
+
+        //Todo: optimize
         fork(watchDestroyProductCategory),
         fork(watchDestroyProductCategorySuccess),
         fork(watchUpdateProductQuantity)

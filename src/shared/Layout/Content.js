@@ -19,9 +19,9 @@ import Business               from '../../features/business/Business'
 import Marketplace            from '../../features/business/Marketplace'
 import Product                from '../../features/shop/Product'
 import Shop                   from '../../features/shop/Shop'
-import NotFound               from '../../features/site/NotFound'
-import Profile                from '../../features/user/Profile'
-import SignIn                 from '../../features/user/SignIn'
+import NotFound      from '../../features/site/NotFound'
+import UpdateProfile from '../../features/user/UpdateProfile'
+import SignIn        from '../../features/user/SignIn'
 import SignUp                 from '../../features/user/SignUp'
 import UserDashboard          from '../../features/user/UserDashboard'
 import AdminRoute             from '../Admin/AdminRoute'
@@ -44,7 +44,7 @@ const Content = () => {
                     <Route path="/marketplace/:slug" exact component={Business}/>
                     <Route path="/shop" exact component={Shop}/>
                     <Route path="/shop/:slug" exact component={Product}/>
-                    <PrivateRoute path="/settings/profile" exact component={Profile}/>
+                    <PrivateRoute path="/settings/profile" exact component={UpdateProfile}/>
                     <PrivateRoute path="/user/dashboard" exact component={UserDashboard}/>
                     <AdminRoute path="/admin/dashboard" exact component={AdminDashboard}/>
                     <AdminRoute path="/admin/shop" exact component={ManageShop}/>

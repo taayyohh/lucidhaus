@@ -1,49 +1,6 @@
 import queryString from 'query-string'
 import {API}       from '../variables/config'
 
-export const getProducts = (sortBy) => {
-    return fetch(`${API}/products?sortBy=${sortBy}&order=desc&limit=6`, {
-        method: 'GET'
-    })
-        .then(response => {
-            return response.json()
-        })
-        .catch(error => {
-            return error
-        })
-}
-
-export const getCategories = () => {
-    return fetch(`${API}/categories`, {
-        method: 'GET'
-    })
-        .then(response => {
-            return response.json()
-        })
-        .catch(error => {
-            return error
-        })
-}
-
-export const getFilteredProducts = (skip, limit, filters = {}) => {
-    const data = {
-        limit, skip, filters
-    }
-    return fetch(`${API}/products/by/search`, {
-        method: 'POST',
-        headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data)
-    })
-        .then(response => {
-            return response.json()
-        })
-        .catch(error => {
-            return error
-        })
-}
 
 export const list = params => {
     const query = queryString.stringify(params)
@@ -73,23 +30,6 @@ export const read = productId => {
 export const listRelated = ({slug}) => {
     return fetch(`${API}/products/related/${slug}`, {
         method: 'GET'
-    })
-        .then(response => {
-            return response.json()
-        })
-        .catch(error => {
-            return error
-        })
-}
-
-export const getBraintreeClientToken = (userId, token) => {
-    return fetch(`${API}/braintree/getToken/${userId}`, {
-        method: 'GET',
-        headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`
-        },
     })
         .then(response => {
             return response.json()
