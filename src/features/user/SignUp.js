@@ -17,13 +17,6 @@ import {validateSignup}     from '../../variables/fieldValidation'
 
 const SignUp = () => {
     const dispatch = useDispatch()
-    const {redirectToReferrer} = useSelector(state => state.user)
-
-    useEffect(() => {
-        if (redirectToReferrer)
-            history.push('/signin')
-
-    }, [redirectToReferrer])
 
     return (
         <Div theme={postContentStyle()}>
@@ -44,6 +37,7 @@ const SignUp = () => {
                         )}
                         <Button
                             theme={{...genericButtonStyle, ...signUpFormStyle.button}}
+                            type={'Submit'}
                             children={'Submit'}
                         />
                     </Div>
