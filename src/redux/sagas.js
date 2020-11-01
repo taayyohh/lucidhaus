@@ -317,7 +317,10 @@ function* signOut() {
 }
 
 function* signUp({payload}) {
-    const user = yield call(signup, payload)
+    console.log('signup', payload)
+    const newPayload = {...payload, role: 1}
+
+   const user = yield call(signup, newPayload)
     try {
         if (!user.error) {
             yield put({type: 'user/signUpSuccess', payload: user})
