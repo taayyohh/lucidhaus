@@ -74,10 +74,10 @@ function* authenticateUser({payload}) {
 function* isAuth() {
     const authUser = yield call(isAuthenticated)
     if (authUser.token) {
-        yield put({type: 'user/isAuthenticatedSuccess', payload: authUser.user})
+        yield put({type: 'user/isAuthenticatedSuccess', payload: authUser})
         yield put({type: 'site/initializeSuccess'})
     } else {
-        yield put({type: 'user/isAuthenticatedFailure', payload: authUser.user})
+        yield put({type: 'user/isAuthenticatedFailure', payload: authUser})
         yield put({type: 'site/initializeSuccess'})
     }
 }
@@ -550,6 +550,7 @@ function* updateProductCategoryDetail({payload}) {
         const category = yield call(updateProductCategory, {categoryId, productCategory, token, _id})
         if (!category.error) {
             yield put({type: 'shop/updateProductCategorySuccess', category})
+            yield push(yield put(push('/admin/taxonomy')))
         } else {
             yield put({type: 'shop/updateProductCategoryFailure', category})
         }
