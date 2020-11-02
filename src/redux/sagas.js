@@ -324,6 +324,7 @@ function* signUp({payload}) {
     try {
         if (!user.error) {
             yield put({type: 'user/signUpSuccess', payload: user})
+            yield put(push('/signin/'))
         } else {
             yield put({type: 'user/signUpFailure', payload: user})
         }

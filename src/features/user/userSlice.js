@@ -66,9 +66,6 @@ export const userSlice = createSlice({
         signOutFailure: (state, action) => {
             state.error = action.payload.message
         },
-        signUpSuccess: (state, action) => {
-            state.redirectToReferrer = true
-        },
         signUpFailure: (state, action) => {
             state.error = action.payload.error
         },
