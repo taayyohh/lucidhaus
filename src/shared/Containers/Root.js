@@ -1,11 +1,12 @@
 import React, {useEffect}   from 'react'
+import {HelmetProvider}     from 'react-helmet-async'
 import {
     useDispatch,
     useSelector
-}                        from 'react-redux'
-import PageFrame         from '../Layout/PageFrame'
-import TransitionOverlay from '../Layout/TransitionOverlay'
-import LayoutSwitch      from './LayoutSwitch'
+}                           from 'react-redux'
+import PageFrame            from '../Layout/PageFrame'
+import TransitionOverlay    from '../Layout/TransitionOverlay'
+import LayoutSwitch         from './LayoutSwitch'
 import MenuPanelController  from './MenuPanelController'
 import TransitionController from './TransitionController'
 
@@ -25,7 +26,9 @@ const Root = () => {
                 <LayoutSwitch>
                     <MenuPanelController>
                         <TransitionController>
-                            <PageFrame/>
+                            <HelmetProvider>
+                                <PageFrame/>
+                            </HelmetProvider>
                         </TransitionController>
                     </MenuPanelController>
                 </LayoutSwitch>

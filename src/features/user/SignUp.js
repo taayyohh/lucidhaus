@@ -1,14 +1,10 @@
 import {Formik}             from 'formik'
-import React, {useEffect}   from 'react'
-import {
-    useDispatch,
-    useSelector
-}                   from 'react-redux'
-import Div          from '../../shared/Basic/Div'
-import H3          from '../../shared/Basic/H3'
-import Button      from '../../shared/Basic/Button'
-import FieldSwitch from '../../shared/Forms/FieldSwitch'
-import {history}   from '../../redux/store'
+import React                from 'react'
+import {useDispatch}        from 'react-redux'
+import Button               from '../../shared/Basic/Button'
+import Div                  from '../../shared/Basic/Div'
+import H3                   from '../../shared/Basic/H3'
+import FieldSwitch          from '../../shared/Forms/FieldSwitch'
 import {genericButtonStyle} from '../../themes/elements'
 import {postContentStyle}   from '../../themes/layout'
 import {signUpFormStyle}    from '../../themes/signup'

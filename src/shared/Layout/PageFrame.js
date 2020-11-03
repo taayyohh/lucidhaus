@@ -1,14 +1,18 @@
 import React             from 'react'
 import {pageFrameStyle}  from '../../themes/layout'
 import Div               from '../Basic/Div'
+import DocumentHead      from './DocumentHead'
 import Footer            from './Footer'
 import Header            from './Header'
 import Main              from './Main'
 import MenuPanels        from './MenuPanel'
+import StaticHead        from './StaticHead'
 import TransitionOverlay from './TransitionOverlay'
 
 const PageFrame = () =>
     <Div theme={pageFrameStyle}>
+        <StaticHead />
+        <DocumentHead />
         <Div id="header-left-margin" theme={pageFrameStyle.hlm}/>
         <Header theme={pageFrameStyle.header}/>
         <Div id="header-right-margin" theme={pageFrameStyle.hrm}/>
