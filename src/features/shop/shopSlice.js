@@ -62,6 +62,9 @@ export const shopSlice = createSlice({
         getProductCategoriesSuccess: (state, action) => {
             state.productCategories = action.payload.productCategories
         },
+        getBraintreeTokenSuccess: (state, action) => {
+            state.braintreeClientToken = action.payload.clientToken
+        }
     },
 })
 

@@ -1,43 +1,51 @@
-import {takeLatest}  from '@redux-saga/core/effects'
-import {push}        from 'connected-react-router'
+import {takeLatest} from '@redux-saga/core/effects'
+import {push}       from 'connected-react-router'
 import {
     all,
     call,
     fork,
     put,
     takeEvery
-}                    from 'redux-saga/effects'
+}                   from 'redux-saga/effects'
 import {
     addBusiness,
     deleteBusiness,
     getBusiness,
     getBusinesses,
     updateBusiness
-}                    from '../services/apiAdmin'
+}                   from '../services/apiAdmin'
+import {
+    getBraintreeClientToken,
+    getPaymentMethod
+}                   from '../services/apiBraintree'
 import {
     listOrders,
     listStatusValues,
     updateOrderStatus
-} from '../services/apiOrders'
+}                   from '../services/apiOrders'
 import {
     addProduct,
     deleteProduct,
     getProduct,
     getProducts,
     updateProduct
-} from '../services/apiProduct'
+}                   from '../services/apiProduct'
 import {
     addProductCategory,
     allProductCategories,
     deleteProductCategory,
     getProductCategory,
     updateProductCategory
-} from '../services/apiProductCategory'
+}                   from '../services/apiProductCategory'
 import {
     getSignedRequest,
     uploadFile
-}                    from '../services/apiS3'
-import {listRelated} from '../services/apiShop'
+}                   from '../services/apiS3'
+import {
+    createOrder,
+    listRelated,
+    processPayment
+}                   from '../services/apiShop'
 import {
     authenticate,
     getPurchaseHistory,
@@ -47,13 +55,14 @@ import {
     signup,
     update,
     updateUser
-}                    from '../services/apiUser'
+}                   from '../services/apiUser'
 import {
     addItem,
+    emptyCart,
     getCart,
     removeItem,
     updateItem
-}                    from '../utils/cartHelpers'
+} from '../utils/cartHelpers'
 
 
 /**
@@ -317,10 +326,10 @@ function* signOut() {
 }
 
 function* signUp({payload}) {
-    console.log('signup', payload)
-    const newPayload = {...payload, role: 1}
+    //TODO: if no users exists in database make first user a superAdmin
+    //const newPayload = {...payload, role: 1}
 
-   const user = yield call(signup, newPayload)
+    const user = yield call(signup, payload)
     try {
         if (!user.error) {
             yield put({type: 'user/signUpSuccess', payload: user})
@@ -563,6 +572,34 @@ function* updateProductCategoryDetail({payload}) {
     }
 }
 
+function* getBraintreeToken({payload}) {
+    const braintreeClientToken = yield call(getBraintreeClientToken, payload)
+    if (!braintreeClientToken.error) {
+        yield put({type: 'shop/getBraintreeTokenSuccess', payload: braintreeClientToken})
+    } else {
+        yield put({type: 'shop/getBraintreeTokenFailure', payload: braintreeClientToken})
+    }
+}
+
+function* getPaymentNonce({payload}) {
+    const {dropInInstance, _id, token, amount, products, deliveryAddress} = payload
+    const nonce = yield call(getPaymentMethod, dropInInstance)
+    const paymentData = {paymentMethodNonce: nonce, amount: amount}
+    const paymentProcessed = yield call(processPayment, {_id, token, paymentData})
+    if (paymentProcessed.success === true) {
+        const createOrderData = {
+            products,
+            transactionId_id: paymentProcessed.transaction.id,
+            amount: paymentProcessed.transaction.amount,
+            address: deliveryAddress
+        }
+        const createdOrder = yield call(createOrder, {_id, token, createOrderData})
+        yield call(emptyCart)
+        //TODO: success
+    }
+
+}
+
 
 /**
  * ****************************************************************************/
@@ -765,6 +802,14 @@ function* watchUpdateProductQuantity() {
     yield takeLatest('shop/updateProductQuantity', updateProductQuantity)
 }
 
+function* watchGetBraintreeToken() {
+    yield takeLatest('shop/getBraintreeToken', getBraintreeToken)
+}
+
+function* watchGetPaymentNonce() {
+    yield takeLatest('shop/getPaymentNonce', getPaymentNonce)
+}
+
 
 //TODO: determine best method of combining rootSaga
 export default function* rootSaga() {
@@ -811,6 +856,9 @@ export default function* rootSaga() {
         fork(watchGetProductCategory),
         fork(watchCreateProductCategory),
         fork(watchUpdateProductCategory),
+
+        fork(watchGetBraintreeToken),
+        fork(watchGetPaymentNonce),
 
         //Todo: optimize
         fork(watchDestroyProductCategory),

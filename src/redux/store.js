@@ -31,7 +31,11 @@ if (!['production'].includes(process.env.NODE_ENV)) {
         ...getDefaultMiddleware({
             serializableCheck: {
                 // Ignore these action types
-                ignoredActions: ['admin/createBusiness', 'admin/createProduct'],
+                ignoredActions: [
+                    'admin/createBusiness',
+                    'admin/createProduct',
+                    'shop/getPaymentNonce'
+                ],
             },
             immutableCheck: false
         }),

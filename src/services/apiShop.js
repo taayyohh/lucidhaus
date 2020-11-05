@@ -39,8 +39,8 @@ export const listRelated = ({slug}) => {
         })
 }
 
-export const processPayment = (userId, token, paymentData) => {
-    return fetch(`${API}/braintree/payment/${userId}`, {
+export const processPayment = ({_id, token, paymentData}) => {
+    return fetch(`${API}/braintree/payment/${_id}`, {
         method: 'POST',
         headers: {
             Accept: 'application/json',
@@ -57,8 +57,8 @@ export const processPayment = (userId, token, paymentData) => {
         })
 }
 
-export const createOrder = (userId, token, createOrderData) => {
-    return fetch(`${API}/order/create/${userId}`, {
+export const createOrder = ({_id, token, createOrderData}) => {
+    return fetch(`${API}/order/create/${_id}`, {
         method: 'POST',
         headers: {
             Accept: 'application/json',
