@@ -15,6 +15,7 @@ import {
     checkoutAddress,
     checkoutDropIn
 }                           from '../../themes/shop'
+import {getTotal}           from '../../utils/cartHelpers'
 
 
 const Checkout = ({products}) => {
@@ -36,13 +37,7 @@ const Checkout = ({products}) => {
         setAddress(address)
     }
 
-    const getTotal = () =>
-        products.reduce((currentValue, nextValue) => {
-            return currentValue + nextValue.count * nextValue.price
-        }, 0)
-
-
-    const buy = () => {
+    const purchase = () => {
         dispatch({
             type: 'shop/getPaymentNonce',
             payload: {
@@ -58,7 +53,7 @@ const Checkout = ({products}) => {
 
     return (
         <Div>
-            <h2>Total: ${getTotal()}</h2>
+            <h2>Total: ${getTotal(products)}</h2>
             <Div theme={checkoutDropIn}>
                 {(!!braintreeClientToken && products.length > 0) && (
                     <>
@@ -66,12 +61,12 @@ const Checkout = ({products}) => {
                             <label>Delivery Address</label>
                             <PlacesAutocomplete
                                 value={address || ''}
-                                onChange={handleAddress}
+                                onChange={(handleAddress)}
                                 onSelect={handleAddress}
                                 placeholder="Type your delivery Address"
                             >
                                 {({getInputProps, suggestions, getSuggestionItemProps, loading}) => (
-                                    <div>
+                                    <>
                                         <Div theme={checkoutAddress}>
                                             <input
                                                 value={address}
@@ -81,28 +76,26 @@ const Checkout = ({products}) => {
                                                 })}
                                             />
                                         </Div>
-                                        <div className="autocomplete-dropdown-container">
-                                            {suggestions.map(suggestion => {
-                                                const className = suggestion.active
-                                                    ? 'suggestion-item--active'
-                                                    : 'suggestion-item'
-                                                // inline style for demonstration purpose
-                                                const style = suggestion.active
-                                                    ? {backgroundColor: '#fafafa', cursor: 'pointer'}
-                                                    : {backgroundColor: '#ffffff', cursor: 'pointer'}
-                                                return (
-                                                    <div
-                                                        {...getSuggestionItemProps(suggestion, {
-                                                            className,
-                                                            style,
-                                                        })}
-                                                    >
-                                                        <span>{suggestion.description}</span>
-                                                    </div>
-                                                )
-                                            })}
-                                        </div>
-                                    </div>
+                                        <Div>
+                                            {suggestions.map(suggestion =>
+                                                <Div
+                                                    {...getSuggestionItemProps(suggestion)}
+                                                    key={suggestion.placeId}
+                                                    className={
+                                                        suggestion.active
+                                                            ? 'suggestion-item--active'
+                                                            : 'suggestion-item'
+                                                    }
+                                                    theme={
+                                                        suggestion.active
+                                                            ? {backgroundColor: '#fafafa', cursor: 'pointer'}
+                                                            : {backgroundColor: '#ffffff', cursor: 'pointer'}
+                                                    }
+                                                    children={suggestion.description}
+                                                />
+                                            )}
+                                        </Div>
+                                    </>
                                 )}
                             </PlacesAutocomplete>
                         </Div>
@@ -120,7 +113,7 @@ const Checkout = ({products}) => {
                         <Div
                             as="button"
                             theme={genericButtonStyle}
-                            onClick={!!address ? buy : null}
+                            onClick={!!address ? purchase : null}
                         >
                             Pay
                         </Div>

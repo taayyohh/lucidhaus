@@ -73,9 +73,14 @@ export const removeItem = productId => {
     return cart
 }
 
-export const emptyCart = next => {
+export const emptyCart = () => {
     if (typeof window !== 'undefined') {
         localStorage.removeItem('cart')
-        next()
+
     }
 }
+
+export const getTotal = products =>
+    products?.reduce((currentValue, nextValue) => {
+        return currentValue + nextValue.count * nextValue.price
+    }, 0)

@@ -2,16 +2,16 @@ import React, {useEffect} from 'react'
 import {
     useDispatch,
     useSelector
-}               from 'react-redux'
-import Div      from '../../shared/Basic/Div'
-import H2       from '../../shared/Basic/H2'
-import RichText from '../../shared/Basic/RichText'
-import S3Img    from '../../shared/Basic/S3Img'
+}                         from 'react-redux'
+import Div                from '../../shared/Basic/Div'
+import H2                 from '../../shared/Basic/H2'
+import RichText           from '../../shared/Basic/RichText'
+import S3Img              from '../../shared/Basic/S3Img'
 import {
-    genericCardImageStyle,
     businessStyle,
-    businessWrapperStyle
-}               from '../../themes/business'
+    businessWrapperStyle,
+    genericCardImageStyle
+}                         from '../../themes/business'
 import {postContentStyle} from '../../themes/layout'
 
 
@@ -22,11 +22,10 @@ const Business = () => {
     const {name, description, photo} = business
 
     useEffect(() => {
-        if (slug.length > 0)
-            dispatch({type: 'business/getBusiness', payload: {slug: slug}})
+        dispatch({type: 'business/getBusiness', payload: {slug: slug}})
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [slug])
+    }, [])
 
 
     return (

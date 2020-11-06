@@ -23,12 +23,15 @@ const UpdateBusiness = () => {
     const {name, description, photo} = business
 
     useEffect(() => {
-        if (slug.length > 0)
-            dispatch({type: 'business/getBusiness', payload: {slug: slug}})
-
+        dispatch({
+            type: 'business/getBusiness',
+            payload: {
+                slug: slug
+            }
+        })
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [slug, photo])
+    }, [])
 
     return (
         <Div theme={postContentStyle()}>

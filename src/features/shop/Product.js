@@ -25,15 +25,12 @@ const Product = () => {
     const {productCategories} = useSelector(state => state.shop)
 
     useEffect(() => {
-        if (slug.length > 0) {
-            dispatch({type: 'shop/getProduct', payload: {slug: slug}})
-            dispatch({type: 'shop/getRelatedProducts', payload: {slug: slug}})
-
-            dispatch({type: 'shop/getProductCategories'})
-        }
+        dispatch({type: 'shop/getProduct', payload: {slug: slug}})
+        dispatch({type: 'shop/getRelatedProducts', payload: {slug: slug}})
+        dispatch({type: 'shop/getProductCategories'})
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [slug])
+    }, [])
 
 
     return (

@@ -30,7 +30,7 @@ const UpdateProductCategory = () => {
         })
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [slug])
+    }, [])
 
     return (
         <Div theme={postContentStyle()}>

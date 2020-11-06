@@ -594,6 +594,7 @@ function* getPaymentNonce({payload}) {
             address: deliveryAddress
         }
         const createdOrder = yield call(createOrder, {_id, token, createOrderData})
+
         yield call(emptyCart)
         //TODO: success
     }
@@ -627,7 +628,7 @@ function* watchIsAuthenticated() {
 }
 
 function* watchNavigate() {
-    yield takeEvery('@@router/LOCATION_CHANGE', navigate)
+    yield takeLatest('@@router/LOCATION_CHANGE', navigate)
 }
 
 
