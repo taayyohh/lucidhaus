@@ -30,11 +30,12 @@ const UpdateProduct = () => {
     ]
 
     useEffect(() => {
-        dispatch({type: 'shop/getProductCategories'})
         dispatch({
             type: 'shop/getProduct',
             payload: {slug: slug}
         })
+        dispatch({type: 'shop/getProductCategories'})
+
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])

@@ -118,7 +118,7 @@ function* createBusiness({payload}) {
         const createdBusiness = yield call(addBusiness, {userId: _id, token: token, business: business})
         console.log('createdBusiness', createdBusiness)
         if (!createdBusiness.error) {
-            yield put({type: 'admin/createBusinessesSuccess', payload})
+            yield put({type: 'admin/createBusinessesSuccess', createdBusiness})
             yield put(push('/admin/marketplace/update/' + createdBusiness.slug))
 
         } else {
@@ -134,10 +134,10 @@ function* updateBusinessDetail({payload}) {
     const {name, description, photo, image} = values
 
     //add to formData so api can read
-    const business = new FormData()
-    business.set('name', name)
-    business.set('description', description)
-    business.set('photo', photo)
+    const updatedBusiness = new FormData()
+    updatedBusiness.set('name', name)
+    updatedBusiness.set('description', description)
+    updatedBusiness.set('photo', photo)
 
     if (!!image) {
         const s3Payload = yield call(getSignedRequest, {croppedImage: image})
@@ -148,11 +148,11 @@ function* updateBusinessDetail({payload}) {
     }
 
     try {
-        const updatedBusiness = yield call(updateBusiness, {slug: slug, userId: _id, token: token, business: business})
-        if (!updatedBusiness.error) {
-            yield put({type: 'business/updateBusinessSuccess', updatedBusiness})
+        const updated = yield call(updateBusiness, {slug: slug, _id: _id, token: token, business: updatedBusiness})
+        if (!updated.error) {
+            yield put({type: 'business/updateBusinessSuccess', payload: updated})
         } else {
-            yield put({type: 'business/updateBusinessFailure', updatedBusiness})
+            yield put({type: 'business/updateBusinessFailure', payload: updated})
         }
     } catch (error) {
         yield put({type: 'business/updateBusinessFailure'})
@@ -198,10 +198,10 @@ function* createProduct({payload}) {
         yield call(uploadFile, {file: image, signedRequest: s3Payload.signedRequest})
 
 
-        const createdProduct = yield call(addProduct, {userId: _id, token: token, product: product})
+        const createdProduct = yield call(addProduct, {_id: _id, token: token, product: product})
 
         if (!createdProduct.error) {
-            yield put({type: 'admin/createProductSuccess', payload})
+            yield put({type: 'admin/createProductSuccess', createdProduct})
             yield put(push('/admin/product/update/' + createdProduct.slug))
 
         } else {
@@ -248,11 +248,11 @@ function* updateProductDetail({payload}) {
     }
 
     try {
-        const updated = yield call(updateProduct, {slug: slug, userId: _id, token: token, product: updatedProduct})
+        const updated = yield call(updateProduct, {slug: slug, _id: _id, token: token, product: updatedProduct})
         if (!updated.error) {
-            yield put({type: 'product/updateProductSuccess', updated})
+            yield put({type: 'product/updateProductSuccess', payload: updated})
         } else {
-            yield put({type: 'product/updateProductFailure', updated})
+            yield put({type: 'product/updateProductFailure', payload: updated})
         }
     } catch (error) {
         yield put({type: 'product/updateProductFailure'})
@@ -327,9 +327,9 @@ function* signOut() {
 
 function* signUp({payload}) {
     //TODO: if no users exists in database make first user a superAdmin
-    //const newPayload = {...payload, role: 1}
+    const newPayload = {...payload, role: 1}
 
-    const user = yield call(signup, payload)
+    const user = yield call(signup, newPayload)
     try {
         if (!user.error) {
             yield put({type: 'user/signUpSuccess', payload: user})
@@ -582,7 +582,7 @@ function* getBraintreeToken({payload}) {
 }
 
 function* getPaymentNonce({payload}) {
-    const {dropInInstance, _id, token, amount, products, deliveryAddress} = payload
+    const {dropInInstance, _id, token, amount, products, deliveryAddress, user} = payload
     const nonce = yield call(getPaymentMethod, dropInInstance)
     const paymentData = {paymentMethodNonce: nonce, amount: amount}
     const paymentProcessed = yield call(processPayment, {_id, token, paymentData})
@@ -591,7 +591,8 @@ function* getPaymentNonce({payload}) {
             products,
             transactionId_id: paymentProcessed.transaction.id,
             amount: paymentProcessed.transaction.amount,
-            address: deliveryAddress
+            address: deliveryAddress,
+            user: user
         }
         const createdOrder = yield call(createOrder, {_id, token, createOrderData})
 
@@ -634,53 +635,53 @@ function* watchNavigate() {
 
 /* Business */
 function* watchCreateBusiness() {
-    yield takeEvery('admin/createBusiness', createBusiness)
+    yield takeLatest('admin/createBusiness', createBusiness)
 }
 
 function* watchAttemptDestroyBusiness() {
-    yield takeEvery('admin/attemptDestroyBusiness', attemptDestroyBusiness)
+    yield takeLatest('admin/attemptDestroyBusiness', attemptDestroyBusiness)
 }
 
 function* watchDestroyBusiness() {
-    yield takeEvery('admin/destroyBusiness', destroyBusiness)
+    yield takeLatest('admin/destroyBusiness', destroyBusiness)
 }
 
 function* watchDestroyBusinessSuccess() {
-    yield takeEvery('admin/attemptDestroyBusinessSuccess', destroyBusinessSuccess)
+    yield takeLatest('admin/attemptDestroyBusinessSuccess', destroyBusinessSuccess)
 }
 
 function* watchUpdateBusiness() {
-    yield takeEvery('admin/updateBusiness', updateBusinessDetail)
+    yield takeLatest('admin/updateBusiness', updateBusinessDetail)
 }
 
 
 /* Product*/
 function* watchCreateProduct() {
-    yield takeEvery('admin/createProduct', createProduct)
+    yield takeLatest('admin/createProduct', createProduct)
 }
 
 function* watchAttemptDestroyProduct() {
-    yield takeEvery('admin/attemptDestroyProduct', attemptDestroyProduct)
+    yield takeLatest('admin/attemptDestroyProduct', attemptDestroyProduct)
 }
 
 function* watchDestroyProduct() {
-    yield takeEvery('admin/destroyProduct', destroyProduct)
+    yield takeLatest('admin/destroyProduct', destroyProduct)
 }
 
 function* watchDestroyProductSuccess() {
-    yield takeEvery('admin/attemptDestroyProductSuccess', destroyProductSuccess)
+    yield takeLatest('admin/attemptDestroyProductSuccess', destroyProductSuccess)
 }
 
 function* watchDestroyProductCategory() {
-    yield takeEvery('admin/destroyProductCategory', destroyProductCategory)
+    yield takeLatest('admin/destroyProductCategory', destroyProductCategory)
 }
 
 function* watchDestroyProductCategorySuccess() {
-    yield takeEvery('admin/attemptDestroyProductCategorySuccess', destroyProductCategorySuccess)
+    yield takeLatest('admin/attemptDestroyProductCategorySuccess', destroyProductCategorySuccess)
 }
 
 function* watchUpdateProduct() {
-    yield takeEvery('admin/updateProduct', updateProductDetail)
+    yield takeLatest('admin/updateProduct', updateProductDetail)
 }
 
 

@@ -22,7 +22,7 @@ const Checkout = ({products}) => {
     const dispatch = useDispatch()
     const [dropInInstance, setDropInInstance] = useState({})
     const [address, setAddress] = useState('')
-    const {_id, token} = useSelector(state => state.user)
+    const {_id, token, email, name} = useSelector(state => state.user)
     const {braintreeClientToken} = useSelector(state => state.shop)
     const {isAuthenticated} = useSelector(state => state.user)
 
@@ -46,7 +46,8 @@ const Checkout = ({products}) => {
                 dropInInstance: dropInInstance,
                 amount: getTotal(products),
                 products: products,
-                deliveryAddress: address
+                deliveryAddress: address,
+                user: {email: email, name: name}
             }
         })
     }

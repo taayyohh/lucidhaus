@@ -7,8 +7,8 @@ import {API} from '../variables/config'
  * update single product
  * delete single product
  */
-export const addProduct = ({userId, token, product}) => {
-    return fetch(`${API}/product/create/${userId}`, {
+export const addProduct = ({_id, token, product}) => {
+    return fetch(`${API}/product/create/${_id}`, {
         method: 'POST',
         headers: {
             Accept: 'application/json',
@@ -59,8 +59,8 @@ export const getProduct = ({slug}) => {
             return error
         })
 }
-export const updateProduct = ({slug, userId, token, product}) => {
-    return fetch(`${API}/product/${slug}/${userId}`, {
+export const updateProduct = ({slug, _id, token, product}) => {
+    return fetch(`${API}/product/${slug}/${_id}`, {
         method: 'PUT',
         headers: {
             Accept: 'application/json',

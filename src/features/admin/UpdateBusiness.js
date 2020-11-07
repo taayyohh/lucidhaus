@@ -20,7 +20,7 @@ const UpdateBusiness = () => {
     const {_id, token} = useSelector(state => state.user)
     const {slug} = useSelector(state => state.site)
     const {business} = useSelector(state => state.business)
-    const {name, description, photo} = business
+   // const {name, description, photo} = business
 
     useEffect(() => {
         dispatch({
@@ -38,9 +38,9 @@ const UpdateBusiness = () => {
             {business && (
                 <Formik
                     initialValues={{
-                        name: name,
-                        description: description,
-                        photo: photo,
+                        name: business.name,
+                        description: business.description,
+                        photo: business.photo,
                         image: ''
                     }}
                     enableReinitialize={true}

@@ -4,13 +4,11 @@ export const uploadFile = ({file, signedRequest}) => {
     return fetch(signedRequest, {
         method: 'PUT',
         body: file
+    }).then(response => {
+        return response.json()
+    }).catch(error => {
+        return error
     })
-        .then(response => {
-            return response.json()
-        })
-        .catch(error => {
-            return error
-        })
 }
 
 export const getSignedRequest = ({croppedImage}) => {

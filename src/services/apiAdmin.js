@@ -64,8 +64,8 @@ export const getBusiness = ({slug}) => {
         })
 }
 
-export const updateBusiness = ({slug, userId, token, business}) => {
-    return fetch(`${API}/business/${slug}/${userId}`, {
+export const updateBusiness = ({slug, _id, token, business}) => {
+    return fetch(`${API}/business/${slug}/${_id}`, {
         method: 'PUT',
         headers: {
             Accept: 'application/json',

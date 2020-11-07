@@ -20,10 +20,10 @@ export const businessSlice = createSlice({
             state.error = action.payload
         },
         updateBusinessFailure: (state, action) => {
-            state.error = action.updated.error
+            state.error = action.payload
         },
         updateBusinessSuccess: (state, action) => {
-            state.business = action.updated
+            state.business = action.payload
         }
     },
 })

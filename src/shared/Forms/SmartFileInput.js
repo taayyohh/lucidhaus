@@ -1,14 +1,11 @@
-import moment                   from 'moment'
+import moment                  from 'moment'
 import React, {
+    memo,
     useEffect,
     useState
-}                               from 'react'
-import Dropzone                 from 'react-dropzone'
+}                              from 'react'
+import Dropzone                from 'react-dropzone'
 import 'react-image-crop/dist/ReactCrop.css'
-import Div                     from '../Basic/Div'
-import Img        from '../Basic/Img'
-import CropPortal from './CropPortal'
-import S3Img      from '../Basic/S3Img'
 import {genericCardImageStyle} from '../../themes/business'
 import {
     imageDropZonePreviewStyle,
@@ -18,8 +15,12 @@ import {
 }                              from '../../themes/elements'
 import {slugify}               from '../../utils/slugify'
 import {globals}               from '../../variables/styles'
+import Div                     from '../Basic/Div'
+import Img                     from '../Basic/Img'
+import S3Img                   from '../Basic/S3Img'
+import CropPortal              from './CropPortal'
 
-const SmartFileInput = ({formik, id, cropWidth, cropHeight, s3Path}) => {
+const SmartFileInput = memo(({formik, id, cropWidth, cropHeight, s3Path}) => {
     const [cropPortalOpen, setCropPortalOpen] = useState(false)
 
     const [uploadedImage, setUploadedImage] = useState({})
@@ -31,7 +32,7 @@ const SmartFileInput = ({formik, id, cropWidth, cropHeight, s3Path}) => {
 
     const [previewBlob, setPreviewBlob] = useState('')
 
-    const {photo} = formik.values
+    const {photo} = formik.initialValues
 
 
     const makeClientCrop = async (crop, percentageCrop) => {
@@ -119,19 +120,22 @@ const SmartFileInput = ({formik, id, cropWidth, cropHeight, s3Path}) => {
             </Dropzone>
 
             <Div theme={imageDropZonePreviewWrapperStyle}>
-                {previewBlob && (
+                {(previewBlob && (
                     <Img
                         alt="Crop preview"
                         src={previewBlob}
                         theme={imageDropZonePreviewStyle}
                     />
-                )}
-                {photo && (
-                    <S3Img
-                        url={photo}
-                        alt={'Business Image Preview'}
-                        theme={genericCardImageStyle}
-                    />
+                )) || (
+                    <>
+                        {photo && (
+                            <S3Img
+                                url={photo}
+                                alt={'Business Image Preview'}
+                                theme={genericCardImageStyle}
+                            />
+                        )}
+                    </>
                 )}
             </Div>
             <CropPortal
@@ -145,6 +149,6 @@ const SmartFileInput = ({formik, id, cropWidth, cropHeight, s3Path}) => {
             />
         </Div>
     )
-}
+})
 
 export default SmartFileInput
