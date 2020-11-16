@@ -3,8 +3,7 @@ import {
     useDispatch,
     useSelector
 }                         from 'react-redux'
-import Div                from '../../shared/Basic/Div'
-import H2                 from '../../shared/Basic/H2'
+import MotionDiv          from '../../shared/Basic/MotionDiv'
 import RichText           from '../../shared/Basic/RichText'
 import S3Img              from '../../shared/Basic/S3Img'
 import {
@@ -29,17 +28,27 @@ const Business = () => {
 
 
     return (
-        <Div theme={postContentStyle(slug)}>
-            <Div theme={businessWrapperStyle}>
-                <H2 theme={businessStyle.title}>{name}</H2>
+        <MotionDiv theme={postContentStyle(slug)}>
+            <MotionDiv
+                theme={businessWrapperStyle}
+                layoutId={`${business._id}-wrapper`}
+            >
+            </MotionDiv>
+            <MotionDiv layoutId={`${business._id}-image`}>
                 <S3Img
                     url={photo}
                     alt={name}
                     theme={genericCardImageStyle}
                 />
+            </MotionDiv>
+            <MotionDiv
+                theme={businessStyle.name}
+                layoutId={`${business._id}-name`}
+            >
+                {name}
                 <RichText children={description}/>
-            </Div>
-        </Div>
+            </MotionDiv>
+        </MotionDiv>
     )
 }
 

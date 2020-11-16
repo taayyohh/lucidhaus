@@ -22,6 +22,8 @@ export const marketplaceWrapperStyle = {
 }
 
 export const genericCardStyle = {
+    display: flex,
+    flexDirection: column,
     boxSizing: borderBox,
     background: '#f8f8f8',
     border: `1px solid ${globals.colors.borderColor}`,
@@ -62,7 +64,7 @@ export const businessWrapperStyle = {
 }
 
 export const businessStyle = {
-    title: {
+    name: {
         font: globals.fonts.script,
         size: 42,
         margin: 0,

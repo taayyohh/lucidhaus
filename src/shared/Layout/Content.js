@@ -1,4 +1,4 @@
-import {AnimatePresence}      from 'framer-motion'
+import {AnimatePresence, AnimateSharedLayout}      from 'framer-motion'
 import React, {
     lazy,
     Suspense,
@@ -40,37 +40,39 @@ const Content = () => {
     const {contentAnimation, currentPath} = useContext(TransitionAnimations)
 
     return (
-        <AnimatePresence>
-            <MotionDiv animate={contentAnimation} theme={{width: '100%'}}>
-                <Suspense fallback={<div>Loading...</div>}>
-                    <Switch location={{pathname: currentPath}}>
-                        <Route path="/" exact component={Home}/>
-                        <Route path="/signup" exact component={SignUp}/>
-                        <Route path="/signin" exact component={SignIn}/>
-                        <Route path="/marketplace" exact component={Marketplace}/>
-                        <Route path="/marketplace/:slug" exact component={Business}/>
-                        <Route path="/shop" exact component={Shop}/>
-                        <Route path="/shop/:slug" exact component={Product}/>
-                        <PrivateRoute path="/settings/profile" exact component={UpdateProfile}/>
-                        <PrivateRoute path="/user/dashboard" exact component={UserDashboard}/>
-                        <AdminRoute path="/admin/dashboard" exact component={AdminDashboard}/>
-                        <AdminRoute path="/admin/shop" exact component={ManageShop}/>
-                        <AdminRoute path="/admin/taxonomy" exact component={ManageTaxonomy}/>
-                        <AdminRoute path="/admin/marketplace" exact component={ManageMarketplace}/>
-                        <AdminRoute path="/admin/product/update/:slug" exact component={UpdateProduct}/>
-                        <AdminRoute path="/admin/product-category/update/:slug" exact
-                                    component={UpdateProductCategory}/>
-                        <AdminRoute path="/admin/marketplace/update/:slug" exact component={UpdateBusiness}/>
-                        <AdminRoute path="/admin/orders" exact component={ManageOrders}/>
-                        <AdminRoute path="/create/category" exact component={CreateProductCategory}/>
-                        <AdminRoute path="/create/product" exact component={CreateProduct}/>
-                        <AdminRoute path="/create/product-category" exact component={CreateProductCategory}/>
-                        <AdminRoute path="/create/business" exact component={CreateBusiness}/>
-                        <Route component={NotFound}/>
-                    </Switch>
-                </Suspense>
-            </MotionDiv>
-        </AnimatePresence>
+        <AnimateSharedLayout type="crossfade">
+            <AnimatePresence>
+                <MotionDiv animate={contentAnimation} theme={{width: '100%'}}>
+                    <Suspense fallback={<div>Loading...</div>}>
+                        <Switch location={{pathname: currentPath}}>
+                            <Route path="/" exact component={Home}/>
+                            <Route path="/signup" exact component={SignUp}/>
+                            <Route path="/signin" exact component={SignIn}/>
+                            <Route path="/marketplace" exact component={Marketplace}/>
+                            <Route path="/marketplace/:slug" exact component={Business}/>
+                            <Route path="/shop" exact component={Shop}/>
+                            <Route path="/shop/:slug" exact component={Product}/>
+                            <PrivateRoute path="/settings/profile" exact component={UpdateProfile}/>
+                            <PrivateRoute path="/user/dashboard" exact component={UserDashboard}/>
+                            <AdminRoute path="/admin/dashboard" exact component={AdminDashboard}/>
+                            <AdminRoute path="/admin/shop" exact component={ManageShop}/>
+                            <AdminRoute path="/admin/taxonomy" exact component={ManageTaxonomy}/>
+                            <AdminRoute path="/admin/marketplace" exact component={ManageMarketplace}/>
+                            <AdminRoute path="/admin/product/update/:slug" exact component={UpdateProduct}/>
+                            <AdminRoute path="/admin/product-category/update/:slug" exact
+                                        component={UpdateProductCategory}/>
+                            <AdminRoute path="/admin/marketplace/update/:slug" exact component={UpdateBusiness}/>
+                            <AdminRoute path="/admin/orders" exact component={ManageOrders}/>
+                            <AdminRoute path="/create/category" exact component={CreateProductCategory}/>
+                            <AdminRoute path="/create/product" exact component={CreateProduct}/>
+                            <AdminRoute path="/create/product-category" exact component={CreateProductCategory}/>
+                            <AdminRoute path="/create/business" exact component={CreateBusiness}/>
+                            <Route component={NotFound}/>
+                        </Switch>
+                    </Suspense>
+                </MotionDiv>
+            </AnimatePresence>
+        </AnimateSharedLayout>
     )
 }
 

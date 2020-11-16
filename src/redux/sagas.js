@@ -196,8 +196,6 @@ function* createProduct({payload}) {
     if (!!s3Payload.signedRequest) {
         //TODO: implement error catch
         yield call(uploadFile, {file: image, signedRequest: s3Payload.signedRequest})
-
-
         const createdProduct = yield call(addProduct, {_id: _id, token: token, product: product})
 
         if (!createdProduct.error) {
@@ -209,6 +207,8 @@ function* createProduct({payload}) {
 
         }
 
+    } else {
+        yield console.log('pay', s3Payload)
     }
 }
 

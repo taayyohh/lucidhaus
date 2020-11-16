@@ -23,18 +23,18 @@ const Marketplace = () => {
     return (
         <Div theme={postContentStyle(slug)}>
             <Div theme={marketplaceWrapperStyle}>
-                {marketplace && marketplace.map(business => (
+                {marketplace && marketplace.map(business =>
                     <GenericCard
                         key={business.slug}
                         slug={`marketplace/${business.slug}`}
                         name={business.name}
                         photo={business.photo}
+                        layoutId={business._id}
                     />
-                ))}
+                )}
             </Div>
         </Div>
     )
 }
-
 
 export default Marketplace
