@@ -32,7 +32,6 @@ const GenericCard = memo(({photo, name, slug, theme, layoutId}) => {
 
                 <MotionDiv
                     theme={{...genericCardNameStyle, ...theme.name}}
-                    layoutId={`${layoutId}-name`}
                 >
                     {name}
                 </MotionDiv>

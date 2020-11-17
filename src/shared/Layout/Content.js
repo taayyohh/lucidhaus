@@ -1,4 +1,7 @@
-import {AnimatePresence, AnimateSharedLayout}      from 'framer-motion'
+import {
+    AnimatePresence,
+    AnimateSharedLayout
+}                             from 'framer-motion'
 import React, {
     lazy,
     Suspense,
@@ -8,31 +11,31 @@ import {
     Route,
     Switch
 }                             from 'react-router'
+import AdminDashboard         from '../../features/admin/AdminDashboard'
+import CreateBusiness         from '../../features/admin/CreateBusiness'
+import CreateProduct          from '../../features/admin/CreateProduct'
+import CreateProductCategory  from '../../features/admin/CreateProductCategory'
+import ManageMarketplace      from '../../features/admin/ManageMarketplace'
+import ManageOrders           from '../../features/admin/ManageOrders'
+import ManageShop             from '../../features/admin/ManageShop'
+import ManageTaxonomy         from '../../features/admin/ManageTaxonomy'
+import UpdateBusiness         from '../../features/admin/UpdateBusiness'
+import UpdateProduct          from '../../features/admin/UpdateProduct'
+import UpdateProductCategory  from '../../features/admin/UpdateProductCategory'
+import Business               from '../../features/business/Business'
+import Marketplace            from '../../features/business/Marketplace'
+import Product                from '../../features/shop/Product'
+import Shop                   from '../../features/shop/Shop'
+import NotFound               from '../../features/site/NotFound'
+import SignIn                 from '../../features/user/SignIn'
+import SignUp                 from '../../features/user/SignUp'
+import UpdateProfile          from '../../features/user/UpdateProfile'
+import UserDashboard          from '../../features/user/UserDashboard'
 import AdminRoute             from '../Admin/AdminRoute'
 import PrivateRoute           from '../Admin/PrivateRoute'
 import MotionDiv              from '../Basic/MotionDiv'
 import {TransitionAnimations} from '../Containers/TransitionController'
 
-const AdminDashboard = lazy(() => import('../../features/admin/AdminDashboard'))
-const CreateBusiness = lazy(() => import('../../features/admin/CreateBusiness'))
-const CreateProduct = lazy(() => import('../../features/admin/CreateProduct'))
-const CreateProductCategory = lazy(() => import('../../features/admin/CreateProductCategory'))
-const ManageMarketplace = lazy(() => import('../../features/admin/ManageMarketplace'))
-const ManageOrders = lazy(() => import('../../features/admin/ManageOrders'))
-const ManageShop = lazy(() => import('../../features/admin/ManageShop'))
-const ManageTaxonomy = lazy(() => import('../../features/admin/ManageTaxonomy'))
-const UpdateBusiness = lazy(() => import('../../features/admin/UpdateBusiness'))
-const UpdateProduct = lazy(() => import('../../features/admin/UpdateProduct'))
-const UpdateProductCategory = lazy(() => import('../../features/admin/UpdateProductCategory'))
-const Business = lazy(() => import('../../features/business/Business'))
-const Marketplace = lazy(() => import('../../features/business/Marketplace'))
-const Product = lazy(() => import('../../features/shop/Product'))
-const Shop = lazy(() => import('../../features/shop/Shop'))
-const NotFound = lazy(() => import('../../features/site/NotFound'))
-const SignIn = lazy(() => import('../../features/user/SignIn'))
-const SignUp = lazy(() => import('../../features/user/SignUp'))
-const UpdateProfile = lazy(() => import('../../features/user/UpdateProfile'))
-const UserDashboard = lazy(() => import('../../features/user/UserDashboard'))
 const Home = lazy(() => import('../Templates/Home'))
 
 

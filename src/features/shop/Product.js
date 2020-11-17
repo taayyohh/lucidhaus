@@ -5,12 +5,14 @@ import {
 }                         from 'react-redux'
 import Div                from '../../shared/Basic/Div'
 import H2                 from '../../shared/Basic/H2'
+import MotionDiv          from '../../shared/Basic/MotionDiv'
 import RichText           from '../../shared/Basic/RichText'
 import S3Img              from '../../shared/Basic/S3Img'
 import AddToCartButton    from '../../shared/Controls/AddToCartButton'
 import {
     businessStyle,
     businessWrapperStyle,
+    genericCardDetailImageWrapperStyle,
     genericCardImageStyle
 }                         from '../../themes/business'
 import {postContentStyle} from '../../themes/layout'
@@ -39,11 +41,16 @@ const Product = () => {
                 <Div>{getNameById(productCategories, category)}</Div>
                 <H2 theme={businessStyle.title}>{name}</H2>
                 <Div> price: {price}</Div>
-                <S3Img
-                    url={photo}
-                    alt={name}
-                    theme={genericCardImageStyle}
-                />
+                <MotionDiv
+                    layoutId={`${product._id}-image`}
+                    theme={genericCardDetailImageWrapperStyle}
+                >
+                    <S3Img
+                        url={photo}
+                        alt={name}
+                        theme={genericCardImageStyle}
+                    />
+                </MotionDiv>
                 <RichText children={description}/>
                 <AddToCartButton
                     product={product}

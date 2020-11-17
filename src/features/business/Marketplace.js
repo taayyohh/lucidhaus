@@ -23,7 +23,7 @@ const Marketplace = () => {
     return (
         <Div theme={postContentStyle(slug)}>
             <Div theme={marketplaceWrapperStyle}>
-                {marketplace && marketplace.map(business =>
+                {marketplace && marketplace?.map(business =>
                     <GenericCard
                         key={business.slug}
                         slug={`marketplace/${business.slug}`}

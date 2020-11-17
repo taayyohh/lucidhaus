@@ -199,7 +199,7 @@ export const microCardStyle = {
 export const postContentStyle = slug => {
     const baseStyle = {
         margin: '0 auto',
-        width: [globals.style.contentWidth, globals.style.layoutScalingValue, '100%'],
+        width: [globals.style.siteInnerWidth, globals.style.layoutScalingValue, '100%'],
         transition: 'width 500ms ease'
     }
 

@@ -1,4 +1,5 @@
 import {
+    auto,
     black,
     borderBox,
     column,
@@ -26,7 +27,6 @@ export const genericCardStyle = {
     flexDirection: column,
     boxSizing: borderBox,
     background: '#f8f8f8',
-    border: `1px solid ${globals.colors.borderColor}`,
     borderRadius: '5px',
     paddingTop: [20, .7, 20],
     paddingBottom: [20, .7, 20],
@@ -42,10 +42,17 @@ export const genericCardStyle = {
 
 export const genericCardImageStyle = {}
 
+export const genericCardDetailImageWrapperStyle = {
+    height: 500,
+    width: 500,
+    marginLeft: auto
+}
+
 export const genericCardImageWrapperStyle= {
     overflow: hidden,
     border: '1px solid #e9e8e8',
-    maxHeight: [200, .7, 200]
+    height: [300, .7, 300],
+    width: '100%'
 }
 
 export const genericCardNameStyle = {
@@ -60,7 +67,8 @@ export const genericCardNameStyle = {
 
 export const businessWrapperStyle = {
     display: flex,
-    flexDirection: column
+    flexDirection: column,
+    width: '100%'
 }
 
 export const businessStyle = {

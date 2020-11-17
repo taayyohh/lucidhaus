@@ -19,7 +19,7 @@ const Header = ({theme}) => {
         <Div as="header" theme={{...headerStyle, ...theme}}>
             <Div theme={headerInnerStyle}>
                 <LinkSwitch url="/" theme={headerLogoLinkStyle}>
-                    IJ
+                    H
                 </LinkSwitch>
                 {(!isMobile && (
                     <HeaderMenu/>

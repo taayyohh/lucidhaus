@@ -9,8 +9,9 @@ import S3Img              from '../../shared/Basic/S3Img'
 import {
     businessStyle,
     businessWrapperStyle,
+    genericCardDetailImageWrapperStyle,
     genericCardImageStyle
-}                         from '../../themes/business'
+} from '../../themes/business'
 import {postContentStyle} from '../../themes/layout'
 
 
@@ -31,10 +32,12 @@ const Business = () => {
         <MotionDiv theme={postContentStyle(slug)}>
             <MotionDiv
                 theme={businessWrapperStyle}
-                layoutId={`${business._id}-wrapper`}
             >
             </MotionDiv>
-            <MotionDiv layoutId={`${business._id}-image`}>
+            <MotionDiv
+                layoutId={`${business._id}-image`}
+                theme={genericCardDetailImageWrapperStyle}
+            >
                 <S3Img
                     url={photo}
                     alt={name}

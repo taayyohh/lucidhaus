@@ -29,6 +29,7 @@ const Shop = () => {
                         slug={`shop/${shop.slug}`}
                         name={shop.name}
                         photo={shop.photo}
+                        layoutId={shop._id}
                     />
                 ))}
             </Div>
