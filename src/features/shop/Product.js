@@ -14,9 +14,9 @@ import {
     businessWrapperStyle,
     genericCardDetailImageWrapperStyle,
     genericCardImageStyle
-}                         from '../../themes/business'
-import {postContentStyle} from '../../themes/layout'
-import {getNameById}      from '../../utils/getNameById'
+}                            from '../../themes/business'
+import {contentWrapperStyle} from '../../themes/layout'
+import {getNameById}         from '../../utils/getNameById'
 
 
 const Product = () => {
@@ -36,7 +36,7 @@ const Product = () => {
 
 
     return (
-        <Div theme={postContentStyle(slug)}>
+        <Div theme={contentWrapperStyle}>
             <Div theme={businessWrapperStyle}>
                 <Div>{getNameById(productCategories, category)}</Div>
                 <H2 theme={businessStyle.title}>{name}</H2>

@@ -14,6 +14,7 @@ import {
     row,
     spaceBetween,
     transparent,
+    uppercase,
     white
 }                from '../utils/themer'
 import {globals} from '../variables/styles'
@@ -23,18 +24,13 @@ export const defaultLinkStyle = {
 }
 
 export const richTextDefaultStyle = {
-    font: globals.fonts.type,
+    font: globals.fonts.serif,
     size: [18, .7, 18]
 }
 
 export const defaultH2Style = {
     margin: 0
 }
-
-export const addArtistFormStyle = {}
-
-
-export const videoOverlayStyles = {}
 
 export const transitionOverlayStyle = {
     backgroundColor: globals.colors.transitionOverlayBackground,
@@ -47,27 +43,30 @@ export const transitionOverlayStyle = {
 }
 
 export const genericButtonStyle = {
-    border: `1px solid #000`,
-    font: globals.fonts.header,
-    borderRadius: [10, .7, 10],
+    border: `1px solid #dadce0`,
     background: transparent,
     color: black,
+    font: globals.fonts.sans,
+    borderRadius: [5, .7, 5],
     alignSelf: flexEnd,
-    paddingTop: [20, .7, 20],
-    paddingBottom: [20, .7, 20],
-    paddingLeft: [30, .7, 30],
-    paddingRight: [30, .7, 30],
+    paddingTop: [10, .7, 10],
+    paddingBottom: [10, .7, 10],
+    paddingLeft: [20, .7, 20],
+    paddingRight: [20, .7, 20],
+    letterSpacing: [1, .7, 1],
     cursor: pointer,
-    fontFamily: globals.fonts.script,
     marginTop: 20,
+    textTransform: uppercase,
+    size: [16, .7, 16],
+    transition: 'background-color 150ms ease, border-color 150ms ease, color 150ms ease',
     focus: {
         outline: none,
     },
     hover: {
         cursor: 'pointer',
-        backgroundColor: globals.colors.buttonHoverColor,
-        borderColor: globals.colors.borderHoverColor,
-        color: globals.colors.borderHoverColor
+        border: `1px solid #dadce0`,
+        background: black,
+        color: white,
     }
 }
 
@@ -86,7 +85,7 @@ export const imageDropZonePreviewStyle = {
 
 export const imageDropZonePreviewWrapperStyle = {
     width: [500, globals.style.layoutScalingValue, '100%'],
-    border: '1px solid #000',
+    border: '1px solid #dadce0',
     boxSizing: borderBox,
     padding: [20, globals.style.layoutScalingValue, 20]
 }
@@ -117,7 +116,7 @@ export const imageDropZoneStyle = {
     portalInner: {
         display: flex,
         justifyContent: 'space-between',
-        borderTop: `1px solid #000`,
+        borderTop: `1px solid #dadce0`,
         flexWrap: 'wrap',
         position: absolute,
         // maxWidth: 750,
@@ -146,7 +145,7 @@ export const imageDropZoneStyle = {
     },
     removeButton: {
         backgroundColor: white,
-        border: '1px solid #000',
+        border: '1px solid #dadce0',
         marginTop: 10,
         display: flex,
         alignItems: center,

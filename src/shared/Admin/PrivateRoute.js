@@ -3,7 +3,6 @@ import {useSelector}      from 'react-redux'
 import {Route}   from 'react-router-dom'
 import {history} from '../../redux/store'
 
-
 const PrivateRoute = ({component: Component, ...rest}) => {
     const {isAuthenticated} = useSelector(state => state.user)
 
@@ -19,6 +18,5 @@ const PrivateRoute = ({component: Component, ...rest}) => {
         }/>
     )
 }
-
 
 export default PrivateRoute

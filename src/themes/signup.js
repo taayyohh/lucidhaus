@@ -7,29 +7,35 @@ import {
     flex,
     flexStart,
     relative,
-    sv
-}                from '../utils/themer'
+    sv,
+    white
+} from '../utils/themer'
 import {globals} from '../variables/styles'
 
-export const signUpFormStyle = {
+export const genericFormStyle = {
     display: flex,
     alignItems: flexStart,
     flexDirection: column,
-    width: [500, .6, '100%'],
+    width: [700, .6, '100%'],
+    padding: [80, globals.style.layoutScalingValue, 30],
+    background: '#fcfcfc',
+    border: '1px solid #dadce0',
+    borderRadius: [10, .7, 10],
+    boxShadow: 'inset 0px 0px 4px #d9d9d9',
     position: relative,
     height: auto,
     boxSizing: borderBox,
     margin: '0 auto',
-    // border: '1px solid #000',
     heading: {
         margin: 0,
-        fontFamily: globals.fonts.script,
-        alignSelf: center,
-        size: 48,
+        fontFamily: globals.fonts.fancy,
+        alignSelf: flexStart,
+        size: [38, .7, 38],
         marginBottom: 20
     },
     fieldset: {
         marginBottom: [20, .7, 20],
+        background: white
     },
     button: {
         padding: '20px 60px',
@@ -45,15 +51,5 @@ export const signUpFormStyle = {
         padding: `${sv(10)} ${sv(35)}`,
         color: '#fff',
         zIndex: 10,
-    }
-}
-
-export const signInFormStyle = {
-    ...signUpFormStyle,
-    heading: {
-        ...signUpFormStyle.heading,
-    },
-    fieldset: {
-        ...signUpFormStyle.fieldset
     }
 }

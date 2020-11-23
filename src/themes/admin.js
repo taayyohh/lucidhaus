@@ -70,7 +70,7 @@ export const adminBusinessCardStyle = {
 export const adminDashboardStyle = {
     heading: {
         margin: 0,
-        fontFamily: globals.fonts.script,
+        fontFamily: globals.fonts.fancy,
         tablet: {
             size: 60
         },
@@ -126,7 +126,7 @@ export const menuPanelStyle = {
 }
 
 export const menuPanelHeaderStyle = {
-    font: globals.fonts.script,
+    font: globals.fonts.fancy,
     size: [48, .6, 24],
     marginBottom: [30, .6, 30]
 }
@@ -146,7 +146,7 @@ export const adminHeadingStyle = {
     paddingBottom: [25, .7, 25],
     marginBottom: [25, .7, 25],
     borderBottom: `${sv(5)} solid #000`,
-    font: globals.fonts.script
+    font: globals.fonts.fancy
 }
 
 export const adminCreateButtonStyle = {

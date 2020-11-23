@@ -12,7 +12,7 @@ import H2                    from '../../shared/Basic/H2'
 import FieldSwitch           from '../../shared/Forms/FieldSwitch'
 import {genericButtonStyle}  from '../../themes/elements'
 import {defaultNewFormStyle} from '../../themes/forms'
-import {postContentStyle}    from '../../themes/layout'
+import {contentWrapperStyle} from '../../themes/layout'
 import {businessFieldTypes}  from '../../variables/fieldTypes'
 
 const UpdateBusiness = () => {
@@ -34,7 +34,7 @@ const UpdateBusiness = () => {
     }, [])
 
     return (
-        <Div theme={postContentStyle()}>
+        <Div theme={contentWrapperStyle}>
             {business && (
                 <Formik
                     initialValues={{

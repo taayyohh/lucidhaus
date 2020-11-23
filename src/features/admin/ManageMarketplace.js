@@ -8,7 +8,7 @@ import AdminMarketplace               from '../../shared/Admin/AdminMarketplace'
 import DeletePrompt                   from '../../shared/Admin/DeletePrompt'
 import Div                            from '../../shared/Basic/Div'
 import {adminMarketplaceWrapperStyle} from '../../themes/admin'
-import {postContentStyle}             from '../../themes/layout'
+import {contentWrapperStyle}          from '../../themes/layout'
 
 const ManageMarketplace = () => {
     const {slug} = useSelector(state => state.site)
@@ -23,7 +23,7 @@ const ManageMarketplace = () => {
     }, [confirmDelete])
 
     return (
-        <Div theme={postContentStyle(slug)}>
+        <Div theme={contentWrapperStyle}>
             <Div theme={adminMarketplaceWrapperStyle}>
                 <AdminControls
                     data={marketplace}

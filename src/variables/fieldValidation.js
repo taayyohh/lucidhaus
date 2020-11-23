@@ -11,21 +11,21 @@ export const validateSignin = Yup.object().shape({
     email: Yup
         .string()
         .email('Invalid email')
-        .required('Required'),
+        .required('*'),
     password: Yup
         .string()
-        .required('Please Enter your password')
+        .required('*')
 })
 
 export const validateSignup = Yup.object().shape({
     name: Yup
         .string()
         .max(50)
-        .required('Required'),
+        .required('*'),
     email: Yup
         .string()
         .email('Invalid email')
-        .required('Required'),
+        .required('*'),
     password: Yup
         .string()
         .required('Please Enter your password')

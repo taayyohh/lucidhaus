@@ -11,8 +11,8 @@ import {
     businessWrapperStyle,
     genericCardDetailImageWrapperStyle,
     genericCardImageStyle
-} from '../../themes/business'
-import {postContentStyle} from '../../themes/layout'
+}                            from '../../themes/business'
+import {contentWrapperStyle} from '../../themes/layout'
 
 
 const Business = () => {
@@ -29,7 +29,7 @@ const Business = () => {
 
 
     return (
-        <MotionDiv theme={postContentStyle(slug)}>
+        <MotionDiv theme={contentWrapperStyle}>
             <MotionDiv
                 theme={businessWrapperStyle}
             >

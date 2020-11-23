@@ -56,7 +56,7 @@ export const genericCardImageWrapperStyle= {
 }
 
 export const genericCardNameStyle = {
-    font: globals.fonts.type,
+    font: globals.fonts.serif,
     size: [24, .7, 24],
     lineHeight: [32, .7, 32],
     textDecoration: none,
@@ -73,7 +73,7 @@ export const businessWrapperStyle = {
 
 export const businessStyle = {
     name: {
-        font: globals.fonts.script,
+        font: globals.fonts.fancy,
         size: 42,
         margin: 0,
         marginBottom: 15

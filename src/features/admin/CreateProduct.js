@@ -10,7 +10,7 @@ import Form                  from '../../shared/Basic/Form'
 import H2                    from '../../shared/Basic/H2'
 import FieldSwitch           from '../../shared/Forms/FieldSwitch'
 import {defaultNewFormStyle} from '../../themes/forms'
-import {postContentStyle}    from '../../themes/layout'
+import {contentWrapperStyle} from '../../themes/layout'
 import {productFieldTypes}   from '../../variables/fieldTypes'
 
 const CreateProduct = () => {
@@ -38,7 +38,7 @@ const CreateProduct = () => {
 
 
     return (
-        <Div theme={postContentStyle()}>
+        <Div theme={contentWrapperStyle}>
             <Formik
                 initialValues={{
                     name: '',

@@ -20,14 +20,14 @@ import {globals} from '../variables/styles'
 export const defaultFormStyle = {
     padding: 50,
     backgroundColor: '#f7f7f7',
-    border: '1px solid #000',
+    border: '1px solid #dadce0',
     boxShadow: 'inset 3px -1px 8px 0px #e0e0e0'
 }
 
 export const defaultFieldsetStyle = {
     position: relative,
     width: '100%',
-    border: '1px solid #000',
+    border: '1px solid #dadce0',
     borderRadius: '5px',
     boxSizing: borderBox,
     padding: 0,
@@ -48,7 +48,7 @@ export const defaultInputStyle = {
     padding: `0 ${sv(25)}`,
     border: none,
     margin: 0,
-    font: globals.fonts.header,
+    font: globals.fonts.sans,
     size: [16, .7, 16],
     lineHeight: [16, .7, 16],
     fontWeight: 300,
@@ -134,7 +134,7 @@ export const defaultCKEditorStyle = {
     child: [
         {
             selector: '.ck.ck-editor',
-            font: globals.fonts.type,
+            font: globals.fonts.serif,
             height: '100%',
             minHeight: inherit,
             child: {
@@ -156,7 +156,7 @@ export const defaultFieldHeadingStyle = {
 
 export const defaultNewFormStyle = {
     heading: {
-        font: globals.fonts.script,
+        font: globals.fonts.fancy,
         size: [38, .7, 38],
         marginBottom: [20, .7, 20]
 

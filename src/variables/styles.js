@@ -13,18 +13,18 @@ export const colorPalette = {
     gray: '#b5b5b5',
     lightGray: '#e9e8e8',
     tan: '#D9D7BA',
-    orange: '#BF622C',
+    purple: '#822cbf',
     brown: '#73462C',
     lightGold: 'rgba(217, 215, 186, 0.32)',
-    salmon: '#ecdddd',
+    grayPurple: '#e4ddec',
     borderColor: '#dedede'
 }
 
 export const globals = {
     fonts: {
-        script: '\'Shrikhand\', cursive',
-        header: '\'Teko\', sans-serif',
-        type: "'EB Garamond', serif"
+        fancy: '\'Shrikhand\', cursive',
+        sans: '\'Teko\', sans-serif',
+        serif: "'EB Garamond', serif"
     },
     style: {
         layoutScalingValue: .45,
@@ -34,12 +34,12 @@ export const globals = {
     },
     colors: {
         linkColor: colorPalette.red,
-        linkHoverColor: colorPalette.orange,
+        linkHoverColor: colorPalette.purple,
         inputLabelColor: colorPalette.black,
-        menuPanelCloseButtonBackgroundColor: colorPalette.orange,
+        menuPanelCloseButtonBackgroundColor: colorPalette.purple,
         transitionOverlayBackground: colorPalette.tan,
-        buttonHoverColor: colorPalette.salmon,
-        borderHoverColor: colorPalette.orange,
+        buttonHoverColor: colorPalette.grayPurple,
+        borderHoverColor: colorPalette.purple,
         borderColor: colorPalette.lightGray,
         errorColor: colorPalette.brightRed
     },

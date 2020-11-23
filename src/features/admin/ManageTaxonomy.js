@@ -8,7 +8,7 @@ import AdminTaxonomy                  from '../../shared/Admin/AdminTaxonomy'
 import DeletePrompt                   from '../../shared/Admin/DeletePrompt'
 import Div                            from '../../shared/Basic/Div'
 import {adminMarketplaceWrapperStyle} from '../../themes/admin'
-import {postContentStyle}             from '../../themes/layout'
+import {contentWrapperStyle}          from '../../themes/layout'
 
 const ManageTaxonomy = () => {
     const {slug} = useSelector(state => state.site)
@@ -24,7 +24,7 @@ const ManageTaxonomy = () => {
 
 
     return (
-        <Div theme={postContentStyle(slug)}>
+        <Div theme={contentWrapperStyle}>
             <Div theme={adminMarketplaceWrapperStyle}>
                 <AdminControls
                     data={productCategories}

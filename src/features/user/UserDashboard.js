@@ -7,6 +7,7 @@ import Div                  from '../../shared/Basic/Div'
 import H2                   from '../../shared/Basic/H2'
 import H3                   from '../../shared/Basic/H3'
 import LinkSwitch           from '../../shared/Basic/LinkSwitch'
+import ContentWrapper       from '../../shared/Layout/ContentWrapper'
 import {userDashboardStyle} from '../../themes/user'
 import UserPurchaseHistory  from '../../shared/User/UserPurchaseHistory'
 
@@ -29,7 +30,7 @@ const UserDashboard = () => {
     }, [_id, token])
 
     return (
-        <Div>
+        <ContentWrapper>
             <H2 theme={userDashboardStyle.greeting}>Hey, {name}</H2>
             <H3>Your email is: {email}</H3>
             <LinkSwitch url={`/settings/profile`} children={'profile'}/>
@@ -37,7 +38,7 @@ const UserDashboard = () => {
                 purchaseHistory={purchaseHistory}
                 error={error}
             />
-        </Div>
+        </ContentWrapper>
     )
 }
 

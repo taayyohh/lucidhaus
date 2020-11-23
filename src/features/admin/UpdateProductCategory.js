@@ -9,11 +9,8 @@ import Div                         from '../../shared/Basic/Div'
 import H3                          from '../../shared/Basic/H3'
 import FieldSwitch                 from '../../shared/Forms/FieldSwitch'
 import {genericButtonStyle}        from '../../themes/elements'
-import {postContentStyle}          from '../../themes/layout'
-import {
-    signInFormStyle,
-    signUpFormStyle
-}                                  from '../../themes/signup'
+import {contentWrapperStyle}       from '../../themes/layout'
+import {genericFormStyle}          from '../../themes/signup'
 import {productCategoryFieldTypes} from '../../variables/fieldTypes'
 
 const UpdateProductCategory = () => {
@@ -33,7 +30,7 @@ const UpdateProductCategory = () => {
     }, [])
 
     return (
-        <Div theme={postContentStyle()}>
+        <Div theme={contentWrapperStyle}>
             <Formik
                 initialValues={{name: productCategory.name}}
                 enableReinitialize={true}
@@ -48,8 +45,8 @@ const UpdateProductCategory = () => {
                 })}
             >
                 {formik => (
-                    <Div as="form" theme={signInFormStyle} onSubmit={formik.handleSubmit}>
-                        <H3 theme={signInFormStyle.heading}>Update Product Category</H3>
+                    <Div as="form" theme={genericFormStyle} onSubmit={formik.handleSubmit}>
+                        <H3 theme={genericFormStyle.heading}>Update Product Category</H3>
                         {productCategoryFieldTypes.map((f, i) =>
                             <FieldSwitch
                                 key={i}
@@ -58,7 +55,7 @@ const UpdateProductCategory = () => {
                             />
                         )}
                         <Button
-                            theme={{...genericButtonStyle, ...signUpFormStyle.button}}
+                            theme={{...genericButtonStyle}}
                             children={'Submit'}
                         />
                     </Div>

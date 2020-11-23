@@ -11,7 +11,7 @@ import Div                   from '../../shared/Basic/Div'
 import Form                  from '../../shared/Basic/Form'
 import H2                    from '../../shared/Basic/H2'
 import {defaultNewFormStyle} from '../../themes/forms'
-import {postContentStyle}    from '../../themes/layout'
+import {contentWrapperStyle} from '../../themes/layout'
 import {businessFieldTypes}  from '../../variables/fieldTypes'
 
 const CreateBusiness = () => {
@@ -19,7 +19,7 @@ const CreateBusiness = () => {
     const {_id, token} = useSelector(state => state.user)
 
     return (
-        <Div theme={postContentStyle()}>
+        <Div theme={contentWrapperStyle}>
             <Formik
                 initialValues={{name: '', description: '', photo: '', image: ''}}
                 onSubmit={values => dispatch({

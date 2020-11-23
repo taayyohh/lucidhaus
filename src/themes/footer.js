@@ -2,7 +2,7 @@ import {globals} from "../variables/styles";
 import {borderBox} from "../utils/themer";
 
 export const footerStyle = {
-    borderTop: '1px solid #000',
+    borderTop: '1px solid #dadce0',
     marginTop: 50,
     padding: 30,
     minHeight: [150, .7, 150],

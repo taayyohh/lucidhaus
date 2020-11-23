@@ -1,4 +1,3 @@
-import {isMarketplace} from '../utils/flags'
 import {
     black,
     center,
@@ -11,11 +10,11 @@ import {
     sv,
     white,
     wrap
-}                      from '../utils/themer'
+} from '../utils/themer'
 import {
     genericMobileContainerStyles,
     globals
-}                      from '../variables/styles'
+} from '../variables/styles'
 
 const contentRow = 2
 
@@ -196,28 +195,16 @@ export const microCardStyle = {
     }
 }
 
-export const postContentStyle = slug => {
-    const baseStyle = {
-        margin: '0 auto',
-        width: [globals.style.siteInnerWidth, globals.style.layoutScalingValue, '100%'],
-        transition: 'width 500ms ease'
-    }
-
-    if (isMarketplace(slug))
-        return {
-            ...baseStyle,
-            width: [globals.style.siteInnerWidth, globals.style.layoutScalingValue, '100%']
-        }
-
-    return {
-        ...baseStyle
-    }
+export const contentWrapperStyle = {
+    margin: '0 auto',
+    width: [globals.style.siteInnerWidth, globals.style.layoutScalingValue, '100%'],
+    transition: 'width 500ms ease'
 }
 
 export const notFoundStyle = {
     textAlign: center,
     size: 90,
-    font: globals.fonts.script,
+    font: globals.fonts.fancy,
     maxWidth: [800, globals.style.layoutScalingValue, 'none'],
     margin: '0 auto'
 

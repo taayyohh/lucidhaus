@@ -6,8 +6,8 @@ import {
 import Div                      from '../../shared/Basic/Div'
 import H2                       from '../../shared/Basic/H2'
 import {adminOrderWrapperStyle} from '../../themes/admin'
-import {postContentStyle} from '../../themes/layout'
-import OrderCard          from '../../shared/Cards/OrderCard'
+import {contentWrapperStyle}    from '../../themes/layout'
+import OrderCard                from '../../shared/Cards/OrderCard'
 
 const ManageOrders = () => {
     const dispatch = useDispatch()
@@ -46,7 +46,7 @@ const ManageOrders = () => {
     }, [updatedOrder])
 
     return (
-        <Div theme={postContentStyle()}>
+        <Div theme={contentWrapperStyle}>
             <H2>
                 Total orders: {orders.length}
             </H2>

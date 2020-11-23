@@ -345,8 +345,8 @@ function* signUp({payload}) {
 
 function* updateProfile({payload}) {
     try {
-        const {_id, token, values} = payload
-        const profile = yield call(update, {_id, token, user: values})
+        const {_id, token, name} = payload
+        const profile = yield call(update, {_id, token, user: {name: name}})
 
         if (!profile.error) {
             yield call(updateUser, {

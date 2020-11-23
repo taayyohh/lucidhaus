@@ -1,55 +1,23 @@
-import {Formik}             from 'formik'
-import React                from 'react'
-import {
-    useDispatch,
-    useSelector
-}                   from 'react-redux'
-import Div          from '../../shared/Basic/Div'
-import H3         from '../../shared/Basic/H3'
-import Button               from '../../shared/Basic/Button'
-import SmartInput           from '../../shared/Forms/SmartInput'
-import {genericButtonStyle} from '../../themes/elements'
-import {
-    signInFormStyle,
-    signUpFormStyle
-}                           from '../../themes/signup'
-import {userFieldTypes}     from '../../variables/fieldTypes'
-
+import React            from 'react'
+import {useSelector}    from 'react-redux'
+import GenericFormik    from '../../shared/Forms/GenericFormik'
+import ContentWrapper   from '../../shared/Layout/ContentWrapper'
+import {userFieldTypes} from '../../variables/fieldTypes'
 
 const UpdateProfile = () => {
-    const dispatch = useDispatch()
     const {name, token, _id} = useSelector(state => state.user)
 
     return (
-        //TODO: implement password reset & email verification and password reset
-        <Formik
-            initialValues={{name: name}}
-            onSubmit={values =>
-                dispatch({
-                    type: 'user/updateProfile',
-                    payload: {_id, token, values}
-                })}
-        >
-            {formik => (
-                <Div as="form" theme={signInFormStyle} onSubmit={formik.handleSubmit}>
-                    <H3 theme={signInFormStyle.heading}>Update Profile</H3>
-                    {userFieldTypes.map(f =>
-                        <SmartInput
-                            {...formik.getFieldProps(f.name)}
-                            id={f.name}
-                            key={f.inputLabel}
-                            inputLabel={f.inputLabel}
-                            type={f.type}
-                            theme={signInFormStyle.fieldset}
-                        />
-                    )}
-                    <Button
-                        theme={{...genericButtonStyle, ...signUpFormStyle.button}}
-                        children={'Submit'}
-                    />
-                </Div>
-            )}
-        </Formik>
+        //TODO: email verification and password reset
+        <ContentWrapper>
+            <GenericFormik
+                initialValues={{name: name, token: token, _id: _id}}
+                fields={userFieldTypes}
+                //validationSchema={validateProfile}
+                dispatchAction={'user/updateProfile'}
+                formHeading={'Update Profile'}
+            />
+        </ContentWrapper>
     )
 }
 

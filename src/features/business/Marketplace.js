@@ -6,7 +6,7 @@ import {
 import Div                       from '../../shared/Basic/Div'
 import GenericCard               from '../../shared/Cards/GenericCard'
 import {marketplaceWrapperStyle} from '../../themes/business'
-import {postContentStyle}        from '../../themes/layout'
+import {contentWrapperStyle}     from '../../themes/layout'
 
 
 const Marketplace = () => {
@@ -21,7 +21,7 @@ const Marketplace = () => {
     }, [])
 
     return (
-        <Div theme={postContentStyle(slug)}>
+        <Div theme={contentWrapperStyle}>
             <Div theme={marketplaceWrapperStyle}>
                 {marketplace && marketplace?.map(business =>
                     <GenericCard

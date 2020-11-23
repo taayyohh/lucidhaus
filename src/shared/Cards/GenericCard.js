@@ -1,14 +1,13 @@
 import React, {memo} from 'react'
-import MotionDiv     from '../Basic/MotionDiv'
-import S3Img         from '../Basic/S3Img'
 import {
     genericCardImageStyle,
     genericCardImageWrapperStyle,
     genericCardNameStyle,
     genericCardStyle
 }                    from '../../themes/business'
-import Div           from '../Basic/Div'
 import LinkSwitch    from '../Basic/LinkSwitch'
+import MotionDiv     from '../Basic/MotionDiv'
+import S3Img         from '../Basic/S3Img'
 
 const GenericCard = memo(({photo, name, slug, theme, layoutId}) => {
     return (
