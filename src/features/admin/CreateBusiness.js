@@ -1,51 +1,33 @@
-import {Formik}              from 'formik'
-import React                 from 'react'
-import 'react-image-crop/dist/ReactCrop.css'
-import {
-    useDispatch,
-    useSelector
-}                  from 'react-redux'
-import FieldSwitch from '../../shared/Forms/FieldSwitch'
-import Button      from '../../shared/Basic/Button'
-import Div                   from '../../shared/Basic/Div'
-import Form                  from '../../shared/Basic/Form'
-import H2                    from '../../shared/Basic/H2'
-import {defaultNewFormStyle} from '../../themes/forms'
-import {contentWrapperStyle} from '../../themes/layout'
-import {businessFieldTypes}  from '../../variables/fieldTypes'
+import React                from 'react'
+import {useSelector}        from 'react-redux'
+import GenericFormik        from '../../shared/Forms/GenericFormik'
+import ContentWrapper       from '../../shared/Layout/ContentWrapper'
+import {businessFormStyle}  from '../../themes/business'
+import {businessFieldTypes} from '../../variables/fieldTypes'
 
 const CreateBusiness = () => {
-    const dispatch = useDispatch()
     const {_id, token} = useSelector(state => state.user)
+    const initialValues = {
+        name: '',
+        description: '',
+        photo: '',
+        image: '',
+        token: token,
+        _id: _id
+    }
 
     return (
-        <Div theme={contentWrapperStyle}>
-            <Formik
-                initialValues={{name: '', description: '', photo: '', image: ''}}
-                onSubmit={values => dispatch({
-                    type: 'admin/createBusiness',
-                    payload: {_id: _id, token: token, values: values}
-                })}
-            >
-                {formik => (
-                    <Form onSubmit={formik.handleSubmit}>
-                        <H2 theme={defaultNewFormStyle.heading}>Create Business</H2>
-                        <Div theme={defaultNewFormStyle.inner}>
-                            {businessFieldTypes.map((f, i) =>
-                                <FieldSwitch
-                                    key={i}
-                                    formik={formik}
-                                    field={f}
-                                />
-                            )}
-                            <Button>
-                                Create Business
-                            </Button>
-                        </Div>
-                    </Form>
-                )}
-            </Formik>
-        </Div>
+        <ContentWrapper>
+            <GenericFormik
+                initialValues={initialValues}
+                fields={businessFieldTypes}
+                //   validationSchema={validateSignin}
+                dispatchAction={'admin/createBusiness'}
+                formHeading={'Create Business'}
+                buttonText={'Create'}
+                theme={businessFormStyle}
+            />
+        </ContentWrapper>
     )
 }
 

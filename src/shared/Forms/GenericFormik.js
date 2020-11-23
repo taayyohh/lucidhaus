@@ -7,29 +7,31 @@ import H3                 from '../Basic/H3'
 import SubmitButton       from '../Basic/SubmitButton'
 import FieldSwitch        from './FieldSwitch'
 
-const GenericFormik = ({buttonText, dispatchAction, fields, formHeading, initialValues, validationSchema}) => {
+const GenericFormik = ({initialValues, fields, options, validationSchema, dispatchAction, formHeading, buttonText, enableReinitialize, theme}) => {
     const dispatch = useDispatch()
     return (
         <Formik
             initialValues={initialValues}
             validationSchema={validationSchema}
             onSubmit={values => dispatch({type: dispatchAction, payload: values})}
+            enableReinitialize={enableReinitialize}
         >
             {formik => (
                 <Div
                     as="form"
-                    theme={genericFormStyle}
+                    theme={{...genericFormStyle, ...theme}}
                     onSubmit={formik.handleSubmit}
                 >
-                    <H3 theme={genericFormStyle.heading}>{formHeading}</H3>
+                    <H3 theme={{...genericFormStyle.heading, ...theme.heading}}>{formHeading}</H3>
                     {fields.map((f, i) =>
                         <FieldSwitch
                             key={i}
                             formik={formik}
                             field={f}
+                            options={options}
                         />
                     )}
-                    <SubmitButton>
+                    <SubmitButton theme={{...genericFormStyle.button, ...theme.button}}>
                         {buttonText}
                     </SubmitButton>
                 </Div>

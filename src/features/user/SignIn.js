@@ -8,6 +8,7 @@ import {validateSignin}   from '../../variables/fieldValidation'
 
 const SignIn = () => {
     const {isAuthenticated, isAdmin} = useSelector(state => state.user)
+    const initialValues = {email: '', password: ''}
 
     useEffect(() => {
         if (isAuthenticated)
@@ -19,12 +20,12 @@ const SignIn = () => {
     return (
         <ContentWrapper>
             <GenericFormik
-                buttonText={'Sign in'}
-                dispatchAction={'user/signIn'}
+                initialValues={initialValues}
                 fields={signInFieldTypes}
-                formHeading={'Sign In'}
-                initialValues={{email: '', password: ''}}
                 validationSchema={validateSignin}
+                dispatchAction={'user/signIn'}
+                formHeading={'Sign In'}
+                buttonText={'Sign in'}
             />
         </ContentWrapper>
     )

@@ -1,18 +1,12 @@
-import {Formik}              from 'formik'
-import React, {useEffect}    from 'react'
+import React, {useEffect}  from 'react'
 import 'react-image-crop/dist/ReactCrop.css'
 import {
     useDispatch,
     useSelector
-}                            from 'react-redux'
-import Button                from '../../shared/Basic/Button'
-import Div                   from '../../shared/Basic/Div'
-import Form                  from '../../shared/Basic/Form'
-import H2                    from '../../shared/Basic/H2'
-import FieldSwitch           from '../../shared/Forms/FieldSwitch'
-import {defaultNewFormStyle} from '../../themes/forms'
-import {contentWrapperStyle} from '../../themes/layout'
-import {productFieldTypes}   from '../../variables/fieldTypes'
+}                          from 'react-redux'
+import GenericFormik       from '../../shared/Forms/GenericFormik'
+import ContentWrapper      from '../../shared/Layout/ContentWrapper'
+import {productFieldTypes} from '../../variables/fieldTypes'
 
 const UpdateProduct = () => {
     const dispatch = useDispatch()
@@ -21,6 +15,19 @@ const UpdateProduct = () => {
     const {product} = useSelector(state => state.shop)
     const {productCategories} = useSelector(state => state.shop)
     const {name, description, photo, quantity, price, sold, category} = product
+    const initialValues = {
+        name: name,
+        description: description,
+        photo: photo,
+        image: '',
+        quantity: quantity,
+        category: category,
+        price: price,
+        sold: sold,
+        slug,
+        _id,
+        token,
+    }
     //TODO: turn into custom fn that takes options as arguments outputs array of obj
     const options = [
         {
@@ -30,62 +37,26 @@ const UpdateProduct = () => {
     ]
 
     useEffect(() => {
-        dispatch({
-            type: 'shop/getProduct',
-            payload: {slug: slug}
-        })
+        dispatch({type: 'shop/getProduct', payload: {slug: slug}})
         dispatch({type: 'shop/getProductCategories'})
-
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (
-        <Div theme={contentWrapperStyle}>
-            {product && (
-                <Formik
-                    initialValues={{
-                        name: name,
-                        description: description,
-                        photo: photo,
-                        image: '',
-                        quantity: quantity,
-                        category: category,
-                        price: price,
-                        sold: sold
-                    }}
-                    enableReinitialize={true}
-                    onSubmit={values => dispatch({
-                        type: 'admin/updateProduct',
-                        payload: {
-                            slug: slug,
-                            _id: _id,
-                            token: token,
-                            values: values
-                        }
-                    })}
-                >
-                    {formik => (
-                        <Form onSubmit={formik.handleSubmit}>
-                            <H2 theme={defaultNewFormStyle.heading}>Update Product</H2>
-                            <Div theme={defaultNewFormStyle.inner}>
-                                {productFieldTypes.map((f, i) =>
-                                    <FieldSwitch
-                                        key={i}
-                                        formik={formik}
-                                        field={f}
-                                        options={options}
-                                    />
-                                )}
-                                <Button>
-                                    Updated Product
-                                </Button>
-                            </Div>
-                        </Form>
-                    )}
-                </Formik>
-            )}
-        </Div>
+        <ContentWrapper>
+            <GenericFormik
+                initialValues={initialValues}
+                fields={productFieldTypes}
+                options={options}
+                //   validationSchema={validateSignin}
+                dispatchAction={'admin/updateProduct'}
+                formHeading={'Update Product'}
+                buttonText={'Update'}
+                theme={{width: 1100}}
+                enableReinitialize={true}
+            />
+        </ContentWrapper>
     )
 }
 

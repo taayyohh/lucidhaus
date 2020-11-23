@@ -6,16 +6,18 @@ import {userFieldTypes} from '../../variables/fieldTypes'
 
 const UpdateProfile = () => {
     const {name, token, _id} = useSelector(state => state.user)
+    const initialValues = {name: name, token: token, _id: _id}
 
     return (
         //TODO: email verification and password reset
         <ContentWrapper>
             <GenericFormik
-                initialValues={{name: name, token: token, _id: _id}}
+                initialValues={initialValues}
                 fields={userFieldTypes}
                 //validationSchema={validateProfile}
                 dispatchAction={'user/updateProfile'}
                 formHeading={'Update Profile'}
+                buttonText={'Update'}
             />
         </ContentWrapper>
     )

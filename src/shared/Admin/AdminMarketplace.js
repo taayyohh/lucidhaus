@@ -20,6 +20,7 @@ const AdminMarketplace = ({marketplace}) =>
                     name={business.name}
                     photo={business.photo}
                     theme={adminBusinessCardStyle}
+                    layoutId={business._id}
                 />
                 <GenericCardAdminControls
                     edit={'/admin/marketplace/update'}

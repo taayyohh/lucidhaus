@@ -109,7 +109,7 @@ export const productFieldTypes = [
         name: 'sold',
         inputLabel: 'Sold',
         type: 'number',
-        disabled: 'disabled'
+        disabled: true
     },
     {
         name: 'category',

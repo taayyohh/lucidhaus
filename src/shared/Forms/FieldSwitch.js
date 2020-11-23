@@ -17,6 +17,7 @@ const FieldSwitch = memo(({field, formik, options}) => {
                 id={field.name}
                 inputLabel={field.inputLabel}
                 type={field.type}
+                disabled={field.disabled}
                 theme={genericFormStyle.fieldset}
                 className={formik.touched[field.name] && formik.errors[field.name] ? 'error' : ''}
                 errorMessage={formik.touched[field.name] && formik.errors[field.name] ? formik.errors[field.name] : null}

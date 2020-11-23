@@ -11,7 +11,7 @@ import S3Img         from '../Basic/S3Img'
 
 const GenericCard = memo(({photo, name, slug, theme, layoutId}) => {
     return (
-        <MotionDiv layoutId={`${layoutId}-wrapper`}>
+        <MotionDiv layoutId={layoutId ? `${layoutId}-wrapper` : null}>
             <LinkSwitch
                 url={slug}
                 theme={{...genericCardStyle, ...theme}}

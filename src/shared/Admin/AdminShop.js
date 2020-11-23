@@ -20,6 +20,7 @@ const AdminShop = ({shop}) =>
                     name={product.name}
                     photo={product.photo}
                     theme={adminShopCardStyle}
+                    layoutId={product._id}
                 />
                 <GenericCardAdminControls
                     edit={'/admin/product/update'}

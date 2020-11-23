@@ -25,6 +25,7 @@ const ManageMarketplace = () => {
     return (
         <Div theme={contentWrapperStyle}>
             <Div theme={adminMarketplaceWrapperStyle}>
+                {/*//TODO:improve*/}
                 <AdminControls
                     data={marketplace}
                     title={'Business'}

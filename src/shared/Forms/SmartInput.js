@@ -15,7 +15,7 @@ import InputLabel from '../Basic/InputLabel'
 import Legend     from '../Basic/Legend'
 import Span       from '../Basic/Span'
 
-const SmartInput = ({inputLabel, type, theme, id, className, errorMessage, onChange, value}) => {
+const SmartInput = ({inputLabel, type, disabled, theme, id, className, errorMessage, onChange, value}) => {
     const legendRef = useRef()
     const inputLabelRef = useRef()
     const inputLabelWidth = useMeasure(inputLabelRef).width * globals.style.inputLabelShrinkRatio
@@ -69,6 +69,7 @@ const SmartInput = ({inputLabel, type, theme, id, className, errorMessage, onCha
                 type={type || 'text'}
                 value={value || ''}
                 theme={theme.field}
+                disabled={disabled}
             />
             <Span theme={defaultFieldErrorStyle}>{errorMessage}</Span>
         </Fieldset>

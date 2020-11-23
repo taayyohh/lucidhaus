@@ -1,26 +1,26 @@
-import {Formik}              from 'formik'
-import React, {useEffect}    from 'react'
-import 'react-image-crop/dist/ReactCrop.css'
+import React, {useEffect}   from 'react'
 import {
     useDispatch,
     useSelector
-}                            from 'react-redux'
-import Button                from '../../shared/Basic/Button'
-import Div                   from '../../shared/Basic/Div'
-import Form                  from '../../shared/Basic/Form'
-import H2                    from '../../shared/Basic/H2'
-import FieldSwitch           from '../../shared/Forms/FieldSwitch'
-import {genericButtonStyle}  from '../../themes/elements'
-import {defaultNewFormStyle} from '../../themes/forms'
-import {contentWrapperStyle} from '../../themes/layout'
-import {businessFieldTypes}  from '../../variables/fieldTypes'
+}                           from 'react-redux'
+import GenericFormik        from '../../shared/Forms/GenericFormik'
+import ContentWrapper       from '../../shared/Layout/ContentWrapper'
+import {businessFieldTypes} from '../../variables/fieldTypes'
 
 const UpdateBusiness = () => {
     const dispatch = useDispatch()
     const {_id, token} = useSelector(state => state.user)
     const {slug} = useSelector(state => state.site)
     const {business} = useSelector(state => state.business)
-   // const {name, description, photo} = business
+    const initialValues = {
+        name: business.name,
+        description: business.description,
+        photo: business.photo,
+        image: '',
+        slug,
+        _id,
+        token,
+    }
 
     useEffect(() => {
         dispatch({
@@ -34,48 +34,18 @@ const UpdateBusiness = () => {
     }, [])
 
     return (
-        <Div theme={contentWrapperStyle}>
-            {business && (
-                <Formik
-                    initialValues={{
-                        name: business.name,
-                        description: business.description,
-                        photo: business.photo,
-                        image: ''
-                    }}
-                    enableReinitialize={true}
-                    onSubmit={values => dispatch({
-                        type: 'admin/updateBusiness',
-                        payload: {
-                            slug: slug,
-                            _id: _id,
-                            token: token,
-                            values: values
-                        }
-                    })}
-                >
-                    {formik => (
-                        <Form onSubmit={formik.handleSubmit}>
-                            <H2 theme={defaultNewFormStyle.heading}>Update Business</H2>
-                            <Div theme={defaultNewFormStyle.inner}>
-                                {businessFieldTypes.map((f, i) =>
-                                    <FieldSwitch
-                                        key={i}
-                                        formik={formik}
-                                        field={f}
-                                    />
-                                )}
-                                <Button
-                                    theme={{...genericButtonStyle}}
-                                >
-                                    Updated Business
-                                </Button>
-                            </Div>
-                        </Form>
-                    )}
-                </Formik>
-            )}
-        </Div>
+        <ContentWrapper>
+            <GenericFormik
+                initialValues={initialValues}
+                fields={businessFieldTypes}
+                //   validationSchema={validateSignin}
+                dispatchAction={'admin/updateBusiness'}
+                formHeading={'Update Business'}
+                buttonText={'Update'}
+                theme={{width: 1100}}
+                enableReinitialize={true}
+            />
+        </ContentWrapper>
     )
 }
 

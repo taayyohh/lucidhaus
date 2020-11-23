@@ -65,6 +65,10 @@ export const genericCardNameStyle = {
     color: black
 }
 
+export const businessFormStyle = {
+    width: [1100, .7, '100%']
+}
+
 export const businessWrapperStyle = {
     display: flex,
     flexDirection: column,

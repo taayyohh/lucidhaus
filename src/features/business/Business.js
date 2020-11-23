@@ -1,11 +1,11 @@
-import React, {useEffect} from 'react'
+import React, {useEffect}    from 'react'
 import {
     useDispatch,
     useSelector
-}                         from 'react-redux'
-import MotionDiv          from '../../shared/Basic/MotionDiv'
-import RichText           from '../../shared/Basic/RichText'
-import S3Img              from '../../shared/Basic/S3Img'
+}                            from 'react-redux'
+import MotionDiv             from '../../shared/Basic/MotionDiv'
+import RichText              from '../../shared/Basic/RichText'
+import S3Img                 from '../../shared/Basic/S3Img'
 import {
     businessStyle,
     businessWrapperStyle,

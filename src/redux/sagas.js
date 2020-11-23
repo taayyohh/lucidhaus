@@ -101,8 +101,7 @@ function* navigate({payload}) {
 /* Business */
 
 function* createBusiness({payload}) {
-    const {_id, token, values} = payload
-    const {name, description, photo, image} = values
+    const {_id, token, name, description, photo, image} = payload
 
     //add to formdata so api can read
     const business = new FormData()
@@ -130,8 +129,7 @@ function* createBusiness({payload}) {
 }
 
 function* updateBusinessDetail({payload}) {
-    const {slug, _id, token, values} = payload
-    const {name, description, photo, image} = values
+    const {slug, _id, token, name, description, photo, image} = payload
 
     //add to formData so api can read
     const updatedBusiness = new FormData()
@@ -180,8 +178,7 @@ function* destroyBusinessSuccess() {
 
 /* Product */
 function* createProduct({payload}) {
-    const {_id, token, values} = payload
-    const {name, description, photo, image, quantity, price, category} = values
+    const {_id, token, values, name, description, photo, image, quantity, price, category} = payload
 
     //add to formdata so api can read
     const product = new FormData()
@@ -213,9 +210,9 @@ function* createProduct({payload}) {
 }
 
 function* createProductCategory({payload}) {
-    const {_id, token, values} = payload
+    const {_id, token, name} = payload
     const category = new FormData()
-    category.set('name', values.name)
+    category.set('name', name)
 
     //set up error catching
     yield call(addProductCategory, {_id, token, category})
@@ -552,11 +549,11 @@ function* getProductCategoryDetail({payload}) {
 }
 
 function* updateProductCategoryDetail({payload}) {
-    const {categoryId, categoryName, token, _id} = payload
+    const {categoryId, name, token, _id} = payload
     console.log('pay', payload)
 
     const productCategory = new FormData()
-    productCategory.set('name', categoryName)
+    productCategory.set('name', name)
 
 
     try {
