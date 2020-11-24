@@ -29,6 +29,8 @@ const Post = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
+    console.log('id', post._id)
+
 
     return (
         <MotionDiv theme={contentWrapperStyle}>
@@ -37,7 +39,7 @@ const Post = () => {
             >
             </MotionDiv>
             <MotionDiv
-                layoutId={`${post._id}-image`}
+              //  layoutId={`${post._id}-image`}
                 theme={genericCardDetailImageWrapperStyle}
             >
                 <S3Img

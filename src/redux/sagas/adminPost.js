@@ -1,8 +1,8 @@
-import {takeLatest} from '@redux-saga/core/effects'
 import {push}       from 'connected-react-router'
 import {
     call,
-    put
+    put,
+    takeLatest
 }                   from 'redux-saga/effects'
 import {
     addPost,
@@ -100,7 +100,7 @@ export function* destroyPostSuccess() {
 /**
  *
  *
- * ADMIN BUSINESS WATCHERS
+ * ADMIN POST WATCHERS
  *
  *
  */

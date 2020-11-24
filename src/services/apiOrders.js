@@ -4,8 +4,8 @@ import {API} from '../config'
  * Manage ManageOrders
  */
 
-export const listOrders = ({_id, token}) => {
-    return fetch(`${API}/order/list/${_id}`, {
+export const listOrders = ({_id, token}) =>
+    fetch(`${API}/order/list/${_id}`, {
         method: 'GET',
         headers: {
             Accept: 'application/json',
@@ -14,12 +14,13 @@ export const listOrders = ({_id, token}) => {
     })
         .then(response => {
             return response.json()
-        }).catch(error => {
+        })
+        .catch(error => {
             return error
         })
-}
-export const listStatusValues = ({_id, token}) => {
-    return fetch(`${API}/order/status-values/${_id}`, {
+
+export const listStatusValues = ({_id, token}) =>
+    fetch(`${API}/order/status-values/${_id}`, {
         method: 'GET',
         headers: {
             Accept: 'application/json',
@@ -28,12 +29,13 @@ export const listStatusValues = ({_id, token}) => {
     })
         .then(response => {
             return response.json()
-        }).catch(error => {
+        })
+        .catch(error => {
             return error
         })
-}
-export const updateOrderStatus = ({_id, token, orderId, status}) => {
-    return fetch(`${API}/order/${orderId}/status/${_id}`, {
+
+export const updateOrderStatus = ({_id, token, orderId, status}) =>
+    fetch(`${API}/order/${orderId}/status/${_id}`, {
         method: 'PUT',
         headers: {
             Accept: 'application/json',
@@ -48,4 +50,3 @@ export const updateOrderStatus = ({_id, token, orderId, status}) => {
         .catch(error => {
             return error
         })
-}

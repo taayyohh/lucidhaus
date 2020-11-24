@@ -10,7 +10,7 @@ import GenericCardAdminControls from '../Controls/GenericCardAdminControls'
 
 const AdminPosts = ({posts}) =>
     <Div theme={adminPostsInnerWrapperStyle}>
-        {posts && posts.map(post => (
+        {posts && posts?.map(post => (
             <Div
                 key={post.slug}
                 theme={adminPostCardWrapperStyle}

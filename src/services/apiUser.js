@@ -1,7 +1,7 @@
 import {API} from "../config";
 
-export const signup = user => {
-    return fetch(`${API}/signup`, {
+export const signup = user =>
+    fetch(`${API}/signup`, {
         method: "POST",
         headers: {
             Accept: 'application/json',
@@ -15,10 +15,10 @@ export const signup = user => {
         .catch(error => {
             return error
     })
-}
 
-export const signin = user => {
-    return fetch(`${API}/signin`, {
+
+export const signin = user =>
+    fetch(`${API}/signin`, {
         method: "POST",
         headers: {
             Accept: 'application/json',
@@ -30,16 +30,18 @@ export const signin = user => {
     }).catch(err => {
         return err
     })
-}
+
 
 export const signout = () => {
     if (typeof window !== 'undefined') {
         localStorage.removeItem('jwt')
         return fetch(`${API}/signout`, {
             method: "GET"
-        }).then(response => {
+        })
+            .then(response => {
             return response.json()
-        }).catch(error => {
+        })
+            .catch(error => {
             return error
         })
     }
@@ -62,8 +64,8 @@ export const isAuthenticated = () => {
     }
 }
 
-export const read = (userId, token) => {
-    return fetch(`${API}/user/${userId}`, {
+export const read = (userId, token) =>
+    fetch(`${API}/user/${userId}`, {
         method: 'GET',
         headers: {
             Accept: "application/json",
@@ -77,10 +79,10 @@ export const read = (userId, token) => {
         .catch(error => {
             return error
         })
-}
 
-export const getPurchaseHistory = ({userId, token}) => {
-    return fetch(`${API}/orders/by/user/${userId}`, {
+
+export const getPurchaseHistory = ({userId, token}) =>
+    fetch(`${API}/orders/by/user/${userId}`, {
         method: 'GET',
         headers: {
             Accept: "application/json",
@@ -94,10 +96,10 @@ export const getPurchaseHistory = ({userId, token}) => {
         .catch(error => {
             return error
         })
-}
 
-export const update = ({_id, token, user}) => {
-    return fetch(`${API}/user/${_id}`, {
+
+export const update = ({_id, token, user}) =>
+    fetch(`${API}/user/${_id}`, {
         method: "PUT",
         headers: {
             Accept: "application/json",
@@ -105,12 +107,14 @@ export const update = ({_id, token, user}) => {
             Authorization: `Bearer ${token}`
         },
         body: JSON.stringify(user)
-    }).then(response => {
+    })
+        .then(response => {
         return response.json()
-    }).catch(error => {
+    })
+        .catch(error => {
         return error
     })
-}
+
 
 export const updateUser = ({user}) => {
     if (typeof window !== 'undefined') {

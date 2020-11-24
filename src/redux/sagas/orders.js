@@ -1,8 +1,8 @@
-import {takeLatest} from '@redux-saga/core/effects'
-import {takeEvery}  from 'redux-saga/dist/redux-saga-effects-npm-proxy.esm'
 import {
     call,
-    put
+    put,
+    takeLatest,
+    takeEvery
 }                   from 'redux-saga/effects'
 import {
     listOrders,

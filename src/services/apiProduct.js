@@ -7,22 +7,24 @@ import {API} from '../config'
  * update single product
  * delete single product
  */
-export const addProduct = ({_id, token, product}) => {
-    return fetch(`${API}/product/create/${_id}`, {
+export const addProduct = ({_id, token, product}) =>
+    fetch(`${API}/product/create/${_id}`, {
         method: 'POST',
         headers: {
             Accept: 'application/json',
             Authorization: `Bearer ${token}`
         },
         body: product
-    }).then(response => {
-        return response.json()
-    }).catch(error => {
-        return error
     })
-}
-export const getProducts = () => {
-    return fetch(`${API}/products?limit=undefined`, {
+        .then(response => {
+            return response.json()
+        })
+        .catch(error => {
+            return error
+        })
+
+export const getProducts = () =>
+    fetch(`${API}/products?limit=undefined`, {
         method: 'GET'
     })
         .then(response => {
@@ -31,9 +33,9 @@ export const getProducts = () => {
         .catch(error => {
             return error
         })
-}
-export const deleteProduct = ({slug, _id, token}) => {
-    return fetch(`${API}/product/${slug}/${_id}`, {
+
+export const deleteProduct = ({slug, _id, token}) =>
+    fetch(`${API}/product/${slug}/${_id}`, {
         method: 'DELETE',
         headers: {
             Accept: 'application/json',
@@ -47,9 +49,9 @@ export const deleteProduct = ({slug, _id, token}) => {
         .catch(error => {
             return error
         })
-}
-export const getProduct = ({slug}) => {
-    return fetch(`${API}/product/${slug}`, {
+
+export const getProduct = ({slug}) =>
+    fetch(`${API}/product/${slug}`, {
         method: 'GET'
     })
         .then(response => {
@@ -58,9 +60,9 @@ export const getProduct = ({slug}) => {
         .catch(error => {
             return error
         })
-}
-export const updateProduct = ({slug, _id, token, product}) => {
-    return fetch(`${API}/product/${slug}/${_id}`, {
+
+export const updateProduct = ({slug, _id, token, product}) =>
+    fetch(`${API}/product/${slug}/${_id}`, {
         method: 'PUT',
         headers: {
             Accept: 'application/json',
@@ -74,7 +76,7 @@ export const updateProduct = ({slug, _id, token, product}) => {
         .catch(error => {
             return error
         })
-}
+
 export const getFilteredProducts = (skip, limit, filters = {}) => {
     const data = {
         limit, skip, filters

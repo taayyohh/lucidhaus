@@ -1,14 +1,39 @@
-import {takeLatest}            from '@redux-saga/core/effects'
-import {push}                  from 'connected-react-router'
+import {push} from 'connected-react-router'
 import {
     call,
-    put
-}                              from 'redux-saga/effects'
+    put,
+    takeLatest
+}             from 'redux-saga/effects'
 import {
+    addProductCategory,
     deleteProductCategory,
     updateProductCategory
-}                              from '../../services/apiProductCategory'
-import {createProductCategory} from './adminProduct'
+}             from '../../services/apiProductCategory'
+
+
+export function* createProductCategory({payload}) {
+    const {_id, token, name} = payload
+    const category = new FormData()
+    category.set('name', name)
+
+    try {
+        const created = yield call(addProductCategory, {_id, token, category})
+        if (!created.error) {
+            yield put({type: 'shop/createProductCategorySuccess', created})
+            yield push(yield put(push('/admin/taxonomy')))
+        } else {
+            yield put({
+                type: 'site/setNotification',
+                payload: {
+                    notification: created.error,
+                    theme: 'red'
+                }
+            })
+        }
+    } catch (error) {
+        yield put({type: 'admin/updateProductCategoryFailure', error})
+    }
+}
 
 export function* updateProductCategoryDetail({payload}) {
     const {categoryId, name, token, _id} = payload
@@ -35,7 +60,7 @@ export function* destroyProductCategory({payload}) {
     const destroyed = yield call(deleteProductCategory, payload)
     if (!destroyed.error) {
         yield put({type: 'admin/destroyProductCategorySuccess'})
-        yield put(push('/admin/shop'))
+        yield put(push('/admin/taxonomy'))
     } else {
         yield put({type: 'admin/destroyProductCategoryFailure'})
     }

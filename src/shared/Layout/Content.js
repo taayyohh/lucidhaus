@@ -1,4 +1,7 @@
-import {AnimatePresence, AnimateSharedLayout}      from 'framer-motion'
+import {
+    AnimatePresence,
+    AnimateSharedLayout
+}                             from 'framer-motion'
 import React, {
     lazy,
     Suspense,
@@ -12,6 +15,7 @@ import AdminRoute             from '../Admin/AdminRoute'
 import PrivateRoute           from '../Admin/PrivateRoute'
 import MotionDiv              from '../Basic/MotionDiv'
 import {TransitionAnimations} from '../Containers/TransitionController'
+import Fallback               from './Fallback'
 
 const AdminDashboard = lazy(() => import('../../features/admin/AdminDashboard'))
 const CreatePost = lazy(() => import('../../features/admin/CreatePost'))
@@ -42,7 +46,7 @@ const Content = () => {
         <AnimateSharedLayout type="crossfade">
             <AnimatePresence>
                 <MotionDiv animate={contentAnimation} theme={{width: '100%'}}>
-                    <Suspense fallback={<div>Loading...</div>}>
+                    <Suspense fallback={<Fallback/>}>
                         <Switch location={{pathname: currentPath}}>
                             <Route path="/" exact component={Home}/>
                             <Route path="/signup" exact component={SignUp}/>

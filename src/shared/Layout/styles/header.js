@@ -8,9 +8,11 @@ import {
     column,
     flex,
     none,
+    pointer,
     relative,
     row,
     spaceBetween,
+    transparent,
     uppercase,
     white
 }                from '../../../utils/themer'
@@ -139,4 +141,17 @@ export const headerMenuAuthStyleListItemStyle = {
         width: '100%',
         padding: '15px 0'
     },
+}
+
+export const headerMenuToggleStyle = {
+    outline: none,
+    border: none,
+    cursor: pointer,
+    // position: absolute,
+    // top: [18, .7, 18],
+    // left: [15, .7, 15],
+    width: [50, .7, 50],
+    height: [50, .7, 50],
+    borderRadius: '50%',
+    background: '#000',
 }

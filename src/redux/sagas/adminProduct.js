@@ -1,20 +1,19 @@
-import {takeLatest}         from '@redux-saga/core/effects'
-import {push}               from 'connected-react-router'
+import {push}       from 'connected-react-router'
 import {
     call,
-    put
-}                           from 'redux-saga/effects'
+    put,
+    takeLatest
+}                   from 'redux-saga/effects'
 import {
     addProduct,
     deleteProduct,
     updateProduct
-}                           from '../../services/apiProduct'
-import {addProductCategory} from '../../services/apiProductCategory'
+}                   from '../../services/apiProduct'
 import {
     getSignedRequest,
     uploadFile
-}                           from '../../services/apiS3'
-import {updateItem}         from '../../utils/cartHelpers'
+}                   from '../../services/apiS3'
+import {updateItem} from '../../utils/cartHelpers'
 
 export function* createProduct({payload}) {
     const {_id, token, name, description, photo, image, quantity, price, category} = payload
@@ -48,15 +47,6 @@ export function* createProduct({payload}) {
     }
 }
 
-export function* createProductCategory({payload}) {
-    const {_id, token, name} = payload
-    const category = new FormData()
-    category.set('name', name)
-
-    //set up error catching
-    yield call(addProductCategory, {_id, token, category})
-}
-
 export function* updateProductDetail({payload}) {
     const {slug, _id, token, name, description, photo, image, quantity, price, category} = payload
 
@@ -81,6 +71,13 @@ export function* updateProductDetail({payload}) {
         const updated = yield call(updateProduct, {slug: slug, _id: _id, token: token, product: updatedProduct})
         if (!updated.error) {
             yield put({type: 'product/updateProductSuccess', payload: updated})
+            yield put({
+                type: 'site/setNotification',
+                payload: {
+                    notification: 'Updated Product',
+                    theme: 'green'
+                }
+            })
         } else {
             yield put({type: 'product/updateProductFailure', payload: updated})
         }

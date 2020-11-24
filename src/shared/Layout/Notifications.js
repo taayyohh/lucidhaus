@@ -23,7 +23,8 @@ const Notifications = () => {
     }
 
     useEffect(() => {
-        clearNotification()
+        if(notification)
+            clearNotification()
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [notification])

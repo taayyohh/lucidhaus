@@ -1,7 +1,7 @@
 import {API} from '../config'
 
-export const getBraintreeClientToken = ({_id, token}) => {
-    return fetch(`${API}/braintree/getToken/${_id}`, {
+export const getBraintreeClientToken = ({_id, token}) =>
+    fetch(`${API}/braintree/getToken/${_id}`, {
         method: 'GET',
         headers: {
             Accept: 'application/json',
@@ -15,7 +15,7 @@ export const getBraintreeClientToken = ({_id, token}) => {
         .catch(error => {
             return error
         })
-}
+
 
 export const getPaymentMethod = (instance) =>
     instance.requestPaymentMethod()

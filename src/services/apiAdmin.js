@@ -8,23 +8,25 @@ import {API} from '../config'
  * update single admin
  * delete single admin
  */
-export const addPost = ({userId, token, post}) => {
-    return fetch(`${API}/post/create/${userId}`, {
+export const addPost = ({userId, token, post}) =>
+    fetch(`${API}/post/create/${userId}`, {
         method: 'POST',
         headers: {
             Accept: 'application/json',
             Authorization: `Bearer ${token}`
         },
         body: post
-    }).then(response => {
-        return response.json()
-    }).catch(error => {
-        return error
     })
-}
+        .then(response => {
+            return response.json()
+        })
+        .catch(error => {
+            return error
+        })
 
-export const getPosts = () => {
-    return fetch(`${API}/posts?limit=undefined`, {
+
+export const getPosts = () =>
+    fetch(`${API}/posts?limit=undefined`, {
         method: 'GET'
     })
         .then(response => {
@@ -33,10 +35,10 @@ export const getPosts = () => {
         .catch(error => {
             return error
         })
-}
 
-export const deletePost = ({_id, token, slug}) => {
-    return fetch(`${API}/post/${slug}/${_id}`, {
+
+export const deletePost = ({_id, token, slug}) =>
+    fetch(`${API}/post/${slug}/${_id}`, {
         method: 'DELETE',
         headers: {
             Accept: 'application/json',
@@ -50,10 +52,10 @@ export const deletePost = ({_id, token, slug}) => {
         .catch(error => {
             return error
         })
-}
 
-export const getPost = ({slug}) => {
-    return fetch(`${API}/post/${slug}`, {
+
+export const getPost = ({slug}) =>
+    fetch(`${API}/post/${slug}`, {
         method: 'GET'
     })
         .then(response => {
@@ -62,10 +64,10 @@ export const getPost = ({slug}) => {
         .catch(error => {
             return error
         })
-}
 
-export const updatePost = ({slug, _id, token, post}) => {
-    return fetch(`${API}/post/${slug}/${_id}`, {
+
+export const updatePost = ({slug, _id, token, post}) =>
+    fetch(`${API}/post/${slug}/${_id}`, {
         method: 'PUT',
         headers: {
             Accept: 'application/json',
@@ -79,6 +81,6 @@ export const updatePost = ({slug, _id, token, post}) => {
         .catch(error => {
             return error
         })
-}
+
 
 

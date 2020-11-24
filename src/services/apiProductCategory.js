@@ -15,8 +15,8 @@ import {API} from '../config'
  **/
 
 
-export const getProductCategory = ({slug}) => {
-    return fetch(`${API}/product-category/${slug}`, {
+export const getProductCategory = ({slug}) =>
+    fetch(`${API}/product-category/${slug}`, {
         method: 'GET'
     })
         .then(response => {
@@ -25,10 +25,10 @@ export const getProductCategory = ({slug}) => {
         .catch(error => {
             return error
         })
-}
 
-export const addProductCategory = ({_id, token, category}) => {
-    return fetch(`${API}/product-category/create/${_id}`, {
+
+export const addProductCategory = ({_id, token, category}) =>
+    fetch(`${API}/product-category/create/${_id}`, {
         method: 'POST',
         headers: {
             Accept: 'application/json',
@@ -42,11 +42,10 @@ export const addProductCategory = ({_id, token, category}) => {
         .catch(error => {
             return error
         })
-}
 
-export const updateProductCategory = ({categoryId, _id, token, productCategory}) => {
-    console.log('product', productCategory)
-    return fetch(`${API}/product-category/${categoryId}/${_id}`, {
+
+export const updateProductCategory = ({categoryId, _id, token, productCategory}) =>
+    fetch(`${API}/product-category/${categoryId}/${_id}`, {
         method: 'PUT',
         headers: {
             Accept: 'application/json',
@@ -60,21 +59,21 @@ export const updateProductCategory = ({categoryId, _id, token, productCategory})
         .catch(error => {
             return error
         })
-}
 
-export const allProductCategories = () => {
-    return fetch(`${API}/product-categories`, {
+
+export const allProductCategories = () =>
+    fetch(`${API}/product-categories`, {
         method: 'GET'
     })
         .then(response => {
             return response.json()
         }).catch(error => {
-            return error
-        })
-}
+        return error
+    })
 
-export const deleteProductCategory = ({slug, _id, token}) => {
-    return fetch(`${API}/product-category/${slug}/${_id}`, {
+
+export const deleteProductCategory = ({slug, _id, token}) =>
+    fetch(`${API}/product-category/${slug}/${_id}`, {
         method: 'DELETE',
         headers: {
             Accept: 'application/json',
@@ -88,4 +87,3 @@ export const deleteProductCategory = ({slug, _id, token}) => {
         .catch(error => {
             return error
         })
-}

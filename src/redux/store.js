@@ -34,6 +34,8 @@ if (!['production'].includes(process.env.NODE_ENV)) {
                 ignoredActions: [
                     'admin/createPost',
                     'admin/createProduct',
+                    'admin/updatePost',
+                    'admin/updateProduct',
                     'shop/getPaymentNonce'
                 ],
             },

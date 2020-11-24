@@ -1,7 +1,7 @@
-import {takeLatest}  from '@redux-saga/core/effects'
 import {
     call,
-    put
+    put,
+    takeLatest
 }                    from 'redux-saga/effects'
 import {getProduct}  from '../../services/apiProduct'
 import {listRelated} from '../../services/apiShop'

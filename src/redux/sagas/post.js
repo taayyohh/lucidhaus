@@ -1,17 +1,17 @@
-import {takeEvery} from 'redux-saga/dist/redux-saga-effects-npm-proxy.esm'
 import {
     call,
-    put
-}                  from 'redux-saga/effects'
+    put,
+    takeEvery
+} from 'redux-saga/effects'
 import {
     getPost,
     getPosts
-}                  from '../../services/apiAdmin'
+} from '../../services/apiAdmin'
 
 /**
  *
  *
- * @param BUSINESS
+ * @param POST
  *
  *
  */
@@ -46,7 +46,7 @@ export function* getPostDetail({payload}) {
 /**
  *
  *
- * BUSINESS WATCHERS
+ * POST WATCHERS
  *
  *
  */
