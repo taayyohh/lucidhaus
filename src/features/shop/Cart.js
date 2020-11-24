@@ -1,14 +1,13 @@
-import React            from 'react'
-import {useSelector}    from 'react-redux'
-import Div              from '../../shared/Basic/Div'
-import H2          from '../../shared/Basic/H2'
-import Checkout    from './Checkout'
-import ProductCard from '../../shared/Cards/ProductCard'
+import React         from 'react'
+import {useSelector} from 'react-redux'
+import Div           from '../../shared/Basic/Div'
+import H2            from '../../shared/Basic/H2'
+import ProductCard   from '../../shared/Cards/ProductCard'
+import Checkout      from './Checkout'
 import {
     cartStyle,
     cartTitleStyle
-}                  from '../../themes/cart'
-import {microCardStyle} from '../../themes/layout'
+}                    from './styles'
 
 const Cart = () => {
     const {cart} = useSelector(state => state.shop)
@@ -29,7 +28,6 @@ const Cart = () => {
                                 <ProductCard
                                     key={i}
                                     product={product}
-                                    theme={microCardStyle}
                                 />
                             ))}
                         </Div>

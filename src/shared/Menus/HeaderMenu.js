@@ -2,15 +2,15 @@ import React, {useContext} from 'react'
 import {
     useDispatch,
     useSelector
-}                         from 'react-redux'
+}                 from 'react-redux'
 import {
     headerMenuAuthStyle,
     headerMenuAuthStyleListItemStyle,
     headerMenuListItemStyle,
     headerMenuListStyle,
     headerMenuStyle
-}                         from '../../themes/header'
-import {absolute}         from '../../utils/themer'
+}                 from '../Layout/styles/header'
+import {absolute} from '../../utils/themer'
 import Div                from '../Basic/Div'
 import LinkSwitch         from '../Basic/LinkSwitch'
 import Span               from '../Basic/Span'

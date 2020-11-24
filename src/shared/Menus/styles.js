@@ -1,3 +1,4 @@
+import {globals} from '../../config/styles'
 import {
     absolute,
     borderBox,
@@ -7,15 +8,12 @@ import {
     flex,
     pointer,
     white
-}                from '../utils/themer'
-import {globals} from '../config/styles'
+}                from '../../utils/themer'
 
 export const headerMenuPanelWrapperStyle = {
     position: absolute,
     // zIndex: 25
 }
-
-
 export const headerMenuPanelStyle = {
     display: flex,
     position: fixed,
@@ -63,4 +61,14 @@ export const headerMenuPanelStyle = {
         color: white,
         size: 30
     }
+}
+export const menuPanelStyle = {
+    paddingTop: [150, .7, 50],
+    height: '100%',
+    width: '100%'
+}
+export const menuPanelHeaderStyle = {
+    font: globals.fonts.fancy,
+    size: [48, .6, 24],
+    marginBottom: [30, .6, 30]
 }

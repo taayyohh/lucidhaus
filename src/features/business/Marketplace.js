@@ -5,8 +5,8 @@ import {
 }                                from 'react-redux'
 import Div                       from '../../shared/Basic/Div'
 import GenericCard               from '../../shared/Cards/GenericCard'
-import {marketplaceWrapperStyle} from '../../themes/business'
-import {contentWrapperStyle}     from '../../themes/layout'
+import {contentWrapperStyle}     from '../../shared/Layout/styles'
+import {marketplaceWrapperStyle} from './styles'
 
 
 const Marketplace = () => {

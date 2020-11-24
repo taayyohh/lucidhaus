@@ -1,11 +1,11 @@
 import React                from 'react'
 import {useDispatch}        from 'react-redux'
-import {productCardStyle}   from '../../themes/product'
 import Div                  from '../Basic/Div'
 import H2                   from '../Basic/H2'
 import S3Img                from '../Basic/S3Img'
 import Span                 from '../Basic/Span'
 import RemoveFromCartButton from '../Controls/RemoveFromCartButton'
+import {productCardStyle}   from './styles'
 
 
 const ProductCard = ({product, theme}) => {

@@ -8,7 +8,8 @@ const initialState = {
     loading: false,
     slug: '',
     layout: '',
-    notification: null
+    notification: null,
+    notificationTheme: ''
 }
 
 export const siteSlice = createSlice({
@@ -32,7 +33,8 @@ export const siteSlice = createSlice({
             state.notification = null
         },
         setNotification: (state, action) => {
-            state.notification = action.payload
+            state.notification = action.payload.notification
+            state.notificationTheme = action.payload.theme
         }
     },
 })

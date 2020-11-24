@@ -7,8 +7,8 @@ import AdminControls                  from '../../shared/Admin/AdminControls'
 import AdminTaxonomy                  from '../../shared/Admin/AdminTaxonomy'
 import DeletePrompt                   from '../../shared/Admin/DeletePrompt'
 import Div                            from '../../shared/Basic/Div'
-import {adminMarketplaceWrapperStyle} from '../../themes/admin'
-import {contentWrapperStyle}          from '../../themes/layout'
+import {contentWrapperStyle}          from '../../shared/Layout/styles'
+import {adminMarketplaceWrapperStyle} from './styles'
 
 const ManageTaxonomy = () => {
     const {productCategories} = useSelector(state => state.shop)

@@ -1,11 +1,11 @@
-import React         from 'react'
-import {useDispatch} from 'react-redux'
-import Div           from '../Basic/Div'
-import LinkSwitch    from '../Basic/LinkSwitch'
+import React                                 from 'react'
+import {useDispatch}                         from 'react-redux'
 import {
     adminCardControlsButtonStyle,
     adminCardControlsButtonWrapperStyle
-}                    from '../../themes/admin'
+} from '../../features/admin/styles'
+import Div                                   from '../Basic/Div'
+import LinkSwitch                            from '../Basic/LinkSwitch'
 
 const GenericCardAdminControls = ({slug, _id, edit, destroyAction}) => {
     const dispatch = useDispatch()

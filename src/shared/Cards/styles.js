@@ -1,3 +1,4 @@
+import {globals} from '../../config/styles'
 import {
     auto,
     black,
@@ -7,21 +8,54 @@ import {
     hidden,
     none,
     sv,
-    white
-}                from '../utils/themer'
-import {globals} from '../config/styles'
+    white,
+    wrap
+}                from '../../utils/themer'
 
-export const marketplaceWrapperStyle = {
-    display: 'grid',
-    gridTemplateColumns: '1fr 1fr 1fr',
-    gridGap: sv(30),
-    margin: '0 auto',
-    mobile: {
+export const productCardStyle = {
+    border: '1px solid #dadce0',
+    borderRadius: 10,
+    padding: 20,
+    margin: 40,
+    textDecoration: none,
+    transition: 'background-color 500ms ease, border-color 500ms ease',
+    hover: {
+        backgroundColor: '#f5f5f5',
+        borderColor: '#f5f5f5'
+    },
+    controlsInner: {},
+    marginBottom: 20,
+    inner: {
         display: flex,
-        flexDirection: column
+        flexWrap: wrap,
+        background: '#f3f3f3',
+        padding: `${sv(30)} ${sv(30)}`
+    },
+    title: {
+        width: '100%',
+        order: -1,
+        margin: 0
+    },
+    description: {},
+    category: {
+        display: none
+    },
+    price: {},
+    controls: {
+        display: flex,
+        width: '100%'
+
+    },
+    image: {
+        width: 80,
+        maxWidth: 80,
+        minWidth: 80,
+        wrapper: {
+
+            marginRight: 15
+        }
     }
 }
-
 export const genericCardStyle = {
     display: flex,
     flexDirection: column,
@@ -39,22 +73,18 @@ export const genericCardStyle = {
         borderColor: '#828282'
     }
 }
-
 export const genericCardImageStyle = {}
-
 export const genericCardDetailImageWrapperStyle = {
     height: 500,
     width: 500,
     marginLeft: auto
 }
-
-export const genericCardImageWrapperStyle= {
+export const genericCardImageWrapperStyle = {
     overflow: hidden,
     border: '1px solid #e9e8e8',
     height: [300, .7, 300],
     width: '100%'
 }
-
 export const genericCardNameStyle = {
     font: globals.fonts.serif,
     size: [24, .7, 24],
@@ -63,23 +93,4 @@ export const genericCardNameStyle = {
     paddingTop: [20, .7, 20],
     paddingBottom: [10, .7, 10],
     color: black
-}
-
-export const businessFormStyle = {
-    width: [1100, .7, '100%']
-}
-
-export const businessWrapperStyle = {
-    display: flex,
-    flexDirection: column,
-    width: '100%'
-}
-
-export const businessStyle = {
-    name: {
-        font: globals.fonts.fancy,
-        size: 42,
-        margin: 0,
-        marginBottom: 15
-    }
 }

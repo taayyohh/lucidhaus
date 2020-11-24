@@ -1,13 +1,13 @@
 import PropTypes        from 'prop-types'
 import React            from 'react'
 import {useSelector}    from 'react-redux'
-import {mobileFlag}     from '../../features/site/siteSlice'
+import {mobileFlag} from '../../features/site/siteSlice'
 import {
     headerInnerStyle,
     headerLogoLinkStyle,
     headerStyle
-}                       from '../../themes/header'
-import Div              from '../Basic/Div'
+}                   from './styles/header'
+import Div          from '../Basic/Div'
 import LinkSwitch       from '../Basic/LinkSwitch'
 import HeaderMenu       from '../Menus/HeaderMenu'
 import MobileHeaderMenu from '../Menus/MobileHeaderMenu'

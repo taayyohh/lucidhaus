@@ -1,5 +1,5 @@
 import React                 from 'react'
-import {contentWrapperStyle} from '../../themes/layout'
+import {contentWrapperStyle} from './styles'
 import Div                   from '../Basic/Div'
 
 const ContentWrapper = ({children}) =>

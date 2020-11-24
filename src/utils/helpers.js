@@ -145,4 +145,5 @@ export const isTouchDevice = () => {
  *
  */
 export const timeoutAsync = (ms) => new Promise(resolve => setTimeout(resolve, ms))
+export const clearTimeout = () => new Promise(resolve => clearTimeout(resolve))
 export const emptyPromise = (fn) => new Promise((resolve, reject) => resolve(fn))

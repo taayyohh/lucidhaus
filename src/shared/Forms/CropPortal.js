@@ -4,7 +4,7 @@ import {Portal}             from 'react-portal'
 import Div                  from '../Basic/Div'
 import Img                  from '../Basic/Img'
 import MotionDiv            from '../Basic/MotionDiv'
-import {imageDropZoneStyle} from '../../themes/elements'
+import {imageDropZoneStyle} from './styles'
 
 const CropPortal = ({isOpen, setIsOpen, uploadBlob, setCrop, crop, makeClientCrop, previewBlob}) => {
     const cropPortalVariants = {

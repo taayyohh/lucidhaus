@@ -1,8 +1,8 @@
 import PropTypes          from 'prop-types'
 import {Link}             from 'react-router-dom'
 import styled             from 'styled-components'
-import {defaultLinkStyle} from '../../themes/elements'
 import {themer}           from '../../utils/themer'
+import {defaultLinkStyle} from '../Layout/styles/typography'
 
 const StyledLink = styled(Link)`${props => themer({...defaultLinkStyle, ...props.theme})}`
 

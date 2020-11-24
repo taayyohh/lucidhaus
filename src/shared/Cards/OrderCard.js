@@ -5,7 +5,7 @@ import {
     useSelector
 }                              from 'react-redux'
 import Div                     from '../Basic/Div'
-import {orderCardWrapperStyle} from '../../themes/admin'
+import {orderCardWrapperStyle} from '../Controls/styles'
 
 const OrderCard = ({o}) => {
     const dispatch = useDispatch()

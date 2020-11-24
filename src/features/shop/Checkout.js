@@ -10,11 +10,11 @@ import {
     useSelector
 }                           from 'react-redux'
 import Div                  from '../../shared/Basic/Div'
-import {genericButtonStyle} from '../../themes/elements'
+import {genericButtonStyle} from '../../shared/Controls/styles'
 import {
     checkoutAddress,
     checkoutDropIn
-}                           from '../../themes/shop'
+}                           from './styles'
 import {getTotal}           from '../../utils/cartHelpers'
 
 

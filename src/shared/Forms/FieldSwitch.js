@@ -1,9 +1,9 @@
 import React, {memo}      from 'react'
-import {genericFormStyle} from '../../themes/signup'
 import RichTextEditor     from './RichTextEditor'
-import SelectField       from './SelectField'
-import SmartFileInput    from './SmartFileInput'
-import SmartInput        from './SmartInput'
+import SelectField        from './SelectField'
+import SmartFileInput     from './SmartFileInput'
+import SmartInput         from './SmartInput'
+import {genericFormStyle} from './styles'
 
 const FieldSwitch = memo(({field, formik, options}) => {
     switch (field.type) {

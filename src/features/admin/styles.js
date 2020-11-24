@@ -1,9 +1,9 @@
+import {globals}        from '../../config/styles'
+import {menuPanelStyle} from '../../shared/Menus/styles'
 import {
     auto,
-    black,
     center,
     column,
-    fixed,
     flex,
     flexEnd,
     flexStart,
@@ -13,14 +13,10 @@ import {
     pointer,
     relative,
     row,
-    sv,
-    white
-}                from '../utils/themer'
-import {globals} from '../config/styles'
-import {
-    genericCardStyle,
-    marketplaceWrapperStyle
-}                from './business'
+    sv
+}                       from '../../utils/themer'
+import {marketplaceWrapperStyle} from '../business/styles'
+import {genericButtonStyle}      from '../shared/Controls/styles'
 
 export const adminMarketplaceWrapperStyle = {
     width: '100%',
@@ -32,7 +28,6 @@ export const adminMarketplaceWrapperStyle = {
         flexDirection: column
     }
 }
-
 export const adminMarketplaceInnerWrapperStyle = {
     ...marketplaceWrapperStyle,
     width: '100%',
@@ -40,9 +35,7 @@ export const adminMarketplaceInnerWrapperStyle = {
     gridTemplateColumns: '1fr 1fr 1fr',
     gridGap: sv(30),
 }
-
 export const adminBusinessCardWrapperStyle = {}
-
 export const adminBusinessCardStyle = {
     display: grid,
     gridTemplateColumns: `${sv(100)} 1fr`,
@@ -66,7 +59,6 @@ export const adminBusinessCardStyle = {
         lineHeight: [22, .7, 22]
     }
 }
-
 export const adminDashboardStyle = {
     heading: {
         margin: 0,
@@ -78,69 +70,17 @@ export const adminDashboardStyle = {
         large: {}
     }
 }
-
 export const adminCardControlsButtonWrapperStyle = {
     display: flex,
     flexDirection: row,
     justifyContent: flexEnd
 }
-
 export const adminShopCardWrapperStyle = {
     ...adminBusinessCardWrapperStyle
 }
-
 export const adminShopCardStyle = {
     ...adminBusinessCardStyle
 }
-
-export const genericButtonStyle = {
-    border: `1px solid ${globals.colors.borderColor}`,
-    alignSelf: flexStart,
-    paddingTop: [10, .7, 10],
-    paddingBottom: [10, .7, 10],
-    paddingLeft: [20, .7, 20],
-    paddingRight: [20, .7, 20],
-    color: black,
-    textDecoration: none,
-    transition: 'background-color 250ms ease, color 250ms ease',
-    marginLeft: [10, globals.style.layoutScalingValue, '0'],
-    marginTop: [20, globals.style.layoutScalingValue, 20],
-    borderRadius: 5,
-    hover: {
-        cursor: pointer,
-        backgroundColor: globals.colors.linkHoverColor,
-        color: white
-    }
-}
-
-export const adminCardControlsButtonStyle = {
-    ...genericButtonStyle,
-    marginLeft: [10, globals.style.layoutScalingValue, '0'],
-    marginTop: [20, globals.style.layoutScalingValue, 20],
-}
-
-export const menuPanelStyle = {
-    paddingTop: [150, .7, 50],
-    height: '100%',
-    width: '100%'
-}
-
-export const menuPanelHeaderStyle = {
-    font: globals.fonts.fancy,
-    size: [48, .6, 24],
-    marginBottom: [30, .6, 30]
-}
-
-export const adminMenuToggleStyle = {
-    height: [50, .7, 50],
-    width: [50, .7, 50],
-    borderRadius: [25, .7, 25],
-    backgroundColor: '#afe',
-    position: fixed,
-    top: 100,
-    right: 50
-}
-
 export const adminHeadingStyle = {
     size: [42, .7, 26],
     paddingBottom: [25, .7, 25],
@@ -148,7 +88,11 @@ export const adminHeadingStyle = {
     borderBottom: `${sv(5)} solid #000`,
     font: globals.fonts.fancy
 }
-
+export const adminCardControlsButtonStyle = {
+    ...genericButtonStyle,
+    marginLeft: [10, globals.style.layoutScalingValue, '0'],
+    marginTop: [20, globals.style.layoutScalingValue, 20],
+}
 export const adminCreateButtonStyle = {
     ...adminCardControlsButtonStyle,
     display: inlineFlex,
@@ -157,7 +101,6 @@ export const adminCreateButtonStyle = {
     marginLeft: 0,
     marginTop: 0
 }
-
 export const adminControlPanelStyle = {
     position: relative,
     display: flex,
@@ -170,12 +113,10 @@ export const adminControlPanelStyle = {
         padding: 20
     }
 }
-
 export const adminControlPanelInnerStyle = {
     display: flex,
     flexDirection: column,
 }
-
 export const adminMenuStyle = {
     ...menuPanelStyle,
     list: {
@@ -215,7 +156,6 @@ export const adminMenuStyle = {
         ]
     }
 }
-
 export const adminOrderWrapperStyle = {
     width: '100%',
     display: 'grid',
@@ -224,13 +164,5 @@ export const adminOrderWrapperStyle = {
     mobile: {
         display: flex,
         flexDirection: column
-    }
-}
-
-export const orderCardWrapperStyle = {
-    ...genericCardStyle,
-    hover: {
-        ...genericCardStyle.hover,
-        cursor: pointer
     }
 }

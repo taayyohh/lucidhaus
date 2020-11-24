@@ -33,7 +33,7 @@ const SignIn = lazy(() => import('../../features/user/SignIn'))
 const SignUp = lazy(() => import('../../features/user/SignUp'))
 const UpdateProfile = lazy(() => import('../../features/user/UpdateProfile'))
 const UserDashboard = lazy(() => import('../../features/user/UserDashboard'))
-const Home = lazy(() => import('../Templates/Home'))
+const Home = lazy(() => import('../../features/site/Home'))
 
 const Content = () => {
     const {contentAnimation, currentPath} = useContext(TransitionAnimations)

@@ -1,7 +1,7 @@
 import moment            from 'moment'
 import PropTypes         from 'prop-types'
 import React             from 'react'
-import {footerStyle}     from '../../themes/footer'
+import {footerStyle}     from './styles/footer'
 import {siteDisplayName} from '../../config'
 import Div               from '../Basic/Div'
 

@@ -1,11 +1,11 @@
 import React                    from 'react'
-import Div         from '../Basic/Div'
-import GenericCard from '../Cards/GenericCard'
 import {
     adminBusinessCardStyle,
     adminBusinessCardWrapperStyle,
     adminMarketplaceInnerWrapperStyle
-}                               from '../../themes/admin'
+} from '../../features/admin/styles'
+import Div         from '../Basic/Div'
+import GenericCard from '../Cards/GenericCard'
 import GenericCardAdminControls from '../Controls/GenericCardAdminControls'
 
 const AdminMarketplace = ({marketplace}) =>

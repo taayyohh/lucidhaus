@@ -1,3 +1,4 @@
+import {globals} from '../../../config/styles'
 import {
     absolute,
     auto,
@@ -12,8 +13,7 @@ import {
     spaceBetween,
     uppercase,
     white
-}                from '../utils/themer'
-import {globals} from '../config/styles'
+}                from '../../../utils/themer'
 
 export const mobileHeaderMenuToggleStyle = {
     mobile: {

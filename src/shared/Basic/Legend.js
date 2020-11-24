@@ -1,7 +1,7 @@
 import PropTypes            from 'prop-types'
 import styled               from 'styled-components/macro'
-import {defaultLegendStyle} from '../../themes/forms'
 import {themer}             from '../../utils/themer'
+import {defaultLegendStyle} from '../Forms/styles'
 
 const Legend = styled.legend`${props => themer({...defaultLegendStyle, ...props.theme})}`
 

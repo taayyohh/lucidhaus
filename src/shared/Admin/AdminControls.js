@@ -4,7 +4,7 @@ import {
     adminControlPanelStyle,
     adminCreateButtonStyle,
     adminHeadingStyle
-}                 from '../../themes/admin'
+} from '../../features/admin/styles'
 import Div        from '../Basic/Div'
 import H2         from '../Basic/H2'
 import LinkSwitch from '../Basic/LinkSwitch'

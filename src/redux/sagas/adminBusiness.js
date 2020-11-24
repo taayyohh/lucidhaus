@@ -63,6 +63,14 @@ export function* updateBusinessDetail({payload}) {
         const updated = yield call(updateBusiness, {slug: slug, _id: _id, token: token, business: updatedBusiness})
         if (!updated.error) {
             yield put({type: 'business/updateBusinessSuccess', payload: updated})
+            yield put({
+                type: 'site/setNotification',
+                payload: {
+                    notification: 'Updated Business',
+                    theme: 'green'
+                }
+            })
+
         } else {
             yield put({type: 'business/updateBusinessFailure', payload: updated})
         }

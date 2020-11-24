@@ -19,7 +19,13 @@ export function* signIn({payload}) {
             yield put({type: 'user/authenticate', payload: user})
             yield put(push(user?.user?.role === 1 ? '/admin/dashboard' : '/user/dashboard'))
         } else {
-            yield put({type: 'site/setNotification', payload: user.error})
+            yield put({
+                type: 'site/setNotification',
+                payload: {
+                    notification: user.error,
+                    theme: 'red'
+                }
+            })
         }
     } catch (error) {
         yield put({type: 'site/signInFailure', error})
@@ -46,7 +52,13 @@ export function* signUp({payload}) {
             yield put({type: 'user/signUpSuccess', payload: user})
             yield put(push('/signin/'))
         } else {
-            yield put({type: 'site/setNotification', payload: user.error})
+            yield put({
+                type: 'site/setNotification',
+                payload: {
+                    notification: user.error,
+                    theme: 'red'
+                }
+            })
         }
     } catch (error) {
         yield put({type: 'user/signUpFailure', payload: error})

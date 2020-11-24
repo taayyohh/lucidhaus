@@ -3,10 +3,6 @@ import React, {
     useRef,
     useState
 }                 from 'react'
-import {
-    defaultFieldErrorStyle,
-    defaultFocusedInputLabelStyle
-}                 from '../../themes/forms'
 import useMeasure from '../../utils/useMeasure'
 import {globals}  from '../../config/styles'
 import Fieldset   from '../Basic/Fieldset'
@@ -14,6 +10,10 @@ import Input      from '../Basic/Input'
 import InputLabel from '../Basic/InputLabel'
 import Legend     from '../Basic/Legend'
 import Span       from '../Basic/Span'
+import {
+    defaultFieldErrorStyle,
+    defaultFocusedInputLabelStyle
+}                 from './styles'
 
 const SmartInput = ({inputLabel, type, disabled, theme, id, className, errorMessage, onChange, value}) => {
     const legendRef = useRef()

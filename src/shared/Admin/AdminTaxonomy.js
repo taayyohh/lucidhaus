@@ -1,12 +1,12 @@
 import React                    from 'react'
-import Div                      from '../Basic/Div'
-import GenericCard              from '../Cards/GenericCard'
-import GenericCardAdminControls from '../Controls/GenericCardAdminControls'
 import {
     adminMarketplaceInnerWrapperStyle,
     adminShopCardStyle,
     adminShopCardWrapperStyle
-}                               from '../../themes/admin'
+} from '../../features/admin/styles'
+import Div                      from '../Basic/Div'
+import GenericCard              from '../Cards/GenericCard'
+import GenericCardAdminControls from '../Controls/GenericCardAdminControls'
 
 const AdminTaxonomy = ({productCategories}) =>
     <Div theme={adminMarketplaceInnerWrapperStyle}>

@@ -4,10 +4,10 @@ import {
     useSelector
 }                               from 'react-redux'
 import Div                      from '../../shared/Basic/Div'
-import H2                       from '../../shared/Basic/H2'
-import {adminOrderWrapperStyle} from '../../themes/admin'
-import {contentWrapperStyle}    from '../../themes/layout'
-import OrderCard                from '../../shared/Cards/OrderCard'
+import H2                    from '../../shared/Basic/H2'
+import {contentWrapperStyle} from '../../shared/Layout/styles'
+import OrderCard             from '../../shared/Cards/OrderCard'
+import {adminOrderWrapperStyle} from './styles'
 
 const ManageOrders = () => {
     const dispatch = useDispatch()

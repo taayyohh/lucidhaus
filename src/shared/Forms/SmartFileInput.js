@@ -6,19 +6,19 @@ import React, {
 }                              from 'react'
 import Dropzone                from 'react-dropzone'
 import 'react-image-crop/dist/ReactCrop.css'
-import {genericCardImageStyle} from '../../themes/business'
+import {slugify}               from '../../utils/slugify'
+import {globals}               from '../../config/styles'
+import Div                     from '../Basic/Div'
+import Img                     from '../Basic/Img'
+import S3Img                   from '../Basic/S3Img'
+import {genericCardImageStyle} from '../Cards/styles'
+import CropPortal              from './CropPortal'
 import {
     imageDropZonePreviewStyle,
     imageDropZonePreviewWrapperStyle,
     imageDropZoneStyle,
     imageDropZoneWrapperStyle
-}                              from '../../themes/elements'
-import {slugify} from '../../utils/slugify'
-import {globals} from '../../config/styles'
-import Div       from '../Basic/Div'
-import Img                     from '../Basic/Img'
-import S3Img                   from '../Basic/S3Img'
-import CropPortal              from './CropPortal'
+} from './styles'
 
 const SmartFileInput = memo(({formik, id, cropWidth, cropHeight, s3Path}) => {
     const [cropPortalOpen, setCropPortalOpen] = useState(false)

@@ -1,13 +1,11 @@
-import React      from 'react'
-import Div        from '../Basic/Div'
-import H2         from '../Basic/H2'
-import Li         from '../Basic/Li'
-import Ul         from '../Basic/Ul'
-import LinkSwitch from '../Basic/LinkSwitch'
-import {
-    adminMenuStyle,
-    menuPanelHeaderStyle
-}                 from '../../themes/admin'
+import React            from 'react'
+import {adminMenuStyle} from '../../features/admin/styles'
+import Div              from '../Basic/Div'
+import H2               from '../Basic/H2'
+import Li               from '../Basic/Li'
+import Ul               from '../Basic/Ul'
+import LinkSwitch             from '../Basic/LinkSwitch'
+import {menuPanelHeaderStyle} from './styles'
 
 const AdminMenu = () =>
     <Div theme={adminMenuStyle}>

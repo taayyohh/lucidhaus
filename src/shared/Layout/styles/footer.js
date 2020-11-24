@@ -1,5 +1,5 @@
-import {globals}   from "../config/styles";
-import {borderBox} from "../utils/themer";
+import {globals}   from '../../../config/styles'
+import {borderBox} from '../../../utils/themer'
 
 export const footerStyle = {
     borderTop: '1px solid #dadce0',

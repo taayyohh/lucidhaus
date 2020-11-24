@@ -1,11 +1,11 @@
 import React, {useContext}           from 'react'
 import Div                           from '../Basic/Div'
 import HeaderMenu                    from '../Menus/HeaderMenu'
-import {headerMenuPanelWrapperStyle} from '../../themes/menus'
 import HeaderMenuPanelWrapper        from '../Menus/MenuPanelWrapper'
 import AdminMenu                     from "../Menus/AdminMenu";
 import {menuPanelContext}            from "../Containers/MenuPanelController";
 import Cart                          from "../../features/shop/Cart";
+import {headerMenuPanelWrapperStyle} from '../Menus/styles'
 import Overlay                       from "./Overlay";
 
 const MenuPanels = () => {

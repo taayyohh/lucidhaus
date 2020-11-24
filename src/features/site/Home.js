@@ -1,6 +1,6 @@
 import React                 from 'react'
-import {contentWrapperStyle} from '../../themes/layout'
-import Div                   from '../Basic/Div'
+import {contentWrapperStyle} from '../../shared/Layout/styles'
+import Div                   from '../../shared/Basic/Div'
 
 const Home = () => {
     return (

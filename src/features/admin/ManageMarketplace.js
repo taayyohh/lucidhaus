@@ -7,8 +7,8 @@ import AdminControls                  from '../../shared/Admin/AdminControls'
 import AdminMarketplace               from '../../shared/Admin/AdminMarketplace'
 import DeletePrompt                   from '../../shared/Admin/DeletePrompt'
 import Div                            from '../../shared/Basic/Div'
-import {adminMarketplaceWrapperStyle} from '../../themes/admin'
-import {contentWrapperStyle}          from '../../themes/layout'
+import {contentWrapperStyle}          from '../../shared/Layout/styles'
+import {adminMarketplaceWrapperStyle} from './styles'
 
 const ManageMarketplace = () => {
     const {marketplace} = useSelector(state => state.business)

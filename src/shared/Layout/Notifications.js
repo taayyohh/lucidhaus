@@ -4,20 +4,22 @@ import {
     useDispatch,
     useSelector
 }                                 from 'react-redux'
-import {notificationWrapperStyle} from '../../themes/elements'
 import {
     emptyPromise,
     timeoutAsync
 }                                 from '../../utils/helpers'
 import MotionDiv                  from '../Basic/MotionDiv'
+import {notificationWrapperStyle} from './styles'
 
 const Notifications = () => {
     const dispatch = useDispatch()
-    const {notification} = useSelector(state => state.site)
+    const {notification, notificationTheme} = useSelector(state => state.site)
 
+    //TODO: can improve
     const clearNotification = async () => {
         await timeoutAsync(3000)
         await emptyPromise(dispatch({type: 'site/clearNotification'}))
+        await clearTimeout(timeoutAsync)
     }
 
     useEffect(() => {
@@ -36,21 +38,19 @@ const Notifications = () => {
                         height: 40,
                         opacity: 1,
                         transition: {
-                            type: "spring",
-                             bounce: 0.25,
-                            duration: 0.2
+                            duration: 0.25,
+                            ease: 'easeOut'
                         }
                     }}
                     exit={{
                         height: 0,
                         opacity: 0,
                         transition: {
-                            type: "spring",
-                             bounce: 0.25,
-                            duration: 0.2
+                            duration: 0.15,
+                            ease: 'easeOut'
                         }
                     }}
-                    theme={notificationWrapperStyle}
+                    theme={notificationWrapperStyle(notificationTheme)}
                 >
                     {notification}
                 </MotionDiv>

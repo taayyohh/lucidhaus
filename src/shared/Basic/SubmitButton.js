@@ -1,6 +1,6 @@
 import PropTypes            from 'prop-types'
 import React                from 'react'
-import {genericButtonStyle} from '../../themes/elements'
+import {genericButtonStyle} from '../Controls/styles'
 import Button               from './Button'
 
 const SubmitButton = ({theme, children}) => {

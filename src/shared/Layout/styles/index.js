@@ -1,4 +1,8 @@
 import {
+    genericMobileContainerStyles,
+    globals
+} from '../../../config/styles'
+import {
     black,
     center,
     column,
@@ -8,13 +12,8 @@ import {
     pointer,
     relative,
     sv,
-    white,
-    wrap
-} from '../utils/themer'
-import {
-    genericMobileContainerStyles,
-    globals
-} from '../config/styles'
+    white
+} from '../../../utils/themer'
 
 const contentRow = 2
 
@@ -158,40 +157,6 @@ export const overlayStyle = {
     }
 }
 
-export const microCardStyle = {
-    marginBottom: 20,
-    inner: {
-        display: flex,
-        flexWrap: wrap,
-        background: '#f3f3f3',
-        padding: `${sv(30)} ${sv(30)}`
-    },
-    title: {
-        width: '100%',
-        order: -1,
-        margin: 0
-    },
-    description: {},
-    category: {
-        display: none
-    },
-    price: {},
-    controls: {
-        display: flex,
-        width: '100%'
-
-    },
-    image: {
-        width: 80,
-        maxWidth: 80,
-        minWidth: 80,
-        wrapper: {
-
-            marginRight: 15
-        }
-    }
-}
-
 export const contentWrapperStyle = {
     margin: '0 auto',
     width: [globals.style.siteInnerWidth, globals.style.layoutScalingValue, '100%'],
@@ -221,3 +186,53 @@ export const defaultModalStyle = {
 }
 
 
+export const notificationWrapperStyle = theme => {
+    const baseStyle = {
+        position: 'fixed',
+        display: flex,
+        alignItems: center,
+        justifyContent: center,
+        textTransform: 'lowercase',
+        fontStyle: 'italic',
+        weight: 500,
+        background: '#cc0000',
+        paddingTop: [7, globals.style.layoutScalingValue, 7],
+        paddingBottom: [5, globals.style.layoutScalingValue, 5],
+        paddingLeft: [5, globals.style.layoutScalingValue, 5],
+        paddingRight: [5, globals.style.layoutScalingValue, 5],
+        top: [globals.style.headerHeight, .7, globals.style.mobileHeaderHeight],
+        left: 0,
+        width: '100vw',
+        textAlign: center,
+        color: white,
+        size: [14, .7, 14],
+        height: 0,
+        opacity: 0,
+        zIndex: 3,
+        mobile: {
+            left: 0,
+            marginLeft: 0
+        }
+    }
+
+    if (theme === 'green')
+        return {
+            ...baseStyle,
+            background: '#428d67'
+        }
+
+
+    return {
+        ...baseStyle
+    }
+
+}
+export const transitionOverlayStyle = {
+    backgroundColor: globals.colors.transitionOverlayBackground,
+    width: '100%',
+    position: 'fixed',
+    bottom: 0,
+    height: 0,
+    zIndex: 12,
+    display: 'static'
+}

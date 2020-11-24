@@ -7,12 +7,14 @@ import MotionDiv             from '../../shared/Basic/MotionDiv'
 import RichText              from '../../shared/Basic/RichText'
 import S3Img                 from '../../shared/Basic/S3Img'
 import {
-    businessStyle,
-    businessWrapperStyle,
     genericCardDetailImageWrapperStyle,
     genericCardImageStyle
-}                            from '../../themes/business'
-import {contentWrapperStyle} from '../../themes/layout'
+}                            from '../../shared/Cards/styles'
+import {contentWrapperStyle} from '../../shared/Layout/styles'
+import {
+    businessStyle,
+    businessWrapperStyle
+}                            from './styles'
 
 
 const Business = () => {

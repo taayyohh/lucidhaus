@@ -5,7 +5,7 @@ import {headerMenuPanelVariants} from '../animations/headerMenuPanels'
 import MotionDiv                 from '../Basic/MotionDiv'
 import Span                   from '../Basic/Span'
 import {menuPanelContext}     from '../Containers/MenuPanelController'
-import {headerMenuPanelStyle} from '../../themes/menus'
+import {headerMenuPanelStyle} from './styles'
 
 const MenuPanelWrapper = ({children, name}) => {
     const {setPanel} = useContext(menuPanelContext)

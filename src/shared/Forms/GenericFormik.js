@@ -2,11 +2,11 @@ import {Formik}           from 'formik'
 import PropTypes          from 'prop-types'
 import React              from 'react'
 import {useDispatch}      from 'react-redux'
-import {genericFormStyle} from '../../themes/signup'
 import Div                from '../Basic/Div'
 import H3                 from '../Basic/H3'
 import SubmitButton       from '../Basic/SubmitButton'
 import FieldSwitch        from './FieldSwitch'
+import {genericFormStyle} from './styles'
 
 const GenericFormik = ({initialValues, fields, options, validationSchema, dispatchAction, formHeading, buttonText, enableReinitialize, theme}) => {
     const dispatch = useDispatch()
