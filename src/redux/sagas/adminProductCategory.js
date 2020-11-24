@@ -45,6 +45,14 @@ export function* destroyProductCategorySuccess() {
     yield put(push('/admin/taxonomy'))
 }
 
+/**
+ *
+ *
+ * ADMIN PRODUCT CATEGORY WATCHERS
+ *
+ *
+ */
+
 export function* watchDestroyProductCategory() {
     yield takeLatest('admin/destroyProductCategory', destroyProductCategory)
 }

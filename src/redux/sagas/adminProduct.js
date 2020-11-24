@@ -17,7 +17,7 @@ import {
 import {updateItem}         from '../../utils/cartHelpers'
 
 export function* createProduct({payload}) {
-    const {_id, token, values, name, description, photo, image, quantity, price, category} = payload
+    const {_id, token, name, description, photo, image, quantity, price, category} = payload
 
     //add to formdata so api can read
     const product = new FormData()
@@ -58,8 +58,7 @@ export function* createProductCategory({payload}) {
 }
 
 export function* updateProductDetail({payload}) {
-    const {slug, _id, token, values} = payload
-    const {name, description, photo, image, quantity, price, category} = values
+    const {slug, _id, token, name, description, photo, image, quantity, price, category} = payload
 
     //add to formData so api can read
     const updatedProduct = new FormData()
@@ -111,7 +110,18 @@ export function* destroyProductSuccess() {
 export function* updateProductQuantity({payload}) {
     const cart = yield call(updateItem, payload)
     yield put({type: 'shop/updateCartSuccess', payload: {cart: cart}})
-}/* Product*/
+}
+
+/**
+ *
+ *
+ * ADMIN PRODUCT WATCHERS
+ *
+ *
+ */
+
+
+
 export function* watchCreateProduct() {
     yield takeLatest('admin/createProduct', createProduct)
 }
@@ -130,4 +140,8 @@ export function* watchDestroyProductSuccess() {
 
 export function* watchUpdateProduct() {
     yield takeLatest('admin/updateProduct', updateProductDetail)
+}
+
+export function* watchUpdateProductQuantity() {
+    yield takeLatest('shop/updateProductQuantity', updateProductQuantity)
 }

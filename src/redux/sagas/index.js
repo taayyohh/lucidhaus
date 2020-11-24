@@ -14,7 +14,8 @@ import {
     watchCreateProduct,
     watchDestroyProduct,
     watchDestroyProductSuccess,
-    watchUpdateProduct
+    watchUpdateProduct,
+    watchUpdateProductQuantity
 }                           from './adminProduct'
 import {
     watchCreateProductCategory,
@@ -42,8 +43,7 @@ import {
 }                           from './orders'
 import {
     watchGetProductDetail,
-    watchGetRelatedProducts,
-    watchUpdateProductQuantity
+    watchGetRelatedProducts
 }                           from './product'
 import {
     watchGetProductCategories,

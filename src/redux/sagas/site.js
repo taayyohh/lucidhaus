@@ -1,8 +1,9 @@
-import {takeLatest} from '@redux-saga/core/effects'
-import {takeEvery}  from 'redux-saga/dist/redux-saga-effects-npm-proxy.esm'
-import {put}        from 'redux-saga/effects'
-import {getCart}    from '../../utils/cartHelpers'
-import {navigate}   from './auth'
+import {
+    put,
+    takeEvery,
+    takeLatest
+}                from 'redux-saga/effects'
+import {getCart} from '../../utils/cartHelpers'
 
 export function* loadConfig() {
     yield put({type: 'user/isAuthenticated'})
@@ -10,6 +11,12 @@ export function* loadConfig() {
     if (cart.length > 0) {
         yield put({type: 'shop/updateCartSuccess', payload: {cart: cart}})
     }
+}
+
+export function* navigate({payload}) {
+    const {location} = payload
+    const slug = location.pathname.substring(location.pathname.lastIndexOf('/') + 1)
+    yield put({type: 'site/setSlug', payload: {slug: slug}})
 }
 
 export function* watchNavigate() {

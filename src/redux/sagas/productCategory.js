@@ -26,6 +26,14 @@ export function* getProductCategoryDetail({payload}) {
     }
 }
 
+/**
+ *
+ *
+ * PRODUCT CATEGORY WATCHERS
+ *
+ *
+ */
+
 export function* watchGetProductCategories() {
     yield takeLatest('shop/getProductCategories', getProductCategories)
 }

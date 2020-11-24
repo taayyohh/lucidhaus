@@ -34,6 +34,15 @@ export function* updateProfile({payload}) {
     }
 }
 
+/**
+ *
+ *
+ * USER WATCHERS
+ *
+ *
+ */
+
+
 export function* watchUpdateProfile() {
     yield takeEvery('user/updateProfile', updateProfile)
 }

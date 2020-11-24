@@ -24,11 +24,15 @@ export function* isAuth() {
     }
 }
 
-export function* navigate({payload}) {
-    const {location} = payload
-    const slug = location.pathname.substring(location.pathname.lastIndexOf('/') + 1)
-    yield put({type: 'site/setSlug', payload: {slug: slug}})
-}/* Auth */
+/**
+ *
+ *
+ * AUTH WATCHERS
+ *
+ *
+ */
+
+
 export function* watchAuthenticate() {
     yield takeEvery('user/authenticate', authenticateUser)
 }

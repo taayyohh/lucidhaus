@@ -17,6 +17,15 @@ export function* removeFromCart({payload}) {
     yield removeItem(payload)
 }
 
+/**
+ *
+ *
+ * CART WATCHERS
+ *
+ *
+ */
+
+
 export function* watchAddToCart() {
     yield takeLatest('shop/addToCart', addToCart)
 }

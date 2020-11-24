@@ -1,11 +1,10 @@
-import {takeLatest}            from '@redux-saga/core/effects'
+import {takeLatest}  from '@redux-saga/core/effects'
 import {
     call,
     put
-}                              from 'redux-saga/effects'
-import {getProduct}            from '../../services/apiProduct'
-import {listRelated}           from '../../services/apiShop'
-import {updateProductQuantity} from './adminProduct'
+}                    from 'redux-saga/effects'
+import {getProduct}  from '../../services/apiProduct'
+import {listRelated} from '../../services/apiShop'
 
 export function* getProductDetail({payload}) {
     try {
@@ -33,6 +32,15 @@ export function* getRelatedProducts({payload}) {
     }
 }
 
+/**
+ *
+ *
+ * PRODUCT WATCHERS
+ *
+ *
+ */
+
+
 export function* watchGetProductDetail() {
     yield takeLatest('shop/getProduct', getProductDetail)
 }
@@ -41,6 +49,3 @@ export function* watchGetRelatedProducts() {
     yield takeLatest('shop/getRelatedProducts', getRelatedProducts)
 }
 
-export function* watchUpdateProductQuantity() {
-    yield takeLatest('shop/updateProductQuantity', updateProductQuantity)
-}

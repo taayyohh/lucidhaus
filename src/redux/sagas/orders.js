@@ -51,6 +51,15 @@ export function* updateStatusValue({payload}) {
     }
 }
 
+/**
+ *
+ *
+ * ORDERS WATCHERS
+ *
+ *
+ */
+
+
 export function* watchGetOrders() {
     yield takeLatest('shop/getOrders', getOrders)
 }

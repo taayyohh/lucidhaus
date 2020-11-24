@@ -87,7 +87,16 @@ export function* destroyBusiness({payload}) {
 
 export function* destroyBusinessSuccess() {
     yield put(push('/admin/marketplace'))
-}/* Business */
+}
+
+/**
+ *
+ *
+ * ADMIN BUSINESS WATCHERS
+ *
+ *
+ */
+
 export function* watchCreateBusiness() {
     yield takeLatest('admin/createBusiness', createBusiness)
 }
