@@ -1,16 +1,15 @@
-import React, {useEffect} from 'react'
+import React, {useEffect}    from 'react'
 import {
     useDispatch,
     useSelector
-}                         from 'react-redux'
-import Div                from '../../shared/Basic/Div'
+}                            from 'react-redux'
+import Div                   from '../../shared/Basic/Div'
 import GenericCard           from '../../shared/Cards/GenericCard'
 import {contentWrapperStyle} from '../../themes/layout'
 import {shopWrapperStyle}    from '../../themes/shop'
 
 
 const Shop = () => {
-    const {slug} = useSelector(state => state.site)
     const {shop} = useSelector(state => state.shop)
     const dispatch = useDispatch()
 

@@ -1,9 +1,9 @@
 import {adminMenuStyle} from './admin'
 
-import {globals} from '../variables/styles'
+import {globals} from '../config/styles'
 import {
     center
-} from '../utils/themer'
+}                from '../utils/themer'
 
 export const userLinksStyle = {
     ...adminMenuStyle,

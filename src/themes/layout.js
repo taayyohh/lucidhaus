@@ -14,7 +14,7 @@ import {
 import {
     genericMobileContainerStyles,
     globals
-} from '../variables/styles'
+} from '../config/styles'
 
 const contentRow = 2
 
@@ -67,7 +67,6 @@ export const pageFrameStyle = {
         msGridColumn: 1,
         gridColumn: 1,
         zIndex: 1,
-        backgroundColor: white,
     },
     rm: {
         position: relative,
@@ -75,8 +74,6 @@ export const pageFrameStyle = {
         gridRow: contentRow,
         msGridColumn: 6,
         gridColumn: 6,
-        backgroundColor: white
-
     },
     flm: {
         position: relative,

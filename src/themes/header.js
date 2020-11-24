@@ -12,8 +12,8 @@ import {
     spaceBetween,
     uppercase,
     white
-} from '../utils/themer'
-import {globals} from '../variables/styles'
+}                from '../utils/themer'
+import {globals} from '../config/styles'
 
 export const mobileHeaderMenuToggleStyle = {
     mobile: {
@@ -34,7 +34,7 @@ export const headerStyle = {
     backgroundColor: white,
     top: 0,
     zIndex: 11,
-    height: [100, .7, 120],
+    height: [globals.style.headerHeight, .7, globals.style.mobileHeaderHeight],
     marginBottom: 50,
     mobile: {
         display: flex,

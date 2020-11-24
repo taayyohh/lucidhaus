@@ -1,7 +1,6 @@
 import {
     auto,
     borderBox,
-    center,
     column,
     fixed,
     flex,
@@ -9,8 +8,8 @@ import {
     relative,
     sv,
     white
-} from '../utils/themer'
-import {globals} from '../variables/styles'
+}                from '../utils/themer'
+import {globals} from '../config/styles'
 
 export const genericFormStyle = {
     display: flex,

@@ -2,7 +2,7 @@ import moment            from 'moment'
 import PropTypes         from 'prop-types'
 import React             from 'react'
 import {footerStyle}     from '../../themes/footer'
-import {siteDisplayName} from '../../variables/config'
+import {siteDisplayName} from '../../config'
 import Div               from '../Basic/Div'
 
 const Footer = ({theme}) =>

@@ -1,10 +1,14 @@
-import {createSlice, createSelector} from '@reduxjs/toolkit'
+import {
+    createSelector,
+    createSlice
+} from '@reduxjs/toolkit'
 
 const initialState = {
     isInitialized: false,
     loading: false,
     slug: '',
     layout: '',
+    notification: null
 }
 
 export const siteSlice = createSlice({
@@ -23,6 +27,12 @@ export const siteSlice = createSlice({
         },
         setSlug: (state, action) => {
             state.slug = action.payload.slug
+        },
+        clearNotification: state => {
+            state.notification = null
+        },
+        setNotification: (state, action) => {
+            state.notification = action.payload
         }
     },
 })

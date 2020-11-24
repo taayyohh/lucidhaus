@@ -49,7 +49,7 @@ const TransitionController = props => {
         await setTransitionInProgress(false)
         await setTransitionComplete(true)
 
-    }, [overlayAnimation, contentAnimation])
+    }, [overlayAnimation])
 
     const pageOut = useMemo(() => async (currentPathName) => {
         await setPanel('')
@@ -70,7 +70,7 @@ const TransitionController = props => {
         //     translateX: '-10%'
         // })
         await pageInit()
-    }, [overlayAnimation, contentAnimation, setPanel, pageInit])
+    }, [setPanel, pageInit])
 
     useEffect(() => {
         if (pathname !== currentPath) {

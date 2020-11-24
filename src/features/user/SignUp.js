@@ -1,8 +1,8 @@
 import React              from 'react'
 import GenericFormik      from '../../shared/Forms/GenericFormik'
 import ContentWrapper     from '../../shared/Layout/ContentWrapper'
-import {signUpFieldTypes} from '../../variables/fieldTypes'
-import {validateSignup}   from '../../variables/fieldValidation'
+import {signUpFieldTypes} from '../../config/fieldTypes'
+import {validateSignup}   from '../../config/fieldValidation'
 
 const SignUp = () => {
     const initialValues = {name: '', email: '', password: ''}

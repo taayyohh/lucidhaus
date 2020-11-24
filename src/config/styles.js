@@ -30,7 +30,9 @@ export const globals = {
         layoutScalingValue: .45,
         inputLabelShrinkRatio: .7,
         siteInnerWidth: 1570,
-        contentWidth: 1320
+        contentWidth: 1320,
+        headerHeight: 100,
+        mobileHeaderHeight: 80
     },
     colors: {
         linkColor: colorPalette.red,

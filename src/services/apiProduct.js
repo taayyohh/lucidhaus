@@ -1,4 +1,4 @@
-import {API} from '../variables/config'
+import {API} from '../config'
 
 /**
  * to perform crud on product

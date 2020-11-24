@@ -11,7 +11,6 @@ import {adminMarketplaceWrapperStyle} from '../../themes/admin'
 import {contentWrapperStyle}          from '../../themes/layout'
 
 const ManageShop = () => {
-    const {slug} = useSelector(state => state.site)
     const {shop} = useSelector(state => state.shop)
     const {confirmDelete} = useSelector(state => state.admin)
     const dispatch = useDispatch()

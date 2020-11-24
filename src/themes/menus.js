@@ -8,7 +8,7 @@ import {
     pointer,
     white
 }                from '../utils/themer'
-import {globals} from '../variables/styles'
+import {globals} from '../config/styles'
 
 export const headerMenuPanelWrapperStyle = {
     position: absolute,

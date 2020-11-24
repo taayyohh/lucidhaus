@@ -1,5 +1,5 @@
 import queryString from 'query-string'
-import {API}       from '../variables/config'
+import {API}       from '../config'
 
 
 export const list = params => {

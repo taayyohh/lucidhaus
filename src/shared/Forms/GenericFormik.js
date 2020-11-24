@@ -1,4 +1,5 @@
 import {Formik}           from 'formik'
+import PropTypes          from 'prop-types'
 import React              from 'react'
 import {useDispatch}      from 'react-redux'
 import {genericFormStyle} from '../../themes/signup'
@@ -31,13 +32,21 @@ const GenericFormik = ({initialValues, fields, options, validationSchema, dispat
                             options={options}
                         />
                     )}
-                    <SubmitButton theme={{...genericFormStyle.button, ...theme.button}}>
+                    <SubmitButton theme={{...theme.button}}>
                         {buttonText}
                     </SubmitButton>
                 </Div>
             )}
         </Formik>
     )
+}
+
+GenericFormik.propTypes = {
+    theme: PropTypes.object,
+}
+
+GenericFormik.defaultProps = {
+    theme: {}
 }
 
 export default GenericFormik

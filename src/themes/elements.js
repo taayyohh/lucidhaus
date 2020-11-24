@@ -1,3 +1,4 @@
+import {globals} from '../config/styles'
 import {
     absolute,
     black,
@@ -13,11 +14,9 @@ import {
     relative,
     row,
     spaceBetween,
-    transparent,
     uppercase,
     white
 }                from '../utils/themer'
-import {globals} from '../variables/styles'
 
 export const defaultLinkStyle = {
     color: globals.colors.linkColor
@@ -44,8 +43,8 @@ export const transitionOverlayStyle = {
 
 export const genericButtonStyle = {
     border: `1px solid #dadce0`,
-    background: transparent,
-    color: black,
+    background: '#5e4a6c',
+    color: white,
     font: globals.fonts.sans,
     borderRadius: [5, .7, 5],
     alignSelf: flexEnd,
@@ -65,7 +64,7 @@ export const genericButtonStyle = {
     hover: {
         cursor: 'pointer',
         border: `1px solid #dadce0`,
-        background: black,
+        background: '#582a77',
         color: white,
     }
 }
@@ -78,6 +77,33 @@ export const imageDropZoneWrapperStyle = {
     marginBottom: [50, .7, 50],
 }
 
+export const notificationWrapperStyle = {
+    position: 'fixed',
+    display: flex,
+    alignItems: center,
+    justifyContent: center,
+    textTransform: 'lowercase',
+    fontStyle: 'italic',
+    weight: 500,
+    background: '#cc0000',
+    paddingTop: [7, globals.style.layoutScalingValue, 7],
+    paddingBottom: [5, globals.style.layoutScalingValue, 5],
+    paddingLeft: [5, globals.style.layoutScalingValue, 5],
+    paddingRight: [5, globals.style.layoutScalingValue, 5],
+    top: [globals.style.headerHeight, .7, globals.style.mobileHeaderHeight],
+    left: 0,
+    width: '100vw',
+    textAlign: center,
+    color: white,
+    size: [14, .7, 14],
+    height: 0,
+    opacity: 0,
+    zIndex: 3,
+    mobile: {
+        left: 0,
+        marginLeft: 0
+    }
+}
 
 export const imageDropZonePreviewStyle = {
     width: '100%'

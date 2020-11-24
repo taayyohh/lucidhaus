@@ -43,7 +43,6 @@ if (!['production'].includes(process.env.NODE_ENV)) {
     ]
 }
 
-
 export default configureStore({
     reducer: {
         user: userReducer,
@@ -57,6 +56,5 @@ export default configureStore({
     devTools: process.env.NODE_ENV !== 'production'
 })
 
-//move
 sagaMiddleware.run(rootSaga)
 

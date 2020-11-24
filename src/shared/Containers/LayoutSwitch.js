@@ -6,7 +6,7 @@ import {
     useDispatch,
     useSelector
 }                             from 'react-redux'
-import {breakpointUpperLimit} from '../../variables/styles'
+import {breakpointUpperLimit} from '../../config/styles'
 
 const getLayout = () => {
     if (window.innerWidth < breakpointUpperLimit.mobile)

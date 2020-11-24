@@ -1,4 +1,4 @@
-import {API} from '../variables/config'
+import {API} from '../config'
 
 export const uploadFile = ({file, signedRequest}) => {
     return fetch(signedRequest, {

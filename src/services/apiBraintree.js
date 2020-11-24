@@ -1,4 +1,4 @@
-import {API} from '../variables/config'
+import {API} from '../config'
 
 export const getBraintreeClientToken = ({_id, token}) => {
     return fetch(`${API}/braintree/getToken/${_id}`, {

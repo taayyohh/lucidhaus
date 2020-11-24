@@ -2,7 +2,7 @@ import React                       from 'react'
 import {useSelector}               from 'react-redux'
 import GenericFormik               from '../../shared/Forms/GenericFormik'
 import ContentWrapper              from '../../shared/Layout/ContentWrapper'
-import {productCategoryFieldTypes} from '../../variables/fieldTypes'
+import {productCategoryFieldTypes} from '../../config/fieldTypes'
 
 const CreateProductCategory = () => {
     const {_id, token} = useSelector(state => state.user)

@@ -8,8 +8,8 @@ import {
     none,
     sv,
     white
-} from '../utils/themer'
-import {globals} from '../variables/styles'
+}                from '../utils/themer'
+import {globals} from '../config/styles'
 
 export const marketplaceWrapperStyle = {
     display: 'grid',

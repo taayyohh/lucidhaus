@@ -6,6 +6,7 @@ import Footer            from './Footer'
 import Header            from './Header'
 import Main              from './Main'
 import MenuPanels        from './MenuPanel'
+import Notifications     from './Notifications'
 import StaticHead        from './StaticHead'
 import TransitionOverlay from './TransitionOverlay'
 
@@ -24,6 +25,7 @@ const PageFrame = () =>
         <Footer theme={pageFrameStyle.footer}/>
         <MenuPanels/>
         <TransitionOverlay/>
+        <Notifications />
         <Div id="modal" theme={pageFrameStyle.modal}/>
     </Div>
 

@@ -6,7 +6,7 @@ import {
 }                          from 'react-redux'
 import GenericFormik       from '../../shared/Forms/GenericFormik'
 import ContentWrapper      from '../../shared/Layout/ContentWrapper'
-import {productFieldTypes} from '../../variables/fieldTypes'
+import {productFieldTypes} from '../../config/fieldTypes'
 
 const UpdateProduct = () => {
     const dispatch = useDispatch()

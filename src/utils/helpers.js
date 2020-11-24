@@ -138,3 +138,11 @@ export const stripHtml = html => html.replace(/<(?:.|\n)*?>/gm, '')
 export const isTouchDevice = () => {
     return 'ontouchstart' in window
 }
+
+/**
+ *
+ * Can be used with await keyword inside async function and will resolve
+ *
+ */
+export const timeoutAsync = (ms) => new Promise(resolve => setTimeout(resolve, ms))
+export const emptyPromise = (fn) => new Promise((resolve, reject) => resolve(fn))

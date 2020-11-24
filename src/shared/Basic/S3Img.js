@@ -1,7 +1,7 @@
 import React from 'react'
 import Div   from './Div'
 import Img   from './Img'
-import {CDN} from '../../variables/config'
+import {CDN} from '../../config'
 
 const S3Img = ({url, alt, theme}) =>
     <Div>

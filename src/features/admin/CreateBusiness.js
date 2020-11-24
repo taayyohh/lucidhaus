@@ -3,7 +3,7 @@ import {useSelector}        from 'react-redux'
 import GenericFormik        from '../../shared/Forms/GenericFormik'
 import ContentWrapper       from '../../shared/Layout/ContentWrapper'
 import {businessFormStyle}  from '../../themes/business'
-import {businessFieldTypes} from '../../variables/fieldTypes'
+import {businessFieldTypes} from '../../config/fieldTypes'
 
 const CreateBusiness = () => {
     const {_id, token} = useSelector(state => state.user)

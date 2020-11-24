@@ -1,5 +1,5 @@
 import {css}                  from 'styled-components/macro'
-import {breakpointUpperLimit} from '../variables/styles'
+import {breakpointUpperLimit} from '../config/styles'
 
 const defaultScalingValue = .7
 const defaultMaxScreen = 1680

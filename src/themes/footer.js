@@ -1,4 +1,4 @@
-import {globals} from "../variables/styles";
+import {globals}   from "../config/styles";
 import {borderBox} from "../utils/themer";
 
 export const footerStyle = {

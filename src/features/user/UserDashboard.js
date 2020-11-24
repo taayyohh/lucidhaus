@@ -3,13 +3,12 @@ import {
     useDispatch,
     useSelector
 }                           from 'react-redux'
-import Div                  from '../../shared/Basic/Div'
 import H2                   from '../../shared/Basic/H2'
 import H3                   from '../../shared/Basic/H3'
 import LinkSwitch           from '../../shared/Basic/LinkSwitch'
 import ContentWrapper       from '../../shared/Layout/ContentWrapper'
-import {userDashboardStyle} from '../../themes/user'
 import UserPurchaseHistory  from '../../shared/User/UserPurchaseHistory'
+import {userDashboardStyle} from '../../themes/user'
 
 const UserDashboard = () => {
     const {name, email, token, _id, error, purchaseHistory} = useSelector(state => state.user)

@@ -8,7 +8,7 @@ import {
     defaultFocusedInputLabelStyle
 }                 from '../../themes/forms'
 import useMeasure from '../../utils/useMeasure'
-import {globals}  from '../../variables/styles'
+import {globals}  from '../../config/styles'
 import Fieldset   from '../Basic/Fieldset'
 import Input      from '../Basic/Input'
 import InputLabel from '../Basic/InputLabel'

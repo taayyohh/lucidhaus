@@ -3,8 +3,8 @@ import {useSelector}      from 'react-redux'
 import {history}          from '../../redux/store'
 import GenericFormik      from '../../shared/Forms/GenericFormik'
 import ContentWrapper     from '../../shared/Layout/ContentWrapper'
-import {signInFieldTypes} from '../../variables/fieldTypes'
-import {validateSignin}   from '../../variables/fieldValidation'
+import {signInFieldTypes} from '../../config/fieldTypes'
+import {validateSignin}   from '../../config/fieldValidation'
 
 const SignIn = () => {
     const {isAuthenticated, isAdmin} = useSelector(state => state.user)

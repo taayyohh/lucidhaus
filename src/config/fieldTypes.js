@@ -1,7 +1,7 @@
 import {
     businessUploadPath,
     shopUploadPath
-} from './config'
+} from './index'
 
 /**
  *

@@ -5,7 +5,7 @@ import {
 }                           from 'react-redux'
 import GenericFormik        from '../../shared/Forms/GenericFormik'
 import ContentWrapper       from '../../shared/Layout/ContentWrapper'
-import {businessFieldTypes} from '../../variables/fieldTypes'
+import {businessFieldTypes} from '../../config/fieldTypes'
 
 const UpdateBusiness = () => {
     const dispatch = useDispatch()

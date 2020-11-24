@@ -10,7 +10,6 @@ import {contentWrapperStyle}     from '../../themes/layout'
 
 
 const Marketplace = () => {
-    const {slug} = useSelector(state => state.site)
     const {marketplace} = useSelector(state => state.business)
     const dispatch = useDispatch()
 
