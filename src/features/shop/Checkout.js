@@ -27,7 +27,8 @@ const Checkout = ({products}) => {
     const {isAuthenticated} = useSelector(state => state.user)
 
     useEffect(() => {
-        dispatch({type: 'shop/getBraintreeToken', payload: {_id, token}})
+        if(isAuthenticated)
+            dispatch({type: 'shop/getBraintreeToken', payload: {_id, token}})
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [_id, token])

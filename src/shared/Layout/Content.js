@@ -14,18 +14,18 @@ import MotionDiv              from '../Basic/MotionDiv'
 import {TransitionAnimations} from '../Containers/TransitionController'
 
 const AdminDashboard = lazy(() => import('../../features/admin/AdminDashboard'))
-const CreateBusiness = lazy(() => import('../../features/admin/CreateBusiness'))
+const CreatePost = lazy(() => import('../../features/admin/CreatePost'))
 const CreateProduct = lazy(() => import('../../features/admin/CreateProduct'))
 const CreateProductCategory = lazy(() => import('../../features/admin/CreateProductCategory'))
-const ManageMarketplace = lazy(() => import('../../features/admin/ManageMarketplace'))
+const ManageMarketplace = lazy(() => import('../../features/admin/ManagePosts'))
 const ManageOrders = lazy(() => import('../../features/admin/ManageOrders'))
 const ManageShop = lazy(() => import('../../features/admin/ManageShop'))
 const ManageTaxonomy = lazy(() => import('../../features/admin/ManageTaxonomy'))
-const UpdateBusiness = lazy(() => import('../../features/admin/UpdateBusiness'))
+const UpdatePost = lazy(() => import('../../features/admin/UpdatePost'))
 const UpdateProduct = lazy(() => import('../../features/admin/UpdateProduct'))
 const UpdateProductCategory = lazy(() => import('../../features/admin/UpdateProductCategory'))
-const Business = lazy(() => import('../../features/business/Business'))
-const Marketplace = lazy(() => import('../../features/business/Marketplace'))
+const Post = lazy(() => import('../../features/post/Post'))
+const Marketplace = lazy(() => import('../../features/post/Posts'))
 const Product = lazy(() => import('../../features/shop/Product'))
 const Shop = lazy(() => import('../../features/shop/Shop'))
 const NotFound = lazy(() => import('../../features/site/NotFound'))
@@ -47,8 +47,8 @@ const Content = () => {
                             <Route path="/" exact component={Home}/>
                             <Route path="/signup" exact component={SignUp}/>
                             <Route path="/signin" exact component={SignIn}/>
-                            <Route path="/marketplace" exact component={Marketplace}/>
-                            <Route path="/marketplace/:slug" exact component={Business}/>
+                            <Route path="/posts" exact component={Marketplace}/>
+                            <Route path="/posts/:slug" exact component={Post}/>
                             <Route path="/shop" exact component={Shop}/>
                             <Route path="/shop/:slug" exact component={Product}/>
                             <PrivateRoute path="/settings/profile" exact component={UpdateProfile}/>
@@ -56,16 +56,16 @@ const Content = () => {
                             <AdminRoute path="/admin/dashboard" exact component={AdminDashboard}/>
                             <AdminRoute path="/admin/shop" exact component={ManageShop}/>
                             <AdminRoute path="/admin/taxonomy" exact component={ManageTaxonomy}/>
-                            <AdminRoute path="/admin/marketplace" exact component={ManageMarketplace}/>
+                            <AdminRoute path="/admin/posts" exact component={ManageMarketplace}/>
                             <AdminRoute path="/admin/product/update/:slug" exact component={UpdateProduct}/>
                             <AdminRoute path="/admin/product-category/update/:slug" exact
                                         component={UpdateProductCategory}/>
-                            <AdminRoute path="/admin/marketplace/update/:slug" exact component={UpdateBusiness}/>
+                            <AdminRoute path="/admin/posts/update/:slug" exact component={UpdatePost}/>
                             <AdminRoute path="/admin/orders" exact component={ManageOrders}/>
                             <AdminRoute path="/create/category" exact component={CreateProductCategory}/>
                             <AdminRoute path="/create/product" exact component={CreateProduct}/>
                             <AdminRoute path="/create/product-category" exact component={CreateProductCategory}/>
-                            <AdminRoute path="/create/business" exact component={CreateBusiness}/>
+                            <AdminRoute path="/create/post" exact component={CreatePost}/>
                             <Route component={NotFound}/>
                         </Switch>
                     </Suspense>

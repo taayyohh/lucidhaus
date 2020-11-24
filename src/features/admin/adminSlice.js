@@ -9,7 +9,7 @@ const initialState = {
         uploadedFileName: '',
         loading: false,
         error: '',
-        createdBusiness: '',
+        createdPost: '',
         redirectToProfile: false,
         formData: '',
         confirmDelete: {
@@ -23,7 +23,7 @@ export const adminSlice = createSlice({
     name: 'admin',
     initialState: initialState,
     reducers: {
-        confirmDestroyBusiness: (state, action) => {
+        confirmDestroyPost: (state, action) => {
             state.confirmDelete.shouldDelete = true
             state.confirmDelete.slug = action.payload.slug
         },
@@ -33,7 +33,7 @@ export const adminSlice = createSlice({
         acceptDestroyItem: (state, action) => {
             state.confirmDelete.destroy = true
         },
-        destroyBusinessSuccess: (state) => {
+        destroyPostSuccess: (state) => {
             state.confirmDelete.shouldDelete = false
             state.confirmDelete.destroy = false
             state.confirmDelete.slug = ''

@@ -26,9 +26,9 @@ const HeaderMenu = () => {
         <Div theme={headerMenuStyle}>
             <Div as="nav" theme={headerMenuListStyle}>
                 <LinkSwitch
-                    url="/marketplace"
+                    url="/posts"
                     theme={headerMenuListItemStyle}>
-                    Businesses
+                    Posts
                     <Div theme={{position: absolute, left: 0, bottom: 0, height: 4, backgroundColor: '#afe'}} />
                 </LinkSwitch>
                 <LinkSwitch

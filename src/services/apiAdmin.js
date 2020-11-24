@@ -3,19 +3,19 @@ import {API} from '../config'
 
 /**
  * to perform crud on admin
- * get all businesses
+ * get all posts
  * get a single admin
  * update single admin
  * delete single admin
  */
-export const addBusiness = ({userId, token, business}) => {
-    return fetch(`${API}/business/create/${userId}`, {
+export const addPost = ({userId, token, post}) => {
+    return fetch(`${API}/post/create/${userId}`, {
         method: 'POST',
         headers: {
             Accept: 'application/json',
             Authorization: `Bearer ${token}`
         },
-        body: business
+        body: post
     }).then(response => {
         return response.json()
     }).catch(error => {
@@ -23,8 +23,8 @@ export const addBusiness = ({userId, token, business}) => {
     })
 }
 
-export const getBusinesses = () => {
-    return fetch(`${API}/businesses?limit=undefined`, {
+export const getPosts = () => {
+    return fetch(`${API}/posts?limit=undefined`, {
         method: 'GET'
     })
         .then(response => {
@@ -35,8 +35,8 @@ export const getBusinesses = () => {
         })
 }
 
-export const deleteBusiness = ({_id, token, slug}) => {
-    return fetch(`${API}/business/${slug}/${_id}`, {
+export const deletePost = ({_id, token, slug}) => {
+    return fetch(`${API}/post/${slug}/${_id}`, {
         method: 'DELETE',
         headers: {
             Accept: 'application/json',
@@ -52,8 +52,8 @@ export const deleteBusiness = ({_id, token, slug}) => {
         })
 }
 
-export const getBusiness = ({slug}) => {
-    return fetch(`${API}/business/${slug}`, {
+export const getPost = ({slug}) => {
+    return fetch(`${API}/post/${slug}`, {
         method: 'GET'
     })
         .then(response => {
@@ -64,14 +64,14 @@ export const getBusiness = ({slug}) => {
         })
 }
 
-export const updateBusiness = ({slug, _id, token, business}) => {
-    return fetch(`${API}/business/${slug}/${_id}`, {
+export const updatePost = ({slug, _id, token, post}) => {
+    return fetch(`${API}/post/${slug}/${_id}`, {
         method: 'PUT',
         headers: {
             Accept: 'application/json',
             Authorization: `Bearer ${token}`
         },
-        body: business
+        body: post
     })
         .then(response => {
             return response.json()

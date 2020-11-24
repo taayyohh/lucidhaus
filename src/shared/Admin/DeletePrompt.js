@@ -1,14 +1,14 @@
-import {AnimatePresence}    from 'framer-motion'
-import React                from 'react'
-import {Portal}             from 'react-portal'
+import {AnimatePresence}   from 'framer-motion'
+import React               from 'react'
+import {Portal}            from 'react-portal'
 import {
     useDispatch,
     useSelector
-}                           from 'react-redux'
-import {genericButtonStyle} from '../../features/shared/Controls/styles'
-import Div                  from '../Basic/Div'
-import MotionDiv            from '../Basic/MotionDiv'
-import {defaultModalStyle}  from '../Layout/styles'
+}                          from 'react-redux'
+import Div                 from '../Basic/Div'
+import MotionDiv           from '../Basic/MotionDiv'
+import {deleteButtonStyle} from '../Controls/styles'
+import {defaultModalStyle} from '../Layout/styles'
 
 const DeletePrompt = ({destroyAction}) => {
     const {_id, token} = useSelector(state => state.user)
@@ -26,25 +26,25 @@ const DeletePrompt = ({destroyAction}) => {
                                 <Div>
                                     Are you sure you want to delete?
                                     <Div
-                                        theme={genericButtonStyle}
+                                        theme={deleteButtonStyle}
                                         onClick={() => dispatch({type: 'admin/denyDestroyItem'})}
                                     >
-                                        Do <strong>not</strong> delete this business
+                                        Do <strong>not</strong> delete this post
                                     </Div>
                                     <Div
-                                        theme={genericButtonStyle}
+                                        theme={deleteButtonStyle}
                                         onClick={() => dispatch({type: 'admin/acceptDestroyItem'})}
                                     >
-                                        Yes, delete this business
+                                        Yes, delete this post
                                     </Div>
                                 </Div>
                             )}
 
                             {destroy && (
                                 <>
-                                    <Div>Clicking this button will permanently delete this business</Div>
+                                    <Div>Clicking this button will permanently delete this post</Div>
                                     <Div
-                                        theme={genericButtonStyle}
+                                        theme={deleteButtonStyle}
                                         onClick={() => dispatch({
                                             type: destroyAction,
                                             payload: {_id: _id, token: token, slug: confirmDelete.slug}

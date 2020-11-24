@@ -8,7 +8,7 @@ import AdminShop                      from '../../shared/Admin/AdminShop'
 import DeletePrompt                   from '../../shared/Admin/DeletePrompt'
 import Div                            from '../../shared/Basic/Div'
 import {contentWrapperStyle}          from '../../shared/Layout/styles'
-import {adminMarketplaceWrapperStyle} from './styles'
+import {adminPostsWrapperStyle} from './styles'
 
 const ManageShop = () => {
     const {shop} = useSelector(state => state.shop)
@@ -24,7 +24,7 @@ const ManageShop = () => {
 
     return (
         <Div theme={contentWrapperStyle}>
-            <Div theme={adminMarketplaceWrapperStyle}>
+            <Div theme={adminPostsWrapperStyle}>
                 <AdminControls
                     data={shop}
                     title={'Product'}

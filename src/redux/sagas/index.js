@@ -3,12 +3,12 @@ import {
     fork
 }                           from 'redux-saga/effects'
 import {
-    watchAttemptDestroyBusiness,
-    watchCreateBusiness,
-    watchDestroyBusiness,
-    watchDestroyBusinessSuccess,
-    watchUpdateBusiness
-}                           from './adminBusiness'
+    watchAttemptDestroyPost,
+    watchCreatePost,
+    watchDestroyPost,
+    watchDestroyPostSuccess,
+    watchUpdatePost
+}                           from './adminPost'
 import {
     watchAttemptDestroyProduct,
     watchCreateProduct,
@@ -29,9 +29,9 @@ import {
     watchIsAuthenticated
 }                           from './auth'
 import {
-    watchGetBusinessDetail,
+    watchGetPostDetail,
     watchGetMarketplace
-}                           from './business'
+}                           from './post'
 import {
     watchAddToCart,
     watchRemoveFromCart
@@ -82,15 +82,15 @@ export default function* rootSaga() {
         fork(watchUserHistory),
         fork(watchUpdateProfile),
         fork(watchGetMarketplace),
-        fork(watchCreateBusiness),
+        fork(watchCreatePost),
 
         //Todo: optimize
-        fork(watchAttemptDestroyBusiness),
-        fork(watchDestroyBusiness),
-        fork(watchDestroyBusinessSuccess),
+        fork(watchAttemptDestroyPost),
+        fork(watchDestroyPost),
+        fork(watchDestroyPostSuccess),
 
-        fork(watchUpdateBusiness),
-        fork(watchGetBusinessDetail),
+        fork(watchUpdatePost),
+        fork(watchGetPostDetail),
         fork(watchGetShop),
         fork(watchCreateProduct),
 

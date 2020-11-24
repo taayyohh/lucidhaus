@@ -5,8 +5,8 @@ import {
     flex,
     none,
     relative
-}                                from '../../utils/themer'
-import {marketplaceWrapperStyle} from '../business/styles'
+}                          from '../../utils/themer'
+import {postsWrapperStyle} from '../post/styles'
 
 export const checkoutAddress = {
     child: {
@@ -28,7 +28,7 @@ export const checkoutDropIn = {
     ]
 }
 export const shopWrapperStyle = {
-    ...marketplaceWrapperStyle
+    ...postsWrapperStyle
 }
 export const cartStyle = {
     checkOut: {

@@ -1,5 +1,5 @@
 import {
-    businessUploadPath,
+    postUploadPath,
     shopUploadPath
 } from './index'
 
@@ -58,12 +58,12 @@ export const userFieldTypes = [
     }
 ]
 
-export const businessFieldTypes = [
+export const postFieldTypes = [
     {
         name: 'photo', //not neccesary
         cropWidth: 500,
         cropHeight: 500,
-        s3Path: businessUploadPath,
+        s3Path: postUploadPath,
         type: 'singleImageUpload',
     },
     {
@@ -73,7 +73,7 @@ export const businessFieldTypes = [
     },
     {
         name: 'description',
-        inputLabel: 'Business Description',
+        inputLabel: 'Post Description',
         type: 'richText'
     },
 ]

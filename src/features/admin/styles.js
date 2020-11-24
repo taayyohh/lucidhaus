@@ -1,5 +1,6 @@
-import {globals}        from '../../config/styles'
-import {menuPanelStyle} from '../../shared/Menus/styles'
+import {globals}           from '../../config/styles'
+import {deleteButtonStyle} from '../../shared/Controls/styles'
+import {menuPanelStyle}    from '../../shared/Menus/styles'
 import {
     auto,
     center,
@@ -14,11 +15,10 @@ import {
     relative,
     row,
     sv
-}                       from '../../utils/themer'
-import {marketplaceWrapperStyle} from '../business/styles'
-import {genericButtonStyle}      from '../shared/Controls/styles'
+}                          from '../../utils/themer'
+import {postsWrapperStyle} from '../post/styles'
 
-export const adminMarketplaceWrapperStyle = {
+export const adminPostsWrapperStyle = {
     width: '100%',
     display: 'grid',
     gridTemplateColumns: '1fr 3fr',
@@ -28,15 +28,15 @@ export const adminMarketplaceWrapperStyle = {
         flexDirection: column
     }
 }
-export const adminMarketplaceInnerWrapperStyle = {
-    ...marketplaceWrapperStyle,
+export const adminPostsInnerWrapperStyle = {
+    ...postsWrapperStyle,
     width: '100%',
     display: 'grid',
     gridTemplateColumns: '1fr 1fr 1fr',
     gridGap: sv(30),
 }
-export const adminBusinessCardWrapperStyle = {}
-export const adminBusinessCardStyle = {
+export const adminPostCardWrapperStyle = {}
+export const adminPostCardStyle = {
     display: grid,
     gridTemplateColumns: `${sv(100)} 1fr`,
     gridGap: sv(15),
@@ -76,10 +76,10 @@ export const adminCardControlsButtonWrapperStyle = {
     justifyContent: flexEnd
 }
 export const adminShopCardWrapperStyle = {
-    ...adminBusinessCardWrapperStyle
+    ...adminPostCardWrapperStyle
 }
 export const adminShopCardStyle = {
-    ...adminBusinessCardStyle
+    ...adminPostCardStyle
 }
 export const adminHeadingStyle = {
     size: [42, .7, 26],
@@ -89,7 +89,7 @@ export const adminHeadingStyle = {
     font: globals.fonts.fancy
 }
 export const adminCardControlsButtonStyle = {
-    ...genericButtonStyle,
+    ...deleteButtonStyle,
     marginLeft: [10, globals.style.layoutScalingValue, '0'],
     marginTop: [20, globals.style.layoutScalingValue, 20],
 }

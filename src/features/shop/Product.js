@@ -16,9 +16,9 @@ import AddToCartButton    from '../../shared/Controls/AddToCartButton'
 import {contentWrapperStyle} from '../../shared/Layout/styles'
 import {getNameById}         from '../../utils/getNameById'
 import {
-    businessStyle,
-    businessWrapperStyle
-} from '../business/styles'
+    postStyle,
+    postWrapperStyle
+} from '../post/styles'
 
 
 const Product = () => {
@@ -39,9 +39,9 @@ const Product = () => {
 
     return (
         <Div theme={contentWrapperStyle}>
-            <Div theme={businessWrapperStyle}>
+            <Div theme={postWrapperStyle}>
                 <Div>{getNameById(productCategories, category)}</Div>
-                <H2 theme={businessStyle.title}>{name}</H2>
+                <H2 theme={postStyle.title}>{name}</H2>
                 <Div> price: {price}</Div>
                 <MotionDiv
                     layoutId={`${product._id}-image`}

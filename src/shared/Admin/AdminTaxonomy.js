@@ -1,6 +1,6 @@
 import React                    from 'react'
 import {
-    adminMarketplaceInnerWrapperStyle,
+    adminPostsInnerWrapperStyle,
     adminShopCardStyle,
     adminShopCardWrapperStyle
 } from '../../features/admin/styles'
@@ -9,7 +9,7 @@ import GenericCard              from '../Cards/GenericCard'
 import GenericCardAdminControls from '../Controls/GenericCardAdminControls'
 
 const AdminTaxonomy = ({productCategories}) =>
-    <Div theme={adminMarketplaceInnerWrapperStyle}>
+    <Div theme={adminPostsInnerWrapperStyle}>
         {productCategories && productCategories.map(cat => (
             <Div
                 key={cat.slug}

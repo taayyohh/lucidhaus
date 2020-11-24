@@ -1,6 +1,6 @@
 import React                    from 'react'
 import {
-    adminMarketplaceInnerWrapperStyle,
+    adminPostsInnerWrapperStyle,
     adminShopCardStyle,
     adminShopCardWrapperStyle
 } from '../../features/admin/styles'
@@ -9,7 +9,7 @@ import GenericCard              from '../Cards/GenericCard'
 import GenericCardAdminControls from '../Controls/GenericCardAdminControls'
 
 const AdminShop = ({shop}) =>
-    <Div theme={adminMarketplaceInnerWrapperStyle}>
+    <Div theme={adminPostsInnerWrapperStyle}>
         {shop && shop.map(product => (
             <Div
                 key={product.slug}

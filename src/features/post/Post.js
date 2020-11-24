@@ -12,19 +12,19 @@ import {
 }                            from '../../shared/Cards/styles'
 import {contentWrapperStyle} from '../../shared/Layout/styles'
 import {
-    businessStyle,
-    businessWrapperStyle
+    postStyle,
+    postWrapperStyle
 }                            from './styles'
 
 
-const Business = () => {
+const Post = () => {
     const dispatch = useDispatch()
-    const {business} = useSelector(state => state.business)
+    const {post} = useSelector(state => state.post)
     const {slug} = useSelector(state => state.site)
-    const {name, description, photo} = business
+    const {name, description, photo} = post
 
     useEffect(() => {
-        dispatch({type: 'business/getBusiness', payload: {slug: slug}})
+        dispatch({type: 'post/getPost', payload: {slug: slug}})
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
@@ -33,11 +33,11 @@ const Business = () => {
     return (
         <MotionDiv theme={contentWrapperStyle}>
             <MotionDiv
-                theme={businessWrapperStyle}
+                theme={postWrapperStyle}
             >
             </MotionDiv>
             <MotionDiv
-                layoutId={`${business._id}-image`}
+                layoutId={`${post._id}-image`}
                 theme={genericCardDetailImageWrapperStyle}
             >
                 <S3Img
@@ -47,8 +47,8 @@ const Business = () => {
                 />
             </MotionDiv>
             <MotionDiv
-                theme={businessStyle.name}
-                layoutId={`${business._id}-name`}
+                theme={postStyle.name}
+                layoutId={`${post._id}-name`}
             >
                 {name}
                 <RichText children={description}/>
@@ -57,4 +57,4 @@ const Business = () => {
     )
 }
 
-export default Business
+export default Post

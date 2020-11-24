@@ -131,7 +131,7 @@ const SmartFileInput = memo(({formik, id, cropWidth, cropHeight, s3Path}) => {
                         {photo && (
                             <S3Img
                                 url={photo}
-                                alt={'Business Image Preview'}
+                                alt={'Post Image Preview'}
                                 theme={genericCardImageStyle}
                             />
                         )}

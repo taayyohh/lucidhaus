@@ -5,17 +5,17 @@ import {
 }                           from 'react-redux'
 import GenericFormik        from '../../shared/Forms/GenericFormik'
 import ContentWrapper       from '../../shared/Layout/ContentWrapper'
-import {businessFieldTypes} from '../../config/fieldTypes'
+import {postFieldTypes} from '../../config/fieldTypes'
 
-const UpdateBusiness = () => {
+const UpdatePost = () => {
     const dispatch = useDispatch()
     const {_id, token} = useSelector(state => state.user)
     const {slug} = useSelector(state => state.site)
-    const {business} = useSelector(state => state.business)
+    const {post} = useSelector(state => state.post)
     const initialValues = {
-        name: business.name,
-        description: business.description,
-        photo: business.photo,
+        name: post.name,
+        description: post.description,
+        photo: post.photo,
         image: '',
         slug,
         _id,
@@ -24,7 +24,7 @@ const UpdateBusiness = () => {
 
     useEffect(() => {
         dispatch({
-            type: 'business/getBusiness',
+            type: 'post/getPost',
             payload: {
                 slug: slug
             }
@@ -37,10 +37,10 @@ const UpdateBusiness = () => {
         <ContentWrapper>
             <GenericFormik
                 initialValues={initialValues}
-                fields={businessFieldTypes}
+                fields={postFieldTypes}
                 //   validationSchema={validateSignin}
-                dispatchAction={'admin/updateBusiness'}
-                formHeading={'Update Business'}
+                dispatchAction={'admin/updatePost'}
+                formHeading={'Update Post'}
                 buttonText={'Update'}
                 theme={{width: 1100}}
                 enableReinitialize={true}
@@ -49,4 +49,4 @@ const UpdateBusiness = () => {
     )
 }
 
-export default UpdateBusiness
+export default UpdatePost

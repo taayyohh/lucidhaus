@@ -5,7 +5,7 @@ import {
     sv
 }                from '../../utils/themer'
 
-export const marketplaceWrapperStyle = {
+export const postsWrapperStyle = {
     display: 'grid',
     gridTemplateColumns: '1fr 1fr 1fr',
     gridGap: sv(30),
@@ -15,15 +15,15 @@ export const marketplaceWrapperStyle = {
         flexDirection: column
     }
 }
-export const businessFormStyle = {
+export const postFormStyle = {
     width: [1100, .7, '100%']
 }
-export const businessWrapperStyle = {
+export const postWrapperStyle = {
     display: flex,
     flexDirection: column,
     width: '100%'
 }
-export const businessStyle = {
+export const postStyle = {
     name: {
         font: globals.fonts.fancy,
         size: 42,

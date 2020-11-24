@@ -50,6 +50,7 @@ export function* getPaymentNonce({payload}) {
             user: user
         }
         const createdOrder = yield call(createOrder, {_id, token, createOrderData})
+        console.log('createdOrder', createdOrder)
 
         yield call(emptyCart)
         //TODO: success

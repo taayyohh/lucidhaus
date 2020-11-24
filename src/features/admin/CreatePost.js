@@ -2,10 +2,10 @@ import React                from 'react'
 import {useSelector}        from 'react-redux'
 import GenericFormik        from '../../shared/Forms/GenericFormik'
 import ContentWrapper       from '../../shared/Layout/ContentWrapper'
-import {businessFieldTypes} from '../../config/fieldTypes'
-import {businessFormStyle}  from '../business/styles'
+import {postFieldTypes} from '../../config/fieldTypes'
+import {postFormStyle}  from '../post/styles'
 
-const CreateBusiness = () => {
+const CreatePost = () => {
     const {_id, token} = useSelector(state => state.user)
     const initialValues = {
         name: '',
@@ -20,15 +20,15 @@ const CreateBusiness = () => {
         <ContentWrapper>
             <GenericFormik
                 initialValues={initialValues}
-                fields={businessFieldTypes}
+                fields={postFieldTypes}
                 //   validationSchema={validateSignin}
-                dispatchAction={'admin/createBusiness'}
-                formHeading={'Create Business'}
+                dispatchAction={'admin/createPost'}
+                formHeading={'Create Post'}
                 buttonText={'Create'}
-                theme={businessFormStyle}
+                theme={postFormStyle}
             />
         </ContentWrapper>
     )
 }
 
-export default CreateBusiness
+export default CreatePost

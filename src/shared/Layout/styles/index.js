@@ -8,7 +8,6 @@ import {
     column,
     fixed,
     flex,
-    none,
     pointer,
     relative,
     sv,

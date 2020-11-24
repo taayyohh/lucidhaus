@@ -10,7 +10,7 @@ import {createBrowserHistory} from 'history'
 import {createLogger}         from 'redux-logger'
 import createSagaMiddleware   from 'redux-saga'
 import adminReducer           from '../features/admin/adminSlice'
-import businessReducer        from '../features/business/businessSlice'
+import postReducer        from '../features/post/postSlice'
 import shopReducer            from '../features/shop/shopSlice'
 import siteReducer            from '../features/site/siteSlice'
 import userReducer            from '../features/user/userSlice'
@@ -32,7 +32,7 @@ if (!['production'].includes(process.env.NODE_ENV)) {
             serializableCheck: {
                 // Ignore these action types
                 ignoredActions: [
-                    'admin/createBusiness',
+                    'admin/createPost',
                     'admin/createProduct',
                     'shop/getPaymentNonce'
                 ],
@@ -48,7 +48,7 @@ export default configureStore({
         user: userReducer,
         site: siteReducer,
         admin: adminReducer,
-        business: businessReducer,
+        post: postReducer,
         shop: shopReducer,
         router: connectRouter(history)
     },

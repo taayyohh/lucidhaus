@@ -19,8 +19,8 @@ const AdminMenu = () =>
                 </LinkSwitch>
             </Li>
             <Li theme={adminMenuStyle.listItem}>
-                <LinkSwitch theme={adminMenuStyle.link} url="/admin/marketplace">
-                    Manage Businesses
+                <LinkSwitch theme={adminMenuStyle.link} url="/admin/posts">
+                    Manage Posts
                 </LinkSwitch>
             </Li>
             <Li theme={adminMenuStyle.listItem}>
