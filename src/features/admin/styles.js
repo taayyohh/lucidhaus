@@ -35,11 +35,10 @@ export const adminPostsInnerWrapperStyle = {
     gridTemplateColumns: '1fr 1fr 1fr',
     gridGap: sv(30),
 }
-export const adminPostCardWrapperStyle = {}
+export const adminPostCardWrapperStyle = {
+
+}
 export const adminPostCardStyle = {
-    display: grid,
-    gridTemplateColumns: `${sv(100)} 1fr`,
-    gridGap: sv(15),
     width: '100%',
     mobile: {
         display: flex
@@ -51,7 +50,7 @@ export const adminPostCardStyle = {
         width: auto
     },
     image: {
-        maxWidth: [90, .7, '100%']
+        //maxWidth: [90, .7, '100%']
     },
     name: {
         paddingTop: 0,

@@ -39,7 +39,7 @@ export const globals = {
         linkHoverColor: colorPalette.purple,
         inputLabelColor: colorPalette.black,
         menuPanelCloseButtonBackgroundColor: colorPalette.purple,
-        transitionOverlayBackground: colorPalette.tan,
+        transitionOverlayBackground: colorPalette.grayPurple,
         buttonHoverColor: colorPalette.grayPurple,
         borderHoverColor: colorPalette.purple,
         borderColor: colorPalette.lightGray,
