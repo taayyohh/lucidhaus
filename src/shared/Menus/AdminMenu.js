@@ -23,7 +23,7 @@ const AdminMenu = () => {
             <Ul theme={adminMenuStyle.list}>
                 <Li theme={adminMenuStyle.listItem}>
                     <LinkSwitch
-                        url="/admin/dashboard"
+                        url="/admin"
                         theme={adminMenuStyle.link}>
                         Dashboard
                     </LinkSwitch>

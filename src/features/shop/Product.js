@@ -11,14 +11,21 @@ import S3Img              from '../../shared/Basic/S3Img'
 import {
     genericCardDetailImageWrapperStyle,
     genericCardImageStyle
-}                         from '../../shared/Cards/styles'
-import AddToCartButton    from '../../shared/Controls/AddToCartButton'
+}                            from '../../shared/Cards/styles'
+import AddToCartButton       from '../../shared/Controls/AddToCartButton'
 import {contentWrapperStyle} from '../../shared/Layout/styles'
 import {getNameById}         from '../../utils/getNameById'
 import {
     postStyle,
+    postTitleStyle,
     postWrapperStyle
-} from '../post/styles'
+}                            from '../post/styles'
+import {
+    productCategoryStyle,
+    productDescriptionStyle,
+    productPriceStyle,
+    productWrapperStyle
+} from './styles'
 
 
 const Product = () => {
@@ -39,10 +46,9 @@ const Product = () => {
 
     return (
         <Div theme={contentWrapperStyle}>
-            <Div theme={postWrapperStyle}>
-                <Div>{getNameById(productCategories, category)}</Div>
-                <H2 theme={postStyle.title}>{name}</H2>
-                <Div> price: {price}</Div>
+            <Div theme={productWrapperStyle}>
+                <Div theme={productCategoryStyle}>{getNameById(productCategories, category)}</Div>
+                <H2 theme={postTitleStyle}>{name}</H2>
                 <MotionDiv
                     layoutId={`${product._id}-image`}
                     theme={genericCardDetailImageWrapperStyle}
@@ -52,11 +58,17 @@ const Product = () => {
                         alt={name}
                         theme={genericCardImageStyle}
                     />
+                    <Div theme={productPriceStyle}>
+                        <Div>{price} <span>USD</span></Div>
+                    </Div>
+                    <AddToCartButton
+                        product={product}
+                        dispatchAction={'shop/addToCart'}
+                    />
                 </MotionDiv>
-                <RichText children={description}/>
-                <AddToCartButton
-                    product={product}
-                    dispatchAction={'shop/addToCart'}
+                <RichText
+                    children={description}
+                    theme={productDescriptionStyle}
                 />
 
             </Div>

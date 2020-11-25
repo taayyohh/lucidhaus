@@ -1,8 +1,12 @@
-import {globals} from '../../config/styles'
+import {
+    colorPalette,
+    globals
+} from '../../config/styles'
 import {
     auto,
     black,
     borderBox,
+    center,
     column,
     flex,
     hidden,
@@ -10,10 +14,10 @@ import {
     sv,
     white,
     wrap
-}                from '../../utils/themer'
+} from '../../utils/themer'
 
 export const productCardStyle = {
-    border: '1px solid #dadce0',
+    border: `1px solid ${colorPalette.gray}`,
     borderRadius: 10,
     padding: 20,
     margin: 40,
@@ -73,11 +77,14 @@ export const genericCardStyle = {
         borderColor: '#828282'
     }
 }
-export const genericCardImageStyle = {}
+export const genericCardImageStyle = {
+    width: '100%'
+}
 export const genericCardDetailImageWrapperStyle = {
-    height: 500,
+    height: auto,
     width: 500,
-    marginLeft: auto
+    marginLeft: '0 auto',
+    alignSelf: center
 }
 export const genericCardImageWrapperStyle = {
     overflow: hidden,

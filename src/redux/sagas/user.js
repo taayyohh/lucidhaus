@@ -17,7 +17,7 @@ export function* signIn({payload}) {
         if (!user.error) {
             yield put({type: 'user/signInSuccess', payload: user})
             yield put({type: 'user/authenticate', payload: user})
-            yield put(push(user?.user?.role === 1 ? '/admin/dashboard' : '/user/dashboard'))
+            yield put(push(user?.user?.role === 1 ? '/admin' : '/user/dashboard'))
         } else {
             yield put({
                 type: 'site/setNotification',
@@ -44,9 +44,9 @@ export function* signOut() {
 
 export function* signUp({payload}) {
     //TODO: if no users exists in database make first user a superAdmin
-    const newPayload = {...payload, role: 1}
+   // const newPayload = {...payload, role: 1}
 
-    const user = yield call(signup, newPayload)
+    const user = yield call(signup, payload)
     try {
         if (!user.error) {
             yield put({type: 'user/signUpSuccess', payload: user})

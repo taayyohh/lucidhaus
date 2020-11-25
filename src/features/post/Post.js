@@ -12,9 +12,11 @@ import {
 }                            from '../../shared/Cards/styles'
 import {contentWrapperStyle} from '../../shared/Layout/styles'
 import {
-    postStyle,
+    postDescriptionStyle,
+    postNameStyle,
+    postTitleStyle,
     postWrapperStyle
-}                            from './styles'
+} from './styles'
 
 
 const Post = () => {
@@ -34,26 +36,24 @@ const Post = () => {
 
     return (
         <MotionDiv theme={contentWrapperStyle}>
-            <MotionDiv
-                theme={postWrapperStyle}
-            >
-            </MotionDiv>
-            <MotionDiv
-              //  layoutId={`${post._id}-image`}
-                theme={genericCardDetailImageWrapperStyle}
-            >
-                <S3Img
-                    url={photo}
-                    alt={name}
-                    theme={genericCardImageStyle}
+            <MotionDiv theme={postWrapperStyle}>
+                <MotionDiv theme={postTitleStyle}>
+                    {name}
+                </MotionDiv>
+                <MotionDiv
+                    //  layoutId={`${post._id}-image`}
+                    theme={genericCardDetailImageWrapperStyle}
+                >
+                    <S3Img
+                        url={photo}
+                        alt={name}
+                        theme={genericCardImageStyle}
+                    />
+                </MotionDiv>
+                <RichText
+                    children={description}
+                    theme={postDescriptionStyle}
                 />
-            </MotionDiv>
-            <MotionDiv
-                theme={postStyle.name}
-                layoutId={`${post._id}-name`}
-            >
-                {name}
-                <RichText children={description}/>
             </MotionDiv>
         </MotionDiv>
     )

@@ -1,4 +1,7 @@
-import {globals} from '../../config/styles'
+import {
+    colorPalette,
+    globals
+} from '../../config/styles'
 import {
     absolute,
     auto,
@@ -30,7 +33,7 @@ export const genericFormStyle = {
     width: [700, .6, '100%'],
     padding: [80, globals.style.layoutScalingValue, 30],
     background: '#fcfcfc',
-    border: '1px solid #dadce0',
+    border: `1px solid ${colorPalette.gray}`,
     borderRadius: [10, .7, 10],
     boxShadow: 'inset 0px 0px 4px #d9d9d9',
     position: relative,
@@ -67,13 +70,13 @@ export const genericFormStyle = {
 export const defaultFormStyle = {
     padding: 50,
     backgroundColor: '#f7f7f7',
-    border: '1px solid #dadce0',
+    border: `1px solid ${colorPalette.gray}`,
     boxShadow: 'inset 3px -1px 8px 0px #e0e0e0'
 }
 export const defaultFieldsetStyle = {
     position: relative,
     width: '100%',
-    border: '1px solid #dadce0',
+    border: `1px solid ${colorPalette.gray}`,
     borderRadius: '5px',
     boxSizing: borderBox,
     padding: 0,
@@ -201,7 +204,7 @@ export const imageDropZonePreviewStyle = {
 }
 export const imageDropZonePreviewWrapperStyle = {
     width: [500, globals.style.layoutScalingValue, '100%'],
-    border: '1px solid #dadce0',
+    border: `1px solid ${colorPalette.gray}`,
     boxSizing: borderBox,
     padding: [20, globals.style.layoutScalingValue, 20]
 }
@@ -260,7 +263,7 @@ export const imageDropZoneStyle = {
     },
     removeButton: {
         backgroundColor: white,
-        border: '1px solid #dadce0',
+        border: `1px solid ${colorPalette.gray}`,
         marginTop: 10,
         display: flex,
         alignItems: center,

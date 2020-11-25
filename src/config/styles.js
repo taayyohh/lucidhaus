@@ -10,7 +10,7 @@ export const colorPalette = {
     brightRed: '#d11',
     red: '#8C141E',
     black: '#0A1626',
-    gray: '#b5b5b5',
+    gray: '#dadce0',
     lightGray: '#e9e8e8',
     tan: '#D9D7BA',
     purple: '#822cbf',

@@ -57,7 +57,7 @@ const Content = () => {
                             <Route path="/shop/:slug" exact component={Product}/>
                             <PrivateRoute path="/settings/profile" exact component={UpdateProfile}/>
                             <PrivateRoute path="/user/dashboard" exact component={UserDashboard}/>
-                            <AdminRoute path="/admin/dashboard" exact component={AdminDashboard}/>
+                            <AdminRoute path="/admin" exact component={AdminDashboard}/>
                             <AdminRoute path="/admin/shop" exact component={ManageShop}/>
                             <AdminRoute path="/admin/taxonomy" exact component={ManageTaxonomy}/>
                             <AdminRoute path="/admin/posts" exact component={ManageMarketplace}/>

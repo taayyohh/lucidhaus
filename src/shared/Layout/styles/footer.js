@@ -1,8 +1,11 @@
-import {globals}   from '../../../config/styles'
+import {
+    colorPalette,
+    globals
+} from '../../../config/styles'
 import {borderBox} from '../../../utils/themer'
 
 export const footerStyle = {
-    borderTop: '1px solid #dadce0',
+    borderTop: `1px solid ${colorPalette.gray}`,
     marginTop: 50,
     padding: 30,
     minHeight: [150, .7, 150],

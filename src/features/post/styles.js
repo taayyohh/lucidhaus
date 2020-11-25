@@ -1,9 +1,14 @@
-import {globals} from '../../config/styles'
 import {
+    colorPalette,
+    globals
+} from '../../config/styles'
+import {
+    borderBox,
+    center,
     column,
     flex,
     sv
-}                from '../../utils/themer'
+} from '../../utils/themer'
 
 export const postsWrapperStyle = {
     display: 'grid',
@@ -21,13 +26,23 @@ export const postFormStyle = {
 export const postWrapperStyle = {
     display: flex,
     flexDirection: column,
-    width: '100%'
+    width: [800, globals.style.layoutScalingValue, '100%'],
+    margin: '0 auto'
 }
-export const postStyle = {
-    name: {
-        font: globals.fonts.fancy,
-        size: 42,
-        margin: 0,
-        marginBottom: 15
-    }
+
+export const postTitleStyle = {
+    font: globals.fonts.fancy,
+    textAlign: center,
+    size: [42, .7, 36],
+    margin: 0,
+    marginBottom: [30, .7, 20]
+}
+
+export const postDescriptionStyle = {
+    marginTop: [60, .7, 30],
+    paddingTop: [50, .7, 30],
+    boxSizing: borderBox,
+    paddingLeft: [30, globals.style.layoutScalingValue, '0'],
+    paddingRight: [30, globals.style.layoutScalingValue, '0'],
+    borderTop: `1px solid ${colorPalette.gray}`
 }

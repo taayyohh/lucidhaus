@@ -1,4 +1,7 @@
-import {globals} from '../../../config/styles'
+import {
+    colorPalette,
+    globals
+} from '../../../config/styles'
 import {
     absolute,
     auto,
@@ -12,7 +15,6 @@ import {
     relative,
     row,
     spaceBetween,
-    transparent,
     uppercase,
     white
 }                from '../../../utils/themer'
@@ -32,7 +34,7 @@ export const headerStyle = {
     position: 'sticky; position: -webkit-sticky;',
     font: globals.fonts.sans,
     textTransform: uppercase,
-    borderBottom: '1px solid #dadce0',
+    borderBottom: `1px solid ${colorPalette.gray}`,
     backgroundColor: white,
     top: 0,
     zIndex: 11,
