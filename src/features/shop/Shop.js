@@ -4,9 +4,9 @@ import {
     useSelector
 }                            from 'react-redux'
 import Div                   from '../../shared/Basic/Div'
-import GenericCard           from '../../shared/Cards/GenericCard'
-import {shopWrapperStyle}    from './styles'
+import ShopCard              from '../../shared/Cards/ShopCard'
 import {contentWrapperStyle} from '../../shared/Layout/styles'
+import {shopWrapperStyle}    from './styles'
 
 
 const Shop = () => {
@@ -23,11 +23,12 @@ const Shop = () => {
         <Div theme={contentWrapperStyle}>
             <Div theme={shopWrapperStyle}>
                 {shop && shop.map(shop => (
-                    <GenericCard
+                    <ShopCard
                         key={shop.slug}
                         slug={`shop/${shop.slug}`}
                         name={shop.name}
                         photo={shop.photo}
+                        price={shop.price}
                         layoutId={shop._id}
                     />
                 ))}

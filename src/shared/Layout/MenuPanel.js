@@ -10,7 +10,6 @@ import Overlay                       from "./Overlay";
 
 const MenuPanels = () => {
     const {currentPanel, setPanel} = useContext(menuPanelContext)
-    console.log('current', currentPanel)
     const setCurrentPanel = () => {
         switch (currentPanel) {
             case 'admin-menu-panel':
@@ -20,7 +19,7 @@ const MenuPanels = () => {
             case 'mobile-header-menu-panel':
                 return <HeaderMenu />
             default:
-                return <Div theme={{height: 40, width: 40, backgroundColor: '#afe'}}></Div>
+                return null
         }
     }
 

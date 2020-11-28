@@ -4,7 +4,6 @@ import React, {
     Suspense
 }                        from 'react'
 import {excerpt}         from '../../utils/helpers'
-import Div               from '../Basic/Div'
 import LinkSwitch        from '../Basic/LinkSwitch'
 import MotionDiv         from '../Basic/MotionDiv'
 import RichText          from '../Basic/RichText'
@@ -13,14 +12,13 @@ import {
     genericCardImageStyle,
     genericCardImageWrapperStyle,
     genericCardNameStyle,
-    genericCardStyle,
-    genericCardTextWrapperStyle
-} from './styles'
+    genericCardStyle
+}                        from './styles'
 
 //TODO:code split elsewhere where necessary, define fallback component
 const S3Img = lazy(() => import('../Basic/S3Img'))
 
-const GenericCard = ({photo, name, slug, description, theme, layoutId}) =>
+const ShopCard = ({photo, name, slug, price, theme, layoutId}) =>
     <AnimatePresence>
         <MotionDiv>
             <LinkSwitch
@@ -30,7 +28,7 @@ const GenericCard = ({photo, name, slug, description, theme, layoutId}) =>
                 {photo && (
                     <MotionDiv
                         theme={{...genericCardImageWrapperStyle, ...theme.imageWrapper}}
-                        layoutId={!!layoutId ? `${layoutId}-image` : Math.random()}
+                        layoutId={`${layoutId}-image`}
                     >
                         <Suspense fallback={<div>Loading...</div>}>
                             <S3Img
@@ -41,27 +39,26 @@ const GenericCard = ({photo, name, slug, description, theme, layoutId}) =>
                         </Suspense>
                     </MotionDiv>
                 )}
-                <Div theme={{...genericCardTextWrapperStyle, ...theme.textWrapper}}>
-                    {name && (
-                        <MotionDiv
-                            theme={{...genericCardNameStyle, ...theme.name}}
-                            children={name}
-                        />
-                    )}
-                    {description && (
-                        <RichText
-                            theme={{...genericCardDescriptionStyle, ...theme.description}}
-                            children={excerpt(description)}
-                        />
-                    )}
-                </Div>
+
+                <MotionDiv
+                    theme={{...genericCardNameStyle, ...theme.name}}
+                >
+                    {name}
+                </MotionDiv>
+                {price && (
+                    <MotionDiv
+                        theme={{...genericCardNameStyle, ...theme.name}}
+                    >
+                        {price}
+                    </MotionDiv>
+                )}
             </LinkSwitch>
         </MotionDiv>
     </AnimatePresence>
 
 
-GenericCard.defaultProps = {
+ShopCard.defaultProps = {
     theme: {}
 }
 
-export default GenericCard
+export default ShopCard

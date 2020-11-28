@@ -5,15 +5,15 @@ import Div                 from '../Basic/Div'
 import LinkSwitch          from '../Basic/LinkSwitch'
 import {menuPanelContext}  from '../Containers/MenuPanelController'
 import MenuPanels          from '../Layout/MenuPanel'
+import MenuToggle          from './MenuToggle'
 import {
     headerMenuAuthStyle,
     headerMenuAuthStyleListItemStyle,
     headerMenuListItemStyle,
     headerMenuListStyle,
-    headerMenuStyle
-}                          from '../Layout/styles/header'
-import MenuToggle          from './MenuToggle'
-import {menuToggleStyle}   from './styles'
+    headerMenuStyle,
+    menuToggleStyle
+} from './styles'
 
 const HeaderMenu = () => {
     const {isAuthenticated} = useSelector(state => state.user)

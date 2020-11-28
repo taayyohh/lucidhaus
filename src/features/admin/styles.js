@@ -20,7 +20,7 @@ import {postsWrapperStyle} from '../post/styles'
 export const adminPostsWrapperStyle = {
     width: '100%',
     display: 'grid',
-    gridTemplateColumns: '1fr 3fr',
+    gridTemplateColumns: '1fr 4fr',
     gridGap: sv(30),
     mobile: {
         display: flex,

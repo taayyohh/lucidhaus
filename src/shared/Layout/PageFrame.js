@@ -20,8 +20,8 @@ const PageFrame = () =>
         <Main theme={pageFrameStyle.main}/>
         <Div id="right-margin" theme={pageFrameStyle.rm}/>
         <Div id="footer-left-margin" theme={pageFrameStyle.flm}/>
-        <Div id="footer-left-margin" theme={pageFrameStyle.frm}/>
         <Footer theme={pageFrameStyle.footer}/>
+        <Div id="footer-right-margin" theme={pageFrameStyle.frm}/>
         <TransitionOverlay/>
         <Notifications/>
         <Div id="modal" theme={pageFrameStyle.modal}/>

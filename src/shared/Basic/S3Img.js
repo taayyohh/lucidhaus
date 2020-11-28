@@ -1,17 +1,13 @@
 import React from 'react'
-import Div   from './Div'
-import Img   from './Img'
 import {CDN} from '../../config'
+import Img   from './Img'
 
 const S3Img = ({url, alt, theme}) =>
-    <Div>
-        <Img
-            src={`${CDN}${url}`}
-            alt={alt}
-            theme={{maxHeight: '100%', maxWidth: '100%', ...theme}}
-        />
-    </Div>
-
+    <Img
+        src={`${CDN}${url}`}
+        alt={alt}
+        theme={{maxWidth: '100%', width: 'auto', ...theme}}
+    />
 
 
 S3Img.defaultProps = {

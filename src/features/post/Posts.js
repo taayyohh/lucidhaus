@@ -28,6 +28,7 @@ const Posts = () => {
                         slug={`posts/${post.slug}`}
                         name={post.name}
                         photo={post.photo}
+                        description={post.description}
                         layoutId={post._id}
                     />
                 )}

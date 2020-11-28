@@ -1,21 +1,20 @@
-import React, {useEffect}    from 'react'
+import React, {useEffect}      from 'react'
 import {
     useDispatch,
     useSelector
-}                            from 'react-redux'
-import MotionDiv             from '../../shared/Basic/MotionDiv'
-import RichText              from '../../shared/Basic/RichText'
-import S3Img                 from '../../shared/Basic/S3Img'
-import {
-    genericCardDetailImageWrapperStyle,
-    genericCardImageStyle
-}                            from '../../shared/Cards/styles'
-import {contentWrapperStyle} from '../../shared/Layout/styles'
+}                              from 'react-redux'
+import Div                     from '../../shared/Basic/Div'
+import MotionDiv               from '../../shared/Basic/MotionDiv'
+import RichText                from '../../shared/Basic/RichText'
+import S3Img                   from '../../shared/Basic/S3Img'
+import {genericCardImageStyle} from '../../shared/Cards/styles'
+import {contentWrapperStyle}   from '../../shared/Layout/styles'
+import {center}                from '../../utils/themer'
 import {
     postDescriptionStyle,
     postTitleStyle,
     postWrapperStyle
-}                            from './styles'
+}                              from './styles'
 
 
 const Post = () => {
@@ -36,16 +35,13 @@ const Post = () => {
                 <MotionDiv theme={postTitleStyle}>
                     {name}
                 </MotionDiv>
-                <MotionDiv
-                    //  layoutId={`${post._id}-image`}
-                    theme={genericCardDetailImageWrapperStyle}
-                >
+                <Div theme={{display: 'flex', justifyContent: center}}>
                     <S3Img
                         url={photo}
                         alt={name}
                         theme={genericCardImageStyle}
                     />
-                </MotionDiv>
+                </Div>
                 <RichText
                     children={description}
                     theme={postDescriptionStyle}

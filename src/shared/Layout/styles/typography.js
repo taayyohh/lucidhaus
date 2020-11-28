@@ -1,15 +1,12 @@
 import {globals}  from '../../../config/styles'
-import {
-    flex,
-    relative
-} from '../../../utils/themer'
+import {relative} from '../../../utils/themer'
 
 export const defaultLinkStyle = {
     color: globals.colors.linkColor
 }
 export const richTextDefaultStyle = {
-    size: [18, .7, 18],
-    lineHeight: [24, .9, 24],
+    size: [18, .9, 18],
+    lineHeight: [28, .9, 28],
     webkitTextSizeAdjust: '100%',
     font: globals.fonts.serif,
     child: [
@@ -44,28 +41,6 @@ export const richTextDefaultStyle = {
             ie: {
                 fontSize: 'x-small'
             }
-        },
-        {
-            selector: 'iframe',
-            mobile: {
-                width: '100% !important',
-                height: '56.25vw'
-            }
-        },
-        {
-            selector: 'blockquote',
-            child: {
-                selector: 'p',
-                firstChild: {
-                    marginBottom: 35
-                }
-            }
-        },
-        {
-            selector: '.embed-video',
-            display: flex,
-            marginTop: 30,
-            marginBottom: 30
         }
     ],
 

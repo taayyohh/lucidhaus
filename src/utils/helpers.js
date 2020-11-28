@@ -40,7 +40,7 @@ export const decodeEntities = html => {
  * @param {number} words
  * @returns {string}
  */
-export const excerpt = (source, words = 40) =>
+export const excerpt = (source, words = 20) =>
     source && decodeEntities(stripHtml(source).trim()).split(' ').slice(0, words).join(' ')
 
 /**

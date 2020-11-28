@@ -10,8 +10,10 @@ import Li                                 from '../Basic/Li'
 import Span                               from '../Basic/Span'
 import Ul                                 from '../Basic/Ul'
 import LinkSwitch                         from '../Basic/LinkSwitch'
-import {headerMenuAuthStyleListItemStyle} from '../Layout/styles/header'
-import {menuPanelHeaderStyle}             from './styles'
+import {
+    headerMenuAuthStyleListItemStyle,
+    menuPanelHeaderStyle
+} from './styles'
 
 const AdminMenu = () => {
     const dispatch = useDispatch()

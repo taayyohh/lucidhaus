@@ -12,7 +12,6 @@ const MobileHeaderMenu = () => {
                 theme={mobileHeaderMenuToggleStyle}
                 onClick={() => setPanel('mobile-header-menu-panel')}
             />
-            {/*<HeaderMenu />*/}
         </Div>
     )
 }

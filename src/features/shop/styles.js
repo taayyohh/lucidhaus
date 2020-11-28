@@ -35,7 +35,7 @@ export const checkoutDropIn = {
 }
 export const shopWrapperStyle = {
     ...postsWrapperStyle,
-    gridTemplateColumns: '1fr 1fr',
+    gridTemplateColumns: '1fr 1fr 1fr 1fr',
     gridGap: sv(50),
 }
 export const cartStyle = {

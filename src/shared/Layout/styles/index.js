@@ -8,6 +8,7 @@ import {
     column,
     fixed,
     flex,
+    hidden,
     pointer,
     relative,
     sv,
@@ -39,12 +40,6 @@ export const pageFrameStyle = {
         gridColumnSpan: 6,
         msGridRow: 1,
         gridRow: 1,
-    },
-    adminMenu: {
-        gridColumn: '2 / 6',
-        gridColumnSpan: 4,
-        msGridRow: 2,
-        gridRow: 2,
     },
     hlm: {
         msGridRow: 1,

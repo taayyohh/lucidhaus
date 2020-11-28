@@ -46,7 +46,6 @@ const Product = () => {
                 <Div theme={productCategoryStyle}>{getNameById(productCategories, category)}</Div>
                 <H2 theme={postTitleStyle}>{name}</H2>
                 <MotionDiv
-                    layoutId={`${product._id}-image`}
                     theme={genericCardDetailImageWrapperStyle}
                 >
                     <S3Img
