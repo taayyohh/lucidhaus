@@ -1,21 +1,37 @@
-import {auto} from '../../utils/themer'
-
 export const headerMenuPanelVariants = {
-    closed: {
-        translateX: 960,
-        overflowY: auto,
+    open: (height = 1000) => ({
+        clipPath: `circle(${height * 2 + 200}px at 100% 0)`,
         transition: {
-            duration: .5,
+            type: 'spring',
+            stiffness: 20,
+            restDelta: 2
         }
-    },
-    open: {
-        zIndex: 25,
-        translateX: 0,
-        overflowY: 'scroll',
+    }),
+    closed: {
+        clipPath: 'circle(30px at 100% 0)',
         transition: {
-            duration: .5,
-        },
+            delay: 0.5,
+            type: 'spring',
+            stiffness: 400,
+            damping: 40
+        }
     }
+
+    // closed: {
+    //     translateX: 960,
+    //     overflowY: auto,
+    //     transition: {
+    //         duration: .5,
+    //     }
+    // },
+    // open: {
+    //     zIndex: 25,
+    //     translateX: 0,
+    //     overflowY: 'scroll',
+    //     transition: {
+    //         duration: .5,
+    //     },
+    // }
 }
 
 export const genericSubMenuVariants = {

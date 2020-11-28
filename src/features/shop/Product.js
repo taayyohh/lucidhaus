@@ -1,13 +1,13 @@
-import React, {useEffect} from 'react'
+import React, {useEffect}    from 'react'
 import {
     useDispatch,
     useSelector
-}                         from 'react-redux'
-import Div                from '../../shared/Basic/Div'
-import H2                 from '../../shared/Basic/H2'
-import MotionDiv          from '../../shared/Basic/MotionDiv'
-import RichText           from '../../shared/Basic/RichText'
-import S3Img              from '../../shared/Basic/S3Img'
+}                            from 'react-redux'
+import Div                   from '../../shared/Basic/Div'
+import H2                    from '../../shared/Basic/H2'
+import MotionDiv             from '../../shared/Basic/MotionDiv'
+import RichText              from '../../shared/Basic/RichText'
+import S3Img                 from '../../shared/Basic/S3Img'
 import {
     genericCardDetailImageWrapperStyle,
     genericCardImageStyle
@@ -15,17 +15,13 @@ import {
 import AddToCartButton       from '../../shared/Controls/AddToCartButton'
 import {contentWrapperStyle} from '../../shared/Layout/styles'
 import {getNameById}         from '../../utils/getNameById'
-import {
-    postStyle,
-    postTitleStyle,
-    postWrapperStyle
-}                            from '../post/styles'
+import {postTitleStyle}      from '../post/styles'
 import {
     productCategoryStyle,
     productDescriptionStyle,
     productPriceStyle,
     productWrapperStyle
-} from './styles'
+}                            from './styles'
 
 
 const Product = () => {

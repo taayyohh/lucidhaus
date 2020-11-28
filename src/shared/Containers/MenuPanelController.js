@@ -6,12 +6,12 @@ import React, {
 export const menuPanelContext = createContext(null)
 
 const MenuPanelController = ({children}) => {
-    const [currentPanel, setCurrentPanel] = useState({})
+    const [currentPanel, setCurrentPanel] = useState(null)
 
     return (
         <menuPanelContext.Provider value={{
             currentPanel,
-            setPanel: (panelNameAndId) => setCurrentPanel(panelNameAndId),
+            setPanel: (name) => setCurrentPanel(name),
         }}>
             {children}
         </menuPanelContext.Provider>

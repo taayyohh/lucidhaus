@@ -8,7 +8,6 @@ import {
     flex,
     flexEnd,
     flexStart,
-    grid,
     inlineFlex,
     none,
     pointer,
@@ -35,9 +34,7 @@ export const adminPostsInnerWrapperStyle = {
     gridTemplateColumns: '1fr 1fr 1fr',
     gridGap: sv(30),
 }
-export const adminPostCardWrapperStyle = {
-
-}
+export const adminPostCardWrapperStyle = {}
 export const adminPostCardStyle = {
     width: '100%',
     mobile: {
@@ -62,11 +59,6 @@ export const adminDashboardStyle = {
     heading: {
         margin: 0,
         fontFamily: globals.fonts.fancy,
-        tablet: {
-            size: 60
-        },
-        small: {},
-        large: {}
     }
 }
 export const adminCardControlsButtonWrapperStyle = {

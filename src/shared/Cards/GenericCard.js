@@ -1,13 +1,18 @@
-import React      from 'react'
+import React, {
+    lazy,
+    Suspense
+}                 from 'react'
 import LinkSwitch from '../Basic/LinkSwitch'
 import MotionDiv  from '../Basic/MotionDiv'
-import S3Img      from '../Basic/S3Img'
 import {
     genericCardImageStyle,
     genericCardImageWrapperStyle,
     genericCardNameStyle,
     genericCardStyle
 }                 from './styles'
+
+//TODO:code split elsewhere where necessary, define fallback component
+const S3Img = lazy(() => import('../Basic/S3Img'))
 
 const GenericCard = ({photo, name, slug, theme, layoutId}) =>
     <MotionDiv>
@@ -16,15 +21,14 @@ const GenericCard = ({photo, name, slug, theme, layoutId}) =>
             theme={{...genericCardStyle, ...theme}}
         >
             {photo && (
-                <MotionDiv
-                    theme={{...genericCardImageWrapperStyle, ...theme.imageWrapper}}
-                    //  layoutId={`${layoutId}-image`}
-                >
-                    <S3Img
-                        url={photo}
-                        alt={name}
-                        theme={{...genericCardImageStyle, ...theme.image}}
-                    />
+                <MotionDiv theme={{...genericCardImageWrapperStyle, ...theme.imageWrapper}}>
+                    <Suspense fallback={<div>Loading...</div>}>
+                        <S3Img
+                            url={photo}
+                            alt={name}
+                            theme={{...genericCardImageStyle, ...theme.image}}
+                        />
+                    </Suspense>
                 </MotionDiv>
             )}
 

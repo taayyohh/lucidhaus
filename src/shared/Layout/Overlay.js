@@ -12,19 +12,19 @@ const Overlay = ({isOpen, onClick, theme}) => {
         },
         animate: {
             opacity: .25,
-            zIndex: 24
+            zIndex: 4
         }
     }
 
-    return (
-        <MotionDiv
-            theme={{...overlayStyle, ...theme}}
-            initial="initial"
-            animate={isOpen ? 'animate' : 'initial'}
-            variants={overlayVariants}
-            onClick={onClick}
-            alt='Close Panel'
-        />
+    return (isOpen ?
+            <MotionDiv
+                theme={{...overlayStyle, ...theme}}
+                initial="initial"
+                animate={isOpen ? 'animate' : 'initial'}
+                variants={overlayVariants}
+                onClick={onClick}
+                alt='Close Panel'
+            /> : null
     )
 }
 

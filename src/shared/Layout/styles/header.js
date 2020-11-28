@@ -56,7 +56,8 @@ export const headerInnerStyle = {
     position: relative,
     margin: '0 auto',
     height: '100%',
-    width: [globals.style.siteInnerWidth, globals.style.layoutScalingValue, '100%'],
+    width: '100%',
+   // width: [globals.style.siteInnerWidth, globals.style.layoutScalingValue, '100%'],
     mobile: {
         paddingLeft: 25,
         paddingRight: 25,
@@ -124,6 +125,7 @@ export const headerMenuListStyle = {
 export const headerMenuAuthStyle = {
     display: flex,
     marginLeft: auto,
+    zIndex: 0,
     mobile: {
         display: flex,
         flexDirection: column,

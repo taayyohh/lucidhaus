@@ -37,14 +37,14 @@ const TransitionController = props => {
 
     const pageInit = useMemo(() => async () => {
         await overlayAnimation.start(overlayFadeout)
-        await contentAnimation.start({
-            opacity: 1,
-            translateX: 0,
-            transition: {
-                type: 'spring',
-                duration: .2,
-            }
-        })
+        // await contentAnimation.start({
+        //     opacity: 1,
+        //     translateX: 0,
+        //     transition: {
+        //         duration: .2,
+        //         ease: 'easeOut',
+        //     }
+        // })
         await setTimeout(() => scrollToTop(), 0)
         await setTransitionInProgress(false)
         await setTransitionComplete(true)
@@ -52,23 +52,23 @@ const TransitionController = props => {
     }, [overlayAnimation])
 
     const pageOut = useMemo(() => async (currentPathName) => {
-        await setPanel('')
-        await setTransitionInProgress(true)
-        await overlayAnimation.set({height: 0, opacity: 1})
-        await overlayAnimation.start({
-            opacity: 1,
-            height: '100vh',
-            zIndex: 10,
-            transition: {
-                duration: .3,
-                //  ease: 'easeOut',
-            }
-        })
         await setCurrentPath(currentPathName)
-        await contentAnimation.set({
-            opacity: 0,
-            translateX: '-10%'
-        })
+        await setPanel(null)
+        await setTransitionInProgress(true)
+        // await overlayAnimation.set({height: 0, opacity: 1})
+        // await overlayAnimation.start({
+        //     opacity: 1,
+        //     height: '100vh',
+        //     zIndex: 10,
+        //     transition: {
+        //         duration: .3,
+        //         //  ease: 'easeOut',
+        //     }
+        // })
+        // await contentAnimation.set({
+        //     opacity: 0,
+        //     translateX: '-10%'
+        // })
         await pageInit()
     }, [setPanel, pageInit])
 

@@ -8,7 +8,7 @@ export const defaultLinkStyle = {
     color: globals.colors.linkColor
 }
 export const richTextDefaultStyle = {
-    size: [18, .9, 18],
+    size: [18, .7, 18],
     lineHeight: [24, .9, 24],
     webkitTextSizeAdjust: '100%',
     font: globals.fonts.serif,

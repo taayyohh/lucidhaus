@@ -1,9 +1,9 @@
 import {
+    colorPalette,
     genericMobileContainerStyles,
     globals
 } from '../../../config/styles'
 import {
-    black,
     center,
     column,
     fixed,
@@ -149,7 +149,7 @@ export const overlayStyle = {
     right: 0,
     top: 0,
     bottom: 0,
-    backgroundColor: black,
+    backgroundColor: colorPalette.grayPurple,
     zIndex: -1,
     hover: {
         cursor: pointer

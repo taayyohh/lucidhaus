@@ -1,26 +1,24 @@
 import React, {useContext} from 'react'
-import {
-    useDispatch,
-    useSelector
-}                 from 'react-redux'
+import {useSelector}       from 'react-redux'
+import {absolute}          from '../../utils/themer'
+import Div                 from '../Basic/Div'
+import LinkSwitch          from '../Basic/LinkSwitch'
+import {menuPanelContext}  from '../Containers/MenuPanelController'
+import MenuPanels          from '../Layout/MenuPanel'
 import {
     headerMenuAuthStyle,
     headerMenuAuthStyleListItemStyle,
     headerMenuListItemStyle,
     headerMenuListStyle,
     headerMenuStyle
-}                 from '../Layout/styles/header'
-import {absolute} from '../../utils/themer'
-import Div                from '../Basic/Div'
-import LinkSwitch         from '../Basic/LinkSwitch'
-import Span               from '../Basic/Span'
-import {menuPanelContext} from '../Containers/MenuPanelController'
+}                          from '../Layout/styles/header'
+import MenuToggle          from './MenuToggle'
+import {menuToggleStyle}   from './styles'
 
 const HeaderMenu = () => {
-    const dispatch = useDispatch()
-    const {isAuthenticated, isAdmin} = useSelector(state => state.user)
+    const {isAuthenticated} = useSelector(state => state.user)
     const {cart} = useSelector(state => state.shop)
-    const {setPanel} = useContext(menuPanelContext)
+    const {setPanel, currentPanel} = useContext(menuPanelContext)
 
     return (
         <Div theme={headerMenuStyle}>
@@ -29,7 +27,7 @@ const HeaderMenu = () => {
                     url="/posts"
                     theme={headerMenuListItemStyle}>
                     Posts
-                    <Div theme={{position: absolute, left: 0, bottom: 0, height: 4, backgroundColor: '#afe'}} />
+                    <Div theme={{position: absolute, left: 0, bottom: 0, height: 4, backgroundColor: '#afe'}}/>
                 </LinkSwitch>
                 <LinkSwitch
                     url="/shop"
@@ -37,7 +35,7 @@ const HeaderMenu = () => {
                     Shop
                 </LinkSwitch>
                 <Div
-                    onClick={() => setPanel({name: 'cart-menu-panel'})}
+                    onClick={() => setPanel('cart-menu-panel')}
                     theme={headerMenuListItemStyle}
                 >
                     Cart
@@ -45,7 +43,7 @@ const HeaderMenu = () => {
                 </Div>
             </Div>
             <Div as="nav" theme={headerMenuAuthStyle}>
-                {!isAuthenticated && (
+                {(!isAuthenticated && (
                     <>
                         <LinkSwitch
                             url="/signin"
@@ -61,31 +59,13 @@ const HeaderMenu = () => {
                         </LinkSwitch>
 
                     </>
+                )) || (
+                    <MenuToggle
+                        theme={menuToggleStyle}
+                        onClick={() => setPanel(!currentPanel ? 'admin-menu-panel' : null)}
+                    />
                 )}
-                {isAuthenticated && (
-                    <Span
-                        to="/signout"
-                        theme={headerMenuAuthStyleListItemStyle}
-                        onClick={() => dispatch({type: 'user/signOut'})}
-                    >
-                        Sign Out
-                    </Span>
-                )}
-                {isAuthenticated && !isAdmin && (
-                    <LinkSwitch
-                        url="/user/dashboard"
-                        theme={headerMenuAuthStyleListItemStyle}>
-                        Profile
-                    </LinkSwitch>
-                )}
-                {(isAuthenticated && isAdmin) && (
-                    <Div
-                        onClick={() => setPanel({name: 'admin-menu-panel'})}
-                        theme={headerMenuAuthStyleListItemStyle}
-                    >
-                        Admin Menu
-                    </Div>
-                )}
+                <MenuPanels/>
             </Div>
         </Div>
     )

@@ -10,8 +10,9 @@ import Overlay                       from "./Overlay";
 
 const MenuPanels = () => {
     const {currentPanel, setPanel} = useContext(menuPanelContext)
+    console.log('current', currentPanel)
     const setCurrentPanel = () => {
-        switch (currentPanel.name) {
+        switch (currentPanel) {
             case 'admin-menu-panel':
                 return <AdminMenu/>
             case 'cart-menu-panel':
@@ -19,7 +20,7 @@ const MenuPanels = () => {
             case 'mobile-header-menu-panel':
                 return <HeaderMenu />
             default:
-                return null
+                return <Div theme={{height: 40, width: 40, backgroundColor: '#afe'}}></Div>
         }
     }
 
@@ -27,11 +28,11 @@ const MenuPanels = () => {
         <Div theme={headerMenuPanelWrapperStyle}>
             <HeaderMenuPanelWrapper
                 children={setCurrentPanel()}
-                name={currentPanel.name}
+                name={currentPanel}
             />
             <Overlay
-                isOpen={!!currentPanel.name}
-                onClick={() => setPanel('')}
+                isOpen={!!currentPanel}
+                onClick={() => setPanel(null)}
             />
         </Div>
     )

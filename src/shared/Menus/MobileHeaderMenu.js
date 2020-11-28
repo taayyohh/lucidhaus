@@ -10,7 +10,7 @@ const MobileHeaderMenu = () => {
         <Div>
             <Div
                 theme={mobileHeaderMenuToggleStyle}
-                onClick={() => setPanel({name: 'mobile-header-menu-panel'})}
+                onClick={() => setPanel('mobile-header-menu-panel')}
             />
             {/*<HeaderMenu />*/}
         </Div>

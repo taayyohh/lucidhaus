@@ -13,10 +13,9 @@ import {
 import {contentWrapperStyle} from '../../shared/Layout/styles'
 import {
     postDescriptionStyle,
-    postNameStyle,
     postTitleStyle,
     postWrapperStyle
-} from './styles'
+}                            from './styles'
 
 
 const Post = () => {
@@ -30,9 +29,6 @@ const Post = () => {
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
-
-    console.log('id', post._id)
-
 
     return (
         <MotionDiv theme={contentWrapperStyle}>

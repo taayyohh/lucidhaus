@@ -1,4 +1,7 @@
-import {globals} from '../../config/styles'
+import {
+    colorPalette,
+    globals
+} from '../../config/styles'
 import {
     absolute,
     borderBox,
@@ -12,6 +15,9 @@ import {
 
 export const headerMenuPanelWrapperStyle = {
     position: absolute,
+    height: 20,
+    width: 20,
+    zIndex: -1
     // zIndex: 25
 }
 export const headerMenuPanelStyle = {
@@ -30,6 +36,7 @@ export const headerMenuPanelStyle = {
     // borderLeft: `1px solid #dadce0`,
     boxSizing: borderBox,
     zIndex: 22,
+    background: colorPalette.gray,
     heading: {
         font: globals.fonts.sans,
         size: [72, .5],
@@ -71,4 +78,10 @@ export const menuPanelHeaderStyle = {
     font: globals.fonts.fancy,
     size: [48, .6, 24],
     marginBottom: [30, .6, 30]
+}
+
+export const menuToggleStyle = {
+    hover: {
+        cursor: pointer
+    }
 }
