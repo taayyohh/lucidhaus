@@ -42,6 +42,7 @@ const Home = lazy(() => import('../../features/site/Home'))
 const Content = () => {
     const {contentAnimation, currentPath} = useContext(TransitionAnimations)
 
+
     return (
         <AnimateSharedLayout type="crossfade">
             <AnimatePresence>

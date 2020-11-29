@@ -115,3 +115,8 @@ export const genericCardTextWrapperStyle = {
 export const genericCardDescriptionStyle = {
     color: '#201f1f'
 }
+
+export const shopCardImageStyle = {
+    width: auto,
+  //  height: auto
+}

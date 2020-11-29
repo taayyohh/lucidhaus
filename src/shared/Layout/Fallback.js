@@ -4,10 +4,8 @@ import MotionDiv         from '../Basic/MotionDiv'
 
 const Fallback = () =>
     <AnimatePresence>
-        <MotionDiv
-            key={'fallback'}
-        >
-            loading
+        <MotionDiv key={'fallback'}>
+
         </MotionDiv>
     </AnimatePresence>
 

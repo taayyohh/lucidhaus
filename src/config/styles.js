@@ -1,3 +1,5 @@
+import {getScrollbarWidth} from '../utils/getScrollbarWidth'
+
 export const breakpointUpperLimit = {
     mobile: 768,
     tablet: 1024,
@@ -32,7 +34,16 @@ export const globals = {
         siteInnerWidth: 1570,
         contentWidth: 1320,
         headerHeight: 100,
-        mobileHeaderHeight: 80
+        mobileHeaderHeight: 80,
+        resetBody: () => {
+            document.body.style.overflow = 'auto'
+            document.body.style.overflowX = 'hidden'
+            document.body.style.paddingRight = '0px'
+        },
+        hideBodyOverflow: () => {
+            document.body.style.overflow = 'hidden'
+            document.body.style.paddingRight = getScrollbarWidth() + 'px'
+        }
     },
     colors: {
         linkColor: colorPalette.red,

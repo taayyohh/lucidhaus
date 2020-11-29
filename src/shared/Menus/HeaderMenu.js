@@ -1,22 +1,35 @@
 import React, {useContext} from 'react'
-import {useSelector}       from 'react-redux'
-import {absolute}          from '../../utils/themer'
-import Div                 from '../Basic/Div'
-import LinkSwitch          from '../Basic/LinkSwitch'
-import {menuPanelContext}  from '../Containers/MenuPanelController'
-import MenuPanels          from '../Layout/MenuPanel'
-import MenuToggle          from './MenuToggle'
+import {useSelector}      from 'react-redux'
+import {
+    shoppingCart,
+    user
+}                         from '../../config/iconLibrary'
+import {
+    colorPalette,
+    globals
+} from '../../config/styles'
+import {
+    absolute,
+    center,
+    flexStart,
+    inlineFlex
+} from '../../utils/themer'
+import Div       from '../Basic/Div'
+import Icon               from '../Basic/Icon'
+import LinkSwitch         from '../Basic/LinkSwitch'
+import {menuPanelContext} from '../Containers/MenuPanelController'
+import MenuPanels         from '../Layout/MenuPanel'
+import MenuToggle         from './MenuToggle'
 import {
     headerMenuAuthStyle,
-    headerMenuAuthStyleListItemStyle,
     headerMenuListItemStyle,
     headerMenuListStyle,
     headerMenuStyle,
     menuToggleStyle
-} from './styles'
+}                         from './styles'
 
 const HeaderMenu = () => {
-    const {isAuthenticated} = useSelector(state => state.user)
+    const {isAuthenticated, isAdmin} = useSelector(state => state.user)
     const {cart} = useSelector(state => state.shop)
     const {setPanel, currentPanel} = useContext(menuPanelContext)
 
@@ -34,39 +47,43 @@ const HeaderMenu = () => {
                     theme={headerMenuListItemStyle}>
                     Shop
                 </LinkSwitch>
-                <Div
-                    onClick={() => setPanel('cart-menu-panel')}
-                    theme={headerMenuListItemStyle}
-                >
-                    Cart
-                    <sup>{cart.length}</sup>
-                </Div>
             </Div>
             <Div as="nav" theme={headerMenuAuthStyle}>
-                {(!isAuthenticated && (
-                    <>
-                        <LinkSwitch
-                            url="/signin"
-                            theme={headerMenuAuthStyleListItemStyle}
-                        >
-                            Sign in
-                        </LinkSwitch>
-                        <LinkSwitch
-                            url="/signup"
-                            theme={headerMenuAuthStyleListItemStyle}
-                        >
-                            Sign Up
-                        </LinkSwitch>
-
-                    </>
-                )) || (
-                    <MenuToggle
-                        theme={menuToggleStyle}
-                        onClick={() => setPanel(!currentPanel ? 'admin-menu-panel' : null)}
+                <Div
+                    onClick={() => {
+                        setPanel('cart-menu-panel')
+                        globals.style.hideBodyOverflow()
+                    }}
+                    theme={headerMenuListItemStyle}
+                >
+                    <Icon
+                        icon={shoppingCart}
+                        theme={{size: 18, hover: {cursor: 'pointer', color: '#8c141e', transition: 'color 500ms ease'}}}
                     />
-                )}
-                <MenuPanels/>
+                    {cart.length > 0 && (
+                        <Div as={'sup'} theme={{width: 20,
+                            height: 20,
+                            background: colorPalette.purple,
+                            color: '#fff',
+                            display: inlineFlex,
+                            alignItems: flexStart,
+                            justifyContent: center,
+                            borderRadius: 20,
+                            fontSize: 16,
+                            fontWeight: 400,
+                            marginTop: -4,
+                            marginLeft: 2,}}>{cart.length}</Div>
+                    )}
+
+                </Div>
+                <LinkSwitch url={isAuthenticated && isAdmin ? '/admin' : isAuthenticated ? '/user' : '/signin'} theme={{color: '#000'}}>
+                    <Icon
+                        icon={user}
+                        theme={{size: 18, hover: {cursor: 'pointer', color: '#8c141e', transition: 'color 500ms ease'}}}
+                    />
+                </LinkSwitch>
             </Div>
+            <MenuPanels/>
         </Div>
     )
 }

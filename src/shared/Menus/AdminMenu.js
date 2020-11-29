@@ -30,26 +30,6 @@ const AdminMenu = () => {
                         Dashboard
                     </LinkSwitch>
                 </Li>
-                <Li theme={adminMenuStyle.listItem}>
-                    <LinkSwitch theme={adminMenuStyle.link} url="/admin/posts">
-                        Manage Posts
-                    </LinkSwitch>
-                </Li>
-                <Li theme={adminMenuStyle.listItem}>
-                    <LinkSwitch theme={adminMenuStyle.link} url="/admin/shop">
-                        Manage Products
-                    </LinkSwitch>
-                </Li>
-                <Li theme={adminMenuStyle.listItem}>
-                    <LinkSwitch theme={adminMenuStyle.link} url="/admin/orders">
-                        Manage Orders
-                    </LinkSwitch>
-                </Li>
-                <Li theme={adminMenuStyle.listItem}>
-                    <LinkSwitch theme={adminMenuStyle.link} url="/admin/taxonomy">
-                        Manage Taxonomy
-                    </LinkSwitch>
-                </Li>
                 {!isAuthenticated && (
                     <>
                         <LinkSwitch

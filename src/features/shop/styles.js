@@ -8,6 +8,7 @@ import {
     column,
     flex,
     none,
+    normal,
     relative,
     sv,
     uppercase
@@ -39,6 +40,7 @@ export const shopWrapperStyle = {
     gridGap: sv(50),
 }
 export const cartStyle = {
+    paddingTop: [100, .7, 50],
     checkOut: {
         //position: fixed,
 
@@ -54,9 +56,10 @@ export const cartStyle = {
 export const cartTitleStyle = {
     font: globals.fonts.fancy,
     textAlign: center,
-    size: [44, .7, 36],
+    size: [36, .7, 28],
     marginTop: 0,
-    marginBottom: [20, .5]
+    marginBottom: [20, .5],
+    textTransform: none
 }
 
 export const productWrapperStyle = {
@@ -94,5 +97,6 @@ export const productCategoryStyle = {
     weight: 500,
     textAlign: center,
     color: '#656161',
+    size: [16, .7, 16],
     letterSpacing: [0.3, .7, 0.3]
 }

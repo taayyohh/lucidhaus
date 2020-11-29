@@ -3,17 +3,15 @@ import React, {
     lazy,
     Suspense
 }                        from 'react'
-import {excerpt}         from '../../utils/helpers'
 import LinkSwitch        from '../Basic/LinkSwitch'
 import MotionDiv         from '../Basic/MotionDiv'
-import RichText          from '../Basic/RichText'
 import {
-    genericCardDescriptionStyle,
     genericCardImageStyle,
     genericCardImageWrapperStyle,
     genericCardNameStyle,
-    genericCardStyle
-}                        from './styles'
+    genericCardStyle,
+    shopCardImageStyle
+} from './styles'
 
 //TODO:code split elsewhere where necessary, define fallback component
 const S3Img = lazy(() => import('../Basic/S3Img'))
@@ -28,13 +26,12 @@ const ShopCard = ({photo, name, slug, price, theme, layoutId}) =>
                 {photo && (
                     <MotionDiv
                         theme={{...genericCardImageWrapperStyle, ...theme.imageWrapper}}
-                        layoutId={`${layoutId}-image`}
                     >
                         <Suspense fallback={<div>Loading...</div>}>
                             <S3Img
                                 url={photo}
                                 alt={name}
-                                theme={{...genericCardImageStyle, ...theme.image}}
+                                theme={{...shopCardImageStyle, ...theme.image}}
                             />
                         </Suspense>
                     </MotionDiv>

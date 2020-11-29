@@ -13,12 +13,13 @@ body {
   -webkit-animation-iteration-count: 1;
   -webkit-animation-timing-function: linear;
   -webkit-animation-delay: 0.1s;
-  font-family: 'IBM Plex Sans', sans-serif;
+  font-family: Teko, sans-serif;
   min-height: 100vh;
   scroll-behavior: smooth;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
   overflow-x: hidden!important;
+  font-size: 16px;
 }
 
 img {

@@ -65,7 +65,6 @@ const Product = () => {
                     children={description}
                     theme={productDescriptionStyle}
                 />
-
             </Div>
         </Div>
     )

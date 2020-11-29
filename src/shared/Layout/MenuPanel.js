@@ -1,12 +1,13 @@
 import React, {useContext}           from 'react'
+import {globals}                     from '../../config/styles'
+import Cart                          from '../../features/shop/Cart'
 import Div                           from '../Basic/Div'
+import {menuPanelContext}            from '../Containers/MenuPanelController'
+import AdminMenu                     from '../Menus/AdminMenu'
 import HeaderMenu                    from '../Menus/HeaderMenu'
 import HeaderMenuPanelWrapper        from '../Menus/MenuPanelWrapper'
-import AdminMenu                     from "../Menus/AdminMenu";
-import {menuPanelContext}            from "../Containers/MenuPanelController";
-import Cart                          from "../../features/shop/Cart";
 import {headerMenuPanelWrapperStyle} from '../Menus/styles'
-import Overlay                       from "./Overlay";
+import Overlay                       from './Overlay'
 
 const MenuPanels = () => {
     const {currentPanel, setPanel} = useContext(menuPanelContext)
@@ -15,9 +16,9 @@ const MenuPanels = () => {
             case 'admin-menu-panel':
                 return <AdminMenu/>
             case 'cart-menu-panel':
-                return <Cart />
+                return <Cart/>
             case 'mobile-header-menu-panel':
-                return <HeaderMenu />
+                return <AdminMenu/>
             default:
                 return null
         }
@@ -31,7 +32,12 @@ const MenuPanels = () => {
             />
             <Overlay
                 isOpen={!!currentPanel}
-                onClick={() => setPanel(null)}
+                onClick={
+                    () => {
+                        setPanel(null)
+                        globals.style.resetBody()
+                    }
+                }
             />
         </Div>
     )

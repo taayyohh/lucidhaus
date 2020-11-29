@@ -13,17 +13,15 @@ import UserPurchaseHistory  from './UserPurchaseHistory'
 const UserDashboard = () => {
     const {name, email, token, _id, error, purchaseHistory} = useSelector(state => state.user)
     const dispatch = useDispatch()
-    const userExists = _id?.length > 0 && token?.length > 0
 
     useEffect(() => {
-        if (userExists)
-            dispatch({
-                type: 'user/getPurchaseHistory',
-                payload: {
-                    userId: _id,
-                    token: token
-                }
-            })
+        dispatch({
+            type: 'user/getPurchaseHistory',
+            payload: {
+                userId: _id,
+                token: token
+            }
+        })
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [_id, token])

@@ -22,7 +22,7 @@ const Root = () => {
 
     return (
         <>
-            {(isInitialized && (
+            {isInitialized ?
                 <LayoutSwitch>
                     <MenuPanelController>
                         <TransitionController>
@@ -31,10 +31,7 @@ const Root = () => {
                             </HelmetProvider>
                         </TransitionController>
                     </MenuPanelController>
-                </LayoutSwitch>
-
-            )) ||
-            <TransitionOverlay/>
+                </LayoutSwitch> : <TransitionOverlay/>
             }
         </>
     )

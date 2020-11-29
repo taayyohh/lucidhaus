@@ -15,6 +15,7 @@ import {
     pointer,
     relative,
     row,
+    transparent,
     white
 } from '../../utils/themer'
 
@@ -35,6 +36,7 @@ export const headerMenuPanelStyle = {
     paddingLeft: [120, globals.style.layoutScalingValue],
     paddingRight: [60, globals.style.layoutScalingValue],
     backgroundColor: white,
+    overflowY: 'scroll',
     // borderLeft: `1px solid #dadce0`,
     boxSizing: borderBox,
     zIndex: 22,
@@ -110,13 +112,16 @@ export const headerMenuListItemStyle = {
     transition: 'background-color 500ms ease',
     mobile: {
         width: '100%',
-        padding: '15px 0'
+        padding: 0
     },
     hover: {
         color: globals.colors.orange,
         mobile: {
             backgroundColor: '#e0c678',
             color: white,
+            hover: {
+                color: transparent
+            }
         }
     },
     child: {
@@ -126,7 +131,15 @@ export const headerMenuListItemStyle = {
 }
 export const headerMenuListStyle = {
     display: flex,
-    // marginLeft: auto,
+    position: relative,
+    after: {
+      content: "''",
+      width: '1px',
+      height: '100%',
+      background: colorPalette.gray,
+      position: absolute,
+      right: 0
+    },
     mobile: {
         flexDirection: column,
         marginRight: auto,
@@ -156,16 +169,4 @@ export const headerMenuAuthStyleListItemStyle = {
         width: '100%',
         padding: '15px 0'
     },
-}
-export const headerMenuToggleStyle = {
-    outline: none,
-    border: none,
-    cursor: pointer,
-    // position: absolute,
-    // top: [18, .7, 18],
-    // left: [15, .7, 15],
-    width: [50, .7, 50],
-    height: [50, .7, 50],
-    borderRadius: '50%',
-    background: '#000',
 }
