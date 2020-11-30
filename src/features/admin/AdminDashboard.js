@@ -1,15 +1,15 @@
 import React                              from 'react'
+import {
+    useDispatch,
+    useSelector
+}                                         from 'react-redux'
 import Div                                from '../../shared/Basic/Div'
 import H3                                 from '../../shared/Basic/H3'
 import Li                                 from '../../shared/Basic/Li'
 import LinkSwitch                         from '../../shared/Basic/LinkSwitch'
 import Span                               from '../../shared/Basic/Span'
 import Ul                                 from '../../shared/Basic/Ul'
-import {
-    useDispatch,
-    useSelector
-} from 'react-redux'
-import {contentWrapperStyle}              from '../../shared/Layout/styles'
+import ContentWrapper                     from '../../shared/Layout/ContentWrapper'
 import {headerMenuAuthStyleListItemStyle} from '../../shared/Menus/styles'
 import {
     adminDashboardStyle,
@@ -21,9 +21,9 @@ const AdminDashboard = () => {
     const dispatch = useDispatch()
 
     return (
-        <Div theme={contentWrapperStyle}>
+        <ContentWrapper>
             <Div theme={adminDashboardStyle}>
-                <H3 theme={adminDashboardStyle.heading}>Hey, {name} |   {isAuthenticated && (
+                <H3 theme={adminDashboardStyle.heading}>Hey, {name} | {isAuthenticated && (
                     <Span
                         to="/signout"
                         theme={headerMenuAuthStyleListItemStyle}
@@ -56,7 +56,7 @@ const AdminDashboard = () => {
                     </Li>
                 </Ul>
             </Div>
-        </Div>
+        </ContentWrapper>
 
     )
 }

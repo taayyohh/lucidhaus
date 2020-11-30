@@ -1,14 +1,13 @@
-import React, {useEffect}             from 'react'
+import React, {useEffect} from 'react'
 import {
     useDispatch,
     useSelector
-}                                     from 'react-redux'
-import AdminControls from '../../shared/Admin/AdminControls'
-import AdminPosts    from '../../shared/Admin/AdminPosts'
-import DeletePrompt  from '../../shared/Admin/DeletePrompt'
-import Div                            from '../../shared/Basic/Div'
-import {contentWrapperStyle}          from '../../shared/Layout/styles'
-import {adminPostsWrapperStyle} from './styles'
+}                         from 'react-redux'
+import AdminControls      from '../../shared/Admin/AdminControls'
+import AdminPosts         from '../../shared/Admin/AdminPosts'
+import DeletePrompt       from '../../shared/Admin/DeletePrompt'
+import AdminWrapper       from '../../shared/Layout/AdminWrapper'
+import ContentWrapper     from '../../shared/Layout/ContentWrapper'
 
 const ManagePosts = () => {
     const {posts} = useSelector(state => state.post)
@@ -22,8 +21,8 @@ const ManagePosts = () => {
     }, [confirmDelete])
 
     return (
-        <Div theme={contentWrapperStyle}>
-            <Div theme={adminPostsWrapperStyle}>
+        <ContentWrapper>
+            <AdminWrapper>
                 {/*//TODO:improve*/}
                 <AdminControls
                     data={posts}
@@ -32,8 +31,8 @@ const ManagePosts = () => {
                 />
                 <AdminPosts posts={posts}/>
                 <DeletePrompt destroyAction={'admin/destroyPost'}/>
-            </Div>
-        </Div>
+            </AdminWrapper>
+        </ContentWrapper>
     )
 }
 

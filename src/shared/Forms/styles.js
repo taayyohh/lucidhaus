@@ -172,6 +172,7 @@ export const defaultFieldErrorStyle = {
 }
 export const defaultCKEditorStyle = {
     minHeight: 300,
+    width: '100%',
     child: [
         {
             selector: '.ck.ck-editor',

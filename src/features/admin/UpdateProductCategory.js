@@ -6,6 +6,7 @@ import {
 import GenericFormik               from '../../shared/Forms/GenericFormik'
 import ContentWrapper              from '../../shared/Layout/ContentWrapper'
 import {productCategoryFieldTypes} from '../../config/fieldTypes'
+import {adminFormWrapperStyle}     from './styles'
 
 const UpdateProductCategory = () => {
     const dispatch = useDispatch()
@@ -37,7 +38,7 @@ const UpdateProductCategory = () => {
                 dispatchAction={'shop/updateProductCategory'}
                 formHeading={'Update Product Category'}
                 buttonText={'Update'}
-                theme={{width: 1100}}
+                theme={adminFormWrapperStyle}
                 enableReinitialize={true}
             />
         </ContentWrapper>

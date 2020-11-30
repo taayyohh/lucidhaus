@@ -3,10 +3,13 @@ import {
     globals
 } from '../../../config/styles'
 import {
+    black,
     borderBox,
     center,
     column,
     flex,
+    flexStart,
+    inlineFlex,
     relative,
     spaceBetween,
     uppercase,
@@ -65,5 +68,39 @@ export const headerLogoLinkStyle = {
     size: [60, .7, 60],
     width: [80, .7, 80],
     zIndex: 2,
+}
+
+export const cartNumberStyle = {
+    width: 20,
+    height: 20,
+    background: colorPalette.purple,
+    color: '#fff',
+    display: inlineFlex,
+    alignItems: flexStart,
+    justifyContent: center,
+    borderRadius: 20,
+    fontSize: 16,
+    fontWeight: 400,
+    marginTop: -4,
+    marginLeft: 2,
+}
+
+export const headerIconStyle = {
+    size: [18, .7, 18],
+    color: black,
+    mobile: {
+        marginLeft: 15
+    },
+    hover: {
+        cursor: 'pointer',
+        color: '#8c141e',
+        transition: 'color 500ms ease'
+    }
+}
+
+export const headerMenuIconWrapperStyle = {
+    display: flex,
+    alignItems: center,
+    paddingLeft: [20, globals.style.layoutScalingValue, '0']
 }
 

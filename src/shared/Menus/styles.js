@@ -11,6 +11,8 @@ import {
     column,
     fixed,
     flex,
+    hidden,
+    inlineFlex,
     none,
     pointer,
     relative,
@@ -36,11 +38,14 @@ export const headerMenuPanelStyle = {
     paddingLeft: [120, globals.style.layoutScalingValue],
     paddingRight: [60, globals.style.layoutScalingValue],
     backgroundColor: white,
-    overflowY: 'scroll',
+    overflowY: hidden,
     // borderLeft: `1px solid #dadce0`,
     boxSizing: borderBox,
     zIndex: 22,
     background: colorPalette.gray,
+    scrollBar: {
+        display: none
+    },
     heading: {
         font: globals.fonts.sans,
         size: [72, .5],
@@ -85,6 +90,18 @@ export const menuPanelHeaderStyle = {
 }
 
 export const menuToggleStyle = {
+    display: inlineFlex,
+    mobile: {
+        marginLeft: 20
+    },
+    child: {
+        selector: 'svg',
+        mobile: {
+            marginTop: 3,
+            height: 21,
+            width: 21
+        }
+    },
     hover: {
         cursor: pointer
     }
@@ -96,10 +113,7 @@ export const headerMenuStyle = {
     display: flex,
     flexDirection: row,
     alignItems: center,
-    justifyContent: center,
-    mobile: {
-        flexDirection: column
-    }
+    justifyContent: center
 }
 export const headerMenuListItemStyle = {
     display: block,
@@ -133,31 +147,25 @@ export const headerMenuListStyle = {
     display: flex,
     position: relative,
     after: {
-      content: "''",
-      width: '1px',
-      height: '100%',
-      background: colorPalette.gray,
-      position: absolute,
-      right: 0
-    },
-    mobile: {
-        flexDirection: column,
-        marginRight: auto,
-        marginLeft: 0,
-        marginTop: 100
+        content: '\'\'',
+        width: '1px',
+        height: '100%',
+        background: colorPalette.gray,
+        position: absolute,
+        right: 0,
+        mobile: {
+            display: none
+        }
     }
 }
-export const headerMenuAuthStyle = {
+export const headerMenuControlWrapperStyle = {
     display: flex,
-    // marginLeft: auto,
+    alignItems: center,
     zIndex: 0,
+    paddingLeft: [20, globals.style.layoutScalingValue, 20],
     mobile: {
         display: flex,
-        flexDirection: column,
-        position: relative,
-        margin: 0,
-        padding: 0,
-        marginRight: auto
+        position: relative
     }
 }
 export const headerMenuAuthStyleListItemStyle = {

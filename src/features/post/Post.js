@@ -8,7 +8,7 @@ import MotionDiv               from '../../shared/Basic/MotionDiv'
 import RichText                from '../../shared/Basic/RichText'
 import S3Img                   from '../../shared/Basic/S3Img'
 import {genericCardImageStyle} from '../../shared/Cards/styles'
-import {contentWrapperStyle}   from '../../shared/Layout/styles'
+import ContentWrapper          from '../../shared/Layout/ContentWrapper'
 import {center}                from '../../utils/themer'
 import {
     postDescriptionStyle,
@@ -30,7 +30,7 @@ const Post = () => {
     }, [])
 
     return (
-        <MotionDiv theme={contentWrapperStyle}>
+        <ContentWrapper>
             <MotionDiv theme={postWrapperStyle}>
                 <MotionDiv theme={postTitleStyle}>
                     {name}
@@ -47,7 +47,7 @@ const Post = () => {
                     theme={postDescriptionStyle}
                 />
             </MotionDiv>
-        </MotionDiv>
+        </ContentWrapper>
     )
 }
 

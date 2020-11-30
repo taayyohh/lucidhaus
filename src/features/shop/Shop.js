@@ -1,12 +1,12 @@
-import React, {useEffect}    from 'react'
+import React, {useEffect} from 'react'
 import {
     useDispatch,
     useSelector
-}                            from 'react-redux'
-import Div                   from '../../shared/Basic/Div'
-import ShopCard              from '../../shared/Cards/ShopCard'
-import {contentWrapperStyle} from '../../shared/Layout/styles'
-import {shopWrapperStyle}    from './styles'
+}                         from 'react-redux'
+import Div                from '../../shared/Basic/Div'
+import ShopCard           from '../../shared/Cards/ShopCard'
+import ContentWrapper     from '../../shared/Layout/ContentWrapper'
+import {shopWrapperStyle} from './styles'
 
 
 const Shop = () => {
@@ -20,7 +20,7 @@ const Shop = () => {
     }, [])
 
     return (
-        <Div theme={contentWrapperStyle}>
+        <ContentWrapper>
             <Div theme={shopWrapperStyle}>
                 {shop && shop.map(shop => (
                     <ShopCard
@@ -33,7 +33,7 @@ const Shop = () => {
                     />
                 ))}
             </Div>
-        </Div>
+        </ContentWrapper>
     )
 }
 

@@ -1,12 +1,12 @@
-import React, {useEffect}    from 'react'
+import React, {useEffect}  from 'react'
 import {
     useDispatch,
     useSelector
-}                            from 'react-redux'
-import Div                   from '../../shared/Basic/Div'
-import GenericCard           from '../../shared/Cards/GenericCard'
-import {contentWrapperStyle} from '../../shared/Layout/styles'
-import {postsWrapperStyle}   from './styles'
+}                          from 'react-redux'
+import Div                 from '../../shared/Basic/Div'
+import GenericCard         from '../../shared/Cards/GenericCard'
+import ContentWrapper      from '../../shared/Layout/ContentWrapper'
+import {postsWrapperStyle} from './styles'
 
 
 const Posts = () => {
@@ -20,7 +20,7 @@ const Posts = () => {
     }, [])
 
     return (
-        <Div theme={contentWrapperStyle}>
+        <ContentWrapper>
             <Div theme={postsWrapperStyle}>
                 {posts && posts?.map(post =>
                     <GenericCard
@@ -33,7 +33,7 @@ const Posts = () => {
                     />
                 )}
             </Div>
-        </Div>
+        </ContentWrapper>
     )
 }
 

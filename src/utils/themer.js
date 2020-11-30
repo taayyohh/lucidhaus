@@ -30,7 +30,6 @@ export const themer = (theme, isNested = false) => {
                     normalProperties = {...normalProperties, [prop]: theme[prop]}
             } else if (isMediaQuery(prop)) {
                 mediaQueryProperties = {...mediaQueryProperties, [prop]: theme[prop]}
-                mediaQueryProperties = {...mediaQueryProperties, [prop]: theme[prop]}
             } else
                 subProperties = {...subProperties, [prop]: theme[prop]}
         }
@@ -160,6 +159,7 @@ const handlePlaceholder = style => {
 
     return output
 }
+
 
 export const sv = (styleValue, scalingValue = defaultScalingValue) => {
     const min = Math.round(styleValue * scalingValue)
@@ -296,6 +296,7 @@ const cssProperties = {
     direction: 'direction',
     display: 'display',
     emptyCells: 'empty-cells',
+    ffScrollBar: 'scrollbar-width',
     filter: 'filter',
     flex: 'flex',
     flexBasis: 'flex-basis',
@@ -365,6 +366,7 @@ const cssProperties = {
     msGridColumnSpan: '-ms-grid-column-span',
     msGridRow: '-ms-grid-row',
     msGridRowSpan: '-ms-grid-row-span',
+    msScrollBar: '-ms-overflow-style',
     objectFit: 'object-fit',
     objectPosition: 'object-position',
     opacity: 'opacity',
@@ -425,6 +427,9 @@ const cssProperties = {
     verticalAlign: 'vertical-align',
     visibility: 'visibility',
     webkitAppearance: '-webkit-appearance',
+    webkitLineClamp: '-webkit-line-clamp',
+    webkitBoxOrient: '-webkit-box-orient',
+    webkitTextSizeAdjust: '-webkit-text-size-adjust',
     weight: 'font-weight',
     whiteSpace: 'white-space',
     width: 'width',
@@ -487,7 +492,6 @@ const cssPseudoClasses = {
     focus: 'focus',
     hover: 'hover',
     inRange: 'in-range',
-    internalAutoFillSelected: '-internal-autofill-selected',
     invalid: 'invalid',
     lang: 'lang',
     lastChild: 'last-child',
@@ -512,6 +516,7 @@ const cssPseudoClasses = {
     firstLetter: 'first-letter',
     firstLine: 'first-line',
     selection: 'selection',
+    scrollBar: ':-webkit-scrollbar'
 }
 
 const placeholderSelectors = [
@@ -534,7 +539,12 @@ const mediaQueries = {
     ff: mediaQuery`@-moz-document url-prefix()`,
     edge: mediaQuery`@supports (-ms-ime-align:auto)`,
     ios: mediaQuery`@supports (-webkit-overflow-scrolling: touch)`,
-    safari: mediaQuery`@supports (-webkit-marquee-repetition:infinite and (object-fit:fill)`
+    safari: mediaQuery`@supports (-webkit-marquee-repetition:infinite and (object-fit:fill)`,
+
+    ieDesktop: mediaQuery`all and (-ms-high-contrast: none), (-ms-high-contrast: active) and print, screen and (min-width: ${breakpointUpperLimit.mobile}px)`,
+    ieLarge: mediaQuery`all and (-ms-high-contrast: none), (-ms-high-contrast: active) and screen and (min-width: ${breakpointUpperLimit.small}px)`,
+    ieXLarge: mediaQuery`all and (-ms-high-contrast: none), (-ms-high-contrast: active) and screen and (min-width: ${breakpointUpperLimit.large}px)`,
+
 }
 
 /**

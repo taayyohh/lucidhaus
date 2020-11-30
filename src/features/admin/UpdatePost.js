@@ -1,11 +1,14 @@
-import React, {useEffect}   from 'react'
+import React, {useEffect}      from 'react'
 import {
     useDispatch,
     useSelector
-}                           from 'react-redux'
-import GenericFormik        from '../../shared/Forms/GenericFormik'
-import ContentWrapper       from '../../shared/Layout/ContentWrapper'
-import {postFieldTypes} from '../../config/fieldTypes'
+}                              from 'react-redux'
+import {postFieldTypes}        from '../../config/fieldTypes'
+import AdminControls           from '../../shared/Admin/AdminControls'
+import GenericFormik           from '../../shared/Forms/GenericFormik'
+import AdminWrapper            from '../../shared/Layout/AdminWrapper'
+import ContentWrapper          from '../../shared/Layout/ContentWrapper'
+import {adminFormWrapperStyle} from './styles'
 
 const UpdatePost = () => {
     const dispatch = useDispatch()
@@ -35,16 +38,24 @@ const UpdatePost = () => {
 
     return (
         <ContentWrapper>
-            <GenericFormik
-                initialValues={initialValues}
-                fields={postFieldTypes}
-                //   validationSchema={validateSignin}
-                dispatchAction={'admin/updatePost'}
-                formHeading={'Update Post'}
-                buttonText={'Update'}
-                theme={{width: 1100}}
-                enableReinitialize={true}
-            />
+            <AdminWrapper>
+                {/*//TODO:improve*/}
+                <AdminControls
+                    data={post}
+                    title={'Post'}
+                    create={'/create/post'}
+                />
+                <GenericFormik
+                    initialValues={initialValues}
+                    fields={postFieldTypes}
+                    //   validationSchema={validateSignin}
+                    dispatchAction={'admin/updatePost'}
+                    formHeading={'Update Post'}
+                    buttonText={'Update'}
+                    theme={adminFormWrapperStyle}
+                    enableReinitialize={true}
+                />
+            </AdminWrapper>
         </ContentWrapper>
     )
 }

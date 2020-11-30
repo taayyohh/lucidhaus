@@ -1,21 +1,20 @@
 import React, {useContext} from 'react'
-import {useSelector}      from 'react-redux'
+import {useSelector}       from 'react-redux'
 import {
     shoppingCart,
     user
-}                         from '../../config/iconLibrary'
-import {globals}          from '../../config/styles'
-import {flex}             from '../../utils/themer'
-import Div                from '../Basic/Div'
-import Icon               from '../Basic/Icon'
-import LinkSwitch         from '../Basic/LinkSwitch'
-import {menuPanelContext} from '../Containers/MenuPanelController'
-import MenuPanels         from '../Layout/MenuPanel'
-import MenuToggle         from './MenuToggle'
+}                          from '../../config/iconLibrary'
+import {flex}              from '../../utils/themer'
+import Div                 from '../Basic/Div'
+import Icon                from '../Basic/Icon'
+import LinkSwitch          from '../Basic/LinkSwitch'
+import {menuPanelContext}  from '../Containers/MenuPanelController'
+import MenuPanels          from '../Layout/MenuPanel'
+import MenuToggle          from './MenuToggle'
 import {
     headerMenuListItemStyle,
     menuToggleStyle
-}                         from './styles'
+}                          from './styles'
 
 const MobileHeaderMenu = () => {
     const {isAuthenticated, isAdmin} = useSelector(state => state.user)
@@ -25,13 +24,9 @@ const MobileHeaderMenu = () => {
 
     return (
         <Div as="nav" theme={{display: flex}}>
-            <MenuPanels />
+            <MenuPanels/>
             <Div
-                onClick={() => {
-                    setPanel('cart-menu-panel')
-                    globals.style.hideBodyOverflow()
-
-                }}
+                onClick={() => setPanel('cart-menu-panel')}
                 theme={headerMenuListItemStyle}
             >
                 <Icon
@@ -52,14 +47,7 @@ const MobileHeaderMenu = () => {
             {isAuthenticated && (
                 <MenuToggle
                     theme={menuToggleStyle}
-                    onClick={
-                        () => {
-                            if (!!currentPanel)
-                                globals.style.resetBody()
-
-                            setPanel(!currentPanel ? 'admin-menu-panel' : null)
-                        }
-                    }
+                    onClick={() => setPanel(!currentPanel ? 'admin-menu-panel' : null)}
                 />
             )}
         </Div>

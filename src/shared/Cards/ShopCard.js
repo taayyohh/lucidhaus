@@ -6,12 +6,11 @@ import React, {
 import LinkSwitch        from '../Basic/LinkSwitch'
 import MotionDiv         from '../Basic/MotionDiv'
 import {
-    genericCardImageStyle,
     genericCardImageWrapperStyle,
     genericCardNameStyle,
     genericCardStyle,
     shopCardImageStyle
-} from './styles'
+}                        from './styles'
 
 //TODO:code split elsewhere where necessary, define fallback component
 const S3Img = lazy(() => import('../Basic/S3Img'))

@@ -2,10 +2,15 @@ import {
     colorPalette,
     globals
 } from '../../../config/styles'
-import {borderBox} from '../../../utils/themer'
+import {
+    borderBox,
+    white
+} from '../../../utils/themer'
 
 export const footerStyle = {
     borderTop: `1px solid ${colorPalette.gray}`,
+    zIndex: 3,
+    background: white,
     marginTop: 50,
     paddingTop: 30,
     minHeight: [150, .7, 150],

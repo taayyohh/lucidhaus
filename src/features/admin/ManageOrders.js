@@ -3,10 +3,11 @@ import {
     useDispatch,
     useSelector
 }                               from 'react-redux'
+import AdminControls            from '../../shared/Admin/AdminControls'
 import Div                      from '../../shared/Basic/Div'
-import H2                    from '../../shared/Basic/H2'
-import {contentWrapperStyle} from '../../shared/Layout/styles'
-import OrderCard             from '../../shared/Cards/OrderCard'
+import OrderCard                from '../../shared/Cards/OrderCard'
+import AdminWrapper             from '../../shared/Layout/AdminWrapper'
+import ContentWrapper           from '../../shared/Layout/ContentWrapper'
 import {adminOrderWrapperStyle} from './styles'
 
 const ManageOrders = () => {
@@ -46,21 +47,23 @@ const ManageOrders = () => {
     }, [updatedOrder])
 
     return (
-        <Div theme={contentWrapperStyle}>
-            <H2>
-                Total orders: {orders.length}
-            </H2>
-
-            <Div theme={adminOrderWrapperStyle}>
-                {orders && orders.map(o =>
-                    <OrderCard
-                        key={o._id}
-                        o={o}
-                    />
-                )}
-            </Div>
-
-        </Div>
+        <ContentWrapper>
+            <AdminWrapper>
+                <AdminControls
+                    data={orders}
+                    title={'Order'}
+                    create={'/create/order'}
+                />
+                <Div theme={adminOrderWrapperStyle}>
+                    {orders && orders.map(o =>
+                        <OrderCard
+                            key={o._id}
+                            o={o}
+                        />
+                    )}
+                </Div>
+            </AdminWrapper>
+        </ContentWrapper>
     )
 }
 

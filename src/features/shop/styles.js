@@ -1,18 +1,17 @@
 import {
     colorPalette,
     globals
-} from '../../config/styles'
+}                          from '../../config/styles'
 import {
     borderBox,
     center,
     column,
     flex,
     none,
-    normal,
     relative,
     sv,
     uppercase
-} from '../../utils/themer'
+}                          from '../../utils/themer'
 import {postsWrapperStyle} from '../post/styles'
 
 export const checkoutAddress = {

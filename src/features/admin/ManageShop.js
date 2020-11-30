@@ -1,14 +1,13 @@
-import React, {useEffect}             from 'react'
+import React, {useEffect} from 'react'
 import {
     useDispatch,
     useSelector
-}                                     from 'react-redux'
-import AdminControls                  from '../../shared/Admin/AdminControls'
-import AdminShop                      from '../../shared/Admin/AdminShop'
-import DeletePrompt                   from '../../shared/Admin/DeletePrompt'
-import Div                            from '../../shared/Basic/Div'
-import {contentWrapperStyle}          from '../../shared/Layout/styles'
-import {adminPostsWrapperStyle} from './styles'
+}                         from 'react-redux'
+import AdminControls      from '../../shared/Admin/AdminControls'
+import AdminShop          from '../../shared/Admin/AdminShop'
+import DeletePrompt       from '../../shared/Admin/DeletePrompt'
+import AdminWrapper       from '../../shared/Layout/AdminWrapper'
+import ContentWrapper     from '../../shared/Layout/ContentWrapper'
 
 const ManageShop = () => {
     const {shop} = useSelector(state => state.shop)
@@ -23,8 +22,8 @@ const ManageShop = () => {
 
 
     return (
-        <Div theme={contentWrapperStyle}>
-            <Div theme={adminPostsWrapperStyle}>
+        <ContentWrapper>
+            <AdminWrapper>
                 <AdminControls
                     data={shop}
                     title={'Product'}
@@ -32,8 +31,8 @@ const ManageShop = () => {
                 />
                 <AdminShop shop={shop}/>
                 <DeletePrompt destroyAction={'admin/destroyProduct'}/>
-            </Div>
-        </Div>
+            </AdminWrapper>
+        </ContentWrapper>
     )
 }
 

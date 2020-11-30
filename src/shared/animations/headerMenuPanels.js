@@ -1,6 +1,12 @@
+import {
+    auto,
+    hidden
+} from '../../utils/themer'
+
 export const headerMenuPanelVariants = {
     open: (height = 1000) => ({
         clipPath: `circle(${height * 2 + 200}px at 100% 0)`,
+        overflowY: auto,
         transition: {
             type: 'spring',
             stiffness: 20,
@@ -9,8 +15,9 @@ export const headerMenuPanelVariants = {
     }),
     closed: {
         clipPath: 'circle(30px at 100% 0)',
+        overflowY: hidden,
         transition: {
-            delay: 0.5,
+          //  delay: 0.5,
             type: 'spring',
             stiffness: 400,
             damping: 40

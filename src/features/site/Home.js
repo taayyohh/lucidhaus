@@ -1,10 +1,9 @@
-import React                 from 'react'
-import {contentWrapperStyle} from '../../shared/Layout/styles'
-import Div                   from '../../shared/Basic/Div'
+import React          from 'react'
+import ContentWrapper from '../../shared/Layout/ContentWrapper'
 
 const Home = () => {
     return (
-        <Div theme={contentWrapperStyle}>
+        <ContentWrapper>
             {/*<MotionDiv*/}
             {/*    initial={{ transform: 'rotate(0)', height: 50, width: 50, borderRadius: 0}}*/}
             {/*    theme={{margin: '0 auto', background: '#afe'}}*/}
@@ -22,7 +21,7 @@ const Home = () => {
             {/*        repeatDelay: 1*/}
             {/*    }}*/}
             {/*/>*/}
-        </Div>
+        </ContentWrapper>
     )
 }
 

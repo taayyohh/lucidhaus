@@ -5,6 +5,7 @@ import {
     auto,
     center,
     column,
+    fixed,
     flex,
     flexEnd,
     flexStart,
@@ -17,7 +18,7 @@ import {
 }                          from '../../utils/themer'
 import {postsWrapperStyle} from '../post/styles'
 
-export const adminPostsWrapperStyle = {
+export const adminWrapperStyle = {
     width: '100%',
     display: 'grid',
     gridTemplateColumns: '1fr 4fr',
@@ -73,7 +74,7 @@ export const adminShopCardStyle = {
     ...adminPostCardStyle
 }
 export const adminHeadingStyle = {
-    size: [42, .7, 26],
+    size: [26, .7, 26],
     paddingBottom: [25, .7, 25],
     marginBottom: [25, .7, 25],
     borderBottom: `${sv(5)} solid #000`,
@@ -96,17 +97,19 @@ export const adminControlPanelStyle = {
     position: relative,
     display: flex,
     flexDirection: column,
-    background: '#f8f8f8',
-    border: `1px solid ${globals.colors.borderColor}`,
-    height: [500, .7, 'auto'],
-    padding: sv(20, globals.style.layoutScalingValue),
-    mobile: {
-        padding: 20
-    }
+
 }
 export const adminControlPanelInnerStyle = {
+    position: fixed,
+    background: '#f8f8f8',
     display: flex,
     flexDirection: column,
+    height: [500, .7, 'auto'],
+    width: [308, globals.style.layoutScalingValue, '100%'],
+    padding: sv(20, globals.style.layoutScalingValue),
+    mobile: {
+        position: relative
+    }
 }
 export const adminMenuStyle = {
     ...menuPanelStyle,
@@ -156,4 +159,8 @@ export const adminOrderWrapperStyle = {
         display: flex,
         flexDirection: column
     }
+}
+
+export const adminFormWrapperStyle = {
+    width: [1100, globals.style.layoutScalingValue, '100%']
 }

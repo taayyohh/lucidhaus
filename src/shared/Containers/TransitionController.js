@@ -36,33 +36,33 @@ const TransitionController = props => {
 
     const pageInit = useMemo(() => async () => {
         await setTimeout(() => scrollToTop(), 0)
-        await contentAnimation.set({translateX: 0})
+      //  await contentAnimation.set({translateX: 0})
         await overlayAnimation.start(overlayFadeout)
-        await contentAnimation.start({
-            opacity: 1,
-            translateX: 0,
-            transition: {
-                duration: .2,
-                ease: 'easeOut',
-            }
-        })
+        // await contentAnimation.start({
+        //     opacity: 1,
+        //     translateX: 0,
+        //     transition: {
+        //         duration: .1,
+        //         ease: 'easeOut',
+        //     }
+        // })
 
-    }, [overlayAnimation, contentAnimation])
+    }, [overlayAnimation])
 
     const pageOut = useMemo(() => async (currentPathName) => {
         await setPanel(null)
         await globals.style.resetBody()
-        await contentAnimation.start({
-            opacity: 0,
-            translateX: '4%',
-            transition: {
-                duration: .2,
-                ease: 'easeOut',
-            }
-        })
+        // await contentAnimation.start({
+        //     opacity: 0,
+        //     translateX: '4%',
+        //     transition: {
+        //         duration: .2,
+        //         ease: 'easeOut',
+        //     }
+        // })
         await setCurrentPath(currentPathName)
         await pageInit()
-    }, [setPanel, pageInit, contentAnimation])
+    }, [setPanel, pageInit])
 
     useEffect(() => {
         if (pathname !== currentPath) {

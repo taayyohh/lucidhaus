@@ -1,35 +1,24 @@
-import PropTypes        from 'prop-types'
-import React            from 'react'
-import {useSelector}    from 'react-redux'
-import {mobileFlag} from '../../features/site/siteSlice'
+import PropTypes  from 'prop-types'
+import React      from 'react'
+import Div        from '../Basic/Div'
+import LinkSwitch from '../Basic/LinkSwitch'
+import HeaderMenu from '../Menus/HeaderMenu'
 import {
     headerInnerStyle,
     headerLogoLinkStyle,
     headerStyle
-}                   from './styles/header'
-import Div          from '../Basic/Div'
-import LinkSwitch       from '../Basic/LinkSwitch'
-import HeaderMenu       from '../Menus/HeaderMenu'
-import MobileHeaderMenu from '../Menus/MobileHeaderMenu'
+}                 from './styles/header'
 
-const Header = ({theme}) => {
-    const isMobile = useSelector(mobileFlag)
-
-    return (
-        <Div as="header" theme={{...headerStyle, ...theme}}>
-            <Div theme={headerInnerStyle}>
-                <LinkSwitch url="/" theme={headerLogoLinkStyle}>
-                    H
-                </LinkSwitch>
-                {(!isMobile && (
-                    <HeaderMenu/>
-                )) || (
-                    <MobileHeaderMenu/>
-                )}
-            </Div>
+const Header = ({theme}) =>
+    <Div as="header" theme={{...headerStyle, ...theme}}>
+        <Div theme={headerInnerStyle}>
+            <LinkSwitch url="/" theme={headerLogoLinkStyle}>
+                H
+            </LinkSwitch>
+            <HeaderMenu/>
         </Div>
-    )
-}
+    </Div>
+
 
 Header.defaultProps = {
     theme: {},

@@ -1,27 +1,27 @@
-import React, {useEffect}    from 'react'
+import React, {useEffect} from 'react'
 import {
     useDispatch,
     useSelector
-}                            from 'react-redux'
-import Div                   from '../../shared/Basic/Div'
-import H2                    from '../../shared/Basic/H2'
-import MotionDiv             from '../../shared/Basic/MotionDiv'
-import RichText              from '../../shared/Basic/RichText'
-import S3Img                 from '../../shared/Basic/S3Img'
+}                         from 'react-redux'
+import Div                from '../../shared/Basic/Div'
+import H2                 from '../../shared/Basic/H2'
+import MotionDiv          from '../../shared/Basic/MotionDiv'
+import RichText           from '../../shared/Basic/RichText'
+import S3Img              from '../../shared/Basic/S3Img'
 import {
     genericCardDetailImageWrapperStyle,
     genericCardImageStyle
-}                            from '../../shared/Cards/styles'
-import AddToCartButton       from '../../shared/Controls/AddToCartButton'
-import {contentWrapperStyle} from '../../shared/Layout/styles'
-import {getNameById}         from '../../utils/getNameById'
-import {postTitleStyle}      from '../post/styles'
+}                         from '../../shared/Cards/styles'
+import AddToCartButton    from '../../shared/Controls/AddToCartButton'
+import ContentWrapper     from '../../shared/Layout/ContentWrapper'
+import {getNameById}      from '../../utils/getNameById'
+import {postTitleStyle}   from '../post/styles'
 import {
     productCategoryStyle,
     productDescriptionStyle,
     productPriceStyle,
     productWrapperStyle
-}                            from './styles'
+}                         from './styles'
 
 
 const Product = () => {
@@ -41,7 +41,7 @@ const Product = () => {
 
 
     return (
-        <Div theme={contentWrapperStyle}>
+        <ContentWrapper>
             <Div theme={productWrapperStyle}>
                 <Div theme={productCategoryStyle}>{getNameById(productCategories, category)}</Div>
                 <H2 theme={postTitleStyle}>{name}</H2>
@@ -66,7 +66,7 @@ const Product = () => {
                     theme={productDescriptionStyle}
                 />
             </Div>
-        </Div>
+        </ContentWrapper>
     )
 }
 
