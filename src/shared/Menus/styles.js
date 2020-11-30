@@ -5,6 +5,7 @@ import {
 import {
     absolute,
     auto,
+    black,
     block,
     borderBox,
     center,
@@ -79,7 +80,7 @@ export const headerMenuPanelStyle = {
     }
 }
 export const menuPanelStyle = {
-    paddingTop: [150, .7, 50],
+    paddingTop: [150, .7, 120],
     height: '100%',
     width: '100%'
 }
@@ -126,13 +127,12 @@ export const headerMenuListItemStyle = {
     transition: 'background-color 500ms ease',
     mobile: {
         width: '100%',
-        padding: 0
+        paddingBottom: 10
     },
     hover: {
         color: globals.colors.orange,
         mobile: {
-            backgroundColor: '#e0c678',
-            color: white,
+            color: black,
             hover: {
                 color: transparent
             }
@@ -175,6 +175,6 @@ export const headerMenuAuthStyleListItemStyle = {
     mobile: {
         display: block,
         width: '100%',
-        padding: '15px 0'
+        padding: 0
     },
 }

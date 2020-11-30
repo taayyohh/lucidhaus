@@ -85,7 +85,7 @@ export const genericCardImageStyle = {
 }
 export const genericCardDetailImageWrapperStyle = {
     height: auto,
-    width: 500,
+    width: [500, globals.style.layoutScalingValue, '100%'],
     marginLeft: '0 auto',
     alignSelf: center
 }

@@ -1,57 +1,43 @@
-import React, {useContext} from 'react'
-import {useSelector}       from 'react-redux'
+import React                              from 'react'
 import {
-    shoppingCart,
-    user
-}                          from '../../config/iconLibrary'
-import {flex}              from '../../utils/themer'
-import Div                 from '../Basic/Div'
-import Icon                from '../Basic/Icon'
-import LinkSwitch          from '../Basic/LinkSwitch'
-import {menuPanelContext}  from '../Containers/MenuPanelController'
-import MenuPanels          from '../Layout/MenuPanel'
-import MenuToggle          from './MenuToggle'
-import {
-    headerMenuListItemStyle,
-    menuToggleStyle
-}                          from './styles'
+    useDispatch,
+    useSelector
+}                                         from 'react-redux'
+import {adminMenuStyle}                   from '../../features/admin/styles'
+import Div                                from '../Basic/Div'
+import LinkSwitch                         from '../Basic/LinkSwitch'
+import Span                               from '../Basic/Span'
+import HeaderMenuItems                    from './HeaderMenuItems'
+import {headerMenuAuthStyleListItemStyle} from './styles'
 
 const MobileHeaderMenu = () => {
+    const dispatch = useDispatch()
     const {isAuthenticated, isAdmin} = useSelector(state => state.user)
-    const {cart} = useSelector(state => state.shop)
-    const {setPanel, currentPanel} = useContext(menuPanelContext)
-
 
     return (
-        <Div as="nav" theme={{display: flex}}>
-            <MenuPanels/>
-            <Div
-                onClick={() => setPanel('cart-menu-panel')}
-                theme={headerMenuListItemStyle}
-            >
-                <Icon
-                    icon={shoppingCart}
-                    theme={{size: 18, hover: {cursor: 'pointer', color: '#8c141e', transition: 'color 500ms ease'}}}
-                />
-                <sup>{cart.length}</sup>
+        <Div theme={adminMenuStyle}>
+            <Div theme={adminMenuStyle.list}>
+                <HeaderMenuItems/>
+                {isAuthenticated && (
+                    <Span
+                        to="/signout"
+                        theme={headerMenuAuthStyleListItemStyle}
+                        onClick={() => dispatch({type: 'user/signOut'})}
+                    >
+                        Sign Out
+                    </Span>
+                )}
+                {isAuthenticated && !isAdmin && (
+                    <LinkSwitch
+                        url="/user/dashboard"
+                        theme={headerMenuAuthStyleListItemStyle}>
+                        Profile
+                    </LinkSwitch>
+                )}
             </Div>
-
-            <LinkSwitch url={isAuthenticated && isAdmin ? '/admin' : isAuthenticated ? '/user' : '/signin'}
-                        theme={{color: '#000'}}>
-                <Icon
-                    icon={user}
-                    theme={{size: 18, hover: {cursor: 'pointer', color: '#8c141e', transition: 'color 500ms ease'}}}
-                />
-            </LinkSwitch>
-
-            {isAuthenticated && (
-                <MenuToggle
-                    theme={menuToggleStyle}
-                    onClick={() => setPanel(!currentPanel ? 'admin-menu-panel' : null)}
-                />
-            )}
         </Div>
     )
 }
+
 
 export default MobileHeaderMenu
