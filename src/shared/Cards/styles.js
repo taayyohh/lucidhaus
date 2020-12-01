@@ -1,7 +1,4 @@
-import {
-    colorPalette,
-    globals
-} from '../../config/styles'
+import {globals} from '../../config/styles'
 import {
     auto,
     black,
@@ -16,12 +13,15 @@ import {
     sv,
     white,
     wrap
-} from '../../utils/themer'
+}                from '../../utils/themer'
 
 export const productCardStyle = {
     display: grid,
     gridTemplateColumns: '4fr 1fr',
-    borderBottom: `1px solid ${white}`,
+    background: ' #f8f7fa',
+    boxShadow: '1px 2px 2px #c2c2c2',
+    borderBottom: '1px solid #c2c2c2',
+    borderRadius: [5, .7, 5],
     padding: 20,
     textDecoration: none,
     marginBottom: 20,
@@ -49,7 +49,9 @@ export const productCardStyle = {
     category: {
         display: none
     },
-    price: {},
+    price: {
+        size: [22, .7, 22]
+    },
     controls: {
         display: flex,
         flexDirection: column,

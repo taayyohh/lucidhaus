@@ -19,21 +19,20 @@ const Cart = () => {
                 <Div theme={cartStyle.checkOut}>
                     <H2 theme={cartTitleStyle}>Cart Summary</H2>
                     <h2>Total: ${getTotal(cart)}</h2>
-
                 </Div>
 
                 {cart.length > 0 && (
-                    <div>
-                        <h2>Your cart has {`${cart.length}`} items</h2>
+                    <>
+                        <Div>Your cart has {`${cart.length}`} items</Div>
                         <Div theme={cartStyle.showItems}>
-                            {cart.map((product, i) => (
+                            {cart.map((product, i) =>
                                 <ProductCard
                                     key={i}
                                     product={product}
                                 />
-                            ))}
+                            )}
                         </Div>
-                    </div>
+                    </>
                 )}
 
                 <Checkout products={cart}/>

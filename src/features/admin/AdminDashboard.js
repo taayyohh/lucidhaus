@@ -5,10 +5,8 @@ import {
 }                                         from 'react-redux'
 import Div                                from '../../shared/Basic/Div'
 import H3                                 from '../../shared/Basic/H3'
-import Li                                 from '../../shared/Basic/Li'
 import LinkSwitch                         from '../../shared/Basic/LinkSwitch'
 import Span                               from '../../shared/Basic/Span'
-import Ul                                 from '../../shared/Basic/Ul'
 import ContentWrapper                     from '../../shared/Layout/ContentWrapper'
 import {headerMenuAuthStyleListItemStyle} from '../../shared/Menus/styles'
 import {

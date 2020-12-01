@@ -4,7 +4,6 @@ import {
 } from '../../config/styles'
 import {
     absolute,
-    auto,
     black,
     block,
     borderBox,

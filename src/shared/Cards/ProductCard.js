@@ -1,7 +1,6 @@
 import React                from 'react'
 import {useDispatch}        from 'react-redux'
 import Div                  from '../Basic/Div'
-import H2                   from '../Basic/H2'
 import LinkSwitch           from '../Basic/LinkSwitch'
 import S3Img                from '../Basic/S3Img'
 import Span                 from '../Basic/Span'

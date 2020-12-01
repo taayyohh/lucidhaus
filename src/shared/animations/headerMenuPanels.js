@@ -14,7 +14,7 @@ export const headerMenuPanelVariants = {
         }
     }),
     closed: {
-        clipPath: 'circle(30px at 100% 0)',
+        clipPath: 'circle(30px at 110% 0)',
         overflowY: hidden,
         transition: {
           //  delay: 0.5,

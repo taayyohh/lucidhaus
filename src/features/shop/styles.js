@@ -17,6 +17,7 @@ import {postsWrapperStyle} from '../post/styles'
 export const checkoutAddress = {
     child: {
         selector: '> input',
+        size: [24, .7, 24],
         width: '100%',
         height: 50,
         border: none,
@@ -43,7 +44,6 @@ export const cartStyle = {
     paddingTop: [100, .7, 50],
     checkOut: {
         //position: fixed,
-
         mobile: {
             position: relative,
         }
@@ -55,8 +55,7 @@ export const cartStyle = {
 }
 export const cartTitleStyle = {
     font: globals.fonts.fancy,
-    textAlign: center,
-    size: [36, .7, 28],
+    size: [32, .7, 28],
     marginTop: 0,
     marginBottom: [20, .5],
     textTransform: none
