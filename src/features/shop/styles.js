@@ -26,6 +26,7 @@ export const checkoutAddress = {
 }
 export const checkoutDropIn = {
     width: '100%',
+    paddingBottom: [50, .7, 50],
     child: [
         {
             selector: '.braintree-heading',

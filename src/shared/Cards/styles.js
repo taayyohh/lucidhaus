@@ -5,10 +5,12 @@ import {
 import {
     auto,
     black,
+    block,
     borderBox,
     center,
     column,
     flex,
+    grid,
     hidden,
     none,
     sv,
@@ -17,17 +19,11 @@ import {
 } from '../../utils/themer'
 
 export const productCardStyle = {
-    border: `1px solid ${colorPalette.gray}`,
-    borderRadius: 10,
+    display: grid,
+    gridTemplateColumns: '4fr 1fr',
+    borderBottom: `1px solid ${white}`,
     padding: 20,
-    margin: 40,
     textDecoration: none,
-    transition: 'background-color 500ms ease, border-color 500ms ease',
-    hover: {
-        backgroundColor: '#f5f5f5',
-        borderColor: '#f5f5f5'
-    },
-    controlsInner: {},
     marginBottom: 20,
     inner: {
         display: flex,
@@ -35,9 +31,18 @@ export const productCardStyle = {
         background: '#f3f3f3',
         padding: `${sv(30)} ${sv(30)}`
     },
+    textWrapper: {
+        paddingLeft: [30, .7, 30]
+    },
+    infoWrapper: {
+        display: flex,
+        alignItems: center
+    },
     title: {
+        display: block,
+        size: [24, .7, 24],
+        color: black,
         width: '100%',
-        order: -1,
         margin: 0
     },
     description: {},
@@ -47,6 +52,7 @@ export const productCardStyle = {
     price: {},
     controls: {
         display: flex,
+        flexDirection: column,
         width: '100%'
 
     },
@@ -118,5 +124,5 @@ export const genericCardDescriptionStyle = {
 
 export const shopCardImageStyle = {
     width: auto,
-  //  height: auto
+    //  height: auto
 }

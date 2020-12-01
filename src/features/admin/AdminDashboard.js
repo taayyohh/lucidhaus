@@ -23,38 +23,41 @@ const AdminDashboard = () => {
     return (
         <ContentWrapper>
             <Div theme={adminDashboardStyle}>
-                <H3 theme={adminDashboardStyle.heading}>Hey, {name} | {isAuthenticated && (
-                    <Span
-                        to="/signout"
-                        theme={headerMenuAuthStyleListItemStyle}
-                        onClick={() => dispatch({type: 'user/signOut'})}
-                    >
-                        Sign Out
-                    </Span>
-                )}</H3>
-                <Ul>
-                    <Li>{email}</Li>
-                    <Li theme={adminMenuStyle.listItem}>
+                <H3 theme={adminDashboardStyle.heading}>Hey, {name}</H3>
+                <Div>{email}</Div>
+                <Div>
+                    {isAuthenticated && (
+                        <Span
+                            to="/signout"
+                            theme={headerMenuAuthStyleListItemStyle}
+                            onClick={() => dispatch({type: 'user/signOut'})}
+                        >
+                            Sign Out
+                        </Span>
+                    )}
+                </Div>
+                <Div>
+                    <Div theme={adminMenuStyle.listItem}>
                         <LinkSwitch theme={adminMenuStyle.link} url="/admin/posts">
                             Manage Posts
                         </LinkSwitch>
-                    </Li>
-                    <Li theme={adminMenuStyle.listItem}>
+                    </Div>
+                    <Div theme={adminMenuStyle.listItem}>
                         <LinkSwitch theme={adminMenuStyle.link} url="/admin/shop">
                             Manage Products
                         </LinkSwitch>
-                    </Li>
-                    <Li theme={adminMenuStyle.listItem}>
+                    </Div>
+                    <Div theme={adminMenuStyle.listItem}>
                         <LinkSwitch theme={adminMenuStyle.link} url="/admin/orders">
                             Manage Orders
                         </LinkSwitch>
-                    </Li>
-                    <Li theme={adminMenuStyle.listItem}>
+                    </Div>
+                    <Div theme={adminMenuStyle.listItem}>
                         <LinkSwitch theme={adminMenuStyle.link} url="/admin/taxonomy">
                             Manage Taxonomy
                         </LinkSwitch>
-                    </Li>
-                </Ul>
+                    </Div>
+                </Div>
             </Div>
         </ContentWrapper>
 

@@ -2,6 +2,7 @@ import React                from 'react'
 import {useDispatch}        from 'react-redux'
 import Div                  from '../Basic/Div'
 import H2                   from '../Basic/H2'
+import LinkSwitch           from '../Basic/LinkSwitch'
 import S3Img                from '../Basic/S3Img'
 import Span                 from '../Basic/Span'
 import RemoveFromCartButton from '../Controls/RemoveFromCartButton'
@@ -13,37 +14,37 @@ const ProductCard = ({product, theme}) => {
 
     return (
         <Div theme={productCardStyle}>
-            <H2 theme={{...productCardStyle.title, ...theme.title}}>
-                {product.name}
-            </H2>
-            <S3Img
-                url={product.photo}
-                theme={{...productCardStyle.image, ...theme.image}}
-                alt={`${product.name} product photo`}
-            />
-            <Span theme={{...productCardStyle.price, ...theme.price}}>
-                $: {product.price}
-            </Span>
-            <Div theme={{...productCardStyle.controls, ...theme.controls}}>
-                <Div theme={{...productCardStyle.controlsInner, ...theme.controlsInner}}>
-                    <Div>
-                        <span>Adjust Quantity</span>
-                    </Div>
-                    <input
-                        type="number"
-                        defaultValue={product.count}
-                        onChange={(e) => {
-                            dispatch({
-                                type: 'shop/updateProductQuantity',
-                                payload: {
-                                    productId: product._id,
-                                    count: e.target.value
-                                }
-                            })
-                        }}
-                    />
+            <Div theme={productCardStyle.infoWrapper}>
+                <S3Img
+                    url={product.photo}
+                    theme={{...productCardStyle.image, ...theme.image}}
+                    alt={`${product.name} product photo`}
+                />
+                <Div theme={productCardStyle.textWrapper}>
+                    <LinkSwitch url={`shop/${product.slug}`} theme={{...productCardStyle.title, ...theme.title}}>
+                        {product.name}
+                    </LinkSwitch>
+                    <Span theme={{...productCardStyle.price, ...theme.price}}>
+                        $: {product.price}
+                    </Span>
                 </Div>
+            </Div>
 
+
+            <Div theme={{...productCardStyle.controls, ...theme.controls}}>
+                <input
+                    type="number"
+                    defaultValue={product.count}
+                    onChange={(e) => {
+                        dispatch({
+                            type: 'shop/updateProductQuantity',
+                            payload: {
+                                productId: product._id,
+                                count: e.target.value
+                            }
+                        })
+                    }}
+                />
                 <RemoveFromCartButton productId={product._id}/>
             </Div>
         </Div>

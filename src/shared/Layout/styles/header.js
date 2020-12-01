@@ -36,7 +36,7 @@ export const headerStyle = {
     top: 0,
     zIndex: 11,
     height: [globals.style.headerHeight, .7, globals.style.mobileHeaderHeight],
-    marginBottom: 50,
+    marginBottom: [50, .7, '0'],
     mobile: {
         display: flex,
         flexDirection: column,

@@ -3,6 +3,7 @@ import {useSelector} from 'react-redux'
 import Div           from '../../shared/Basic/Div'
 import H2            from '../../shared/Basic/H2'
 import ProductCard   from '../../shared/Cards/ProductCard'
+import {getTotal}    from '../../utils/cartHelpers'
 import Checkout      from './Checkout'
 import {
     cartStyle,
@@ -17,7 +18,8 @@ const Cart = () => {
             <Div>
                 <Div theme={cartStyle.checkOut}>
                     <H2 theme={cartTitleStyle}>Cart Summary</H2>
-                    <Checkout products={cart}/>
+                    <h2>Total: ${getTotal(cart)}</h2>
+
                 </Div>
 
                 {cart.length > 0 && (
@@ -33,6 +35,8 @@ const Cart = () => {
                         </Div>
                     </div>
                 )}
+
+                <Checkout products={cart}/>
             </Div>
         </Div>
     )

@@ -104,6 +104,8 @@ export const adminControlPanelInnerStyle = {
     background: '#f8f8f8',
     display: flex,
     flexDirection: column,
+    border: '1px solid #dadce0',
+    boxShadow: 'inset 0px 0px 4px #d9d9d9',
     height: [500, .7, 'auto'],
     width: [308, globals.style.layoutScalingValue, '100%'],
     padding: sv(20, globals.style.layoutScalingValue),

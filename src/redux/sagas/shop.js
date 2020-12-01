@@ -53,6 +53,7 @@ export function* getPaymentNonce({payload}) {
         console.log('createdOrder', createdOrder)
 
         yield call(emptyCart)
+        yield put({type: 'shop/emptyCart'})
         //TODO: success
     }
 

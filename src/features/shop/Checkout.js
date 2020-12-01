@@ -10,12 +10,14 @@ import {
     useSelector
 }                           from 'react-redux'
 import Div                  from '../../shared/Basic/Div'
+import H2                   from '../../shared/Basic/H2'
 import {genericButtonStyle} from '../../shared/Controls/styles'
+import {getTotal}           from '../../utils/cartHelpers'
 import {
+    cartTitleStyle,
     checkoutAddress,
     checkoutDropIn
 }                           from './styles'
-import {getTotal}           from '../../utils/cartHelpers'
 
 
 const Checkout = ({products}) => {
@@ -27,7 +29,7 @@ const Checkout = ({products}) => {
     const {isAuthenticated} = useSelector(state => state.user)
 
     useEffect(() => {
-        if(isAuthenticated)
+        if (isAuthenticated)
             dispatch({type: 'shop/getBraintreeToken', payload: {_id, token}})
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -54,75 +56,73 @@ const Checkout = ({products}) => {
     }
 
     return (
-        <Div>
-            <h2>Total: ${getTotal(products)}</h2>
-            <Div theme={checkoutDropIn}>
-                {(!!braintreeClientToken && products.length > 0) && (
-                    <>
-                        <Div>
-                            <label>Delivery Address</label>
-                            <PlacesAutocomplete
-                                value={address || ''}
-                                onChange={(handleAddress)}
-                                onSelect={handleAddress}
-                                placeholder="Type your delivery Address"
-                            >
-                                {({getInputProps, suggestions, getSuggestionItemProps, loading}) => (
-                                    <>
-                                        <Div theme={checkoutAddress}>
-                                            <input
-                                                value={address}
-                                                {...getInputProps({
-                                                    placeholder: 'Your Address ...',
-                                                    className: 'location-search-input',
-                                                })}
-                                            />
-                                        </Div>
-                                        <Div>
-                                            {suggestions.map(suggestion =>
-                                                <Div
-                                                    {...getSuggestionItemProps(suggestion)}
-                                                    key={suggestion.placeId}
-                                                    className={
-                                                        suggestion.active
-                                                            ? 'suggestion-item--active'
-                                                            : 'suggestion-item'
-                                                    }
-                                                    theme={
-                                                        suggestion.active
-                                                            ? {backgroundColor: '#fafafa', cursor: 'pointer'}
-                                                            : {backgroundColor: '#ffffff', cursor: 'pointer'}
-                                                    }
-                                                    children={suggestion.description}
-                                                />
-                                            )}
-                                        </Div>
-                                    </>
-                                )}
-                            </PlacesAutocomplete>
-                        </Div>
-
-                        <DropIn
-                            options={{
-                                authorization: braintreeClientToken,
-                                paypal: {
-                                    flow: 'vault'
-                                }
-                            }}
-                            onInstance={instance => setDropInInstance(instance)}
-                        />
-
-                        <Div
-                            as="button"
-                            theme={genericButtonStyle}
-                            onClick={!!address ? purchase : null}
+        <Div theme={checkoutDropIn}>
+            {(!!braintreeClientToken && products.length > 0) && (
+                <>
+                    <Div>
+                        <H2 theme={cartTitleStyle}>Checkout</H2>
+                        <label>Delivery Address</label>
+                        <PlacesAutocomplete
+                            value={address || ''}
+                            onChange={(handleAddress)}
+                            onSelect={handleAddress}
+                            placeholder="Type your delivery Address"
                         >
-                            Pay
-                        </Div>
+                            {({getInputProps, suggestions, getSuggestionItemProps, loading}) => (
+                                <>
+                                    <Div theme={checkoutAddress}>
+                                        <input
+                                            value={address}
+                                            {...getInputProps({
+                                                placeholder: 'Your Address ...',
+                                                className: 'location-search-input',
+                                            })}
+                                        />
+                                    </Div>
+                                    <Div>
+                                        {suggestions.map(suggestion =>
+                                            <Div
+                                                {...getSuggestionItemProps(suggestion)}
+                                                key={suggestion.placeId}
+                                                className={
+                                                    suggestion.active
+                                                        ? 'suggestion-item--active'
+                                                        : 'suggestion-item'
+                                                }
+                                                theme={
+                                                    suggestion.active
+                                                        ? {backgroundColor: '#fafafa', cursor: 'pointer'}
+                                                        : {backgroundColor: '#ffffff', cursor: 'pointer'}
+                                                }
+                                                children={suggestion.description}
+                                            />
+                                        )}
+                                    </Div>
+                                </>
+                            )}
+                        </PlacesAutocomplete>
+                    </Div>
 
-                    </>
-                )}
-            </Div>
+                    <DropIn
+                        options={{
+                            authorization: braintreeClientToken,
+                            paypal: {
+                                flow: 'vault'
+                            }
+                        }}
+                        onInstance={instance => setDropInInstance(instance)}
+                    />
+
+                    <Div
+                        as="button"
+                        theme={genericButtonStyle}
+                        onClick={!!address ? purchase : null}
+                    >
+                        Pay
+                    </Div>
+
+                </>
+            )}
         </Div>
     )
 }
