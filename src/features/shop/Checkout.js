@@ -108,7 +108,11 @@ const Checkout = ({products}) => {
                             authorization: braintreeClientToken,
                             paypal: {
                                 flow: 'vault'
-                            }
+                            },
+                            applePay: {},
+                            samsungPay: {},
+                            googlePay: {},
+                            venmo: true
                         }}
                         onInstance={instance => setDropInInstance(instance)}
                     />
