@@ -25,6 +25,10 @@ export const productCardStyle = {
     padding: 20,
     textDecoration: none,
     marginBottom: 20,
+    mobile: {
+        display: flex,
+        flexDirection: column
+    },
     inner: {
         display: flex,
         flexWrap: wrap,
