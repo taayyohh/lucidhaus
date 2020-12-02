@@ -20,6 +20,7 @@ const UpdatePost = () => {
         description: post.description,
         photo: post.photo,
         image: '',
+        isPublished: post.isPublished,
         slug,
         _id,
         token,
@@ -32,6 +33,8 @@ const UpdatePost = () => {
                 slug: slug
             }
         })
+
+        console.log('post', post)
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])

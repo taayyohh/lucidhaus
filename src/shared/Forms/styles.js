@@ -171,6 +171,7 @@ export const defaultFieldErrorStyle = {
 }
 export const defaultCKEditorStyle = {
     minHeight: 300,
+    marginBottom: [50, .7, 50],
     width: '100%',
     child: [
         {
@@ -309,3 +310,21 @@ export const imageDropZoneStyle = {
         }
     ]
 }
+
+export const toggleFieldStyle = {
+    display: 'flex',
+    alignItems: center,
+    width: 100,
+    height: 30,
+    borderRadius: 20,
+    background: '#d0cece',
+    paddingTop: [20, .7, 20],
+    paddingBottom: [20, .7, 20],
+    paddingLeft: [10, .7, 10],
+    paddingRight: [10, .7, 10],
+    hover: {
+        cursor: pointer
+    }
+}
+
+export const toggleBallStyle = {height: 25, width: 25, borderRadius: 20, background: '#fff'}

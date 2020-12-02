@@ -3,9 +3,12 @@ import {
     useDispatch,
     useSelector
 }                          from 'react-redux'
-import GenericFormik       from '../../shared/Forms/GenericFormik'
-import ContentWrapper      from '../../shared/Layout/ContentWrapper'
 import {productFieldTypes} from '../../config/fieldTypes'
+import AdminControls       from '../../shared/Admin/AdminControls'
+import GenericFormik       from '../../shared/Forms/GenericFormik'
+import AdminWrapper        from '../../shared/Layout/AdminWrapper'
+import ContentWrapper      from '../../shared/Layout/ContentWrapper'
+import {postFormStyle}     from '../post/styles'
 
 const CreateProduct = () => {
     const dispatch = useDispatch()
@@ -42,16 +45,23 @@ const CreateProduct = () => {
 
     return (
         <ContentWrapper>
-            <GenericFormik
-                initialValues={initialValues}
-                fields={productFieldTypes}
-                options={options}
-                //   validationSchema={validateSignin}
-                dispatchAction={'admin/createProduct'}
-                formHeading={'Create Product'}
-                buttonText={'Create'}
-                theme={{width: 1100}}
-            />
+            <AdminWrapper>
+                {/*//TODO:improve*/}
+                <AdminControls
+                    title={'Post'}
+                    create={'/create/product'}
+                />
+                <GenericFormik
+                    initialValues={initialValues}
+                    fields={productFieldTypes}
+                    options={options}
+                    //   validationSchema={validateSignin}
+                    dispatchAction={'admin/createProduct'}
+                    formHeading={'Create Product'}
+                    buttonText={'Create'}
+                    theme={postFormStyle}
+                />
+            </AdminWrapper>
         </ContentWrapper>
     )
 }

@@ -4,6 +4,7 @@ import SelectField        from './SelectField'
 import SmartFileInput     from './SmartFileInput'
 import SmartInput         from './SmartInput'
 import {genericFormStyle} from './styles'
+import ToggleField        from './ToggleField'
 
 const FieldSwitch = memo(({field, formik, options}) => {
     switch (field.type) {
@@ -42,6 +43,12 @@ const FieldSwitch = memo(({field, formik, options}) => {
                 cropHeight={field.cropHeight}
                 s3Path={field.s3Path}
             />
+        case 'bool':
+            return <ToggleField
+                name={field.name}
+                formik={formik}
+            />
+
         default:
             return null
     }

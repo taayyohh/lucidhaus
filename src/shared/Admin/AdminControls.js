@@ -4,7 +4,7 @@ import {
     adminControlPanelStyle,
     adminCreateButtonStyle,
     adminHeadingStyle
-} from '../../features/admin/styles'
+}                 from '../../features/admin/styles'
 import Div        from '../Basic/Div'
 import H2         from '../Basic/H2'
 import LinkSwitch from '../Basic/LinkSwitch'
@@ -19,7 +19,9 @@ const AdminControls = ({data, title, create}) => {
                 <LinkSwitch theme={adminCreateButtonStyle} url={create}>
                     Create {title}
                 </LinkSwitch>
-                <Span>Total: {data.length}</Span>
+                {data?.length > 0 && (
+                    <Span>Total: {data.length}</Span>
+                )}
             </Div>
         </Div>
     )

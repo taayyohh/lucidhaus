@@ -3,9 +3,11 @@ import {
     useDispatch,
     useSelector
 }                                  from 'react-redux'
-import GenericFormik               from '../../shared/Forms/GenericFormik'
-import ContentWrapper              from '../../shared/Layout/ContentWrapper'
 import {productCategoryFieldTypes} from '../../config/fieldTypes'
+import AdminControls               from '../../shared/Admin/AdminControls'
+import GenericFormik               from '../../shared/Forms/GenericFormik'
+import AdminWrapper                from '../../shared/Layout/AdminWrapper'
+import ContentWrapper              from '../../shared/Layout/ContentWrapper'
 import {adminFormWrapperStyle}     from './styles'
 
 const UpdateProductCategory = () => {
@@ -31,16 +33,23 @@ const UpdateProductCategory = () => {
 
     return (
         <ContentWrapper>
-            <GenericFormik
-                initialValues={initialValues}
-                fields={productCategoryFieldTypes}
-                //   validationSchema={validateSignin}
-                dispatchAction={'shop/updateProductCategory'}
-                formHeading={'Update Product Category'}
-                buttonText={'Update'}
-                theme={adminFormWrapperStyle}
-                enableReinitialize={true}
-            />
+            <AdminWrapper>
+                <AdminControls
+                    data={productCategory}
+                    title={'Product Category'}
+                    create={'/create/product-category'}
+                />
+                <GenericFormik
+                    initialValues={initialValues}
+                    fields={productCategoryFieldTypes}
+                    //   validationSchema={validateSignin}
+                    dispatchAction={'shop/updateProductCategory'}
+                    formHeading={'Update Product Category'}
+                    buttonText={'Update'}
+                    theme={adminFormWrapperStyle}
+                    enableReinitialize={true}
+                />
+            </AdminWrapper>
         </ContentWrapper>
     )
 }

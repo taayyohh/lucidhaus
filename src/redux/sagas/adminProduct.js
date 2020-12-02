@@ -16,7 +16,7 @@ import {
 import {updateItem} from '../../utils/cartHelpers'
 
 export function* createProduct({payload}) {
-    const {_id, token, name, description, photo, image, quantity, price, category} = payload
+    const {_id, token, name, description, photo, image, quantity, price, isPublished, category} = payload
 
     //add to formdata so api can read
     const product = new FormData()
@@ -26,6 +26,7 @@ export function* createProduct({payload}) {
     product.set('quantity', quantity)
     product.set('price', price)
     product.set('category', category)
+    product.set('isPublished', isPublished)
 
     const s3Payload = yield call(getSignedRequest, {croppedImage: image})
     if (!!s3Payload.signedRequest) {

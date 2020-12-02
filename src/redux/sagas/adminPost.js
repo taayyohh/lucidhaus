@@ -43,13 +43,14 @@ export function* createPost({payload}) {
 }
 
 export function* updatePostDetail({payload}) {
-    const {slug, _id, token, name, description, photo, image} = payload
+    const {slug, _id, token, name, description, photo, isPublished, image} = payload
 
     //add to formData so api can read
     const updatedPost = new FormData()
     updatedPost.set('name', name)
     updatedPost.set('description', description)
     updatedPost.set('photo', photo)
+    updatedPost.set('isPublished', isPublished)
 
     if (!!image) {
         const s3Payload = yield call(getSignedRequest, {croppedImage: image})

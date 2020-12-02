@@ -76,6 +76,10 @@ export const postFieldTypes = [
         inputLabel: 'Post Description',
         type: 'richText'
     },
+    {
+        name: 'isPublished',
+        type: 'bool'
+    }
 ]
 
 export const productFieldTypes = [
@@ -115,6 +119,10 @@ export const productFieldTypes = [
         name: 'category',
         inputLabel: 'Category',
         type: 'select'
+    },
+    {
+        name: 'isPublished',
+        type: 'bool'
     }
 ]
 

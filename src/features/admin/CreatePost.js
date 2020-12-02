@@ -1,8 +1,10 @@
-import React                from 'react'
-import {useSelector}        from 'react-redux'
-import GenericFormik        from '../../shared/Forms/GenericFormik'
-import ContentWrapper       from '../../shared/Layout/ContentWrapper'
+import React            from 'react'
+import {useSelector}    from 'react-redux'
 import {postFieldTypes} from '../../config/fieldTypes'
+import AdminControls    from '../../shared/Admin/AdminControls'
+import GenericFormik    from '../../shared/Forms/GenericFormik'
+import AdminWrapper     from '../../shared/Layout/AdminWrapper'
+import ContentWrapper   from '../../shared/Layout/ContentWrapper'
 import {postFormStyle}  from '../post/styles'
 
 const CreatePost = () => {
@@ -13,20 +15,28 @@ const CreatePost = () => {
         photo: '',
         image: '',
         token: token,
+        isPublished: false,
         _id: _id
     }
 
     return (
         <ContentWrapper>
-            <GenericFormik
-                initialValues={initialValues}
-                fields={postFieldTypes}
-                //   validationSchema={validateSignin}
-                dispatchAction={'admin/createPost'}
-                formHeading={'Create Post'}
-                buttonText={'Create'}
-                theme={postFormStyle}
-            />
+            <AdminWrapper>
+                {/*//TODO:improve*/}
+                <AdminControls
+                    title={'Post'}
+                    create={'/create/post'}
+                />
+                <GenericFormik
+                    initialValues={initialValues}
+                    fields={postFieldTypes}
+                    //   validationSchema={validateSignin}
+                    dispatchAction={'admin/createPost'}
+                    formHeading={'Create Post'}
+                    buttonText={'Create'}
+                    theme={postFormStyle}
+                />
+            </AdminWrapper>
         </ContentWrapper>
     )
 }

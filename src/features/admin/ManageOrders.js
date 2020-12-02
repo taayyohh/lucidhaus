@@ -52,7 +52,6 @@ const ManageOrders = () => {
                 <AdminControls
                     data={orders}
                     title={'Order'}
-                    create={'/create/order'}
                 />
                 <Div theme={adminOrderWrapperStyle}>
                     {orders && orders.map(o =>
