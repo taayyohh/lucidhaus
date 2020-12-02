@@ -17,7 +17,7 @@ const UpdateProduct = () => {
     const {slug} = useSelector(state => state.site)
     const {product} = useSelector(state => state.shop)
     const {productCategories} = useSelector(state => state.shop)
-    const {name, description, photo, quantity, price, sold, category} = product
+    const {name, description, photo, quantity, price, sold, category, isPublished} = product
     const initialValues = {
         name: name,
         description: description,
@@ -27,6 +27,7 @@ const UpdateProduct = () => {
         category: category,
         price: price,
         sold: sold,
+        isPublished: isPublished,
         slug,
         _id,
         token,

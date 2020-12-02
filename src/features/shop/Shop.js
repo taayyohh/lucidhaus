@@ -22,16 +22,18 @@ const Shop = () => {
     return (
         <ContentWrapper>
             <Div theme={shopWrapperStyle}>
-                {shop && shop.map(shop => (
-                    <ShopCard
-                        key={shop.slug}
-                        slug={`shop/${shop.slug}`}
-                        name={shop.name}
-                        photo={shop.photo}
-                        price={shop.price}
-                        layoutId={shop._id}
-                    />
-                ))}
+                {shop && shop.map(
+                    product => product.isPublished && (
+                        <ShopCard
+                            key={product.slug}
+                            slug={`shop/${product.slug}`}
+                            name={product.name}
+                            photo={product.photo}
+                            price={product.price}
+                            layoutId={product._id}
+                        />
+                    ))
+                }
             </Div>
         </ContentWrapper>
     )

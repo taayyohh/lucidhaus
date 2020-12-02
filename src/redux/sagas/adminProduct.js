@@ -49,7 +49,7 @@ export function* createProduct({payload}) {
 }
 
 export function* updateProductDetail({payload}) {
-    const {slug, _id, token, name, description, photo, image, quantity, price, category} = payload
+    const {slug, _id, token, name, description, photo, image, quantity, price, isPublished, category} = payload
 
     //add to formData so api can read
     const updatedProduct = new FormData()
@@ -59,6 +59,8 @@ export function* updateProductDetail({payload}) {
     updatedProduct.set('quantity', quantity)
     updatedProduct.set('price', price)
     updatedProduct.set('category', category)
+    updatedProduct.set('isPublished', isPublished)
+
 
     if (!!image) {
         const s3Payload = yield call(getSignedRequest, {croppedImage: image})

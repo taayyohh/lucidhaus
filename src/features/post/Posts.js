@@ -22,15 +22,17 @@ const Posts = () => {
     return (
         <ContentWrapper>
             <Div theme={postsWrapperStyle}>
-                {posts && posts?.map(post =>
-                    <GenericCard
-                        key={post.slug}
-                        slug={`posts/${post.slug}`}
-                        name={post.name}
-                        photo={post.photo}
-                        description={post.description}
-                        layoutId={post._id}
-                    />
+                {posts && posts?.map(
+                    post => post.isPublished && (
+                        <GenericCard
+                            key={post.slug}
+                            slug={`posts/${post.slug}`}
+                            name={post.name}
+                            photo={post.photo}
+                            description={post.description}
+                            layoutId={post._id}
+                        />
+                    )
                 )}
             </Div>
         </ContentWrapper>

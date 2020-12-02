@@ -15,12 +15,14 @@ const UpdatePost = () => {
     const {_id, token} = useSelector(state => state.user)
     const {slug} = useSelector(state => state.site)
     const {post} = useSelector(state => state.post)
+    const {name, description, photo, isPublished} = post
+
     const initialValues = {
-        name: post.name,
-        description: post.description,
-        photo: post.photo,
+        name: name,
+        description: description,
+        photo: photo,
         image: '',
-        isPublished: post.isPublished,
+        isPublished: isPublished,
         slug,
         _id,
         token,
@@ -33,8 +35,6 @@ const UpdatePost = () => {
                 slug: slug
             }
         })
-
-        console.log('post', post)
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])

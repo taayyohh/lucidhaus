@@ -23,7 +23,8 @@ const CreateProduct = () => {
         image: '',
         quantity: 0,
         price: 0,
-        category: ''
+        category: '',
+        isPublished: false
     }
 
     const options = [
