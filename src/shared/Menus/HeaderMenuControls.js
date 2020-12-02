@@ -1,10 +1,10 @@
 import React, {useContext}             from 'react'
-import {useSelector}                   from 'react-redux'
+import {useSelector} from 'react-redux'
 import {
     shoppingCart,
     user
-}                                      from '../../config/iconLibrary'
-import {transparent}                   from '../../utils/themer'
+}                    from '../../config/faIconLibrary'
+import {transparent} from '../../utils/themer'
 import Div                             from '../Basic/Div'
 import Icon                            from '../Basic/Icon'
 import LinkSwitch                      from '../Basic/LinkSwitch'

@@ -1,7 +1,7 @@
 import {AnimatePresence}         from 'framer-motion'
 import PropTypes                 from 'prop-types'
 import React                     from 'react'
-import {headerMenuPanelVariants} from '../animations/headerMenuPanels'
+import {headerMenuPanelVariants} from './animations.js/headerMenuPanels'
 import MotionDiv                 from '../Basic/MotionDiv'
 import {headerMenuPanelStyle}    from './styles'
 
