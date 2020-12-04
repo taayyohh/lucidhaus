@@ -9,6 +9,8 @@ import {
 
 const ToggleField = ({formik, name}) =>
     <AnimatePresence layout>
+        {console.log('formik', formik)}
+
         <MotionDiv
             theme={toggleFieldStyle}
             onClick={() => formik.setFieldValue(name, !formik.values[name])}

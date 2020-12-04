@@ -99,3 +99,7 @@ export const productCategoryStyle = {
     size: [16, .7, 16],
     letterSpacing: [0.3, .7, 0.3]
 }
+
+export const relatedProductStyle = {
+
+}

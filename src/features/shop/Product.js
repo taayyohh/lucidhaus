@@ -8,6 +8,7 @@ import H2                 from '../../shared/Basic/H2'
 import MotionDiv          from '../../shared/Basic/MotionDiv'
 import RichText           from '../../shared/Basic/RichText'
 import S3Img              from '../../shared/Basic/S3Img'
+import ShopCard           from '../../shared/Cards/ShopCard'
 import {
     genericCardDetailImageWrapperStyle,
     genericCardImageStyle
@@ -20,13 +21,14 @@ import {
     productCategoryStyle,
     productDescriptionStyle,
     productPriceStyle,
-    productWrapperStyle
+    productWrapperStyle,
+    relatedProductStyle
 }                         from './styles'
 
 
 const Product = () => {
     const dispatch = useDispatch()
-    const {product} = useSelector(state => state.shop)
+    const {product, relatedProducts} = useSelector(state => state.shop)
     const {slug} = useSelector(state => state.site)
     const {name, description, photo, price, category} = product
     const {productCategories} = useSelector(state => state.shop)
@@ -66,6 +68,17 @@ const Product = () => {
                     theme={productDescriptionStyle}
                 />
             </Div>
+            {/*{relatedProducts && (*/}
+            {/*    <Div theme={relatedProductStyle}>*/}
+            {/*        {relatedProducts.map((product) =>*/}
+            {/*            <ShopCard*/}
+            {/*                name={product.name}*/}
+            {/*                photo={product.photo}*/}
+            {/*                slug={product.slug}*/}
+            {/*            />*/}
+            {/*        )}*/}
+            {/*    </Div>*/}
+            {/*)}*/}
         </ContentWrapper>
     )
 }

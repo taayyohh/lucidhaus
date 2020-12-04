@@ -47,6 +47,7 @@ const UpdatePost = () => {
                     data={post}
                     title={'Post'}
                     create={'/create/post'}
+                    publish={postFieldTypes.filter(field => field.name === 'isPublished')}
                 />
                 <GenericFormik
                     initialValues={initialValues}

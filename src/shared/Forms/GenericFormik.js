@@ -17,13 +17,18 @@ const GenericFormik = ({initialValues, fields, options, validationSchema, dispat
             onSubmit={values => dispatch({type: dispatchAction, payload: values})}
             enableReinitialize={enableReinitialize}
         >
-            {formik => (
+            {formik =>
                 <Div
                     as="form"
                     theme={{...genericFormStyle, ...theme}}
                     onSubmit={formik.handleSubmit}
                 >
-                    <H3 theme={{...genericFormStyle.heading, ...theme.heading}}>{formHeading}</H3>
+                    <H3 theme={{
+                        ...genericFormStyle.heading,
+                        ...theme.heading
+                    }}>
+                        {formHeading}
+                    </H3>
                     {fields.map((f, i) =>
                         <FieldSwitch
                             key={i}
@@ -32,11 +37,12 @@ const GenericFormik = ({initialValues, fields, options, validationSchema, dispat
                             options={options}
                         />
                     )}
-                    <SubmitButton theme={{...theme.button}}>
-                        {buttonText}
-                    </SubmitButton>
+                    <SubmitButton
+                        theme={{...theme.button}}
+                        children={buttonText}
+                    />
                 </Div>
-            )}
+            }
         </Formik>
     )
 }
