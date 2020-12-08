@@ -4,19 +4,21 @@ import React, {
     useEffect,
     useState
 }                           from 'react'
-import PlacesAutocomplete   from 'react-places-autocomplete'
 import {
     useDispatch,
     useSelector
 }                           from 'react-redux'
+import {orderFieldTypes}    from '../../config/fieldTypes/order'
 import Div                  from '../../shared/Basic/Div'
 import H2                   from '../../shared/Basic/H2'
 import {genericButtonStyle} from '../../shared/Controls/styles'
+import AutoCompleteAddress  from '../../shared/Forms/AutoCompleteAddress'
+import GenericFormik        from '../../shared/Forms/GenericFormik'
 import {getTotal}           from '../../utils/cartHelpers'
 import {
     cartTitleStyle,
-    checkoutAddress,
-    checkoutDropIn
+    checkoutDropIn,
+    checkoutFormStyle
 }                           from './styles'
 
 
@@ -28,9 +30,23 @@ const Checkout = ({products}) => {
     const {braintreeClientToken} = useSelector(state => state.shop)
     const {isAuthenticated} = useSelector(state => state.user)
 
+    const initialValues = {
+        company: '',
+        address: '',
+        address2: '',
+        city: '',
+        zip: '',
+        country: '',
+        state: '',
+        phone: '',
+    }
+
     useEffect(() => {
         if (isAuthenticated)
-            dispatch({type: 'shop/getBraintreeToken', payload: {_id, token}})
+            dispatch({
+                type: 'shop/getBraintreeToken',
+                payload: {_id, token}
+            })
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [_id, token])
@@ -62,45 +78,16 @@ const Checkout = ({products}) => {
                     <Div>
                         <H2 theme={cartTitleStyle}>Checkout</H2>
                         <label>Delivery Address</label>
-                        <PlacesAutocomplete
-                            value={address || ''}
-                            onChange={(handleAddress)}
-                            onSelect={handleAddress}
-                            placeholder="Type your delivery Address"
-                        >
-                            {({getInputProps, suggestions, getSuggestionItemProps, loading}) => (
-                                <>
-                                    <Div theme={checkoutAddress}>
-                                        <input
-                                            value={address}
-                                            {...getInputProps({
-                                                placeholder: 'Your Address ...',
-                                                className: 'location-search-input',
-                                            })}
-                                        />
-                                    </Div>
-                                    <Div>
-                                        {suggestions.map(suggestion =>
-                                            <Div
-                                                {...getSuggestionItemProps(suggestion)}
-                                                key={suggestion.placeId}
-                                                className={
-                                                    suggestion.active
-                                                        ? 'suggestion-item--active'
-                                                        : 'suggestion-item'
-                                                }
-                                                theme={
-                                                    suggestion.active
-                                                        ? {backgroundColor: '#fafafa', cursor: 'pointer'}
-                                                        : {backgroundColor: '#ffffff', cursor: 'pointer'}
-                                                }
-                                                children={suggestion.description}
-                                            />
-                                        )}
-                                    </Div>
-                                </>
-                            )}
-                        </PlacesAutocomplete>
+                        <AutoCompleteAddress
+                            address={address}
+                            handleAddress={handleAddress}
+                        />
+                        <GenericFormik
+                            initialValues={initialValues}
+                            fields={orderFieldTypes}
+                            theme={checkoutFormStyle}
+                            submit={false}
+                        />
                     </Div>
 
                     <DropIn

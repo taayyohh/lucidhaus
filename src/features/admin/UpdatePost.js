@@ -1,9 +1,9 @@
+import {postFieldTypes}        from '../../config/fieldTypes/post'
 import React, {useEffect}      from 'react'
 import {
     useDispatch,
     useSelector
 }                              from 'react-redux'
-import {postFieldTypes}        from '../../config/fieldTypes'
 import AdminControls           from '../../shared/Admin/AdminControls'
 import GenericFormik           from '../../shared/Forms/GenericFormik'
 import AdminWrapper            from '../../shared/Layout/AdminWrapper'

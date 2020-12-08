@@ -1,4 +1,6 @@
 import React, {memo}      from 'react'
+import CountryField       from './CountryField'
+import RegionField        from './RegionField'
 import RichTextEditor     from './RichTextEditor'
 import SelectField        from './SelectField'
 import SmartFileInput     from './SmartFileInput'
@@ -45,6 +47,16 @@ const FieldSwitch = memo(({field, formik, options}) => {
             />
         case 'bool':
             return <ToggleField
+                name={field.name}
+                formik={formik}
+            />
+        case 'country':
+            return <CountryField
+                name={field.name}
+                formik={formik}
+            />
+        case 'region':
+            return <RegionField
                 name={field.name}
                 formik={formik}
             />

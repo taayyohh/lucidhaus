@@ -7,24 +7,16 @@ import {
     center,
     column,
     flex,
+    grid,
     none,
     relative,
     sv,
+    transparent,
     uppercase
 }                          from '../../utils/themer'
 import {postsWrapperStyle} from '../post/styles'
 
-export const checkoutAddress = {
-    child: {
-        selector: '> input',
-        size: [24, .7, 24],
-        width: '100%',
-        height: 50,
-        border: none,
-        padding: '30px 20px',
-        boxSizing: borderBox
-    }
-}
+
 export const checkoutDropIn = {
     width: '100%',
     paddingBottom: [50, .7, 50],
@@ -100,6 +92,22 @@ export const productCategoryStyle = {
     letterSpacing: [0.3, .7, 0.3]
 }
 
-export const relatedProductStyle = {
-
+export const checkoutFormStyle = {
+    background: transparent,
+    padding: 0,
+    width: '100%',
+    inner: {
+        display: grid,
+        width: '100%',
+        gridColumnGap: sv(30, globals.style.layoutScalingValue),
+        gridTemplateColumns: '1fr 1fr',
+        mobile: {
+            gridTemplateColumns: '1fr',
+            gridGap: 0
+        }
+    }
 }
+
+
+
+export const relatedProductStyle = {}

@@ -8,7 +8,18 @@ import SubmitButton       from '../Basic/SubmitButton'
 import FieldSwitch        from './FieldSwitch'
 import {genericFormStyle} from './styles'
 
-const GenericFormik = ({initialValues, fields, options, validationSchema, dispatchAction, formHeading, buttonText, enableReinitialize, theme}) => {
+const GenericFormik = ({
+                           initialValues,
+                           fields,
+                           options,
+                           validationSchema,
+                           dispatchAction,
+                           formHeading,
+                           buttonText,
+                           enableReinitialize,
+                           submit = true,
+                           theme
+                       }) => {
     const dispatch = useDispatch()
     return (
         <Formik
@@ -29,18 +40,22 @@ const GenericFormik = ({initialValues, fields, options, validationSchema, dispat
                     }}>
                         {formHeading}
                     </H3>
-                    {fields.map((f, i) =>
-                        <FieldSwitch
-                            key={i}
-                            formik={formik}
-                            field={f}
-                            options={options}
+                    <Div theme={{...genericFormStyle.inner, ...theme.inner}}>
+                        {fields.map((f, i) =>
+                            <FieldSwitch
+                                key={i}
+                                formik={formik}
+                                field={f}
+                                options={options}
+                            />
+                        )}
+                    </Div>
+                    {submit && (
+                        <SubmitButton
+                            theme={{...theme.button}}
+                            children={buttonText}
                         />
                     )}
-                    <SubmitButton
-                        theme={{...theme.button}}
-                        children={buttonText}
-                    />
                 </Div>
             }
         </Formik>

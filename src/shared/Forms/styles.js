@@ -24,7 +24,7 @@ import {
     transparent,
     uppercase,
     white
-}                from '../../utils/themer'
+} from '../../utils/themer'
 
 export const genericFormStyle = {
     display: flex,
@@ -314,7 +314,7 @@ export const imageDropZoneStyle = {
 export const toggleFieldStyle = {
     display: 'flex',
     alignItems: center,
-    width: 100,
+    width: [100, globals.style.layoutScalingValue, '100%'],
     height: 30,
     borderRadius: 20,
     background: '#d0cece',
@@ -327,4 +327,47 @@ export const toggleFieldStyle = {
     }
 }
 
-export const toggleBallStyle = {height: 25, width: 25, borderRadius: 20, background: '#fff'}
+export const toggleBallStyle = {
+    height: [25, globals.style.layoutScalingValue, 25],
+    width: [25, globals.style.layoutScalingValue, 25],
+    borderRadius: [20, globals.style.layoutScalingValue, 20],
+    background: white
+}
+
+export const countryFieldStyle = {
+    marginBottom: [20, .7, 20],
+    child: [
+        {
+            selector: '.country-field',
+            width: '100%',
+            height: [50, .7, 50],
+            padding: `0 ${sv(25)}`,
+            border: 0
+        }
+    ]
+}
+
+export const regionFieldStyle = {
+    marginBottom: [20, .7, 20],
+    child: [
+        {
+            selector: '.region-field',
+            width: '100%',
+            height: [50, .7, 50],
+            padding: `0 ${sv(25)}`,
+            border: 0
+        }
+    ]
+}
+
+export const checkoutAddress = {
+    child: {
+        selector: '> input',
+        size: [24, .7, 24],
+        width: '100%',
+        height: 50,
+        border: none,
+        padding: '30px 20px',
+        boxSizing: borderBox
+    }
+}
