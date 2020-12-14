@@ -1,13 +1,13 @@
-import {postFieldTypes}        from '../../config/fieldTypes/post'
+import {postFieldTypes}        from 'config/fieldTypes/post'
 import React, {useEffect}      from 'react'
 import {
     useDispatch,
     useSelector
 }                              from 'react-redux'
-import AdminControls           from '../../shared/Admin/AdminControls'
-import GenericFormik           from '../../shared/Forms/GenericFormik'
-import AdminWrapper            from '../../shared/Layout/AdminWrapper'
-import ContentWrapper          from '../../shared/Layout/ContentWrapper'
+import AdminControls           from 'shared/Admin/AdminControls'
+import GenericFormik           from 'shared/Forms/GenericFormik'
+import AdminWrapper            from 'shared/Layout/AdminWrapper'
+import ContentWrapper          from 'shared/Layout/ContentWrapper'
 import {adminFormWrapperStyle} from './styles'
 
 const UpdatePost = () => {

@@ -1,12 +1,13 @@
-import React, {memo}      from 'react'
-import CountryField       from './CountryField'
-import RegionField        from './RegionField'
-import RichTextEditor     from './RichTextEditor'
-import SelectField        from './SelectField'
-import SmartFileInput     from './SmartFileInput'
-import SmartInput         from './SmartInput'
-import {genericFormStyle} from './styles'
-import ToggleField        from './ToggleField'
+import React, {memo}       from 'react'
+import AutoCompleteAddress from './AutoCompleteAddress'
+import CountryField        from './CountryField'
+import RegionField         from './RegionField'
+import RichTextEditor      from './RichTextEditor'
+import SelectField         from './SelectField'
+import SmartFileInput      from './SmartFileInput'
+import SmartInput          from './SmartInput'
+import {genericFormStyle}  from './styles'
+import ToggleField         from './ToggleField'
 
 const FieldSwitch = memo(({field, formik, options}) => {
     switch (field.type) {
@@ -57,6 +58,11 @@ const FieldSwitch = memo(({field, formik, options}) => {
             />
         case 'region':
             return <RegionField
+                name={field.name}
+                formik={formik}
+            />
+        case 'autoAddress':
+            return <AutoCompleteAddress
                 name={field.name}
                 formik={formik}
             />

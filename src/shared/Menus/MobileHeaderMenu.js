@@ -3,10 +3,10 @@ import {
     useDispatch,
     useSelector
 }                                         from 'react-redux'
-import {adminMenuStyle}                   from '../../features/admin/styles'
-import Div                                from '../Basic/Div'
-import LinkSwitch                         from '../Basic/LinkSwitch'
-import Span                               from '../Basic/Span'
+import {adminMenuStyle}                   from 'features/admin/styles'
+import Div                                from 'shared/Basic/Div'
+import LinkSwitch                         from 'shared/Basic/LinkSwitch'
+import Span                               from 'shared/Basic/Span'
 import HeaderMenuItems                    from './HeaderMenuItems'
 import {headerMenuAuthStyleListItemStyle} from './styles'
 

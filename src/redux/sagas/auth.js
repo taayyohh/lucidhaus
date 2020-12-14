@@ -6,7 +6,7 @@ import {
 import {
     authenticate,
     isAuthenticated
-}                  from '../../services/apiUser'
+}                  from 'services/apiUser'
 
 export function* authenticateUser({payload}) {
     yield call(authenticate, payload)

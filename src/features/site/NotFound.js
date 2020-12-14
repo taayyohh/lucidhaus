@@ -1,6 +1,6 @@
 import React           from 'react'
-import Div             from '../../shared/Basic/Div'
-import {notFoundStyle} from '../../shared/Layout/styles'
+import Div             from 'shared/Basic/Div'
+import {notFoundStyle} from 'shared/Layout/styles'
 
 const NotFound = () =>
     <Div theme={notFoundStyle}>

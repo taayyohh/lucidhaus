@@ -1,7 +1,7 @@
 import PropTypes                from 'prop-types'
 import styled                   from 'styled-components/macro'
-import {themer}                 from '../../utils/themer'
-import {defaultInputLabelStyle} from '../Forms/styles'
+import {themer}                 from 'utils/themer'
+import {defaultInputLabelStyle} from 'shared/Forms/styles'
 
 const InputLabel = styled.label`${props => themer({...defaultInputLabelStyle, ...props.theme})}`
 

@@ -6,7 +6,7 @@ import {
 import {
     addItem,
     removeItem
-}                   from '../../utils/cartHelpers'
+}                   from 'utils/cartHelpers'
 
 export function* addToCart({payload}) {
     const cart = yield call(addItem, payload)

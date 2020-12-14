@@ -6,7 +6,7 @@ import {
 import {
     allProductCategories,
     getProductCategory
-}                   from '../../services/apiProductCategory'
+}                   from 'services/apiProductCategory'
 
 export function* getProductCategories() {
     const productCategories = yield call(allProductCategories)

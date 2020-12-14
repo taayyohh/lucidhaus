@@ -4,8 +4,8 @@ import {
     useDispatch,
     useSelector
 }                           from 'react-redux'
-import PageFrame            from '../Layout/PageFrame'
-import TransitionOverlay    from '../Layout/TransitionOverlay'
+import PageFrame            from 'shared/Layout/PageFrame'
+import TransitionOverlay    from 'shared/Layout/TransitionOverlay'
 import LayoutSwitch         from './LayoutSwitch'
 import MenuPanelController  from './MenuPanelController'
 import TransitionController from './TransitionController'

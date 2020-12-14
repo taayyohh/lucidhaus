@@ -3,10 +3,10 @@ import {
     useDispatch,
     useSelector
 }                           from 'react-redux'
-import H2                   from '../../shared/Basic/H2'
-import H3                   from '../../shared/Basic/H3'
-import LinkSwitch           from '../../shared/Basic/LinkSwitch'
-import ContentWrapper       from '../../shared/Layout/ContentWrapper'
+import H2                   from 'shared/Basic/H2'
+import H3                   from 'shared/Basic/H3'
+import LinkSwitch           from 'shared/Basic/LinkSwitch'
+import ContentWrapper       from 'shared/Layout/ContentWrapper'
 import {userDashboardStyle} from './styles'
 import UserPurchaseHistory  from './UserPurchaseHistory'
 

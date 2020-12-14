@@ -1,11 +1,11 @@
-import {productCategory} from '../../config/fieldTypes/productCategory'
+import {productCategory} from 'config/fieldTypes/productCategory'
 import React             from 'react'
-import {useSelector}               from 'react-redux'
-import AdminControls               from '../../shared/Admin/AdminControls'
-import GenericFormik               from '../../shared/Forms/GenericFormik'
-import AdminWrapper                from '../../shared/Layout/AdminWrapper'
-import ContentWrapper              from '../../shared/Layout/ContentWrapper'
-import {postFormStyle}             from '../post/styles'
+import {useSelector}     from 'react-redux'
+import AdminControls     from 'shared/Admin/AdminControls'
+import GenericFormik     from 'shared/Forms/GenericFormik'
+import AdminWrapper      from 'shared/Layout/AdminWrapper'
+import ContentWrapper    from 'shared/Layout/ContentWrapper'
+import {postFormStyle}   from '../post/styles'
 
 const CreateProductCategory = () => {
     const {_id, token} = useSelector(state => state.user)

@@ -1,7 +1,7 @@
 import {
     auto,
     hidden
-} from '../../../utils/themer'
+} from 'utils/themer'
 
 export const headerMenuPanelVariants = {
     open: (height = 1000) => ({
@@ -17,7 +17,7 @@ export const headerMenuPanelVariants = {
         clipPath: 'circle(30px at 110% 0)',
         overflowY: hidden,
         transition: {
-          //  delay: 0.5,
+            //  delay: 0.5,
             type: 'spring',
             stiffness: 400,
             damping: 40

@@ -3,12 +3,12 @@ import {
     useDispatch,
     useSelector
 }                                         from 'react-redux'
-import Div                                from '../../shared/Basic/Div'
-import H3                                 from '../../shared/Basic/H3'
-import LinkSwitch                         from '../../shared/Basic/LinkSwitch'
-import Span                               from '../../shared/Basic/Span'
-import ContentWrapper                     from '../../shared/Layout/ContentWrapper'
-import {headerMenuAuthStyleListItemStyle} from '../../shared/Menus/styles'
+import Div                                from 'shared/Basic/Div'
+import H3                                 from 'shared/Basic/H3'
+import LinkSwitch                         from 'shared/Basic/LinkSwitch'
+import Span                               from 'shared/Basic/Span'
+import ContentWrapper                     from 'shared/Layout/ContentWrapper'
+import {headerMenuAuthStyleListItemStyle} from 'shared/Menus/styles'
 import {
     adminDashboardStyle,
     adminMenuStyle

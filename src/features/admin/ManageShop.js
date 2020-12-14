@@ -3,11 +3,11 @@ import {
     useDispatch,
     useSelector
 }                         from 'react-redux'
-import AdminControls      from '../../shared/Admin/AdminControls'
-import AdminShop          from '../../shared/Admin/AdminShop'
-import DeletePrompt       from '../../shared/Admin/DeletePrompt'
-import AdminWrapper       from '../../shared/Layout/AdminWrapper'
-import ContentWrapper     from '../../shared/Layout/ContentWrapper'
+import AdminControls      from 'shared/Admin/AdminControls'
+import AdminShop          from 'shared/Admin/AdminShop'
+import DeletePrompt       from 'shared/Admin/DeletePrompt'
+import AdminWrapper       from 'shared/Layout/AdminWrapper'
+import ContentWrapper     from 'shared/Layout/ContentWrapper'
 
 const ManageShop = () => {
     const {shop} = useSelector(state => state.shop)

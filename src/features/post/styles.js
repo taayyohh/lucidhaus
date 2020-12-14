@@ -1,14 +1,14 @@
 import {
     colorPalette,
     globals
-} from '../../config/styles'
+} from 'config/styles'
 import {
     borderBox,
     center,
     column,
     flex,
     sv
-} from '../../utils/themer'
+} from 'utils/themer'
 
 export const postsWrapperStyle = {
     display: 'grid',

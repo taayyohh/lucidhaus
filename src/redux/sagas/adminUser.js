@@ -7,7 +7,7 @@ import {
 import {
     update,
     updateUser
-}             from '../../services/apiUser'
+}             from 'services/apiUser'
 
 export function* updateProfile({payload}) {
     try {

@@ -3,13 +3,13 @@ import React, {
     useRef,
     useState
 }                 from 'react'
-import useMeasure from '../../utils/useMeasure'
-import {globals}  from '../../config/styles'
-import Fieldset   from '../Basic/Fieldset'
-import Input      from '../Basic/Input'
-import InputLabel from '../Basic/InputLabel'
-import Legend     from '../Basic/Legend'
-import Span       from '../Basic/Span'
+import useMeasure from 'utils/useMeasure'
+import {globals}  from 'config/styles'
+import Fieldset   from 'shared/Basic/Fieldset'
+import Input      from 'shared/Basic/Input'
+import InputLabel from 'shared/Basic/InputLabel'
+import Legend     from 'shared/Basic/Legend'
+import Span       from 'shared/Basic/Span'
 import {
     defaultFieldErrorStyle,
     defaultFocusedInputLabelStyle

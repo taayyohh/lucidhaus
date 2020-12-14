@@ -1,5 +1,5 @@
-import {globals}  from '../../../config/styles'
-import {relative} from '../../../utils/themer'
+import {globals}  from 'config/styles'
+import {relative} from 'utils/themer'
 
 export const defaultLinkStyle = {
     color: globals.colors.linkColor

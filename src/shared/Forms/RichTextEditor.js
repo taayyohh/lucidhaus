@@ -1,8 +1,8 @@
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic'
 import CKEditor      from '@ckeditor/ckeditor5-react'
 import React from 'react'
-import Div   from '../Basic/Div'
-import H3 from '../Basic/H3'
+import Div   from 'shared/Basic/Div'
+import H3 from 'shared/Basic/H3'
 import {
     defaultCKEditorStyle,
     defaultFieldHeadingStyle

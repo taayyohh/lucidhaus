@@ -7,8 +7,8 @@ import {
 import {
     emptyPromise,
     timeoutAsync
-}                                 from '../../utils/helpers'
-import MotionDiv                  from '../Basic/MotionDiv'
+}                                 from 'utils/helpers'
+import MotionDiv                  from 'shared/Basic/MotionDiv'
 import {notificationWrapperStyle} from './styles'
 
 const Notifications = () => {

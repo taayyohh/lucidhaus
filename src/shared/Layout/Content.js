@@ -13,31 +13,31 @@ import {
 }                             from 'react-router'
 import AdminRoute             from '../Admin/AdminRoute'
 import PrivateRoute           from '../Admin/PrivateRoute'
-import MotionDiv              from '../Basic/MotionDiv'
-import {TransitionAnimations} from '../Containers/TransitionController'
+import MotionDiv              from 'shared/Basic/MotionDiv'
+import {TransitionAnimations} from 'shared/Containers/TransitionController'
 import Fallback               from './Fallback'
 
-const AdminDashboard = lazy(() => import('../../features/admin/AdminDashboard'))
-const CreatePost = lazy(() => import('../../features/admin/CreatePost'))
-const CreateProduct = lazy(() => import('../../features/admin/CreateProduct'))
-const CreateProductCategory = lazy(() => import('../../features/admin/CreateProductCategory'))
-const ManageMarketplace = lazy(() => import('../../features/admin/ManagePosts'))
-const ManageOrders = lazy(() => import('../../features/admin/ManageOrders'))
-const ManageShop = lazy(() => import('../../features/admin/ManageShop'))
-const ManageTaxonomy = lazy(() => import('../../features/admin/ManageTaxonomy'))
-const UpdatePost = lazy(() => import('../../features/admin/UpdatePost'))
-const UpdateProduct = lazy(() => import('../../features/admin/UpdateProduct'))
-const UpdateProductCategory = lazy(() => import('../../features/admin/UpdateProductCategory'))
-const Post = lazy(() => import('../../features/post/Post'))
-const Marketplace = lazy(() => import('../../features/post/Posts'))
-const Product = lazy(() => import('../../features/shop/Product'))
-const Shop = lazy(() => import('../../features/shop/Shop'))
-const NotFound = lazy(() => import('../../features/site/NotFound'))
-const SignIn = lazy(() => import('../../features/user/SignIn'))
-const SignUp = lazy(() => import('../../features/user/SignUp'))
-const UpdateProfile = lazy(() => import('../../features/user/UpdateProfile'))
-const UserDashboard = lazy(() => import('../../features/user/UserDashboard'))
-const Home = lazy(() => import('../../features/site/Home'))
+const AdminDashboard = lazy(() => import('features/admin/AdminDashboard'))
+const CreatePost = lazy(() => import('features/admin/CreatePost'))
+const CreateProduct = lazy(() => import('features/admin/CreateProduct'))
+const CreateProductCategory = lazy(() => import('features/admin/CreateProductCategory'))
+const ManageMarketplace = lazy(() => import('features/admin/ManagePosts'))
+const ManageOrders = lazy(() => import('features/admin/ManageOrders'))
+const ManageShop = lazy(() => import('features/admin/ManageShop'))
+const ManageTaxonomy = lazy(() => import('features/admin/ManageTaxonomy'))
+const UpdatePost = lazy(() => import('features/admin/UpdatePost'))
+const UpdateProduct = lazy(() => import('features/admin/UpdateProduct'))
+const UpdateProductCategory = lazy(() => import('features/admin/UpdateProductCategory'))
+const Post = lazy(() => import('features/post/Post'))
+const Marketplace = lazy(() => import('features/post/Posts'))
+const Product = lazy(() => import('features/shop/Product'))
+const Shop = lazy(() => import('features/shop/Shop'))
+const NotFound = lazy(() => import('features/site/NotFound'))
+const SignIn = lazy(() => import('features/user/SignIn'))
+const SignUp = lazy(() => import('features/user/SignUp'))
+const UpdateProfile = lazy(() => import('features/user/UpdateProfile'))
+const UserDashboard = lazy(() => import('features/user/UserDashboard'))
+const Home = lazy(() => import('features/site/Home'))
 
 const Content = () => {
     const {contentAnimation, currentPath} = useContext(TransitionAnimations)

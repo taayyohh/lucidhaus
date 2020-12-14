@@ -8,11 +8,11 @@ import {
     addPost,
     deletePost,
     updatePost
-}                   from '../../services/apiAdmin'
+}                   from 'services/apiAdmin'
 import {
     getSignedRequest,
     uploadFile
-}                   from '../../services/apiS3'
+}                   from 'services/apiS3'
 
 export function* createPost({payload}) {
     const {_id, token, name, description, photo, image} = payload

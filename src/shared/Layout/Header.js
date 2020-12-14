@@ -1,7 +1,7 @@
 import PropTypes  from 'prop-types'
 import React      from 'react'
-import Div        from '../Basic/Div'
-import LinkSwitch from '../Basic/LinkSwitch'
+import Div        from 'shared/Basic/Div'
+import LinkSwitch from 'shared/Basic/LinkSwitch'
 import HeaderMenu from '../Menus/HeaderMenu'
 import {
     headerInnerStyle,

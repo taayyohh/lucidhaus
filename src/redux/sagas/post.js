@@ -6,7 +6,7 @@ import {
 import {
     getPost,
     getPosts
-} from '../../services/apiAdmin'
+} from 'services/apiAdmin'
 
 /**
  *

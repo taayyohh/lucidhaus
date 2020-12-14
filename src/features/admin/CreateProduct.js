@@ -1,13 +1,13 @@
-import {productFieldTypes} from '../../config/fieldTypes/product'
+import {productFieldTypes} from 'config/fieldTypes/product'
 import React, {useEffect}  from 'react'
 import {
     useDispatch,
     useSelector
 }                          from 'react-redux'
-import AdminControls       from '../../shared/Admin/AdminControls'
-import GenericFormik       from '../../shared/Forms/GenericFormik'
-import AdminWrapper        from '../../shared/Layout/AdminWrapper'
-import ContentWrapper      from '../../shared/Layout/ContentWrapper'
+import AdminControls       from 'shared/Admin/AdminControls'
+import GenericFormik       from 'shared/Forms/GenericFormik'
+import AdminWrapper        from 'shared/Layout/AdminWrapper'
+import ContentWrapper      from 'shared/Layout/ContentWrapper'
 import {postFormStyle}     from '../post/styles'
 
 const CreateProduct = () => {

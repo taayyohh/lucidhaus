@@ -8,38 +8,23 @@ import {
     useDispatch,
     useSelector
 }                           from 'react-redux'
-import {orderFieldTypes}    from '../../config/fieldTypes/order'
-import Div                  from '../../shared/Basic/Div'
-import H2                   from '../../shared/Basic/H2'
-import {genericButtonStyle} from '../../shared/Controls/styles'
-import AutoCompleteAddress  from '../../shared/Forms/AutoCompleteAddress'
-import GenericFormik        from '../../shared/Forms/GenericFormik'
-import {getTotal}           from '../../utils/cartHelpers'
+import DeliveryAddress      from 'features/shop/DeliveryAddress'
+import Div                  from 'shared/Basic/Div'
+import H2                   from 'shared/Basic/H2'
+import {genericButtonStyle} from 'shared/Controls/styles'
+import {getTotal}           from 'utils/cartHelpers'
 import {
     cartTitleStyle,
-    checkoutDropIn,
-    checkoutFormStyle
+    checkoutDropIn
 }                           from './styles'
 
 
 const Checkout = ({products}) => {
     const dispatch = useDispatch()
     const [dropInInstance, setDropInInstance] = useState({})
-    const [address, setAddress] = useState('')
     const {_id, token, email, name} = useSelector(state => state.user)
-    const {braintreeClientToken} = useSelector(state => state.shop)
+    const {braintreeClientToken, deliveryAddress, billingAddress} = useSelector(state => state.shop)
     const {isAuthenticated} = useSelector(state => state.user)
-
-    const initialValues = {
-        company: '',
-        address: '',
-        address2: '',
-        city: '',
-        zip: '',
-        country: '',
-        state: '',
-        phone: '',
-    }
 
     useEffect(() => {
         if (isAuthenticated)
@@ -52,10 +37,6 @@ const Checkout = ({products}) => {
     }, [_id, token])
 
 
-    const handleAddress = address => {
-        setAddress(address)
-    }
-
     const purchase = () => {
         dispatch({
             type: 'shop/getPaymentNonce',
@@ -65,8 +46,12 @@ const Checkout = ({products}) => {
                 dropInInstance: dropInInstance,
                 amount: getTotal(products),
                 products: products,
-                deliveryAddress: address,
-                user: {email: email, name: name}
+                deliveryAddress: deliveryAddress,
+                billingAddress: billingAddress,
+                user: {
+                    email: email,
+                    name: name
+                }
             }
         })
     }
@@ -77,17 +62,8 @@ const Checkout = ({products}) => {
                 <>
                     <Div>
                         <H2 theme={cartTitleStyle}>Checkout</H2>
-                        <label>Delivery Address</label>
-                        <AutoCompleteAddress
-                            address={address}
-                            handleAddress={handleAddress}
-                        />
-                        <GenericFormik
-                            initialValues={initialValues}
-                            fields={orderFieldTypes}
-                            theme={checkoutFormStyle}
-                            submit={false}
-                        />
+                        <DeliveryAddress/>
+
                     </Div>
 
                     <DropIn
@@ -104,13 +80,16 @@ const Checkout = ({products}) => {
                         onInstance={instance => setDropInInstance(instance)}
                     />
 
-                    <Div
-                        as="button"
-                        theme={genericButtonStyle}
-                        onClick={!!address ? purchase : null}
-                    >
-                        Pay
-                    </Div>
+                    {deliveryAddress && (
+                        <Div
+                            as="button"
+                            theme={genericButtonStyle}
+                            onClick={purchase}
+                        >
+                            Pay
+                        </Div>
+                    )}
+
 
                 </>
             )}

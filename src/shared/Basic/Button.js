@@ -1,7 +1,7 @@
 import PropTypes            from 'prop-types'
+import {genericButtonStyle} from 'shared/Controls/styles'
 import styled               from 'styled-components/macro'
-import {themer}             from '../../utils/themer'
-import {genericButtonStyle} from '../Controls/styles'
+import {themer}             from 'utils/themer'
 
 const Button = styled.button`${props => themer({...genericButtonStyle, ...props.theme})}`
 

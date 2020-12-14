@@ -4,7 +4,7 @@ import {
     useDispatch,
     useSelector
 }                              from 'react-redux'
-import Div                     from '../Basic/Div'
+import Div                     from 'shared/Basic/Div'
 import {orderCardWrapperStyle} from '../Controls/styles'
 
 const OrderCard = ({o}) => {

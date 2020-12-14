@@ -1,16 +1,16 @@
-import React         from 'react'
-import {useSelector} from 'react-redux'
 import {
     adminControlPanelInnerStyle,
     adminControlPanelStyle,
     adminCreateButtonStyle,
     adminHeadingStyle
-}                    from '../../features/admin/styles'
-import Div           from '../Basic/Div'
-import H2            from '../Basic/H2'
-import LinkSwitch    from '../Basic/LinkSwitch'
-import Span          from '../Basic/Span'
-import GenericFormik from '../Forms/GenericFormik'
+}                    from 'features/admin/styles'
+import React         from 'react'
+import {useSelector} from 'react-redux'
+import Div           from 'shared/Basic/Div'
+import H2            from 'shared/Basic/H2'
+import LinkSwitch    from 'shared/Basic/LinkSwitch'
+import Span          from 'shared/Basic/Span'
+import GenericFormik from 'shared/Forms/GenericFormik'
 
 const AdminControls = ({data, title, create, publish}) => {
     const {_id, token} = useSelector(state => state.user)

@@ -1,5 +1,5 @@
-import {globals} from '../../config/styles'
-import {center}  from '../../utils/themer'
+import {globals} from 'config/styles'
+import {center}  from 'utils/themer'
 
 export const userDashboardStyle = {
     greeting: {

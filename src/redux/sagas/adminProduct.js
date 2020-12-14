@@ -8,12 +8,12 @@ import {
     addProduct,
     deleteProduct,
     updateProduct
-}                   from '../../services/apiProduct'
+}                   from 'services/apiProduct'
 import {
     getSignedRequest,
     uploadFile
-}                   from '../../services/apiS3'
-import {updateItem} from '../../utils/cartHelpers'
+}                   from 'services/apiS3'
+import {updateItem} from 'utils/cartHelpers'
 
 export function* createProduct({payload}) {
     const {_id, token, name, description, photo, image, quantity, price, isPublished, category} = payload

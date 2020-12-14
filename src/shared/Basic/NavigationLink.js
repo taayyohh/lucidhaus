@@ -2,8 +2,8 @@ import PropTypes          from 'prop-types'
 import React              from 'react'
 import {NavLink}          from 'react-router-dom'
 import styled             from 'styled-components'
-import {themer}           from '../../utils/themer'
-import {defaultLinkStyle} from '../Layout/styles/typography'
+import {themer}           from 'utils/themer'
+import {defaultLinkStyle} from 'shared/Layout/styles/typography'
 
 const StyledNavLink = styled(NavLink)`${props => themer({...defaultLinkStyle, ...props.theme})}`
 

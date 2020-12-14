@@ -1,7 +1,7 @@
 import PropTypes     from 'prop-types'
 import React, {memo} from 'react'
 import styled   from 'styled-components/macro'
-import {themer} from '../../utils/themer'
+import {themer} from 'utils/themer'
 
 const Image = styled.img`${props => themer(props.theme)}`
 

@@ -9,7 +9,7 @@ import {
     signin,
     signout,
     signup
-}                  from '../../services/apiUser'
+}                  from 'services/apiUser'
 
 export function* signIn({payload}) {
     try {

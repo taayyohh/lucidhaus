@@ -1,10 +1,10 @@
-import {postFieldTypes} from '../../config/fieldTypes/post'
+import {postFieldTypes} from 'config/fieldTypes/post'
 import React            from 'react'
 import {useSelector}    from 'react-redux'
-import AdminControls    from '../../shared/Admin/AdminControls'
-import GenericFormik    from '../../shared/Forms/GenericFormik'
-import AdminWrapper     from '../../shared/Layout/AdminWrapper'
-import ContentWrapper   from '../../shared/Layout/ContentWrapper'
+import AdminControls    from 'shared/Admin/AdminControls'
+import GenericFormik    from 'shared/Forms/GenericFormik'
+import AdminWrapper     from 'shared/Layout/AdminWrapper'
+import ContentWrapper   from 'shared/Layout/ContentWrapper'
 import {postFormStyle}  from '../post/styles'
 
 const CreatePost = () => {

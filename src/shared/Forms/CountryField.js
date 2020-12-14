@@ -1,6 +1,6 @@
 import React               from 'react'
 import {CountryDropdown}   from 'react-country-region-selector'
-import Div                 from '../Basic/Div'
+import Div                 from 'shared/Basic/Div'
 import {countryFieldStyle} from './styles'
 
 const CountryField = ({formik, name}) => {

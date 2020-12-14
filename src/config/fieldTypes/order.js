@@ -1,5 +1,10 @@
 export const orderFieldTypes = [
     {
+      name: 'autoAddress',
+      inputLabel: 'Address',
+      type: 'autoAddress'
+    },
+    {
         name: 'address',
         inputLabel: 'Address',
         type: 'text'
@@ -27,7 +32,7 @@ export const orderFieldTypes = [
     {
         name: 'zip',
         inputLabel: 'ZIP or Postal Code',
-        type: 'number'
+        type: 'text'
     },
     {
         name: 'phone',

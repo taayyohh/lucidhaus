@@ -3,8 +3,8 @@ import {
     put,
     takeLatest
 }                    from 'redux-saga/effects'
-import {getProduct}  from '../../services/apiProduct'
-import {listRelated} from '../../services/apiShop'
+import {getProduct}  from 'services/apiProduct'
+import {listRelated} from 'services/apiShop'
 
 export function* getProductDetail({payload}) {
     try {

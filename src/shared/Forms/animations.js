@@ -1,7 +1,7 @@
 import {
     flexEnd,
     flexStart
-} from '../../utils/themer'
+} from 'utils/themer'
 
 export const toggleVariants = {
     true: {

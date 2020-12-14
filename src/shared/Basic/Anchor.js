@@ -1,6 +1,6 @@
-import PropTypes          from 'prop-types'
-import styled   from 'styled-components'
-import {themer} from '../../utils/themer'
+import PropTypes from 'prop-types'
+import styled    from 'styled-components'
+import {themer}  from 'utils/themer'
 
 const Anchor = styled.a`${props => themer({...props.theme})}`
 

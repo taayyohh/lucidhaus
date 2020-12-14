@@ -1,7 +1,7 @@
 import PropTypes              from 'prop-types'
 import React                  from 'react'
-import {parseHtml}            from '../../utils/parseHtml'
-import {richTextDefaultStyle} from '../Layout/styles/typography'
+import {parseHtml}            from 'utils/parseHtml'
+import {richTextDefaultStyle} from 'shared/Layout/styles/typography'
 import Div                    from './Div'
 
 const RichText = ({theme, children, ...props}) => children ?

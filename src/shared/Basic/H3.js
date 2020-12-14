@@ -1,6 +1,6 @@
 import PropTypes        from 'prop-types'
 import styled   from 'styled-components/macro'
-import {themer} from '../../utils/themer'
+import {themer} from 'utils/themer'
 
 const H3 = styled.h3`${props => themer({...props.theme})}`
 

@@ -5,10 +5,10 @@ import {
     useDispatch,
     useSelector
 }                          from 'react-redux'
-import Div                 from '../Basic/Div'
-import MotionDiv           from '../Basic/MotionDiv'
-import {deleteButtonStyle} from '../Controls/styles'
-import {defaultModalStyle} from '../Layout/styles'
+import Div                 from 'shared/Basic/Div'
+import MotionDiv           from 'shared/Basic/MotionDiv'
+import {deleteButtonStyle} from 'shared/Controls/styles'
+import {defaultModalStyle} from 'shared/Layout/styles'
 
 const DeletePrompt = ({destroyAction}) => {
     const {_id, token} = useSelector(state => state.user)

@@ -6,13 +6,13 @@ import {
 import {
     getBraintreeClientToken,
     getPaymentMethod
-}                    from '../../services/apiBraintree'
-import {getProducts} from '../../services/apiProduct'
+}                    from 'services/apiBraintree'
+import {getProducts} from 'services/apiProduct'
 import {
     createOrder,
     processPayment
-}                    from '../../services/apiShop'
-import {emptyCart}   from '../../utils/cartHelpers'
+}                    from 'services/apiShop'
+import {emptyCart}   from 'utils/cartHelpers'
 
 export function* getShop() {
     try {
@@ -38,6 +38,16 @@ export function* getBraintreeToken({payload}) {
 
 export function* getPaymentNonce({payload}) {
     const {dropInInstance, _id, token, amount, products, deliveryAddress, user} = payload
+    const {address, address2, city, state, zip, country, phone} = deliveryAddress
+    const parts = [address, address2, city, state, zip, country, phone]
+    let formattedAddress = parts.map(v => {
+        let str = ''
+        if (v.length > 0)
+            str += `${v} `
+        return str
+    })
+
+
     const nonce = yield call(getPaymentMethod, dropInInstance)
     const paymentData = {paymentMethodNonce: nonce, amount: amount}
     const paymentProcessed = yield call(processPayment, {_id, token, paymentData})
@@ -46,7 +56,7 @@ export function* getPaymentNonce({payload}) {
             products,
             transactionId_id: paymentProcessed.transaction.id,
             amount: paymentProcessed.transaction.amount,
-            address: deliveryAddress,
+            address: formattedAddress,
             user: user
         }
         const createdOrder = yield call(createOrder, {_id, token, createOrderData})

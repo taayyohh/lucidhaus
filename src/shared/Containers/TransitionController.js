@@ -8,7 +8,7 @@ import React, {
 }                         from 'react'
 import {useSelector}      from 'react-redux'
 import {createSelector}   from 'reselect'
-import {globals}          from '../../config/styles'
+import {globals}          from 'config/styles'
 import {overlayFadeout}   from './animations.js/transitions'
 import {menuPanelContext} from './MenuPanelController'
 

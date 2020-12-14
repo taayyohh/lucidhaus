@@ -3,11 +3,11 @@ import {
     useDispatch,
     useSelector
 }                               from 'react-redux'
-import AdminControls            from '../../shared/Admin/AdminControls'
-import Div                      from '../../shared/Basic/Div'
-import OrderCard                from '../../shared/Cards/OrderCard'
-import AdminWrapper             from '../../shared/Layout/AdminWrapper'
-import ContentWrapper           from '../../shared/Layout/ContentWrapper'
+import AdminControls            from 'shared/Admin/AdminControls'
+import Div                      from 'shared/Basic/Div'
+import OrderCard                from 'shared/Cards/OrderCard'
+import AdminWrapper             from 'shared/Layout/AdminWrapper'
+import ContentWrapper           from 'shared/Layout/ContentWrapper'
 import {adminOrderWrapperStyle} from './styles'
 
 const ManageOrders = () => {

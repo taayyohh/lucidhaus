@@ -1,11 +1,11 @@
 import {
     colorPalette,
     globals
-} from '../../../config/styles'
+} from 'config/styles'
 import {
     borderBox,
     white
-} from '../../../utils/themer'
+} from 'utils/themer'
 
 export const footerStyle = {
     size: [16, .7, 16],

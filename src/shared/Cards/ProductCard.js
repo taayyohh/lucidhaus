@@ -1,9 +1,9 @@
 import React                from 'react'
 import {useDispatch}        from 'react-redux'
-import Div                  from '../Basic/Div'
-import LinkSwitch           from '../Basic/LinkSwitch'
-import S3Img                from '../Basic/S3Img'
-import Span                 from '../Basic/Span'
+import Div                  from 'shared/Basic/Div'
+import LinkSwitch           from 'shared/Basic/LinkSwitch'
+import S3Img                from 'shared/Basic/S3Img'
+import Span                 from 'shared/Basic/Span'
 import RemoveFromCartButton from '../Controls/RemoveFromCartButton'
 import {productCardStyle}   from './styles'
 

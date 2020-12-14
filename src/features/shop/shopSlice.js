@@ -9,6 +9,8 @@ const initialState = {
     relatedProducts: [],
     orders: [],
     statusValues: [],
+    deliveryAddress: '',
+    billingAddress: '',
     error: false,
     updatedOrder: false
 }
@@ -67,6 +69,12 @@ export const shopSlice = createSlice({
         },
         getBraintreeTokenSuccess: (state, action) => {
             state.braintreeClientToken = action.payload.clientToken
+        },
+        updateDeliveryAddress: (state, action) => {
+            state.deliveryAddress = action.payload
+        },
+        updateBillingAddress: (state, action) => {
+            state.billingAddress = action.payload
         }
     },
 })

@@ -3,9 +3,9 @@ import {useDispatch}                         from 'react-redux'
 import {
     adminCardControlsButtonStyle,
     adminCardControlsButtonWrapperStyle
-} from '../../features/admin/styles'
-import Div                                   from '../Basic/Div'
-import LinkSwitch                            from '../Basic/LinkSwitch'
+} from 'features/admin/styles'
+import Div                                   from 'shared/Basic/Div'
+import LinkSwitch                            from 'shared/Basic/LinkSwitch'
 
 const GenericCardAdminControls = ({slug, _id, edit, destroyAction}) => {
     const dispatch = useDispatch()

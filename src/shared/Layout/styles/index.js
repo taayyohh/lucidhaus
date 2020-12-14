@@ -2,7 +2,7 @@ import {
     colorPalette,
     genericMobileContainerStyles,
     globals
-} from '../../../config/styles'
+} from 'config/styles'
 import {
     center,
     column,
@@ -12,7 +12,7 @@ import {
     relative,
     sv,
     white
-} from '../../../utils/themer'
+} from 'utils/themer'
 
 const contentRow = 2
 

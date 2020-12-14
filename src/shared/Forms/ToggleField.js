@@ -1,6 +1,6 @@
 import {AnimatePresence} from 'framer-motion'
 import React             from 'react'
-import MotionDiv         from '../Basic/MotionDiv'
+import MotionDiv         from 'shared/Basic/MotionDiv'
 import {toggleVariants}  from './animations'
 import {
     toggleBallStyle,

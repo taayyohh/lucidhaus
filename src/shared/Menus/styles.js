@@ -1,7 +1,7 @@
 import {
     colorPalette,
     globals
-} from '../../config/styles'
+} from 'config/styles'
 import {
     absolute,
     black,
@@ -19,7 +19,7 @@ import {
     row,
     transparent,
     white
-} from '../../utils/themer'
+} from 'utils/themer'
 
 export const headerMenuPanelWrapperStyle = {
     position: absolute,

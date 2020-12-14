@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import styled           from 'styled-components/macro'
-import {themer}         from '../../utils/themer'
-import {defaultH2Style} from '../Layout/styles/typography'
+import {themer}         from 'utils/themer'
+import {defaultH2Style} from 'shared/Layout/styles/typography'
 
 const H2 = styled.h2`${props => themer({...defaultH2Style, ...props.theme})}`
 

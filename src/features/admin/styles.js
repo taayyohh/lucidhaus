@@ -1,6 +1,6 @@
-import {globals}           from '../../config/styles'
-import {deleteButtonStyle} from '../../shared/Controls/styles'
-import {menuPanelStyle}    from '../../shared/Menus/styles'
+import {globals}           from 'config/styles'
+import {deleteButtonStyle} from 'shared/Controls/styles'
+import {menuPanelStyle}    from 'shared/Menus/styles'
 import {
     auto,
     center,
@@ -15,7 +15,7 @@ import {
     relative,
     row,
     sv
-}                          from '../../utils/themer'
+}                          from 'utils/themer'
 import {postsWrapperStyle} from '../post/styles'
 
 export const adminWrapperStyle = {

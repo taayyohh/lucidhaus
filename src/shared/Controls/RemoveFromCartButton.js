@@ -1,6 +1,6 @@
 import React                from 'react'
 import {useDispatch}        from 'react-redux'
-import Div                  from '../Basic/Div'
+import Div                  from 'shared/Basic/Div'
 import {genericButtonStyle} from './styles'
 
 const RemoveFromCartButton = ({productId}) => {

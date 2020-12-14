@@ -6,12 +6,12 @@ import React, {
 }                              from 'react'
 import Dropzone                from 'react-dropzone'
 import 'react-image-crop/dist/ReactCrop.css'
-import {slugify}               from '../../utils/slugify'
-import {globals}               from '../../config/styles'
-import Div                     from '../Basic/Div'
-import Img                     from '../Basic/Img'
-import S3Img                   from '../Basic/S3Img'
-import {genericCardImageStyle} from '../Cards/styles'
+import {slugify}               from 'utils/slugify'
+import {globals}               from 'config/styles'
+import Div                     from 'shared/Basic/Div'
+import Img                     from 'shared/Basic/Img'
+import S3Img                   from 'shared/Basic/S3Img'
+import {genericCardImageStyle} from 'shared/Cards/styles'
 import CropPortal              from './CropPortal'
 import {
     imageDropZonePreviewStyle,

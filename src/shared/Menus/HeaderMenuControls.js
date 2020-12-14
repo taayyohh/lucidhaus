@@ -3,18 +3,18 @@ import {useSelector} from 'react-redux'
 import {
     shoppingCart,
     user
-}                    from '../../config/faIconLibrary'
-import {transparent} from '../../utils/themer'
-import Div                             from '../Basic/Div'
-import Icon                            from '../Basic/Icon'
-import LinkSwitch                      from '../Basic/LinkSwitch'
-import MotionDiv                       from '../Basic/MotionDiv'
-import {menuPanelContext}              from '../Containers/MenuPanelController'
+}                    from 'config/faIconLibrary'
+import {transparent} from 'utils/themer'
+import Div                             from 'shared/Basic/Div'
+import Icon                            from 'shared/Basic/Icon'
+import LinkSwitch                      from 'shared/Basic/LinkSwitch'
+import MotionDiv                       from 'shared/Basic/MotionDiv'
+import {menuPanelContext}              from 'shared/Containers/MenuPanelController'
 import {
     cartNumberStyle,
     headerIconStyle,
     headerMenuIconWrapperStyle
-}                                      from '../Layout/styles/header'
+}                                      from 'shared/Layout/styles/header'
 import {headerMenuControlWrapperStyle} from './styles'
 
 const HeaderMenuControls = () => {

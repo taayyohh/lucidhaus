@@ -1,8 +1,8 @@
 import {motion}           from 'framer-motion'
 import * as React         from 'react'
 import {useContext}       from 'react'
-import Div                from '../Basic/Div'
-import {menuPanelContext} from '../Containers/MenuPanelController'
+import Div                from 'shared/Basic/Div'
+import {menuPanelContext} from 'shared/Containers/MenuPanelController'
 import {menuToggleStyle}  from './styles'
 
 const Path = props => (

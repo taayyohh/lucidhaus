@@ -3,11 +3,11 @@ import React, {
     lazy,
     Suspense
 }                        from 'react'
-import {excerpt}         from '../../utils/helpers'
-import Div               from '../Basic/Div'
-import LinkSwitch        from '../Basic/LinkSwitch'
-import MotionDiv         from '../Basic/MotionDiv'
-import RichText          from '../Basic/RichText'
+import {excerpt}         from 'utils/helpers'
+import Div               from 'shared/Basic/Div'
+import LinkSwitch        from 'shared/Basic/LinkSwitch'
+import MotionDiv         from 'shared/Basic/MotionDiv'
+import RichText          from 'shared/Basic/RichText'
 import {
     genericCardDescriptionStyle,
     genericCardImageStyle,
@@ -18,7 +18,7 @@ import {
 } from './styles'
 
 //TODO:code split elsewhere where necessary, define fallback component
-const S3Img = lazy(() => import('../Basic/S3Img'))
+const S3Img = lazy(() => import('shared/Basic/S3Img'))
 
 const GenericCard = ({photo, name, slug, description, theme, layoutId}) =>
     <AnimatePresence>

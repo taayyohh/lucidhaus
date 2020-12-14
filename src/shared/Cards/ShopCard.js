@@ -3,8 +3,8 @@ import React, {
     lazy,
     Suspense
 }                        from 'react'
-import LinkSwitch        from '../Basic/LinkSwitch'
-import MotionDiv         from '../Basic/MotionDiv'
+import LinkSwitch        from 'shared/Basic/LinkSwitch'
+import MotionDiv         from 'shared/Basic/MotionDiv'
 import {
     genericCardImageWrapperStyle,
     genericCardNameStyle,
@@ -13,7 +13,7 @@ import {
 }                        from './styles'
 
 //TODO:code split elsewhere where necessary, define fallback component
-const S3Img = lazy(() => import('../Basic/S3Img'))
+const S3Img = lazy(() => import('shared/Basic/S3Img'))
 
 const ShopCard = ({photo, name, slug, price, theme, layoutId}) =>
     <AnimatePresence>

@@ -1,5 +1,5 @@
 import React                     from 'react'
-import LinkSwitch                from '../Basic/LinkSwitch'
+import LinkSwitch                from 'shared/Basic/LinkSwitch'
 import {headerMenuListItemStyle} from './styles'
 
 const HeaderMenuItems = () =>

@@ -3,9 +3,9 @@ import {
     useDispatch,
     useSelector
 }                         from 'react-redux'
-import Div                from '../../shared/Basic/Div'
-import ShopCard           from '../../shared/Cards/ShopCard'
-import ContentWrapper     from '../../shared/Layout/ContentWrapper'
+import Div                from 'shared/Basic/Div'
+import ShopCard           from 'shared/Cards/ShopCard'
+import ContentWrapper     from 'shared/Layout/ContentWrapper'
 import {shopWrapperStyle} from './styles'
 
 

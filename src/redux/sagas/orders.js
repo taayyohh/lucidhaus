@@ -8,7 +8,7 @@ import {
     listOrders,
     listStatusValues,
     updateOrderStatus
-}                   from '../../services/apiOrders'
+}                   from 'services/apiOrders'
 
 export function* getOrders({payload}) {
     try {

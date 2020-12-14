@@ -1,4 +1,4 @@
-import {globals} from '../../config/styles'
+import {globals} from 'config/styles'
 import {
     auto,
     black,
@@ -13,7 +13,7 @@ import {
     sv,
     white,
     wrap
-}                from '../../utils/themer'
+}                from 'utils/themer'
 
 export const productCardStyle = {
     display: grid,

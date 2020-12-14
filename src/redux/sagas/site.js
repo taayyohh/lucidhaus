@@ -3,7 +3,7 @@ import {
     takeEvery,
     takeLatest
 }                from 'redux-saga/effects'
-import {getCart} from '../../utils/cartHelpers'
+import {getCart} from 'utils/cartHelpers'
 
 export function* loadConfig() {
     yield put({type: 'user/isAuthenticated'})

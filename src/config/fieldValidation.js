@@ -34,3 +34,24 @@ export const validateSignup = Yup.object().shape({
             'Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character'
         ),
 })
+
+export const validateCheckoutAddress = Yup.object().shape({
+    address: Yup
+        .string()
+        .required('*'),
+    city: Yup
+        .string()
+        .required('*'),
+    zip: Yup
+        .string()
+        .required('*'),
+    state: Yup
+        .string()
+        .required('*'),
+    country: Yup
+        .string()
+        .required('*'),
+    phone: Yup
+        .string()
+        .required('*')
+})

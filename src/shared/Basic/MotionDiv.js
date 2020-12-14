@@ -1,7 +1,7 @@
 import {motion}  from 'framer-motion'
 import PropTypes from 'prop-types'
 import styled   from 'styled-components'
-import {themer} from '../../utils/themer'
+import {themer} from 'utils/themer'
 
 // NOTE: Even though MotionDiv uses styled-components, it does not support the 'as' prop.
 

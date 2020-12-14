@@ -1,8 +1,8 @@
-import {userFieldTypes} from '../../config/fieldTypes/user'
+import {userFieldTypes} from 'config/fieldTypes/user'
 import React            from 'react'
 import {useSelector}    from 'react-redux'
-import GenericFormik    from '../../shared/Forms/GenericFormik'
-import ContentWrapper   from '../../shared/Layout/ContentWrapper'
+import GenericFormik    from 'shared/Forms/GenericFormik'
+import ContentWrapper   from 'shared/Layout/ContentWrapper'
 
 const UpdateProfile = () => {
     const {name, token, _id} = useSelector(state => state.user)

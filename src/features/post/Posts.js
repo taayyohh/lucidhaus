@@ -3,9 +3,9 @@ import {
     useDispatch,
     useSelector
 }                          from 'react-redux'
-import Div                 from '../../shared/Basic/Div'
-import GenericCard         from '../../shared/Cards/GenericCard'
-import ContentWrapper      from '../../shared/Layout/ContentWrapper'
+import Div                 from 'shared/Basic/Div'
+import GenericCard         from 'shared/Cards/GenericCard'
+import ContentWrapper      from 'shared/Layout/ContentWrapper'
 import {postsWrapperStyle} from './styles'
 
 

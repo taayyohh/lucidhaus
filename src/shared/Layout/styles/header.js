@@ -1,7 +1,7 @@
 import {
     colorPalette,
     globals
-} from '../../../config/styles'
+} from 'config/styles'
 import {
     black,
     borderBox,
@@ -14,7 +14,7 @@ import {
     spaceBetween,
     uppercase,
     white
-} from '../../../utils/themer'
+} from 'utils/themer'
 
 export const mobileHeaderMenuToggleStyle = {
     mobile: {

@@ -1,8 +1,8 @@
 import {AnimatePresence}         from 'framer-motion'
 import PropTypes                 from 'prop-types'
 import React                     from 'react'
-import {headerMenuPanelVariants} from './animations.js/headerMenuPanels'
-import MotionDiv                 from '../Basic/MotionDiv'
+import {headerMenuPanelVariants} from './animations/headerMenuPanels'
+import MotionDiv                 from 'shared/Basic/MotionDiv'
 import {headerMenuPanelStyle}    from './styles'
 
 const MenuPanelWrapper = ({children, name}) =>

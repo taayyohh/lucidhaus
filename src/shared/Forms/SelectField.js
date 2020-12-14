@@ -1,6 +1,6 @@
 import {Field} from 'formik'
 import React   from 'react'
-import Div     from '../Basic/Div'
+import Div     from 'shared/Basic/Div'
 
 const SelectField = ({field, options, value}) =>
     <Div>

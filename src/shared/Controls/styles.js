@@ -1,4 +1,4 @@
-import {globals}          from '../../config/styles'
+import {globals}          from 'config/styles'
 import {
     black,
     flexEnd,
@@ -7,8 +7,8 @@ import {
     pointer,
     uppercase,
     white
-}                         from '../../utils/themer'
-import {genericCardStyle} from '../Cards/styles'
+}                         from 'utils/themer'
+import {genericCardStyle} from 'shared/Cards/styles'
 
 export const orderCardWrapperStyle = {
     ...genericCardStyle,

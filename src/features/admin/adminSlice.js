@@ -1,22 +1,22 @@
 import {createSlice} from '@reduxjs/toolkit'
 
 const initialState = {
-        name: '',
-        slug: '',
-        description: '',
-        photo: '',
-        uploadedFile: undefined,
-        uploadedFileName: '',
-        loading: false,
-        error: '',
-        createdPost: '',
-        redirectToProfile: false,
-        formData: '',
-        confirmDelete: {
-            shouldDelete: false,
-            destroy: false,
-            slug: ''
-        }
+    name: '',
+    slug: '',
+    description: '',
+    photo: '',
+    uploadedFile: undefined,
+    uploadedFileName: '',
+    loading: false,
+    error: '',
+    createdPost: '',
+    redirectToProfile: false,
+    formData: '',
+    confirmDelete: {
+        shouldDelete: false,
+        destroy: false,
+        slug: ''
+    }
 }
 
 export const adminSlice = createSlice({

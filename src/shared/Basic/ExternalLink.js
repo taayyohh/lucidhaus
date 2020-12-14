@@ -1,8 +1,8 @@
 import PropTypes            from 'prop-types'
 import React                from 'react'
 import ReactGA              from 'react-ga'
+import {getFilenameFromUrl} from 'utils/url'
 import Anchor               from './Anchor'
-import {getFilenameFromUrl} from '../../utils/url'
 
 const ExternalLink = ({url, onClick, target, ...props}) => {
     let onClickOverride = getFilenameFromUrl(url).includes('.')

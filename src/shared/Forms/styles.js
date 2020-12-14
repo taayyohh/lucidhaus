@@ -1,7 +1,7 @@
 import {
     colorPalette,
     globals
-} from '../../config/styles'
+} from 'config/styles'
 import {
     absolute,
     auto,
@@ -24,7 +24,7 @@ import {
     transparent,
     uppercase,
     white
-} from '../../utils/themer'
+} from 'utils/themer'
 
 export const genericFormStyle = {
     display: flex,
@@ -360,14 +360,47 @@ export const regionFieldStyle = {
     ]
 }
 
-export const checkoutAddress = {
-    child: {
-        selector: '> input',
-        size: [24, .7, 24],
-        width: '100%',
-        height: 50,
-        border: none,
-        padding: '30px 20px',
-        boxSizing: borderBox
+export const AutoCompleteInputStyle = {
+    ...defaultInputStyle,
+    backgroundColor: white,
+    marginBottom: [20, .7, 20],
+    width: '100%',
+    placeholder: {
+        color: black
+    }
+}
+
+export const AutoCompleteSuggestionStyle = active => {
+    const baseStyle = {
+        paddingTop: 15,
+        paddingBottom: 15,
+        paddingLeft: 20,
+        paddingRight: 20,
+        backgroundColor: '#fafafa',
+        cursor: 'pointer',
+        size: [18, .7, 18],
+        letterSpacing: [0.2, .7, 0.2],
+        textTransform: none,
+        hover: {
+            backgroundColor: white
+        }
+    }
+
+
+    return {
+        ...baseStyle
+    }
+
+
+}
+
+export const AutoCompleteSuggestionWrapperStyle = {
+    position: 'absolute',
+    zIndex: 2,
+    width: '100%',
+    top: [80, .7, 80],
+    border: `1px solid ${globals.colors.borderColor}`,
+    empty: {
+        display: none
     }
 }

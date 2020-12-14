@@ -1,6 +1,6 @@
 import React               from 'react'
-import {adminWrapperStyle} from '../../features/admin/styles'
-import Div                 from '../Basic/Div'
+import {adminWrapperStyle} from 'features/admin/styles'
+import Div                 from 'shared/Basic/Div'
 
 const AdminWrapper = ({children}) =>
     <Div theme={adminWrapperStyle}>

@@ -3,13 +3,13 @@ import {
     useDispatch,
     useSelector
 }                              from 'react-redux'
-import Div                     from '../../shared/Basic/Div'
-import MotionDiv               from '../../shared/Basic/MotionDiv'
-import RichText                from '../../shared/Basic/RichText'
-import S3Img                   from '../../shared/Basic/S3Img'
-import {genericCardImageStyle} from '../../shared/Cards/styles'
-import ContentWrapper          from '../../shared/Layout/ContentWrapper'
-import {center}                from '../../utils/themer'
+import Div                     from 'shared/Basic/Div'
+import MotionDiv               from 'shared/Basic/MotionDiv'
+import RichText                from 'shared/Basic/RichText'
+import S3Img                   from 'shared/Basic/S3Img'
+import {genericCardImageStyle} from 'shared/Cards/styles'
+import ContentWrapper          from 'shared/Layout/ContentWrapper'
+import {center}                from 'utils/themer'
 import {
     postDescriptionStyle,
     postTitleStyle,

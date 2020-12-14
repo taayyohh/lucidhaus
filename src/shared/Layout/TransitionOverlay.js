@@ -1,6 +1,6 @@
 import React, {useContext}      from 'react'
-import MotionDiv                from '../Basic/MotionDiv'
-import {TransitionAnimations}   from '../Containers/TransitionController'
+import MotionDiv                from 'shared/Basic/MotionDiv'
+import {TransitionAnimations}   from 'shared/Containers/TransitionController'
 import {transitionOverlayStyle} from './styles'
 
 const TransitionOverlay = ({theme}) => {

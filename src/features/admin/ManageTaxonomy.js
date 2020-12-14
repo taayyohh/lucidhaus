@@ -3,11 +3,11 @@ import {
     useDispatch,
     useSelector
 }                         from 'react-redux'
-import AdminControls      from '../../shared/Admin/AdminControls'
-import AdminTaxonomy      from '../../shared/Admin/AdminTaxonomy'
-import DeletePrompt       from '../../shared/Admin/DeletePrompt'
-import AdminWrapper       from '../../shared/Layout/AdminWrapper'
-import ContentWrapper     from '../../shared/Layout/ContentWrapper'
+import AdminControls      from 'shared/Admin/AdminControls'
+import AdminTaxonomy      from 'shared/Admin/AdminTaxonomy'
+import DeletePrompt       from 'shared/Admin/DeletePrompt'
+import AdminWrapper       from 'shared/Layout/AdminWrapper'
+import ContentWrapper     from 'shared/Layout/ContentWrapper'
 
 const ManageTaxonomy = () => {
     const {productCategories} = useSelector(state => state.shop)

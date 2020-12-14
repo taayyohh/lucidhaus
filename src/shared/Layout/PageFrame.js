@@ -1,5 +1,5 @@
 import React             from 'react'
-import Div               from '../Basic/Div'
+import Div               from 'shared/Basic/Div'
 import DocumentHead      from './DocumentHead'
 import Footer            from './Footer'
 import Header            from './Header'

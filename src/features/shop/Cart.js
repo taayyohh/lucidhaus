@@ -1,9 +1,9 @@
 import React         from 'react'
 import {useSelector} from 'react-redux'
-import Div           from '../../shared/Basic/Div'
-import H2            from '../../shared/Basic/H2'
-import ProductCard   from '../../shared/Cards/ProductCard'
-import {getTotal}    from '../../utils/cartHelpers'
+import Div           from 'shared/Basic/Div'
+import H2            from 'shared/Basic/H2'
+import ProductCard   from 'shared/Cards/ProductCard'
+import {getTotal}    from 'utils/cartHelpers'
 import Checkout      from './Checkout'
 import {
     cartStyle,
