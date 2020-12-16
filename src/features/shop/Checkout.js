@@ -1,22 +1,23 @@
 import 'braintree-web'
-import DropIn               from 'braintree-web-drop-in-react'
+import DropIn          from 'braintree-web-drop-in-react'
 import React, {
     useEffect,
     useState
-}                           from 'react'
+}                      from 'react'
 import {
     useDispatch,
     useSelector
-}                           from 'react-redux'
-import DeliveryAddress      from 'features/shop/DeliveryAddress'
-import Div                  from 'shared/Basic/Div'
-import H2                   from 'shared/Basic/H2'
-import {genericButtonStyle} from 'shared/Controls/styles'
-import {getTotal}           from 'utils/cartHelpers'
+}                      from 'react-redux'
+import Button          from 'shared/Basic/Button'
+import Div             from 'shared/Basic/Div'
+import H2              from 'shared/Basic/H2'
+import {getTotal}      from 'utils/cartHelpers'
+import DeliveryAddress from './DeliveryAddress'
 import {
     cartTitleStyle,
-    checkoutDropIn
-}                           from './styles'
+    checkoutDropIn,
+    checkoutSectionStyle
+}                      from './styles'
 
 
 const Checkout = ({products}) => {
@@ -60,37 +61,31 @@ const Checkout = ({products}) => {
         <Div theme={checkoutDropIn}>
             {(!!braintreeClientToken && products.length > 0) && (
                 <>
-                    <Div>
-                        <H2 theme={cartTitleStyle}>Checkout</H2>
+                    <Div theme={checkoutSectionStyle}>
+                        <H2 theme={cartTitleStyle}>Shipping Address</H2>
                         <DeliveryAddress/>
-
                     </Div>
 
-                    <DropIn
-                        options={{
-                            authorization: braintreeClientToken,
-                            paypal: {
-                                flow: 'vault'
-                            },
-                            applePay: {},
-                            samsungPay: {},
-                            googlePay: {},
-                            venmo: true
-                        }}
-                        onInstance={instance => setDropInInstance(instance)}
+                    <Div theme={checkoutSectionStyle}>
+                        <H2 theme={cartTitleStyle}>Payment</H2>
+                        <DropIn
+                            options={{
+                                authorization: braintreeClientToken,
+                                paypal: {
+                                    flow: 'vault'
+                                },
+                                applePay: {},
+                                samsungPay: {},
+                                googlePay: {},
+                                venmo: true
+                            }}
+                            onInstance={instance => setDropInInstance(instance)}
+                        />
+                    </Div>
+                    <Button
+                        onClick={purchase}
+                        children={'Purchase'}
                     />
-
-                    {deliveryAddress && (
-                        <Div
-                            as="button"
-                            theme={genericButtonStyle}
-                            onClick={purchase}
-                        >
-                            Pay
-                        </Div>
-                    )}
-
-
                 </>
             )}
         </Div>

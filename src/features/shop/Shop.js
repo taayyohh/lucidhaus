@@ -30,7 +30,7 @@ const Shop = () => {
                             name={product.name}
                             photo={product.photo}
                             price={product.price}
-                            layoutId={product._id}
+                            layoutId={product._id}a
                         />
                     ))
                 }

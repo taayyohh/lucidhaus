@@ -7,7 +7,9 @@ import {getTotal}    from 'utils/cartHelpers'
 import Checkout      from './Checkout'
 import {
     cartStyle,
-    cartTitleStyle
+    cartTitleStyle,
+    cartTotalWrapperStyle,
+    checkoutSectionStyle
 }                    from './styles'
 
 const Cart = () => {
@@ -16,14 +18,14 @@ const Cart = () => {
     return (
         <Div theme={cartStyle}>
             <Div>
-                <Div theme={cartStyle.checkOut}>
-                    <H2 theme={cartTitleStyle}>Cart Summary</H2>
-                    <h2>Total: ${getTotal(cart)}</h2>
+                <Div theme={cartTotalWrapperStyle}>
+                    <H2>Total: ${getTotal(cart)}</H2>
+                    <Div>Your cart has {`${cart.length}`} items</Div>
                 </Div>
 
                 {cart.length > 0 && (
-                    <>
-                        <Div>Your cart has {`${cart.length}`} items</Div>
+                    <Div theme={checkoutSectionStyle}>
+                        <H2 theme={cartTitleStyle}>Cart Summary</H2>
                         <Div theme={cartStyle.showItems}>
                             {cart.map((product, i) =>
                                 <ProductCard
@@ -32,7 +34,7 @@ const Cart = () => {
                                 />
                             )}
                         </Div>
-                    </>
+                    </Div>
                 )}
 
                 <Checkout products={cart}/>

@@ -56,10 +56,7 @@ const Product = () => {
                     <Div theme={productPriceStyle}>
                         <Div>{price} <span>USD</span></Div>
                     </Div>
-                    <AddToCartButton
-                        product={product}
-                        dispatchAction={'shop/addToCart'}
-                    />
+                    <AddToCartButton product={product}/>
                 </MotionDiv>
                 <RichText
                     children={description}

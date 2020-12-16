@@ -3,6 +3,7 @@ import {
     globals
 }                          from 'config/styles'
 import {
+    absolute,
     borderBox,
     center,
     column,
@@ -13,20 +14,37 @@ import {
     sv,
     transparent,
     uppercase
-}                          from 'utils/themer'
+} from 'utils/themer'
 import {postsWrapperStyle} from '../post/styles'
 
 
 export const checkoutDropIn = {
     width: '100%',
-    paddingBottom: [50, .7, 50],
+    paddingBottom: [100, .7, 50],
     child: [
         {
             selector: '.braintree-heading',
             display: none
+        },
+        {
+            selector: '.braintree-placeholder',
+            display: none
         }
     ]
 }
+
+export const checkoutSectionStyle = {
+    marginBottom: [20, .7, 20],
+    paddingBottom: [20, .7, 20],
+    position: relative,
+    child: [
+        {
+            selector: '.braintree-placeholder',
+            display: none
+        }
+    ]
+}
+
 export const shopWrapperStyle = {
     ...postsWrapperStyle,
     gridTemplateColumns: '1fr 1fr 1fr 1fr',
@@ -34,22 +52,23 @@ export const shopWrapperStyle = {
 }
 export const cartStyle = {
     paddingTop: [100, .7, 50],
-    checkOut: {
-        //position: fixed,
-        mobile: {
-            position: relative,
-        }
-    },
     showItems: {
         display: flex,
         flexDirection: 'column'
     }
 }
+
+export const cartTotalWrapperStyle = {
+    borderBottom: '1px solid #000',
+    paddingBottom: [30, .7, 30],
+    marginBottom: [30, .7, 30]
+}
+
 export const cartTitleStyle = {
-    font: globals.fonts.fancy,
-    size: [32, .7, 28],
+    font: globals.fonts.sans,
+    size: [22, .7, 28],
     marginTop: 0,
-    marginBottom: [20, .5],
+    weight: 300,
     textTransform: none
 }
 
@@ -108,6 +127,14 @@ export const checkoutFormStyle = {
     }
 }
 
+export const paymentStyle = {
+    child: [
+        {
+            selector: '.braintree-placeholder',
+            display: none
+        }
+    ]
+}
 
 
 export const relatedProductStyle = {}

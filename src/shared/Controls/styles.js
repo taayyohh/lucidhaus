@@ -1,13 +1,17 @@
-import {globals}          from 'config/styles'
+import {
+    colorPalette,
+    globals
+} from 'config/styles'
 import {
     black,
     flexEnd,
     flexStart,
     none,
     pointer,
+    transparent,
     uppercase,
     white
-}                         from 'utils/themer'
+} from 'utils/themer'
 import {genericCardStyle} from 'shared/Cards/styles'
 
 export const orderCardWrapperStyle = {
@@ -61,5 +65,16 @@ export const deleteButtonStyle = {
         cursor: pointer,
         backgroundColor: globals.colors.linkHoverColor,
         color: white
+    }
+}
+
+export const removeFromCartButtonStyle = {
+    border: none,
+    background: transparent,
+    textDecoration: 'underline',
+    alignSelf: flexEnd,
+    hover: {
+        color: colorPalette.purple,
+        cursor: pointer
     }
 }

@@ -1,11 +1,16 @@
+import {countField}         from 'config/fields'
 import React                from 'react'
 import {useDispatch}        from 'react-redux'
 import Div                  from 'shared/Basic/Div'
 import LinkSwitch           from 'shared/Basic/LinkSwitch'
 import S3Img                from 'shared/Basic/S3Img'
 import Span                 from 'shared/Basic/Span'
-import RemoveFromCartButton from '../Controls/RemoveFromCartButton'
-import {productCardStyle}   from './styles'
+import RemoveFromCartButton from 'shared/Controls/RemoveFromCartButton'
+import GenericFormik        from 'shared/Forms/GenericFormik'
+import {
+    productCardCountStyle,
+    productCardStyle
+}                           from './styles'
 
 
 const ProductCard = ({product, theme}) => {
@@ -31,18 +36,15 @@ const ProductCard = ({product, theme}) => {
 
 
             <Div theme={{...productCardStyle.controls, ...theme.controls}}>
-                <input
-                    type="number"
-                    defaultValue={product.count}
-                    onChange={(e) => {
-                        dispatch({
-                            type: 'shop/updateProductQuantity',
-                            payload: {
-                                productId: product._id,
-                                count: e.target.value
-                            }
-                        })
+                <GenericFormik
+                    initialValues={{
+                        count: product.count,
+                        productId: product._id
                     }}
+                    fields={countField}
+                    theme={productCardCountStyle}
+                    autoSubmit
+                    enableReinitialize={true}
                 />
                 <RemoveFromCartButton productId={product._id}/>
             </Div>

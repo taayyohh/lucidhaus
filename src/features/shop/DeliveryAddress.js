@@ -1,6 +1,6 @@
 import React                     from 'react'
-import {orderFieldTypes}         from 'config/fieldTypes/order'
-import {validateCheckoutAddress} from 'config/fieldValidation'
+import {orderFieldTypes}         from 'config/fields/order'
+import {validateCheckoutAddress} from 'config/fields/validation'
 import {checkoutFormStyle}       from 'features/shop/styles'
 import GenericFormik             from 'shared/Forms/GenericFormik'
 

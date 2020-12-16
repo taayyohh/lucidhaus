@@ -1,5 +1,6 @@
 import React, {memo}       from 'react'
 import AutoCompleteAddress from './AutoCompleteAddress'
+import CountField          from './CountField'
 import CountryField        from './CountryField'
 import RegionField         from './RegionField'
 import RichTextEditor      from './RichTextEditor'
@@ -63,6 +64,11 @@ const FieldSwitch = memo(({field, formik, options}) => {
             />
         case 'autoAddress':
             return <AutoCompleteAddress
+                name={field.name}
+                formik={formik}
+            />
+        case 'count':
+            return <CountField
                 name={field.name}
                 formik={formik}
             />

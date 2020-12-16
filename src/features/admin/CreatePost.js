@@ -1,4 +1,4 @@
-import {postFieldTypes} from 'config/fieldTypes/post'
+import {postFieldTypes} from 'config/fields/post'
 import React            from 'react'
 import {useSelector}    from 'react-redux'
 import AdminControls    from 'shared/Admin/AdminControls'

@@ -7,9 +7,11 @@ import {
     center,
     column,
     flex,
+    flexEnd,
     grid,
     hidden,
     none,
+    spaceBetween,
     sv,
     white,
     wrap
@@ -19,7 +21,7 @@ export const productCardStyle = {
     display: grid,
     gridTemplateColumns: '4fr 1fr',
     background: ' #f8f7fa',
-    boxShadow: '1px 2px 2px #c2c2c2',
+    // boxShadow: '1px 2px 2px #c2c2c2',
     borderBottom: '1px solid #c2c2c2',
     borderRadius: [5, .7, 5],
     padding: 20,
@@ -59,6 +61,7 @@ export const productCardStyle = {
     controls: {
         display: flex,
         flexDirection: column,
+        justifyContent: spaceBetween,
         width: '100%'
 
     },
@@ -131,4 +134,14 @@ export const genericCardDescriptionStyle = {
 export const shopCardImageStyle = {
     width: auto,
     //  height: auto
+}
+
+export const productCardCountStyle = {
+    width: auto,
+    background: none,
+    border: 0,
+    boxShadow: none,
+    alignSelf: flexEnd,
+    padding: 0,
+    margin: 0
 }

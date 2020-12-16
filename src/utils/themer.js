@@ -1,5 +1,5 @@
 import {css}                  from 'styled-components'
-import {breakpointUpperLimit} from '../config/styles'
+import {breakpointUpperLimit} from 'config/styles'
 
 const defaultScalingValue = .7
 const defaultMaxScreen = 1680

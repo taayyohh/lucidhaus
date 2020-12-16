@@ -39,12 +39,18 @@ export const genericFormStyle = {
     height: auto,
     boxSizing: borderBox,
     margin: '0 auto',
+    inner: {
+        width: '100%'
+    },
     heading: {
         margin: 0,
         fontFamily: globals.fonts.fancy,
         alignSelf: flexStart,
         size: [38, .7, 38],
-        marginBottom: 20
+        marginBottom: 20,
+        empty: {
+            display: none
+        }
     },
     fieldset: {
         marginBottom: [20, .7, 20],
@@ -365,6 +371,7 @@ export const AutoCompleteInputStyle = {
     backgroundColor: white,
     marginBottom: [20, .7, 20],
     width: '100%',
+    borderRadius: [5, .7, 5],
     placeholder: {
         color: black
     }
@@ -402,5 +409,14 @@ export const AutoCompleteSuggestionWrapperStyle = {
     border: `1px solid ${globals.colors.borderColor}`,
     empty: {
         display: none
+    }
+}
+
+export const countControlStyle = {
+    size: [18, globals.style.layoutScalingValue, 18],
+    marginLeft: [10, globals.style.layoutScalingValue, 10],
+    hover: {
+        cursor: pointer,
+        color: colorPalette.purple
     }
 }

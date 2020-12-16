@@ -1,4 +1,4 @@
-import {productCategory} from 'config/fieldTypes/productCategory'
+import {productCategory} from 'config/fields/productCategory'
 import React             from 'react'
 import {useSelector}     from 'react-redux'
 import AdminControls     from 'shared/Admin/AdminControls'

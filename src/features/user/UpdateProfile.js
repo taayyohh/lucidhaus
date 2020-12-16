@@ -1,4 +1,4 @@
-import {userFieldTypes} from 'config/fieldTypes/user'
+import {userFieldTypes} from 'config/fields/user'
 import React            from 'react'
 import {useSelector}    from 'react-redux'
 import GenericFormik    from 'shared/Forms/GenericFormik'

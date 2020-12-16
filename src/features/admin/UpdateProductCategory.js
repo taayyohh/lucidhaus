@@ -1,4 +1,4 @@
-import {productCategory}  from 'config/fieldTypes/productCategory'
+import {productCategory}  from 'config/fields/productCategory'
 import React, {useEffect} from 'react'
 import {
     useDispatch,

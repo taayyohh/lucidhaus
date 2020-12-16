@@ -3,7 +3,7 @@ import {useSelector} from 'react-redux'
 import {
     shoppingCart,
     user
-}                    from 'config/faIconLibrary'
+}                    from 'config/icons/fa'
 import {transparent} from 'utils/themer'
 import Div                             from 'shared/Basic/Div'
 import Icon                            from 'shared/Basic/Icon'

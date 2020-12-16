@@ -40,12 +40,9 @@ export function* getPaymentNonce({payload}) {
     const {dropInInstance, _id, token, amount, products, deliveryAddress, user} = payload
     const {address, address2, city, state, zip, country, phone} = deliveryAddress
     const parts = [address, address2, city, state, zip, country, phone]
-    let formattedAddress = parts.map(v => {
-        let str = ''
-        if (v.length > 0)
-            str += `${v} `
-        return str
-    })
+    let formattedAddress = `${address} ${address2} ${city} ${state} ${zip} ${country} ${phone}`
+
+    console.log('ormatted', formattedAddress)
 
 
     const nonce = yield call(getPaymentMethod, dropInInstance)

@@ -1,5 +1,5 @@
-import {postFieldTypes}        from 'config/fieldTypes/post'
-import React, {useEffect}      from 'react'
+import {postFieldTypes}   from 'config/fields/post'
+import React, {useEffect} from 'react'
 import {
     useDispatch,
     useSelector
