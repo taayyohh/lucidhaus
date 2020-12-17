@@ -11,17 +11,52 @@ import {
     grid,
     hidden,
     none,
-    spaceBetween,
     sv,
     white,
     wrap
 }                from 'utils/themer'
 
+export const productCardImageStyle = {
+    width: 80,
+    maxWidth: 80,
+    minWidth: 80,
+    wrapper: {
+        marginRight: 15
+    }
+}
+
+export const productCardInfoStyle = {
+    display: flex,
+    alignItems: center
+}
+
+export const productCardTextWrapperStyle = {
+    paddingLeft: [30, .7, 30]
+}
+
+export const productCardPriceStyle = {
+    size: [22, .7, 22]
+}
+
+export const productCardTitleStyle = {
+    display: block,
+    size: [24, .7, 24],
+    color: black,
+    width: '100%',
+    margin: 0
+}
+
+export const productCardControlsStyle = {
+    display: flex,
+    flexDirection: 'row',
+    justifyContent: flexEnd,
+    width: '100%'
+}
+
 export const productCardStyle = {
     display: grid,
     gridTemplateColumns: '4fr 1fr',
-    background: ' #f8f7fa',
-    // boxShadow: '1px 2px 2px #c2c2c2',
+    background: '#f9f9f9',
     borderBottom: '1px solid #c2c2c2',
     borderRadius: [5, .7, 5],
     padding: 20,
@@ -37,43 +72,9 @@ export const productCardStyle = {
         background: '#f3f3f3',
         padding: `${sv(30)} ${sv(30)}`
     },
-    textWrapper: {
-        paddingLeft: [30, .7, 30]
-    },
-    infoWrapper: {
-        display: flex,
-        alignItems: center
-    },
-    title: {
-        display: block,
-        size: [24, .7, 24],
-        color: black,
-        width: '100%',
-        margin: 0
-    },
-    description: {},
     category: {
         display: none
     },
-    price: {
-        size: [22, .7, 22]
-    },
-    controls: {
-        display: flex,
-        flexDirection: column,
-        justifyContent: spaceBetween,
-        width: '100%'
-
-    },
-    image: {
-        width: 80,
-        maxWidth: 80,
-        minWidth: 80,
-        wrapper: {
-
-            marginRight: 15
-        }
-    }
 }
 export const genericCardStyle = {
     display: flex,

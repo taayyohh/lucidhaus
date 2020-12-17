@@ -37,12 +37,11 @@ export const headerMenuPanelStyle = {
     right: 0,
     paddingLeft: [120, globals.style.layoutScalingValue],
     paddingRight: [60, globals.style.layoutScalingValue],
-    backgroundColor: white,
+    backgroundColor: '#f9f9f9',
     overflowY: hidden,
-    // borderLeft: `1px solid #dadce0`,
+    borderLeft: `1px solid #dadce0`,
     boxSizing: borderBox,
     zIndex: 22,
-    background: colorPalette.gray,
     scrollBar: {
         display: none
     },

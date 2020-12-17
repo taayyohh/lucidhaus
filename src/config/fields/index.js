@@ -1,1 +1,1 @@
-export const countField = [{name: 'count', type: 'count'}]
+export const quantityField = [{name: 'count', type: 'count'}]

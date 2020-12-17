@@ -3,7 +3,6 @@ import {
     globals
 }                          from 'config/styles'
 import {
-    absolute,
     borderBox,
     center,
     column,
@@ -14,7 +13,7 @@ import {
     sv,
     transparent,
     uppercase
-} from 'utils/themer'
+}                          from 'utils/themer'
 import {postsWrapperStyle} from '../post/styles'
 
 
@@ -34,8 +33,9 @@ export const checkoutDropIn = {
 }
 
 export const checkoutSectionStyle = {
-    marginBottom: [20, .7, 20],
-    paddingBottom: [20, .7, 20],
+    marginBottom: [50, .7, 50],
+    paddingBottom: [50, .7, 50],
+    borderBottom: `10px solid #e4e2e6`,
     position: relative,
     child: [
         {
@@ -59,7 +59,7 @@ export const cartStyle = {
 }
 
 export const cartTotalWrapperStyle = {
-    borderBottom: '1px solid #000',
+    borderBottom: '10px solid #e4e2e6',
     paddingBottom: [30, .7, 30],
     marginBottom: [30, .7, 30]
 }
@@ -69,7 +69,9 @@ export const cartTitleStyle = {
     size: [22, .7, 28],
     marginTop: 0,
     weight: 300,
-    textTransform: none
+    textTransform: none,
+    textAlign: center,
+    marginBottom: [15, .7, 15]
 }
 
 export const productWrapperStyle = {
@@ -114,6 +116,8 @@ export const productCategoryStyle = {
 export const checkoutFormStyle = {
     background: transparent,
     padding: 0,
+    boxShadow: 0,
+    border: 0,
     width: '100%',
     inner: {
         display: grid,

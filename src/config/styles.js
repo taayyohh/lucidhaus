@@ -18,7 +18,7 @@ export const colorPalette = {
     purple: '#822cbf',
     brown: '#73462C',
     lightGold: 'rgba(217, 215, 186, 0.32)',
-    grayPurple: '#e4ddec',
+    grayPurple: '#908999',
     borderColor: '#dedede'
 }
 

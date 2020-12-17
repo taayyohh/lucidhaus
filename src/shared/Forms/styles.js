@@ -398,7 +398,6 @@ export const AutoCompleteSuggestionStyle = active => {
         ...baseStyle
     }
 
-
 }
 
 export const AutoCompleteSuggestionWrapperStyle = {
@@ -412,6 +411,11 @@ export const AutoCompleteSuggestionWrapperStyle = {
     }
 }
 
+export const countFieldStyle = {
+    display: flex,
+    alignItems: center
+}
+
 export const countControlStyle = {
     size: [18, globals.style.layoutScalingValue, 18],
     marginLeft: [10, globals.style.layoutScalingValue, 10],
@@ -419,4 +423,9 @@ export const countControlStyle = {
         cursor: pointer,
         color: colorPalette.purple
     }
+}
+
+export const countControlNumberStyle = {
+    size: [40, .7, 30],
+    marginLeft: 30
 }

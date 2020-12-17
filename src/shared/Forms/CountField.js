@@ -1,12 +1,16 @@
 import {
     minusCircle,
     plusCircle
-}                          from 'config/icons/fa'
-import React               from 'react'
-import {useDispatch}       from 'react-redux'
-import Div                 from 'shared/Basic/Div'
-import Icon                from 'shared/Basic/Icon'
-import {countControlStyle} from './styles'
+}                    from 'config/icons/fa'
+import React         from 'react'
+import {useDispatch} from 'react-redux'
+import Div           from 'shared/Basic/Div'
+import Icon          from 'shared/Basic/Icon'
+import {
+    countControlNumberStyle,
+    countControlStyle,
+    countFieldStyle
+}                    from './styles'
 
 const CountField = ({formik, name}) => {
     const dispatch = useDispatch()
@@ -17,21 +21,15 @@ const CountField = ({formik, name}) => {
                 payload: formik.initialValues.productId
             })
         } else {
-            dispatch({
-                type: 'shop/updateProductQuantity',
-                payload: {
-                    productId: formik.initialValues.productId,
-                    count: formik.values[name] + (adj ? 1 : -1)
-                }
-            })
+            (async () => {
+                await formik.setFieldValue(name, formik.values[name] + (adj ? 1 : -1))
+                await formik.submitForm()
+            })()
         }
     }
 
     return (
-        <Div theme={{display: 'flex'}}>
-            <Div theme={countControlStyle}>
-                {formik.values.count}
-            </Div>
+        <Div theme={countFieldStyle}>
             <Icon
                 icon={plusCircle}
                 onClick={() => adjust(1)}
@@ -42,6 +40,9 @@ const CountField = ({formik, name}) => {
                 onClick={() => adjust(0)}
                 theme={countControlStyle}
             />
+            <Div theme={countControlNumberStyle}>
+                {formik.values[name]}
+            </Div>
         </Div>
     )
 }
