@@ -1,13 +1,12 @@
-import PropTypes       from 'prop-types'
-import React, {memo}   from 'react'
-import {isString}      from 'utils/helpers'
-import mouseOverDetect from 'utils/mouseOverDetect'
-import validUrl        from 'utils/validUrl'
-import Anchor          from './Anchor'
-import ExternalLink    from './ExternalLink'
-import NavigationLink  from './NavigationLink'
-import Span            from './Span'
-import StyledLink      from './StyledLink'
+import PropTypes      from 'prop-types'
+import React, {memo}  from 'react'
+import {isString}     from 'utils/helpers'
+import validUrl       from 'utils/validUrl'
+import Anchor         from './Anchor'
+import ExternalLink   from './ExternalLink'
+import NavigationLink from './NavigationLink'
+import Span           from './Span'
+import StyledLink     from './StyledLink'
 
 /**
  * LinkSwitch determines if a provided URL is an internal or external link.
@@ -60,7 +59,7 @@ const LinkSwitch = memo(({children, className, data, onClick, onFocus, theme, ti
             children={children}
             className={className}
             data={data}
-            mouseOverDetect={mouseOverDetect}
+            // mouseOverDetect={mouseOverDetect}
             onClick={onClick}
             onFocus={onFocus}
             theme={theme}

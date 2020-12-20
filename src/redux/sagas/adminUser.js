@@ -24,7 +24,7 @@ export function* updateProfile({payload}) {
                 }
             })
             yield put({type: 'user/updateSuccess', payload: profile})
-            yield put(push(profile?.role === 1 ? '/admin' : '/user/dashboard'))
+            yield put(push(profile?.role === 1 ? '/admin' : '/dashboard'))
         } else {
             yield put({type: 'user/updateFailure', profile})
         }

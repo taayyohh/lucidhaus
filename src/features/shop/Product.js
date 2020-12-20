@@ -1,3 +1,4 @@
+import {AnimatePresence}  from 'framer-motion'
 import React, {useEffect} from 'react'
 import {
     useDispatch,
@@ -14,12 +15,17 @@ import {
 }                         from 'shared/Cards/styles'
 import AddToCartButton    from 'shared/Controls/AddToCartButton'
 import ContentWrapper     from 'shared/Layout/ContentWrapper'
+import {
+    fadeIn,
+    fadeOut,
+    nOpacity
+}                         from 'shared/variables'
 import {getNameById}      from 'utils/getNameById'
-import {postTitleStyle}   from '../post/styles'
 import {
     productCategoryStyle,
     productDescriptionStyle,
     productPriceStyle,
+    productTitleStyle,
     productWrapperStyle
 }                         from './styles'
 
@@ -39,42 +45,34 @@ const Product = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-
     return (
-        <ContentWrapper>
-            <Div theme={productWrapperStyle}>
-                <Div theme={productCategoryStyle}>{getNameById(productCategories, category)}</Div>
-                <H2 theme={postTitleStyle}>{name}</H2>
-                <MotionDiv
-                    theme={genericCardDetailImageWrapperStyle}
-                >
-                    <S3Img
-                        url={photo}
-                        alt={name}
-                        theme={genericCardImageStyle}
-                    />
-                    <Div theme={productPriceStyle}>
-                        <Div>{price} <span>USD</span></Div>
+        <AnimatePresence>
+            <MotionDiv initial={nOpacity} animate={fadeIn} exit={fadeOut}>
+                <ContentWrapper>
+                    <Div theme={productWrapperStyle}>
+                        <Div theme={productCategoryStyle}>{getNameById(productCategories, category)}</Div>
+                        <H2 theme={productTitleStyle}>{name}</H2>
+                        <MotionDiv
+                            theme={genericCardDetailImageWrapperStyle}
+                        >
+                            <S3Img
+                                url={photo}
+                                alt={name}
+                                theme={genericCardImageStyle}
+                            />
+                            <Div theme={productPriceStyle}>
+                                <Div>{price} <span>USD</span></Div>
+                            </Div>
+                            <AddToCartButton product={product}/>
+                        </MotionDiv>
+                        <RichText
+                            children={description}
+                            theme={productDescriptionStyle}
+                        />
                     </Div>
-                    <AddToCartButton product={product}/>
-                </MotionDiv>
-                <RichText
-                    children={description}
-                    theme={productDescriptionStyle}
-                />
-            </Div>
-            {/*{relatedProducts && (*/}
-            {/*    <Div theme={relatedProductStyle}>*/}
-            {/*        {relatedProducts.map((product) =>*/}
-            {/*            <ShopCard*/}
-            {/*                name={product.name}*/}
-            {/*                photo={product.photo}*/}
-            {/*                slug={product.slug}*/}
-            {/*            />*/}
-            {/*        )}*/}
-            {/*    </Div>*/}
-            {/*)}*/}
-        </ContentWrapper>
+                </ContentWrapper>
+            </MotionDiv>
+        </AnimatePresence>
     )
 }
 

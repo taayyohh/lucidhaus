@@ -17,7 +17,7 @@ export function* signIn({payload}) {
         if (!user.error) {
             yield put({type: 'user/signInSuccess', payload: user})
             yield put({type: 'user/authenticate', payload: user})
-            yield put(push(user?.user?.role === 1 ? '/admin' : '/user/dashboard'))
+            yield put(push(user?.user?.role === 1 ? '/admin' : '/dashboard'))
         } else {
             yield put({
                 type: 'site/setNotification',
@@ -70,12 +70,12 @@ export function* purchaseHistory({payload}) {
     try {
         const user = yield call(getPurchaseHistory, payload)
         if (!user.error) {
-            yield put({type: 'user/getPurchaseSuccess', payload: user})
+            yield put({type: 'user/getPurchaseHistorySuccess', payload: user})
         } else {
-            yield put({type: 'user/getPurchaseFailure', payload: user})
+            yield put({type: 'user/getPurchaseHistoryFailure', payload: user})
         }
     } catch (error) {
-        yield put({type: 'user/getPurchaseFailure', error})
+        yield put({type: 'user/getPurchaseHistoryFailure', error})
     }
 }
 

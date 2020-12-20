@@ -30,7 +30,6 @@ const Posts = () => {
                             name={post.name}
                             photo={post.photo}
                             description={post.description}
-                            layoutId={post._id}
                         />
                     )
                 )}

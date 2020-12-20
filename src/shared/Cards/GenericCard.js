@@ -3,11 +3,16 @@ import React, {
     lazy,
     Suspense
 }                        from 'react'
-import {excerpt}         from 'utils/helpers'
 import Div               from 'shared/Basic/Div'
 import LinkSwitch        from 'shared/Basic/LinkSwitch'
 import MotionDiv         from 'shared/Basic/MotionDiv'
 import RichText          from 'shared/Basic/RichText'
+import {
+    fadeIn,
+    fadeOut,
+    nOpacity
+}                        from 'shared/variables'
+import {excerpt}         from 'utils/helpers'
 import {
     genericCardDescriptionStyle,
     genericCardImageStyle,
@@ -15,14 +20,14 @@ import {
     genericCardNameStyle,
     genericCardStyle,
     genericCardTextWrapperStyle
-} from './styles'
+}                        from './styles'
 
 //TODO:code split elsewhere where necessary, define fallback component
 const S3Img = lazy(() => import('shared/Basic/S3Img'))
 
 const GenericCard = ({photo, name, slug, description, theme, layoutId}) =>
     <AnimatePresence>
-        <MotionDiv>
+        <MotionDiv initial={nOpacity} animate={fadeIn} exit={fadeOut}>
             <LinkSwitch
                 url={slug}
                 theme={{...genericCardStyle, ...theme}}
@@ -30,7 +35,6 @@ const GenericCard = ({photo, name, slug, description, theme, layoutId}) =>
                 {photo && (
                     <MotionDiv
                         theme={{...genericCardImageWrapperStyle, ...theme.imageWrapper}}
-                        layoutId={!!layoutId ? `${layoutId}-image` : Math.random()}
                     >
                         <Suspense fallback={<div>Loading...</div>}>
                             <S3Img

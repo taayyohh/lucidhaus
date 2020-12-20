@@ -1,4 +1,4 @@
-export const productCategory = [
+export const productCategoryField = [
     {
         name: 'name',
         inputLabel: 'Category',

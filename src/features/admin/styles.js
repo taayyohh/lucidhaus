@@ -155,7 +155,7 @@ export const adminMenuStyle = {
 export const adminOrderWrapperStyle = {
     width: '100%',
     display: 'grid',
-    gridTemplateColumns: '1fr 1fr 1fr',
+    gridTemplateColumns: '1fr 1fr',
     gridGap: sv(30),
     mobile: {
         display: flex,

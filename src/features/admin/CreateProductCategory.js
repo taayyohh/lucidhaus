@@ -1,4 +1,4 @@
-import {productCategory} from 'config/fields/productCategory'
+import {productCategoryField} from 'config/fields/productCategory'
 import React             from 'react'
 import {useSelector}     from 'react-redux'
 import AdminControls     from 'shared/Admin/AdminControls'
@@ -20,7 +20,7 @@ const CreateProductCategory = () => {
                 />
                 <GenericFormik
                     initialValues={initialValues}
-                    fields={productCategory}
+                    fields={productCategoryField}
                     //   validationSchema={validateSignin}
                     dispatchAction={'shop/createProductCategory'}
                     formHeading={'Create Product Category'}

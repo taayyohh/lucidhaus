@@ -347,6 +347,7 @@ export const countryFieldStyle = {
             selector: '.country-field',
             width: '100%',
             height: [50, .7, 50],
+            borderRadius: [5, .7, 5],
             padding: `0 ${sv(25)}`,
             border: 0
         }
@@ -360,6 +361,7 @@ export const regionFieldStyle = {
             selector: '.region-field',
             width: '100%',
             height: [50, .7, 50],
+            borderRadius: [5, .7, 5],
             padding: `0 ${sv(25)}`,
             border: 0
         }
@@ -375,6 +377,10 @@ export const AutoCompleteInputStyle = {
     placeholder: {
         color: black
     }
+}
+
+export const AutoCompleteFieldSetStyle = {
+    height: [52, .7, 52]
 }
 
 export const AutoCompleteSuggestionStyle = active => {
@@ -417,8 +423,8 @@ export const countFieldStyle = {
 }
 
 export const countControlStyle = {
-    size: [18, globals.style.layoutScalingValue, 18],
-    marginLeft: [10, globals.style.layoutScalingValue, 10],
+    size: [18, .7, 18],
+    marginLeft: [10, .7, 10],
     hover: {
         cursor: pointer,
         color: colorPalette.purple

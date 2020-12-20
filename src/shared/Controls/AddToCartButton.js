@@ -13,8 +13,6 @@ const AddToCartButton = ({product}) => {
     const dispatch = useDispatch()
     const {cart} = useSelector(state => state.shop)
     const inCart = cart.filter((p) => p._id === product._id).length > 0
-    console.log('prodct', product)
-    console.log('cart', cart)
 
     return (
         <>
@@ -35,7 +33,7 @@ const AddToCartButton = ({product}) => {
             )) || (
                 <GenericFormik
                     initialValues={{
-                        count: cart.count,
+                        count: cart[0].count,
                         productId: product._id
                     }}
                     fields={quantityField}

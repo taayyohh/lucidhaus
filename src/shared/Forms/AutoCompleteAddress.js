@@ -1,7 +1,9 @@
 import React                                  from 'react'
 import PlacesAutocomplete, {geocodeByAddress} from 'react-places-autocomplete'
 import Div                                    from 'shared/Basic/Div'
+import Fieldset                               from 'shared/Basic/Fieldset'
 import Input                                  from 'shared/Basic/Input'
+import {AutoCompleteFieldSetStyle}            from 'shared/Forms/styles'
 import {
     AutoCompleteInputStyle,
     AutoCompleteSuggestionStyle,
@@ -61,7 +63,7 @@ const AutoCompleteAddress = ({formik, name}) =>
         placeholder="Type your delivery Address"
     >
         {({getInputProps, suggestions, getSuggestionItemProps}) =>
-            <>
+            <Fieldset theme={AutoCompleteFieldSetStyle}>
                 <Input
                     theme={AutoCompleteInputStyle}
                     value={formik.values[name]}
@@ -80,7 +82,7 @@ const AutoCompleteAddress = ({formik, name}) =>
                         </Div>
                     )}
                 </Div>
-            </>
+            </Fieldset>
         }
     </PlacesAutocomplete>
 

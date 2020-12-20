@@ -2,6 +2,7 @@ import {
     colorPalette,
     globals
 }                          from 'config/styles'
+import {postTitleStyle}    from 'features/post/styles'
 import {
     borderBox,
     center,
@@ -51,11 +52,19 @@ export const shopWrapperStyle = {
     gridGap: sv(50),
 }
 export const cartStyle = {
+    display: grid,
+    gridTemplateColumns: '1fr 4fr',
+    gridGap: sv(30),
     paddingTop: [100, .7, 50],
     showItems: {
         display: flex,
         flexDirection: 'column'
     }
+}
+
+export const cartSummaryStyle = {
+    position: 'fixed',
+    width: [157, globals.style.layoutScalingValue, '100%']
 }
 
 export const cartTotalWrapperStyle = {
@@ -111,6 +120,10 @@ export const productCategoryStyle = {
     color: '#656161',
     size: [16, .7, 16],
     letterSpacing: [0.3, .7, 0.3]
+}
+
+export const productTitleStyle = {
+    ...postTitleStyle
 }
 
 export const checkoutFormStyle = {

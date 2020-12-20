@@ -69,10 +69,10 @@ export const userSlice = createSlice({
         signUpFailure: (state, action) => {
             state.error = action.payload.error
         },
-        getPurchaseSuccess: (state, action) => {
+        getPurchaseHistorySuccess: (state, action) => {
             state.purchaseHistory = action.payload
         },
-        getPurchaseFailure: (state, action) => {
+        getPurchaseHistoryFailure: (state, action) => {
             state.error = action.payload.error
         },
         reset: state => {

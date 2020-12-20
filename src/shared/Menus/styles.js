@@ -23,7 +23,7 @@ import {
 
 export const headerMenuPanelWrapperStyle = {
     position: absolute,
-    zIndex: -1
+   // zIndex: -1
 }
 export const headerMenuPanelStyle = {
     display: flex,
@@ -35,7 +35,7 @@ export const headerMenuPanelStyle = {
     maxWidth: [940, .5, '100vw'],
     top: 0,
     right: 0,
-    paddingLeft: [120, globals.style.layoutScalingValue],
+    paddingLeft: [60, globals.style.layoutScalingValue],
     paddingRight: [60, globals.style.layoutScalingValue],
     backgroundColor: '#f9f9f9',
     overflowY: hidden,

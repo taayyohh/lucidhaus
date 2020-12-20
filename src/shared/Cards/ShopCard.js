@@ -6,6 +6,11 @@ import React, {
 import LinkSwitch        from 'shared/Basic/LinkSwitch'
 import MotionDiv         from 'shared/Basic/MotionDiv'
 import {
+    fadeIn,
+    fadeOut,
+    nOpacity
+} from 'shared/variables'
+import {
     genericCardImageWrapperStyle,
     genericCardNameStyle,
     genericCardStyle,
@@ -17,7 +22,7 @@ const S3Img = lazy(() => import('shared/Basic/S3Img'))
 
 const ShopCard = ({photo, name, slug, price, theme, layoutId}) =>
     <AnimatePresence>
-        <MotionDiv>
+        <MotionDiv initial={nOpacity} animate={fadeIn} exit={fadeOut}>
             <LinkSwitch
                 url={slug}
                 theme={{...genericCardStyle, ...theme}}

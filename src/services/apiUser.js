@@ -81,8 +81,8 @@ export const read = (userId, token) =>
         })
 
 
-export const getPurchaseHistory = ({userId, token}) =>
-    fetch(`${API}/orders/by/user/${userId}`, {
+export const getPurchaseHistory = ({_id, token}) =>
+    fetch(`${API}/orders/by/user/${_id}`, {
         method: 'GET',
         headers: {
             Accept: "application/json",

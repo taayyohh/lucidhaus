@@ -29,7 +29,7 @@ const MobileHeaderMenu = () => {
                 )}
                 {isAuthenticated && !isAdmin && (
                     <LinkSwitch
-                        url="/user/dashboard"
+                        url="/dashboard"
                         theme={headerMenuAuthStyleListItemStyle}>
                         Profile
                     </LinkSwitch>

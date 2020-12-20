@@ -10,7 +10,7 @@ import React, {
 import {
     Route,
     Switch
-}                             from 'react-router'
+}                             from 'react-router-dom'
 import AdminRoute             from '../Admin/AdminRoute'
 import PrivateRoute           from '../Admin/PrivateRoute'
 import MotionDiv              from 'shared/Basic/MotionDiv'
@@ -57,7 +57,7 @@ const Content = () => {
                             <Route path="/shop" exact component={Shop}/>
                             <Route path="/shop/:slug" exact component={Product}/>
                             <PrivateRoute path="/settings/profile" exact component={UpdateProfile}/>
-                            <PrivateRoute path="/user/dashboard" exact component={UserDashboard}/>
+                            <PrivateRoute path="/dashboard" exact component={UserDashboard}/>
                             <AdminRoute path="/admin" exact component={AdminDashboard}/>
                             <AdminRoute path="/admin/shop" exact component={ManageShop}/>
                             <AdminRoute path="/admin/taxonomy" exact component={ManageTaxonomy}/>

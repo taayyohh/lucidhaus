@@ -39,7 +39,7 @@ export function* getBraintreeToken({payload}) {
 export function* getPaymentNonce({payload}) {
     const {dropInInstance, _id, token, amount, products, deliveryAddress, user} = payload
     const {address, address2, city, state, zip, country, phone} = deliveryAddress
-    const parts = [address, address2, city, state, zip, country, phone]
+  //  const parts = [address, address2, city, state, zip, country, phone]
     let formattedAddress = `${address} ${address2} ${city} ${state} ${zip} ${country} ${phone}`
 
     console.log('ormatted', formattedAddress)

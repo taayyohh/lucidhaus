@@ -50,7 +50,7 @@ const HeaderMenuControls = () => {
                 url={isAuthenticated && isAdmin
                     ? '/admin'
                     : isAuthenticated
-                        ? '/user'
+                        ? '/dashboard'
                         : '/signin'}
                 theme={headerMenuIconWrapperStyle}
             >

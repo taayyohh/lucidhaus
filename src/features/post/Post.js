@@ -1,3 +1,4 @@
+import {AnimatePresence}       from 'framer-motion'
 import React, {useEffect}      from 'react'
 import {
     useDispatch,
@@ -9,6 +10,11 @@ import RichText                from 'shared/Basic/RichText'
 import S3Img                   from 'shared/Basic/S3Img'
 import {genericCardImageStyle} from 'shared/Cards/styles'
 import ContentWrapper          from 'shared/Layout/ContentWrapper'
+import {
+    fadeIn,
+    fadeOut,
+    nOpacity
+}                              from 'shared/variables'
 import {center}                from 'utils/themer'
 import {
     postDescriptionStyle,
@@ -30,24 +36,28 @@ const Post = () => {
     }, [])
 
     return (
-        <ContentWrapper>
-            <MotionDiv theme={postWrapperStyle}>
-                <MotionDiv theme={postTitleStyle}>
-                    {name}
-                </MotionDiv>
-                <Div theme={{display: 'flex', justifyContent: center}}>
-                    <S3Img
-                        url={photo}
-                        alt={name}
-                        theme={genericCardImageStyle}
-                    />
-                </Div>
-                <RichText
-                    children={description}
-                    theme={postDescriptionStyle}
-                />
+        <AnimatePresence>
+            <MotionDiv initial={nOpacity} animate={fadeIn} exit={fadeOut}>
+                <ContentWrapper>
+                    <MotionDiv theme={postWrapperStyle}>
+                        <MotionDiv theme={postTitleStyle}>
+                            {name}
+                        </MotionDiv>
+                        <Div theme={{display: 'flex', justifyContent: center}}>
+                            <S3Img
+                                url={photo}
+                                alt={name}
+                                theme={genericCardImageStyle}
+                            />
+                        </Div>
+                        <RichText
+                            children={description}
+                            theme={postDescriptionStyle}
+                        />
+                    </MotionDiv>
+                </ContentWrapper>
             </MotionDiv>
-        </ContentWrapper>
+        </AnimatePresence>
     )
 }
 

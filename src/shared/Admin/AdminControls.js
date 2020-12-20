@@ -16,7 +16,6 @@ const AdminControls = ({data, title, create, publish}) => {
     const {_id, token} = useSelector(state => state.user)
     const {slug} = useSelector(state => state.site)
     const hasData = data === Object(data)
-    console.log('data')
 
 
     return (

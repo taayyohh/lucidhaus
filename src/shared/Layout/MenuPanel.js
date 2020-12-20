@@ -1,7 +1,7 @@
 import React, {useContext}           from 'react'
-import {globals}                     from 'config/styles'
-import Cart                          from 'features/shop/Cart'
-import Div                           from 'shared/Basic/Div'
+import {globals} from 'config/styles'
+import CartPanel from 'features/shop/CartPanel'
+import Div       from 'shared/Basic/Div'
 import {menuPanelContext}            from 'shared/Containers/MenuPanelController'
 import HeaderMenuPanelWrapper        from '../Menus/MenuPanelWrapper'
 import MobileHeaderMenu              from '../Menus/MobileHeaderMenu'
@@ -13,7 +13,7 @@ const MenuPanels = () => {
     const setCurrentPanel = () => {
         switch (currentPanel) {
             case 'cart-menu-panel':
-                return <Cart/>
+                return <CartPanel/>
             case 'mobile-header-menu-panel':
                 return <MobileHeaderMenu/>
             default:
