@@ -12,7 +12,8 @@ import {genericButtonStyle}    from './styles'
 const AddToCartButton = ({product}) => {
     const dispatch = useDispatch()
     const {cart} = useSelector(state => state.shop)
-    const inCart = cart.filter((p) => p._id === product._id).length > 0
+    const itemInCart = cart.filter((p) => p._id === product._id)
+    const inCart = itemInCart.length > 0
 
     return (
         <>
@@ -33,7 +34,7 @@ const AddToCartButton = ({product}) => {
             )) || (
                 <GenericFormik
                     initialValues={{
-                        count: cart[0].count,
+                        count: itemInCart[0].count,
                         productId: product._id
                     }}
                     fields={quantityField}

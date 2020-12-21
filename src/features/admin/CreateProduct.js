@@ -4,7 +4,6 @@ import {
     useDispatch,
     useSelector
 }                          from 'react-redux'
-import AdminControls       from 'shared/Admin/AdminControls'
 import GenericFormik       from 'shared/Forms/GenericFormik'
 import AdminWrapper        from 'shared/Layout/AdminWrapper'
 import ContentWrapper      from 'shared/Layout/ContentWrapper'
@@ -47,11 +46,6 @@ const CreateProduct = () => {
     return (
         <ContentWrapper>
             <AdminWrapper>
-                {/*//TODO:improve*/}
-                <AdminControls
-                    title={'Post'}
-                    create={'/create/product'}
-                />
                 <GenericFormik
                     initialValues={initialValues}
                     fields={productFieldTypes}

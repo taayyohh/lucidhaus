@@ -11,10 +11,10 @@ import {
     Route,
     Switch
 }                             from 'react-router-dom'
-import AdminRoute             from '../Admin/AdminRoute'
-import PrivateRoute           from '../Admin/PrivateRoute'
 import MotionDiv              from 'shared/Basic/MotionDiv'
 import {TransitionAnimations} from 'shared/Containers/TransitionController'
+import AdminRoute             from '../Admin/AdminRoute'
+import PrivateRoute           from '../Admin/PrivateRoute'
 import Fallback               from './Fallback'
 
 const AdminDashboard = lazy(() => import('features/admin/AdminDashboard'))
@@ -35,11 +35,11 @@ const Shop = lazy(() => import('features/shop/Shop'))
 const NotFound = lazy(() => import('features/site/NotFound'))
 const SignIn = lazy(() => import('features/user/SignIn'))
 const SignUp = lazy(() => import('features/user/SignUp'))
-const UpdateProfile = lazy(() => import('features/user/UpdateProfile'))
-const UserDashboard = lazy(() => import('features/user/UserDashboard'))
+const UserOrders = lazy(() => import('features/user/dashboard/Orders'))
+const UserSettings = lazy(() => import('features/user/dashboard/Settings'))
 const Home = lazy(() => import('features/site/Home'))
 
-const Content = () => {
+const Routes = () => {
     const {contentAnimation, currentPath} = useContext(TransitionAnimations)
 
 
@@ -56,8 +56,8 @@ const Content = () => {
                             <Route path="/posts/:slug" exact component={Post}/>
                             <Route path="/shop" exact component={Shop}/>
                             <Route path="/shop/:slug" exact component={Product}/>
-                            <PrivateRoute path="/settings/profile" exact component={UpdateProfile}/>
-                            <PrivateRoute path="/dashboard" exact component={UserDashboard}/>
+                            <PrivateRoute path="/dashboard/orders" exact component={UserOrders}/>
+                            <PrivateRoute path="/dashboard" exact component={UserSettings}/>
                             <AdminRoute path="/admin" exact component={AdminDashboard}/>
                             <AdminRoute path="/admin/shop" exact component={ManageShop}/>
                             <AdminRoute path="/admin/taxonomy" exact component={ManageTaxonomy}/>
@@ -80,6 +80,6 @@ const Content = () => {
     )
 }
 
-export default Content
+export default Routes
 
 

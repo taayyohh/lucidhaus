@@ -1,5 +1,6 @@
 import {quantityField}   from 'config/fields'
 import {AnimatePresence} from 'framer-motion'
+import PropTypes         from 'prop-types'
 import React             from 'react'
 import Div               from 'shared/Basic/Div'
 import LinkSwitch        from 'shared/Basic/LinkSwitch'
@@ -35,7 +36,7 @@ const ProductCard = ({product, theme}) =>
                         alt={`${product.name} product photo`}
                     />
                     <Div theme={productCardTextWrapperStyle}>
-                        <LinkSwitch url={`shop/${product.slug}`} theme={{...productCardTitleStyle, ...theme.title}}>
+                        <LinkSwitch url={`/shop/${product.slug}`} theme={{...productCardTitleStyle, ...theme.title}}>
                             {product.name}
                         </LinkSwitch>
                         <Span theme={{...productCardPriceStyle, ...theme.price}}>
@@ -61,6 +62,10 @@ const ProductCard = ({product, theme}) =>
         </MotionDiv>
     </AnimatePresence>
 
+ProductCard.propTypes = {
+    theme: PropTypes.object,
+    product: PropTypes.object.isRequired
+}
 
 ProductCard.defaultProps = {
     theme: {},

@@ -1,5 +1,6 @@
 import 'braintree-web'
 import {AnimatePresence} from 'framer-motion'
+import PropTypes         from 'prop-types'
 import React, {
     useEffect,
     useState
@@ -21,20 +22,22 @@ import ShippingAddress   from './ShippingAddress'
 import {checkoutDropIn}  from './styles'
 
 
-const Checkout = ({products}) => {
+const Checkout = ({cart}) => {
     const dispatch = useDispatch()
     const [dropInInstance, setDropInInstance] = useState({})
     const {_id, token, email, name} = useSelector(state => state.user)
     const {braintreeClientToken, deliveryAddress, billingAddress} = useSelector(state => state.shop)
-    // const {isAuthenticated} = useSelector(state => state.user)
+    const {isAuthenticated} = useSelector(state => state.user)
 
     useEffect(() => {
-        dispatch({
-            type: 'shop/getBraintreeToken'
-        })
+        if (isAuthenticated)
+            dispatch({
+                type: 'shop/getBraintreeToken',
+                payload: {_id, token}
+            })
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, [_id, token])
 
 
     const purchase = () => {
@@ -44,8 +47,8 @@ const Checkout = ({products}) => {
                 _id: _id,
                 token: token,
                 dropInInstance: dropInInstance,
-                amount: getTotal(products),
-                products: products,
+                amount: getTotal(cart),
+                products: cart,
                 deliveryAddress: deliveryAddress,
                 billingAddress: billingAddress,
                 user: {
@@ -58,7 +61,7 @@ const Checkout = ({products}) => {
 
     return (
         <Div theme={checkoutDropIn}>
-            {(!!braintreeClientToken && products.length > 0) && (
+            {(!!braintreeClientToken && cart.length > 0) && (
                 <AnimatePresence>
                     <MotionDiv initial={nOpacity} animate={fadeIn}>
                         <ShippingAddress/>
@@ -66,15 +69,22 @@ const Checkout = ({products}) => {
                             braintreeClientToken={braintreeClientToken}
                             setDropInInstance={setDropInInstance}
                         />
-                        <Button
-                            onClick={purchase}
-                            children={'Purchase'}
-                        />
+                        {deliveryAddress && (
+                            <Button
+                                onClick={purchase}
+                                children={'Purchase'}
+                            />
+                        )}
+
                     </MotionDiv>
                 </AnimatePresence>
             )}
         </Div>
     )
+}
+
+Checkout.propTypes = {
+    cart: PropTypes.array.isRequired
 }
 
 export default Checkout

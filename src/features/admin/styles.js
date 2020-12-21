@@ -107,7 +107,7 @@ export const adminControlPanelInnerStyle = {
     border: '1px solid #dadce0',
     boxShadow: 'inset 0px 0px 4px #d9d9d9',
     height: [500, .7, 'auto'],
-    width: [308, globals.style.layoutScalingValue, '100%'],
+    width: ['100%', globals.style.layoutScalingValue, '100%'],
     padding: sv(20, globals.style.layoutScalingValue),
     mobile: {
         position: relative
@@ -164,5 +164,5 @@ export const adminOrderWrapperStyle = {
 }
 
 export const adminFormWrapperStyle = {
-    width: [1100, globals.style.layoutScalingValue, '100%']
+    width: '100%'
 }

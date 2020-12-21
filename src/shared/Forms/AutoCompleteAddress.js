@@ -1,3 +1,4 @@
+import PropTypes                              from 'prop-types'
 import React                                  from 'react'
 import PlacesAutocomplete, {geocodeByAddress} from 'react-places-autocomplete'
 import Div                                    from 'shared/Basic/Div'
@@ -85,5 +86,10 @@ const AutoCompleteAddress = ({formik, name}) =>
             </Fieldset>
         }
     </PlacesAutocomplete>
+
+AutoCompleteAddress.propTypes = {
+    name: PropTypes.string.isRequired,
+    formik: PropTypes.object.isRequired
+}
 
 export default AutoCompleteAddress

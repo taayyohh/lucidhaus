@@ -6,7 +6,7 @@ import {menuPanelContext}            from 'shared/Containers/MenuPanelController
 import HeaderMenuPanelWrapper        from '../Menus/MenuPanelWrapper'
 import MobileHeaderMenu              from '../Menus/MobileHeaderMenu'
 import {headerMenuPanelWrapperStyle} from '../Menus/styles'
-import Overlay                       from './Overlay'
+import MenuOverlay                   from 'shared/Menus/MenuOverlay'
 
 const MenuPanels = () => {
     const {currentPanel, setPanel} = useContext(menuPanelContext)
@@ -27,7 +27,7 @@ const MenuPanels = () => {
                 children={setCurrentPanel()}
                 name={currentPanel}
             />
-            <Overlay
+            <MenuOverlay
                 isOpen={!!currentPanel}
                 onClick={
                     () => {

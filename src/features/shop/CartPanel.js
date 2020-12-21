@@ -24,7 +24,7 @@ const CartPanel = () => {
                 {!emptyCart && (
                     <>
                         <Cart cart={cart}/>
-                        <Checkout products={cart}/>
+                        <Checkout cart={cart}/>
                     </>
                 )}
             </Div>

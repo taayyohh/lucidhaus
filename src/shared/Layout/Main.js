@@ -1,10 +1,10 @@
 import React   from 'react'
-import Div     from 'shared/Basic/Div'
-import Content from './Content'
+import Div    from 'shared/Basic/Div'
+import Routes from 'shared/Layout/Routes'
 
 const Main = ({theme}) =>
     <Div theme={theme}>
-        <Content/>
+        <Routes/>
     </Div>
 
 export default Main

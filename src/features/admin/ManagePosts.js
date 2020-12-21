@@ -3,7 +3,6 @@ import {
     useDispatch,
     useSelector
 }                         from 'react-redux'
-import AdminControls      from 'shared/Admin/AdminControls'
 import AdminPosts         from 'shared/Admin/AdminPosts'
 import DeletePrompt       from 'shared/Admin/DeletePrompt'
 import AdminWrapper       from 'shared/Layout/AdminWrapper'
@@ -23,12 +22,6 @@ const ManagePosts = () => {
     return (
         <ContentWrapper>
             <AdminWrapper>
-                {/*//TODO:improve*/}
-                <AdminControls
-                    data={posts}
-                    title={'Post'}
-                    create={'/create/post'}
-                />
                 <AdminPosts posts={posts}/>
                 <DeletePrompt destroyAction={'admin/destroyPost'}/>
             </AdminWrapper>

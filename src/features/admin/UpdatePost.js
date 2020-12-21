@@ -1,10 +1,9 @@
-import {postFieldTypes}   from 'config/fields/post'
-import React, {useEffect} from 'react'
+import {postFieldTypes}        from 'config/fields/post'
+import React, {useEffect}      from 'react'
 import {
     useDispatch,
     useSelector
 }                              from 'react-redux'
-import AdminControls           from 'shared/Admin/AdminControls'
 import GenericFormik           from 'shared/Forms/GenericFormik'
 import AdminWrapper            from 'shared/Layout/AdminWrapper'
 import ContentWrapper          from 'shared/Layout/ContentWrapper'
@@ -42,13 +41,6 @@ const UpdatePost = () => {
     return (
         <ContentWrapper>
             <AdminWrapper>
-                {/*//TODO:improve*/}
-                <AdminControls
-                    data={post}
-                    title={'Post'}
-                    create={'/create/post'}
-                    publish={postFieldTypes.filter(field => field.name === 'isPublished')}
-                />
                 <GenericFormik
                     initialValues={initialValues}
                     fields={postFieldTypes}

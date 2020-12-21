@@ -176,3 +176,31 @@ export const headerMenuAuthStyleListItemStyle = {
         padding: 0
     },
 }
+export const dashboardMenuStyle = {
+    minHeight: '750px',
+}
+export const dashboardMenuInnerStyle = {
+    width: [157, globals.style.layoutScalingValue, '100%'],
+    position: 'fixed',
+    borderRight: '1px solid #dadce0'
+
+}
+export const dashboardMenuItemStyle = {
+    display: block,
+    borderBottom: '1px solid #dadce0',
+    boxSizing: borderBox,
+    padding: [10, globals.style.layoutScalingValue, 10],
+    color: black,
+    textDecoration: none,
+    hover: {
+        color: colorPalette.purple,
+        cursor: pointer
+    },
+    child: [
+        {
+            selector: 'svg',
+            size: [20, .7, 20],
+            marginRight: [20, globals.style.layoutScalingValue, 20]
+        }
+    ]
+}

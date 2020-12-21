@@ -1,10 +1,9 @@
-import React, {useContext}             from 'react'
-import {useSelector} from 'react-redux'
 import {
     shoppingCart,
     user
-}                    from 'config/icons/fa'
-import {transparent} from 'utils/themer'
+}                                      from 'config/icons/fa'
+import React, {useContext}             from 'react'
+import {useSelector}                   from 'react-redux'
 import Div                             from 'shared/Basic/Div'
 import Icon                            from 'shared/Basic/Icon'
 import LinkSwitch                      from 'shared/Basic/LinkSwitch'
@@ -15,6 +14,7 @@ import {
     headerIconStyle,
     headerMenuIconWrapperStyle
 }                                      from 'shared/Layout/styles/header'
+import {transparent}                   from 'utils/themer'
 import {headerMenuControlWrapperStyle} from './styles'
 
 const HeaderMenuControls = () => {
@@ -42,16 +42,17 @@ const HeaderMenuControls = () => {
                             backgroundColor: transparent
                         }
                     }
-                >
-                    {cart.length}
-                </MotionDiv>
+                    children={cart.length}
+                />
             </Div>
             <LinkSwitch
-                url={isAuthenticated && isAdmin
-                    ? '/admin'
-                    : isAuthenticated
+                url={
+                    isAuthenticated && isAdmin
+                        ? '/admin'
+                        : isAuthenticated
                         ? '/dashboard'
-                        : '/signin'}
+                        : '/signin'
+                }
                 theme={headerMenuIconWrapperStyle}
             >
                 <Icon
@@ -63,6 +64,5 @@ const HeaderMenuControls = () => {
 
     )
 }
-
 
 export default HeaderMenuControls

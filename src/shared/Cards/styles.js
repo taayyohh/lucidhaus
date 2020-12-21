@@ -108,7 +108,7 @@ export const genericCardDetailImageWrapperStyle = {
 export const genericCardImageWrapperStyle = {
     overflow: hidden,
     border: '1px solid #e9e8e8',
-    height: [250, .7, 250],
+    height: [250, globals.style.layoutScalingValue, 250],
     width: '100%'
 }
 export const genericCardNameStyle = {

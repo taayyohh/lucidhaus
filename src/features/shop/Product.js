@@ -50,11 +50,13 @@ const Product = () => {
             <MotionDiv initial={nOpacity} animate={fadeIn} exit={fadeOut}>
                 <ContentWrapper>
                     <Div theme={productWrapperStyle}>
-                        <Div theme={productCategoryStyle}>{getNameById(productCategories, category)}</Div>
-                        <H2 theme={productTitleStyle}>{name}</H2>
-                        <MotionDiv
-                            theme={genericCardDetailImageWrapperStyle}
-                        >
+                        <Div theme={productCategoryStyle}>
+                            {getNameById(productCategories, category)}
+                        </Div>
+                        <H2 theme={productTitleStyle}>
+                            {name}
+                        </H2>
+                        <MotionDiv theme={genericCardDetailImageWrapperStyle}>
                             <S3Img
                                 url={photo}
                                 alt={name}

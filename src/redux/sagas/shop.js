@@ -39,15 +39,17 @@ export function* getBraintreeToken({payload}) {
 export function* getPaymentNonce({payload}) {
     const {dropInInstance, _id, token, amount, products, deliveryAddress, user} = payload
     const {address, address2, city, state, zip, country, phone} = deliveryAddress
-  //  const parts = [address, address2, city, state, zip, country, phone]
-    let formattedAddress = `${address} ${address2} ${city} ${state} ${zip} ${country} ${phone}`
+    const parts = [address, address2, city, state, zip, country, phone]
+    const filteredParts = parts.filter(v => !!v)
+    const formattedAddress = filteredParts.join(', ')
 
-    console.log('ormatted', formattedAddress)
+    console.log('formatted address', formattedAddress)
 
 
     const nonce = yield call(getPaymentMethod, dropInInstance)
     const paymentData = {paymentMethodNonce: nonce, amount: amount}
     const paymentProcessed = yield call(processPayment, {_id, token, paymentData})
+
     if (paymentProcessed.success === true) {
         const createOrderData = {
             products,

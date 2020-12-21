@@ -3,7 +3,6 @@ import {
     useDispatch,
     useSelector
 }                         from 'react-redux'
-import AdminControls      from 'shared/Admin/AdminControls'
 import AdminShop          from 'shared/Admin/AdminShop'
 import DeletePrompt       from 'shared/Admin/DeletePrompt'
 import AdminWrapper       from 'shared/Layout/AdminWrapper'
@@ -24,11 +23,6 @@ const ManageShop = () => {
     return (
         <ContentWrapper>
             <AdminWrapper>
-                <AdminControls
-                    data={shop}
-                    title={'Product'}
-                    create={'/create/product'}
-                />
                 <AdminShop shop={shop}/>
                 <DeletePrompt destroyAction={'admin/destroyProduct'}/>
             </AdminWrapper>

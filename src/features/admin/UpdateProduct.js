@@ -1,14 +1,13 @@
-import {productFieldTypes} from 'config/fields/product'
-import React, {useEffect}  from 'react'
+import {productFieldTypes}     from 'config/fields/product'
+import React, {useEffect}      from 'react'
 import 'react-image-crop/dist/ReactCrop.css'
 import {
     useDispatch,
     useSelector
-}                          from 'react-redux'
-import AdminControls       from 'shared/Admin/AdminControls'
-import GenericFormik       from 'shared/Forms/GenericFormik'
-import AdminWrapper        from 'shared/Layout/AdminWrapper'
-import ContentWrapper      from 'shared/Layout/ContentWrapper'
+}                              from 'react-redux'
+import GenericFormik           from 'shared/Forms/GenericFormik'
+import AdminWrapper            from 'shared/Layout/AdminWrapper'
+import ContentWrapper          from 'shared/Layout/ContentWrapper'
 import {adminFormWrapperStyle} from './styles'
 
 const UpdateProduct = () => {
@@ -50,12 +49,6 @@ const UpdateProduct = () => {
     return (
         <ContentWrapper>
             <AdminWrapper>
-                {/*//TODO:improve*/}
-                <AdminControls
-                    data={product}
-                    title={'Product'}
-                    create={'/create/product'}
-                />
                 <GenericFormik
                     initialValues={initialValues}
                     fields={productFieldTypes}

@@ -1,10 +1,10 @@
-import React               from 'react'
-import {adminWrapperStyle} from 'features/admin/styles'
-import Div                 from 'shared/Basic/Div'
+import React                from 'react'
+import DashboardWrapper     from 'shared/Layout/DashboardWrapper'
+import {adminDashboardMenu} from 'shared/Menus'
 
 const AdminWrapper = ({children}) =>
-    <Div theme={adminWrapperStyle}>
+    <DashboardWrapper menu={adminDashboardMenu}>
         {children}
-    </Div>
+    </DashboardWrapper>
 
 export default AdminWrapper

@@ -3,7 +3,6 @@ import {
     useDispatch,
     useSelector
 }                         from 'react-redux'
-import AdminControls      from 'shared/Admin/AdminControls'
 import AdminTaxonomy      from 'shared/Admin/AdminTaxonomy'
 import DeletePrompt       from 'shared/Admin/DeletePrompt'
 import AdminWrapper       from 'shared/Layout/AdminWrapper'
@@ -24,11 +23,6 @@ const ManageTaxonomy = () => {
     return (
         <ContentWrapper>
             <AdminWrapper>
-                <AdminControls
-                    data={productCategories}
-                    title={'Product Category'}
-                    create={'/create/product-category'}
-                />
                 <AdminTaxonomy productCategories={productCategories}/>
                 <DeletePrompt destroyAction={'admin/destroyProductCategory'}/>
             </AdminWrapper>

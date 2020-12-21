@@ -4,7 +4,6 @@ import {
     useDispatch,
     useSelector
 }                              from 'react-redux'
-import AdminControls           from 'shared/Admin/AdminControls'
 import GenericFormik           from 'shared/Forms/GenericFormik'
 import AdminWrapper            from 'shared/Layout/AdminWrapper'
 import ContentWrapper          from 'shared/Layout/ContentWrapper'
@@ -34,11 +33,6 @@ const UpdateProductCategory = () => {
     return (
         <ContentWrapper>
             <AdminWrapper>
-                <AdminControls
-                    data={productCategory}
-                    title={'Product Category'}
-                    create={'/create/product-category'}
-                />
                 <GenericFormik
                     initialValues={initialValues}
                     fields={productCategoryField}

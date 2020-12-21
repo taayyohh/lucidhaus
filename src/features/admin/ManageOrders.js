@@ -3,7 +3,6 @@ import {
     useDispatch,
     useSelector
 }                               from 'react-redux'
-import AdminControls            from 'shared/Admin/AdminControls'
 import Div                      from 'shared/Basic/Div'
 import OrderCard                from 'shared/Cards/OrderCard'
 import AdminWrapper             from 'shared/Layout/AdminWrapper'
@@ -49,10 +48,6 @@ const ManageOrders = () => {
     return (
         <ContentWrapper>
             <AdminWrapper>
-                <AdminControls
-                    data={orders}
-                    title={'Order'}
-                />
                 <Div theme={adminOrderWrapperStyle}>
                     {orders && orders.map(o =>
                         <OrderCard

@@ -1,8 +1,8 @@
 import React          from 'react'
 import MotionDiv      from 'shared/Basic/MotionDiv'
-import {overlayStyle} from './styles'
+import {overlayStyle} from 'shared/Layout/styles'
 
-const Overlay = ({isOpen, onClick, theme}) => {
+const MenuOverlay = ({isOpen, onClick, theme}) => {
     const overlayVariants = {
         initial: {
             opacity: 0,
@@ -29,8 +29,8 @@ const Overlay = ({isOpen, onClick, theme}) => {
 }
 
 
-Overlay.defaultProps = {
+MenuOverlay.defaultProps = {
     theme: {},
 }
 
-export default Overlay
+export default MenuOverlay
