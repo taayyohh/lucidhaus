@@ -180,16 +180,21 @@ export const dashboardMenuStyle = {
     minHeight: '750px',
 }
 export const dashboardMenuInnerStyle = {
-    width: [157, globals.style.layoutScalingValue, '100%'],
+    width: [300, globals.style.layoutScalingValue, '100%'],
     position: 'fixed',
     borderRight: '1px solid #dadce0'
 
 }
 export const dashboardMenuItemStyle = {
-    display: block,
+    display: flex,
+    alignItems: center,
     borderBottom: '1px solid #dadce0',
     boxSizing: borderBox,
-    padding: [10, globals.style.layoutScalingValue, 10],
+    paddingLeft: [10, globals.style.layoutScalingValue, 10],
+    paddingRight: [10, globals.style.layoutScalingValue, 10],
+    paddingTop: [20, globals.style.layoutScalingValue, 20],
+    paddingBottom: [20, globals.style.layoutScalingValue, 20],
+
     color: black,
     textDecoration: none,
     hover: {

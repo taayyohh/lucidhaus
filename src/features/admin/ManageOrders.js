@@ -47,7 +47,7 @@ const ManageOrders = () => {
 
     return (
         <ContentWrapper>
-            <AdminWrapper>
+            <AdminWrapper title={'Manage Orders'}>
                 <Div theme={adminOrderWrapperStyle}>
                     {orders && orders.map(o =>
                         <OrderCard

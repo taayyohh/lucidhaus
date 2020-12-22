@@ -8,7 +8,7 @@ import {
 
 export const dashboardStyle = {
     display: 'grid',
-    gridTemplateColumns: '1fr 9fr',
+    gridTemplateColumns: '1fr 4fr',
     gridGap: sv(50, globals.style.layoutScalingValue),
     mobile: {
         display: flex,
@@ -21,5 +21,5 @@ export const dashboardContentStyle = {
 export const dashboardContentInnerStyle = {
     minHeight: [500, .7, 500],
     boxSizing: borderBox,
-    padding: [50, .7, 50]
+    padding: [50, .7, 50],
 }
