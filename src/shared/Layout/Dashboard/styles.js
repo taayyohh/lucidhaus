@@ -21,5 +21,18 @@ export const dashboardContentStyle = {
 export const dashboardContentInnerStyle = {
     minHeight: [500, .7, 500],
     boxSizing: borderBox,
-    padding: [50, .7, 50],
+    paddingLeft: [50, .7, 50],
+    paddingRight: [50, .7, 50],
+    paddingBottom: [50, .7, 50],
+
+}
+export const dashboardHeadingStyle = {
+    size: [42, .7, 42],
+    weight: 400
+}
+export const dashboardDescriptionStyle = {
+    font: globals.fonts.serif,
+}
+export const dashboardInfoStyle = {
+    paddingBottom: [50, .7, 50]
 }

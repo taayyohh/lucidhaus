@@ -147,3 +147,27 @@ export const isTouchDevice = () => {
 export const timeoutAsync = (ms) => new Promise(resolve => setTimeout(resolve, ms))
 export const clearTimeout = () => new Promise(resolve => clearTimeout(resolve))
 export const emptyPromise = (fn) => new Promise((resolve, reject) => resolve(fn))
+export const getScrollbarWidth = () => {
+
+    // Creating invisible container
+    const outer = document.createElement('div')
+    outer.style.visibility = 'hidden'
+    outer.style.overflow = 'scroll' // forcing scrollbar to appear
+    outer.style.msOverflowStyle = 'scrollbar' // needed for WinJS apps
+    document.body.appendChild(outer)
+
+    // Creating inner element and placing it in the container
+    const inner = document.createElement('div')
+    outer.appendChild(inner)
+
+    // Calculating difference between container's full width and the child width
+    const scrollbarWidth = (outer.offsetWidth - inner.offsetWidth)
+
+    // Removing temporary elements from the DOM
+    outer.parentNode.removeChild(outer)
+
+    return scrollbarWidth
+
+}
+export const getNameById = (arr, id) =>
+    arr.filter(item => item._id === id)[0]?.name

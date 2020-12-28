@@ -4,9 +4,9 @@ import {
     useDispatch,
     useSelector
 }                           from 'react-redux'
-import PageFrame            from 'shared/Layout/PageFrame'
-import TransitionOverlay    from 'shared/Layout/TransitionOverlay'
-import LayoutSwitch         from './LayoutSwitch'
+import PageFrame    from 'shared/Layout/PageFrame'
+import Overlay      from 'shared/Layout/Overlay'
+import LayoutSwitch from './LayoutSwitch'
 import MenuPanelController  from './MenuPanelController'
 import TransitionController from './TransitionController'
 
@@ -31,7 +31,7 @@ const Root = () => {
                             </HelmetProvider>
                         </TransitionController>
                     </MenuPanelController>
-                </LayoutSwitch> : <TransitionOverlay/>
+                </LayoutSwitch> : <Overlay/>
             }
         </>
     )

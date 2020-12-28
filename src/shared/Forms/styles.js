@@ -34,7 +34,7 @@ export const genericFormStyle = {
     padding: [80, globals.style.layoutScalingValue, 30],
     background: '#fcfcfc',
     border: `1px solid ${colorPalette.gray}`,
-    boxShadow: 'inset 0px 0px 4px #d9d9d9',
+  //  boxShadow: 'inset 0px 0px 4px #d9d9d9',
     position: relative,
     height: auto,
     boxSizing: borderBox,

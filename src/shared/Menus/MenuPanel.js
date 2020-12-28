@@ -1,11 +1,11 @@
 import React, {useContext}           from 'react'
-import {globals} from 'config/styles'
-import CartPanel from 'features/shop/CartPanel'
-import Div       from 'shared/Basic/Div'
+import {globals}                     from 'config/styles'
+import CartPanel                     from 'features/shop/CartPanel'
+import Div                           from 'shared/Basic/Div'
 import {menuPanelContext}            from 'shared/Containers/MenuPanelController'
-import HeaderMenuPanelWrapper        from '../Menus/MenuPanelWrapper'
-import MobileHeaderMenu              from '../Menus/MobileHeaderMenu'
-import {headerMenuPanelWrapperStyle} from '../Menus/styles'
+import HeaderMenuPanelWrapper        from 'shared/Menus/MenuPanelWrapper'
+import MobileHeaderMenu              from 'shared/Menus/MobileHeaderMenu'
+import {headerMenuPanelWrapperStyle} from 'shared/Menus/styles'
 import MenuOverlay                   from 'shared/Menus/MenuOverlay'
 
 const MenuPanels = () => {

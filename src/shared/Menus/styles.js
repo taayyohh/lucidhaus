@@ -185,27 +185,50 @@ export const dashboardMenuInnerStyle = {
     borderRight: '1px solid #dadce0'
 
 }
-export const dashboardMenuItemStyle = {
+export const dashboardMenuItemStyle = isActive => {
+    return {
+        display: flex,
+        alignItems: center,
+        borderBottom: '1px solid #dadce0',
+        boxSizing: borderBox,
+        paddingLeft: [10, globals.style.layoutScalingValue, 10],
+        paddingRight: [10, globals.style.layoutScalingValue, 10],
+        paddingTop: [20, globals.style.layoutScalingValue, 20],
+        paddingBottom: [20, globals.style.layoutScalingValue, 20],
+        lineHeight: [20, .7, 20],
+        color: !isActive ? black : colorPalette.purple,
+        textDecoration: none,
+        hover: {
+            color: colorPalette.purple,
+            cursor: pointer
+        },
+        child: [
+            {
+                selector: 'svg',
+                size: [20, .7, 20],
+                marginRight: [20, globals.style.layoutScalingValue, 20]
+            }
+        ]
+    }
+}
+
+export const dashboardItemTitleStyle = {
+    size: [18, .7, 18],
+    lineHeight: [18, .7, 18]
+}
+
+export const dashboardIconWrapperStyle = {
     display: flex,
     alignItems: center,
-    borderBottom: '1px solid #dadce0',
-    boxSizing: borderBox,
-    paddingLeft: [10, globals.style.layoutScalingValue, 10],
-    paddingRight: [10, globals.style.layoutScalingValue, 10],
-    paddingTop: [20, globals.style.layoutScalingValue, 20],
-    paddingBottom: [20, globals.style.layoutScalingValue, 20],
+    justifyContent: center,
+    width: [50, globals.style.layoutScalingValue, 50]
+}
 
-    color: black,
-    textDecoration: none,
-    hover: {
-        color: colorPalette.purple,
-        cursor: pointer
-    },
-    child: [
-        {
-            selector: 'svg',
-            size: [20, .7, 20],
-            marginRight: [20, globals.style.layoutScalingValue, 20]
-        }
-    ]
+export const dashboardActiveIndicator = {
+    position: absolute,
+    height: [10, .7, 10],
+    width: [10, .7, 10],
+    borderRadius: [5, .7, 5],
+    right: [-20, .7, -20],
+    backgroundColor: colorPalette.purple
 }

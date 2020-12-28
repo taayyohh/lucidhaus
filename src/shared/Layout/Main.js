@@ -1,6 +1,6 @@
 import React   from 'react'
 import Div    from 'shared/Basic/Div'
-import Routes from 'shared/Layout/Routes'
+import Routes from 'shared/Containers/Routes'
 
 const Main = ({theme}) =>
     <Div theme={theme}>

@@ -1,12 +1,13 @@
-import React, {useEffect} from 'react'
+import React, {useEffect}    from 'react'
 import {
     useDispatch,
     useSelector
-}                         from 'react-redux'
-import AdminShop          from 'shared/Admin/AdminShop'
-import DeletePrompt       from 'shared/Admin/DeletePrompt'
-import AdminWrapper       from 'shared/Layout/AdminWrapper'
-import ContentWrapper     from 'shared/Layout/ContentWrapper'
+}                   from 'react-redux'
+import AdminShop             from 'features/admin/AdminShop'
+import DeletePrompt          from 'shared/Layout/DeletePrompt'
+import AdminDashboardWrapper from 'features/admin/AdminDashboardWrapper'
+import ContentWrapper from 'shared/Layout/ContentWrapper'
+import DashboardInfo  from 'shared/Layout/Dashboard/DashboardInfo'
 
 const ManageShop = () => {
     const {shop} = useSelector(state => state.shop)
@@ -22,10 +23,14 @@ const ManageShop = () => {
 
     return (
         <ContentWrapper>
-            <AdminWrapper>
+            <AdminDashboardWrapper>
+                <DashboardInfo
+                    heading={'Manage Shop'}
+                    description={'Click to edit.'}
+                />
                 <AdminShop shop={shop}/>
                 <DeletePrompt destroyAction={'admin/destroyProduct'}/>
-            </AdminWrapper>
+            </AdminDashboardWrapper>
         </ContentWrapper>
     )
 }

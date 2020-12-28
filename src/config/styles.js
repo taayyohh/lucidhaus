@@ -1,4 +1,4 @@
-import {getScrollbarWidth} from '../utils/getScrollbarWidth'
+import {getScrollbarWidth} from 'utils/helpers'
 
 export const breakpointUpperLimit = {
     mobile: 768,

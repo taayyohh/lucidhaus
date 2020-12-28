@@ -2,11 +2,13 @@ import React, {useEffect} from 'react'
 import {
     useDispatch,
     useSelector
-}                         from 'react-redux'
-import AdminTaxonomy      from 'shared/Admin/AdminTaxonomy'
-import DeletePrompt       from 'shared/Admin/DeletePrompt'
-import AdminWrapper       from 'shared/Layout/AdminWrapper'
-import ContentWrapper     from 'shared/Layout/ContentWrapper'
+}                    from 'react-redux'
+import AdminTaxonomy         from 'features/admin/AdminTaxonomy'
+import DeletePrompt          from 'shared/Layout/DeletePrompt'
+import AdminDashboardWrapper from 'features/admin/AdminDashboardWrapper'
+import ContentWrapper from 'shared/Layout/ContentWrapper'
+import DashboardInfo  from 'shared/Layout/Dashboard/DashboardInfo'
+import {slugify}      from 'utils/slugify'
 
 const ManageTaxonomy = () => {
     const {productCategories} = useSelector(state => state.shop)
@@ -19,13 +21,25 @@ const ManageTaxonomy = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [confirmDelete])
 
+    const taxonomies = [
+        {
+            title: 'Product Categories',
+            slug: slugify('Product Categories'),
+            items: productCategories
+        }
+    ]
+
 
     return (
         <ContentWrapper>
-            <AdminWrapper>
-                <AdminTaxonomy productCategories={productCategories}/>
+            <AdminDashboardWrapper>
+                <DashboardInfo
+                    heading={'Manage Taxonomy'}
+                    description={'Click to edit.'}
+                />
+                <AdminTaxonomy taxonomies={taxonomies}/>
                 <DeletePrompt destroyAction={'admin/destroyProductCategory'}/>
-            </AdminWrapper>
+            </AdminDashboardWrapper>
         </ContentWrapper>
     )
 }

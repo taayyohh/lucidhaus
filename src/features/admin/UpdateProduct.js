@@ -5,9 +5,9 @@ import {
     useDispatch,
     useSelector
 }                              from 'react-redux'
-import GenericFormik           from 'shared/Forms/GenericFormik'
-import AdminWrapper            from 'shared/Layout/AdminWrapper'
-import ContentWrapper          from 'shared/Layout/ContentWrapper'
+import GenericFormik         from 'shared/Forms/GenericFormik'
+import AdminDashboardWrapper from 'features/admin/AdminDashboardWrapper'
+import ContentWrapper        from 'shared/Layout/ContentWrapper'
 import {adminFormWrapperStyle} from './styles'
 
 const UpdateProduct = () => {
@@ -48,7 +48,7 @@ const UpdateProduct = () => {
 
     return (
         <ContentWrapper>
-            <AdminWrapper>
+            <AdminDashboardWrapper>
                 <GenericFormik
                     initialValues={initialValues}
                     fields={productFieldTypes}
@@ -60,7 +60,7 @@ const UpdateProduct = () => {
                     theme={adminFormWrapperStyle}
                     enableReinitialize={true}
                 />
-            </AdminWrapper>
+            </AdminDashboardWrapper>
         </ContentWrapper>
     )
 }

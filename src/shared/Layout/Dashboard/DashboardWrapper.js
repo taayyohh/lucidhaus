@@ -1,8 +1,8 @@
 import React            from 'react'
 import Div              from 'shared/Basic/Div'
-import DashboardContent from 'shared/Layout/DashboardContent'
+import DashboardContent from 'shared/Layout/Dashboard/DashboardContent'
 import DashboardMenu    from 'shared/Menus/DashboardMenu'
-import {dashboardStyle} from './styles/dashboard'
+import {dashboardStyle} from 'shared/Layout/Dashboard/styles'
 
 const DashboardWrapper = ({menu, children}) =>
     <Div theme={dashboardStyle}>

@@ -1,9 +1,9 @@
 import {postFieldTypes} from 'config/fields/post'
 import React            from 'react'
 import {useSelector}    from 'react-redux'
-import GenericFormik    from 'shared/Forms/GenericFormik'
-import AdminWrapper     from 'shared/Layout/AdminWrapper'
-import ContentWrapper   from 'shared/Layout/ContentWrapper'
+import GenericFormik         from 'shared/Forms/GenericFormik'
+import AdminDashboardWrapper from 'features/admin/AdminDashboardWrapper'
+import ContentWrapper        from 'shared/Layout/ContentWrapper'
 import {postFormStyle}  from '../post/styles'
 
 const CreatePost = () => {
@@ -20,7 +20,7 @@ const CreatePost = () => {
 
     return (
         <ContentWrapper>
-            <AdminWrapper>
+            <AdminDashboardWrapper>
                 <GenericFormik
                     initialValues={initialValues}
                     fields={postFieldTypes}
@@ -30,7 +30,7 @@ const CreatePost = () => {
                     buttonText={'Create'}
                     theme={postFormStyle}
                 />
-            </AdminWrapper>
+            </AdminDashboardWrapper>
         </ContentWrapper>
     )
 }

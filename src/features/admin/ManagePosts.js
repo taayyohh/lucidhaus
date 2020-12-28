@@ -2,11 +2,12 @@ import React, {useEffect} from 'react'
 import {
     useDispatch,
     useSelector
-}                         from 'react-redux'
-import AdminPosts         from 'shared/Admin/AdminPosts'
-import DeletePrompt       from 'shared/Admin/DeletePrompt'
-import AdminWrapper       from 'shared/Layout/AdminWrapper'
-import ContentWrapper     from 'shared/Layout/ContentWrapper'
+}                   from 'react-redux'
+import AdminPosts            from 'features/admin/AdminPosts'
+import DeletePrompt          from 'shared/Layout/DeletePrompt'
+import AdminDashboardWrapper from 'features/admin/AdminDashboardWrapper'
+import ContentWrapper from 'shared/Layout/ContentWrapper'
+import DashboardInfo  from 'shared/Layout/Dashboard/DashboardInfo'
 
 const ManagePosts = () => {
     const {posts} = useSelector(state => state.post)
@@ -21,10 +22,14 @@ const ManagePosts = () => {
 
     return (
         <ContentWrapper>
-            <AdminWrapper>
+            <AdminDashboardWrapper>
+                <DashboardInfo
+                    heading={'Manage Posts'}
+                    description={'Click to edit.'}
+                />
                 <AdminPosts posts={posts}/>
                 <DeletePrompt destroyAction={'admin/destroyPost'}/>
-            </AdminWrapper>
+            </AdminDashboardWrapper>
         </ContentWrapper>
     )
 }

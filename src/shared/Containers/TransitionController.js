@@ -9,7 +9,7 @@ import React, {
 import {useSelector}      from 'react-redux'
 import {createSelector}   from 'reselect'
 import {globals}          from 'config/styles'
-import {overlayFadeout}   from './animations.js/transitions'
+import {overlayFadeout}   from './animations/transitions'
 import {menuPanelContext} from './MenuPanelController'
 
 export const TransitionAnimations = createContext({})

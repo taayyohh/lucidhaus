@@ -1,8 +1,13 @@
-import {globals}           from 'config/styles'
+import {
+    colorPalette,
+    globals
+} from 'config/styles'
 import {deleteButtonStyle} from 'shared/Controls/styles'
 import {menuPanelStyle}    from 'shared/Menus/styles'
 import {
+    absolute,
     auto,
+    black,
     center,
     column,
     fixed,
@@ -15,7 +20,7 @@ import {
     relative,
     row,
     sv
-}                          from 'utils/themer'
+} from 'utils/themer'
 import {postsWrapperStyle} from '../post/styles'
 
 export const adminWrapperStyle = {
@@ -73,13 +78,7 @@ export const adminShopCardWrapperStyle = {
 export const adminShopCardStyle = {
     ...adminPostCardStyle
 }
-export const adminHeadingStyle = {
-    size: [26, .7, 26],
-    paddingBottom: [25, .7, 25],
-    marginBottom: [25, .7, 25],
-    borderBottom: `${sv(5)} solid #000`,
-    font: globals.fonts.fancy
-}
+
 export const adminCardControlsButtonStyle = {
     ...deleteButtonStyle,
     marginLeft: [10, globals.style.layoutScalingValue, '0'],
@@ -165,4 +164,33 @@ export const adminOrderWrapperStyle = {
 
 export const adminFormWrapperStyle = {
     width: '100%'
+}
+
+export const orderStatusFilterStyle = isActive => {
+    return {
+        position: relative,
+        paddingTop: [5, .7, 5],
+        paddingBottom: [5, .7, 5],
+        marginRight: [30, .7, 30],
+        size: [16, .7, 17],
+        color: isActive ? colorPalette.purple : black,
+        hover: {
+            cursor: pointer
+        }
+    }
+
+}
+
+export const orderStatusFilterWrapperStyle = {
+    display: flex,
+    marginBottom: [50, .7, 50]
+}
+
+export const orderStatusActiveIndicatorStyle = {
+    position: absolute,
+    left: 0,
+    bottom: 0,
+    width: '100%',
+    backgroundColor: colorPalette.purple,
+    height: [3, .7, 3]
 }

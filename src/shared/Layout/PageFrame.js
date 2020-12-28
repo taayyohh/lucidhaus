@@ -6,8 +6,8 @@ import Header            from './Header'
 import Main              from './Main'
 import Notifications     from './Notifications'
 import StaticHead        from './StaticHead'
-import {pageFrameStyle}  from './styles'
-import TransitionOverlay from './TransitionOverlay'
+import {pageFrameStyle} from './styles'
+import Overlay          from 'shared/Layout/Overlay'
 
 const PageFrame = () =>
     <Div theme={pageFrameStyle}>
@@ -22,7 +22,7 @@ const PageFrame = () =>
         <Div id="footer-left-margin" theme={pageFrameStyle.flm}/>
         <Footer theme={pageFrameStyle.footer}/>
         <Div id="footer-right-margin" theme={pageFrameStyle.frm}/>
-        <TransitionOverlay/>
+        <Overlay/>
         <Notifications/>
         <Div id="modal" theme={pageFrameStyle.modal}/>
     </Div>

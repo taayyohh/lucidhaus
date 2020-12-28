@@ -1,10 +1,11 @@
 import {userFieldTypes}    from 'config/fields/user'
+import {userDashboardMenu} from 'config/menus'
 import React               from 'react'
 import {useSelector}       from 'react-redux'
 import GenericFormik       from 'shared/Forms/GenericFormik'
 import ContentWrapper      from 'shared/Layout/ContentWrapper'
-import DashboardWrapper    from 'shared/Layout/DashboardWrapper'
-import {userDashboardMenu} from 'shared/Menus'
+import DashboardInfo       from 'shared/Layout/Dashboard/DashboardInfo'
+import DashboardWrapper    from 'shared/Layout/Dashboard/DashboardWrapper'
 
 const Settings = () => {
     const {name, token, _id} = useSelector(state => state.user)
@@ -12,6 +13,10 @@ const Settings = () => {
     return (
         <ContentWrapper>
             <DashboardWrapper menu={userDashboardMenu}>
+                <DashboardInfo
+                    heading={'Manage Settings'}
+                    description={'Control your settings here.'}
+                />
                 <GenericFormik
                     initialValues={initialValues}
                     fields={userFieldTypes}

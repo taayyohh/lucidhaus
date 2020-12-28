@@ -3,7 +3,7 @@ import MotionDiv                from 'shared/Basic/MotionDiv'
 import {TransitionAnimations}   from 'shared/Containers/TransitionController'
 import {transitionOverlayStyle} from './styles'
 
-const TransitionOverlay = ({theme}) => {
+const Overlay = ({theme}) => {
     const {overlayAnimation} = useContext(TransitionAnimations)
 
     return (
@@ -15,8 +15,8 @@ const TransitionOverlay = ({theme}) => {
     )
 }
 
-TransitionOverlay.defaultProps = {
+Overlay.defaultProps = {
     theme: {}
 }
 
-export default TransitionOverlay
+export default Overlay

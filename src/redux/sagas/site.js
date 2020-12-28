@@ -16,7 +16,14 @@ export function* loadConfig() {
 export function* navigate({payload}) {
     const {location} = payload
     const slug = location.pathname.substring(location.pathname.lastIndexOf('/') + 1)
-    yield put({type: 'site/setSlug', payload: {slug: slug}})
+    const url = location.pathname.split('/').filter(u => u.length !== 0)
+
+    yield put({
+        type: 'site/setSlug',
+        payload: {
+            slug: slug
+        }
+    })
 }
 
 export function* watchNavigate() {

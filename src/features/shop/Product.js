@@ -19,15 +19,15 @@ import {
     fadeIn,
     fadeOut,
     nOpacity
-}                         from 'shared/variables'
-import {getNameById}      from 'utils/getNameById'
+}                    from 'shared/variables'
+import {getNameById} from 'utils/helpers'
 import {
     productCategoryStyle,
     productDescriptionStyle,
     productPriceStyle,
     productTitleStyle,
     productWrapperStyle
-}                         from './styles'
+}                    from './styles'
 
 
 const Product = () => {

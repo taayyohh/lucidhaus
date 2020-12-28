@@ -1,16 +1,24 @@
-import React         from 'react'
-import {useDispatch} from 'react-redux'
-import Div           from 'shared/Basic/Div'
-import Icon          from 'shared/Basic/Icon'
-import LinkSwitch    from 'shared/Basic/LinkSwitch'
+import React      from 'react'
 import {
+    useDispatch,
+    useSelector
+}                 from 'react-redux'
+import Div        from 'shared/Basic/Div'
+import Icon       from 'shared/Basic/Icon'
+import LinkSwitch from 'shared/Basic/LinkSwitch'
+import MotionDiv  from 'shared/Basic/MotionDiv'
+import {
+    dashboardActiveIndicator,
+    dashboardIconWrapperStyle,
+    dashboardItemTitleStyle,
     dashboardMenuInnerStyle,
     dashboardMenuItemStyle,
     dashboardMenuStyle
-}                    from './styles'
+}                 from './styles'
 
 const DashboardMenu = ({menu}) => {
     const dispatch = useDispatch()
+    const {slug} = useSelector(state => state.site)
 
     return (
         <Div theme={dashboardMenuStyle}>
@@ -19,7 +27,7 @@ const DashboardMenu = ({menu}) => {
                     <LinkSwitch
                         key={i}
                         url={item.url}
-                        theme={dashboardMenuItemStyle}
+                        theme={dashboardMenuItemStyle(item?.url?.includes(slug))}
                         onClick={
                             item.dispatchAction
                                 ? () => dispatch({type: item.dispatchAction})
@@ -27,9 +35,16 @@ const DashboardMenu = ({menu}) => {
                         }
                     >
                         {item.icon && (
-                            <Icon icon={item.icon}/>
+                            <Div theme={dashboardIconWrapperStyle}>
+                                <Icon icon={item.icon}/>
+                            </Div>
                         )}
-                        {item.title}
+                        <Div theme={dashboardItemTitleStyle}>
+                            {item.title}
+                        </Div>
+                        {!!item?.url?.includes(slug) && (
+                            <MotionDiv layoutId={'dashboard-active'} theme={dashboardActiveIndicator}/>
+                        )}
                     </LinkSwitch>
                 ))}
             </Div>

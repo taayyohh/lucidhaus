@@ -11,13 +11,14 @@ import {
     Route,
     Switch
 }                             from 'react-router-dom'
+import AdminRoute             from 'shared/Basic/AdminRoute'
 import MotionDiv              from 'shared/Basic/MotionDiv'
+import PrivateRoute           from 'shared/Basic/PrivateRoute'
 import {TransitionAnimations} from 'shared/Containers/TransitionController'
-import AdminRoute             from '../Admin/AdminRoute'
-import PrivateRoute           from '../Admin/PrivateRoute'
-import Fallback               from './Fallback'
+import Fallback               from 'shared/Layout/Fallback'
 
 const AdminDashboard = lazy(() => import('features/admin/AdminDashboard'))
+const UserDashboard = lazy(() => import('features/user/dashboard'))
 const CreatePost = lazy(() => import('features/admin/CreatePost'))
 const CreateProduct = lazy(() => import('features/admin/CreateProduct'))
 const CreateProductCategory = lazy(() => import('features/admin/CreateProductCategory'))
@@ -56,8 +57,9 @@ const Routes = () => {
                             <Route path="/posts/:slug" exact component={Post}/>
                             <Route path="/shop" exact component={Shop}/>
                             <Route path="/shop/:slug" exact component={Product}/>
+                            <PrivateRoute path="/dashboard" exact component={UserDashboard}/>
                             <PrivateRoute path="/dashboard/orders" exact component={UserOrders}/>
-                            <PrivateRoute path="/dashboard" exact component={UserSettings}/>
+                            <PrivateRoute path="/dashboard/settings" exact component={UserSettings}/>
                             <AdminRoute path="/admin" exact component={AdminDashboard}/>
                             <AdminRoute path="/admin/shop" exact component={ManageShop}/>
                             <AdminRoute path="/admin/taxonomy" exact component={ManageTaxonomy}/>
