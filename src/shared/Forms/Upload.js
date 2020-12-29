@@ -20,7 +20,7 @@ import {
     imageDropZoneWrapperStyle
 } from './styles'
 
-const SmartFileInput = memo(({formik, id, cropWidth, cropHeight, s3Path}) => {
+const Upload = memo(({formik, id, cropWidth, cropHeight, s3Path}) => {
     const [cropPortalOpen, setCropPortalOpen] = useState(false)
 
     const [uploadedImage, setUploadedImage] = useState({})
@@ -151,4 +151,4 @@ const SmartFileInput = memo(({formik, id, cropWidth, cropHeight, s3Path}) => {
     )
 })
 
-export default SmartFileInput
+export default Upload

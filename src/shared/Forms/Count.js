@@ -12,7 +12,7 @@ import {
     countFieldStyle
 }                    from './styles'
 
-const CountField = ({formik, name}) => {
+const Count = ({formik, name}) => {
     const dispatch = useDispatch()
     const adjust = (adj) => {
         if (formik.values[name] + (adj ? 1 : -1) < 1) {
@@ -47,4 +47,4 @@ const CountField = ({formik, name}) => {
     )
 }
 
-export default CountField
+export default Count

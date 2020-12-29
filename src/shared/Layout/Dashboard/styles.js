@@ -34,5 +34,5 @@ export const dashboardDescriptionStyle = {
     font: globals.fonts.serif,
 }
 export const dashboardInfoStyle = {
-    paddingBottom: [50, .7, 50]
+    paddingBottom: [20, .7, 20],
 }

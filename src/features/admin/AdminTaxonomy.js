@@ -1,65 +1,56 @@
-import {
-    adminPostsInnerWrapperStyle,
-    adminShopCardStyle,
-    adminShopCardWrapperStyle
-}                               from 'features/admin/styles'
-import React, {
-    useEffect,
-    useState
-}                               from 'react'
+import React, {useState}        from 'react'
 import Div                      from 'shared/Basic/Div'
 import GenericCard              from 'shared/Cards/GenericCard'
 import GenericCardAdminControls from 'shared/Controls/GenericCardAdminControls'
+import {
+    adminPostsInnerWrapperStyle,
+    adminShopCardStyle,
+    adminShopCardWrapperStyle,
+    adminTaxonomyStyle
+}                               from './styles'
 
 const AdminTaxonomy = ({taxonomies}) => {
-    const [currentTaxSlug, setCurrentTaxSlug] = useState('')
-    const [currentTaxArray, setCurrentTaxArray] = useState('')
-
-    // useEffect(() => {
-    //     console.log('tax', taxonomies)
-    //     if (!!taxonomies?.filter(item => item.slug === currentTaxSlug))
-    //         setCurrentTaxArray(taxonomies?.filter(item => item.slug === currentTaxSlug).items)
-    //
-    // }, [currentTaxSlug])
-
-    useEffect(() => {
-
-    }, [])
+    const [currentTax, setCurrentTax] = useState([])
+    const [currentTaxSlug, setCurrentTaxSlug] = useState([])
 
     return (
         <Div theme={adminPostsInnerWrapperStyle}>
-            {console.log('CI', taxonomies)}
             {taxonomies && taxonomies.map((t, i) => {
                 return (
                     <Div
-                        onClick={() => setCurrentTaxSlug(t.slug)}
+                        onClick={() => {
+                            setCurrentTax(t.items)
+                            setCurrentTaxSlug(t.slug)
+                        }}
                         key={t.title}
+                        theme={adminTaxonomyStyle(t.slug === currentTaxSlug)}
                     >
                         {t.title}
                     </Div>
                 )
             })}
 
-            {console.log('currentTaxArray', currentTaxArray)}
+            <Div>
+                {currentTax?.length > 0 && currentTax?.map(cat => (
+                    <Div
+                        key={cat.slug}
+                        theme={adminShopCardWrapperStyle}
+                    >
+                        <GenericCard
+                            slug={`product-category/update/${cat.slug}`}
+                            name={cat.name}
+                            theme={adminShopCardStyle}
+                        />
+                        <GenericCardAdminControls
+                            edit={'/admin/product-category/update'}
+                            destroyAction={'admin/attemptDestroyProduct'}
+                            slug={cat.slug}
+                            id={cat._id}
+                        />
+                    </Div>
+                ))}
+            </Div>
 
-            {currentTaxArray?.length > 0 && currentTaxArray?.map(cat => (
-                <Div
-                    key={cat.slug}
-                    theme={adminShopCardWrapperStyle}
-                >
-                    <GenericCard
-                        slug={`product-category/update/${cat.slug}`}
-                        name={cat.name}
-                        theme={adminShopCardStyle}
-                    />
-                    <GenericCardAdminControls
-                        edit={'/admin/product-category/update'}
-                        destroyAction={'admin/attemptDestroyProduct'}
-                        slug={cat.slug}
-                        id={cat._id}
-                    />
-                </Div>
-            ))}
 
         </Div>
     )

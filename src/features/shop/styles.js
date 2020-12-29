@@ -128,7 +128,10 @@ export const productTitleStyle = {
 
 export const checkoutFormStyle = {
     background: transparent,
-    padding: 0,
+    paddingTop: 0,
+    paddingBottom: 0,
+    paddingLeft: 0,
+    paddingRight: 0,
     boxShadow: 0,
     border: 0,
     width: '100%',

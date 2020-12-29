@@ -19,9 +19,10 @@ export function* navigate({payload}) {
     const url = location.pathname.split('/').filter(u => u.length !== 0)
 
     yield put({
-        type: 'site/setSlug',
+        type: 'site/destructureUrl',
         payload: {
-            slug: slug
+            slug: slug,
+            url: url
         }
     })
 }

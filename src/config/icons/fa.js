@@ -1,12 +1,13 @@
 import {
-    faCog,
     faCogs,
     faFileAudio,
+    faHome,
     faMinusCircle,
     faNewspaper,
     faPlusCircle,
     faReceipt,
     faSave,
+    faShoppingBag,
     faShoppingCart,
     faSignOutAlt,
     faStore,
@@ -28,7 +29,9 @@ export const
     newsPaper = faNewspaper,
     fileAudio = faFileAudio,
     save = faSave,
-    cogs = faCogs
+    cogs = faCogs,
+    home = faHome,
+    shoppingBag = faShoppingBag
 
 
 

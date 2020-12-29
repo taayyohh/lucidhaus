@@ -7,7 +7,7 @@ import {
     toggleFieldStyle
 }                        from './styles'
 
-const ToggleField = ({formik, name}) =>
+const Toggle = ({formik, name}) =>
     <AnimatePresence layout>
         <MotionDiv
             theme={toggleFieldStyle}
@@ -22,4 +22,4 @@ const ToggleField = ({formik, name}) =>
         </MotionDiv>
     </AnimatePresence>
 
-export default ToggleField
+export default Toggle

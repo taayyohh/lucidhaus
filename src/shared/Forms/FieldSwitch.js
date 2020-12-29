@@ -1,14 +1,14 @@
 import React, {memo}       from 'react'
 import AutoCompleteAddress from './AutoCompleteAddress'
-import CountField          from './CountField'
-import CountryField        from './CountryField'
-import RegionField         from './RegionField'
-import RichTextEditor      from './RichTextEditor'
-import SelectField         from './SelectField'
-import SmartFileInput      from './SmartFileInput'
-import SmartInput          from './SmartInput'
-import {genericFormStyle}  from './styles'
-import ToggleField         from './ToggleField'
+import Count               from 'shared/Forms/Count'
+import Country             from 'shared/Forms/Country'
+import Region     from 'shared/Forms/Region'
+import RichTextEditor from './RichTextEditor'
+import Select         from 'shared/Forms/Select'
+import Upload         from 'shared/Forms/Upload'
+import SmartInput  from './SmartInput'
+import {genericFormStyle} from './styles'
+import Toggle             from 'shared/Forms/Toggle'
 
 const FieldSwitch = memo(({field, formik, options}) => {
     switch (field.type) {
@@ -28,7 +28,7 @@ const FieldSwitch = memo(({field, formik, options}) => {
                 errorMessage={formik.touched[field.name] && formik.errors[field.name] ? formik.errors[field.name] : null}
             />
         case 'select':
-            return <SelectField
+            return <Select
                 {...formik.getFieldProps(field.name)}
                 field={field}
                 options={options}
@@ -40,7 +40,7 @@ const FieldSwitch = memo(({field, formik, options}) => {
                 label={field.inputLabel}
             />
         case 'singleImageUpload':
-            return <SmartFileInput
+            return <Upload
                 formik={formik}
                 id={field.name}
                 cropWidth={field.cropWidth}
@@ -48,17 +48,17 @@ const FieldSwitch = memo(({field, formik, options}) => {
                 s3Path={field.s3Path}
             />
         case 'bool':
-            return <ToggleField
+            return <Toggle
                 name={field.name}
                 formik={formik}
             />
         case 'country':
-            return <CountryField
+            return <Country
                 name={field.name}
                 formik={formik}
             />
         case 'region':
-            return <RegionField
+            return <Region
                 name={field.name}
                 formik={formik}
             />
@@ -68,7 +68,7 @@ const FieldSwitch = memo(({field, formik, options}) => {
                 formik={formik}
             />
         case 'count':
-            return <CountField
+            return <Count
                 name={field.name}
                 formik={formik}
             />

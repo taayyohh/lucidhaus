@@ -1,9 +1,12 @@
+import AdminDashboardWrapper    from 'features/admin/AdminDashboardWrapper'
+import AdminOrders              from 'features/admin/AdminOrders'
 import {
     orderStatusActiveIndicatorStyle,
     orderStatusFilterStyle,
     orderStatusFilterWrapperStyle
-} from 'features/admin/styles'
+}                               from 'features/admin/styles'
 import React, {
+    useContext,
     useEffect,
     useState
 }                               from 'react'
@@ -13,8 +16,7 @@ import {
 }                               from 'react-redux'
 import Div                      from 'shared/Basic/Div'
 import MotionDiv                from 'shared/Basic/MotionDiv'
-import OrderCard             from 'shared/Cards/OrderCard'
-import AdminDashboardWrapper from 'features/admin/AdminDashboardWrapper'
+import {searchContext}          from 'shared/Containers/SearchController'
 import ContentWrapper           from 'shared/Layout/ContentWrapper'
 import DashboardInfo            from 'shared/Layout/Dashboard/DashboardInfo'
 import {adminOrderWrapperStyle} from './styles'
@@ -23,8 +25,22 @@ const ManageOrders = () => {
     const dispatch = useDispatch()
     const {_id, token} = useSelector(state => state.user)
     const {orders, updatedOrder} = useSelector(state => state.shop)
-    const [orderStatusFilter, setOrderStatusFilter] = useState('Not processed')
-    const filters = ['Not processed', 'Processing', 'Shipped', 'Delivered', 'Cancelled']
+    const [orderStatusFilter, setOrderStatusFilter] = useState('Pending')
+    const filters = ['Pending', 'Processing', 'Shipped', 'Delivered', 'Cancelled']
+    const {ordersIndex} = useContext(searchContext)
+
+    useEffect(() => {
+        if (orders.length > 0)
+            ordersIndex.saveObjects(orders)
+                .then(({objectIDs}) => {
+
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [orders])
 
     useEffect(() => {
         dispatch({
@@ -62,7 +78,7 @@ const ManageOrders = () => {
             <AdminDashboardWrapper>
                 <DashboardInfo
                     heading={'Manage Orders'}
-                    description={'Click to edit.'}
+                    description={'Update and track the status of our orders.'}
                 />
 
                 <Div theme={orderStatusFilterWrapperStyle}>
@@ -82,12 +98,10 @@ const ManageOrders = () => {
                         </Div>
                     )}
                 </Div>
+
                 <Div theme={adminOrderWrapperStyle}>
                     {orders && orders.map(o => o.status === orderStatusFilter && (
-                            <OrderCard
-                                key={o._id}
-                                o={o}
-                            />
+                            <AdminOrders order={o}/>
                         )
                     )}
                 </Div>

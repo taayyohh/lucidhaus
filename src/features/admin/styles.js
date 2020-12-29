@@ -1,8 +1,9 @@
 import {
     colorPalette,
     globals
-} from 'config/styles'
+}                          from 'config/styles'
 import {deleteButtonStyle} from 'shared/Controls/styles'
+import {defaultInputStyle} from 'shared/Forms/styles'
 import {menuPanelStyle}    from 'shared/Menus/styles'
 import {
     absolute,
@@ -19,8 +20,9 @@ import {
     pointer,
     relative,
     row,
-    sv
-} from 'utils/themer'
+    sv,
+    transparent
+}                          from 'utils/themer'
 import {postsWrapperStyle} from '../post/styles'
 
 export const adminWrapperStyle = {
@@ -166,6 +168,15 @@ export const adminFormWrapperStyle = {
     width: '100%'
 }
 
+export const adminTaxonomyStyle = isActive => {
+    return {
+        color: !isActive ? black : colorPalette.purple,
+        hover: {
+            cursor: pointer
+        }
+    }
+}
+
 export const orderStatusFilterStyle = isActive => {
     return {
         position: relative,
@@ -193,4 +204,38 @@ export const orderStatusActiveIndicatorStyle = {
     width: '100%',
     backgroundColor: colorPalette.purple,
     height: [3, .7, 3]
+}
+
+export const searchWrapperStyle = {
+    marginBottom: [50, .7, 50],
+    child: [
+        {
+            selector: 'input',
+            ...defaultInputStyle,
+            border: `1px solid ${globals.colors.borderColor}`,
+            maxWidth: [500, .7, '100%'],
+            borderRadius: [5, .7, 5]
+        },
+        {
+            selector: 'form',
+            display: flex,
+            child: [
+                {
+                    selector: '.ais-SearchBox-submit',
+                    display: none
+                }
+            ]
+        },
+        {
+            selector: 'button',
+            background: transparent,
+            border: 0,
+            width: [30, .7, 30],
+            child: {
+                selector: 'svg',
+                height: [20, .7, 20],
+                width: [20, .7, 20]
+            }
+        }
+    ]
 }

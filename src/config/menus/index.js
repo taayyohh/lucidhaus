@@ -1,5 +1,6 @@
 import {
     cogs,
+    home,
     newsPaper,
     receipt,
     signOut,
@@ -10,6 +11,11 @@ import {
 export const userDashboardMenu = [
     {
         url: '/dashboard',
+        icon: home,
+        title: 'Home'
+    },
+    {
+        url: '/dashboard/settings',
         icon: userCog,
         title: 'Settings'
     },
@@ -26,6 +32,11 @@ export const userDashboardMenu = [
 ]
 
 export const adminDashboardMenu = [
+    {
+        url: '/admin',
+        icon: home,
+        title: 'Dashboard'
+    },
     {
         url: '/admin/posts',
         icon: newsPaper,
@@ -50,5 +61,16 @@ export const adminDashboardMenu = [
         dispatchAction: 'user/signOut',
         icon: signOut,
         title: 'Sign Out'
+    }
+]
+
+export const headerMenu = [
+    {
+        url: '/shop',
+        title: 'Shop'
+    },
+    {
+        url: '/posts',
+        title: 'Posts'
     }
 ]

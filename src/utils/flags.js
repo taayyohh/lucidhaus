@@ -1,1 +1,0 @@
-export const isMarketplace = (slug) => slug === 'posts'

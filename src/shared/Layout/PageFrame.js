@@ -3,9 +3,9 @@ import Div               from 'shared/Basic/Div'
 import DocumentHead      from './DocumentHead'
 import Footer            from './Footer'
 import Header            from './Header'
-import Main              from './Main'
-import Notifications     from './Notifications'
-import StaticHead        from './StaticHead'
+import Main         from './Main'
+import Notification from 'shared/Layout/Notification'
+import StaticHead   from './StaticHead'
 import {pageFrameStyle} from './styles'
 import Overlay          from 'shared/Layout/Overlay'
 
@@ -23,7 +23,7 @@ const PageFrame = () =>
         <Footer theme={pageFrameStyle.footer}/>
         <Div id="footer-right-margin" theme={pageFrameStyle.frm}/>
         <Overlay/>
-        <Notifications/>
+        <Notification/>
         <Div id="modal" theme={pageFrameStyle.modal}/>
     </Div>
 

@@ -1,18 +1,20 @@
 import {
     colorPalette,
     globals
-} from 'config/styles'
+}                         from 'config/styles'
+import {genericCardStyle} from 'shared/Cards/styles'
 import {
     black,
     flexEnd,
     flexStart,
+    grid,
     none,
     pointer,
+    sv,
     transparent,
     uppercase,
     white
 } from 'utils/themer'
-import {genericCardStyle} from 'shared/Cards/styles'
 
 export const orderCardWrapperStyle = {
     ...genericCardStyle,
@@ -21,6 +23,28 @@ export const orderCardWrapperStyle = {
         cursor: pointer
     }
 }
+
+export const orderDetailInnerStyle = {
+    marginBottom: [30, .7, 30]
+}
+
+export const orderDetailStyle = {
+    size: 28
+}
+
+export const orderDetailWrapperStyle = {
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr',
+    gridGap: sv(50)
+}
+
+export const orderCardProductsStyle = {
+    display: grid,
+    gridTemplateColumns: '1fr 1fr 1fr 1fr 1fr',
+    gridGap: sv(20)
+}
+
+
 export const genericButtonStyle = {
     border: `1px solid #dadce0`,
     background: '#5e4a6c',

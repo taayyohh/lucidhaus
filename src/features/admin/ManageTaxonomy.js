@@ -25,7 +25,8 @@ const ManageTaxonomy = () => {
         {
             title: 'Product Categories',
             slug: slugify('Product Categories'),
-            items: productCategories
+            items: productCategories,
+            feature: 'shop'
         }
     ]
 

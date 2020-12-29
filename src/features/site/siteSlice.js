@@ -7,6 +7,7 @@ const initialState = {
     isInitialized: false,
     loading: false,
     slug: '',
+    url: [],
     layout: '',
     notification: null,
     notificationTheme: ''
@@ -26,8 +27,9 @@ export const siteSlice = createSlice({
         setLayout: (state, action) => {
             state.layout = action.payload
         },
-        setSlug: (state, action) => {
+        destructureUrl: (state, action) => {
             state.slug = action.payload.slug
+            state.url = action.payload.url
         },
         clearNotification: state => {
             state.notification = null

@@ -1,55 +1,21 @@
-import React      from 'react'
+import React             from 'react'
+import Div               from 'shared/Basic/Div'
+import DashboardMenuItem from 'shared/Menus/DashboardMenuItem'
 import {
-    useDispatch,
-    useSelector
-}                 from 'react-redux'
-import Div        from 'shared/Basic/Div'
-import Icon       from 'shared/Basic/Icon'
-import LinkSwitch from 'shared/Basic/LinkSwitch'
-import MotionDiv  from 'shared/Basic/MotionDiv'
-import {
-    dashboardActiveIndicator,
-    dashboardIconWrapperStyle,
-    dashboardItemTitleStyle,
     dashboardMenuInnerStyle,
-    dashboardMenuItemStyle,
     dashboardMenuStyle
-}                 from './styles'
+}                        from './styles'
 
-const DashboardMenu = ({menu}) => {
-    const dispatch = useDispatch()
-    const {slug} = useSelector(state => state.site)
-
-    return (
-        <Div theme={dashboardMenuStyle}>
-            <Div theme={dashboardMenuInnerStyle}>
-                {menu?.map((item, i) => (
-                    <LinkSwitch
-                        key={i}
-                        url={item.url}
-                        theme={dashboardMenuItemStyle(item?.url?.includes(slug))}
-                        onClick={
-                            item.dispatchAction
-                                ? () => dispatch({type: item.dispatchAction})
-                                : null
-                        }
-                    >
-                        {item.icon && (
-                            <Div theme={dashboardIconWrapperStyle}>
-                                <Icon icon={item.icon}/>
-                            </Div>
-                        )}
-                        <Div theme={dashboardItemTitleStyle}>
-                            {item.title}
-                        </Div>
-                        {!!item?.url?.includes(slug) && (
-                            <MotionDiv layoutId={'dashboard-active'} theme={dashboardActiveIndicator}/>
-                        )}
-                    </LinkSwitch>
-                ))}
-            </Div>
+const DashboardMenu = ({menu}) =>
+    <Div theme={dashboardMenuStyle}>
+        <Div theme={dashboardMenuInnerStyle}>
+            {menu?.map(item => (
+                <DashboardMenuItem
+                    key={item.title}
+                    item={item}
+                />
+            ))}
         </Div>
-    )
-}
+    </Div>
 
 export default DashboardMenu

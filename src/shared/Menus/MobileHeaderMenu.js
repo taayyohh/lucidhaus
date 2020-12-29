@@ -20,7 +20,6 @@ const MobileHeaderMenu = () => {
                 <HeaderMenuItems/>
                 {isAuthenticated && (
                     <Span
-                        to="/signout"
                         theme={headerMenuAuthStyleListItemStyle}
                         onClick={() => dispatch({type: 'user/signOut'})}
                     >

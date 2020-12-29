@@ -11,7 +11,7 @@ import {
 import MotionDiv                  from 'shared/Basic/MotionDiv'
 import {notificationWrapperStyle} from './styles'
 
-const Notifications = () => {
+const Notification = () => {
     const dispatch = useDispatch()
     const {notification, notificationTheme} = useSelector(state => state.site)
 
@@ -34,9 +34,14 @@ const Notifications = () => {
             {notification && (
                 <MotionDiv
                     key={'notification'}
-                    initial={{height: 0, opacity: 0}}
+                    initial={{
+                        y: -100,
+                        height: 40,
+                        opacity: 0
+                    }}
                     animate={{
                         height: 40,
+                        y: 0,
                         opacity: 1,
                         transition: {
                             duration: 0.25,
@@ -60,4 +65,4 @@ const Notifications = () => {
     )
 }
 
-export default Notifications
+export default Notification

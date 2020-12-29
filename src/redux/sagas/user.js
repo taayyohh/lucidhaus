@@ -36,7 +36,7 @@ export function* signOut() {
     const payload = yield call(signout)
     if (!payload.error) {
         yield put({type: 'user/signOutSuccess', payload})
-        yield put(push('/'))
+        yield put(push('/signin'))
     } else {
         yield put({type: 'user/signOutFailure', payload})
     }

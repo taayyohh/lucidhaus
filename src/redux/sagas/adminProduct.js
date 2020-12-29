@@ -36,7 +36,7 @@ export function* createProduct({payload}) {
 
         if (!createdProduct.error) {
             yield put({type: 'admin/createProductSuccess', createdProduct})
-            yield put(push('/admin/product/update/' + createdProduct.slug))
+            yield put(push('/admin/shop/update/' + createdProduct.slug))
 
         } else {
             yield put({type: 'admin/createProductFailure', payload})

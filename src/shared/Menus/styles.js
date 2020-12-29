@@ -114,48 +114,48 @@ export const headerMenuStyle = {
     alignItems: center,
     justifyContent: center
 }
-export const headerMenuListItemStyle = {
-    display: block,
-    color: globals.colors.black,
-    fontFamily: globals.fonts.sans,
-    textDecoration: 'none',
-    size: [20, .8, 20],
-    paddingRight: [40, globals.style.layoutScalingValue, '0'],
-    paddingLeft: [40, globals.style.layoutScalingValue, '0'],
-    transition: 'background-color 500ms ease',
-    mobile: {
-        width: '100%',
-        paddingBottom: 10
-    },
-    hover: {
-        color: globals.colors.orange,
+export const headerMenuListItemStyle = isActive => {
+    return {
+        position: relative,
+        display: block,
+        color: !isActive ? globals.colors.black : colorPalette.purple,
+        fontFamily: globals.fonts.sans,
+        textDecoration: 'none',
+        size: [20, .8, 20],
+        marginRight: [40, globals.style.layoutScalingValue, '0'],
+        marginLeft: [40, globals.style.layoutScalingValue, '0'],
+        transition: 'background-color 500ms ease',
         mobile: {
-            color: black,
-            hover: {
-                color: transparent
+            width: '100%',
+            paddingBottom: 10
+        },
+        hover: {
+            color: colorPalette.purple,
+            mobile: {
+                color: black,
+                hover: {
+                    color: transparent
+                }
             }
-        }
-    },
-    child: {
-        selector: 'sup',
-        position: absolute
-    }
-}
-export const headerMenuListStyle = {
-    display: flex,
-    position: relative,
-    after: {
-        content: '\'\'',
-        width: '1px',
-        height: '100%',
-        background: colorPalette.gray,
-        position: absolute,
-        right: 0,
-        mobile: {
-            display: none
+        },
+        child: {
+            selector: 'sup',
+            position: absolute
         }
     }
+
 }
+
+export const headerMenuActiveIndicator = {
+    position: absolute,
+    left: 0,
+    bottom: 0,
+    width: '100%',
+    backgroundColor: colorPalette.purple,
+    height: [3, .7, 3]
+}
+
+
 export const headerMenuControlWrapperStyle = {
     display: flex,
     alignItems: center,

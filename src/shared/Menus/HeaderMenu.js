@@ -1,10 +1,11 @@
+import {headerMenu}        from 'config/menus'
 import {mobileFlag}        from 'features/site/siteSlice'
 import React, {useContext} from 'react'
 import {useSelector}       from 'react-redux'
 import Div                 from 'shared/Basic/Div'
-import {menuPanelContext} from 'shared/Containers/MenuPanelController'
-import MenuPanels         from 'shared/Menus/MenuPanel'
-import HeaderMenuControls from './HeaderMenuControls'
+import {menuPanelContext}  from 'shared/Containers/MenuPanelController'
+import MenuPanels          from 'shared/Menus/MenuPanel'
+import HeaderMenuControls  from './HeaderMenuControls'
 import HeaderMenuItems     from './HeaderMenuItems'
 import MenuToggle          from './MenuToggle'
 import {
@@ -19,7 +20,9 @@ const HeaderMenu = () => {
     return (
         <Div theme={headerMenuStyle}>
             {!isMobile && (
-                <HeaderMenuItems/>
+                <HeaderMenuItems
+                    items={headerMenu}
+                />
             )}
             <HeaderMenuControls/>
             {isMobile && (

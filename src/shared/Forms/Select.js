@@ -2,7 +2,7 @@ import {Field} from 'formik'
 import React   from 'react'
 import Div     from 'shared/Basic/Div'
 
-const SelectField = ({field, options, value}) =>
+const Select = ({field, options, value}) =>
     <Div>
         <Div>{field.inputLabel}</Div>
         <Field
@@ -20,4 +20,4 @@ const SelectField = ({field, options, value}) =>
     </Div>
 
 
-export default SelectField
+export default Select

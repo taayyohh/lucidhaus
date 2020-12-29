@@ -4,10 +4,11 @@ import {
     useDispatch,
     useSelector
 }                           from 'react-redux'
-import PageFrame    from 'shared/Layout/PageFrame'
-import Overlay      from 'shared/Layout/Overlay'
-import LayoutSwitch from './LayoutSwitch'
+import Overlay              from 'shared/Layout/Overlay'
+import PageFrame            from 'shared/Layout/PageFrame'
+import LayoutSwitch         from './LayoutSwitch'
 import MenuPanelController  from './MenuPanelController'
+import SearchController     from './SearchController'
 import TransitionController from './TransitionController'
 
 const Root = () => {
@@ -26,9 +27,11 @@ const Root = () => {
                 <LayoutSwitch>
                     <MenuPanelController>
                         <TransitionController>
-                            <HelmetProvider>
-                                <PageFrame/>
-                            </HelmetProvider>
+                            <SearchController>
+                                <HelmetProvider>
+                                    <PageFrame/>
+                                </HelmetProvider>
+                            </SearchController>
                         </TransitionController>
                     </MenuPanelController>
                 </LayoutSwitch> : <Overlay/>

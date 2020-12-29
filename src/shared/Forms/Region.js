@@ -3,7 +3,7 @@ import {RegionDropdown}   from 'react-country-region-selector'
 import Fieldset           from 'shared/Basic/Fieldset'
 import {regionFieldStyle} from './styles'
 
-const RegionField = ({formik, name}) =>
+const Region = ({formik, name}) =>
     <Fieldset theme={regionFieldStyle}>
         <RegionDropdown
             classes={'region-field'}
@@ -14,4 +14,4 @@ const RegionField = ({formik, name}) =>
     </Fieldset>
 
 
-export default RegionField
+export default Region

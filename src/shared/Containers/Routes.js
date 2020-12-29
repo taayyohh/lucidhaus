@@ -63,8 +63,9 @@ const Routes = () => {
                             <AdminRoute path="/admin" exact component={AdminDashboard}/>
                             <AdminRoute path="/admin/shop" exact component={ManageShop}/>
                             <AdminRoute path="/admin/taxonomy" exact component={ManageTaxonomy}/>
+                            <AdminRoute path="/admin/product-category" exact component={ManageTaxonomy}/>
                             <AdminRoute path="/admin/posts" exact component={ManageMarketplace}/>
-                            <AdminRoute path="/admin/product/update/:slug" exact component={UpdateProduct}/>
+                            <AdminRoute path="/admin/shop/update/:slug" exact component={UpdateProduct}/>
                             <AdminRoute path="/admin/product-category/update/:slug" exact
                                         component={UpdateProductCategory}/>
                             <AdminRoute path="/admin/posts/update/:slug" exact component={UpdatePost}/>

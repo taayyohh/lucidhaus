@@ -1,3 +1,4 @@
+import {shoppingBag}           from 'config/icons/fa'
 import {AnimatePresence}       from 'framer-motion'
 import moment                  from 'moment'
 import React                   from 'react'
@@ -6,12 +7,20 @@ import {
     useSelector
 }                              from 'react-redux'
 import Div                     from 'shared/Basic/Div'
+import Icon                    from 'shared/Basic/Icon'
 import MotionDiv               from 'shared/Basic/MotionDiv'
+import {
+    orderCardProductsStyle,
+    orderDetailInnerStyle,
+    orderDetailStyle,
+    orderDetailWrapperStyle
+}                              from 'shared/Controls/styles'
 import {
     fadeIn,
     fadeOut,
     nOpacity
-} from 'shared/variables'
+}                              from 'shared/variables'
+import {flex}                  from 'utils/themer'
 import {orderCardWrapperStyle} from '../Controls/styles'
 
 const OrderCard = ({o}) => {
@@ -32,7 +41,6 @@ const OrderCard = ({o}) => {
 
     const showStatus = o =>
         <Div>
-            <Div>Status: {o.status}</Div>
             <select
                 onChange={e => handleStatusChange(e, o._id)}
                 defaultValue={o.status}
@@ -51,28 +59,61 @@ const OrderCard = ({o}) => {
             <MotionDiv initial={nOpacity} animate={fadeIn} exit={fadeOut}>
                 <Div theme={orderCardWrapperStyle}>
                     <Div>
-                        <Div>{showStatus(o)}</Div>
-                        <Div>
-                            Total products in the order:{' '}
-                            {o.products.length}
+
+                        <Div theme={orderDetailWrapperStyle}>
+                            <Div theme={orderDetailInnerStyle}>
+                                <Div>Order Total</Div>
+                                <Div theme={orderDetailStyle}>${o.amount}</Div>
+                            </Div>
+                            <Div theme={orderDetailInnerStyle}>
+                                <Div>Ordered on</Div>
+                                <Div theme={orderDetailStyle}>{moment(o.createdAt).fromNow()}</Div>
+                            </Div>
+                            <Div theme={orderDetailInnerStyle}>
+                                <Div>Delivery address</Div>
+                                <Div theme={orderDetailStyle}>{o.address}</Div>
+                            </Div>
+
+                            <Div theme={orderDetailInnerStyle}>
+                                <Div>Ordered by</Div>
+                                <Div theme={orderDetailStyle}>{o.user.name}</Div>
+                            </Div>
+
+                            <Div theme={orderDetailInnerStyle}>
+                                <Div>Total Items</Div>
+                                <Div theme={orderDetailStyle}>{o.products.length}</Div>
+                            </Div>
+
+                            <Div theme={orderDetailInnerStyle}>
+                                <Div>Update Status</Div>
+                                <Div theme={orderDetailStyle}>{showStatus(o)}</Div>
+                            </Div>
                         </Div>
-                        <Div>Order ID: {o._id}</Div>
-                        <Div>Transaction ID: {o._id}</Div>
-                        <Div>Amount: ${o.amount}</Div>
-                        <Div>Ordered by: {o.user.name}</Div>
-                        <Div>Ordered on:{' '} {moment(o.createdAt).fromNow()}</Div>
-                        <Div>Delivery address: {o.address}</Div>
+
+
                     </Div>
 
-                    <Div>
-                        {o.products.map(p => (
-                            <Div key={p._id}>
-                                <Div>Name: {p.name}</Div>
-                                <Div>Price: {p.price}</Div>
-                                <Div>Count: {p.count}</Div>
-                                <Div>id: {p._id}</Div>
-                            </Div>
-                        ))}
+                    <Div theme={{marginTop: 30}}>
+                        <Div theme={{
+                            paddingBottom: 15,
+                            marginBottom: 20,
+                            borderBottom: '1px solid #cdcdcd',
+                            display: flex,
+                            alignItems: 'center',
+                            justifyContent: 'center'
+                        }}>
+                            <Icon icon={shoppingBag}/>
+                        </Div>
+                        <Div theme={orderCardProductsStyle}>
+                            {o.products.map(p => (
+                                <Div key={p._id}>
+                                    <Div>{p.name}</Div>
+                                    <Div>{p.price} USD</Div>
+                                    <Div>Quantity: {p.count}</Div>
+                                </Div>
+                            ))}
+                        </Div>
+
                     </Div>
                 </Div>
             </MotionDiv>
