@@ -13,7 +13,7 @@ export const footerStyle = {
     borderTop: `1px solid ${colorPalette.gray}`,
     zIndex: 3,
     background: white,
-    marginTop: 50,
+    marginTop: [150, .7],
     paddingTop: 30,
     minHeight: [150, .7, 150],
     maxWidth: '100%',

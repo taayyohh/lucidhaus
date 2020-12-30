@@ -1,12 +1,12 @@
 import PropTypes       from 'prop-types'
 import React           from 'react'
-import ProductCard     from 'shared/Cards/ProductCard'
+import CartItemCard    from 'shared/Cards/CartItemCard'
 import CheckoutSection from './CheckoutSection'
 
 const Cart = ({cart}) =>
     <CheckoutSection title={'Cart Summary'}>
         {cart.map((product, i) =>
-            <ProductCard
+            <CartItemCard
                 key={i}
                 product={product}
             />

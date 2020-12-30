@@ -25,7 +25,7 @@ import {
 }                        from './styles'
 
 
-const ProductCard = ({product, theme}) =>
+const CartItemCard = ({product, theme}) =>
     <AnimatePresence>
         <MotionDiv initial={nOpacity} animate={fadeIn} exit={fadeOut}>
             <Div theme={{...productCardStyle, ...theme}}>
@@ -62,13 +62,13 @@ const ProductCard = ({product, theme}) =>
         </MotionDiv>
     </AnimatePresence>
 
-ProductCard.propTypes = {
+CartItemCard.propTypes = {
     theme: PropTypes.object,
     product: PropTypes.object.isRequired
 }
 
-ProductCard.defaultProps = {
+CartItemCard.defaultProps = {
     theme: {},
 }
 
-export default ProductCard
+export default CartItemCard

@@ -8,3 +8,7 @@ export const signUpPromptStyle = {
     paddingTop: [20, .7, 20],
     marginLeft: 'auto'
 }
+
+export const signUpFormStyle = {
+    padding: [70, 120]
+}

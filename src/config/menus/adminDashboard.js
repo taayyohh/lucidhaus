@@ -4,32 +4,8 @@ import {
     newsPaper,
     receipt,
     signOut,
-    store,
-    userCog
+    store
 } from 'config/icons/fa'
-
-export const userDashboardMenu = [
-    {
-        url: '/dashboard',
-        icon: home,
-        title: 'Home'
-    },
-    {
-        url: '/dashboard/settings',
-        icon: userCog,
-        title: 'Settings'
-    },
-    {
-        url: '/dashboard/orders',
-        icon: receipt,
-        title: 'Orders'
-    },
-    {
-        dispatchAction: 'user/signOut',
-        icon: signOut,
-        title: 'Sign Out'
-    }
-]
 
 export const adminDashboardMenu = [
     {
@@ -61,16 +37,5 @@ export const adminDashboardMenu = [
         dispatchAction: 'user/signOut',
         icon: signOut,
         title: 'Sign Out'
-    }
-]
-
-export const headerMenu = [
-    {
-        url: '/shop',
-        title: 'Shop'
-    },
-    {
-        url: '/posts',
-        title: 'Posts'
     }
 ]

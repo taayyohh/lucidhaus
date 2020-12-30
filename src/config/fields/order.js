@@ -1,3 +1,5 @@
+import * as Yup from 'yup'
+
 export const orderFieldTypes = [
     {
       name: 'autoAddress',
@@ -45,3 +47,23 @@ export const orderFieldTypes = [
         type: 'text'
     }
 ]
+export const validateCheckoutAddress = Yup.object().shape({
+    address: Yup
+        .string()
+        .required('*'),
+    city: Yup
+        .string()
+        .required('*'),
+    zip: Yup
+        .string()
+        .required('*'),
+    state: Yup
+        .string()
+        .required('*'),
+    country: Yup
+        .string()
+        .required('*'),
+    phone: Yup
+        .string()
+        .required('*')
+})

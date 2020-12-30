@@ -25,7 +25,7 @@ import {
 //TODO:code split elsewhere where necessary, define fallback component
 const S3Img = lazy(() => import('shared/Basic/S3Img'))
 
-const GenericCard = ({photo, name, slug, description, theme, layoutId}) =>
+const GenericCard = ({photo, name, slug, description, theme, price}) =>
     <AnimatePresence>
         <MotionDiv initial={nOpacity} animate={fadeIn} exit={fadeOut}>
             <LinkSwitch
@@ -50,6 +50,12 @@ const GenericCard = ({photo, name, slug, description, theme, layoutId}) =>
                         <MotionDiv
                             theme={{...genericCardNameStyle, ...theme.name}}
                             children={name}
+                        />
+                    )}
+                    {price && (
+                        <MotionDiv
+                            theme={{...genericCardNameStyle, ...theme.name}}
+                            children={price}
                         />
                     )}
                     {description && (

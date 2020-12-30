@@ -1,22 +1,19 @@
+import AdminCreateButton   from 'features/admin/AdminCreateButton'
 import {
-    adminPostCardStyle,
-    adminPostCardWrapperStyle,
     adminPostsInnerWrapperStyle,
     adminShopCardStyle,
     adminShopCardWrapperStyle,
     searchWrapperStyle
-} from 'features/admin/styles'
+}                          from 'features/admin/styles'
+import React, {useContext} from 'react'
 import {
     connectHits,
-    Hits,
     InstantSearch,
     SearchBox
-}                               from 'react-instantsearch-dom'
-import React, {useContext}      from 'react'
-import Div                      from 'shared/Basic/Div'
-import GenericCard              from 'shared/Cards/GenericCard'
-import {searchContext}          from 'shared/Containers/SearchController'
-import GenericCardAdminControls from 'shared/Controls/GenericCardAdminControls'
+}                          from 'react-instantsearch-dom'
+import Div                 from 'shared/Basic/Div'
+import GenericCard         from 'shared/Cards/GenericCard'
+import {searchContext}     from 'shared/Containers/SearchController'
 
 const AdminShop = ({shop}) => {
     const {searchClient} = useContext(searchContext)
@@ -35,11 +32,6 @@ const AdminShop = ({shop}) => {
                             photo={product.photo}
                             theme={adminShopCardStyle}
                         />
-                        <GenericCardAdminControls
-                            edit={'/admin/shop/update'}
-                            destroyAction={'admin/attemptDestroyProduct'}
-                            slug={product.slug}
-                        />
                     </Div>
                 )}
             </>
@@ -52,11 +44,12 @@ const AdminShop = ({shop}) => {
         >
             {shop.length > 0 && (
                 <Div theme={searchWrapperStyle}>
-                    <SearchBox/>
+                    <SearchBox autoFocus/>
+                    <AdminCreateButton url={'/create/product'}/>
                 </Div>
             )}
             <Div theme={adminPostsInnerWrapperStyle}>
-                <Hits />
+                <Hits/>
             </Div>
 
         </InstantSearch>

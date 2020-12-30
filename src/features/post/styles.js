@@ -20,9 +20,7 @@ export const postsWrapperStyle = {
         flexDirection: column
     }
 }
-export const postFormStyle = {
-    width: [1100, .7, '100%']
-}
+
 export const postWrapperStyle = {
     display: flex,
     flexDirection: column,

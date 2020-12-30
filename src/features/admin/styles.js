@@ -11,11 +11,8 @@ import {
     black,
     center,
     column,
-    fixed,
     flex,
     flexEnd,
-    flexStart,
-    inlineFlex,
     none,
     pointer,
     relative,
@@ -25,16 +22,7 @@ import {
 }                          from 'utils/themer'
 import {postsWrapperStyle} from '../post/styles'
 
-export const adminWrapperStyle = {
-    width: '100%',
-    display: 'grid',
-    gridTemplateColumns: '1fr 4fr',
-    gridGap: sv(30),
-    mobile: {
-        display: flex,
-        flexDirection: column
-    }
-}
+
 export const adminPostsInnerWrapperStyle = {
     ...postsWrapperStyle,
     width: '100%',
@@ -63,12 +51,6 @@ export const adminPostCardStyle = {
         lineHeight: [22, .7, 22]
     }
 }
-export const adminDashboardStyle = {
-    heading: {
-        margin: 0,
-        fontFamily: globals.fonts.fancy,
-    }
-}
 export const adminCardControlsButtonWrapperStyle = {
     display: flex,
     flexDirection: row,
@@ -88,30 +70,18 @@ export const adminCardControlsButtonStyle = {
 }
 export const adminCreateButtonStyle = {
     ...adminCardControlsButtonStyle,
-    display: inlineFlex,
-    alignSelf: flexStart,
-    marginBottom: [20, .7, 20],
-    marginLeft: 0,
-    marginTop: 0
-}
-export const adminControlPanelStyle = {
-    position: relative,
     display: flex,
-    flexDirection: column,
-
-}
-export const adminControlPanelInnerStyle = {
-    position: fixed,
-    background: '#f8f8f8',
-    display: flex,
-    flexDirection: column,
-    border: '1px solid #dadce0',
-    boxShadow: 'inset 0px 0px 4px #d9d9d9',
-    height: [500, .7, 'auto'],
-    width: ['100%', globals.style.layoutScalingValue, '100%'],
-    padding: sv(20, globals.style.layoutScalingValue),
-    mobile: {
-        position: relative
+    alignItems: center,
+    justifyContent: center,
+    marginLeft: [20, .7, 20],
+    height: [50, .7, 50],
+    marginTop: 0,
+    child: {
+        selector: '> svg',
+        position: relative,
+        top: [-1, .7, -1],
+        marginRight: [10, .7, 10],
+        marginLeft: [10, .7, 10]
     }
 }
 export const adminMenuStyle = {
@@ -163,7 +133,6 @@ export const adminOrderWrapperStyle = {
         flexDirection: column
     }
 }
-
 export const adminFormWrapperStyle = {
     width: '100%'
 }
@@ -191,12 +160,10 @@ export const orderStatusFilterStyle = isActive => {
     }
 
 }
-
 export const orderStatusFilterWrapperStyle = {
     display: flex,
     marginBottom: [50, .7, 50]
 }
-
 export const orderStatusActiveIndicatorStyle = {
     position: absolute,
     left: 0,
@@ -207,14 +174,23 @@ export const orderStatusActiveIndicatorStyle = {
 }
 
 export const searchWrapperStyle = {
+    display: flex,
     marginBottom: [50, .7, 50],
     child: [
         {
             selector: 'input',
             ...defaultInputStyle,
             border: `1px solid ${globals.colors.borderColor}`,
-            maxWidth: [500, .7, '100%'],
-            borderRadius: [5, .7, 5]
+            width: [500, .7, '100%'],
+            borderRadius: [5, .7, 5],
+            hover: {
+                after: {
+                    content: none
+                },
+                before: {
+                    content: none
+                }
+            }
         },
         {
             selector: 'form',

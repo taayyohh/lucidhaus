@@ -1,5 +1,5 @@
-import {headerMenu}        from 'config/menus'
-import {mobileFlag}        from 'features/site/siteSlice'
+import {headerMenu} from 'config/menus/header'
+import {mobileFlag} from 'features/site/siteSlice'
 import React, {useContext} from 'react'
 import {useSelector}       from 'react-redux'
 import Div                 from 'shared/Basic/Div'

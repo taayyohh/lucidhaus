@@ -1,13 +1,14 @@
 import {productFieldTypes}     from 'config/fields/product'
+import AdminDashboardWrapper   from 'features/admin/AdminDashboardWrapper'
 import React, {useEffect}      from 'react'
 import 'react-image-crop/dist/ReactCrop.css'
 import {
     useDispatch,
     useSelector
 }                              from 'react-redux'
-import GenericFormik         from 'shared/Forms/GenericFormik'
-import AdminDashboardWrapper from 'features/admin/AdminDashboardWrapper'
-import ContentWrapper        from 'shared/Layout/ContentWrapper'
+import DangerZone              from 'shared/Controls/DangerZone'
+import GenericFormik           from 'shared/Forms/GenericFormik'
+import ContentWrapper          from 'shared/Layout/ContentWrapper'
 import {adminFormWrapperStyle} from './styles'
 
 const UpdateProduct = () => {
@@ -59,6 +60,10 @@ const UpdateProduct = () => {
                     buttonText={'Update'}
                     theme={adminFormWrapperStyle}
                     enableReinitialize={true}
+                />
+                <DangerZone
+                    destroyAction={'admin/attemptDestroyProduct'}
+                    slug={slug}
                 />
             </AdminDashboardWrapper>
         </ContentWrapper>

@@ -3,6 +3,7 @@ import {
     globals
 }                         from 'config/styles'
 import {genericCardStyle} from 'shared/Cards/styles'
+import {genericFormStyle} from 'shared/Forms/styles'
 import {
     black,
     flexEnd,
@@ -11,10 +12,9 @@ import {
     none,
     pointer,
     sv,
-    transparent,
     uppercase,
     white
-} from 'utils/themer'
+}                         from 'utils/themer'
 
 export const orderCardWrapperStyle = {
     ...genericCardStyle,
@@ -92,13 +92,11 @@ export const deleteButtonStyle = {
     }
 }
 
-export const removeFromCartButtonStyle = {
-    border: none,
-    background: transparent,
-    textDecoration: 'underline',
-    alignSelf: flexEnd,
-    hover: {
-        color: colorPalette.purple,
-        cursor: pointer
-    }
+export const dangerZoneStyle = {
+    ...genericFormStyle,
+    marginTop: [50, .7, 50],
+    borderColor: colorPalette.brightRed,
+    borderRadius: [5, .7, 5]
 }
+
+export const dangerZoneButtonStyle = {}

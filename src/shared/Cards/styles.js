@@ -80,14 +80,11 @@ export const genericCardStyle = {
     display: flex,
     flexDirection: column,
     boxSizing: borderBox,
-    //  background: '#f8f8f8',
+  //   background: '#fdfdfd',
     borderRadius: '5px',
-    paddingTop: [20, .7, 20],
     paddingBottom: [20, .7, 20],
-    paddingLeft: [20, .7, 20],
-    paddingRight: [20, .7, 20],
     borderBottom: `1px solid #dadce0`,
-    boxShadow: `0px 1px 1px #dadce0`,
+  //  boxShadow: `0px 1px 1px #dadce0`,
     textDecoration: none,
     transition: 'background-color 500ms ease, border-color 500ms ease',
     hover: {
@@ -101,20 +98,20 @@ export const genericCardImageStyle = {
 }
 export const genericCardDetailImageWrapperStyle = {
     height: auto,
-    width: [500, globals.style.layoutScalingValue, '100%'],
-    marginLeft: '0 auto',
-    alignSelf: center
 }
+
 export const genericCardImageWrapperStyle = {
     overflow: hidden,
-    border: '1px solid #e9e8e8',
-    height: [250, globals.style.layoutScalingValue, 250],
+    height: auto,
+    display: flex,
     width: '100%'
 }
 export const genericCardNameStyle = {
     font: globals.fonts.sans,
-    size: [24, .7, 24],
+    size: [28, .7, 28],
     lineHeight: [32, .7, 32],
+    weight: 300,
+    letterSpacing: [.2, .7, .2],
     textDecoration: none,
     paddingTop: [20, .7, 20],
     paddingBottom: [10, .7, 10],
@@ -122,7 +119,9 @@ export const genericCardNameStyle = {
 }
 
 export const genericCardTextWrapperStyle = {
-    paddingLeft: [25, globals.style.layoutScalingValue, 25],
+    display: flex,
+    flexDirection: column,
+    alignItems: flexEnd,
     paddingRight: [25, globals.style.layoutScalingValue, 25],
     paddingBottom: [30, globals.style.layoutScalingValue, 30],
     boxSizing: borderBox,

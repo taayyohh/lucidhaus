@@ -1,40 +1,38 @@
+import ShopWrapper        from 'features/shop/ShopWrapper'
 import React, {useEffect} from 'react'
 import {
     useDispatch,
     useSelector
 }                         from 'react-redux'
-import Div                from 'shared/Basic/Div'
-import ShopCard           from 'shared/Cards/ShopCard'
+import GenericCard        from 'shared/Cards/GenericCard'
 import ContentWrapper     from 'shared/Layout/ContentWrapper'
-import {shopWrapperStyle} from './styles'
-
 
 const Shop = () => {
-    const {shop} = useSelector(state => state.shop)
+    const {shop, productCategories} = useSelector(state => state.shop)
     const dispatch = useDispatch()
 
     useEffect(() => {
         dispatch({type: 'shop/getShop'})
+        dispatch({type: 'shop/getProductCategories'})
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (
         <ContentWrapper>
-            <Div theme={shopWrapperStyle}>
+            <ShopWrapper>
                 {shop && shop.map(
                     product => product.isPublished && (
-                        <ShopCard
+                        <GenericCard
                             key={product.slug}
                             slug={`shop/${product.slug}`}
                             name={product.name}
                             photo={product.photo}
                             price={product.price}
-                            layoutId={product._id}a
                         />
                     ))
                 }
-            </Div>
+            </ShopWrapper>
         </ContentWrapper>
     )
 }

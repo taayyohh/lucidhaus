@@ -1,5 +1,8 @@
-import {signUpFieldTypes} from 'config/fields/signUp'
-import {validateSignup}   from 'config/fields/validation'
+import {
+    signUpFieldTypes,
+    validateSignup
+}                       from 'config/fields/signUp'
+import {signUpFormStyle}  from 'features/user/styles'
 import React              from 'react'
 import GenericFormik      from 'shared/Forms/GenericFormik'
 import ContentWrapper     from 'shared/Layout/ContentWrapper'
@@ -15,6 +18,7 @@ const SignUp = () => {
                 dispatchAction={'user/signUp'}
                 formHeading={'Sign Up'}
                 buttonText={'Sign Up'}
+                theme={signUpFormStyle}
             />
         </ContentWrapper>
     )

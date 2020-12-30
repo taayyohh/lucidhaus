@@ -1,5 +1,7 @@
-import {orderFieldTypes}         from 'config/fields/order'
-import {validateCheckoutAddress} from 'config/fields/validation'
+import {
+    orderFieldTypes,
+    validateCheckoutAddress
+}                                from 'config/fields/order'
 import CheckoutSection           from 'features/shop/CheckoutSection'
 import {checkoutFormStyle}       from 'features/shop/styles'
 import React                     from 'react'

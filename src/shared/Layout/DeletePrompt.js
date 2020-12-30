@@ -45,10 +45,16 @@ const DeletePrompt = ({destroyAction}) => {
                                     <Div>Clicking this button will permanently delete this post</Div>
                                     <Div
                                         theme={deleteButtonStyle}
-                                        onClick={() => dispatch({
-                                            type: destroyAction,
-                                            payload: {_id: _id, token: token, slug: confirmDelete.slug}
-                                        })}
+                                        onClick={
+                                            () => {
+                                                dispatch({
+                                                    type: destroyAction,
+                                                    payload: {_id: _id, token: token, slug: confirmDelete.slug}
+                                                })
+                                              //  index.deleteObject('objectId')
+                                            }
+
+                                        }
                                     >
                                         Delete
                                     </Div>

@@ -14,6 +14,8 @@
  * cropWidth, cropWidth: set the height and width of cropper tool
  */
 
+import * as Yup from 'yup'
+
 export const signInFieldTypes = [
     {
         name: 'email',
@@ -26,3 +28,19 @@ export const signInFieldTypes = [
         type: 'password'
     }
 ]
+/**
+ *
+ * Validation Objects written with Yup
+ * https://github.com/jquense/yup#api
+ *
+ */
+
+export const validateSignin = Yup.object().shape({
+    email: Yup
+        .string()
+        .email('Invalid email')
+        .required('*'),
+    password: Yup
+        .string()
+        .required('*')
+})

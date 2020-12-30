@@ -1,5 +1,8 @@
-import {signInFieldTypes}  from 'config/fields/signIn'
-import {validateSignin}    from 'config/fields/validation'
+import {
+    signInFieldTypes,
+    validateSignin
+}                       from 'config/fields/signIn'
+import {signUpFormStyle}   from 'features/user/styles'
 import React, {useEffect}  from 'react'
 import {useSelector}       from 'react-redux'
 import {history}           from 'redux/store'
@@ -30,6 +33,7 @@ const SignIn = () => {
                     dispatchAction={'user/signIn'}
                     formHeading={'Sign In'}
                     buttonText={'Sign in'}
+                    theme={signUpFormStyle}
                 />
                 {!isAuthenticated && (
                     <Div theme={signUpPromptStyle}>

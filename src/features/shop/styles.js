@@ -1,21 +1,23 @@
 import {
     colorPalette,
     globals
-}                          from 'config/styles'
-import {postTitleStyle}    from 'features/post/styles'
+}                       from 'config/styles'
+import {postTitleStyle} from 'features/post/styles'
 import {
+    auto,
+    black,
     borderBox,
     center,
     column,
     flex,
     grid,
     none,
+    pointer,
     relative,
     sv,
     transparent,
     uppercase
-}                          from 'utils/themer'
-import {postsWrapperStyle} from '../post/styles'
+} from 'utils/themer'
 
 
 export const checkoutDropIn = {
@@ -47,10 +49,59 @@ export const checkoutSectionStyle = {
 }
 
 export const shopWrapperStyle = {
-    ...postsWrapperStyle,
-    gridTemplateColumns: '1fr 1fr 1fr 1fr',
+    display: flex,
+    width: '100%'
+
+}
+
+export const shopLeftColumnStyle = {
+    width: [400, globals.style.layoutScalingValue, '100%'],
+    marginRight: auto
+}
+
+export const shopMenuStyle = {
+    position: 'fixed',
+    width: [300, globals.style.layoutScalingValue, '100%'],
+    borderRight: `1px solid ${globals.colors.borderColor}`
+}
+
+export const shopHeadingStyle = {
+    size: [42, .7, 28],
+    weight: 300,
+    font: globals.fonts.fancy,
+    child: {
+        selector: 'a',
+        textDecoration: none,
+        color: black,
+        hover: {
+            color: globals.colors.linkHoverColor
+        }
+    }
+
+}
+
+export const shopRightColumnStyle = {
+    display: grid,
+    maxWidth: [1000, globals.style.layoutScalingValue, '100%'],
+    width: auto,
+    gridTemplateColumns: '1fr 1fr',
     gridGap: sv(50),
 }
+
+export const shopCategoryListStyle = {
+    paddingLeft: [25, .7, '0'],
+    paddingTop: [10, .7, 10]
+}
+
+export const shopCategoryStyle = {
+    size: [24, .7, 24],
+    lineHeight: [40, .7, 40],
+    hover: {
+        color: globals.colors.linkHoverColor,
+        cursor: pointer
+    }
+}
+
 export const cartStyle = {
     display: grid,
     gridTemplateColumns: '1fr 4fr',
@@ -124,6 +175,14 @@ export const productCategoryStyle = {
 
 export const productTitleStyle = {
     ...postTitleStyle
+}
+
+export const productImageWrapperStyle = {
+
+}
+
+export const productImageStyle = {
+    margin: '0 auto'
 }
 
 export const checkoutFormStyle = {

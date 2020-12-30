@@ -1,3 +1,5 @@
+import AdminDashboardWrapper from 'features/admin/AdminDashboardWrapper'
+import AdminShop             from 'features/admin/AdminShop'
 import React, {
     useContext,
     useEffect
@@ -6,10 +8,7 @@ import {
     useDispatch,
     useSelector
 }                            from 'react-redux'
-import AdminShop             from 'features/admin/AdminShop'
 import {searchContext}       from 'shared/Containers/SearchController'
-import DeletePrompt          from 'shared/Layout/DeletePrompt'
-import AdminDashboardWrapper from 'features/admin/AdminDashboardWrapper'
 import ContentWrapper        from 'shared/Layout/ContentWrapper'
 import DashboardInfo         from 'shared/Layout/Dashboard/DashboardInfo'
 
@@ -20,6 +19,7 @@ const ManageShop = () => {
     const {productsIndex} = useContext(searchContext)
 
     useEffect(() => {
+        console.log('shop', shop)
         if (shop.length > 0)
             productsIndex.saveObjects(shop)
                 .then(({objectIDs}) => {
@@ -46,7 +46,6 @@ const ManageShop = () => {
                     description={'Click to edit.'}
                 />
                 <AdminShop shop={shop}/>
-                <DeletePrompt destroyAction={'admin/destroyProduct'}/>
             </AdminDashboardWrapper>
         </ContentWrapper>
     )

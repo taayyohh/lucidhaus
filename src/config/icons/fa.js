@@ -4,6 +4,7 @@ import {
     faHome,
     faMinusCircle,
     faNewspaper,
+    faPlus,
     faPlusCircle,
     faReceipt,
     faSave,
@@ -17,21 +18,23 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 
 export const
-    shoppingCart = faShoppingCart,
-    user = faUser,
-    trashAlt = faTrashAlt,
+    cogs = faCogs,
+    fileAudio = faFileAudio,
+    home = faHome,
     minusCircle = faMinusCircle,
+    newsPaper = faNewspaper,
+    plus = faPlus,
     plusCircle = faPlusCircle,
     receipt = faReceipt,
-    userCog = faUserCog,
+    save = faSave,
+    shoppingBag = faShoppingBag,
+    shoppingCart = faShoppingCart,
     signOut = faSignOutAlt,
     store = faStore,
-    newsPaper = faNewspaper,
-    fileAudio = faFileAudio,
-    save = faSave,
-    cogs = faCogs,
-    home = faHome,
-    shoppingBag = faShoppingBag
+    trashAlt = faTrashAlt,
+    user = faUser,
+    userCog = faUserCog
+
 
 
 

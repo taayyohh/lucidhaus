@@ -1,5 +1,5 @@
 import {userFieldTypes}    from 'config/fields/user'
-import {userDashboardMenu} from 'config/menus'
+import {userDashboardMenu} from 'config/menus/userDashboard'
 import React               from 'react'
 import {useSelector}       from 'react-redux'
 import GenericFormik       from 'shared/Forms/GenericFormik'

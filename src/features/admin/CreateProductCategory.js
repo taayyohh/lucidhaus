@@ -1,10 +1,9 @@
 import {productCategoryField} from 'config/fields/productCategory'
+import AdminDashboardWrapper  from 'features/admin/AdminDashboardWrapper'
 import React                  from 'react'
 import {useSelector}          from 'react-redux'
-import GenericFormik         from 'shared/Forms/GenericFormik'
-import AdminDashboardWrapper from 'features/admin/AdminDashboardWrapper'
-import ContentWrapper        from 'shared/Layout/ContentWrapper'
-import {postFormStyle}        from '../post/styles'
+import GenericFormik          from 'shared/Forms/GenericFormik'
+import ContentWrapper         from 'shared/Layout/ContentWrapper'
 
 const CreateProductCategory = () => {
     const {_id, token} = useSelector(state => state.user)
@@ -20,7 +19,6 @@ const CreateProductCategory = () => {
                     dispatchAction={'shop/createProductCategory'}
                     formHeading={'Create Product Category'}
                     buttonText={'Create'}
-                    theme={postFormStyle}
                 />
             </AdminDashboardWrapper>
         </ContentWrapper>

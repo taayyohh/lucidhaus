@@ -1,13 +1,12 @@
-import {productFieldTypes} from 'config/fields/product'
-import React, {useEffect}  from 'react'
+import {productFieldTypes}   from 'config/fields/product'
+import AdminDashboardWrapper from 'features/admin/AdminDashboardWrapper'
+import React, {useEffect}    from 'react'
 import {
     useDispatch,
     useSelector
-}                          from 'react-redux'
+}                            from 'react-redux'
 import GenericFormik         from 'shared/Forms/GenericFormik'
-import AdminDashboardWrapper from 'features/admin/AdminDashboardWrapper'
 import ContentWrapper        from 'shared/Layout/ContentWrapper'
-import {postFormStyle}     from '../post/styles'
 
 const CreateProduct = () => {
     const dispatch = useDispatch()
@@ -34,10 +33,7 @@ const CreateProduct = () => {
     ]
 
     useEffect(() => {
-        dispatch({
-            type: 'shop/getProductCategories',
-            payload: {_id, token}
-        })
+        dispatch({type: 'shop/getProductCategories'})
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
@@ -54,7 +50,6 @@ const CreateProduct = () => {
                     dispatchAction={'admin/createProduct'}
                     formHeading={'Create Product'}
                     buttonText={'Create'}
-                    theme={postFormStyle}
                 />
             </AdminDashboardWrapper>
         </ContentWrapper>
