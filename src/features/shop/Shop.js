@@ -29,6 +29,8 @@ const Shop = () => {
                             name={product.name}
                             photo={product.photo}
                             price={product.price}
+                            productCategories={productCategories}
+                            productCategory={product.category}
                         />
                     ))
                 }

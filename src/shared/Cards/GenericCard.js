@@ -11,8 +11,11 @@ import {
     fadeIn,
     fadeOut,
     nOpacity
-}                        from 'shared/variables'
-import {excerpt}         from 'utils/helpers'
+} from 'shared/variables'
+import {
+    excerpt,
+    getNameById
+} from 'utils/helpers'
 import {
     genericCardDescriptionStyle,
     genericCardImageStyle,
@@ -20,12 +23,12 @@ import {
     genericCardNameStyle,
     genericCardStyle,
     genericCardTextWrapperStyle
-}                        from './styles'
+} from './styles'
 
 //TODO:code split elsewhere where necessary, define fallback component
 const S3Img = lazy(() => import('shared/Basic/S3Img'))
 
-const GenericCard = ({photo, name, slug, description, theme, price}) =>
+const GenericCard = ({photo, name, slug, description, productCategory, productCategories, price, theme}) =>
     <AnimatePresence>
         <MotionDiv initial={nOpacity} animate={fadeIn} exit={fadeOut}>
             <LinkSwitch
@@ -46,6 +49,12 @@ const GenericCard = ({photo, name, slug, description, theme, price}) =>
                     </MotionDiv>
                 )}
                 <Div theme={{...genericCardTextWrapperStyle, ...theme.textWrapper}}>
+                    {productCategories && (
+                        <MotionDiv
+                            theme={{...genericCardNameStyle, ...theme.name}}
+                            children={getNameById(productCategories, productCategory)}
+                        />
+                    )}
                     {name && (
                         <MotionDiv
                             theme={{...genericCardNameStyle, ...theme.name}}

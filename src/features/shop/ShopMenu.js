@@ -13,7 +13,7 @@ import Div                from 'shared/Basic/Div'
 import H2                 from 'shared/Basic/H2'
 import LinkSwitch         from 'shared/Basic/LinkSwitch'
 
-const ShopMenu = ({categories}) => {
+const ShopMenu = () => {
     const {productCategories} = useSelector(state => state.shop)
     const dispatch = useDispatch()
 
