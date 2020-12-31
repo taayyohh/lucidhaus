@@ -12,10 +12,9 @@ import {
     InstantSearch,
     SearchBox
 }                          from 'react-instantsearch-dom'
-import Div                      from 'shared/Basic/Div'
-import GenericCard              from 'shared/Cards/GenericCard'
-import {searchContext}          from 'shared/Containers/SearchController'
-import GenericCardAdminControls from 'shared/Controls/GenericCardAdminControls'
+import Div                 from 'shared/Basic/Div'
+import GenericCard         from 'shared/Cards/GenericCard'
+import {searchContext}     from 'shared/Containers/SearchController'
 
 const AdminPosts = ({posts}) => {
     const {searchClient} = useContext(searchContext)
@@ -34,11 +33,6 @@ const AdminPosts = ({posts}) => {
                             photo={post.photo}
                             theme={adminPostCardStyle}
                         />
-                        <GenericCardAdminControls
-                            edit={'/admin/posts/update'}
-                            destroyAction={'admin/attemptDestroyPost'}
-                            slug={post.slug}
-                        />
                     </Div>
                 )}
             </>
@@ -51,7 +45,7 @@ const AdminPosts = ({posts}) => {
         >
             {posts.length > 0 && (
                 <Div theme={searchWrapperStyle}>
-                    <SearchBox autoFocus />
+                    <SearchBox autoFocus/>
                     <AdminCreateButton url={'/create/post'}/>
                 </Div>
             )}

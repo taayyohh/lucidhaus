@@ -1,7 +1,8 @@
-import React         from 'react'
-import {useDispatch} from 'react-redux'
-import Div           from 'shared/Basic/Div'
-import DeletePrompt  from 'shared/Layout/DeletePrompt'
+import AdminDashboardWrapper from 'features/admin/AdminDashboardWrapper'
+import React                 from 'react'
+import {useDispatch}         from 'react-redux'
+import Div          from 'shared/Basic/Div'
+import DeletePrompt from 'shared/Controls/DeletePrompt'
 import {
     dangerZoneButtonStyle,
     dangerZoneHeadingStyle,
@@ -10,9 +11,9 @@ import {
     dangerZoneItemHeadingStyle,
     dangerZoneItemWrapperStyle,
     dangerZoneStyle
-}                    from './styles'
+}                   from './styles'
 
-const DangerZone = ({destroyAction, slug, type, objectId, index, _id}) => {
+const DangerZone = ({destroyAction, slug, type, objectID, index, _id}) => {
     const dispatch = useDispatch()
 
     return (
@@ -34,11 +35,10 @@ const DangerZone = ({destroyAction, slug, type, objectId, index, _id}) => {
                     Delete
                 </Div>
             </Div>
-
             <DeletePrompt
                 destroyAction={'admin/destroyProduct'}
                 type={type}
-                objectId={objectId}
+                objectID={objectID}
                 index={index}
             />
         </Div>

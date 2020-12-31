@@ -11,13 +11,12 @@ import {
 import {searchContext}       from 'shared/Containers/SearchController'
 import ContentWrapper        from 'shared/Layout/ContentWrapper'
 import DashboardInfo         from 'shared/Layout/Dashboard/DashboardInfo'
-import DeletePrompt          from 'shared/Layout/DeletePrompt'
 
 const ManagePosts = () => {
     const {posts} = useSelector(state => state.post)
     const {confirmDelete} = useSelector(state => state.admin)
-    const dispatch = useDispatch()
     const {postsIndex} = useContext(searchContext)
+    const dispatch = useDispatch()
 
     useEffect(() => {
         if (posts.length > 0)
@@ -45,7 +44,6 @@ const ManagePosts = () => {
                     description={'Click to edit.'}
                 />
                 <AdminPosts posts={posts}/>
-                <DeletePrompt destroyAction={'admin/destroyPost'}/>
             </AdminDashboardWrapper>
         </ContentWrapper>
     )

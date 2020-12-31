@@ -13,7 +13,7 @@ const initialState = {
     notificationTheme: ''
 }
 
-export const siteSlice = createSlice({
+export const slice = createSlice({
     name: 'site',
     initialState: initialState,
     reducers: {
@@ -46,4 +46,4 @@ export const mobileFlag = createSelector(
     layout => layout === 'mobile'
 )
 
-export default siteSlice.reducer
+export default slice.reducer

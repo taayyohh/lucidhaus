@@ -14,7 +14,7 @@ const initialState = {
     purchaseHistory: []
 }
 
-export const userSlice = createSlice({
+export const slice = createSlice({
     name: 'user',
     initialState: initialState,
     reducers: {
@@ -91,4 +91,4 @@ export const userSlice = createSlice({
     },
 })
 
-export default userSlice.reducer
+export default slice.reducer

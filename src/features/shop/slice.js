@@ -15,7 +15,7 @@ const initialState = {
     updatedOrder: false
 }
 
-export const shopSlice = createSlice({
+export const slice = createSlice({
     name: 'shop',
     initialState: initialState,
     reducers: {
@@ -61,6 +61,9 @@ export const shopSlice = createSlice({
         emptyCart: (state) => {
             state.cart = []
         },
+        destroyProductSuccess: (state, action) => {
+            state.shop = state.shop.filter(item => item.objectID !== action.payload.objectID)
+        },
         getProductCategorySuccess: (state, action) => {
             state.productCategory = action.payload.productCategory
         },
@@ -80,4 +83,4 @@ export const shopSlice = createSlice({
 })
 
 
-export default shopSlice.reducer
+export default slice.reducer

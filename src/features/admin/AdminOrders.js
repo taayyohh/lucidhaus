@@ -5,7 +5,6 @@ import {orderCardStyle} from 'shared/Controls/styles'
 const AdminOrders = ({order}) => {
     return (
         <OrderCard
-            key={order._id}
             o={order}
             theme={orderCardStyle}
         />

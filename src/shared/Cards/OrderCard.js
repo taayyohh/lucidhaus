@@ -106,7 +106,7 @@ const OrderCard = ({o, theme}) => {
                         </Div>
                         <Div theme={orderCardProductsStyle}>
                             {o.products.map(p => (
-                                <Div key={p._id}>
+                                <Div key={p.name}>
                                     <Div>{p.name}</Div>
                                     <Div>{p.price} USD</Div>
                                     <Div>Quantity: {p.count}</Div>

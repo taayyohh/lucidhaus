@@ -69,9 +69,9 @@ const UpdateProduct = () => {
                 <DangerZone
                     destroyAction={'admin/attemptDestroyProduct'}
                     slug={slug}
-                    type={'product'}
-                    objectId={product.objectID}
+                    objectID={product.objectID}
                     index={productsIndex}
+                    type={'product'}
                 />
             </AdminDashboardWrapper>
         </ContentWrapper>

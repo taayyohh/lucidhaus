@@ -51,9 +51,7 @@ const AdminShop = ({shop}) => {
             <Div theme={adminPostsInnerWrapperStyle}>
                 <Hits/>
             </Div>
-
         </InstantSearch>
-
     )
 }
 

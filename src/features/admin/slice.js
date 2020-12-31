@@ -19,7 +19,7 @@ const initialState = {
     }
 }
 
-export const adminSlice = createSlice({
+export const slice = createSlice({
     name: 'admin',
     initialState: initialState,
     reducers: {
@@ -71,4 +71,4 @@ export const adminSlice = createSlice({
     },
 })
 
-export default adminSlice.reducer
+export default slice.reducer

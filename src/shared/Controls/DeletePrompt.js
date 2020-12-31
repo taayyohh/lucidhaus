@@ -10,7 +10,7 @@ import MotionDiv           from 'shared/Basic/MotionDiv'
 import {deleteButtonStyle} from 'shared/Controls/styles'
 import {defaultModalStyle} from 'shared/Layout/styles'
 
-const DeletePrompt = ({destroyAction, type, index, objectId}) => {
+const DeletePrompt = ({destroyAction, type, index, objectID}) => {
     const {_id, token} = useSelector(state => state.user)
     const {confirmDelete} = useSelector(state => state.admin)
     const {shouldDelete, destroy} = confirmDelete
@@ -40,20 +40,26 @@ const DeletePrompt = ({destroyAction, type, index, objectId}) => {
                                 </Div>
                             )}
 
-                            {destroy && (
+                            {destroy && !!objectID && (
                                 <>
                                     <Div>Clicking this button will permanently delete this {type}</Div>
                                     <Div
                                         theme={deleteButtonStyle}
                                         onClick={
-                                            () => {
-                                                dispatch({
-                                                    type: destroyAction,
-                                                    payload: {_id: _id, token: token, slug: confirmDelete.slug}
-                                                })
-                                               index.deleteObject(objectId)
-                                            }
-
+                                            () =>
+                                                index.deleteObject(objectID).then(() => {
+                                                        console.log('done')
+                                                        dispatch({
+                                                            type: destroyAction,
+                                                            payload: {
+                                                                _id: _id,
+                                                                objectID: objectID,
+                                                                token: token,
+                                                                slug: confirmDelete.slug
+                                                            }
+                                                        })
+                                                    }
+                                                )
                                         }
                                     >
                                         Delete

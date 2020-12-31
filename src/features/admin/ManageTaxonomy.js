@@ -4,7 +4,7 @@ import {
     useSelector
 }                    from 'react-redux'
 import AdminTaxonomy         from 'features/admin/AdminTaxonomy'
-import DeletePrompt          from 'shared/Layout/DeletePrompt'
+import DeletePrompt          from 'shared/Controls/DeletePrompt'
 import AdminDashboardWrapper from 'features/admin/AdminDashboardWrapper'
 import ContentWrapper from 'shared/Layout/ContentWrapper'
 import DashboardInfo  from 'shared/Layout/Dashboard/DashboardInfo'

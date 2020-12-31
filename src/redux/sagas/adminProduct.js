@@ -3,17 +3,18 @@ import {
     call,
     put,
     takeLatest
-}                   from 'redux-saga/effects'
+}                     from 'redux-saga/effects'
 import {
     addProduct,
-    deleteProduct,
+        deleteProduct,
     updateProduct
-}                   from 'services/apiProduct'
+}                     from 'services/apiProduct'
 import {
     getSignedRequest,
     uploadFile
-}                   from 'services/apiS3'
-import {updateItem} from 'utils/cartHelpers'
+}                     from 'services/apiS3'
+import {updateItem}      from 'utils/cartHelpers'
+import {resolvedPromise} from 'utils/helpers'
 
 export function* createProduct({payload}) {
     const {_id, token, name, description, photo, image, quantity, price, isPublished, category} = payload
@@ -35,7 +36,7 @@ export function* createProduct({payload}) {
         const createdProduct = yield call(addProduct, {_id: _id, token: token, product: product})
 
         if (!createdProduct.error) {
-            yield put({type: 'admin/createProductSuccess', createdProduct})
+            yield put({type: 'shop/getShop'})
             yield put(push('/admin/shop/update/' + createdProduct.slug))
 
         } else {
@@ -95,8 +96,12 @@ export function* attemptDestroyProduct({payload}) {
 
 export function* destroyProduct({payload}) {
     const destroyed = yield call(deleteProduct, payload)
+    const {objectID} = payload
+
     if (!destroyed.error) {
         yield put({type: 'admin/destroyProductSuccess'})
+        yield put({type: 'shop/destroyProductSuccess', payload: {objectID}})
+        yield put({type: 'shop/getShop'})
         yield put(push('/admin/shop'))
     } else {
         yield put({type: 'admin/destroyProductFailure'})

@@ -8,13 +8,13 @@ import {
 }                             from 'connected-react-router'
 import {createBrowserHistory} from 'history'
 import {createLogger}         from 'redux-logger'
-import createSagaMiddleware   from 'redux-saga'
-import adminReducer           from '../features/admin/adminSlice'
-import postReducer        from '../features/post/postSlice'
-import shopReducer            from '../features/shop/shopSlice'
-import siteReducer            from '../features/site/siteSlice'
-import userReducer            from '../features/user/userSlice'
-import rootSaga               from './sagas'
+import createSagaMiddleware from 'redux-saga'
+import adminReducer from 'features/admin/slice'
+import postReducer from 'features/post/slice'
+import shopReducer from 'features/shop/slice'
+import siteReducer from 'features/site/slice'
+import userReducer from 'features/user/slice'
+import rootSaga    from './sagas'
 
 export const history = createBrowserHistory()
 export const sagaMiddleware = createSagaMiddleware()

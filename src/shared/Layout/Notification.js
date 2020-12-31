@@ -5,7 +5,7 @@ import {
     useSelector
 }                                 from 'react-redux'
 import {
-    emptyPromise,
+    resolvedPromise,
     timeoutAsync
 }                                 from 'utils/helpers'
 import MotionDiv                  from 'shared/Basic/MotionDiv'
@@ -18,7 +18,7 @@ const Notification = () => {
     //TODO: can improve
     const clearNotification = async () => {
         await timeoutAsync(3000)
-        await emptyPromise(dispatch({type: 'site/clearNotification'}))
+        await resolvedPromise(dispatch({type: 'site/clearNotification'}))
         await clearTimeout(timeoutAsync)
     }
 

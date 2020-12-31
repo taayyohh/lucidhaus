@@ -6,7 +6,7 @@ const initialState = {
     error: false
 }
 
-export const postSlice = createSlice({
+export const slice = createSlice({
     name: 'post',
     initialState: initialState,
     reducers: {
@@ -29,4 +29,4 @@ export const postSlice = createSlice({
 })
 
 
-export default postSlice.reducer
+export default slice.reducer

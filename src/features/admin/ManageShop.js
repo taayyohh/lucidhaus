@@ -14,9 +14,8 @@ import DashboardInfo         from 'shared/Layout/Dashboard/DashboardInfo'
 
 const ManageShop = () => {
     const {shop} = useSelector(state => state.shop)
-    const {confirmDelete} = useSelector(state => state.admin)
-    const dispatch = useDispatch()
     const {productsIndex} = useContext(searchContext)
+    const dispatch = useDispatch()
 
     useEffect(() => {
         if (shop.length > 0)
@@ -28,14 +27,13 @@ const ManageShop = () => {
                     console.log(err)
                 })
 
-    }, [shop])
+    }, [])
 
     useEffect(() => {
         dispatch({type: 'shop/getShop'})
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [confirmDelete])
-
+    }, [productsIndex])
 
     return (
         <ContentWrapper>
