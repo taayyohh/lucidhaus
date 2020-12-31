@@ -6,18 +6,24 @@ import {genericCardStyle} from 'shared/Cards/styles'
 import {genericFormStyle} from 'shared/Forms/styles'
 import {
     black,
+    center,
+    column,
+    flex,
     flexEnd,
     flexStart,
     grid,
     none,
     pointer,
+    spaceBetween,
     sv,
     uppercase,
     white
-}                         from 'utils/themer'
+} from 'utils/themer'
 
 export const orderCardWrapperStyle = {
     ...genericCardStyle,
+    borderRadius: [5, .7, 5],
+    padding: [30, .7, 30],
     hover: {
         ...genericCardStyle.hover,
         cursor: pointer
@@ -44,6 +50,9 @@ export const orderCardProductsStyle = {
     gridGap: sv(20)
 }
 
+export const orderCardStyle = {
+    border: `1px solid ${globals.colors.borderColor}`
+}
 
 export const genericButtonStyle = {
     border: `1px solid #dadce0`,
@@ -99,4 +108,45 @@ export const dangerZoneStyle = {
     borderRadius: [5, .7, 5]
 }
 
-export const dangerZoneButtonStyle = {}
+export const dangerZoneHeadingStyle = {
+    size: [30, .7, 30],
+    marginBottom: [20, .7, 20]
+}
+
+export const dangerZoneButtonStyle = {
+    border: `1px solid ${globals.colors.borderColor}`,
+    borderRadius: [5, .7, 5],
+    color: colorPalette.brightRed,
+    alignSelf: center,
+    padding: `${sv(10)} ${sv(20)}`,
+    letterSpacing: [1, .7, 1],
+    hover: {
+        color: white,
+        backgroundColor: colorPalette.brightRed,
+        cursor: pointer
+    }
+}
+
+export const dangerZoneInnerWrapperStyle = {
+    display: flex,
+    width: '100%',
+    justifyContent: spaceBetween,
+    borderBottom: `1px solid ${globals.colors.borderColor}`
+}
+
+export const dangerZoneItemWrapperStyle = {
+    display: flex,
+    flexDirection: column,
+    paddingBottom: [20, .7, 20],
+    paddingTop: [20, .7, 20]
+}
+
+export const dangerZoneItemHeadingStyle = {
+    weight:800,
+    size: [18, .7, 18],
+    letterSpacing: [.3, .7, .3]
+}
+
+export const dangerZoneItemDescriptionStyle = {
+    weight: 300
+}

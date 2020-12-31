@@ -1,4 +1,5 @@
 import ShopWrapper        from 'features/shop/ShopWrapper'
+import {shopCardStyle}    from 'features/shop/styles'
 import React, {useEffect} from 'react'
 import {
     useDispatch,
@@ -31,6 +32,7 @@ const Shop = () => {
                             price={product.price}
                             productCategories={productCategories}
                             productCategory={product.category}
+                            theme={shopCardStyle}
                         />
                     ))
                 }

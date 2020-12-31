@@ -19,7 +19,6 @@ const ManageShop = () => {
     const {productsIndex} = useContext(searchContext)
 
     useEffect(() => {
-        console.log('shop', shop)
         if (shop.length > 0)
             productsIndex.saveObjects(shop)
                 .then(({objectIDs}) => {

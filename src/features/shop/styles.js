@@ -17,7 +17,7 @@ import {
     sv,
     transparent,
     uppercase
-} from 'utils/themer'
+}                       from 'utils/themer'
 
 
 export const checkoutDropIn = {
@@ -177,9 +177,7 @@ export const productTitleStyle = {
     ...postTitleStyle
 }
 
-export const productImageWrapperStyle = {
-
-}
+export const productImageWrapperStyle = {}
 
 export const productImageStyle = {
     margin: '0 auto'
@@ -206,14 +204,24 @@ export const checkoutFormStyle = {
     }
 }
 
-export const paymentStyle = {
-    child: [
-        {
-            selector: '.braintree-placeholder',
-            display: none
-        }
-    ]
+export const shopCardStyle = {
+    border: `1px solid ${globals.colors.borderColor}`,
+    category: {
+        marginTop: [20, .7, 20],
+        letterSpacing: [1, .7, 1],
+        color: colorPalette.purple
+    },
+    name: {
+        // marginRight: auto,
+        // paddingLeft: [25, .7, 25],
+        paddingBottom: 0,
+        size: [36, .7, 36]
+    },
+    price: {
+        marginTop: [20, .7, 20],
+        paddingTop: [10, .7, 10],
+        borderTop: `1px solid #000`
+        // marginRight: auto,
+        // paddingLeft: [25, .7, 25]
+    }
 }
-
-
-export const relatedProductStyle = {}

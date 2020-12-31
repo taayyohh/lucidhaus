@@ -22,7 +22,7 @@ const HeaderMenuItems = ({items}) => {
                     {item.title}
                     {url.includes(item.url.substring(1)) && (
                         <MotionDiv
-                            layoutId={'header-menu-indicator'}
+                            layoutId={'headerMenuIndicator'}
                             theme={headerMenuActiveIndicator}
                         />
                     )}

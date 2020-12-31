@@ -12,9 +12,10 @@ import {
     hidden,
     none,
     sv,
+    uppercase,
     white,
     wrap
-}                from 'utils/themer'
+} from 'utils/themer'
 
 export const productCardImageStyle = {
     width: 80,
@@ -113,9 +114,25 @@ export const genericCardNameStyle = {
     weight: 300,
     letterSpacing: [.2, .7, .2],
     textDecoration: none,
-    paddingTop: [20, .7, 20],
+    paddingTop: [5, .7, 5],
     paddingBottom: [10, .7, 10],
     color: black
+}
+
+export const genericCardPriceStyle = {
+    font: globals.fonts.sans,
+    size: [28, .7, 28],
+    lineHeight: [32, .7, 32],
+    weight: 300,
+    letterSpacing: [.2, .7, .2],
+    textDecoration: none,
+    paddingTop: [5, .7, 5],
+    paddingBottom: [10, .7, 10],
+    color: black,
+    child: {
+        selector: '> span',
+        size: [20, .7, 20]
+    }
 }
 
 export const genericCardTextWrapperStyle = {
@@ -123,8 +140,16 @@ export const genericCardTextWrapperStyle = {
     flexDirection: column,
     alignItems: flexEnd,
     paddingRight: [25, globals.style.layoutScalingValue, 25],
-    paddingBottom: [30, globals.style.layoutScalingValue, 30],
+    paddingBottom: [10, globals.style.layoutScalingValue, 10],
+    paddingTop: [20, .7, 20],
     boxSizing: borderBox,
+}
+
+export const genericCardProductCategoryStyle = {
+    textTransform: uppercase,
+    size: [18, .7, 18],
+    letterSpacing: [0.7, .7, 0.7],
+    color: black
 }
 
 export const genericCardDescriptionStyle = {

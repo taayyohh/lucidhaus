@@ -23,7 +23,7 @@ import {
 import {flex}                  from 'utils/themer'
 import {orderCardWrapperStyle} from '../Controls/styles'
 
-const OrderCard = ({o}) => {
+const OrderCard = ({o, theme}) => {
     const dispatch = useDispatch()
     const {statusValues} = useSelector(state => state.shop)
     const {_id, token} = useSelector(state => state.user)
@@ -57,7 +57,7 @@ const OrderCard = ({o}) => {
     return (
         <AnimatePresence>
             <MotionDiv initial={nOpacity} animate={fadeIn} exit={fadeOut}>
-                <Div theme={orderCardWrapperStyle}>
+                <Div theme={{...orderCardWrapperStyle, ...theme}}>
                     <Div>
 
                         <Div theme={orderDetailWrapperStyle}>

@@ -10,7 +10,7 @@ import MotionDiv           from 'shared/Basic/MotionDiv'
 import {deleteButtonStyle} from 'shared/Controls/styles'
 import {defaultModalStyle} from 'shared/Layout/styles'
 
-const DeletePrompt = ({destroyAction}) => {
+const DeletePrompt = ({destroyAction, type, index, objectId}) => {
     const {_id, token} = useSelector(state => state.user)
     const {confirmDelete} = useSelector(state => state.admin)
     const {shouldDelete, destroy} = confirmDelete
@@ -29,20 +29,20 @@ const DeletePrompt = ({destroyAction}) => {
                                         theme={deleteButtonStyle}
                                         onClick={() => dispatch({type: 'admin/denyDestroyItem'})}
                                     >
-                                        Do <strong>not</strong> delete this post
+                                        Do <strong>not</strong> delete this {type}
                                     </Div>
                                     <Div
                                         theme={deleteButtonStyle}
                                         onClick={() => dispatch({type: 'admin/acceptDestroyItem'})}
                                     >
-                                        Yes, delete this post
+                                        Yes, delete this {type}
                                     </Div>
                                 </Div>
                             )}
 
                             {destroy && (
                                 <>
-                                    <Div>Clicking this button will permanently delete this post</Div>
+                                    <Div>Clicking this button will permanently delete this {type}</Div>
                                     <Div
                                         theme={deleteButtonStyle}
                                         onClick={
@@ -51,7 +51,7 @@ const DeletePrompt = ({destroyAction}) => {
                                                     type: destroyAction,
                                                     payload: {_id: _id, token: token, slug: confirmDelete.slug}
                                                 })
-                                              //  index.deleteObject('objectId')
+                                               index.deleteObject(objectId)
                                             }
 
                                         }

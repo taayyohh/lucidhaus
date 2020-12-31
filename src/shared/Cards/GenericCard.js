@@ -1,21 +1,25 @@
-import {AnimatePresence} from 'framer-motion'
+import {AnimatePresence}                 from 'framer-motion'
 import React, {
     lazy,
     Suspense
-}                        from 'react'
-import Div               from 'shared/Basic/Div'
-import LinkSwitch        from 'shared/Basic/LinkSwitch'
-import MotionDiv         from 'shared/Basic/MotionDiv'
-import RichText          from 'shared/Basic/RichText'
+}                                        from 'react'
+import Div                               from 'shared/Basic/Div'
+import LinkSwitch                        from 'shared/Basic/LinkSwitch'
+import MotionDiv                         from 'shared/Basic/MotionDiv'
+import RichText                          from 'shared/Basic/RichText'
+import {
+    genericCardPriceStyle,
+    genericCardProductCategoryStyle
+} from 'shared/Cards/styles'
 import {
     fadeIn,
     fadeOut,
     nOpacity
-} from 'shared/variables'
+}                                        from 'shared/variables'
 import {
     excerpt,
     getNameById
-} from 'utils/helpers'
+}                                        from 'utils/helpers'
 import {
     genericCardDescriptionStyle,
     genericCardImageStyle,
@@ -23,7 +27,7 @@ import {
     genericCardNameStyle,
     genericCardStyle,
     genericCardTextWrapperStyle
-} from './styles'
+}                                        from './styles'
 
 //TODO:code split elsewhere where necessary, define fallback component
 const S3Img = lazy(() => import('shared/Basic/S3Img'))
@@ -51,7 +55,7 @@ const GenericCard = ({photo, name, slug, description, productCategory, productCa
                 <Div theme={{...genericCardTextWrapperStyle, ...theme.textWrapper}}>
                     {productCategories && (
                         <MotionDiv
-                            theme={{...genericCardNameStyle, ...theme.name}}
+                            theme={{...genericCardProductCategoryStyle, ...theme.productCategory}}
                             children={getNameById(productCategories, productCategory)}
                         />
                     )}
@@ -63,9 +67,11 @@ const GenericCard = ({photo, name, slug, description, productCategory, productCa
                     )}
                     {price && (
                         <MotionDiv
-                            theme={{...genericCardNameStyle, ...theme.name}}
-                            children={price}
-                        />
+                            theme={{...genericCardPriceStyle, ...theme.price}}
+                        >
+                            {price}
+                            <span>{' USD'}</span>
+                        </MotionDiv>
                     )}
                     {description && (
                         <RichText

@@ -1,5 +1,6 @@
 import {
     faCogs,
+    faDollarSign,
     faFileAudio,
     faHome,
     faMinusCircle,
@@ -19,6 +20,7 @@ import {
 
 export const
     cogs = faCogs,
+    usd = faDollarSign,
     fileAudio = faFileAudio,
     home = faHome,
     minusCircle = faMinusCircle,

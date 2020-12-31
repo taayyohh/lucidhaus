@@ -27,11 +27,12 @@ export const adminPostsInnerWrapperStyle = {
     ...postsWrapperStyle,
     width: '100%',
     display: 'grid',
-    gridTemplateColumns: '1fr 1fr 1fr',
+    gridTemplateColumns: '1fr 1fr 1fr 1fr 1fr',
     gridGap: sv(30),
 }
 export const adminPostCardWrapperStyle = {}
 export const adminPostCardStyle = {
+    display: flex,
     width: '100%',
     mobile: {
         display: flex
@@ -215,3 +216,4 @@ export const searchWrapperStyle = {
         }
     ]
 }
+

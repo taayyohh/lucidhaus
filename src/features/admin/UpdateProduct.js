@@ -1,11 +1,15 @@
 import {productFieldTypes}     from 'config/fields/product'
 import AdminDashboardWrapper   from 'features/admin/AdminDashboardWrapper'
-import React, {useEffect}      from 'react'
+import React, {
+    useContext,
+    useEffect
+}                              from 'react'
 import 'react-image-crop/dist/ReactCrop.css'
 import {
     useDispatch,
     useSelector
 }                              from 'react-redux'
+import {searchContext}         from 'shared/Containers/SearchController'
 import DangerZone              from 'shared/Controls/DangerZone'
 import GenericFormik           from 'shared/Forms/GenericFormik'
 import ContentWrapper          from 'shared/Layout/ContentWrapper'
@@ -18,6 +22,7 @@ const UpdateProduct = () => {
     const {product} = useSelector(state => state.shop)
     const {productCategories} = useSelector(state => state.shop)
     const {name, description, photo, quantity, price, sold, category, isPublished} = product
+    const {productsIndex} = useContext(searchContext)
     const initialValues = {
         name: name,
         description: description,
@@ -64,6 +69,9 @@ const UpdateProduct = () => {
                 <DangerZone
                     destroyAction={'admin/attemptDestroyProduct'}
                     slug={slug}
+                    type={'product'}
+                    objectId={product.objectID}
+                    index={productsIndex}
                 />
             </AdminDashboardWrapper>
         </ContentWrapper>
