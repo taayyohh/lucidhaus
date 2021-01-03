@@ -4,13 +4,13 @@ import React from 'react'
 import Div   from 'shared/Basic/Div'
 import H3 from 'shared/Basic/H3'
 import {
-    defaultCKEditorStyle,
+    RichTextStyle,
     defaultFieldHeadingStyle
 }                    from './styles'
 
 const RichTextEditor = ({name, formik, label}) => {
     return (
-        <Div theme={defaultCKEditorStyle}>
+        <Div theme={RichTextStyle}>
             <H3 theme={defaultFieldHeadingStyle}>{label}</H3>
             <CKEditor
                 id={name}

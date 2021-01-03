@@ -16,9 +16,14 @@ const Toggle = ({formik, name}) =>
             variants={toggleVariants}
             layout
         >
-            <MotionDiv theme={toggleBallStyle} layout transition={{type: "spring",
-                stiffness: 700,
-                damping: 30}}/>
+            <MotionDiv
+                theme={toggleBallStyle}
+                transition={{
+                    type: 'spring',
+                    stiffness: 700,
+                    damping: 30
+                }}
+            />
         </MotionDiv>
     </AnimatePresence>
 

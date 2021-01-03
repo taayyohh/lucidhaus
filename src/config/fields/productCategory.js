@@ -1,7 +1,9 @@
-export const productCategoryField = [
+import {TEXT} from 'config'
+
+export const productCategoryFields = [
     {
         name: 'name',
         inputLabel: 'Category',
-        type: 'text',
+        type: TEXT,
     }
 ]

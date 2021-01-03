@@ -1,12 +1,12 @@
-import {quantityField}         from 'config/fields'
-import React                   from 'react'
+import {quantityFields} from 'config/fields'
+import React            from 'react'
 import {
     useDispatch,
     useSelector
 }                              from 'react-redux'
 import Div                     from 'shared/Basic/Div'
 import {productCardCountStyle} from 'shared/Cards/styles'
-import GenericFormik           from 'shared/Forms/GenericFormik'
+import Form                    from 'shared/Forms/Form'
 import {genericButtonStyle}    from './styles'
 
 const AddToCartButton = ({product}) => {
@@ -32,12 +32,12 @@ const AddToCartButton = ({product}) => {
                     Add to cart
                 </Div>
             )) || (
-                <GenericFormik
+                <Form
                     initialValues={{
                         count: itemInCart[0].count,
                         productId: product._id
                     }}
-                    fields={quantityField}
+                    fields={quantityFields}
                     theme={productCardCountStyle}
                     enableReinitialize={true}
                     dispatchAction={'shop/updateProductQuantity'}

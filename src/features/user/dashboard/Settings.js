@@ -1,9 +1,9 @@
-import {userFieldTypes}    from 'config/fields/user'
+import {userFields}        from 'config/fields/user'
 import {userDashboardMenu} from 'config/menus/userDashboard'
 import React               from 'react'
-import {useSelector}       from 'react-redux'
-import GenericFormik       from 'shared/Forms/GenericFormik'
-import ContentWrapper      from 'shared/Layout/ContentWrapper'
+import {useSelector}  from 'react-redux'
+import Form           from 'shared/Forms/Form'
+import ContentWrapper from 'shared/Layout/ContentWrapper'
 import DashboardInfo       from 'shared/Layout/Dashboard/DashboardInfo'
 import DashboardWrapper    from 'shared/Layout/Dashboard/DashboardWrapper'
 
@@ -17,9 +17,9 @@ const Settings = () => {
                     heading={'Manage Settings'}
                     description={'Control your settings here.'}
                 />
-                <GenericFormik
+                <Form
                     initialValues={initialValues}
-                    fields={userFieldTypes}
+                    fields={userFields}
                     //validationSchema={validateProfile}
                     dispatchAction={'user/updateProfile'}
                     formHeading={'Update Profile'}

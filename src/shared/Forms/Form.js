@@ -5,21 +5,21 @@ import {useDispatch}      from 'react-redux'
 import Div                from 'shared/Basic/Div'
 import H3                 from 'shared/Basic/H3'
 import SubmitButton       from 'shared/Basic/SubmitButton'
-import FieldSwitch        from './FieldSwitch'
-import {genericFormStyle} from './styles'
+import FieldSwitch        from 'shared/Forms'
+import {defaultFormStyle} from './styles'
 
-const GenericFormik = ({
-                           initialValues,
-                           fields,
-                           options,
-                           validationSchema,
-                           dispatchAction,
-                           formHeading,
-                           buttonText,
-                           enableReinitialize,
-                           autoSubmit = false,
-                           theme
-                       }) => {
+const Form = ({
+                  initialValues,
+                  fields,
+                  options,
+                  validationSchema,
+                  dispatchAction,
+                  formHeading,
+                  buttonText,
+                  enableReinitialize,
+                  autoSubmit = false,
+                  theme
+              }) => {
     const dispatch = useDispatch()
 
     return (
@@ -32,17 +32,17 @@ const GenericFormik = ({
             {formik =>
                 <Div
                     as="form"
-                    theme={{...genericFormStyle, ...theme}}
+                    theme={{...defaultFormStyle, ...theme}}
                     onSubmit={formik.handleSubmit}
                 >
                     <H3
                         theme={{
-                            ...genericFormStyle.heading,
+                            ...defaultFormStyle.heading,
                             ...theme.heading
                         }}
                         children={formHeading}
                     />
-                    <Div theme={{...genericFormStyle.inner, ...theme.inner}}>
+                    <Div theme={{...defaultFormStyle.inner, ...theme.inner}}>
                         {fields.map((f, i) =>
                             <FieldSwitch
                                 key={i}
@@ -64,12 +64,12 @@ const GenericFormik = ({
     )
 }
 
-GenericFormik.propTypes = {
+Form.propTypes = {
     theme: PropTypes.object,
 }
 
-GenericFormik.defaultProps = {
+Form.defaultProps = {
     theme: {}
 }
 
-export default GenericFormik
+export default Form

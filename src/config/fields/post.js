@@ -1,25 +1,31 @@
-import {postUploadPath} from '../index'
+import {
+    RICH_TEXT,
+    TEXT,
+    TOGGLE,
+    UPLOAD,
+    UPLOAD_PATHS
+} from 'config'
 
-export const postFieldTypes = [
+export const postFields = [
     {
         name: 'photo', //not neccesary
         cropWidth: 500,
         cropHeight: 500,
-        s3Path: postUploadPath,
-        type: 'singleImageUpload',
+        s3Path: UPLOAD_PATHS.post,
+        type: UPLOAD,
     },
     {
         name: 'name',
         inputLabel: 'Name',
-        type: 'text'
+        type: TEXT
     },
     {
         name: 'description',
         inputLabel: 'Post Description',
-        type: 'richText'
+        type: RICH_TEXT
     },
     {
         name: 'isPublished',
-        type: 'bool'
+        type: TOGGLE
     }
 ]

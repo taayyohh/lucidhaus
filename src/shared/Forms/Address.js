@@ -11,7 +11,7 @@ import {
     AutoCompleteSuggestionWrapperStyle
 }                                             from './styles'
 
-const AutoCompleteAddress = ({formik, name}) =>
+const Address = ({formik, name}) =>
     <PlacesAutocomplete
         value={formik.values[name]}
         onChange={(address) => formik.setFieldValue(name, address)}
@@ -31,10 +31,22 @@ const AutoCompleteAddress = ({formik, name}) =>
                 let postalCodeSuffix = parts.find(v => v.types.includes('postal_code_suffix'))?.long_name
 
                 const organized = [
-                    {field: name, val: address},
-                    {field: 'city', val: city},
-                    {field: 'state', val: state},
-                    {field: 'country', val: country},
+                    {
+                        field: name,
+                        val: address
+                    },
+                    {
+                        field: 'city',
+                        val: city
+                    },
+                    {
+                        field: 'state',
+                        val: state
+                    },
+                    {
+                        field: 'country',
+                        val: country
+                    },
                     {
                         field: 'zip',
                         val: !!postalCode && !!postalCodeSuffix
@@ -55,7 +67,6 @@ const AutoCompleteAddress = ({formik, name}) =>
                         !!v.val ? formik.setFieldValue(v.field, v.val) : null
                     )
                     await formik.submitForm()
-
                 }
 
                 setFormAndDispatchAction()
@@ -87,9 +98,9 @@ const AutoCompleteAddress = ({formik, name}) =>
         }
     </PlacesAutocomplete>
 
-AutoCompleteAddress.propTypes = {
+Address.propTypes = {
     name: PropTypes.string.isRequired,
     formik: PropTypes.object.isRequired
 }
 
-export default AutoCompleteAddress
+export default Address

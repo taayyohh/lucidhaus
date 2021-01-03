@@ -3,7 +3,7 @@ import {
     globals
 }                         from 'config/styles'
 import {genericCardStyle} from 'shared/Cards/styles'
-import {genericFormStyle} from 'shared/Forms/styles'
+import {defaultFormStyle} from 'shared/Forms/styles'
 import {
     black,
     center,
@@ -18,7 +18,7 @@ import {
     sv,
     uppercase,
     white
-} from 'utils/themer'
+}                         from 'utils/themer'
 
 export const orderCardWrapperStyle = {
     ...genericCardStyle,
@@ -102,7 +102,7 @@ export const deleteButtonStyle = {
 }
 
 export const dangerZoneStyle = {
-    ...genericFormStyle,
+    ...defaultFormStyle,
     marginTop: [50, .7, 50],
     borderColor: colorPalette.brightRed,
     borderRadius: [5, .7, 5]

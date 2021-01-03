@@ -1,9 +1,9 @@
-import {productCategoryField} from 'config/fields/productCategory'
-import AdminDashboardWrapper  from 'features/admin/AdminDashboardWrapper'
+import {productCategoryFields} from 'config/fields/productCategory'
+import AdminDashboardWrapper   from 'features/admin/AdminDashboardWrapper'
 import React                  from 'react'
-import {useSelector}          from 'react-redux'
-import GenericFormik          from 'shared/Forms/GenericFormik'
-import ContentWrapper         from 'shared/Layout/ContentWrapper'
+import {useSelector}  from 'react-redux'
+import Form           from 'shared/Forms/Form'
+import ContentWrapper from 'shared/Layout/ContentWrapper'
 
 const CreateProductCategory = () => {
     const {_id, token} = useSelector(state => state.user)
@@ -12,9 +12,9 @@ const CreateProductCategory = () => {
     return (
         <ContentWrapper>
             <AdminDashboardWrapper>
-                <GenericFormik
+                <Form
                     initialValues={initialValues}
-                    fields={productCategoryField}
+                    fields={productCategoryFields}
                     //   validationSchema={validateSignin}
                     dispatchAction={'shop/createProductCategory'}
                     formHeading={'Create Product Category'}

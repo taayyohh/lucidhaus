@@ -1,45 +1,60 @@
-import React, {memo}       from 'react'
-import AutoCompleteAddress from './AutoCompleteAddress'
-import Count               from 'shared/Forms/Count'
-import Country             from 'shared/Forms/Country'
-import Region     from 'shared/Forms/Region'
-import RichTextEditor from './RichTextEditor'
-import Select         from 'shared/Forms/Select'
-import Upload         from 'shared/Forms/Upload'
-import SmartInput  from './SmartInput'
-import {genericFormStyle} from './styles'
-import Toggle             from 'shared/Forms/Toggle'
+import {
+    ADDRESS,
+    COUNT,
+    COUNTRY,
+    EMAIL,
+    NUMBER,
+    PASSWORD,
+    REGION,
+    RICH_TEXT,
+    SELECT,
+    TEL,
+    TEXT,
+    TOGGLE,
+    UPLOAD
+}                         from 'config'
+import React, {memo}      from 'react'
+import Address            from 'shared/Forms/Address'
+import Count              from './Count'
+import Country            from './Country'
+import Region             from './Region'
+import RichTextEditor     from './RichTextEditor'
+import Select             from './Select'
+import SmartInput         from './SmartInput'
+import {defaultFormStyle} from './styles'
+import Toggle             from './Toggle'
+import Upload             from './Upload'
 
 const FieldSwitch = memo(({field, formik, options}) => {
     switch (field.type) {
-        case 'text':
-        case 'password':
-        case 'email':
-        case 'number':
-        case 'tel':
+        case TEXT:
+        case PASSWORD:
+        case EMAIL:
+        case NUMBER:
+        case TEL:
             return <SmartInput
                 {...formik.getFieldProps(field.name)}
                 id={field.name}
                 inputLabel={field.inputLabel}
                 type={field.type}
                 disabled={field.disabled}
-                theme={genericFormStyle.fieldset}
+                theme={defaultFormStyle.fieldset}
                 className={formik.touched[field.name] && formik.errors[field.name] ? 'error' : ''}
                 errorMessage={formik.touched[field.name] && formik.errors[field.name] ? formik.errors[field.name] : null}
             />
-        case 'select':
+        case SELECT:
             return <Select
                 {...formik.getFieldProps(field.name)}
                 field={field}
                 options={options}
             />
-        case 'richText':
+        case RICH_TEXT:
             return <RichTextEditor
                 formik={formik}
                 name={field.name}
                 label={field.inputLabel}
             />
-        case 'singleImageUpload':
+        case UPLOAD:
             return <Upload
                 formik={formik}
                 id={field.name}
@@ -47,27 +62,27 @@ const FieldSwitch = memo(({field, formik, options}) => {
                 cropHeight={field.cropHeight}
                 s3Path={field.s3Path}
             />
-        case 'bool':
+        case TOGGLE:
             return <Toggle
                 name={field.name}
                 formik={formik}
             />
-        case 'country':
+        case COUNTRY:
             return <Country
                 name={field.name}
                 formik={formik}
             />
-        case 'region':
+        case REGION:
             return <Region
                 name={field.name}
                 formik={formik}
             />
-        case 'autoAddress':
-            return <AutoCompleteAddress
+        case ADDRESS:
+            return <Address
                 name={field.name}
                 formik={formik}
             />
-        case 'count':
+        case COUNT:
             return <Count
                 name={field.name}
                 formik={formik}
@@ -76,7 +91,6 @@ const FieldSwitch = memo(({field, formik, options}) => {
         default:
             return null
     }
-
 })
 
 export default FieldSwitch

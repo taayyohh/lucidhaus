@@ -1,12 +1,15 @@
-import {productFieldTypes}   from 'config/fields/product'
+import {
+    productFields,
+    validateProduct
+}                            from 'config/fields/product'
 import AdminDashboardWrapper from 'features/admin/AdminDashboardWrapper'
 import React, {useEffect}    from 'react'
 import {
     useDispatch,
     useSelector
-}                            from 'react-redux'
-import GenericFormik         from 'shared/Forms/GenericFormik'
-import ContentWrapper        from 'shared/Layout/ContentWrapper'
+}                     from 'react-redux'
+import Form           from 'shared/Forms/Form'
+import ContentWrapper from 'shared/Layout/ContentWrapper'
 
 const CreateProduct = () => {
     const dispatch = useDispatch()
@@ -42,11 +45,11 @@ const CreateProduct = () => {
     return (
         <ContentWrapper>
             <AdminDashboardWrapper>
-                <GenericFormik
+                <Form
                     initialValues={initialValues}
-                    fields={productFieldTypes}
+                    fields={productFields}
                     options={options}
-                    //   validationSchema={validateSignin}
+                    validationSchema={validateProduct}
                     dispatchAction={'admin/createProduct'}
                     formHeading={'Create Product'}
                     buttonText={'Create'}

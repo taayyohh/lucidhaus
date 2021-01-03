@@ -1,7 +1,9 @@
-export const userFieldTypes = [
+import {TEXT} from 'config/index'
+
+export const userFields = [
     {
         name: 'name',
         inputLabel: 'Name',
-        type: 'text'
+        type: TEXT
     }
 ]

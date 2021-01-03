@@ -1,5 +1,5 @@
-import {productFieldTypes}     from 'config/fields/product'
-import AdminDashboardWrapper   from 'features/admin/AdminDashboardWrapper'
+import {productFields}       from 'config/fields/product'
+import AdminDashboardWrapper from 'features/admin/AdminDashboardWrapper'
 import React, {
     useContext,
     useEffect
@@ -10,9 +10,9 @@ import {
     useSelector
 }                              from 'react-redux'
 import {searchContext}         from 'shared/Containers/SearchController'
-import DangerZone              from 'shared/Controls/DangerZone'
-import GenericFormik           from 'shared/Forms/GenericFormik'
-import ContentWrapper          from 'shared/Layout/ContentWrapper'
+import DangerZone     from 'shared/Controls/DangerZone'
+import Form           from 'shared/Forms/Form'
+import ContentWrapper from 'shared/Layout/ContentWrapper'
 import {adminFormWrapperStyle} from './styles'
 
 const UpdateProduct = () => {
@@ -55,9 +55,9 @@ const UpdateProduct = () => {
     return (
         <ContentWrapper>
             <AdminDashboardWrapper>
-                <GenericFormik
+                <Form
                     initialValues={initialValues}
-                    fields={productFieldTypes}
+                    fields={productFields}
                     options={options}
                     //   validationSchema={validateSignin}
                     dispatchAction={'admin/updateProduct'}

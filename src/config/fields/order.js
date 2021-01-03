@@ -1,52 +1,72 @@
+import {
+    ADDRESS,
+    COUNTRY,
+    REGION,
+    TEL,
+    TEXT
+}               from 'config'
 import * as Yup from 'yup'
 
-export const orderFieldTypes = [
+
+/**
+ *
+ * FORM FIELDS A ORDER
+ *
+ **/
+
+export const orderFields = [
     {
-      name: 'autoAddress',
-      inputLabel: 'Address',
-      type: 'autoAddress'
+        name: 'autoAddress',
+        inputLabel: 'Address',
+        type: ADDRESS
     },
     {
         name: 'address',
         inputLabel: 'Address',
-        type: 'text'
+        type: TEXT
     },
     {
         name: 'address2',
         inputLabel: 'Unit/Apt #',
-        type: 'text'
+        type: TEXT
     },
     {
         name: 'country',
         inputLabel: 'Country/Region',
-        type: 'country'
+        type: COUNTRY
     },
     {
         name: 'state',
         inputLabel: 'State/Province',
-        type: 'region'
+        type: REGION
     },
     {
         name: 'city',
         inputLabel: 'City',
-        type: 'text'
+        type: TEXT
     },
     {
         name: 'zip',
         inputLabel: 'ZIP or Postal Code',
-        type: 'text'
+        type: TEXT
     },
     {
         name: 'phone',
         inputLabel: 'Phone:',
-        type: 'tel'
+        type: TEL
     },
     {
         name: 'company',
         inputLabel: 'Company',
-        type: 'text'
+        type: TEXT
     }
 ]
+
+/**
+ *
+ * FORM VALIDATION
+ *
+ **/
 export const validateCheckoutAddress = Yup.object().shape({
     address: Yup
         .string()

@@ -1,4 +1,4 @@
-import {quantityField}   from 'config/fields'
+import {quantityFields}  from 'config/fields'
 import {AnimatePresence} from 'framer-motion'
 import PropTypes         from 'prop-types'
 import React             from 'react'
@@ -6,13 +6,13 @@ import Div               from 'shared/Basic/Div'
 import LinkSwitch        from 'shared/Basic/LinkSwitch'
 import MotionDiv         from 'shared/Basic/MotionDiv'
 import S3Img             from 'shared/Basic/S3Img'
-import Span              from 'shared/Basic/Span'
-import GenericFormik     from 'shared/Forms/GenericFormik'
+import Span from 'shared/Basic/Span'
+import Form from 'shared/Forms/Form'
 import {
     fadeIn,
     fadeOut,
     nOpacity
-}                        from 'shared/variables'
+}           from 'shared/variables'
 import {
     productCardControlsStyle,
     productCardCountStyle,
@@ -46,12 +46,12 @@ const CartItemCard = ({product, theme}) =>
                 </Div>
 
                 <Div theme={{...productCardControlsStyle, ...theme.controls}}>
-                    <GenericFormik
+                    <Form
                         initialValues={{
                             count: product.count,
                             productId: product._id
                         }}
-                        fields={quantityField}
+                        fields={quantityFields}
                         theme={productCardCountStyle}
                         autoSubmit
                         enableReinitialize={true}

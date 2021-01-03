@@ -2,7 +2,8 @@ import AdminDashboardWrapper from 'features/admin/AdminDashboardWrapper'
 import AdminShop             from 'features/admin/AdminShop'
 import React, {
     useContext,
-    useEffect
+    useEffect,
+    useState
 }                            from 'react'
 import {
     useDispatch,
@@ -17,23 +18,23 @@ const ManageShop = () => {
     const {productsIndex} = useContext(searchContext)
     const dispatch = useDispatch()
 
-    useEffect(() => {
-        if (shop.length > 0)
-            productsIndex.saveObjects(shop)
-                .then(({objectIDs}) => {
+    const [isIndexed, setIsIndexed] = useState(false)
 
-                })
-                .catch(err => {
-                    console.log(err)
-                })
-
-    }, [])
 
     useEffect(() => {
+        console.log('byees')
         dispatch({type: 'shop/getShop'})
+        productsIndex.saveObjects(shop)
+            .then(({objectIDs}) => {
+                console.log('DONE')
+                setIsIndexed(true)
+            })
+            .catch(err => {
+                console.log(err)
+            })
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [productsIndex])
+    }, [])
 
     return (
         <ContentWrapper>
@@ -42,7 +43,9 @@ const ManageShop = () => {
                     heading={'Manage Shop'}
                     description={'Click to edit.'}
                 />
-                <AdminShop shop={shop}/>
+                {isIndexed && (
+                    <AdminShop shop={shop}/>
+                )}
             </AdminDashboardWrapper>
         </ContentWrapper>
     )

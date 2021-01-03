@@ -1,31 +1,44 @@
+import {
+    EMAIL,
+    PASSWORD,
+    TEXT
+}               from 'config'
 import * as Yup from 'yup'
 
-export const signUpFieldTypes = [
+export const signUpFields = [
     {
         name: 'name',
         inputLabel: 'Name',
-        type: 'text'
+        type: TEXT
     },
     {
         name: 'email',
         inputLabel: 'Email',
-        type: 'email'
+        type: EMAIL
     },
     {
         name: 'password',
         inputLabel: 'Password',
-        type: 'password'
+        type: PASSWORD
     }
 ]
+
+/**
+ *
+ * Validation Objects written with Yup
+ * https://github.com/jquense/yup#api
+ *
+ */
+
 export const validateSignup = Yup.object().shape({
     name: Yup
         .string()
         .max(50)
-        .required('*'),
+        .required('Required'),
     email: Yup
         .string()
         .email('Invalid email')
-        .required('*'),
+        .required('Required'),
     password: Yup
         .string()
         .required('Please Enter your password')

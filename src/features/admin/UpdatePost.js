@@ -1,16 +1,16 @@
-import {postFieldTypes}        from 'config/fields/post'
+import {postFields} from 'config/fields/post'
 import React, {
     useContext,
     useEffect
-}                              from 'react'
+}                   from 'react'
 import {
     useDispatch,
     useSelector
 }                              from 'react-redux'
 import {searchContext}         from 'shared/Containers/SearchController'
-import DangerZone              from 'shared/Controls/DangerZone'
-import GenericFormik           from 'shared/Forms/GenericFormik'
-import AdminDashboardWrapper   from 'features/admin/AdminDashboardWrapper'
+import DangerZone            from 'shared/Controls/DangerZone'
+import Form                  from 'shared/Forms/Form'
+import AdminDashboardWrapper from 'features/admin/AdminDashboardWrapper'
 import ContentWrapper          from 'shared/Layout/ContentWrapper'
 import {adminFormWrapperStyle} from './styles'
 
@@ -47,9 +47,9 @@ const UpdatePost = () => {
     return (
         <ContentWrapper>
             <AdminDashboardWrapper>
-                <GenericFormik
+                <Form
                     initialValues={initialValues}
-                    fields={postFieldTypes}
+                    fields={postFields}
                     //   validationSchema={validateSignin}
                     dispatchAction={'admin/updatePost'}
                     formHeading={'Update Post'}

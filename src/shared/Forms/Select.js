@@ -1,9 +1,10 @@
-import {Field} from 'formik'
-import React   from 'react'
-import Div     from 'shared/Basic/Div'
+import {Field}            from 'formik'
+import React              from 'react'
+import Div                from 'shared/Basic/Div'
+import {selectFieldStyle} from './styles'
 
 const Select = ({field, options, value}) =>
-    <Div>
+    <Div theme={selectFieldStyle}>
         <Div>{field.inputLabel}</Div>
         <Field
             as="select"
@@ -18,6 +19,5 @@ const Select = ({field, options, value}) =>
             )}
         </Field>
     </Div>
-
 
 export default Select

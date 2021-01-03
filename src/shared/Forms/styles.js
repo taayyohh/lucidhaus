@@ -26,7 +26,9 @@ import {
     white
 } from 'utils/themer'
 
-export const genericFormStyle = {
+/** Default **/
+
+export const defaultFormStyle = {
     display: flex,
     alignItems: flexStart,
     flexDirection: column,
@@ -72,12 +74,7 @@ export const genericFormStyle = {
         zIndex: 10,
     }
 }
-export const defaultFormStyle = {
-    padding: 50,
-    backgroundColor: '#f7f7f7',
-    border: `1px solid ${colorPalette.gray}`,
-    boxShadow: 'inset 3px -1px 8px 0px #e0e0e0'
-}
+
 export const defaultFieldsetStyle = {
     position: relative,
     width: '100%',
@@ -93,6 +90,7 @@ export const defaultFieldsetStyle = {
         borderColor: globals.colors.errorColor
     }
 }
+
 export const defaultInputStyle = {
     display: inlineBlock,
     position: relative,
@@ -139,6 +137,7 @@ export const defaultInputStyle = {
         position: relative
     }
 }
+
 export const defaultInputLabelStyle = {
     color: globals.colors.inputLabelColor,
     position: absolute,
@@ -155,10 +154,12 @@ export const defaultInputLabelStyle = {
     size: [16, .7, 16],
     lineHeight: [16, .7, 16]
 }
+
 export const defaultFocusedInputLabelStyle = {
     transform: `translate(-6%,-44%) scale(${globals.style.inputLabelShrinkRatio})`,
     color: globals.colors.orange,
 }
+
 export const defaultLegendStyle = {
     marginLeft: 17,
     padding: 0,
@@ -167,6 +168,7 @@ export const defaultLegendStyle = {
     margin: 0,
     transition: 'width 300ms cubic-bezier(0.0, 0, 0.3, 1) 0ms',
 }
+
 export const defaultFieldErrorStyle = {
     position: absolute,
     right: [10, globals.style.layoutScalingValue, 10],
@@ -175,7 +177,15 @@ export const defaultFieldErrorStyle = {
     size: [10, .7, 10],
     color: globals.colors.errorColor
 }
-export const defaultCKEditorStyle = {
+
+export const defaultFieldHeadingStyle = {
+    margin: `0 0 ${sv(5)} 0`
+}
+
+
+/** Rich Text **/
+
+export const RichTextStyle = {
     minHeight: 300,
     marginBottom: [50, .7, 50],
     width: '100%',
@@ -196,9 +206,11 @@ export const defaultCKEditorStyle = {
         }
     ]
 }
-export const defaultFieldHeadingStyle = {
-    margin: `0 0 ${sv(5)} 0`
-}
+
+
+
+/** Upload **/
+
 export const imageDropZoneWrapperStyle = {
     display: flex,
     flexWrap: 'nowrap',
@@ -206,15 +218,18 @@ export const imageDropZoneWrapperStyle = {
     justifyContent: spaceBetween,
     marginBottom: [50, .7, 50],
 }
+
 export const imageDropZonePreviewStyle = {
     width: '100%'
 }
+
 export const imageDropZonePreviewWrapperStyle = {
     width: [500, globals.style.layoutScalingValue, '100%'],
     border: `1px solid ${colorPalette.gray}`,
     boxSizing: borderBox,
     padding: [20, globals.style.layoutScalingValue, 20]
 }
+
 export const imageDropZoneStyle = {
     position: relative,
     display: block,
@@ -317,6 +332,9 @@ export const imageDropZoneStyle = {
     ]
 }
 
+
+/** Toggle **/
+
 export const toggleFieldStyle = {
     display: 'flex',
     alignItems: center,
@@ -340,6 +358,9 @@ export const toggleBallStyle = {
     background: white
 }
 
+
+/** Country **/
+
 export const countryFieldStyle = {
     marginBottom: [20, .7, 20],
     child: [
@@ -354,6 +375,9 @@ export const countryFieldStyle = {
     ]
 }
 
+
+/** Region **/
+
 export const regionFieldStyle = {
     marginBottom: [20, .7, 20],
     child: [
@@ -367,6 +391,9 @@ export const regionFieldStyle = {
         }
     ]
 }
+
+
+/** AutoComplete **/
 
 export const AutoCompleteInputStyle = {
     ...defaultInputStyle,
@@ -417,6 +444,9 @@ export const AutoCompleteSuggestionWrapperStyle = {
     }
 }
 
+
+/** Count **/
+
 export const countFieldStyle = {
     display: flex,
     alignItems: center
@@ -434,4 +464,22 @@ export const countControlStyle = {
 export const countControlNumberStyle = {
     size: [40, .7, 30],
     marginLeft: 30
+}
+
+export const selectFieldStyle = {
+    width: '100%',
+    marginBottom: [20, .7, 20],
+    child: [
+        {
+            selector: 'select',
+            width: '100%',
+            height: [50, .7, 50]
+        },
+        {
+            selector: 'option',
+            height: [50, .7, 50],
+            size: [20, .7, 20]
+        }
+    ]
+
 }

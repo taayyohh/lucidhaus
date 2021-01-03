@@ -1,10 +1,10 @@
-    import {productCategoryField}  from 'config/fields/productCategory'
-import React, {useEffect}      from 'react'
+    import {productCategoryFields} from 'config/fields/productCategory'
+import React, {useEffect}          from 'react'
 import {
     useDispatch,
     useSelector
-}                              from 'react-redux'
-import GenericFormik         from 'shared/Forms/GenericFormik'
+}                            from 'react-redux'
+import Form                  from 'shared/Forms/Form'
 import AdminDashboardWrapper from 'features/admin/AdminDashboardWrapper'
 import ContentWrapper        from 'shared/Layout/ContentWrapper'
 import {adminFormWrapperStyle} from './styles'
@@ -33,9 +33,9 @@ const UpdateProductCategory = () => {
     return (
         <ContentWrapper>
             <AdminDashboardWrapper>
-                <GenericFormik
+                <Form
                     initialValues={initialValues}
-                    fields={productCategoryField}
+                    fields={productCategoryFields}
                     //   validationSchema={validateSignin}
                     dispatchAction={'shop/updateProductCategory'}
                     formHeading={'Update Product Category'}

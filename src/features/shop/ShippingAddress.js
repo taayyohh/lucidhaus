@@ -1,11 +1,11 @@
 import {
-    orderFieldTypes,
+    orderFields,
     validateCheckoutAddress
 }                                from 'config/fields/order'
 import CheckoutSection           from 'features/shop/CheckoutSection'
 import {checkoutFormStyle}       from 'features/shop/styles'
-import React                     from 'react'
-import GenericFormik             from 'shared/Forms/GenericFormik'
+import React from 'react'
+import Form  from 'shared/Forms/Form'
 
 const ShippingAddress = () => {
     const initialValues = {
@@ -22,10 +22,10 @@ const ShippingAddress = () => {
 
     return (
         <CheckoutSection title={'Shipping Address'}>
-            <GenericFormik
+            <Form
                 initialValues={initialValues}
                 validationSchema={validateCheckoutAddress}
-                fields={orderFieldTypes}
+                fields={orderFields}
                 theme={checkoutFormStyle}
                 dispatchAction={'shop/updateDeliveryAddress'}
                 autoSubmit

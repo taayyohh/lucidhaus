@@ -22,16 +22,11 @@ import {
 
 const Upload = memo(({formik, id, cropWidth, cropHeight, s3Path}) => {
     const [cropPortalOpen, setCropPortalOpen] = useState(false)
-
     const [uploadedImage, setUploadedImage] = useState({})
     const {uploadBlob, uploadType, sanitizedName} = uploadedImage
-
     const [crop, setCrop] = useState({width: cropWidth, aspect: 1})
-
     const [croppedImage, setCroppedImage] = useState()
-
     const [previewBlob, setPreviewBlob] = useState('')
-
     const {photo} = formik.initialValues
 
 

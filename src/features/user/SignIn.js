@@ -1,15 +1,18 @@
 import {
-    signInFieldTypes,
+    signInFields,
     validateSignin
-}                       from 'config/fields/signIn'
-import {signUpFormStyle}   from 'features/user/styles'
+}                          from 'config/fields/signIn'
+import {
+    signInFormStyle,
+    signInFormWrapperStyle
+}                          from 'features/user/styles'
 import React, {useEffect}  from 'react'
 import {useSelector}       from 'react-redux'
 import {history}           from 'redux/store'
 import Div                 from 'shared/Basic/Div'
-import LinkSwitch          from 'shared/Basic/LinkSwitch'
-import GenericFormik       from 'shared/Forms/GenericFormik'
-import ContentWrapper      from 'shared/Layout/ContentWrapper'
+import LinkSwitch     from 'shared/Basic/LinkSwitch'
+import Form           from 'shared/Forms/Form'
+import ContentWrapper from 'shared/Layout/ContentWrapper'
 import {signUpPromptStyle} from './styles'
 
 const SignIn = () => {
@@ -25,15 +28,15 @@ const SignIn = () => {
 
     return (
         <ContentWrapper>
-            <Div theme={{maxWidth: 700, margin: '0 auto'}}>
-                <GenericFormik
+            <Div theme={signInFormWrapperStyle}>
+                <Form
                     initialValues={initialValues}
-                    fields={signInFieldTypes}
+                    fields={signInFields}
                     validationSchema={validateSignin}
                     dispatchAction={'user/signIn'}
                     formHeading={'Sign In'}
                     buttonText={'Sign in'}
-                    theme={signUpFormStyle}
+                    theme={signInFormStyle}
                 />
                 {!isAuthenticated && (
                     <Div theme={signUpPromptStyle}>

@@ -1,9 +1,9 @@
-import {postFieldTypes}      from 'config/fields/post'
+import {postFields}          from 'config/fields/post'
 import AdminDashboardWrapper from 'features/admin/AdminDashboardWrapper'
 import React                 from 'react'
-import {useSelector}         from 'react-redux'
-import GenericFormik         from 'shared/Forms/GenericFormik'
-import ContentWrapper        from 'shared/Layout/ContentWrapper'
+import {useSelector}  from 'react-redux'
+import Form           from 'shared/Forms/Form'
+import ContentWrapper from 'shared/Layout/ContentWrapper'
 
 const CreatePost = () => {
     const {_id, token} = useSelector(state => state.user)
@@ -20,9 +20,9 @@ const CreatePost = () => {
     return (
         <ContentWrapper>
             <AdminDashboardWrapper>
-                <GenericFormik
+                <Form
                     initialValues={initialValues}
-                    fields={postFieldTypes}
+                    fields={postFields}
                     //validationSchema={validateSignin}
                     dispatchAction={'admin/createPost'}
                     formHeading={'Create Post'}
