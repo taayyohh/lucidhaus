@@ -1,3 +1,4 @@
+import {globals}          from 'config/styles'
 import {useAnimation}     from 'framer-motion'
 import React, {
     createContext,
@@ -8,8 +9,7 @@ import React, {
 }                         from 'react'
 import {useSelector}      from 'react-redux'
 import {createSelector}   from 'reselect'
-import {globals}          from 'config/styles'
-import {overlayFadeout}   from './animations/transitions'
+import {overlayFadeout}   from './animations'
 import {menuPanelContext} from './MenuPanelController'
 
 export const TransitionAnimations = createContext({})
@@ -36,7 +36,7 @@ const TransitionController = props => {
 
     const pageInit = useMemo(() => async () => {
         await setTimeout(() => scrollToTop(), 0)
-      //  await contentAnimation.set({translateX: 0})
+        //  await contentAnimation.set({translateX: 0})
         await overlayAnimation.start(overlayFadeout)
         // await contentAnimation.start({
         //     opacity: 1,

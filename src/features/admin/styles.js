@@ -135,7 +135,10 @@ export const adminOrderWrapperStyle = {
     }
 }
 export const adminFormWrapperStyle = {
-    width: '100%'
+    width: '100%',
+    paddingLeft: [100, globals.style.layoutScalingValue, 25],
+    paddingRight: [100, globals.style.layoutScalingValue, 25]
+
 }
 
 export const adminTaxonomyStyle = isActive => {

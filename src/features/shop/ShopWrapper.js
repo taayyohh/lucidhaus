@@ -1,11 +1,11 @@
-import ShopMenu from 'features/shop/ShopMenu'
+import React    from 'react'
+import Div      from 'shared/Basic/Div'
+import ShopMenu from './ShopMenu'
 import {
     shopLeftColumnStyle,
     shopRightColumnStyle,
     shopWrapperStyle
-}               from 'features/shop/styles'
-import React    from 'react'
-import Div      from 'shared/Basic/Div'
+}               from './styles'
 
 const ShopWrapper = ({children}) =>
     <Div theme={shopWrapperStyle}>

@@ -1,4 +1,3 @@
-import ShopMenu           from 'features/shop/ShopMenu'
 import ShopWrapper        from 'features/shop/ShopWrapper'
 import {
     productImageStyle,

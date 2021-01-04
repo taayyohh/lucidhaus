@@ -3,7 +3,7 @@ import Div from 'shared/Basic/Div'
 import {
     dashboardContentInnerStyle,
     dashboardContentStyle
-}          from 'shared/Layout/Dashboard/styles'
+}          from 'shared/Layout/dashboard/styles'
 
 const DashboardContent = ({content}) =>
     <Div theme={dashboardContentStyle}>

@@ -12,18 +12,18 @@ import {
     TEXT,
     TOGGLE,
     UPLOAD
-}                         from 'config'
-import React, {memo}      from 'react'
-import Address            from 'shared/Forms/Address'
-import Count              from './Count'
-import Country            from './Country'
-import Region             from './Region'
-import RichTextEditor     from './RichTextEditor'
-import Select             from './Select'
-import SmartInput         from './SmartInput'
-import {defaultFormStyle} from './styles'
-import Toggle             from './Toggle'
-import Upload             from './Upload'
+}                        from 'config'
+import React, {memo}     from 'react'
+import Address           from './Address'
+import Count             from './Count'
+import Country           from './Country'
+import Region            from './Region'
+import RichTextEditor    from './RichTextEditor'
+import Select            from './Select'
+import SmartInput        from './SmartInput'
+import {smartInputStyle} from './styles'
+import Toggle            from './Toggle'
+import Upload            from './Upload'
 
 const FieldSwitch = memo(({field, formik, options}) => {
     switch (field.type) {
@@ -38,21 +38,17 @@ const FieldSwitch = memo(({field, formik, options}) => {
                 inputLabel={field.inputLabel}
                 type={field.type}
                 disabled={field.disabled}
-                theme={defaultFormStyle.fieldset}
                 className={formik.touched[field.name] && formik.errors[field.name] ? 'error' : ''}
                 errorMessage={formik.touched[field.name] && formik.errors[field.name] ? formik.errors[field.name] : null}
-            />
-        case SELECT:
-            return <Select
-                {...formik.getFieldProps(field.name)}
-                field={field}
-                options={options}
+                theme={smartInputStyle}
             />
         case RICH_TEXT:
             return <RichTextEditor
                 formik={formik}
                 name={field.name}
                 label={field.inputLabel}
+                className={formik.touched[field.name] && formik.errors[field.name] ? 'error' : ''}
+                errorMessage={formik.touched[field.name] && formik.errors[field.name] ? formik.errors[field.name] : null}
             />
         case UPLOAD:
             return <Upload
@@ -61,11 +57,23 @@ const FieldSwitch = memo(({field, formik, options}) => {
                 cropWidth={field.cropWidth}
                 cropHeight={field.cropHeight}
                 s3Path={field.s3Path}
+                inputLabel={field.inputLabel}
+                className={formik.touched[field.name] && formik.errors[field.name] ? 'error' : ''}
+                errorMessage={formik.touched[field.name] && formik.errors[field.name] ? formik.errors[field.name] : null}
             />
         case TOGGLE:
             return <Toggle
                 name={field.name}
                 formik={formik}
+                inputLabel={field.inputLabel}
+            />
+        case SELECT:
+            return <Select
+                {...formik.getFieldProps(field.name)}
+                field={field}
+                options={options}
+                className={formik.touched[field.name] && formik.errors[field.name] ? 'error' : ''}
+                errorMessage={formik.touched[field.name] && formik.errors[field.name] ? formik.errors[field.name] : null}
             />
         case COUNTRY:
             return <Country

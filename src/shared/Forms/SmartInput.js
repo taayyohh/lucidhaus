@@ -1,15 +1,16 @@
+import {globals}  from 'config/styles'
+import PropTypes  from 'prop-types'
 import React, {
     useEffect,
     useRef,
     useState
 }                 from 'react'
-import useMeasure from 'utils/useMeasure'
-import {globals}  from 'config/styles'
 import Fieldset   from 'shared/Basic/Fieldset'
 import Input      from 'shared/Basic/Input'
 import InputLabel from 'shared/Basic/InputLabel'
 import Legend     from 'shared/Basic/Legend'
 import Span       from 'shared/Basic/Span'
+import useMeasure from 'utils/useMeasure'
 import {
     defaultFieldErrorStyle,
     defaultFocusedInputLabelStyle
@@ -74,6 +75,14 @@ const SmartInput = ({inputLabel, type, disabled, theme, id, className, errorMess
             <Span theme={defaultFieldErrorStyle}>{errorMessage}</Span>
         </Fieldset>
     )
+}
+
+SmartInput.propTypes = {
+    theme: PropTypes.object,
+}
+
+SmartInput.defaultProps = {
+    theme: {}
 }
 
 export default SmartInput

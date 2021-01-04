@@ -1,26 +1,29 @@
-import moment                  from 'moment'
+import {globals}                 from 'config/styles'
+import moment                    from 'moment'
 import React, {
     memo,
     useEffect,
     useState
-}                              from 'react'
-import Dropzone                from 'react-dropzone'
+}                                from 'react'
+import Dropzone                  from 'react-dropzone'
 import 'react-image-crop/dist/ReactCrop.css'
-import {slugify}               from 'utils/slugify'
-import {globals}               from 'config/styles'
-import Div                     from 'shared/Basic/Div'
-import Img                     from 'shared/Basic/Img'
-import S3Img                   from 'shared/Basic/S3Img'
-import {genericCardImageStyle} from 'shared/Cards/styles'
-import CropPortal              from './CropPortal'
+import Div                       from 'shared/Basic/Div'
+import Img                       from 'shared/Basic/Img'
+import S3Img                     from 'shared/Basic/S3Img'
+import Span                      from 'shared/Basic/Span'
+import {genericCardImageStyle}   from 'shared/Cards/styles'
+import {uploadErrorMessageStyle} from 'shared/Forms/styles'
+import {slugify}                 from 'utils/slugify'
+import CropPortal                from './CropPortal'
 import {
+    defaultFieldHeadingStyle,
     imageDropZonePreviewStyle,
     imageDropZonePreviewWrapperStyle,
     imageDropZoneStyle,
     imageDropZoneWrapperStyle
-} from './styles'
+}                                from './styles'
 
-const Upload = memo(({formik, id, cropWidth, cropHeight, s3Path}) => {
+const Upload = memo(({formik, id, cropWidth, cropHeight, s3Path, inputLabel, className, errorMessage}) => {
     const [cropPortalOpen, setCropPortalOpen] = useState(false)
     const [uploadedImage, setUploadedImage] = useState({})
     const {uploadBlob, uploadType, sanitizedName} = uploadedImage
@@ -28,6 +31,8 @@ const Upload = memo(({formik, id, cropWidth, cropHeight, s3Path}) => {
     const [croppedImage, setCroppedImage] = useState()
     const [previewBlob, setPreviewBlob] = useState('')
     const {photo} = formik.initialValues
+
+    console.log('formik', formik)
 
 
     const makeClientCrop = async (crop, percentageCrop) => {
@@ -87,62 +92,66 @@ const Upload = memo(({formik, id, cropWidth, cropHeight, s3Path}) => {
     }
 
     useEffect(() => {
-        formik.setFieldValue('image', croppedImage)
-        formik.setFieldValue('photo', sanitizedName)
+        formik.setFieldValue('image', croppedImage ? croppedImage : '')
+        formik.setFieldValue('photo', sanitizedName ? sanitizedName : '')
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [croppedImage, sanitizedName])
 
     return (
-        <Div theme={imageDropZoneWrapperStyle}>
-            <Dropzone
-                id={id}
-                accept={globals.extensions}
-                maxFiles={1}
-                multiple={false}
-                onDragOver={() => console.log('drag over')}
-                onDragEnter={() => console.log('drag enter')}
-                onDragLeave={() => console.log('drag leave')}
-                onDropAccepted={(acceptedFiles) => handleAcceptedFile(acceptedFiles)}
-                onDropRejected={() => console.log('error')}
-            >
-                {({getRootProps, getInputProps}) => (
-                    <Div {...getRootProps()} theme={imageDropZoneStyle}>
-                        <input {...getInputProps()} />
-                        <p>Drag and Drop or click to select files</p>
-                    </Div>
-                )}
-            </Dropzone>
+        <>
+            <Div theme={defaultFieldHeadingStyle}>{inputLabel}</Div>
+            <Div theme={imageDropZoneWrapperStyle} className={className ? className : ''}>
+                <Span theme={uploadErrorMessageStyle}>{errorMessage}</Span>
+                <Dropzone
+                    id={id}
+                    accept={globals.extensions}
+                    maxFiles={1}
+                    multiple={false}
+                    onDragOver={() => console.log('drag over')}
+                    onDragEnter={() => console.log('drag enter')}
+                    onDragLeave={() => console.log('drag leave')}
+                    onDropAccepted={(acceptedFiles) => handleAcceptedFile(acceptedFiles)}
+                    onDropRejected={() => console.log('error')}
+                >
+                    {({getRootProps, getInputProps}) => (
+                        <Div {...getRootProps()} theme={imageDropZoneStyle}>
+                            <input {...getInputProps()} />
+                            <p>Drag and Drop or click to select files</p>
+                        </Div>
+                    )}
+                </Dropzone>
 
-            <Div theme={imageDropZonePreviewWrapperStyle}>
-                {(previewBlob && (
-                    <Img
-                        alt="Crop preview"
-                        src={previewBlob}
-                        theme={imageDropZonePreviewStyle}
-                    />
-                )) || (
-                    <>
-                        {photo && (
-                            <S3Img
-                                url={photo}
-                                alt={'Post Image Preview'}
-                                theme={genericCardImageStyle}
-                            />
-                        )}
-                    </>
-                )}
+                <Div theme={imageDropZonePreviewWrapperStyle}>
+                    {(previewBlob && (
+                        <Img
+                            alt="Crop preview"
+                            src={previewBlob}
+                            theme={imageDropZonePreviewStyle}
+                        />
+                    )) || (
+                        <>
+                            {photo && (
+                                <S3Img
+                                    url={photo}
+                                    alt={'Post Image Preview'}
+                                    theme={genericCardImageStyle}
+                                />
+                            )}
+                        </>
+                    )}
+                </Div>
+                <CropPortal
+                    isOpen={cropPortalOpen}
+                    setIsOpen={setCropPortalOpen}
+                    uploadBlob={uploadBlob}
+                    setCrop={setCrop}
+                    crop={crop}
+                    makeClientCrop={makeClientCrop}
+                    previewBlob={previewBlob}
+                />
             </Div>
-            <CropPortal
-                isOpen={cropPortalOpen}
-                setIsOpen={setCropPortalOpen}
-                uploadBlob={uploadBlob}
-                setCrop={setCrop}
-                crop={crop}
-                makeClientCrop={makeClientCrop}
-                previewBlob={previewBlob}
-            />
-        </Div>
+        </>
     )
 })
 

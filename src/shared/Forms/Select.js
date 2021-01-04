@@ -1,11 +1,16 @@
-import {Field}            from 'formik'
-import React              from 'react'
-import Div                from 'shared/Basic/Div'
-import {selectFieldStyle} from './styles'
+import {Field}                        from 'formik'
+import React                          from 'react'
+import Div                            from 'shared/Basic/Div'
+import Span                           from 'shared/Basic/Span'
+import {selectFieldErrorMessageStyle} from 'shared/Forms/styles'
+import {
+    defaultFieldHeadingStyle,
+    selectFieldStyle
+}                                     from './styles'
 
-const Select = ({field, options, value}) =>
-    <Div theme={selectFieldStyle}>
-        <Div>{field.inputLabel}</Div>
+const Select = ({field, options, className, errorMessage, value}) =>
+    <Div theme={selectFieldStyle} className={className ? className : ''}>
+        <Div theme={defaultFieldHeadingStyle}>{field.inputLabel}</Div>
         <Field
             as="select"
             name={field.name}
@@ -18,6 +23,7 @@ const Select = ({field, options, value}) =>
                 </option>
             )}
         </Field>
+        <Span theme={selectFieldErrorMessageStyle}>{errorMessage}</Span>
     </Div>
 
 export default Select

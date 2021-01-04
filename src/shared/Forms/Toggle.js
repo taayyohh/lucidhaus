@@ -1,20 +1,21 @@
-import {AnimatePresence} from 'framer-motion'
-import React             from 'react'
-import MotionDiv         from 'shared/Basic/MotionDiv'
-import {toggleVariants}  from './animations'
+import React            from 'react'
+import Div              from 'shared/Basic/Div'
+import MotionDiv        from 'shared/Basic/MotionDiv'
+import {toggleVariants} from './animations'
 import {
+    defaultFieldHeadingStyle,
     toggleBallStyle,
     toggleFieldStyle
-}                        from './styles'
+}                       from './styles'
 
-const Toggle = ({formik, name}) =>
-    <AnimatePresence layout>
+const Toggle = ({formik, inputLabel, name}) =>
+    <>
+        <Div theme={defaultFieldHeadingStyle}>{inputLabel}</Div>
         <MotionDiv
             theme={toggleFieldStyle}
             onClick={() => formik.setFieldValue(name, !formik.values[name])}
             animate={formik.values[name] ? 'true' : 'false'}
             variants={toggleVariants}
-            layout
         >
             <MotionDiv
                 theme={toggleBallStyle}
@@ -25,6 +26,6 @@ const Toggle = ({formik, name}) =>
                 }}
             />
         </MotionDiv>
-    </AnimatePresence>
+    </>
 
 export default Toggle

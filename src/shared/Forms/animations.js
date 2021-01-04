@@ -1,7 +1,8 @@
+import {globals} from 'config/styles'
 import {
     flexEnd,
     flexStart
-} from 'utils/themer'
+}                from 'utils/themer'
 
 export const toggleVariants = {
     true: {
@@ -15,7 +16,7 @@ export const toggleVariants = {
     },
     false: {
         justifyContent: flexStart,
-        backgroundColor: '#d0cece',
+        backgroundColor: globals.colors.borderColor,
         transition: {
             type: "spring",
             stiffness: 700,

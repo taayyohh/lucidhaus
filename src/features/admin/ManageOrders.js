@@ -18,7 +18,7 @@ import Div                      from 'shared/Basic/Div'
 import MotionDiv                from 'shared/Basic/MotionDiv'
 import {searchContext}          from 'shared/Containers/SearchController'
 import ContentWrapper           from 'shared/Layout/ContentWrapper'
-import DashboardInfo            from 'shared/Layout/Dashboard/DashboardInfo'
+import DashboardInfo            from 'shared/Layout/dashboard/DashboardInfo'
 import {adminOrderWrapperStyle} from './styles'
 
 const ManageOrders = () => {

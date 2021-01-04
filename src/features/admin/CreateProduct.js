@@ -1,15 +1,16 @@
 import {
     productFields,
     validateProduct
-}                            from 'config/fields/product'
-import AdminDashboardWrapper from 'features/admin/AdminDashboardWrapper'
-import React, {useEffect}    from 'react'
+}                              from 'config/fields/product'
+import AdminDashboardWrapper   from 'features/admin/AdminDashboardWrapper'
+import {adminFormWrapperStyle} from 'features/admin/styles'
+import React, {useEffect}      from 'react'
 import {
     useDispatch,
     useSelector
-}                     from 'react-redux'
-import Form           from 'shared/Forms/Form'
-import ContentWrapper from 'shared/Layout/ContentWrapper'
+}                              from 'react-redux'
+import Form                    from 'shared/Forms/Form'
+import ContentWrapper          from 'shared/Layout/ContentWrapper'
 
 const CreateProduct = () => {
     const dispatch = useDispatch()
@@ -24,6 +25,7 @@ const CreateProduct = () => {
         image: '',
         quantity: 0,
         price: 0,
+        sold: 0,
         category: '',
         isPublished: false
     }
@@ -53,6 +55,7 @@ const CreateProduct = () => {
                     dispatchAction={'admin/createProduct'}
                     formHeading={'Create Product'}
                     buttonText={'Create'}
+                    theme={adminFormWrapperStyle}
                 />
             </AdminDashboardWrapper>
         </ContentWrapper>

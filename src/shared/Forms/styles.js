@@ -13,13 +13,12 @@ import {
     fixed,
     flex,
     flexStart,
+    grid,
     inherit,
     inlineBlock,
     none,
     pointer,
     relative,
-    row,
-    spaceBetween,
     sv,
     transparent,
     uppercase,
@@ -54,10 +53,6 @@ export const defaultFormStyle = {
             display: none
         }
     },
-    fieldset: {
-        marginBottom: [20, .7, 20],
-        background: white
-    },
     button: {
         padding: '20px 60px',
         transition: 'background 250ms ease',
@@ -83,6 +78,8 @@ export const defaultFieldsetStyle = {
     boxSizing: borderBox,
     padding: 0,
     margin: 0,
+    marginBottom: [50, .7, 50],
+    background: white,
     transition: 'padding-left 300ms cubic-bezier(0.0, 0, 0.3, 1) 0ms, ' +
         'border 300ms cubic-bezier(0.0, 0, 0.3, 1) 0ms',
     class: {
@@ -156,8 +153,7 @@ export const defaultInputLabelStyle = {
 }
 
 export const defaultFocusedInputLabelStyle = {
-    transform: `translate(-6%,-44%) scale(${globals.style.inputLabelShrinkRatio})`,
-    color: globals.colors.orange,
+    transform: `translate(-6%,-44%) scale(${globals.style.inputLabelShrinkRatio})`
 }
 
 export const defaultLegendStyle = {
@@ -171,24 +167,45 @@ export const defaultLegendStyle = {
 
 export const defaultFieldErrorStyle = {
     position: absolute,
-    right: [10, globals.style.layoutScalingValue, 10],
-    top: [5, globals.style.layoutScalingValue, 5],
+    right: 0,
+    top: [-30, .7, -30],
     textTransform: uppercase,
-    size: [10, .7, 10],
+    size: [18, .7, 18],
     color: globals.colors.errorColor
 }
 
 export const defaultFieldHeadingStyle = {
-    margin: `0 0 ${sv(5)} 0`
+    size: [30, .7, 30],
+    weight: 300,
+    margin: `0 0 ${sv(5)} 0`,
+    empty: {
+        display: none
+    }
+}
+
+
+/** Rich Text **/
+export const smartInputStyle = {
+    marginBottom: [30, .7, 30]
 }
 
 
 /** Rich Text **/
 
-export const RichTextStyle = {
+export const richTextStyle = {
+    position: relative,
     minHeight: 300,
     marginBottom: [50, .7, 50],
     width: '100%',
+    class: {
+        name: 'error',
+        child: [
+            {
+                selector: '.ck.ck-editor .ck-editor__main .ck-editor__editable',
+                borderColor: `${colorPalette.brightRed}`
+            }
+        ]
+    },
     child: [
         {
             selector: '.ck.ck-editor',
@@ -207,16 +224,59 @@ export const RichTextStyle = {
     ]
 }
 
+export const richTextErrorMessageStyle = {
+    ...defaultFieldErrorStyle,
+    top: [15, .7, 15]
+}
 
 
 /** Upload **/
 
+export const uploadErrorMessageStyle = {
+    ...defaultFieldErrorStyle,
+    top: [-36, .7, -36]
+}
+
 export const imageDropZoneWrapperStyle = {
-    display: flex,
-    flexWrap: 'nowrap',
-    flexDirection: row,
-    justifyContent: spaceBetween,
+    display: grid,
+    gridTemplateColumns: '1fr 1fr',
+    gridGap: sv(50, globals.style.layoutScalingValue),
     marginBottom: [50, .7, 50],
+    mobile: {
+        gridTemplateColumns: '1fr'
+    },
+    class: {
+        name: 'error',
+        child: [
+            {
+                selector: 'div:first-of-type',
+                border: `1px solid ${colorPalette.brightRed}`,
+                position: relative
+            }
+        ]
+    },
+    child: {
+        selector: '> div',
+        width: '100%',
+        child: [
+            {
+                selector: ':nth-child(1)',
+                display: flex,
+                alignItems: center,
+                justifyContent: center,
+                child: {
+                    selector: '> p',
+                    size: [24, .7, 24]
+                }
+            },
+            {
+                selector: ':nth-child(2)',
+                display: flex,
+                justifyContent: center,
+                alignItems: center
+            }
+        ]
+    }
 }
 
 export const imageDropZonePreviewStyle = {
@@ -224,17 +284,21 @@ export const imageDropZonePreviewStyle = {
 }
 
 export const imageDropZonePreviewWrapperStyle = {
-    width: [500, globals.style.layoutScalingValue, '100%'],
+    width: '50%',
     border: `1px solid ${colorPalette.gray}`,
     boxSizing: borderBox,
-    padding: [20, globals.style.layoutScalingValue, 20]
+    padding: [20, globals.style.layoutScalingValue, 20],
+    mobile: {
+        height: 300
+    }
 }
 
 export const imageDropZoneStyle = {
     position: relative,
     display: block,
-    minHeight: [500, globals.style.layoutScalingValue, '100%'],
-    width: [500, globals.style.layoutScalingValue, '100%'],
+    minHeight: [500, globals.style.layoutScalingValue, 100],
+    // width: [500, globals.style.layoutScalingValue, '100%'],
+    width: '50%',
     background: '#fff',
     border: `1px solid ${globals.colors.borderColor}`,
     borderRadius: 10,
@@ -338,10 +402,10 @@ export const imageDropZoneStyle = {
 export const toggleFieldStyle = {
     display: 'flex',
     alignItems: center,
-    width: [100, globals.style.layoutScalingValue, '100%'],
-    height: 30,
-    borderRadius: 20,
-    background: '#d0cece',
+    width: [100, globals.style.layoutScalingValue, 100],
+    height: [30, .7, 30],
+    borderRadius: [20, .7, 20],
+    background: globals.colors.borderColor,
     paddingTop: [20, .7, 20],
     paddingBottom: [20, .7, 20],
     paddingLeft: [10, .7, 10],
@@ -467,19 +531,33 @@ export const countControlNumberStyle = {
 }
 
 export const selectFieldStyle = {
+    position: relative,
     width: '100%',
     marginBottom: [20, .7, 20],
+    class: {
+        name: 'error',
+        child: {
+            selector: 'select',
+            borderColor: colorPalette.brightRed
+        }
+    },
     child: [
         {
             selector: 'select',
             width: '100%',
-            height: [50, .7, 50]
+            height: [50, .7, 50],
+            borderRadius: [5, .7, 5]
         },
         {
             selector: 'option',
             height: [50, .7, 50],
+            paddingLeft: [25, .7, 25],
             size: [20, .7, 20]
         }
     ]
+}
 
+export const selectFieldErrorMessageStyle = {
+    ...defaultFieldErrorStyle,
+    top: [15, .7, 15]
 }

@@ -4,6 +4,7 @@ import {
 } from 'config/styles'
 import {
     absolute,
+    auto,
     black,
     block,
     borderBox,
@@ -178,6 +179,9 @@ export const headerMenuAuthStyleListItemStyle = {
 }
 export const dashboardMenuStyle = {
     minHeight: '750px',
+    mobile: {
+        minHeight: auto
+    }
 }
 export const dashboardMenuInnerStyle = {
     width: [300, globals.style.layoutScalingValue, '100%'],
@@ -193,8 +197,8 @@ export const dashboardMenuItemStyle = isActive => {
         boxSizing: borderBox,
         paddingLeft: [10, globals.style.layoutScalingValue, 10],
         paddingRight: [10, globals.style.layoutScalingValue, 10],
-        paddingTop: [20, globals.style.layoutScalingValue, 20],
-        paddingBottom: [20, globals.style.layoutScalingValue, 20],
+        paddingTop: [20, .7, 20],
+        paddingBottom: [20, .7, 20],
         lineHeight: [20, .7, 20],
         color: !isActive ? black : colorPalette.purple,
         textDecoration: none,

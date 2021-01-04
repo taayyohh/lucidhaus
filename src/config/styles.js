@@ -31,7 +31,7 @@ export const globals = {
     },
     style: {
         layoutScalingValue: .45,
-        inputLabelShrinkRatio: .7,
+        inputLabelShrinkRatio: .9,
         siteInnerWidth: 1570,
         contentWidth: 1320,
         headerHeight: 100,

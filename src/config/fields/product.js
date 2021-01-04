@@ -11,6 +11,8 @@ import * as Yup from 'yup'
 
 export const productFields = [
     {
+        name: 'photo',
+        inputLabel: 'Product Image',
         cropWidth: 500,
         cropHeight: 500,
         s3Path: UPLOAD_PATHS.shop,
@@ -23,7 +25,7 @@ export const productFields = [
     },
     {
         name: 'description',
-        inputLabel: 'Product Description',
+        inputLabel: 'Description',
         type: RICH_TEXT
     },
     {
@@ -49,6 +51,7 @@ export const productFields = [
     },
     {
         name: 'isPublished',
+        inputLabel: 'Published',
         type: TOGGLE
     }
 ]
@@ -62,6 +65,9 @@ export const productFields = [
  */
 
 export const validateProduct = Yup.object().shape({
+    photo: Yup
+        .string()
+        .required('Required'),
     name: Yup
         .string()
         .max(50)
@@ -73,5 +79,13 @@ export const validateProduct = Yup.object().shape({
         .number()
         .required('Required')
         .positive()
-        .integer()
+        .integer(),
+    quantity: Yup
+        .number()
+        .required('Required')
+        .positive()
+        .integer(),
+    category: Yup
+        .string()
+        .required('Required'),
 })
