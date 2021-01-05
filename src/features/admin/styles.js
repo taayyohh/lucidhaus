@@ -1,10 +1,10 @@
 import {
     colorPalette,
     globals
-}                          from 'config/styles'
-import {deleteButtonStyle} from 'shared/Controls/styles'
-import {defaultInputStyle} from 'shared/Forms/styles'
-import {menuPanelStyle}    from 'shared/Menus/styles'
+}                                from 'config/styles'
+import {deletePromptButtonStyle} from 'shared/Controls/styles'
+import {defaultInputStyle}       from 'shared/Forms/styles'
+import {menuPanelStyle}          from 'shared/Menus/styles'
 import {
     absolute,
     auto,
@@ -18,9 +18,10 @@ import {
     relative,
     row,
     sv,
-    transparent
-}                          from 'utils/themer'
-import {postsWrapperStyle} from '../post/styles'
+    transparent,
+    white
+} from 'utils/themer'
+import {postsWrapperStyle}       from '../post/styles'
 
 
 export const adminPostsInnerWrapperStyle = {
@@ -65,7 +66,7 @@ export const adminShopCardStyle = {
 }
 
 export const adminCardControlsButtonStyle = {
-    ...deleteButtonStyle,
+    ...deletePromptButtonStyle,
     marginLeft: [10, globals.style.layoutScalingValue, '0'],
     marginTop: [20, globals.style.layoutScalingValue, 20],
 }
@@ -76,7 +77,13 @@ export const adminCreateButtonStyle = {
     justifyContent: center,
     marginLeft: [20, .7, 20],
     height: [50, .7, 50],
+    size: [22, .7, 22],
+    padding: [20, .7, 20],
     marginTop: 0,
+    hover: {
+        backgroundColor: colorPalette.purple,
+        color: white
+    },
     child: {
         selector: '> svg',
         position: relative,

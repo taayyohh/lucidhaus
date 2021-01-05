@@ -1,4 +1,5 @@
-import {TEXT} from 'config'
+import {TEXT}   from 'config'
+import * as Yup from 'yup'
 
 export const productCategoryFields = [
     {
@@ -7,3 +8,19 @@ export const productCategoryFields = [
         type: TEXT,
     }
 ]
+
+
+
+/**
+ *
+ * Validation Objects written with Yup
+ * https://github.com/jquense/yup#api
+ *
+ */
+
+export const validateProductCategory = Yup.object().shape({
+    name: Yup
+        .string()
+        .max(50)
+        .required('Required'),
+})

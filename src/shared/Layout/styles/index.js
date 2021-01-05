@@ -11,6 +11,7 @@ import {
     pointer,
     relative,
     sv,
+    transparent,
     white
 } from 'utils/themer'
 
@@ -127,9 +128,11 @@ export const pageFrameStyle = {
         position: fixed,
         height: '100vh',
         width: '100vw',
-        zIndex: 3,
+        zIndex: 11,
+        backgroundColor: 'rgb(75 81 80 / 40%)',
         empty: {
-            zIndex: -1
+            zIndex: -1,
+            background: transparent
         }
     }
 }
@@ -169,15 +172,18 @@ export const defaultModalStyle = {
     position: fixed,
     top: '50%',
     left: '50%',
-    height: '20vw',
-    width: '20vw',
-    marginLeft: '-10vw',
-    marginTop: '-10vw',
+    height: '30vw',
+    width: '30vw',
+    marginLeft: '-15vw',
+    marginTop: '-15vw',
     padding: sv(50),
-    backgroundColor: '#cdcdcd',
-    borderColor: `1px solid ${globals.colors.borderColor}`
+    backgroundColor: white,
+    border: `1px solid #000`,
 }
 
+export const defaultPromptCloseIconStyle = {
+    size: 28
+}
 
 export const notificationWrapperStyle = theme => {
     const baseStyle = {

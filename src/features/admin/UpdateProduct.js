@@ -1,5 +1,8 @@
-import {productFields}       from 'config/fields/product'
-import AdminDashboardWrapper from 'features/admin/AdminDashboardWrapper'
+import {
+    productFields,
+    validateProduct
+}                              from 'config/fields/product'
+import AdminDashboardWrapper   from 'features/admin/AdminDashboardWrapper'
 import React, {
     useContext,
     useEffect
@@ -10,9 +13,9 @@ import {
     useSelector
 }                              from 'react-redux'
 import {searchContext}         from 'shared/Containers/SearchController'
-import DangerZone     from 'shared/Controls/DangerZone'
-import Form           from 'shared/Forms/Form'
-import ContentWrapper from 'shared/Layout/ContentWrapper'
+import DangerZone              from 'shared/Controls/DangerZone'
+import Form                    from 'shared/Forms/Form'
+import ContentWrapper          from 'shared/Layout/ContentWrapper'
 import {adminFormWrapperStyle} from './styles'
 
 const UpdateProduct = () => {
@@ -59,7 +62,7 @@ const UpdateProduct = () => {
                     initialValues={initialValues}
                     fields={productFields}
                     options={options}
-                    //   validationSchema={validateSignin}
+                    validationSchema={validateProduct}
                     dispatchAction={'admin/updateProduct'}
                     formHeading={'Update Product'}
                     buttonText={'Update'}
@@ -67,7 +70,8 @@ const UpdateProduct = () => {
                     enableReinitialize={true}
                 />
                 <DangerZone
-                    destroyAction={'admin/attemptDestroyProduct'}
+                    attemptDestroyAction={'admin/attemptDestroyProduct'}
+                    destroyAction={'admin/destroyProduct'}
                     slug={slug}
                     objectID={product.objectID}
                     index={productsIndex}

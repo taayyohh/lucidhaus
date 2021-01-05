@@ -5,6 +5,7 @@ import {
 import {genericCardStyle} from 'shared/Cards/styles'
 import {defaultFormStyle} from 'shared/Forms/styles'
 import {
+    absolute,
     black,
     center,
     column,
@@ -18,7 +19,7 @@ import {
     sv,
     uppercase,
     white
-}                         from 'utils/themer'
+} from 'utils/themer'
 
 export const orderCardWrapperStyle = {
     ...genericCardStyle,
@@ -81,24 +82,52 @@ export const genericButtonStyle = {
         color: white,
     }
 }
-export const deleteButtonStyle = {
+export const deletePromptButtonStyle = {
     border: `1px solid ${globals.colors.borderColor}`,
     alignSelf: flexStart,
-    paddingTop: [10, .7, 10],
-    paddingBottom: [10, .7, 10],
-    paddingLeft: [20, .7, 20],
-    paddingRight: [20, .7, 20],
+    paddingTop: [20, .7, 20],
+    paddingBottom: [20, .7, 20],
+    paddingLeft: [40, .7, 40],
+    paddingRight: [40, .7, 40],
+    display: flex,
+    alignItems: center,
+    justifyContent: center,
+    size: [28, .7, 28],
     color: black,
     textDecoration: none,
     transition: 'background-color 250ms ease, color 250ms ease',
-    marginLeft: [10, globals.style.layoutScalingValue, '0'],
     marginTop: [20, globals.style.layoutScalingValue, 20],
     borderRadius: 5,
     hover: {
         cursor: pointer,
-        backgroundColor: globals.colors.linkHoverColor,
+        backgroundColor: colorPalette.lightGray,
+        color: black,
+    }
+}
+
+export const deletePromptConfirmButtonStyle = {
+    borderColor: colorPalette.brightRed,
+    hover: {
+        cursor: pointer,
+        backgroundColor: colorPalette.brightRed,
         color: white
     }
+}
+
+export const deletePromptCloseIconStyle = {
+    size: [38, .7, 38],
+    position: absolute,
+    right: [20, .7, 20],
+    top: [20, .7, 20],
+    hover: {
+        color: colorPalette.red,
+        cursor: pointer
+    }
+}
+
+export const deletePromptHeadingStyle = {
+    size: [42, .7, 42],
+    marginBottom: [20, .7, 20]
 }
 
 export const dangerZoneStyle = {
@@ -142,7 +171,7 @@ export const dangerZoneItemWrapperStyle = {
 }
 
 export const dangerZoneItemHeadingStyle = {
-    weight:800,
+    weight: 800,
     size: [18, .7, 18],
     letterSpacing: [.3, .7, .3]
 }

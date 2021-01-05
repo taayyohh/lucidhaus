@@ -42,12 +42,10 @@ const AdminShop = ({shop}) => {
             indexName="hyphaProducts"
             searchClient={searchClient}
         >
-            {shop.length > 0 && (
-                <Div theme={searchWrapperStyle}>
-                    <SearchBox autoFocus/>
-                    <AdminCreateButton url={'/create/product'}/>
-                </Div>
-            )}
+            <Div theme={searchWrapperStyle}>
+                <SearchBox autoFocus/>
+                <AdminCreateButton url={'/create/product'}/>
+            </Div>
             <Div theme={adminPostsInnerWrapperStyle}>
                 <Hits/>
             </Div>

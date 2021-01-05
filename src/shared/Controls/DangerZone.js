@@ -12,7 +12,7 @@ import {
     dangerZoneStyle
 }                    from './styles'
 
-const DangerZone = ({destroyAction, slug, type, objectID, index, _id}) => {
+const DangerZone = ({attemptDestroyAction, destroyAction, slug, type, objectID, index, _id}) => {
     const dispatch = useDispatch()
 
     return (
@@ -29,13 +29,13 @@ const DangerZone = ({destroyAction, slug, type, objectID, index, _id}) => {
                 </Div>
                 <Div
                     theme={dangerZoneButtonStyle}
-                    onClick={() => dispatch({type: destroyAction, payload: {slug: (_id || slug)}})}
+                    onClick={() => dispatch({type: attemptDestroyAction, payload: {slug: (_id || slug)}})}
                 >
                     Delete
                 </Div>
             </Div>
             <DeletePrompt
-                destroyAction={'admin/destroyProduct'}
+                destroyAction={destroyAction}
                 type={type}
                 objectID={objectID}
                 index={index}

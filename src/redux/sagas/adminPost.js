@@ -1,27 +1,28 @@
-import {push}       from 'connected-react-router'
+import {push} from 'connected-react-router'
 import {
     call,
     put,
     takeLatest
-}                   from 'redux-saga/effects'
+}             from 'redux-saga/effects'
 import {
     addPost,
     deletePost,
     updatePost
-}                   from 'services/apiAdmin'
+}             from 'services/apiAdmin'
 import {
     getSignedRequest,
     uploadFile
-}                   from 'services/apiS3'
+}             from 'services/apiS3'
 
 export function* createPost({payload}) {
-    const {_id, token, name, description, photo, image} = payload
+    const {_id, token, name, description, photo, image, isPublished} = payload
 
     //add to formdata so api can read
     const post = new FormData()
     post.set('name', name)
     post.set('description', description)
     post.set('photo', photo)
+    post.set('isPublished', isPublished)
 
     const s3Payload = yield call(getSignedRequest, {croppedImage: image})
     if (!!s3Payload.signedRequest) {
@@ -31,7 +32,7 @@ export function* createPost({payload}) {
         const createdPost = yield call(addPost, {userId: _id, token: token, post: post})
         console.log('createdPost', createdPost)
         if (!createdPost.error) {
-            yield put({type: 'admin/createPostsSuccess', createdPost})
+            yield put({type: 'post/getPosts'})
             yield put(push('/admin/posts/update/' + createdPost.slug))
 
         } else {
@@ -86,8 +87,12 @@ export function* attemptDestroyPost({payload}) {
 
 export function* destroyPost({payload}) {
     const destroyed = yield call(deletePost, payload)
+    const {objectID} = payload
+
     if (!destroyed.error) {
         yield put({type: 'admin/destroyPostSuccess'})
+        yield put({type: 'post/destroyPostSuccess', payload: {objectID}})
+        yield put({type: 'post/getPosts'})
         yield put(push('/admin/posts'))
     } else {
         yield put({type: 'admin/destroyPostFailure'})

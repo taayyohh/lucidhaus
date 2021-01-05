@@ -260,7 +260,7 @@ export const imageDropZoneWrapperStyle = {
         width: '100%',
         child: [
             {
-                selector: ':nth-child(1)',
+                selector: ':nth-of-type(1)',
                 display: flex,
                 alignItems: center,
                 justifyContent: center,
@@ -270,7 +270,7 @@ export const imageDropZoneWrapperStyle = {
                 }
             },
             {
-                selector: ':nth-child(2)',
+                selector: ':nth-of-type(2)',
                 display: flex,
                 justifyContent: center,
                 alignItems: center

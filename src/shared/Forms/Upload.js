@@ -32,9 +32,6 @@ const Upload = memo(({formik, id, cropWidth, cropHeight, s3Path, inputLabel, cla
     const [previewBlob, setPreviewBlob] = useState('')
     const {photo} = formik.initialValues
 
-    console.log('formik', formik)
-
-
     const makeClientCrop = async (crop, percentageCrop) => {
         if (uploadBlob && crop.width && crop.height) {
             let htmlImg = new Image()
@@ -102,7 +99,6 @@ const Upload = memo(({formik, id, cropWidth, cropHeight, s3Path, inputLabel, cla
         <>
             <Div theme={defaultFieldHeadingStyle}>{inputLabel}</Div>
             <Div theme={imageDropZoneWrapperStyle} className={className ? className : ''}>
-                <Span theme={uploadErrorMessageStyle}>{errorMessage}</Span>
                 <Dropzone
                     id={id}
                     accept={globals.extensions}
@@ -116,6 +112,7 @@ const Upload = memo(({formik, id, cropWidth, cropHeight, s3Path, inputLabel, cla
                 >
                     {({getRootProps, getInputProps}) => (
                         <Div {...getRootProps()} theme={imageDropZoneStyle}>
+                            <Span theme={uploadErrorMessageStyle}>{errorMessage}</Span>
                             <input {...getInputProps()} />
                             <p>Drag and Drop or click to select files</p>
                         </Div>

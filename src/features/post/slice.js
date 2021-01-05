@@ -24,7 +24,10 @@ export const slice = createSlice({
         },
         updatePostSuccess: (state, action) => {
             state.post = action.payload
-        }
+        },
+        destroyPostSuccess: (state, action) => {
+            state.posts = state.posts.filter(item => item.objectID !== action.payload.objectID)
+        },
     },
 })
 

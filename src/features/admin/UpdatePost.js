@@ -1,16 +1,19 @@
-import {postFields} from 'config/fields/post'
+import {
+    postFields,
+    validatePost
+}                              from 'config/fields/post'
+import AdminDashboardWrapper   from 'features/admin/AdminDashboardWrapper'
 import React, {
     useContext,
     useEffect
-}                   from 'react'
+}                              from 'react'
 import {
     useDispatch,
     useSelector
 }                              from 'react-redux'
 import {searchContext}         from 'shared/Containers/SearchController'
-import DangerZone            from 'shared/Controls/DangerZone'
-import Form                  from 'shared/Forms/Form'
-import AdminDashboardWrapper from 'features/admin/AdminDashboardWrapper'
+import DangerZone              from 'shared/Controls/DangerZone'
+import Form                    from 'shared/Forms/Form'
 import ContentWrapper          from 'shared/Layout/ContentWrapper'
 import {adminFormWrapperStyle} from './styles'
 
@@ -50,7 +53,7 @@ const UpdatePost = () => {
                 <Form
                     initialValues={initialValues}
                     fields={postFields}
-                    //   validationSchema={validateSignin}
+                    validationSchema={validatePost}
                     dispatchAction={'admin/updatePost'}
                     formHeading={'Update Post'}
                     buttonText={'Update'}
@@ -58,9 +61,10 @@ const UpdatePost = () => {
                     enableReinitialize={true}
                 />
                 <DangerZone
-                    destroyAction={'admin/attemptDestroyPost'}
+                    attemptDestroyAction={'admin/attemptDestroyPost'}
+                    destroyAction={'admin/destroyPost'}
                     slug={slug}
-                    objectId={post.objectID}
+                    objectID={post.objectID}
                     index={postsIndex}
                     type={'post'}
                 />

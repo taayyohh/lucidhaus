@@ -43,12 +43,10 @@ const AdminPosts = ({posts}) => {
             indexName="hyphaPosts"
             searchClient={searchClient}
         >
-            {posts.length > 0 && (
-                <Div theme={searchWrapperStyle}>
-                    <SearchBox autoFocus/>
-                    <AdminCreateButton url={'/create/post'}/>
-                </Div>
-            )}
+            <Div theme={searchWrapperStyle}>
+                <SearchBox autoFocus/>
+                <AdminCreateButton url={'/create/post'}/>
+            </Div>
             <Div theme={adminPostsInnerWrapperStyle}>
                 <Hits/>
             </Div>

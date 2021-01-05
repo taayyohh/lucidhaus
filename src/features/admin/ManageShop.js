@@ -10,28 +10,25 @@ import {
     useSelector
 }                            from 'react-redux'
 import {searchContext}       from 'shared/Containers/SearchController'
-import ContentWrapper from 'shared/Layout/ContentWrapper'
-import DashboardInfo  from 'shared/Layout/dashboard/DashboardInfo'
+import ContentWrapper        from 'shared/Layout/ContentWrapper'
+import DashboardInfo         from 'shared/Layout/dashboard/DashboardInfo'
 
 const ManageShop = () => {
     const {shop} = useSelector(state => state.shop)
     const {productsIndex} = useContext(searchContext)
     const dispatch = useDispatch()
-
     const [isIndexed, setIsIndexed] = useState(false)
 
-
     useEffect(() => {
-        console.log('byees')
         dispatch({type: 'shop/getShop'})
         productsIndex.saveObjects(shop)
-            .then(({objectIDs}) => {
-                console.log('DONE')
-                setIsIndexed(true)
-            })
-            .catch(err => {
-                console.log(err)
-            })
+            .then(() => setIsIndexed(true))
+            .catch(error =>
+                dispatch({
+                    type: 'site/setNotification',
+                    payload: {notification: error}
+                })
+            )
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])

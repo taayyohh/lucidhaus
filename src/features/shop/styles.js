@@ -192,6 +192,9 @@ export const checkoutFormStyle = {
     boxShadow: 0,
     border: 0,
     width: '100%',
+    fieldset: {
+      background: '#afe'
+    },
     inner: {
         display: grid,
         width: '100%',

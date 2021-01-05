@@ -15,7 +15,8 @@ import {
     faStore,
     faTrashAlt,
     faUser,
-    faUserCog
+    faUserCog,
+    faTimesCircle
 } from '@fortawesome/free-solid-svg-icons'
 
 export const
@@ -33,6 +34,7 @@ export const
     shoppingCart = faShoppingCart,
     signOut = faSignOutAlt,
     store = faStore,
+    timesCircle = faTimesCircle,
     trashAlt = faTrashAlt,
     user = faUser,
     userCog = faUserCog

@@ -83,6 +83,13 @@ export function* updateProductDetail({payload}) {
             })
         } else {
             yield put({type: 'product/updateProductFailure', payload: updated})
+            yield put({
+                type: 'site/setNotification',
+                payload: {
+                    notification: updated.error,
+                    theme: 'red'
+                }
+            })
         }
     } catch (error) {
         yield put({type: 'product/updateProductFailure'})
