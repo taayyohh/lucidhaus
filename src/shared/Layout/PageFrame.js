@@ -1,13 +1,13 @@
-import React             from 'react'
-import Div               from 'shared/Basic/Div'
-import DocumentHead      from './DocumentHead'
-import Footer            from './Footer'
-import Header            from './Header'
-import Main         from './Main'
-import Notification from 'shared/Layout/Notification'
-import StaticHead   from './StaticHead'
-import {pageFrameStyle} from './styles'
+import DocumentHead     from 'features/site/DocumentHead'
+import StaticHead       from 'features/site/StaticHead'
+import React            from 'react'
+import Div              from 'shared/Basic/Div'
+import Notification     from 'shared/Layout/Notification'
 import Overlay          from 'shared/Layout/Overlay'
+import Footer           from './Footer'
+import Header           from './Header'
+import Main             from './Main'
+import {pageFrameStyle} from './styles'
 
 const PageFrame = () =>
     <Div theme={pageFrameStyle}>

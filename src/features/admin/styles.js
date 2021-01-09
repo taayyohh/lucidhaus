@@ -150,9 +150,11 @@ export const adminFormWrapperStyle = {
 
 export const adminTaxonomyStyle = isActive => {
     return {
+        size: [18, .7, 18],
         color: !isActive ? black : colorPalette.purple,
         hover: {
-            cursor: pointer
+            cursor: pointer,
+            color: colorPalette.purple
         }
     }
 }

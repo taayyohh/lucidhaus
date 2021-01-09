@@ -8,7 +8,6 @@ import GenericCard         from 'shared/Cards/GenericCard'
 import ContentWrapper      from 'shared/Layout/ContentWrapper'
 import {postsWrapperStyle} from './styles'
 
-
 const Posts = () => {
     const {posts} = useSelector(state => state.post)
     const dispatch = useDispatch()
@@ -18,6 +17,18 @@ const Posts = () => {
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
+
+    useEffect(() => {
+        dispatch({
+            type: 'site/setDocumentHead',
+            payload: {
+                title: 'Posts',
+                description: 'The posts description'
+            }
+        })
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [posts])
 
     return (
         <ContentWrapper>

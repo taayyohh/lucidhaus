@@ -38,7 +38,7 @@ const ManagePosts = () => {
             <AdminDashboardWrapper>
                 <DashboardInfo
                     heading={'Manage Posts'}
-                    description={'Click to edit.'}
+                    description={'Search to find. Click to edit.'}
                 />
                 {isIndexed && (
                     <AdminPosts posts={posts}/>

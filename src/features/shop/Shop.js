@@ -1,5 +1,6 @@
 import ShopWrapper        from 'features/shop/ShopWrapper'
 import {shopCardStyle}    from 'features/shop/styles'
+import {useTransform}     from 'framer-motion'
 import React, {useEffect} from 'react'
 import {
     useDispatch,
@@ -19,11 +20,22 @@ const Shop = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
+    useEffect(() => {
+        dispatch({
+            type: 'site/setDocumentHead',
+            payload: {
+                title: 'The Hypha Beta Shop',
+                description: 'Welcome to the shop.'
+            }
+        })
+    }, [shop])
+
+
     return (
         <ContentWrapper>
             <ShopWrapper>
                 {shop && shop.map(
-                    product => product.isPublished && (
+                    (product, i) => product.isPublished && (
                         <GenericCard
                             key={product.slug}
                             slug={`shop/${product.slug}`}

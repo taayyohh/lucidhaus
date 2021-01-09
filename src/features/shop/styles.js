@@ -86,6 +86,9 @@ export const shopRightColumnStyle = {
     width: auto,
     gridTemplateColumns: '1fr 1fr',
     gridGap: sv(50),
+    mobile: {
+        gridTemplateColumns: '1fr'
+    }
 }
 
 export const shopCategoryListStyle = {
@@ -183,23 +186,26 @@ export const productImageStyle = {
     margin: '0 auto'
 }
 
-export const checkoutFormStyle = {
+export const shippingAddressStyle = {
     background: transparent,
-    paddingTop: 0,
-    paddingBottom: 0,
-    paddingLeft: 0,
-    paddingRight: 0,
+    padding: 0,
     boxShadow: 0,
     border: 0,
     width: '100%',
-    fieldset: {
-      background: '#afe'
-    },
     inner: {
         display: grid,
         width: '100%',
         gridColumnGap: sv(30, globals.style.layoutScalingValue),
         gridTemplateColumns: '1fr 1fr',
+        child: {
+            selector: '> fieldset',
+            marginBottom: [20, .7, 20],
+            child: {
+                selector: '> span',
+                top: [5, .7, 5],
+                right: [10, .7, 10]
+            }
+        },
         mobile: {
             gridTemplateColumns: '1fr',
             gridGap: 0

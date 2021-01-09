@@ -15,11 +15,13 @@ export const adminDashboardMenu = [
     },
     {
         url: '/admin/posts',
+        active: ['post'],
         icon: newsPaper,
         title: 'Manage Posts'
     },
     {
         url: '/admin/shop',
+        active: ['product'],
         icon: store,
         title: 'Manage Shop'
     },
@@ -30,6 +32,7 @@ export const adminDashboardMenu = [
     },
     {
         url: '/admin/taxonomy',
+        active: ['product-category'],
         icon: cogs,
         title: 'Manage Taxonomy'
     },

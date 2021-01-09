@@ -24,7 +24,7 @@ const DashboardMenuItem = ({item}) => {
                 case 1:
                     return itemUrl.length === 1 && itemUrl[0] === url[0]
                 case 2:
-                    return itemUrl[1] === url[1]
+                    return (itemUrl[1] === url[1]) || (item && !!item?.active?.find((i) => i === url[1]))
                 case 4:
                     return itemUrl[1] === url[1]
                 default:

@@ -22,7 +22,6 @@ import {
     postWrapperStyle
 }                              from './styles'
 
-
 const Post = () => {
     const dispatch = useDispatch()
     const {post} = useSelector(state => state.post)
@@ -34,6 +33,20 @@ const Post = () => {
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
+
+    useEffect(() => {
+        dispatch({
+            type: 'site/setDocumentHead',
+            payload: {
+                title: name,
+                description,
+                image: photo,
+                imageAlt: `${name} Product Photo`
+            }
+        })
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [post])
 
     return (
         <AnimatePresence>

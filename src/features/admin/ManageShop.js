@@ -38,7 +38,7 @@ const ManageShop = () => {
             <AdminDashboardWrapper>
                 <DashboardInfo
                     heading={'Manage Shop'}
-                    description={'Click to edit.'}
+                    description={'Search to find. Click to edit.'}
                 />
                 {isIndexed && (
                     <AdminShop shop={shop}/>

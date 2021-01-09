@@ -1,13 +1,14 @@
-import React                              from 'react'
+import {headerMenu}     from 'config/menus/header'
+import React            from 'react'
 import {
     useDispatch,
     useSelector
-}                                         from 'react-redux'
-import {adminMenuStyle}                   from 'features/admin/styles'
-import Div                                from 'shared/Basic/Div'
-import LinkSwitch                         from 'shared/Basic/LinkSwitch'
-import Span                               from 'shared/Basic/Span'
-import HeaderMenuItems                    from './HeaderMenuItems'
+}                       from 'react-redux'
+import {adminMenuStyle} from 'features/admin/styles'
+import Div              from 'shared/Basic/Div'
+import LinkSwitch       from 'shared/Basic/LinkSwitch'
+import Span             from 'shared/Basic/Span'
+import HeaderMenuItems  from './HeaderMenuItems'
 import {headerMenuAuthStyleListItemStyle} from './styles'
 
 const MobileHeaderMenu = () => {
@@ -17,7 +18,7 @@ const MobileHeaderMenu = () => {
     return (
         <Div theme={adminMenuStyle}>
             <Div theme={adminMenuStyle.list}>
-                <HeaderMenuItems/>
+                <HeaderMenuItems items={headerMenu}/>
                 {isAuthenticated && (
                     <Span
                         theme={headerMenuAuthStyleListItemStyle}

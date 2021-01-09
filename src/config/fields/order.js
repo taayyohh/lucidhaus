@@ -5,6 +5,7 @@ import {
     TEL,
     TEXT
 }               from 'config'
+import {EMAIL}  from 'config/index'
 import * as Yup from 'yup'
 
 
@@ -52,8 +53,13 @@ export const orderFields = [
     },
     {
         name: 'phone',
-        inputLabel: 'Phone:',
+        inputLabel: 'Phone',
         type: TEL
+    },
+    {
+        name: 'email',
+        inputLabel: 'Email',
+        type: EMAIL
     },
     {
         name: 'company',
@@ -84,6 +90,9 @@ export const validateCheckoutAddress = Yup.object().shape({
         .string()
         .required('*'),
     phone: Yup
+        .string()
+        .required('*'),
+    email: Yup
         .string()
         .required('*')
 })

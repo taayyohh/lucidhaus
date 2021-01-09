@@ -27,6 +27,7 @@ export const postFields = [
     },
     {
         name: 'isPublished',
+        inputLabel: 'Published',
         type: TOGGLE
     }
 ]

@@ -46,6 +46,18 @@ const Product = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
+    useEffect(() => {
+        dispatch({
+            type: 'site/setDocumentHead',
+            payload: {
+                title: name,
+                description,
+                image: photo,
+                imageAlt: `${name} Product Photo`
+            }
+        })
+    }, [photo])
+
     return (
         <AnimatePresence>
             <MotionDiv initial={nOpacity} animate={fadeIn} exit={fadeOut}>

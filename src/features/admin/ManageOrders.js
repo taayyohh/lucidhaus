@@ -100,8 +100,11 @@ const ManageOrders = () => {
                 </Div>
 
                 <Div theme={adminOrderWrapperStyle}>
-                    {orders && orders.map(o => o.status === orderStatusFilter && (
-                            <AdminOrders order={o}/>
+                    {orders && orders.map((o, i) => o.status === orderStatusFilter && (
+                            <AdminOrders
+                                key={i}
+                                order={o}
+                            />
                         )
                     )}
                 </Div>

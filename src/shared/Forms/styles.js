@@ -185,9 +185,9 @@ export const defaultFieldHeadingStyle = {
 
 
 /** Rich Text **/
-export const smartInputStyle = {
-    marginBottom: [30, .7, 30]
-}
+// export const smartInputStyle = {
+//     marginBottom: [30, .7, 30]
+// }
 
 
 /** Rich Text **/
@@ -426,7 +426,8 @@ export const toggleBallStyle = {
 /** Country **/
 
 export const countryFieldStyle = {
-    marginBottom: [20, .7, 20],
+    height: [52, .7, 52],
+    marginBottom: [50, .7, 50],
     child: [
         {
             selector: '.country-field',
@@ -443,7 +444,8 @@ export const countryFieldStyle = {
 /** Region **/
 
 export const regionFieldStyle = {
-    marginBottom: [20, .7, 20],
+    height: [52, .7, 52],
+    marginBottom: [50, .7, 50],
     child: [
         {
             selector: '.region-field',
@@ -480,13 +482,13 @@ export const AutoCompleteSuggestionStyle = active => {
         paddingBottom: 15,
         paddingLeft: 20,
         paddingRight: 20,
-        backgroundColor: '#fafafa',
+        backgroundColor: white,
         cursor: 'pointer',
         size: [18, .7, 18],
         letterSpacing: [0.2, .7, 0.2],
         textTransform: none,
         hover: {
-            backgroundColor: white
+            backgroundColor: globals.colors.borderColor
         }
     }
 
@@ -501,8 +503,9 @@ export const AutoCompleteSuggestionWrapperStyle = {
     position: 'absolute',
     zIndex: 2,
     width: '100%',
-    top: [80, .7, 80],
+    top: [52, .7, 52],
     border: `1px solid ${globals.colors.borderColor}`,
+    borderRadius: [5, .7, 5],
     empty: {
         display: none
     }

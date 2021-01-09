@@ -1,14 +1,14 @@
-import React, {useEffect} from 'react'
+import AdminDashboardWrapper from 'features/admin/AdminDashboardWrapper'
+import AdminTaxonomy         from 'features/admin/AdminTaxonomy'
+import React, {useEffect}    from 'react'
 import {
     useDispatch,
     useSelector
-}                    from 'react-redux'
-import AdminTaxonomy         from 'features/admin/AdminTaxonomy'
+}                            from 'react-redux'
 import DeletePrompt          from 'shared/Controls/DeletePrompt'
-import AdminDashboardWrapper from 'features/admin/AdminDashboardWrapper'
-import ContentWrapper from 'shared/Layout/ContentWrapper'
-import DashboardInfo  from 'shared/Layout/dashboard/DashboardInfo'
-import {slugify}      from 'utils/slugify'
+import ContentWrapper        from 'shared/Layout/ContentWrapper'
+import DashboardInfo         from 'shared/Layout/dashboard/DashboardInfo'
+import {slugify}             from 'utils/slugify'
 
 const ManageTaxonomy = () => {
     const {productCategories} = useSelector(state => state.shop)
@@ -29,7 +29,6 @@ const ManageTaxonomy = () => {
             feature: 'shop'
         }
     ]
-
 
     return (
         <ContentWrapper>

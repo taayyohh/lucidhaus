@@ -10,7 +10,15 @@ const initialState = {
     url: [],
     layout: '',
     notification: null,
-    notificationTheme: ''
+    notificationTheme: '',
+    documentHead: {
+        title: '',
+        description: '',
+        image: '',
+        imageAlt: '',
+        url: '',
+        siteName: ''
+    }
 }
 
 export const slice = createSlice({
@@ -37,6 +45,9 @@ export const slice = createSlice({
         setNotification: (state, action) => {
             state.notification = action.payload.notification
             state.notificationTheme = action.payload.theme
+        },
+        setDocumentHead: (state, action) => {
+            state.documentHead = {...state.documentHead, ...action.payload}
         }
     },
 })

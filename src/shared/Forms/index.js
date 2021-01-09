@@ -12,18 +12,17 @@ import {
     TEXT,
     TOGGLE,
     UPLOAD
-}                        from 'config'
-import React, {memo}     from 'react'
-import Address           from './Address'
-import Count             from './Count'
-import Country           from './Country'
-import Region            from './Region'
-import RichTextEditor    from './RichTextEditor'
-import Select            from './Select'
-import SmartInput        from './SmartInput'
-import {smartInputStyle} from './styles'
-import Toggle            from './Toggle'
-import Upload            from './Upload'
+}                     from 'config'
+import React, {memo}  from 'react'
+import Address        from './Address'
+import Count          from './Count'
+import Country        from './Country'
+import Region         from './Region'
+import RichTextEditor from './RichTextEditor'
+import Select         from './Select'
+import SmartInput     from './SmartInput'
+import Toggle         from './Toggle'
+import Upload         from './Upload'
 
 const FieldSwitch = memo(({field, formik, options}) => {
     switch (field.type) {
@@ -40,7 +39,6 @@ const FieldSwitch = memo(({field, formik, options}) => {
                 disabled={field.disabled}
                 className={formik.touched[field.name] && formik.errors[field.name] ? 'error' : ''}
                 errorMessage={formik.touched[field.name] && formik.errors[field.name] ? formik.errors[field.name] : null}
-                theme={smartInputStyle}
             />
         case RICH_TEXT:
             return <RichTextEditor

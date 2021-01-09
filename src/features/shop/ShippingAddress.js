@@ -1,11 +1,11 @@
 import {
     orderFields,
     validateCheckoutAddress
-}                                from 'config/fields/order'
-import CheckoutSection           from 'features/shop/CheckoutSection'
-import {checkoutFormStyle}       from 'features/shop/styles'
-import React from 'react'
-import Form  from 'shared/Forms/Form'
+}                             from 'config/fields/order'
+import CheckoutSection        from 'features/shop/CheckoutSection'
+import {shippingAddressStyle} from 'features/shop/styles'
+import React                  from 'react'
+import Form                   from 'shared/Forms/Form'
 
 const ShippingAddress = () => {
     const initialValues = {
@@ -26,7 +26,7 @@ const ShippingAddress = () => {
                 initialValues={initialValues}
                 validationSchema={validateCheckoutAddress}
                 fields={orderFields}
-                theme={checkoutFormStyle}
+                theme={shippingAddressStyle}
                 dispatchAction={'shop/updateDeliveryAddress'}
                 autoSubmit
             />
