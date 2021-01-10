@@ -18,6 +18,7 @@ const ShippingAddress = () => {
         country: '',
         state: '',
         phone: '',
+        email: ''
     }
 
     return (

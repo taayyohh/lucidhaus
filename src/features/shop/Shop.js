@@ -1,6 +1,5 @@
 import ShopWrapper        from 'features/shop/ShopWrapper'
 import {shopCardStyle}    from 'features/shop/styles'
-import {useTransform}     from 'framer-motion'
 import React, {useEffect} from 'react'
 import {
     useDispatch,
@@ -28,6 +27,8 @@ const Shop = () => {
                 description: 'Welcome to the shop.'
             }
         })
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [shop])
 
 

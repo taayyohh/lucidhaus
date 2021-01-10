@@ -2,8 +2,8 @@ import {userDashboardMenu} from 'config/menus/userDashboard'
 import PurchaseHistory     from 'features/user/PurchaseHistory'
 import React               from 'react'
 import ContentWrapper   from 'shared/Layout/ContentWrapper'
-import DashboardInfo    from 'shared/Layout/dashboard/DashboardInfo'
-import DashboardWrapper from 'shared/Layout/dashboard/DashboardWrapper'
+import DashboardInfo    from 'shared/Layout/Dashboard/DashboardInfo'
+import DashboardWrapper from 'shared/Layout/Dashboard/DashboardWrapper'
 
 const Orders = () => {
     return (

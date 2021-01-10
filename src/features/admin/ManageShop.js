@@ -10,8 +10,8 @@ import {
     useSelector
 }                            from 'react-redux'
 import {searchContext}       from 'shared/Containers/SearchController'
-import ContentWrapper        from 'shared/Layout/ContentWrapper'
-import DashboardInfo         from 'shared/Layout/dashboard/DashboardInfo'
+import ContentWrapper from 'shared/Layout/ContentWrapper'
+import DashboardInfo  from 'shared/Layout/Dashboard/DashboardInfo'
 
 const ManageShop = () => {
     const {shop} = useSelector(state => state.shop)

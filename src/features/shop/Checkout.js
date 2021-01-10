@@ -27,17 +27,16 @@ const Checkout = ({cart}) => {
     const [dropInInstance, setDropInInstance] = useState({})
     const {_id, token, email, name} = useSelector(state => state.user)
     const {braintreeClientToken, deliveryAddress, billingAddress} = useSelector(state => state.shop)
-    const {isAuthenticated} = useSelector(state => state.user)
 
     useEffect(() => {
-        if (isAuthenticated)
-            dispatch({
-                type: 'shop/getBraintreeToken',
-                payload: {_id, token}
-            })
+        dispatch({
+            type: 'shop/getBraintreeToken'
+        })
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [_id, token])
+    }, [])
+
+
 
 
     const purchase = () => {
@@ -75,7 +74,6 @@ const Checkout = ({cart}) => {
                                 children={'Purchase'}
                             />
                         )}
-
                     </MotionDiv>
                 </AnimatePresence>
             )}

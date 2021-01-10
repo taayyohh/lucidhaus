@@ -39,13 +39,12 @@ export const listRelated = ({slug}) =>
         })
 
 
-export const processPayment = ({_id, token, paymentData}) =>
-    fetch(`${API}/braintree/payment/${_id}`, {
+export const processPayment = ({paymentData}) =>
+    fetch(`${API}/braintree/payment/`, {
         method: 'POST',
         headers: {
             Accept: 'application/json',
             'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`
         },
         body: JSON.stringify(paymentData)
     })
@@ -57,13 +56,12 @@ export const processPayment = ({_id, token, paymentData}) =>
         })
 
 
-export const createOrder = ({_id, token, createOrderData}) =>
-    fetch(`${API}/order/create/${_id}`, {
+export const createOrder = ({createOrderData}) =>
+    fetch(`${API}/order/create/`, {
         method: 'POST',
         headers: {
             Accept: 'application/json',
             'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`
         },
         body: JSON.stringify({order: createOrderData})
     })

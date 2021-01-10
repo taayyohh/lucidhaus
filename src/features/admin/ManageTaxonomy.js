@@ -6,9 +6,9 @@ import {
     useSelector
 }                            from 'react-redux'
 import DeletePrompt          from 'shared/Controls/DeletePrompt'
-import ContentWrapper        from 'shared/Layout/ContentWrapper'
-import DashboardInfo         from 'shared/Layout/dashboard/DashboardInfo'
-import {slugify}             from 'utils/slugify'
+import ContentWrapper from 'shared/Layout/ContentWrapper'
+import DashboardInfo  from 'shared/Layout/Dashboard/DashboardInfo'
+import {slugify}      from 'utils/slugify'
 
 const ManageTaxonomy = () => {
     const {productCategories} = useSelector(state => state.shop)

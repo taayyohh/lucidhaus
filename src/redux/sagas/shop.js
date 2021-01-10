@@ -1,3 +1,4 @@
+import {push}        from 'connected-react-router'
 import {
     call,
     put,
@@ -38,14 +39,7 @@ export function* getBraintreeToken({payload}) {
 
 export function* getPaymentNonce({payload}) {
     const {dropInInstance, _id, token, amount, products, deliveryAddress, user} = payload
-    const {address, address2, city, state, zip, country, phone} = deliveryAddress
-    const parts = [address, address2, city, state, zip, country, phone]
-    const filteredParts = parts.filter(v => !!v)
-    const formattedAddress = filteredParts.join(', ')
-
-    console.log('formatted address', formattedAddress)
-
-
+    const {address, address2, city, state, zip, country, phone, email} = deliveryAddress
     const nonce = yield call(getPaymentMethod, dropInInstance)
     const paymentData = {paymentMethodNonce: nonce, amount: amount}
     const paymentProcessed = yield call(processPayment, {_id, token, paymentData})
@@ -53,19 +47,39 @@ export function* getPaymentNonce({payload}) {
     if (paymentProcessed.success === true) {
         const createOrderData = {
             products,
-            transactionId_id: paymentProcessed.transaction.id,
+            transactionId: paymentProcessed.transaction.id,
             amount: paymentProcessed.transaction.amount,
-            address: formattedAddress,
-            user: user
+            address,
+            address2,
+            city,
+            state,
+            zip,
+            country,
+            phone,
+            email,
+            user
         }
-        const createdOrder = yield call(createOrder, {_id, token, createOrderData})
-        console.log('createdOrder', createdOrder)
+        const createdOrder = yield call(createOrder, {createOrderData})
 
-        yield call(emptyCart)
-        yield put({type: 'shop/emptyCart'})
-        //TODO: success
+        if (!createdOrder.error) {
+            yield put({
+                type: 'site/setNotification',
+                payload: {
+                    notification: 'Purchase Successful!',
+                    theme: 'green'
+                }
+            })
+            yield call(emptyCart)
+            yield put({type: 'shop/emptyCart'})
+
+            if (!user.email.length < 1 || !user.name.length < 1) {
+                yield put({type: 'user/getPurchaseHistory', payload: {_id, token}})
+                yield put(push('/dashboard/orders'))
+            } else {
+                yield put(push('/shop'))
+            }
+        }
     }
-
 }
 
 /**
