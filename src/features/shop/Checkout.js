@@ -15,7 +15,7 @@ import MotionDiv         from 'shared/Basic/MotionDiv'
 import {
     fadeIn,
     nOpacity
-}                        from 'shared/variables'
+}                        from 'shared/Layout/styles/animations'
 import {getTotal}        from 'utils/cartHelpers'
 import Payment           from './Payment'
 import ShippingAddress   from './ShippingAddress'
@@ -35,8 +35,6 @@ const Checkout = ({cart}) => {
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
-
-
 
 
     const purchase = () => {
@@ -60,6 +58,8 @@ const Checkout = ({cart}) => {
 
     return (
         <Div theme={checkoutDropIn}>
+
+
             {(!!braintreeClientToken && cart.length > 0) && (
                 <AnimatePresence>
                     <MotionDiv initial={nOpacity} animate={fadeIn}>
@@ -77,6 +77,8 @@ const Checkout = ({cart}) => {
                     </MotionDiv>
                 </AnimatePresence>
             )}
+
+
         </Div>
     )
 }

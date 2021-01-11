@@ -14,7 +14,7 @@ import {
     fadeIn,
     fadeOut,
     nOpacity
-}                              from 'shared/variables'
+} from 'shared/Layout/styles/animations'
 import {center}                from 'utils/themer'
 import {
     postDescriptionStyle,

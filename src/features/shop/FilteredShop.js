@@ -8,16 +8,28 @@ import {
 import GenericCard        from 'shared/Cards/GenericCard'
 import ContentWrapper     from 'shared/Layout/ContentWrapper'
 
-const Shop = () => {
+const FilteredShop = () => {
     const {shop, productCategories} = useSelector(state => state.shop)
+    const {slug} = useSelector(state => state.site)
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch({type: 'shop/getShop'})
         dispatch({type: 'shop/getProductCategories'})
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
+
+    useEffect(() => {
+        if (!!slug)
+            dispatch({
+                type: 'shop/getFilteredShop',
+                payload: {
+                    category: productCategories.filter(cat => cat.slug === slug)[0]?.objectID
+                }
+            })
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [slug])
 
     useEffect(() => {
         dispatch({
@@ -31,15 +43,14 @@ const Shop = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [shop])
 
-
     return (
         <ContentWrapper>
             <ShopWrapper>
                 {shop && shop.map(
-                    (product, i) => product.isPublished && (
+                    product => product.isPublished && (
                         <GenericCard
                             key={product.slug}
-                            slug={`shop/${product.slug}`}
+                            slug={`/shop/${product.slug}`}
                             name={product.name}
                             photo={product.photo}
                             price={product.price}
@@ -54,4 +65,4 @@ const Shop = () => {
     )
 }
 
-export default Shop
+export default FilteredShop

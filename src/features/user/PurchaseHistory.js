@@ -1,12 +1,16 @@
-import moment             from 'moment'
-import PropTypes          from 'prop-types'
-import React, {useEffect} from 'react'
+import {
+    purchaseHistoryItemStyle,
+    purchaseHistoryStyle
+} from 'features/user/styles'
+import moment                 from 'moment'
+import PropTypes              from 'prop-types'
+import React, {useEffect}     from 'react'
 import {
     useDispatch,
     useSelector
-}                         from 'react-redux'
-import Div                from 'shared/Basic/Div'
-import H3                 from 'shared/Basic/H3'
+}                             from 'react-redux'
+import Div                    from 'shared/Basic/Div'
+import H3                     from 'shared/Basic/H3'
 
 const PurchaseHistory = () => {
     const {token, _id, purchaseHistory} = useSelector(state => state.user)
@@ -26,10 +30,10 @@ const PurchaseHistory = () => {
     }, [_id, token])
 
     return (
-        <Div>
+        <Div theme={purchaseHistoryStyle}>
             {purchaseHistory.map((h, i) => (
                 h.products.map((p, i) =>
-                    <Div key={i}>
+                    <Div key={i} theme={purchaseHistoryItemStyle}>
                         <Div>{h.status}</Div>
                         <Div>{h.amount}</Div>
                         <H3>{p.name}</H3>

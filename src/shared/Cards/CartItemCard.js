@@ -12,7 +12,7 @@ import {
     fadeIn,
     fadeOut,
     nOpacity
-}           from 'shared/variables'
+} from 'shared/Layout/styles/animations'
 import {
     productCardControlsStyle,
     productCardCountStyle,

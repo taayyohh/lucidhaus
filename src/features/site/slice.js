@@ -11,6 +11,7 @@ const initialState = {
     layout: '',
     notification: null,
     notificationTheme: '',
+    notificationDelay: undefined,
     documentHead: {
         title: '',
         description: '',
@@ -45,6 +46,7 @@ export const slice = createSlice({
         setNotification: (state, action) => {
             state.notification = action.payload.notification
             state.notificationTheme = action.payload.theme
+            state.notificationDelay = action.payload.delay
         },
         setDocumentHead: (state, action) => {
             state.documentHead = {...state.documentHead, ...action.payload}

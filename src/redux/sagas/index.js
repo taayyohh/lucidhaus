@@ -1,14 +1,15 @@
 import {
     all,
     fork
-}                           from 'redux-saga/effects'
+}                             from 'redux-saga/effects'
+import {watchGetFilteredShop} from 'redux/sagas/shop'
 import {
     watchAttemptDestroyPost,
     watchCreatePost,
     watchDestroyPost,
     watchDestroyPostSuccess,
     watchUpdatePost
-}                           from './adminPost'
+}                             from './adminPost'
 import {
     watchAttemptDestroyProduct,
     watchCreateProduct,
@@ -16,7 +17,7 @@ import {
     watchDestroyProductSuccess,
     watchUpdateProduct,
     watchUpdateProductQuantity
-}                           from './adminProduct'
+}                             from './adminProduct'
 import {
     watchCreateProductCategory,
     watchDestroyProductCategory,
@@ -92,6 +93,7 @@ export default function* rootSaga() {
         fork(watchUpdatePost),
         fork(watchGetPostDetail),
         fork(watchGetShop),
+        fork(watchGetFilteredShop),
         fork(watchCreateProduct),
 
         //Todo: optimize

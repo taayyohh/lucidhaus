@@ -181,10 +181,6 @@ export const defaultModalStyle = {
     border: `1px solid #000`,
 }
 
-export const defaultPromptCloseIconStyle = {
-    size: 28
-}
-
 export const notificationWrapperStyle = theme => {
     const baseStyle = {
         position: 'fixed',
@@ -204,7 +200,7 @@ export const notificationWrapperStyle = theme => {
         width: '100vw',
         textAlign: center,
         color: white,
-        size: [14, .7, 14],
+        size: [18, .7, 18],
         height: 0,
         opacity: 0,
         zIndex: 3,
@@ -235,3 +231,4 @@ export const transitionOverlayStyle = {
     zIndex: 12,
     display: 'static'
 }
+

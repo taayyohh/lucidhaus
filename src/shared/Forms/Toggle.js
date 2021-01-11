@@ -18,6 +18,7 @@ const Toggle = ({formik, inputLabel, name}) =>
             variants={toggleVariants}
         >
             <MotionDiv
+                layoutId={'toggleBall'}
                 theme={toggleBallStyle}
                 transition={{
                     type: 'spring',

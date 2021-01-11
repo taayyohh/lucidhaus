@@ -33,6 +33,7 @@ const Post = lazy(() => import('features/post/Post'))
 const Marketplace = lazy(() => import('features/post/Posts'))
 const Product = lazy(() => import('features/shop/Product'))
 const Shop = lazy(() => import('features/shop/Shop'))
+const FilteredProduct = lazy(() => import('features/shop/FilteredShop'))
 const NotFound = lazy(() => import('features/site/NotFound'))
 const SignIn = lazy(() => import('features/user/SignIn'))
 const SignUp = lazy(() => import('features/user/SignUp'))
@@ -57,6 +58,7 @@ const Routes = () => {
                             <Route path="/posts/:slug" exact component={Post}/>
                             <Route path="/shop" exact component={Shop}/>
                             <Route path="/shop/:slug" exact component={Product}/>
+                            <Route path="/shop/category/:slug" exact component={FilteredProduct} />
                             <PrivateRoute path="/dashboard" exact component={UserDashboard}/>
                             <PrivateRoute path="/dashboard/orders" exact component={UserOrders}/>
                             <PrivateRoute path="/dashboard/settings" exact component={UserSettings}/>

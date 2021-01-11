@@ -1,12 +1,15 @@
 /** API KEYS **/
 
+
 export const API = process.env.REACT_APP_API_URL
 export const CDN = process.env.REACT_APP_CDN_URL
 export const algoliaAppId = process.env.REACT_APP_ALGOLIA_APP_ID
 export const algoliaSearchApiKey = process.env.REACT_APP_ALGOLIA_ADMIN_API_KEY
 export const alogiaAdminKey = process.env.REACT_APP_ALGOLIA_ADMIN_API_KEY
 export const googlePlacesApiKey = process.env.REACT_APP_PLACES_API_KEY
-export const shippoApiKey = process.env.REACT_APP_SHIPPO_API_KEY
+// export const shippoApiKey = process.env.REACT_APP_SHIPPO_API_KEY
+export const shippoApiKeyTest = 'shippo_test_43942b9a273603391abfb4a228f2b7b8f7abb91e'
+export const shippo = require('shippo')(shippoApiKeyTest)
 
 
 /** INPUT TYPES **/

@@ -37,7 +37,6 @@ export function* createProductCategory({payload}) {
 
 export function* updateProductCategoryDetail({payload}) {
     const {categoryId, name, token, _id} = payload
-    console.log('pay', payload)
 
     const productCategory = new FormData()
     productCategory.set('name', name)

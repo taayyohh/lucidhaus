@@ -77,17 +77,9 @@ export const updateProduct = ({slug, _id, token, product}) =>
             return error
         })
 
-export const getFilteredProducts = (skip, limit, filters = {}) => {
-    const data = {
-        limit, skip, filters
-    }
-    return fetch(`${API}/products/by/search`, {
-        method: 'POST',
-        headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data)
+export const getFilteredProducts = ({category}) => {
+    return fetch(`${API}/products/category/${category}`, {
+        method: 'GET'
     })
         .then(response => {
             return response.json()
@@ -96,3 +88,23 @@ export const getFilteredProducts = (skip, limit, filters = {}) => {
             return error
         })
 }
+
+// export const getFilteredProducts = (skip, limit, filters = {}) => {
+//     const data = {
+//         limit, skip, filters
+//     }
+//     return fetch(`${API}/products/by/search`, {
+//         method: 'POST',
+//         headers: {
+//             Accept: 'application/json',
+//             'Content-Type': 'application/json',
+//         },
+//         body: JSON.stringify(data)
+//     })
+//         .then(response => {
+//             return response.json()
+//         })
+//         .catch(error => {
+//             return error
+//         })
+// }

@@ -42,9 +42,13 @@ const AdminPosts = ({posts}) => {
         <InstantSearch
             indexName="hyphaPosts"
             searchClient={searchClient}
+            stalledSearchDelay={500}
         >
             <Div theme={searchWrapperStyle}>
-                <SearchBox autoFocus/>
+                <SearchBox
+                    searchAsYouType={false}
+                    autoFocus
+                />
                 <AdminCreateButton url={'/create/post'}/>
             </Div>
             <Div theme={adminPostsInnerWrapperStyle}>

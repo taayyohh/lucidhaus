@@ -4,8 +4,10 @@ import {
 }                       from 'config/styles'
 import {postTitleStyle} from 'features/post/styles'
 import {
+    absolute,
     auto,
     black,
+    block,
     borderBox,
     center,
     column,
@@ -17,7 +19,7 @@ import {
     sv,
     transparent,
     uppercase
-}                       from 'utils/themer'
+} from 'utils/themer'
 
 
 export const checkoutDropIn = {
@@ -65,19 +67,20 @@ export const shopMenuStyle = {
     borderRight: `1px solid ${globals.colors.borderColor}`
 }
 
-export const shopHeadingStyle = {
-    size: [42, .7, 28],
-    weight: 300,
-    font: globals.fonts.fancy,
-    child: {
-        selector: 'a',
-        textDecoration: none,
-        color: black,
-        hover: {
-            color: globals.colors.linkHoverColor
+export const shopHeadingStyle = isActive => {
+    return {
+        size: [42, .7, 28],
+        weight: 300,
+        font: globals.fonts.fancy,
+        child: {
+            selector: 'a',
+            textDecoration: none,
+            color: isActive ? colorPalette.purple : black,
+            hover: {
+                color: globals.colors.linkHoverColor
+            }
         }
     }
-
 }
 
 export const shopRightColumnStyle = {
@@ -96,13 +99,31 @@ export const shopCategoryListStyle = {
     paddingTop: [10, .7, 10]
 }
 
-export const shopCategoryStyle = {
-    size: [24, .7, 24],
-    lineHeight: [40, .7, 40],
-    hover: {
-        color: globals.colors.linkHoverColor,
-        cursor: pointer
+export const shopCategoryStyle = isActive => {
+    return {
+        position: relative,
+        display: block,
+        size: [24, .7, 24],
+        lineHeight: [40, .7, 40],
+        textDecoration: none,
+        color: isActive ? colorPalette.purple : black,
+        hover: {
+            color: globals.colors.linkHoverColor,
+            cursor: pointer
+        }
     }
+}
+
+export const shopActiveIndicatorStyle = {
+    height: [8, .7, 8],
+    width: [8, .7, 8],
+    borderRadius: [4, .7, 4],
+    position: absolute,
+    right: [55, globals.style.layoutScalingValue, '0'],
+    top: '50%',
+    marginTop: [-4, .7, -4],
+    background: colorPalette.purple
+
 }
 
 export const cartStyle = {

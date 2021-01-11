@@ -56,7 +56,8 @@ export const processPayment = ({paymentData}) =>
         })
 
 
-export const createOrder = ({createOrderData}) =>
+export const createOrder = ({createOrderData}) => {
+    console.log('CREATED ORDER DATA', createOrderData)
     fetch(`${API}/order/create/`, {
         method: 'POST',
         headers: {
@@ -73,4 +74,6 @@ export const createOrder = ({createOrderData}) =>
         })
 
 
+
+}
 

@@ -1,4 +1,5 @@
 import {
+    shopActiveIndicatorStyle,
     shopCategoryListStyle,
     shopCategoryStyle,
     shopHeadingStyle,
@@ -12,9 +13,11 @@ import {
 import Div                from 'shared/Basic/Div'
 import H2                 from 'shared/Basic/H2'
 import LinkSwitch         from 'shared/Basic/LinkSwitch'
+import MotionDiv          from 'shared/Basic/MotionDiv'
 
 const ShopMenu = () => {
-    const {productCategories} = useSelector(state => state.shop)
+    const {productCategories, product} = useSelector(state => state.shop)
+    const {slug, url} = useSelector(state => state.site)
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -25,19 +28,30 @@ const ShopMenu = () => {
 
     return (
         <Div theme={shopMenuStyle}>
-            <H2 theme={shopHeadingStyle}>
+            <H2 theme={shopHeadingStyle(slug === 'shop')}>
                 <LinkSwitch url={'/shop'}>
                     Shop
                 </LinkSwitch>
             </H2>
             <Div theme={shopCategoryListStyle}>
-                {productCategories && productCategories.map((cat) =>
-                    <Div
-                        theme={shopCategoryStyle}
-                        key={cat.slug}
-                    >
-                        {cat.name}
-                    </Div>
+                {productCategories && productCategories.map((cat) => {
+                        const isActive = cat.slug === slug || (product.category === cat.objectID && url.length === 2)
+                        return (
+                            <LinkSwitch
+                                url={`/shop/category/${cat.slug}`}
+                                theme={shopCategoryStyle(isActive)}
+                                key={cat.slug}
+                            >
+                                {cat.name}
+                                {isActive && (
+                                    <MotionDiv
+                                        theme={shopActiveIndicatorStyle}
+                                        layoutId={'activeCategoryIndicator'}
+                                    />
+                                )}
+                            </LinkSwitch>
+                        )
+                    }
                 )}
             </Div>
         </Div>

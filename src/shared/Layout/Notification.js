@@ -13,11 +13,11 @@ import {notificationWrapperStyle} from './styles'
 
 const Notification = () => {
     const dispatch = useDispatch()
-    const {notification, notificationTheme} = useSelector(state => state.site)
+    const {notification, notificationTheme, notificationDelay} = useSelector(state => state.site)
 
     //TODO: can improve
     const clearNotification = async () => {
-        await timeoutAsync(3000)
+        await timeoutAsync(notificationDelay ? notificationDelay : 3000)
         await resolvedPromise(dispatch({type: 'site/clearNotification'}))
         await clearTimeout(timeoutAsync)
     }

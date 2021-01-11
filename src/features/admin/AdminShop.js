@@ -41,9 +41,13 @@ const AdminShop = ({shop}) => {
         <InstantSearch
             indexName="hyphaProducts"
             searchClient={searchClient}
+            stalledSearchDelay={500}
         >
             <Div theme={searchWrapperStyle}>
-                <SearchBox autoFocus/>
+                <SearchBox
+                    searchAsYouType={false}
+                    autoFocus
+                />
                 <AdminCreateButton url={'/create/product'}/>
             </Div>
             <Div theme={adminPostsInnerWrapperStyle}>

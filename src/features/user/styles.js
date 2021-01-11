@@ -1,4 +1,9 @@
 import {globals} from 'config/styles'
+import {
+    borderBox,
+    grid,
+    sv
+} from 'utils/themer'
 
 export const signUpPromptStyle = {
     font: globals.fonts.sans,
@@ -28,4 +33,17 @@ export const signUpFormStyle = {
 
 export const signInFormStyle = {
     ...signUpFormStyle
+}
+
+export const purchaseHistoryStyle = {
+    display: grid,
+    gridTemplateColumns: '1fr 1fr 1fr 1fr',
+    gridGap: sv(30, globals.style.layoutScalingValue)
+}
+
+export const purchaseHistoryItemStyle = {
+    border: `1px solid ${globals.colors.borderColor}`,
+    padding: [20, globals.style.layoutScalingValue, 20],
+    borderRadius: [10, globals.style.layoutScalingValue, 10],
+    boxSizing: borderBox
 }

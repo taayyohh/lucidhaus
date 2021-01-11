@@ -35,8 +35,8 @@ const ManageOrders = () => {
                 .then(({objectIDs}) => {
 
                 })
-                .catch(err => {
-                    console.log(err)
+                .catch(error => {
+                    console.log(error)
                 })
 
         // eslint-disable-next-line react-hooks/exhaustive-deps

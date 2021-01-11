@@ -19,7 +19,7 @@ import {
     fadeIn,
     fadeOut,
     nOpacity
-}                              from 'shared/variables'
+}                              from 'shared/Layout/styles/animations'
 import {flex}                  from 'utils/themer'
 import {orderCardWrapperStyle} from '../Controls/styles'
 
@@ -27,6 +27,10 @@ const OrderCard = ({o, theme}) => {
     const dispatch = useDispatch()
     const {statusValues} = useSelector(state => state.shop)
     const {_id, token} = useSelector(state => state.user)
+    const {address, address2, amount, city, company, country, email, phone, state, zip, createdAt, user, products} = o
+    const parts = [address, address2, city, state, zip, country, company]
+    const filteredParts = parts.filter(v => !!v)
+    const formattedAddress = filteredParts.join(', ')
 
     const handleStatusChange = (e, orderId) =>
         dispatch({
@@ -53,35 +57,48 @@ const OrderCard = ({o, theme}) => {
             </select>
         </Div>
 
-
     return (
         <AnimatePresence>
             <MotionDiv initial={nOpacity} animate={fadeIn} exit={fadeOut}>
                 <Div theme={{...orderCardWrapperStyle, ...theme}}>
                     <Div>
-
                         <Div theme={orderDetailWrapperStyle}>
                             <Div theme={orderDetailInnerStyle}>
                                 <Div>Order Total</Div>
-                                <Div theme={orderDetailStyle}>${o.amount}</Div>
-                            </Div>
-                            <Div theme={orderDetailInnerStyle}>
-                                <Div>Ordered on</Div>
-                                <Div theme={orderDetailStyle}>{moment(o.createdAt).fromNow()}</Div>
-                            </Div>
-                            <Div theme={orderDetailInnerStyle}>
-                                <Div>Delivery address</Div>
-                                <Div theme={orderDetailStyle}>{o.address}</Div>
+                                <Div theme={orderDetailStyle}>${amount}</Div>
                             </Div>
 
                             <Div theme={orderDetailInnerStyle}>
-                                <Div>Ordered by</Div>
-                                <Div theme={orderDetailStyle}>{o.user.name}</Div>
+                                <Div>Ordered on</Div>
+                                <Div theme={orderDetailStyle}>{moment(createdAt).fromNow()}</Div>
                             </Div>
 
                             <Div theme={orderDetailInnerStyle}>
                                 <Div>Total Items</Div>
-                                <Div theme={orderDetailStyle}>{o.products.length}</Div>
+                                <Div theme={orderDetailStyle}>{products?.length}</Div>
+                            </Div>
+
+
+                            <Div theme={orderDetailInnerStyle}>
+                                <Div>Delivery address</Div>
+                                <Div theme={orderDetailStyle}>{formattedAddress}</Div>
+                            </Div>
+
+                            <Div theme={orderDetailInnerStyle}>
+                                <Div>Ordered by</Div>
+                                <Div theme={orderDetailStyle}>{!!user ? user?.name : 'Guest'}</Div>
+                            </Div>
+
+
+
+                            <Div theme={orderDetailInnerStyle}>
+                                <Div>Email</Div>
+                                <Div theme={orderDetailStyle}>{email}</Div>
+                            </Div>
+
+                            <Div theme={orderDetailInnerStyle}>
+                                <Div>Phone</Div>
+                                <Div theme={orderDetailStyle}>{phone}</Div>
                             </Div>
 
                             <Div theme={orderDetailInnerStyle}>
@@ -105,7 +122,7 @@ const OrderCard = ({o, theme}) => {
                             <Icon icon={shoppingBag}/>
                         </Div>
                         <Div theme={orderCardProductsStyle}>
-                            {o.products.map(p => (
+                            {products?.map(p => (
                                 <Div key={p.name}>
                                     <Div>{p.name}</Div>
                                     <Div>{p.price} USD</Div>
