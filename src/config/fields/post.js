@@ -2,7 +2,7 @@ import {
     RICH_TEXT,
     TEXT,
     TOGGLE,
-    UPLOAD,
+    IMAGE_UPLOAD,
     UPLOAD_PATHS
 }               from 'config'
 import * as Yup from 'yup'
@@ -10,10 +10,11 @@ import * as Yup from 'yup'
 export const postFields = [
     {
         name: 'photo',
+        file: 'photoFile',
         cropWidth: 500,
         cropHeight: 500,
         s3Path: UPLOAD_PATHS.post,
-        type: UPLOAD,
+        type: IMAGE_UPLOAD,
     },
     {
         name: 'name',

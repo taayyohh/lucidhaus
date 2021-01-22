@@ -6,15 +6,17 @@ import {
     connectRouter,
     routerMiddleware
 }                             from 'connected-react-router'
+import adminReducer           from 'features/admin/slice'
+import artistReducer          from 'features/artist/slice'
+import postReducer            from 'features/post/slice'
+import shopReducer            from 'features/shop/slice'
+import siteReducer            from 'features/site/slice'
+import userReducer            from 'features/user/slice'
+import albumReducer            from 'features/album/slice'
 import {createBrowserHistory} from 'history'
 import {createLogger}         from 'redux-logger'
-import createSagaMiddleware from 'redux-saga'
-import adminReducer from 'features/admin/slice'
-import postReducer from 'features/post/slice'
-import shopReducer from 'features/shop/slice'
-import siteReducer from 'features/site/slice'
-import userReducer from 'features/user/slice'
-import rootSaga    from './sagas'
+import createSagaMiddleware   from 'redux-saga'
+import rootSaga               from './sagas'
 
 export const history = createBrowserHistory()
 export const sagaMiddleware = createSagaMiddleware()
@@ -34,8 +36,12 @@ if (!['production'].includes(process.env.NODE_ENV)) {
                 ignoredActions: [
                     'admin/createPost',
                     'admin/createProduct',
+                    'admin/createArtist',
+                    'admin/createAlbum',
                     'admin/updatePost',
                     'admin/updateProduct',
+                    'admin/updateArtist',
+                    'admin/updateAlbum',
                     'shop/getPaymentNonce'
                 ],
             },
@@ -52,6 +58,8 @@ export default configureStore({
         admin: adminReducer,
         post: postReducer,
         shop: shopReducer,
+        artist: artistReducer,
+        album: albumReducer,
         router: connectRouter(history)
     },
     middleware,

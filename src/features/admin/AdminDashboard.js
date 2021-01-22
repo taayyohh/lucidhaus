@@ -1,4 +1,4 @@
-import {adminDashboardMenu} from 'config/menus/adminDashboard'
+import {adminDashboardMenu} from 'config/menus/dashboardAdmin'
 import React                from 'react'
 import {useSelector}        from 'react-redux'
 import ContentWrapper   from 'shared/Layout/ContentWrapper'

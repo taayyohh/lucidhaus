@@ -6,7 +6,7 @@ import {
 import {
     getPost,
     getPosts
-} from 'services/apiAdmin'
+} from 'services/apiPost'
 
 /**
  *
@@ -51,7 +51,7 @@ export function* getPostDetail({payload}) {
  *
  */
 
-export function* watchGetMarketplace() {
+export function* watchGetPosts() {
     yield takeEvery('post/getPosts', getPostsDetail)
 }
 

@@ -1,12 +1,13 @@
-import React, {useContext}           from 'react'
 import {globals}                     from 'config/styles'
 import CartPanel                     from 'features/shop/CartPanel'
+import React, {useContext}           from 'react'
 import Div                           from 'shared/Basic/Div'
 import {menuPanelContext}            from 'shared/Containers/MenuPanelController'
-import HeaderMenuPanelWrapper        from 'shared/Menus/MenuPanelWrapper'
+import MenuOverlay                   from 'shared/Menus/MenuOverlay'
+import MenuPanelWrapper              from 'shared/Menus/MenuPanelWrapper'
 import MobileHeaderMenu              from 'shared/Menus/MobileHeaderMenu'
 import {headerMenuPanelWrapperStyle} from 'shared/Menus/styles'
-import MenuOverlay                   from 'shared/Menus/MenuOverlay'
+import Player                        from 'shared/Player'
 
 const MenuPanels = () => {
     const {currentPanel, setPanel} = useContext(menuPanelContext)
@@ -16,6 +17,8 @@ const MenuPanels = () => {
                 return <CartPanel/>
             case 'mobile-header-menu-panel':
                 return <MobileHeaderMenu/>
+            case 'player':
+                return <Player/>
             default:
                 return null
         }
@@ -23,19 +26,19 @@ const MenuPanels = () => {
 
     return (
         <Div theme={headerMenuPanelWrapperStyle}>
-            <HeaderMenuPanelWrapper
+            <MenuPanelWrapper
                 children={setCurrentPanel()}
                 name={currentPanel}
             />
             <MenuOverlay
-                isOpen={!!currentPanel}
-                onClick={
-                    () => {
-                        setPanel(null)
-                        globals.style.resetBody()
-                    }
+            isOpen={!!currentPanel}
+            onClick={
+                () => {
+                    setPanel(null)
+                    globals.style.resetBody()
                 }
-            />
+            }
+        />
         </Div>
     )
 }

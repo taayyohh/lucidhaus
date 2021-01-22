@@ -13,8 +13,8 @@ export const uploadFile = ({file, signedRequest}) =>
         })
 
 
-export const getSignedRequest = ({croppedImage}) =>
-    fetch(`${API}/sign-s3?file-name=${encodeURIComponent(croppedImage.name)}&file-type=${croppedImage.type}`, {
+export const getSignedRequest = file =>
+    fetch(`${API}/sign-s3?file-name=${encodeURIComponent(file.name)}&file-type=${file.type}`, {
         method: 'GET',
     })
         .then(response => {

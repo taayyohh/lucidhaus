@@ -4,6 +4,7 @@ import {
     useDispatch,
     useSelector
 }                           from 'react-redux'
+import PlayerController     from 'shared/Containers/PlayerController'
 import Overlay              from 'shared/Layout/Overlay'
 import PageFrame            from 'shared/Layout/PageFrame'
 import LayoutSwitch         from './LayoutSwitch'
@@ -25,15 +26,17 @@ const Root = () => {
         <>
             {isInitialized ?
                 <LayoutSwitch>
-                    <MenuPanelController>
-                        <TransitionController>
-                            <SearchController>
-                                <HelmetProvider>
-                                    <PageFrame/>
-                                </HelmetProvider>
-                            </SearchController>
-                        </TransitionController>
-                    </MenuPanelController>
+                    <PlayerController>
+                        <MenuPanelController>
+                            <TransitionController>
+                                <SearchController>
+                                    <HelmetProvider>
+                                        <PageFrame/>
+                                    </HelmetProvider>
+                                </SearchController>
+                            </TransitionController>
+                        </MenuPanelController>
+                    </PlayerController>
                 </LayoutSwitch> : <Overlay/>
             }
         </>

@@ -1,5 +1,5 @@
 import PropTypes              from 'prop-types'
-import {defaultFieldsetStyle} from 'shared/Forms/styles'
+import {defaultFieldsetStyle} from 'shared/Field/styles'
 import styled                 from 'styled-components/macro'
 import {themer}               from 'utils/themer'
 

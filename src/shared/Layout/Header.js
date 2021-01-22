@@ -1,20 +1,26 @@
-import PropTypes  from 'prop-types'
-import React      from 'react'
-import Div        from 'shared/Basic/Div'
-import LinkSwitch from 'shared/Basic/LinkSwitch'
-import HeaderMenu from '../Menus/HeaderMenu'
+import logo                     from 'assets/logo.svg'
+import PropTypes                from 'prop-types'
+import React                    from 'react'
+import Div                      from 'shared/Basic/Div'
+import Img                      from 'shared/Basic/Img'
+import LinkSwitch               from 'shared/Basic/LinkSwitch'
+import {headerLogoWrapperStyle} from 'shared/Layout/styles/header'
+import HeaderMenu               from '../Menus/HeaderMenu'
 import {
     headerInnerStyle,
     headerLogoLinkStyle,
     headerStyle
-}                 from './styles/header'
+}                               from './styles/header'
+
 
 const Header = ({theme}) =>
     <Div as="header" theme={{...headerStyle, ...theme}}>
         <Div theme={headerInnerStyle}>
-            <LinkSwitch url="/" theme={headerLogoLinkStyle}>
-                H
-            </LinkSwitch>
+            <Div theme={headerLogoWrapperStyle}>
+                <LinkSwitch url="/" theme={headerLogoLinkStyle}>
+                    <Img src={logo}/>
+                </LinkSwitch>
+            </Div>
             <HeaderMenu/>
         </Div>
     </Div>

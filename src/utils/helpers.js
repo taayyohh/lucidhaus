@@ -169,5 +169,13 @@ export const getScrollbarWidth = () => {
     return scrollbarWidth
 
 }
+
+export const bytesToMegaBytes = bytes => (bytes / (1024*1024)).toFixed(2)
+
+export const getById = (arr, id) =>
+    arr.filter(item => item._id === id)[0]
+
 export const getNameById = (arr, id) =>
     arr.filter(item => item._id === id)[0]?.name
+
+

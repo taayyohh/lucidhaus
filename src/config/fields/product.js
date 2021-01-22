@@ -4,7 +4,7 @@ import {
     SELECT,
     TEXT,
     TOGGLE,
-    UPLOAD,
+    IMAGE_UPLOAD,
     UPLOAD_PATHS
 }               from 'config'
 import * as Yup from 'yup'
@@ -12,11 +12,12 @@ import * as Yup from 'yup'
 export const productFields = [
     {
         name: 'photo',
+        file: 'photoFile',
         inputLabel: 'Product Image',
         cropWidth: 500,
         cropHeight: 500,
         s3Path: UPLOAD_PATHS.shop,
-        type: UPLOAD,
+        type: IMAGE_UPLOAD,
     },
     {
         name: 'name',

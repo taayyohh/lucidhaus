@@ -1,4 +1,4 @@
-import {userDashboardMenu} from 'config/menus/userDashboard'
+import {userDashboardMenu} from 'config/menus/dashboardUser'
 import PurchaseHistory     from 'features/user/PurchaseHistory'
 import React               from 'react'
 import ContentWrapper   from 'shared/Layout/ContentWrapper'

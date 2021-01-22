@@ -1,9 +1,12 @@
 import {
     colorPalette,
     globals
-}                                from 'config/styles'
-import {deletePromptButtonStyle} from 'shared/Controls/styles'
-import {defaultInputStyle}       from 'shared/Forms/styles'
+}                          from 'config/styles'
+import {
+    deletePromptButtonStyle,
+    genericButtonStyle
+}                          from 'shared/Controls/styles'
+import {defaultInputStyle} from 'shared/Field/styles'
 import {menuPanelStyle}          from 'shared/Menus/styles'
 import {
     absolute,
@@ -23,6 +26,26 @@ import {
 } from 'utils/themer'
 import {postsWrapperStyle}       from '../post/styles'
 
+
+export const addTrackButtonStyle = {
+    ...genericButtonStyle,
+    display: flex,
+    alignItems: center,
+    alignSelf: center,
+    paddingLeft: [35, .7, 35],
+    paddingRight: [35, .7, 35],
+    size: [22, .7, 22],
+    maxWidth: [200, globals.style.layoutScalingValue, 200],
+    justifyContent: center,
+    background: transparent,
+    color: black,
+    border: `1px solid #000`,
+    hover: {
+        backgroundColor: transparent,
+        border: `1px solid ${colorPalette.purple}`
+    }
+
+}
 
 export const adminPostsInnerWrapperStyle = {
     ...postsWrapperStyle,
@@ -53,6 +76,7 @@ export const adminPostCardStyle = {
         lineHeight: [22, .7, 22]
     }
 }
+
 export const adminCardControlsButtonWrapperStyle = {
     display: flex,
     flexDirection: row,
@@ -64,6 +88,67 @@ export const adminShopCardWrapperStyle = {
 export const adminShopCardStyle = {
     ...adminPostCardStyle
 }
+
+export const adminArtistsInnerWrapperStyle = {
+    ...postsWrapperStyle,
+    width: '100%',
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr 1fr 1fr 1fr',
+    gridGap: sv(30),
+}
+export const adminArtistCardWrapperStyle = {}
+export const adminArtistCardStyle = {
+    display: flex,
+    width: '100%',
+    mobile: {
+        display: flex
+    },
+    imageWrapper: {
+        display: flex,
+        justifyContent: center,
+        maxHeight: 'none',
+        width: auto
+    },
+    image: {
+        //maxWidth: [90, .7, '100%']
+    },
+    name: {
+        paddingTop: 0,
+        size: [20, .7, 20],
+        lineHeight: [22, .7, 22]
+    }
+}
+
+export const adminAlbumsInnerWrapperStyle = {
+    ...postsWrapperStyle,
+    width: '100%',
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr 1fr 1fr 1fr',
+    gridGap: sv(30),
+}
+export const adminAlbumCardWrapperStyle = {}
+export const adminAlbumCardStyle = {
+    display: flex,
+    width: '100%',
+    mobile: {
+        display: flex
+    },
+    imageWrapper: {
+        display: flex,
+        justifyContent: center,
+        maxHeight: 'none',
+        width: auto
+    },
+    image: {
+        //maxWidth: [90, .7, '100%']
+    },
+    name: {
+        paddingTop: 0,
+        size: [20, .7, 20],
+        lineHeight: [22, .7, 22]
+    }
+}
+
 
 export const adminCardControlsButtonStyle = {
     ...deletePromptButtonStyle,

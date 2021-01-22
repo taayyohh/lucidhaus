@@ -64,10 +64,16 @@ export const headerInnerStyle = {
     }
 }
 
+export const headerLogoWrapperStyle = {
+    width: [80, .7, 80],
+    height: [80, .7, 80]
+}
+
+
 export const headerLogoLinkStyle = {
     size: [60, .7, 60],
     width: [80, .7, 80],
-    zIndex: 2,
+    zIndex: 1,
 }
 
 export const cartNumberStyle = {
@@ -96,6 +102,11 @@ export const headerIconStyle = {
         color: '#8c141e',
         transition: 'color 500ms ease'
     }
+}
+
+export const headerPlayIconStyle = {
+    ...headerIconStyle,
+    marginRight: [7, .7, 7]
 }
 
 export const headerMenuIconWrapperStyle = {

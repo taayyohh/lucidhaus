@@ -3,7 +3,7 @@ import {
     globals
 }                         from 'config/styles'
 import {genericCardStyle} from 'shared/Cards/styles'
-import {defaultFormStyle} from 'shared/Forms/styles'
+import {defaultFormStyle} from 'shared/Field/styles'
 import {
     absolute,
     black,
@@ -19,7 +19,7 @@ import {
     sv,
     uppercase,
     white
-} from 'utils/themer'
+}                         from 'utils/themer'
 
 export const orderCardWrapperStyle = {
     ...genericCardStyle,

@@ -9,10 +9,12 @@ export const searchContext = createContext(null)
 
 const SearchController = ({children}) => {
     const searchClient = algoliasearch(algoliaAppId, alogiaAdminKey)
-    const postsIndex = searchClient.initIndex('hyphaPosts')
-    const productsIndex = searchClient.initIndex('hyphaProducts')
-    const ordersIndex = searchClient.initIndex('hyphaOrders')
-    const productCategoriesIndex = searchClient.initIndex('hyphaProductCategories')
+    const postsIndex = searchClient.initIndex('Posts')
+    const productsIndex = searchClient.initIndex('Products')
+    const ordersIndex = searchClient.initIndex('Orders')
+    const artistsIndex = searchClient.initIndex('Artists')
+    const albumsIndex = searchClient.initIndex('Albums')
+    const productCategoriesIndex = searchClient.initIndex('ProductCategories')
 
     return (
         <searchContext.Provider value={{
@@ -20,6 +22,8 @@ const SearchController = ({children}) => {
             postsIndex,
             productsIndex,
             ordersIndex,
+            artistsIndex,
+            albumsIndex,
             productCategoriesIndex
         }}>
             {children}

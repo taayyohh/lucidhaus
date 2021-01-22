@@ -4,7 +4,11 @@ export const headerMenu = [
         title: 'Shop'
     },
     {
-        url: '/posts',
-        title: 'Posts'
+        url: '/artists',
+        title: 'Artists'
+    },
+    {
+        url: '/music',
+        title: 'Music'
     }
 ]

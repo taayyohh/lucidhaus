@@ -8,7 +8,7 @@ export const algoliaSearchApiKey = process.env.REACT_APP_ALGOLIA_ADMIN_API_KEY
 export const alogiaAdminKey = process.env.REACT_APP_ALGOLIA_ADMIN_API_KEY
 export const googlePlacesApiKey = process.env.REACT_APP_PLACES_API_KEY
 // export const shippoApiKey = process.env.REACT_APP_SHIPPO_API_KEY
-export const shippoApiKeyTest = 'shippo_test_43942b9a273603391abfb4a228f2b7b8f7abb91e'
+export const shippoApiKeyTest = process.env.REACT_APP_SHIPPO_TEST_API_KEY
 export const shippo = require('shippo')(shippoApiKeyTest)
 
 
@@ -43,17 +43,22 @@ export const COUNT = "count"
 export const ADDRESS = 'autoAddress'
 export const COUNTRY = 'country'
 export const REGION = 'region'
-export const UPLOAD = 'upload'
+export const IMAGE_UPLOAD = 'imageUpload'
+export const AUDIO_UPLOAD = 'audioUpload'
 export const RICH_TEXT = 'richText'
-export const TOGGLE = 'toggle   '
+export const TOGGLE = 'toggle'
+export const SONGS = 'songs'
 
 
-/** S3 UPLOAD PATHS **/
+/** S3 IMAGE_UPLOAD PATHS **/
 export const UPLOAD_PATHS = {
     post: 'post/',
-    shop: 'shop/'
+    shop: 'shop/',
+    artist: 'artist/',
+    audio: 'audio/',
+    audioCoverArt: 'audio/coverArt/'
 }
 
 
 /** SITE CONFIG **/
-export const siteDisplayName = 'Hypha Beta'
+export const siteDisplayName = 'LucidHaus'

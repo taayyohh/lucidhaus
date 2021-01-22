@@ -4,6 +4,7 @@ import React            from 'react'
 import Div              from 'shared/Basic/Div'
 import Notification     from 'shared/Layout/Notification'
 import Overlay          from 'shared/Layout/Overlay'
+import Player           from 'shared/Player'
 import Footer           from './Footer'
 import Header           from './Header'
 import Main             from './Main'
@@ -25,6 +26,7 @@ const PageFrame = () =>
         <Overlay/>
         <Notification/>
         <Div id="modal" theme={pageFrameStyle.modal}/>
+        <Player/>
     </Div>
 
 export default PageFrame

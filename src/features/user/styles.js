@@ -22,7 +22,7 @@ export const signInFormWrapperStyle = {
 export const signUpFormStyle = {
     maxWidth: [700, globals.style.layoutScalingValue, '100%'],
     margin: '0 auto',
-    padding: [70, 120],
+    padding: 70,
     inner: {
         child: {
             selector: '> fieldset',

@@ -30,6 +30,7 @@ export const pageFrameStyle = {
     maxWidth: '1920px',
     margin: '0 auto',
     width: 'auto',
+    background: '#fafafa',
     mobile: {
         display: flex,
         flexDirection: column,
@@ -103,7 +104,6 @@ export const pageFrameStyle = {
         msGridColumn: 2,
         gridColumn: '2 / 6',
         gridColumnSpan: 4,
-        backgroundColor: white,
         zIndex: 3,
         minHeight: '80vh',
         print: {

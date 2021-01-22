@@ -19,18 +19,28 @@ import Fallback               from 'shared/Layout/Fallback'
 
 const AdminDashboard = lazy(() => import('features/admin/AdminDashboard'))
 const UserDashboard = lazy(() => import('features/user/dashboard'))
-const CreatePost = lazy(() => import('features/admin/CreatePost'))
-const CreateProduct = lazy(() => import('features/admin/CreateProduct'))
-const CreateProductCategory = lazy(() => import('features/admin/CreateProductCategory'))
-const ManageMarketplace = lazy(() => import('features/admin/ManagePosts'))
-const ManageOrders = lazy(() => import('features/admin/ManageOrders'))
-const ManageShop = lazy(() => import('features/admin/ManageShop'))
-const ManageTaxonomy = lazy(() => import('features/admin/ManageTaxonomy'))
-const UpdatePost = lazy(() => import('features/admin/UpdatePost'))
-const UpdateProduct = lazy(() => import('features/admin/UpdateProduct'))
-const UpdateProductCategory = lazy(() => import('features/admin/UpdateProductCategory'))
+const CreatePost = lazy(() => import('features/admin/post/Create'))
+const CreateArtist = lazy(() => import('features/admin/artist/Create'))
+const CreateAlbum = lazy(() => import('features/admin/album/Create'))
+const CreateProduct = lazy(() => import('features/admin/product/Create'))
+const CreateProductCategory = lazy(() => import('features/admin/taxonomy/productCategory/Create'))
+const ManagePosts = lazy(() => import('features/admin/post/Manage'))
+const ManageArtists = lazy(() => import('features/admin/artist/Manage'))
+const ManageAlbums = lazy(() => import('features/admin/album/Manage'))
+const ManageOrders = lazy(() => import('features/admin/order/Manage'))
+const ManageShop = lazy(() => import('features/admin/product/Manage'))
+const ManageTaxonomy = lazy(() => import('features/admin/taxonomy/Manage'))
+const UpdateArtist = lazy(() => import('features/admin/artist/Update'))
+const UpdateAlbum = lazy(() => import('features/admin/album/Update'))
+const UpdatePost = lazy(() => import('features/admin/post/Update'))
+const UpdateProduct = lazy(() => import('features/admin/product/Update'))
+const UpdateProductCategory = lazy(() => import('features/admin/taxonomy/productCategory/Update'))
+const Artist = lazy(() => import('features/artist/Artist'))
+const Artists = lazy(() => import('features/artist/Artists'))
+const Album = lazy(() => import('features/album/Album'))
+const Albums = lazy(() => import('features/album/Albums'))
 const Post = lazy(() => import('features/post/Post'))
-const Marketplace = lazy(() => import('features/post/Posts'))
+const Posts = lazy(() => import('features/post/Posts'))
 const Product = lazy(() => import('features/shop/Product'))
 const Shop = lazy(() => import('features/shop/Shop'))
 const FilteredProduct = lazy(() => import('features/shop/FilteredShop'))
@@ -54,7 +64,11 @@ const Routes = () => {
                             <Route path="/" exact component={Home}/>
                             <Route path="/signup" exact component={SignUp}/>
                             <Route path="/signin" exact component={SignIn}/>
-                            <Route path="/posts" exact component={Marketplace}/>
+                            <Route path="/artists" exact component={Artists}/>
+                            <Route path="/artists/:slug" exact component={Artist}/>
+                            <Route path="/music" exact component={Albums}/>
+                            <Route path="/albums/:slug" exact component={Album}/>
+                            <Route path="/posts" exact component={Posts}/>
                             <Route path="/posts/:slug" exact component={Post}/>
                             <Route path="/shop" exact component={Shop}/>
                             <Route path="/shop/:slug" exact component={Product}/>
@@ -66,7 +80,13 @@ const Routes = () => {
                             <AdminRoute path="/admin/shop" exact component={ManageShop}/>
                             <AdminRoute path="/admin/taxonomy" exact component={ManageTaxonomy}/>
                             <AdminRoute path="/admin/product-category" exact component={ManageTaxonomy}/>
-                            <AdminRoute path="/admin/posts" exact component={ManageMarketplace}/>
+                            <AdminRoute path="/admin/posts" exact component={ManagePosts}/>
+                            <AdminRoute path="/admin/artists" exact component={ManageArtists}/>
+                            <AdminRoute path="/admin/artists/update/:slug" exact component={UpdateArtist}/>
+                            <AdminRoute path="/create/artist" exact component={CreateArtist}/>
+                            <AdminRoute path="/admin/music" exact component={ManageAlbums}/>
+                            <AdminRoute path="/admin/music/update/:slug" exact component={UpdateAlbum}/>
+                            <AdminRoute path="/create/album" exact component={CreateAlbum}/>
                             <AdminRoute path="/admin/shop/update/:slug" exact component={UpdateProduct}/>
                             <AdminRoute path="/admin/product-category/update/:slug" exact
                                         component={UpdateProductCategory}/>

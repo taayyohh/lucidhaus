@@ -4,8 +4,8 @@ import {
 }                             from 'config/fields/order'
 import CheckoutSection        from 'features/shop/CheckoutSection'
 import {shippingAddressStyle} from 'features/shop/styles'
-import React                  from 'react'
-import Form                   from 'shared/Forms/Form'
+import React from 'react'
+import Form  from 'shared/Field/Form'
 
 const ShippingAddress = () => {
     const initialValues = {

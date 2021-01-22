@@ -95,7 +95,8 @@ export const genericCardStyle = {
 }
 export const genericCardImageStyle = {
     width: auto,
-    maxWidth: '100%'
+    maxWidth: '100%',
+    transition: 'transform 500ms ease'
 }
 export const genericCardDetailImageWrapperStyle = {
     height: auto,
@@ -148,6 +149,13 @@ export const genericCardTextWrapperStyle = {
 export const genericCardProductCategoryStyle = {
     textTransform: uppercase,
     size: [18, .7, 18],
+    letterSpacing: [0.7, .7, 0.7],
+    color: black
+}
+
+export const genericCardArtistNameStyle = {
+    textTransform: uppercase,
+    size: [15, .7, 15],
     letterSpacing: [0.7, .7, 0.7],
     color: black
 }

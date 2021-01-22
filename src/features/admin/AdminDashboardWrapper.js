@@ -1,4 +1,4 @@
-import {adminDashboardMenu} from 'config/menus/adminDashboard'
+import {adminDashboardMenu} from 'config/menus/dashboardAdmin'
 import PropTypes            from 'prop-types'
 import React            from 'react'
 import DashboardWrapper from 'shared/Layout/Dashboard/DashboardWrapper'
