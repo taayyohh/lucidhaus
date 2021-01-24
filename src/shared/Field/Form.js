@@ -1,10 +1,7 @@
 import {Formik}           from 'formik'
 import PropTypes          from 'prop-types'
 import React              from 'react'
-import {
-    useDispatch,
-    useSelector
-}                         from 'react-redux'
+import {useDispatch}      from 'react-redux'
 import Div                from 'shared/Basic/Div'
 import H3                 from 'shared/Basic/H3'
 import SubmitButton       from 'shared/Basic/SubmitButton'
@@ -21,12 +18,11 @@ const Form = ({
                   buttonText,
                   enableReinitialize,
                   autoSubmit = false,
+                  extra = [],
+                  children,
                   theme
               }) => {
     const dispatch = useDispatch()
-
-    const hasSongField = fields.filter(song => song.name === 'audio').length === 1
-    const {songsToAdd} = useSelector(state => state.admin)
 
     return (
         <Formik
@@ -67,6 +63,7 @@ const Form = ({
                             children={buttonText}
                         />
                     )}
+                    {children}
                 </Div>
             }
         </Formik>

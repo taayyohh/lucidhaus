@@ -1,7 +1,10 @@
-import React         from 'react'
-import {useDispatch} from 'react-redux'
-import Div           from 'shared/Basic/Div'
-import DeletePrompt  from 'shared/Controls/DeletePrompt'
+import React        from 'react'
+import {
+    useDispatch,
+    useSelector
+}                   from 'react-redux'
+import Div          from 'shared/Basic/Div'
+import DeletePrompt from 'shared/Controls/DeletePrompt'
 import {
     dangerZoneButtonStyle,
     dangerZoneHeadingStyle,
@@ -10,10 +13,12 @@ import {
     dangerZoneItemHeadingStyle,
     dangerZoneItemWrapperStyle,
     dangerZoneStyle
-}                    from './styles'
+}                   from './styles'
 
 const DangerZone = ({attemptDestroyAction, destroyAction, slug, type, objectID, index, _id}) => {
     const dispatch = useDispatch()
+    const {confirmDelete} = useSelector(state => state.admin)
+    const {shouldDelete} = confirmDelete
 
     return (
         <Div theme={dangerZoneStyle}>
@@ -34,12 +39,15 @@ const DangerZone = ({attemptDestroyAction, destroyAction, slug, type, objectID, 
                     Delete
                 </Div>
             </Div>
-            <DeletePrompt
-                destroyAction={destroyAction}
-                type={type}
-                objectID={objectID}
-                index={index}
-            />
+            {shouldDelete && (
+                <DeletePrompt
+                    key={objectID || _id}
+                    destroyAction={destroyAction}
+                    type={type}
+                    objectID={objectID}
+                    index={index}
+                />
+            )}
         </Div>
     )
 }

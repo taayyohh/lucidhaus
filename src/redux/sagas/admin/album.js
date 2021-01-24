@@ -3,16 +3,16 @@ import {
     call,
     put,
     takeLatest
-} from 'redux-saga/effects'
+}             from 'redux-saga/effects'
 import {
     addAlbum,
     deleteAlbum,
     updateAlbum
-} from 'services/apiAlbum'
+}             from 'services/apiAlbum'
 import {
     getSignedRequest,
     uploadFile
-} from 'services/apiS3'
+}             from 'services/apiS3'
 
 export function* createAlbum({payload}) {
     const {_id, token, coverArt, coverArtFile, albumName, primaryArtist, description, isPublished} = payload
@@ -88,6 +88,10 @@ export function* attemptDestroyAlbum({payload}) {
     yield put({type: 'admin/confirmDestroyAlbum', payload: payload})
 }
 
+export function* attemptDestroySong({payload}) {
+    yield put({type: 'admin/confirmDestroySong', payload: payload})
+}
+
 export function* destroyAlbum({payload}) {
     const destroyed = yield call(deleteAlbum, payload)
     const {objectID} = payload
@@ -102,13 +106,14 @@ export function* destroyAlbum({payload}) {
     }
 }
 
+
 export function* destroyAlbumSuccess() {
     yield put(push('/admin/music'))
 }
 
 
 export function* addSongToAlbum({payload}) {
-    const {slug, _id, token, audio, audioFile, title, trackNumber} = payload
+    const {slug, _id, token, audio, audioId, audioFile, title, trackNumber} = payload
 
     //add to formData so api can read
     const updatedAlbum = new FormData()
@@ -117,10 +122,13 @@ export function* addSongToAlbum({payload}) {
     updatedAlbum.set('title', title)
     updatedAlbum.set('trackNumber', trackNumber)
 
+    if (!!audioId)
+        updatedAlbum.set('_id', audioId)
+
     if (!!audioFile) {
         const s3Payload = yield call(getSignedRequest, audioFile)
         if (!!s3Payload.signedRequest) {
-            const uploadImage = yield call(uploadFile, {file: audioFile, signedRequest: s3Payload.signedRequest})
+            const uploadedAudio = yield call(uploadFile, {file: audioFile, signedRequest: s3Payload.signedRequest})
         }
     }
 
@@ -142,6 +150,43 @@ export function* addSongToAlbum({payload}) {
     } catch (error) {
         yield put({type: 'album/updateAlbumFailure'})
     }
+}
+
+export function* destroySong({payload}) {
+    const {slug, _id, token, audio, audioId, title, trackNumber, remove} = payload
+
+    //add to formData so api can read
+    const updatedAlbum = new FormData()
+
+    updatedAlbum.set('audio', audio)
+    updatedAlbum.set('title', title)
+    updatedAlbum.set('trackNumber', trackNumber)
+    updatedAlbum.set('_id', audioId)
+    updatedAlbum.set('remove', remove)
+
+
+    try {
+        const updated = yield call(updateAlbum, {slug: slug, _id: _id, token: token, album: updatedAlbum})
+        if (!updated.error) {
+            yield put({type: 'album/updateAlbumSuccess', payload: updated})
+            yield put({
+                type: 'site/setNotification',
+                payload: {
+                    notification: `Removed ${title} from album`,
+                    theme: 'green'
+                }
+            })
+
+        } else {
+            yield put({type: 'album/updateAlbumFailure', payload: updated})
+        }
+    } catch (error) {
+        yield put({type: 'album/updateAlbumFailure'})
+    }
+}
+
+export function* destroySongSuccess() {
+    yield put(push('/admin/music'))
 }
 
 
@@ -175,4 +220,16 @@ export function* watchUpdateAlbum() {
 
 export function* watchAddSongToAlbum() {
     yield takeLatest('admin/addSongToAlbum', addSongToAlbum)
+}
+
+export function* watchAttemptDestroySong() {
+    yield takeLatest('admin/attemptDestroySong', attemptDestroySong)
+}
+
+export function* watchDestroySong() {
+    yield takeLatest('admin/destroySong', destroySong)
+}
+
+export function* watchDestroySongSuccess() {
+    yield takeLatest('admin/attemptDestroyPostSuccess', destroySongSuccess)
 }

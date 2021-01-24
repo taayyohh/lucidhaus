@@ -21,9 +21,13 @@ export const dashboardContentStyle = {
 export const dashboardContentInnerStyle = {
     minHeight: [500, .7, 500],
     boxSizing: borderBox,
-    paddingLeft: [50, .7, 50],
-    paddingRight: [50, .7, 50],
+    paddingLeft: [50, .7, 0],
+    paddingRight: [50, .7, 0],
     paddingBottom: [50, .7, 50],
+    mobile: {
+        paddingLeft: 0,
+        paddingRight: 0
+    }
 
 }
 export const dashboardHeadingStyle = {

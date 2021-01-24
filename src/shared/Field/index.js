@@ -16,7 +16,7 @@ import {
     SONGS
 }                     from 'config'
 import React, {memo} from 'react'
-import Add           from 'features/admin/album/song/Add'
+import CreateSong    from 'features/admin/album/song/CreateSong'
 import UploadAudio   from 'shared/Field/UploadAudio'
 import Address     from './Address'
 import Count          from './Count'
@@ -111,7 +111,7 @@ const FieldSwitch = memo(({field, formik, options}) => {
                 formik={formik}
             />
         case SONGS:
-            return <Add
+            return <CreateSong
                 name={field.name}
                 formik={formik}
             />

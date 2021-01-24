@@ -1,4 +1,7 @@
-import {colorPalette} from 'config/styles'
+import {
+    colorPalette,
+    globals
+} from 'config/styles'
 import {
     auto,
     black,
@@ -47,16 +50,26 @@ export const playerQueueStyle = {
     minHeight: [50, .7, 50],
     height: auto,
     width: [350, .7, 350],
+    maxHeight: [300, .7, 300],
+    overflowY: 'scroll',
+    msScrollBar: none,
+    ffScrollBar: none,
+    scrollBar: {
+        display: none,
+    },
     padding: [50, .7, '0'],
     background: 'rgb(218 220 224 / 72%)',
     borderRadius: [25, .7, 25],
     zIndex: 5,
-    overflow: hidden
+    overflow: hidden,
+    transition: 'background-color 250ms ease',
+    hover: {
+        background: 'rgb(218 220 224 / 100%)',
+    }
 }
 
 export const playerQueueTrackStyle = {
-    display: flex
-
+    display: flex,
 }
 
 export const playerQueueTrackInnerStyle = isActive => {
@@ -71,7 +84,6 @@ export const playerQueueTrackInnerStyle = isActive => {
     if(isActive)
         return {
             ...base,
-            size: [20, .7, 20],
             child: {
                 selector: 'a',
                 color: colorPalette.purple,

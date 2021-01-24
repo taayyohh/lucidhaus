@@ -8,7 +8,7 @@ import Form             from 'shared/Field/Form'
 import {songsFormStyle} from 'shared/Field/styles'
 
 
-const Add = () => {
+const CreateSong = () => {
     const {_id, token} = useSelector(state => state.user)
     const {slug} = useSelector(state => state.site)
     const initialValues = {
@@ -27,11 +27,11 @@ const Add = () => {
             fields={songFields}
             validationSchema={validateSong}
             dispatchAction={'admin/addSongToAlbum'}
-            formHeading={'Song'}
+            formHeading={'Create Song'}
             theme={songsFormStyle}
             buttonText={'Save'}
         />
     )
 }
 
-export default Add
+export default CreateSong

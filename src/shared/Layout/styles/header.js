@@ -65,14 +65,13 @@ export const headerInnerStyle = {
 }
 
 export const headerLogoWrapperStyle = {
-    width: [80, .7, 80],
-    height: [80, .7, 80]
+    width: [80, .7, 60],
+    height: [80, .7, 60]
 }
 
 
 export const headerLogoLinkStyle = {
-    size: [60, .7, 60],
-    width: [80, .7, 80],
+    width: [80, .7, 50],
     zIndex: 1,
 }
 

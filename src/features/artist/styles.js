@@ -28,7 +28,7 @@ export const artistCardStyle = {
         transform: 'scale(.75)',
         transition: 'transform 500ms ease',
         hover: {
-            transform: 'scale(1)'
+            transform: 'scale(.9)'
         }
     }
 }

@@ -7,6 +7,11 @@ import {
     center,
     column,
     flex,
+    flexEnd,
+    flexStart,
+    grid,
+    none,
+    pointer,
     sv
 } from 'utils/themer'
 
@@ -17,8 +22,7 @@ export const albumsWrapperStyle = {
     gridGap: sv(30),
     margin: '0 auto',
     mobile: {
-        display: flex,
-        flexDirection: column
+        gridTemplateColumns: '1fr 1fr'
     }
 }
 
@@ -36,8 +40,63 @@ export const albumCardStyle = {
 export const albumWrapperStyle = {
     display: flex,
     flexDirection: column,
-    width: [800, globals.style.layoutScalingValue, '100%'],
+    width: [1050, globals.style.layoutScalingValue, '100%'],
     margin: '0 auto'
+}
+
+export const albumWrapperInnerStyle = {
+    display: grid,
+    gridTemplateColumns: `${sv(500, globals.style.layoutScalingValue)} 1fr`,
+    gridGap: sv(100, globals.style.layoutScalingValue),
+    mobile: {
+        display: flex,
+        flexDirection: column,
+
+    }
+}
+
+export const albumWrapperImageWrapperStyle = {
+    height: [500, globals.style.layoutScalingValue, 'auto'],
+    width: [500, globals.style.layoutScalingValue, 'auto']
+}
+
+export const albumInfoWrapperStyle = {
+    display: flex,
+    flexDirection: column,
+    alignItems: flexEnd
+}
+
+export const albumPrimaryArtistStyle = {
+    textDecoration: none,
+    size: [28, .7, 28],
+    color: colorPalette.purple,
+    hover: {
+        color: colorPalette.purple,
+        textDecoration: 'underline'
+    }
+}
+
+export const albumSongsWrapperStyle = {
+    width: '100%',
+    paddingTop: [40, .7, 20],
+    marginTop: [40, .7, 20],
+    alignSelf: flexStart,
+    borderTop:  `1px solid ${globals.colors.borderColor}`
+}
+
+export const albumSongWrapperStyle = {
+    display: 'flex',
+    size: [24, .7, 24],
+    alignItems: center,
+    hover: {
+        color: colorPalette.purple,
+        cursor: pointer
+    }
+}
+
+export const albumSongTrackNumberStyle = {
+    size: [16, .7, 16],
+    marginRight: [15, .7, 15]
 }
 
 export const albumTitleStyle = {
@@ -45,7 +104,10 @@ export const albumTitleStyle = {
     textAlign: center,
     size: [42, .7, 36],
     margin: 0,
-    marginBottom: [30, .7, 20]
+    hover: {
+        color: colorPalette.purple,
+        cursor: pointer
+    }
 }
 
 export const albumDescriptionStyle = {

@@ -3,22 +3,15 @@ import {
     validateAlbum
 }                            from 'config/fields/album'
 import AdminDashboardWrapper from 'features/admin/AdminDashboardWrapper'
-import AddSong               from 'features/admin/album/song/Add'
-import {addTrackButtonStyle} from 'features/admin/styles'
-import React, {
-    useEffect,
-    useState
-}                            from 'react'
+import React, {useEffect}    from 'react'
 import {
     useDispatch,
     useSelector
 }                            from 'react-redux'
-import Div                   from 'shared/Basic/Div'
 import Form                  from 'shared/Field/Form'
 import ContentWrapper        from 'shared/Layout/ContentWrapper'
 
 const Create = () => {
-    const [count, setCount] = useState(1)
     const dispatch = useDispatch()
     const {_id, token} = useSelector(state => state.user)
     const {artists} = useSelector(state => state.artist)

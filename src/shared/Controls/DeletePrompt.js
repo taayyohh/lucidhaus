@@ -1,20 +1,20 @@
-import {timesCircle}     from 'config/icons/fa'
-import {AnimatePresence} from 'framer-motion'
-import React             from 'react'
-import {Portal}          from 'react-portal'
+import {timesCircle}       from 'config/icons/fa'
+import {AnimatePresence}   from 'framer-motion'
+import React               from 'react'
+import {Portal}            from 'react-portal'
 import {
     useDispatch,
     useSelector
-}                        from 'react-redux'
-import Div               from 'shared/Basic/Div'
-import Icon              from 'shared/Basic/Icon'
-import MotionDiv         from 'shared/Basic/MotionDiv'
+}                          from 'react-redux'
+import Div                 from 'shared/Basic/Div'
+import Icon                from 'shared/Basic/Icon'
+import MotionDiv           from 'shared/Basic/MotionDiv'
 import {
     deletePromptButtonStyle,
     deletePromptCloseIconStyle,
     deletePromptConfirmButtonStyle,
     deletePromptHeadingStyle
-} from 'shared/Controls/styles'
+}                          from 'shared/Controls/styles'
 import {defaultModalStyle} from 'shared/Layout/styles'
 
 const DeletePrompt = ({destroyAction, type, index, objectID}) => {
@@ -22,6 +22,7 @@ const DeletePrompt = ({destroyAction, type, index, objectID}) => {
     const {confirmDelete} = useSelector(state => state.admin)
     const {shouldDelete, destroy} = confirmDelete
     const dispatch = useDispatch()
+    console.log('type', type)
 
     return (
         <>
@@ -52,7 +53,31 @@ const DeletePrompt = ({destroyAction, type, index, objectID}) => {
                                 </Div>
                             )}
 
-                            {destroy && !!objectID && (
+                            {(destroy && !!objectID && (
+                                <>
+                                    <Div theme={deletePromptHeadingStyle}>
+                                        Click to <strong>permanently</strong> delete.
+                                    </Div>
+                                    <Div
+                                        theme={{...deletePromptButtonStyle, ...deletePromptConfirmButtonStyle}}
+                                        onClick={() => index.deleteObject(objectID).then(() => {
+                                                dispatch({
+                                                    type: destroyAction,
+                                                    payload: {
+                                                        _id: _id,
+                                                        objectID: objectID,
+                                                        token: token,
+                                                        slug: confirmDelete.slug
+                                                    }
+                                                })
+                                            }
+                                        )
+                                        }
+                                    >
+                                        Delete
+                                    </Div>
+                                </>
+                            )) || (destroy && (
                                 <>
                                     <Div theme={deletePromptHeadingStyle}>
                                         Click to <strong>permanently</strong> delete.
@@ -60,25 +85,22 @@ const DeletePrompt = ({destroyAction, type, index, objectID}) => {
                                     <Div
                                         theme={{...deletePromptButtonStyle, ...deletePromptConfirmButtonStyle}}
                                         onClick={
-                                            () =>
-                                                index.deleteObject(objectID).then(() => {
-                                                        dispatch({
-                                                            type: destroyAction,
-                                                            payload: {
-                                                                _id: _id,
-                                                                objectID: objectID,
-                                                                token: token,
-                                                                slug: confirmDelete.slug
-                                                            }
-                                                        })
+                                            () => {
+                                                dispatch({
+                                                    type: destroyAction,
+                                                    payload: {
+                                                        _id: _id,
+                                                        token: token,
+                                                        slug: confirmDelete.slug
                                                     }
-                                                )
+                                                })
+                                            }
                                         }
                                     >
                                         Delete
                                     </Div>
                                 </>
-                            )}
+                            ))}
                         </MotionDiv>
                     </AnimatePresence>
                 </Portal>

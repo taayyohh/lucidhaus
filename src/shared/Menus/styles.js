@@ -18,13 +18,12 @@ import {
     pointer,
     relative,
     row,
-    transparent,
     white
 } from 'utils/themer'
 
 export const headerMenuPanelWrapperStyle = {
     position: absolute,
-   // zIndex: -1
+    // zIndex: -1
 }
 export const headerMenuPanelStyle = {
     display: flex,
@@ -43,6 +42,9 @@ export const headerMenuPanelStyle = {
     borderLeft: `1px solid #dadce0`,
     boxSizing: borderBox,
     zIndex: 22,
+    mobile: {
+        top: 80
+    },
     scrollBar: {
         display: none
     },
@@ -79,14 +81,9 @@ export const headerMenuPanelStyle = {
     }
 }
 export const menuPanelStyle = {
-    paddingTop: [150, .7, 120],
+    paddingTop: [150, .7, 50],
     height: '100%',
     width: '100%'
-}
-export const menuPanelHeaderStyle = {
-    font: globals.fonts.fancy,
-    size: [48, .6, 24],
-    marginBottom: [30, .6, 30]
 }
 
 export const menuToggleStyle = {
@@ -115,6 +112,7 @@ export const headerMenuStyle = {
     alignItems: center,
     justifyContent: center
 }
+
 export const headerMenuListItemStyle = isActive => {
     return {
         position: relative,
@@ -128,15 +126,12 @@ export const headerMenuListItemStyle = isActive => {
         transition: 'background-color 500ms ease',
         mobile: {
             width: '100%',
-            paddingBottom: 10
+            marginBottom: 15
         },
         hover: {
             color: colorPalette.purple,
             mobile: {
-                color: black,
-                hover: {
-                    color: transparent
-                }
+                color: black
             }
         },
         child: {

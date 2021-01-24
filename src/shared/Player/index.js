@@ -53,16 +53,7 @@ const Player = () => {
     useEffect(() => {
         setPlaylistLength(currentMedia?.length)
     }, [currentMedia])
-
-
-    const PlayerWrapper = () =>
-        <Div>
-            wrapper
-        </Div>
-
-    useEffect(() => {
-        console.log('ref', ref)
-    }, [])
+    
 
     const handlePlay = () =>
         setPlaying(true)

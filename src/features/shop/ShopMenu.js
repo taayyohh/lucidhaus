@@ -3,6 +3,7 @@ import {
     shopCategoryListStyle,
     shopCategoryStyle,
     shopHeadingStyle,
+    shopMenuLinkStyle,
     shopMenuStyle
 }                         from 'features/shop/styles'
 import React, {useEffect} from 'react'
@@ -29,7 +30,7 @@ const ShopMenu = () => {
     return (
         <Div theme={shopMenuStyle}>
             <H2 theme={shopHeadingStyle(slug === 'shop')}>
-                <LinkSwitch url={'/shop'}>
+                <LinkSwitch url={'/shop'} theme={shopMenuLinkStyle}>
                     Shop
                 </LinkSwitch>
             </H2>

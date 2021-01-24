@@ -20,7 +20,7 @@ import {
     fadeIn,
     fadeOut,
     nOpacity
-} from 'shared/Layout/styles/animations'
+}                         from 'shared/Layout/styles/animations'
 import {getNameById}      from 'utils/helpers'
 import {
     productCategoryStyle,

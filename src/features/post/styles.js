@@ -31,7 +31,7 @@ export const postWrapperStyle = {
 export const postTitleStyle = {
     font: globals.fonts.fancy,
     textAlign: center,
-    size: [42, .7, 36],
+    size: [42, .7, 28],
     margin: 0,
     marginBottom: [30, .7, 20]
 }

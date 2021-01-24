@@ -3,27 +3,26 @@ import {
     adminAlbumCardStyle,
     adminAlbumCardWrapperStyle,
     adminAlbumsInnerWrapperStyle,
-    adminArtistCardStyle,
     searchWrapperStyle
-}                          from 'features/admin/styles'
-import PropTypes from 'prop-types'
+}                        from 'features/admin/styles'
+import PropTypes         from 'prop-types'
 import React, {
     useContext,
     useEffect
-}                from 'react'
+}                        from 'react'
 import {
     connectHits,
     InstantSearch,
     SearchBox
-}                from 'react-instantsearch-dom'
+}                        from 'react-instantsearch-dom'
 import {
     useDispatch,
     useSelector
-} from 'react-redux'
-import Div                 from 'shared/Basic/Div'
-import GenericCard         from 'shared/Cards/GenericCard'
-import {searchContext}     from 'shared/Containers/SearchController'
-import {getNameById}       from 'utils/helpers'
+}                        from 'react-redux'
+import Div               from 'shared/Basic/Div'
+import GenericCard       from 'shared/Cards/GenericCard'
+import {searchContext}   from 'shared/Containers/SearchController'
+import {getNameById}     from 'utils/helpers'
 
 const List = ({albums}) => {
     const {searchClient} = useContext(searchContext)

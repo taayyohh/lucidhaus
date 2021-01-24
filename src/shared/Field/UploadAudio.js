@@ -13,7 +13,6 @@ import 'react-image-crop/dist/ReactCrop.css'
 import ReactPlayer     from 'react-player'
 import Div             from 'shared/Basic/Div'
 import Icon            from 'shared/Basic/Icon'
-import MotionDiv       from 'shared/Basic/MotionDiv'
 import Span            from 'shared/Basic/Span'
 import {playerContext} from 'shared/Containers/PlayerController'
 import {
@@ -52,16 +51,17 @@ const UploadAudio = memo(({formik, id, file, s3Path, inputLabel, className, erro
             setSanitizedFile(new File([uploadBlob], sanitizedName, {
                 type: uploadType,
             }))
-           setCurrentMedia([...currentMedia, uploadedAudio.blobUrl])
+            setCurrentMedia([...currentMedia, uploadedAudio.blobUrl])
         }
-
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [uploadedAudio])
 
     useEffect(() => {
-        formik.setFieldValue(file, sanitizedFile ? sanitizedFile : '')
-        formik.setFieldValue(id, sanitizedName ? sanitizedName : '')
+        if (sanitizedFile instanceof File) {
+            formik.setFieldValue(file, sanitizedFile ? sanitizedFile : '')
+            formik.setFieldValue(id, sanitizedName ? sanitizedName : '')
+        }
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [sanitizedFile, sanitizedName])

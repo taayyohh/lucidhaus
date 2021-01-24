@@ -1,27 +1,24 @@
 import {
     albumFields,
     validateAlbum
-}                            from 'config/fields/album'
-import AdminDashboardWrapper from 'features/admin/AdminDashboardWrapper'
-import AddSong               from 'features/admin/album/song/Add'
-import {
-    addTrackButtonStyle,
-    adminFormWrapperStyle
-}                            from 'features/admin/styles'
+}                              from 'config/fields/album'
+import AdminDashboardWrapper   from 'features/admin/AdminDashboardWrapper'
+import CreateSong              from 'features/admin/album/song/CreateSong'
+import UpdateSong              from 'features/admin/album/song/UpdateSong'
+import {adminFormWrapperStyle} from 'features/admin/styles'
 import React, {
     useContext,
-    useEffect,
-    useState
-} from 'react'
+    useEffect
+}                              from 'react'
 import {
     useDispatch,
     useSelector
-}                            from 'react-redux'
-import Div                   from 'shared/Basic/Div'
-import {searchContext}       from 'shared/Containers/SearchController'
-import DangerZone            from 'shared/Controls/DangerZone'
-import Form                  from 'shared/Field/Form'
-import ContentWrapper        from 'shared/Layout/ContentWrapper'
+}                              from 'react-redux'
+import Div                     from 'shared/Basic/Div'
+import {searchContext}         from 'shared/Containers/SearchController'
+import DangerZone              from 'shared/Controls/DangerZone'
+import Form                    from 'shared/Field/Form'
+import ContentWrapper          from 'shared/Layout/ContentWrapper'
 
 const Update = () => {
     const dispatch = useDispatch()
@@ -31,7 +28,6 @@ const Update = () => {
     const {artists} = useSelector(state => state.artist)
     const {albumName, description, primaryArtist, coverArt, songs, isPublished} = album
     const {albumsIndex} = useContext(searchContext)
-    const [count, setCount] = useState(1)
 
     const initialValues = {
         albumName: albumName,
@@ -83,16 +79,22 @@ const Update = () => {
                     enableReinitialize={true}
                     options={options}
                 />
+
                 <Div>
-                    {Array(count).fill(<AddSong/>)}
+                    {album.songs && album.songs.map(s => (
+                        <UpdateSong
+                            key={s.audio}
+                            audioId={s._id}
+                            audio={s.audio}
+                            title={s.title}
+                            trackNumber={s.trackNumber}
+                        />
+                    ))}
                 </Div>
-                <Div
-                    theme={addTrackButtonStyle}
-                    onClick={() => setCount(count + 1)}
-                >
-                    Add Track
-                </Div>
+
+                <CreateSong/>
                 <DangerZone
+                    key={album.objectID}
                     attemptDestroyAction={'admin/attemptDestroyAlbum'}
                     destroyAction={'admin/destroyAlbum'}
                     slug={slug}

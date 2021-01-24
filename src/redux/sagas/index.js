@@ -33,9 +33,12 @@ import {
 import {
     watchAddSongToAlbum,
     watchAttemptDestroyAlbum,
+    watchAttemptDestroySong,
     watchCreateAlbum,
     watchDestroyAlbum,
     watchDestroyAlbumSuccess,
+    watchDestroySong,
+    watchDestroySongSuccess,
     watchUpdateAlbum
 } from 'redux/sagas/admin/album'
 import {watchUpdateProfile} from 'redux/sagas/admin/user'
@@ -122,12 +125,16 @@ export default function* rootSaga() {
         // album
         fork(watchCreateAlbum),
         fork(watchUpdateAlbum),
-        fork(watchAddSongToAlbum),
         fork(watchAttemptDestroyAlbum),
         fork(watchDestroyAlbum),
         fork(watchDestroyAlbumSuccess),
         fork(watchGetAlbums),
         fork(watchGetAlbumDetail),
+        fork(watchAddSongToAlbum),
+        fork(watchAttemptDestroySong),
+        fork(watchDestroySong),
+        fork(watchDestroySongSuccess),
+
 
 
         // post
