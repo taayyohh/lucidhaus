@@ -230,6 +230,17 @@ export const adminFormWrapperStyle = {
     width: '100%',
     paddingLeft: [100, globals.style.layoutScalingValue, 25],
     paddingRight: [100, globals.style.layoutScalingValue, 25]
+}
+
+export const adminFormSongWrapperStyle = {
+    child: [
+        {
+            selector: '> form',
+            paddingLeft: 0,
+            paddingRight: 0
+        }
+    ]
+
 
 }
 

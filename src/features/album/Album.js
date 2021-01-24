@@ -80,6 +80,7 @@ const Album = () => {
                 primaryArtist: getNameById(artists, primaryArtist),
                 primaryArtistSlug: getById(artists, primaryArtist).slug,
                 albumSlug: slug,
+                coverArt: coverArt,
                 _id: song._id
             })
         )
@@ -131,6 +132,7 @@ const Album = () => {
                                                     primaryArtist: getNameById(artists, primaryArtist),
                                                     primaryArtistSlug: getById(artists, primaryArtist).slug,
                                                     albumSlug: slug,
+                                                    coverArt: coverArt,
                                                     _id: s._id
                                                 }])
                                                 await setPlaying(true)

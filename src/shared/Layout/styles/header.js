@@ -4,12 +4,14 @@ import {
 } from 'config/styles'
 import {
     black,
+    block,
     borderBox,
     center,
     column,
     flex,
     flexStart,
     inlineFlex,
+    none,
     relative,
     spaceBetween,
     uppercase,
@@ -64,15 +66,47 @@ export const headerInnerStyle = {
     }
 }
 
+export const headerNowPlayingStyle = {
+    display: 'flex',
+    alignItems: 'center',
+}
+
+export const headerNowPlayingCoverArtStyle = {
+    height: 60
+}
+
+export const headerNowPlayingInfoStyle = {
+    paddingLeft: [20, .7, 20],
+    child: [
+        {
+            selector: '> a',
+            display: block,
+            size: [14, .7, 14],
+            color: black,
+            textDecoration: none,
+            hover: {
+                color: colorPalette.purple
+            },
+            firstChild: {
+                size: [22, .7, 22],
+            }
+        }
+    ]
+}
+
 export const headerLogoWrapperStyle = {
     width: [80, .7, 60],
-    height: [80, .7, 60]
+    height: [80, .7, 60],
+    marginRight: [40, .7, 40]
 }
 
 
 export const headerLogoLinkStyle = {
     width: [80, .7, 50],
     zIndex: 1,
+    mobile: {
+        minWidth: 50
+    }
 }
 
 export const cartNumberStyle = {

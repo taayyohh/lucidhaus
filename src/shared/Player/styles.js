@@ -14,13 +14,16 @@ import {
 
 export const playerStyle = {
     position: fixed,
-    left: [40, .7, 40],
-    bottom: [40, .7, 40],
+    left: [40, .7, 25],
+    bottom: [40, .7, 20],
     height: [50, .7, 50],
     width: [350, .7, 350],
     background: 'rgb(218 220 224 / 72%)',
     borderRadius: [25, .7, 25],
-    zIndex: 5
+    zIndex: 5,
+    mobile: {
+        width: 'calc(100% - 50px)'
+    }
 }
 
 export const playerInnerStyle = {
@@ -29,20 +32,22 @@ export const playerInnerStyle = {
     paddingLeft: [30, .7, 30],
     position: relative,
     height: [50, .7, 50],
-    width: [350, .7, 350],
+    width: [350, .7, '100%'],
+    mobile: {
+        width: 'calc(100% - 50px)'
+    }
 }
 
 export const playerControlsWrapperStyle = {
     display: flex,
     alignItems: center,
-    justifyContent: center,
-    width: '100%'
+    justifyContent: center
 }
 
 export const playerQueueStyle = {
     position: fixed,
-    left: [40, .7, 40],
-    bottom: [91, .7, 91],
+    left: [40, .7, 25],
+    bottom: [91, .7, 71],
     minHeight: [50, .7, 50],
     height: auto,
     width: [350, .7, 350],
@@ -60,6 +65,9 @@ export const playerQueueStyle = {
     transition: 'background-color 250ms ease',
     hover: {
         background: 'rgb(218 220 224 / 100%)',
+    },
+    mobile: {
+        width: 'calc(100% - 50px)'
     }
 }
 

@@ -4,6 +4,8 @@ import {
 } from 'config/styles'
 import {
     borderBox,
+    flex,
+    spaceBetween,
     white
 } from 'utils/themer'
 
@@ -22,6 +24,8 @@ export const footerStyle = {
         paddingRight: 25
     },
     inner: {
+        display: flex,
+        justifyContent: spaceBetween,
         margin: '0 auto',
         width: [globals.style.siteInnerWidth, globals.style.layoutScalingValue, '100%'],
 

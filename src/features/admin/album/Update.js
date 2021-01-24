@@ -5,7 +5,10 @@ import {
 import AdminDashboardWrapper   from 'features/admin/AdminDashboardWrapper'
 import CreateSong              from 'features/admin/album/song/CreateSong'
 import UpdateSong              from 'features/admin/album/song/UpdateSong'
-import {adminFormWrapperStyle} from 'features/admin/styles'
+import {
+    adminFormSongWrapperStyle,
+    adminFormWrapperStyle
+} from 'features/admin/styles'
 import React, {
     useContext,
     useEffect
@@ -78,19 +81,20 @@ const Update = () => {
                     theme={adminFormWrapperStyle}
                     enableReinitialize={true}
                     options={options}
-                />
+                >
+                    <Div theme={adminFormSongWrapperStyle}>
+                        {album.songs && album.songs.map(s => (
+                            <UpdateSong
+                                key={s.audio}
+                                audioId={s._id}
+                                audio={s.audio}
+                                title={s.title}
+                                trackNumber={s.trackNumber}
+                            />
+                        ))}
+                    </Div>
+                </Form>
 
-                <Div>
-                    {album.songs && album.songs.map(s => (
-                        <UpdateSong
-                            key={s.audio}
-                            audioId={s._id}
-                            audio={s.audio}
-                            title={s.title}
-                            trackNumber={s.trackNumber}
-                        />
-                    ))}
-                </Div>
 
                 <CreateSong/>
                 <DangerZone

@@ -1,4 +1,8 @@
 import {
+    faInstagram,
+    faTwitter
+} from '@fortawesome/free-brands-svg-icons'
+import {
     faCogs,
     faDollarSign,
     faFileAudio,
@@ -25,7 +29,7 @@ import {
     faPause,
     faVolumeMute,
     faVolumeUp
-} from '@fortawesome/free-solid-svg-icons'
+}                  from '@fortawesome/free-solid-svg-icons'
 
 export const
     cogs = faCogs,
@@ -50,6 +54,8 @@ export const
     playCircle = faPlayCircle,
     timesCircle = faTimesCircle,
     trashAlt = faTrashAlt,
+    twitter = faTwitter,
+    instagram = faInstagram,
     user = faUser,
     userCog = faUserCog,
     volumeMute = faVolumeMute,

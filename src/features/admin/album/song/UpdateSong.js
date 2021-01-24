@@ -33,7 +33,7 @@ const UpdateSong = ({audio, audioId, title, trackNumber}) => {
             fields={songFields}
             validationSchema={validateSong}
             dispatchAction={'admin/addSongToAlbum'}
-            formHeading={`${title}`}
+            formHeading={`${trackNumber}. ${title}`}
             theme={songsFormStyle}
             buttonText={'Save'}
         >
