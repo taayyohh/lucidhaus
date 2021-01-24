@@ -53,7 +53,7 @@ const Player = () => {
     useEffect(() => {
         setPlaylistLength(currentMedia?.length)
     }, [currentMedia])
-    
+
 
     const handlePlay = () =>
         setPlaying(true)

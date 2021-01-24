@@ -1,7 +1,4 @@
-import {
-    colorPalette,
-    globals
-} from 'config/styles'
+import {colorPalette} from 'config/styles'
 import {
     auto,
     black,
@@ -9,12 +6,11 @@ import {
     fixed,
     flex,
     grid,
-    hidden,
     none,
     pointer,
     relative,
     sv
-} from 'utils/themer'
+}                     from 'utils/themer'
 
 export const playerStyle = {
     position: fixed,
@@ -51,17 +47,16 @@ export const playerQueueStyle = {
     height: auto,
     width: [350, .7, 350],
     maxHeight: [300, .7, 300],
+    padding: [50, .7, '0'],
+    background: 'rgb(218 220 224 / 72%)',
+    borderRadius: [25, .7, 25],
+    zIndex: 5,
     overflowY: 'scroll',
     msScrollBar: none,
     ffScrollBar: none,
     scrollBar: {
         display: none,
     },
-    padding: [50, .7, '0'],
-    background: 'rgb(218 220 224 / 72%)',
-    borderRadius: [25, .7, 25],
-    zIndex: 5,
-    overflow: hidden,
     transition: 'background-color 250ms ease',
     hover: {
         background: 'rgb(218 220 224 / 100%)',
@@ -76,12 +71,12 @@ export const playerQueueTrackInnerStyle = isActive => {
     const base = {
         position: relative,
         display: grid,
-        gridTemplateColumns: '2fr 5fr',
+        gridTemplateColumns: `${sv(60)} 1fr`,
         gridGap: sv(30),
         transform: 'color 250ms ease, font-size 250ms ease'
     }
 
-    if(isActive)
+    if (isActive)
         return {
             ...base,
             child: {
@@ -140,7 +135,7 @@ export const playerIconStyle = modifier => {
         }
     }
 
-    if(modifier)
+    if (modifier)
         return {
             ...base,
             color: 'rgb(177 177 177 / 45%)',
