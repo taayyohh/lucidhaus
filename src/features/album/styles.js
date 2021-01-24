@@ -31,6 +31,9 @@ export const albumCardStyle = {
         selector: 'img',
         transform: 'scale(.95)',
         transition: 'transform 500ms ease',
+        mobile: {
+            width: '100%'
+        },
         hover: {
             transform: 'scale(1)'
         }
@@ -81,7 +84,7 @@ export const albumSongsWrapperStyle = {
     paddingTop: [40, .7, 20],
     marginTop: [40, .7, 20],
     alignSelf: flexStart,
-    borderTop:  `1px solid ${globals.colors.borderColor}`
+    borderTop: `1px solid ${globals.colors.borderColor}`
 }
 
 export const albumSongWrapperStyle = {

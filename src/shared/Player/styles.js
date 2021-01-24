@@ -52,9 +52,9 @@ export const playerQueueStyle = {
     height: auto,
     width: [350, .7, 350],
     maxHeight: [300, .7, 300],
-    padding: [50, .7, '0'],
+    padding: [50, .7, 20],
     background: 'rgb(218 220 224 / 72%)',
-    borderRadius: [25, .7, 25],
+    borderRadius: [25, .7, 10],
     zIndex: 5,
     overflowY: 'scroll',
     msScrollBar: none,
@@ -81,7 +81,11 @@ export const playerQueueTrackInnerStyle = isActive => {
         display: grid,
         gridTemplateColumns: `${sv(60)} 1fr`,
         gridGap: sv(30),
-        transform: 'color 250ms ease, font-size 250ms ease'
+        transform: 'color 250ms ease, font-size 250ms ease',
+        mobile: {
+            gridTemplateColumns: `1fr 4fr`,
+            gridGap: 30,
+        }
     }
 
     if (isActive)

@@ -24,7 +24,7 @@ export const artistsWrapperStyle = {
 export const artistCardStyle = {
     child: {
         selector: 'img',
-        borderRadius: 300,
+        borderRadius: [300, globals.style.layoutScalingValue, 300],
         transform: 'scale(.75)',
         transition: 'transform 500ms ease',
         hover: {
