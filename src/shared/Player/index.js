@@ -172,6 +172,11 @@ const Player = () => {
                             onEnded={handleEnded}
                             onBuffer={handleBuffer}
                             onDuration={handleDuration}
+                            config={{
+                                file: {
+                                    forceAudio: true
+                                }
+                            }}
                         />
                     </Div>
                 </>
