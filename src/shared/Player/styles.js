@@ -1,4 +1,7 @@
-import {colorPalette} from 'config/styles'
+import {
+    colorPalette,
+    globals
+} from 'config/styles'
 import {
     auto,
     black,
@@ -9,17 +12,19 @@ import {
     none,
     pointer,
     relative,
-    sv
-}                     from 'utils/themer'
+    sv,
+    white
+} from 'utils/themer'
 
 export const playerStyle = {
     position: fixed,
     left: [40, .7, 25],
     bottom: [40, .7, 20],
     height: [50, .7, 50],
-    width: [350, .7, 350],
-    background: 'rgb(218 220 224 / 72%)',
-    borderRadius: [25, .7, 25],
+    width: [300, globals.style.layoutScalingValue, '100%'],
+    background: '#FAFAFA',
+    borderRadius: [10, .7, 10],
+    border: `1px solid #4d0b69`,
     zIndex: 5,
     mobile: {
         width: 'calc(100% - 50px)'
@@ -32,7 +37,7 @@ export const playerInnerStyle = {
     paddingLeft: [30, .7, 30],
     position: relative,
     height: [50, .7, 50],
-    width: [350, .7, '100%'],
+    width: [300, .7, '100%'],
     mobile: {
         width: 'calc(100% - 50px)'
     }
@@ -47,14 +52,15 @@ export const playerControlsWrapperStyle = {
 export const playerQueueStyle = {
     position: fixed,
     left: [40, .7, 25],
-    bottom: [91, .7, 71],
+    bottom: [95, .7, 75],
     minHeight: [50, .7, 50],
     height: auto,
-    width: [350, .7, 350],
+    width: [300, globals.style.layoutScalingValue, 350],
     maxHeight: [300, .7, 300],
-    padding: [50, .7, 20],
-    background: 'rgb(218 220 224 / 72%)',
-    borderRadius: [25, .7, 10],
+    padding: [20, .7, 20],
+    background: '#FAFAFA',
+    borderRadius: [10, .7, 10],
+    border: `1px solid #4d0b69`,
     zIndex: 5,
     overflowY: 'scroll',
     msScrollBar: none,
@@ -64,7 +70,7 @@ export const playerQueueStyle = {
     },
     transition: 'background-color 250ms ease',
     hover: {
-        background: 'rgb(218 220 224 / 100%)',
+
     },
     mobile: {
         width: 'calc(100% - 50px)'
@@ -79,12 +85,12 @@ export const playerQueueTrackInnerStyle = isActive => {
     const base = {
         position: relative,
         display: grid,
-        gridTemplateColumns: `${sv(60)} 1fr`,
+        gridTemplateColumns: `${sv(90)} 1fr`,
         gridGap: sv(30),
         transform: 'color 250ms ease, font-size 250ms ease',
         mobile: {
-            gridTemplateColumns: `1fr 4fr`,
-            gridGap: 30,
+            gridTemplateColumns: `100px 1fr`,
+            gridGap: 50,
         }
     }
 

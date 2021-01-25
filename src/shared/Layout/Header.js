@@ -37,7 +37,7 @@ const Header = ({theme}) => {
                             <Img src={logo}/>
                         </LinkSwitch>
                     </Div>
-                    {!isMobile && (
+                    {!isMobile && !!nowPlayingArtist && (
                         <>
                             <Div theme={headerNowPlayingCoverArtStyle}>
                                 <S3Img url={nowPlayingCoverArt}/>

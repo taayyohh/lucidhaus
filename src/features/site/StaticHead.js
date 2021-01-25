@@ -1,9 +1,9 @@
-import React, {memo}   from 'react'
-import {Helmet}        from 'react-helmet-async'
 import appleTouchIcon  from 'assets/apple-touch-icon.png'
 import favicon16       from 'assets/favicon-16x16.png'
 import favicon32       from 'assets/favicon-32x32.png'
 import safariPinnedTab from 'assets/safari-pinned-tab.svg'
+import React, {memo}   from 'react'
+import {Helmet}        from 'react-helmet-async'
 
 const StaticHead = memo(() =>
     <Helmet>

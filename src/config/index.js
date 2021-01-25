@@ -10,6 +10,7 @@ export const googlePlacesApiKey = process.env.REACT_APP_PLACES_API_KEY
 // export const shippoApiKey = process.env.REACT_APP_SHIPPO_API_KEY
 export const shippoApiKeyTest = process.env.REACT_APP_SHIPPO_TEST_API_KEY
 export const shippo = require('shippo')(shippoApiKeyTest)
+export const googleAnalyticsId = process.env.REACT_APP_GOOGLE_ANALYTICS_ID
 
 
 /** INPUT TYPES **/

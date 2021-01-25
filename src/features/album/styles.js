@@ -105,8 +105,11 @@ export const albumSongTrackNumberStyle = {
 export const albumTitleStyle = {
     font: globals.fonts.fancy,
     textAlign: center,
-    size: [42, .7, 36],
+    size: [42, .7, 28],
     margin: 0,
+    mobile: {
+        textAlign: 'left'
+    },
     hover: {
         color: colorPalette.purple,
         cursor: pointer

@@ -9,6 +9,7 @@ export const headerMenu = [
     },
     {
         url: '/music',
-        title: 'Music'
+        title: 'Music',
+        active: ['albums'],
     }
 ]
