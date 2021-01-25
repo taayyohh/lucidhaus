@@ -96,7 +96,10 @@ export const genericCardStyle = {
 export const genericCardImageStyle = {
     width: auto,
     maxWidth: '100%',
-    transition: 'transform 500ms ease'
+    transition: 'transform 500ms ease',
+    mobile: {
+        objectFit: 'cover'
+    }
 }
 export const genericCardDetailImageWrapperStyle = {
     height: auto,

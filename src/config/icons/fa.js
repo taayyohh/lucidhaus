@@ -28,16 +28,25 @@ import {
     faPlayCircle,
     faPause,
     faVolumeMute,
-    faVolumeUp
+    faVolumeUp,
+    faList,
+    faStream,
+    faEllipsisH,
+    faStepBackward,
+    faStepForward,
+    faWindowMinimize,
+    faWindowMaximize
 }                  from '@fortawesome/free-solid-svg-icons'
 
 export const
     cogs = faCogs,
+    ellipsis = faEllipsisH,
     usd = faDollarSign,
     fileAudio = faFileAudio,
     forward = faForward,
     backward = faBackward,
     home = faHome,
+    list = faList,
     minusCircle = faMinusCircle,
     music = faMusic,
     newsPaper = faNewspaper,
@@ -50,6 +59,9 @@ export const
     shoppingCart = faShoppingCart,
     signOut = faSignOutAlt,
     store = faStore,
+    stream = faStream,
+    stepBackward = faStepBackward,
+    stepForward = faStepForward,
     play = faPlay,
     playCircle = faPlayCircle,
     timesCircle = faTimesCircle,
@@ -58,6 +70,8 @@ export const
     instagram = faInstagram,
     user = faUser,
     userCog = faUserCog,
+    windowMinimize = faWindowMinimize,
+    windowMaximize = faWindowMaximize,
     volumeMute = faVolumeMute,
     volumeUp = faVolumeUp
 

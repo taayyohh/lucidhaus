@@ -12,19 +12,27 @@ import {
 
 const DocumentHead = () => {
     const {documentHead} = useSelector(state => state.site)
-    const {title, description, image, imageAlt} = documentHead
+    const {title, description, image, imageAlt, audio} = documentHead
 
     //TODO: default values
     return (
-        <Helmet>
-            <meta property="og:title" content={title}/>
-            <meta property="og:description" content={description && excerpt(stripHtml(description), 40)}/>
-            <meta property="og:image" content={CDN + image}/>
-            <meta property="og:url" content={window.location.href}/>
-            <meta property="og:site_name" content={siteDisplayName}/>
-            <meta name="twitter:image:alt" content={imageAlt}/>
-            <meta name="twitter:card" content="summary_large_image"/>
-        </Helmet>
+        <>
+            <Helmet>
+                <meta property="og:title" content={title}/>
+                <meta property="og:description" content={description && excerpt(stripHtml(description), 40)}/>
+                <meta property="og:image" content={CDN + image}/>
+                <meta property="og:url" content={window.location.href}/>
+                <meta property="og:site_name" content={siteDisplayName}/>
+                <meta property="twitter:image" content={CDN + image}/>
+                <meta name="twitter:image:alt" content={imageAlt}/>
+                <meta name="twitter:card" content="summary_large_image"/>
+            </Helmet>
+            {audio && (
+                <Helmet>
+                    <meta property="og:audio" content={audio}/>
+                </Helmet>
+            )}
+        </>
     )
 }
 

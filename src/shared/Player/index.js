@@ -1,10 +1,11 @@
 import {CDN}           from 'config'
 import {
-    backward,
-    forward,
     pause,
     play,
-    volumeMute
+    stepBackward,
+    stepForward,
+    volumeMute,
+    windowMinimize
 }                      from 'config/icons/fa'
 import React, {
     useContext,
@@ -21,12 +22,16 @@ import {
     playerControlsWrapperStyle,
     playerIconStyle,
     playerInnerStyle,
+    playerMinimizeIconStyle,
+    playerMinimizeStyle,
     playerMuteStyle,
     playerQueueArtistStyle,
+    playerQueueInnerStyle,
     playerQueueStyle,
     playerQueueTitleStyle,
     playerQueueTrackInnerStyle,
     playerQueueTrackStyle,
+    playerSongsWrapperStyle,
     playerStyle
 }                      from 'shared/Player/styles'
 
@@ -107,37 +112,44 @@ const Player = () => {
             {currentMedia.length > 0 && (
                 <>
                     <Div theme={playerQueueStyle}>
-                        {currentMedia && currentMedia.map((m, i) => {
-                                const currentAudio = currentMedia[currentMediaIndex]?.audio
-                                const isActive = m.audio === currentAudio && currentMediaIndex === i
+                        <Div theme={playerQueueInnerStyle}>
+                            {/*<Div theme={playerMinimizeStyle}>*/}
+                            {/*    <Icon icon={windowMinimize} theme={playerMinimizeIconStyle}/>*/}
+                            {/*</Div>*/}
+                            <Div theme={playerSongsWrapperStyle}>
+                                {currentMedia && currentMedia.map((m, i) => {
+                                        const currentAudio = currentMedia[currentMediaIndex]?.audio
+                                        const isActive = m.audio === currentAudio && currentMediaIndex === i
 
-                                return (
-                                    <Div key={i} theme={playerQueueTrackStyle}>
-                                        <Div theme={playerQueueTrackInnerStyle(isActive)}>
-                                            <LinkSwitch
-                                                url={`/artists/${m.primaryArtistSlug}`}
-                                                theme={playerQueueArtistStyle}
-                                            >
-                                                {m.primaryArtist}
-                                            </LinkSwitch>
-                                            <LinkSwitch
-                                                url={`/albums/${m.albumSlug}`}
-                                                theme={playerQueueTitleStyle}
-                                            >
-                                                {m.title}
-                                            </LinkSwitch>
-                                        </Div>
-                                    </Div>
-                                )
-                            }
-                        )}
+                                        return (
+                                            <Div key={i} theme={playerQueueTrackStyle}>
+                                                <Div theme={playerQueueTrackInnerStyle(isActive)}>
+                                                    <LinkSwitch
+                                                        url={`/artists/${m.primaryArtistSlug}`}
+                                                        theme={playerQueueArtistStyle}
+                                                    >
+                                                        {m.primaryArtist}
+                                                    </LinkSwitch>
+                                                    <LinkSwitch
+                                                        url={`/albums/${m.albumSlug}`}
+                                                        theme={playerQueueTitleStyle}
+                                                    >
+                                                        {m.title}
+                                                    </LinkSwitch>
+                                                </Div>
+                                            </Div>
+                                        )
+                                    }
+                                )}
+                            </Div>
+                        </Div>
                     </Div>
                     <Div theme={playerStyle}>
                         <Div theme={playerInnerStyle}>
                             <Div theme={playerControlsWrapperStyle}>
                                 <Icon
                                     onClick={!isFirstItem ? () => handleBackward() : null}
-                                    icon={backward}
+                                    icon={stepBackward}
                                     theme={playerIconStyle(isFirstItem)}
                                 />
 
@@ -148,7 +160,7 @@ const Player = () => {
                                 />
                                 <Icon
                                     onClick={!isLastItem ? () => handleForward() : null}
-                                    icon={forward}
+                                    icon={stepForward}
                                     theme={playerIconStyle(isLastItem)}
                                 />
                                 <Icon

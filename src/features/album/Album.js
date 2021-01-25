@@ -23,6 +23,7 @@ import {
     fadeOut,
     nOpacity
 }                                  from 'shared/Layout/styles/animations'
+import {dashboardActiveIndicator}  from 'shared/Menus/styles'
 import {
     getById,
     getNameById,
@@ -45,7 +46,7 @@ const Album = () => {
     const {slug} = useSelector(state => state.site)
     const {artists} = useSelector(state => state.artist)
     const {albumName, primaryArtist, description, coverArt, songs} = album
-    const {currentMedia, setCurrentMedia, setPlaying} = useContext(playerContext)
+    const {currentMedia, setCurrentMedia, currentMediaIndex, setPlaying} = useContext(playerContext)
     const artist = getById(artists, primaryArtist)
 
     useEffect(() => {
@@ -62,30 +63,37 @@ const Album = () => {
                 title: albumName,
                 description,
                 image: coverArt,
-                imageAlt: `${albumName} Product Photo`
+                imageAlt: `${albumName} Product Photo`,
+                audio: songs && songs[0]?.audio
             }
         })
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [album])
 
-    const queueAlbum = (songs) => {
-        console.log('songs', songs)
+    const queueAlbum = async (songs) => {
         const prepared = []
-        songs.map((song) =>
-            prepared.push({
-                title: song.title,
-                audio: song.audio,
-                trackNumber: song.trackNumber,
-                primaryArtist: getNameById(artists, primaryArtist),
-                primaryArtistSlug: getById(artists, primaryArtist).slug,
-                albumSlug: slug,
-                coverArt: coverArt,
-                _id: song._id
-            })
-        )
 
-       setCurrentMedia([...currentMedia, ...prepared])
+        await resolvedPromise(
+            songs.map((song) =>
+                prepared.push({
+                    title: song.title,
+                    audio: song.audio,
+                    trackNumber: song.trackNumber,
+                    primaryArtist: getNameById(artists, primaryArtist),
+                    primaryArtistSlug: getById(artists, primaryArtist).slug,
+                    albumSlug: slug,
+                    coverArt: coverArt,
+                    _id: song._id
+                })
+            )
+        )
+        await resolvedPromise(
+            setCurrentMedia([
+                ...currentMedia,
+                ...prepared
+            ])
+        )
     }
 
 
@@ -121,29 +129,43 @@ const Album = () => {
                                     </LinkSwitch>
                                 )}
                                 <Div theme={albumSongsWrapperStyle}>
-                                    {songs && songs.map((s) => (
-                                        <Div
-                                            key={s.audio}
-                                            onClick={async () => {
-                                                await setCurrentMedia([...currentMedia, {
-                                                    title: s.title,
-                                                    audio: s.audio,
-                                                    trackNumber: s.trackNumber,
-                                                    primaryArtist: getNameById(artists, primaryArtist),
-                                                    primaryArtistSlug: getById(artists, primaryArtist).slug,
-                                                    albumSlug: slug,
-                                                    coverArt: coverArt,
-                                                    _id: s._id
-                                                }])
-                                                await setPlaying(true)
-                                            }}
-                                        >
-                                            <Div theme={albumSongWrapperStyle}>
-                                                <Span theme={albumSongTrackNumberStyle}>{s.trackNumber}</Span>
-                                                <Span>{s.title}</Span>
-                                            </Div>
-                                        </Div>
-                                    ))}
+                                    {songs && songs.map((s) => {
+                                            const isActive = currentMedia[currentMediaIndex]?.audio === s.audio
+
+                                            return (
+                                                <Div
+                                                    key={s.audio}
+                                                    onClick={async () => {
+                                                        await setCurrentMedia([...currentMedia, {
+                                                            title: s.title,
+                                                            audio: s.audio,
+                                                            trackNumber: s.trackNumber,
+                                                            primaryArtist: getNameById(artists, primaryArtist),
+                                                            primaryArtistSlug: getById(artists, primaryArtist).slug,
+                                                            albumSlug: slug,
+                                                            coverArt: coverArt,
+                                                            _id: s._id
+                                                        }])
+                                                        await setPlaying(true)
+                                                    }}
+                                                >
+                                                    <Div
+                                                        theme={albumSongWrapperStyle(isActive)}>
+                                                        <Div>
+                                                            <Span theme={albumSongTrackNumberStyle}>{s.trackNumber}</Span>
+                                                            <Span>{s.title}</Span>
+                                                        </Div>
+                                                        {isActive && (
+                                                            <MotionDiv
+                                                                theme={dashboardActiveIndicator}
+                                                                layoutId={'activeSongIndicator'}
+                                                            />
+                                                        )}
+                                                    </Div>
+                                                </Div>
+                                            )
+                                        }
+                                    )}
                                 </Div>
                             </Div>
                         </Div>

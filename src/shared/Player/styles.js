@@ -3,11 +3,14 @@ import {
     globals
 } from 'config/styles'
 import {
+    absolute,
     auto,
     black,
     center,
+    column,
     fixed,
     flex,
+    flexEnd,
     grid,
     none,
     pointer,
@@ -49,7 +52,33 @@ export const playerControlsWrapperStyle = {
     justifyContent: center
 }
 
+export const playerMinimizeStyle = {
+    position: relative,
+    top: 5,
+    right: 5,
+    alignSelf: flexEnd,
+    paddingTop: 10,
+    paddingBottom: 20
+}
+
+export const playerMinimizeIconStyle = {
+    hover: {
+        color: colorPalette.purple,
+        cursor: pointer
+    }
+}
+
+export const playerSongsWrapperStyle = {
+
+}
+
+export const playerQueueInnerStyle = {
+    position: relative
+}
+
 export const playerQueueStyle = {
+    display: flex,
+    flexDirection: column,
     position: fixed,
     left: [40, .7, 25],
     bottom: [95, .7, 75],
@@ -57,7 +86,10 @@ export const playerQueueStyle = {
     height: auto,
     width: [300, globals.style.layoutScalingValue, 350],
     maxHeight: [300, .7, 300],
-    padding: [20, .7, 20],
+    paddingTop: [20, .7, 20],
+    paddingBottom: [20, .7, 20],
+    paddingLeft: [20, .7, 20],
+    paddingRight: [20, .7, 20],
     background: '#FAFAFA',
     borderRadius: [10, .7, 10],
     border: `1px solid #4d0b69`,
@@ -87,7 +119,10 @@ export const playerQueueTrackInnerStyle = isActive => {
         display: grid,
         gridTemplateColumns: `${sv(90)} 1fr`,
         gridGap: sv(30),
+        width: '100%',
         transform: 'color 250ms ease, font-size 250ms ease',
+        paddingTop: 3,
+        paddingBottom: 3,
         mobile: {
             gridTemplateColumns: `100px 1fr`,
             gridGap: 50,
@@ -97,9 +132,10 @@ export const playerQueueTrackInnerStyle = isActive => {
     if (isActive)
         return {
             ...base,
+            backgroundColor: colorPalette.purple,
             child: {
                 selector: 'a',
-                color: colorPalette.purple,
+                color: white,
                 hover: {
                     textDecoration: 'underline'
                 }
@@ -122,8 +158,8 @@ export const playerQueueTitleStyle = {
 
 export const playerQueueArtistStyle = {
     textDecoration: none,
-    color: black,
     whiteSpace: 'nowrap',
+    paddingLeft: 20,
     hover: {
         color: colorPalette.purple
     }

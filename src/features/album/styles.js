@@ -3,6 +3,7 @@ import {
     globals
 } from 'config/styles'
 import {
+    black,
     borderBox,
     center,
     column,
@@ -12,6 +13,8 @@ import {
     grid,
     none,
     pointer,
+    relative,
+    spaceBetween,
     sv
 } from 'utils/themer'
 
@@ -87,13 +90,18 @@ export const albumSongsWrapperStyle = {
     borderTop: `1px solid ${globals.colors.borderColor}`
 }
 
-export const albumSongWrapperStyle = {
-    display: 'flex',
-    size: [24, .7, 24],
-    alignItems: center,
-    hover: {
-        color: colorPalette.purple,
-        cursor: pointer
+export const albumSongWrapperStyle = isActive => {
+    return {
+        position: relative,
+        display: 'flex',
+        size: [24, .7, 24],
+        alignItems: center,
+        justifyContent: spaceBetween,
+        color: isActive ? colorPalette.purple : black,
+        hover: {
+            color: colorPalette.purple,
+            cursor: pointer
+        }
     }
 }
 
