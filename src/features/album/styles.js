@@ -15,7 +15,8 @@ import {
     pointer,
     relative,
     spaceBetween,
-    sv
+    sv,
+    wrap
 } from 'utils/themer'
 
 export const albumsWrapperStyle = {
@@ -25,7 +26,15 @@ export const albumsWrapperStyle = {
     gridGap: sv(30),
     margin: '0 auto',
     mobile: {
-        gridTemplateColumns: '1fr 1fr'
+        display: flex,
+        flexWrap: wrap,
+        justifyContent: spaceBetween,
+        child: {
+            selector: '> div',
+            mobile: {
+                width: '45%'
+            }
+        }
     }
 }
 
