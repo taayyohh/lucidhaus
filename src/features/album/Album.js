@@ -1,4 +1,7 @@
-import {albumSongTrackNumberStyle} from 'features/album/styles'
+import {
+    albumSongActiveIndicatorStyle,
+    albumSongTrackNumberStyle
+} from 'features/album/styles'
 import {artistDescriptionStyle}    from 'features/artist/styles'
 import {AnimatePresence}           from 'framer-motion'
 import React, {
@@ -157,7 +160,7 @@ const Album = () => {
                                                         </Div>
                                                         {isActive && (
                                                             <MotionDiv
-                                                                theme={dashboardActiveIndicator}
+                                                                theme={albumSongActiveIndicatorStyle}
                                                                 layoutId={'activeSongIndicator'}
                                                             />
                                                         )}
