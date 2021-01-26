@@ -1,13 +1,14 @@
-import {AnimatePresence}       from 'framer-motion'
-import React, {useEffect}      from 'react'
+import {artistImageWrapperStyle} from 'features/artist/styles'
+import {AnimatePresence}         from 'framer-motion'
+import React, {useEffect}        from 'react'
 import {
     useDispatch,
     useSelector
-}                              from 'react-redux'
-import Div                     from 'shared/Basic/Div'
-import MotionDiv               from 'shared/Basic/MotionDiv'
-import RichText                from 'shared/Basic/RichText'
-import S3Img                   from 'shared/Basic/S3Img'
+}                                from 'react-redux'
+import Div                       from 'shared/Basic/Div'
+import MotionDiv                 from 'shared/Basic/MotionDiv'
+import RichText                  from 'shared/Basic/RichText'
+import S3Img                     from 'shared/Basic/S3Img'
 import {genericCardImageStyle} from 'shared/Cards/styles'
 import ContentWrapper          from 'shared/Layout/ContentWrapper'
 import {
@@ -56,7 +57,7 @@ const Artist = () => {
                         <MotionDiv theme={artistTitleStyle}>
                             {name}
                         </MotionDiv>
-                        <Div theme={{display: 'flex', justifyContent: center}}>
+                        <Div theme={artistImageWrapperStyle}>
                             <S3Img
                                 url={photo}
                                 alt={name}

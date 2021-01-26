@@ -40,6 +40,11 @@ export const artistWrapperStyle = {
     margin: '0 auto'
 }
 
+export const artistImageWrapperStyle = {
+    width: [500, globals.style.layoutScalingValue, '100%'],
+    margin: '0 auto'
+}
+
 export const artistTitleStyle = {
     font: globals.fonts.fancy,
     textAlign: center,
@@ -57,6 +62,4 @@ export const artistDescriptionStyle = {
     borderTop: `1px solid ${colorPalette.gray}`
 }
 
-export const artistImageStyle = {
-
-}
+export const artistImageStyle = {}

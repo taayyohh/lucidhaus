@@ -1,3 +1,4 @@
+import {mobileFlag}  from 'features/site/slice'
 import PropTypes     from 'prop-types'
 import React         from 'react'
 import {useSelector} from 'react-redux'
@@ -10,6 +11,7 @@ import {
 
 const HeaderMenuItems = ({items}) => {
     const {url} = useSelector(state => state.site)
+    const isMobile = useSelector(mobileFlag)
 
     return (
         <>
@@ -20,7 +22,7 @@ const HeaderMenuItems = ({items}) => {
                     theme={headerMenuListItemStyle(url.includes(item.url.substring(1)))}
                 >
                     {item.title}
-                    {url.includes(item.url.substring(1)) && (
+                    {url.includes(item.url.substring(1)) && !isMobile && (
                         <MotionDiv
                             layoutId={'headerMenuIndicator'}
                             theme={headerMenuActiveIndicator}
