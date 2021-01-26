@@ -63,7 +63,7 @@ export const shopLeftColumnStyle = {
 
 export const shopMenuStyle = {
     position: 'fixed',
-    width: [300, globals.style.layoutScalingValue, 130],
+    width: [300, globals.style.layoutScalingValue, 100],
     borderRight: `1px solid ${globals.colors.borderColor}`
 }
 
