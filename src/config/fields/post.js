@@ -11,8 +11,9 @@ export const postFields = [
     {
         name: 'photo',
         file: 'photoFile',
-        cropWidth: 500,
-        cropHeight: 500,
+        cropWidth: 1920,
+        cropHeight: 1080,
+        aspect: 16/9,
         s3Path: UPLOAD_PATHS.post,
         type: IMAGE_UPLOAD,
     },

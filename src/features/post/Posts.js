@@ -1,3 +1,4 @@
+import {postCardStyle}     from 'features/post/styles'
 import React, {useEffect}  from 'react'
 import {
     useDispatch,
@@ -5,7 +6,7 @@ import {
 }                          from 'react-redux'
 import Div                 from 'shared/Basic/Div'
 import GenericCard         from 'shared/Cards/GenericCard'
-import ContentWrapper      from 'shared/Layout/ContentWrapper'
+import FullContentWrapper  from 'shared/Layout/FullContentWrapper'
 import {postsWrapperStyle} from './styles'
 
 const Posts = () => {
@@ -31,7 +32,7 @@ const Posts = () => {
     }, [posts])
 
     return (
-        <ContentWrapper>
+        <FullContentWrapper>
             <Div theme={postsWrapperStyle}>
                 {posts && posts?.map(
                     post => post.isPublished && (
@@ -41,11 +42,12 @@ const Posts = () => {
                             name={post.name}
                             photo={post.photo}
                             description={post.description}
+                            theme={postCardStyle}
                         />
                     )
                 )}
             </Div>
-        </ContentWrapper>
+        </FullContentWrapper>
     )
 }
 

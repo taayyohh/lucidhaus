@@ -3,22 +3,41 @@ import {
     globals
 } from 'config/styles'
 import {
+    auto,
     borderBox,
     center,
     column,
     flex,
+    hidden,
+    none,
     sv
 } from 'utils/themer'
 
 export const postsWrapperStyle = {
-    display: 'grid',
-    gridTemplateColumns: '1fr 1fr 1fr',
-    gridGap: sv(30),
-    margin: '0 auto',
+    display: flex,
+    flexDirection: column,
     mobile: {
         display: flex,
         flexDirection: column
     }
+}
+
+export const postCardStyle = {
+    paddingBottom: 0,
+    width: '100vw',
+    height: `calc(100vh - ${sv(globals.style.headerHeight)})`,
+    overflow: hidden,
+    borderRadius: 0,
+    mobile: {
+        height: auto
+    },
+    image: {
+        objectFit: 'cover'
+    },
+    textWrapper: {
+        display: none
+    }
+
 }
 
 export const postWrapperStyle = {

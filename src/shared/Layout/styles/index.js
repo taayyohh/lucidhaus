@@ -97,19 +97,37 @@ export const pageFrameStyle = {
             maxHeight: 200
         }
     },
-    main: {
-        position: relative,
-        msGridRow: contentRow,
-        gridRow: contentRow,
-        msGridColumn: 2,
-        gridColumn: '2 / 6',
-        gridColumnSpan: 4,
-        zIndex: 3,
-        minHeight: '80vh',
-        print: {
-            paddingTop: 0
-        },
-        ...genericMobileContainerStyles
+    main: slug => {
+        const base = {
+            position: relative,
+            msGridRow: contentRow,
+            gridRow: contentRow,
+            msGridColumn: 2,
+            gridColumn: '2 / 6',
+            gridColumnSpan: 4,
+            zIndex: 3,
+            minHeight: '80vh',
+            print: {
+                paddingTop: 0
+            },
+            ...genericMobileContainerStyles
+        }
+
+        if (slug.length === 0)
+            return {
+                ...base,
+                gridColumn: '1 / 7',
+                marginTop: [-50, .7, 50],
+                mobile: {
+                    padding: 0,
+                    marginTop: 0
+                }
+            }
+
+        return {
+            ...base
+        }
+
     },
     content: {
         gridColumn: '2 / 6',
@@ -118,11 +136,23 @@ export const pageFrameStyle = {
         gridRow: 3,
         marginTop: 50
     },
-    footer: {
-        gridColumn: '1 / 7',
-        gridColumnSpan: 6,
-        msGridRow: 4,
-        gridRow: 4,
+    footer: slug => {
+        const base = {
+            gridColumn: '1 / 7',
+            gridColumnSpan: 6,
+            msGridRow: 4,
+            gridRow: 4,
+        }
+
+        if (slug.length === 0)
+            return {
+                marginTop: 0
+            }
+
+        return {
+            ...base
+        }
+
     },
     modal: {
         position: fixed,
@@ -158,6 +188,13 @@ export const contentWrapperStyle = {
     width: [globals.style.siteInnerWidth, globals.style.layoutScalingValue, '100%'],
     transition: 'width 500ms ease'
 }
+
+export const fullContentWrapperStyle = {
+    margin: '0 auto',
+    width: '100vw',
+    transition: 'width 500ms ease'
+}
+
 
 export const notFoundStyle = {
     textAlign: center,

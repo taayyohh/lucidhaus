@@ -23,11 +23,11 @@ import {
     imageDropZoneWrapperStyle
 }                                from './styles'
 
-const UploadImage = memo(({formik, id, file, cropWidth, cropHeight, s3Path, inputLabel, className, errorMessage}) => {
+const UploadImage = memo(({formik, id, file, cropWidth, cropHeight, s3Path, inputLabel, className, aspect = 1, errorMessage}) => {
     const [cropPortalOpen, setCropPortalOpen] = useState(false)
     const [uploadedImage, setUploadedImage] = useState({})
     const {uploadBlob, uploadType, sanitizedName} = uploadedImage
-    const [crop, setCrop] = useState({width: cropWidth, aspect: 1})
+    const [crop, setCrop] = useState({width: cropWidth, aspect: aspect})
     const [croppedImage, setCroppedImage] = useState()
     const [previewBlob, setPreviewBlob] = useState('')
     const currentImage = formik.initialValues[id]

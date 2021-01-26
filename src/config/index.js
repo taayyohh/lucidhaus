@@ -63,3 +63,5 @@ export const UPLOAD_PATHS = {
 
 /** SITE CONFIG **/
 export const siteDisplayName = 'LucidHaus'
+export const siteTwitterUrl = 'https://twitter.com/lucidhaus'
+export const siteInstagramUrl = 'https://instagram.com/lucidhaus'

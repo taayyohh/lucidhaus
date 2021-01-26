@@ -2,6 +2,8 @@ import React          from 'react'
 import ContentWrapper from 'shared/Layout/ContentWrapper'
 
 const Home = () => {
+
+
     return (
         <ContentWrapper>
             {/*<MotionDiv*/}

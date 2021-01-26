@@ -59,6 +59,7 @@ const FieldSwitch = memo(({field, formik, options}) => {
                 file={field.file}
                 cropWidth={field.cropWidth}
                 cropHeight={field.cropHeight}
+                aspect={field.aspect}
                 s3Path={field.s3Path}
                 inputLabel={field.inputLabel}
                 className={formik.touched[field.name] && formik.errors[field.name] ? 'error' : ''}

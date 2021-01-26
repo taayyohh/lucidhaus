@@ -49,8 +49,8 @@ export const albumWrapperStyle = {
 
 export const albumWrapperInnerStyle = {
     display: grid,
-    gridTemplateColumns: `${sv(500, globals.style.layoutScalingValue)} 1fr`,
-    gridGap: sv(100, globals.style.layoutScalingValue),
+    gridTemplateColumns: `${sv(500, globals.style.layoutScalingValue)} 3fr`,
+    gridGap: sv(60, globals.style.layoutScalingValue),
     mobile: {
         display: flex,
         flexDirection: column,
