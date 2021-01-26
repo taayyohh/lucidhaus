@@ -75,17 +75,16 @@ export const productCardStyle = {
     },
     category: {
         display: none
-    },
+    }
 }
+
 export const genericCardStyle = {
     display: flex,
     flexDirection: column,
     boxSizing: borderBox,
-  //   background: '#fdfdfd',
     borderRadius: '5px',
     paddingBottom: [20, .7, 20],
     borderBottom: `1px solid #dadce0`,
-  //  boxShadow: `0px 1px 1px #dadce0`,
     textDecoration: none,
     transition: 'background-color 500ms ease, border-color 500ms ease',
     hover: {
@@ -93,6 +92,7 @@ export const genericCardStyle = {
         borderColor: '#828282'
     }
 }
+
 export const genericCardImageStyle = {
     width: auto,
     maxWidth: '100%',
@@ -101,16 +101,7 @@ export const genericCardImageStyle = {
         objectFit: 'contain'
     }
 }
-export const genericCardDetailImageWrapperStyle = {
-    height: auto,
-}
 
-export const genericCardImageWrapperStyle = {
-    overflow: hidden,
-    height: auto,
-    display: flex,
-    width: '100%'
-}
 export const genericCardNameStyle = {
     font: globals.fonts.sans,
     size: [28, .7, 28],
