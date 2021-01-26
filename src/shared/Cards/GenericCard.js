@@ -11,7 +11,7 @@ import {
     genericCardArtistNameStyle,
     genericCardPriceStyle,
     genericCardProductCategoryStyle
-} from 'shared/Cards/styles'
+}                        from 'shared/Cards/styles'
 import {
     fadeIn,
     fadeOut,
@@ -24,7 +24,6 @@ import {
 import {
     genericCardDescriptionStyle,
     genericCardImageStyle,
-    genericCardImageWrapperStyle,
     genericCardNameStyle,
     genericCardStyle,
     genericCardTextWrapperStyle
@@ -41,17 +40,13 @@ const GenericCard = ({photo, name, slug, description, productCategory, artist, p
                 theme={{...genericCardStyle, ...theme}}
             >
                 {photo && (
-                    <MotionDiv
-                        theme={{...genericCardImageWrapperStyle, ...theme.imageWrapper}}
-                    >
-                        <Suspense fallback={<div>Loading...</div>}>
-                            <S3Img
-                                url={photo}
-                                alt={name}
-                                theme={{...genericCardImageStyle, ...theme.image}}
-                            />
-                        </Suspense>
-                    </MotionDiv>
+                    <Suspense fallback={<div>Loading...</div>}>
+                        <S3Img
+                            url={photo}
+                            alt={name}
+                            theme={{...genericCardImageStyle, ...theme.image}}
+                        />
+                    </Suspense>
                 )}
 
                 <Div theme={{...genericCardTextWrapperStyle, ...theme.textWrapper}}>

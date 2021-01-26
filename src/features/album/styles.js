@@ -43,9 +43,6 @@ export const albumCardStyle = {
         selector: 'img',
         transform: 'scale(.95)',
         transition: 'transform 500ms ease',
-        mobile: {
-            width: '100%'
-        },
         hover: {
             transform: 'scale(1)'
         }
