@@ -131,7 +131,7 @@ const Player = () => {
                                                         {m.primaryArtist}
                                                     </LinkSwitch>
                                                     <LinkSwitch
-                                                        url={`/albums/${m.albumSlug}`}
+                                                        url={`/music/${m.albumSlug}`}
                                                         theme={playerQueueTitleStyle}
                                                     >
                                                         {m.title}

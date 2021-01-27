@@ -43,7 +43,7 @@ const Header = ({theme}) => {
                                 <S3Img url={nowPlayingCoverArt}/>
                             </Div>
                             <Div theme={headerNowPlayingInfoStyle}>
-                                <LinkSwitch url={`/albums/${nowPlayingAlbumSlug}`}>{nowPlayingAlbumTitle}</LinkSwitch>
+                                <LinkSwitch url={`/music/${nowPlayingAlbumSlug}`}>{nowPlayingAlbumTitle}</LinkSwitch>
                                 <LinkSwitch url={`/artists/${nowPlayingArtistSlug}`}>{nowPlayingArtist}</LinkSwitch>
                             </Div>
                         </>

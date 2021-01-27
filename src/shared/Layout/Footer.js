@@ -2,18 +2,23 @@ import {
     siteDisplayName,
     siteInstagramUrl,
     siteTwitterUrl
-} from 'config'
+}                    from 'config'
 import {
     instagram,
     twitter
-} from 'config/icons/fa'
-import moment            from 'moment'
-import PropTypes         from 'prop-types'
-import React             from 'react'
-import Div               from 'shared/Basic/Div'
-import Icon              from 'shared/Basic/Icon'
-import LinkSwitch        from 'shared/Basic/LinkSwitch'
-import {footerStyle}     from './styles/footer'
+}                    from 'config/icons/fa'
+import moment        from 'moment'
+import PropTypes     from 'prop-types'
+import React         from 'react'
+import Div           from 'shared/Basic/Div'
+import Icon          from 'shared/Basic/Icon'
+import LinkSwitch    from 'shared/Basic/LinkSwitch'
+import Mailchimp     from 'shared/Layout/Mailchimp'
+import {
+    footerContactStyle,
+    footerIconStyle
+}                    from 'shared/Layout/styles/footer'
+import {footerStyle} from './styles/footer'
 
 const Footer = ({theme}) =>
     <Div as="footer" theme={{...footerStyle, ...theme}}>
@@ -21,13 +26,14 @@ const Footer = ({theme}) =>
             <Div>
                 &copy; {moment().format('YYYY')} {siteDisplayName}
             </Div>
-            <Div>
+            <Div theme={footerContactStyle}>
                 <LinkSwitch url={siteTwitterUrl}>
-                    <Icon icon={twitter}/>
+                    <Icon icon={twitter} theme={footerIconStyle}/>
                 </LinkSwitch>
                 <LinkSwitch url={siteInstagramUrl}>
-                    <Icon icon={instagram}/>
+                    <Icon icon={instagram} theme={footerIconStyle}/>
                 </LinkSwitch>
+                <Mailchimp/>
             </Div>
         </Div>
 

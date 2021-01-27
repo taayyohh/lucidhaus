@@ -67,7 +67,7 @@ const Routes = () => {
                             <Route path="/artists" exact component={Artists}/>
                             <Route path="/artists/:slug" exact component={Artist}/>
                             <Route path="/music" exact component={Albums}/>
-                            <Route path="/albums/:slug" exact component={Album}/>
+                            <Route path="/music/:slug" exact component={Album}/>
                             <Route path="/posts" exact component={Posts}/>
                             <Route path="/posts/:slug" exact component={Post}/>
                             <Route path="/shop" exact component={Shop}/>

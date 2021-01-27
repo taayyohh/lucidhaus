@@ -41,7 +41,7 @@ const Albums = () => {
                     album => album.isPublished && (
                         <GenericCard
                             key={album.slug}
-                            slug={`albums/${album.slug}`}
+                            slug={`music/${album.slug}`}
                             name={album.albumName}
                             photo={album.coverArt}
                             artist={getNameById(artists, album.primaryArtist)}

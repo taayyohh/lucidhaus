@@ -142,10 +142,12 @@ export const pageFrameStyle = {
             gridColumnSpan: 6,
             msGridRow: 4,
             gridRow: 4,
+            background: white
         }
 
         if (slug.length === 0)
             return {
+                ...base,
                 marginTop: 0
             }
 
