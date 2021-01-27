@@ -185,12 +185,6 @@ export const defaultFieldHeadingStyle = {
 
 
 /** Rich Text **/
-// export const smartInputStyle = {
-//     marginBottom: [30, .7, 30]
-// }
-
-
-/** Rich Text **/
 
 export const richTextStyle = {
     position: relative,
