@@ -6,8 +6,8 @@ import {
     deletePromptButtonStyle,
     genericButtonStyle
 }                          from 'shared/Controls/styles'
-import {defaultInputStyle} from 'shared/Field/styles'
-import {menuPanelStyle}          from 'shared/Menus/styles'
+import {defaultInputStyle} from 'shared/Fields/styles'
+import {menuPanelStyle}    from 'shared/Menus/styles'
 import {
     absolute,
     auto,

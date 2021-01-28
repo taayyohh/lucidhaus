@@ -8,8 +8,8 @@ import {
     useSelector
 }                       from 'react-redux'
 import Div              from 'shared/Basic/Div'
-import Form             from 'shared/Field/Form'
-import {songsFormStyle} from 'shared/Field/styles'
+import Form             from 'shared/Fields/Form'
+import {songsFormStyle} from 'shared/Fields/styles'
 
 const UpdateSong = ({audio, audioId, title, trackNumber}) => {
     const dispatch = useDispatch()

@@ -3,7 +3,6 @@ import {
     globals
 } from 'config/styles'
 import {
-    absolute,
     auto,
     black,
     center,
@@ -68,9 +67,7 @@ export const playerMinimizeIconStyle = {
     }
 }
 
-export const playerSongsWrapperStyle = {
-
-}
+export const playerSongsWrapperStyle = {}
 
 export const playerQueueInnerStyle = {
     position: relative
@@ -101,9 +98,7 @@ export const playerQueueStyle = {
         display: none,
     },
     transition: 'background-color 250ms ease',
-    hover: {
-
-    },
+    hover: {},
     mobile: {
         width: 'calc(100% - 50px)'
     }

@@ -9,7 +9,7 @@ export const toggleVariants = {
         justifyContent: flexEnd,
         backgroundColor: '#349c58',
         transition: {
-            type: "spring",
+            type: 'spring',
             stiffness: 700,
             damping: 30
         }
@@ -18,7 +18,7 @@ export const toggleVariants = {
         justifyContent: flexStart,
         backgroundColor: globals.colors.borderColor,
         transition: {
-            type: "spring",
+            type: 'spring',
             stiffness: 700,
             damping: 30
         }

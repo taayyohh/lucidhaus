@@ -11,7 +11,7 @@ import {useSelector}       from 'react-redux'
 import {history}           from 'redux/store'
 import Div                 from 'shared/Basic/Div'
 import LinkSwitch     from 'shared/Basic/LinkSwitch'
-import Form           from 'shared/Field/Form'
+import Form           from 'shared/Fields/Form'
 import ContentWrapper from 'shared/Layout/ContentWrapper'
 import {signUpPromptStyle} from './styles'
 

@@ -14,8 +14,8 @@ import {
 import AdminRoute             from 'shared/Basic/AdminRoute'
 import MotionDiv              from 'shared/Basic/MotionDiv'
 import PrivateRoute           from 'shared/Basic/PrivateRoute'
-import {TransitionAnimations} from 'shared/Containers/TransitionController'
 import Fallback               from 'shared/Layout/Fallback'
+import {TransitionAnimations} from './TransitionController'
 
 const AdminDashboard = lazy(() => import('features/admin/AdminDashboard'))
 const UserDashboard = lazy(() => import('features/user/dashboard'))
@@ -49,7 +49,6 @@ const SignIn = lazy(() => import('features/user/SignIn'))
 const SignUp = lazy(() => import('features/user/SignUp'))
 const UserOrders = lazy(() => import('features/user/dashboard/Orders'))
 const UserSettings = lazy(() => import('features/user/dashboard/Settings'))
-const Home = lazy(() => import('features/site/Home'))
 
 const Routes = () => {
     const {contentAnimation, currentPath} = useContext(TransitionAnimations)
@@ -61,18 +60,18 @@ const Routes = () => {
                 <MotionDiv animate={contentAnimation} theme={{width: '100%'}}>
                     <Suspense fallback={<Fallback/>}>
                         <Switch location={{pathname: currentPath}}>
-                            <Route path="/" exact component={Posts}/>
-                            <Route path="/signup" exact component={SignUp}/>
-                            <Route path="/signin" exact component={SignIn}/>
-                            <Route path="/artists" exact component={Artists}/>
-                            <Route path="/artists/:slug" exact component={Artist}/>
-                            <Route path="/music" exact component={Albums}/>
-                            <Route path="/music/:slug" exact component={Album}/>
-                            <Route path="/posts" exact component={Posts}/>
-                            <Route path="/posts/:slug" exact component={Post}/>
-                            <Route path="/shop" exact component={Shop}/>
-                            <Route path="/shop/:slug" exact component={Product}/>
-                            <Route path="/shop/category/:slug" exact component={FilteredProduct} />
+                            <Route path="/" exact component={Posts} sitemapIndex={true}/>
+                            <Route path="/signup" exact component={SignUp} sitemapIndex={true}/>
+                            <Route path="/signin" exact component={SignIn} sitemapIndex={true}/>
+                            <Route path="/artists" exact component={Artists} sitemapIndex={true}/>
+                            <Route path="/artists/:slug" exact component={Artist} sitemapIndex={true}/>
+                            <Route path="/music" exact component={Albums} sitemapIndex={true}/>
+                            <Route path="/music/:slug" exact component={Album} sitemapIndex={true}/>
+                            <Route path="/posts" exact component={Posts} sitemapIndex={true}/>
+                            <Route path="/posts/:slug" exact component={Post} sitemapIndex={true}/>
+                            <Route path="/shop" exact component={Shop} sitemapIndex={true}/>
+                            <Route path="/shop/:slug" exact component={Product} sitemapIndex={true}/>
+                            <Route path="/shop/category/:slug" exact component={FilteredProduct} sitemapIndex={true}/>
                             <PrivateRoute path="/dashboard" exact component={UserDashboard}/>
                             <PrivateRoute path="/dashboard/orders" exact component={UserOrders}/>
                             <PrivateRoute path="/dashboard/settings" exact component={UserSettings}/>
@@ -96,7 +95,7 @@ const Routes = () => {
                             <AdminRoute path="/create/product" exact component={CreateProduct}/>
                             <AdminRoute path="/create/product-category" exact component={CreateProductCategory}/>
                             <AdminRoute path="/create/post" exact component={CreatePost}/>
-                            <Route component={NotFound}/>
+                            <Route component={NotFound} sitemapIndex={true}/>
                         </Switch>
                     </Suspense>
                 </MotionDiv>

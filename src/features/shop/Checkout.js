@@ -21,7 +21,6 @@ import Payment           from './Payment'
 import ShippingAddress   from './ShippingAddress'
 import {checkoutDropIn}  from './styles'
 
-
 const Checkout = ({cart}) => {
     const dispatch = useDispatch()
     const [dropInInstance, setDropInInstance] = useState({})
@@ -36,8 +35,7 @@ const Checkout = ({cart}) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-
-    const purchase = () => {
+    const purchase = () =>
         dispatch({
             type: 'shop/getPaymentNonce',
             payload: {
@@ -48,18 +46,12 @@ const Checkout = ({cart}) => {
                 products: cart,
                 deliveryAddress: deliveryAddress,
                 billingAddress: billingAddress,
-                user: {
-                    email: email,
-                    name: name
-                }
+                user: _id
             }
         })
-    }
 
     return (
         <Div theme={checkoutDropIn}>
-
-
             {(!!braintreeClientToken && cart.length > 0) && (
                 <AnimatePresence>
                     <MotionDiv initial={nOpacity} animate={fadeIn}>
@@ -77,8 +69,6 @@ const Checkout = ({cart}) => {
                     </MotionDiv>
                 </AnimatePresence>
             )}
-
-
         </Div>
     )
 }

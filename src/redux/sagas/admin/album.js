@@ -129,6 +129,7 @@ export function* addSongToAlbum({payload}) {
         const s3Payload = yield call(getSignedRequest, audioFile)
         if (!!s3Payload.signedRequest) {
             const uploadedAudio = yield call(uploadFile, {file: audioFile, signedRequest: s3Payload.signedRequest})
+            //TODO: upload success and failure
         }
     }
 

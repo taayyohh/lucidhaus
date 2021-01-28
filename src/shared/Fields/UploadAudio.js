@@ -18,7 +18,7 @@ import {playerContext} from 'shared/Containers/PlayerController'
 import {
     audioUploadPreviewWrapperStyle,
     uploadErrorMessageStyle
-}                      from 'shared/Field/styles'
+}                      from 'shared/Fields/styles'
 import {
     bytesToMegaBytes,
     isEmpty

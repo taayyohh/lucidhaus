@@ -3,7 +3,7 @@ import {
     globals
 }                         from 'config/styles'
 import {genericCardStyle} from 'shared/Cards/styles'
-import {defaultFormStyle} from 'shared/Field/styles'
+import {defaultFormStyle} from 'shared/Fields/styles'
 import {
     absolute,
     black,

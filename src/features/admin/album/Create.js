@@ -7,9 +7,9 @@ import React, {useEffect}    from 'react'
 import {
     useDispatch,
     useSelector
-}                            from 'react-redux'
-import Form                  from 'shared/Field/Form'
-import ContentWrapper        from 'shared/Layout/ContentWrapper'
+}                     from 'react-redux'
+import Form           from 'shared/Fields/Form'
+import ContentWrapper from 'shared/Layout/ContentWrapper'
 
 const Create = () => {
     const dispatch = useDispatch()

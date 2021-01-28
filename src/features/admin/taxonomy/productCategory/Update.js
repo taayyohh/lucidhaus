@@ -1,13 +1,13 @@
-    import {productCategoryFields} from 'config/fields/productCategory'
-import React, {useEffect}          from 'react'
+import {productCategoryFields} from 'config/fields/productCategory'
+import AdminDashboardWrapper   from 'features/admin/AdminDashboardWrapper'
+import {adminFormWrapperStyle} from 'features/admin/styles'
+import React, {useEffect}      from 'react'
 import {
     useDispatch,
     useSelector
-}                            from 'react-redux'
-import Form                  from 'shared/Field/Form'
-import AdminDashboardWrapper from 'features/admin/AdminDashboardWrapper'
-import ContentWrapper              from 'shared/Layout/ContentWrapper'
-import {adminFormWrapperStyle}     from 'features/admin/styles'
+}                              from 'react-redux'
+import Form                    from 'shared/Fields/Form'
+import ContentWrapper          from 'shared/Layout/ContentWrapper'
 
 const Update = () => {
     const dispatch = useDispatch()

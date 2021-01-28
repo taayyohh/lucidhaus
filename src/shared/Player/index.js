@@ -4,8 +4,7 @@ import {
     play,
     stepBackward,
     stepForward,
-    volumeMute,
-    windowMinimize
+    volumeMute
 }                      from 'config/icons/fa'
 import React, {
     useContext,
@@ -22,8 +21,6 @@ import {
     playerControlsWrapperStyle,
     playerIconStyle,
     playerInnerStyle,
-    playerMinimizeIconStyle,
-    playerMinimizeStyle,
     playerMuteStyle,
     playerQueueArtistStyle,
     playerQueueInnerStyle,

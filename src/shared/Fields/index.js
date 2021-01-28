@@ -16,8 +16,8 @@ import {
     SONGS
 }                     from 'config'
 import React, {memo} from 'react'
-import CreateSong    from 'features/admin/album/song/CreateSong'
-import UploadAudio   from 'shared/Field/UploadAudio'
+import CreateSong  from 'features/admin/album/song/CreateSong'
+import UploadAudio from 'shared/Fields/UploadAudio'
 import Address     from './Address'
 import Count          from './Count'
 import Country        from './Country'
@@ -26,7 +26,7 @@ import RichTextEditor from './RichTextEditor'
 import Select         from './Select'
 import SmartInput     from './SmartInput'
 import Toggle      from './Toggle'
-import UploadImage from 'shared/Field/UploadImage'
+import UploadImage from 'shared/Fields/UploadImage'
 
 const FieldSwitch = memo(({field, formik, options}) => {
     switch (field.type) {

@@ -1,7 +1,7 @@
 import PropTypes           from 'prop-types'
 import styled              from 'styled-components'
 import {themer}            from 'utils/themer'
-import {defaultInputStyle} from 'shared/Field/styles'
+import {defaultInputStyle} from 'shared/Fields/styles'
 
 const Input = styled.input`${props => themer({...defaultInputStyle, ...props.theme})}`
 

@@ -1,7 +1,6 @@
 import React                     from 'react'
-import {fullContentWrapperStyle} from 'shared/Layout/styles'
-import {contentWrapperStyle}     from './styles'
 import Div                       from 'shared/Basic/Div'
+import {fullContentWrapperStyle} from 'shared/Layout/styles'
 
 const FullContentWrapper = ({children}) =>
     <Div theme={fullContentWrapperStyle}>

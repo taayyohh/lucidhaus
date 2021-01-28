@@ -7,7 +7,7 @@ import LinkSwitch        from 'shared/Basic/LinkSwitch'
 import MotionDiv         from 'shared/Basic/MotionDiv'
 import S3Img             from 'shared/Basic/S3Img'
 import Span from 'shared/Basic/Span'
-import Form from 'shared/Field/Form'
+import Form from 'shared/Fields/Form'
 import {
     fadeIn,
     fadeOut,

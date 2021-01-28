@@ -3,13 +3,13 @@ import React                                  from 'react'
 import PlacesAutocomplete, {geocodeByAddress} from 'react-places-autocomplete'
 import Div                                    from 'shared/Basic/Div'
 import Fieldset                               from 'shared/Basic/Fieldset'
-import Input                       from 'shared/Basic/Input'
-import {AutoCompleteFieldSetStyle} from 'shared/Field/styles'
+import Input                                  from 'shared/Basic/Input'
+import {AutoCompleteFieldSetStyle}            from 'shared/Fields/styles'
 import {
     AutoCompleteInputStyle,
     AutoCompleteSuggestionStyle,
     AutoCompleteSuggestionWrapperStyle
-}                                  from './styles'
+}                                             from './styles'
 
 const Address = ({formik, name}) =>
     <PlacesAutocomplete

@@ -1,37 +1,36 @@
 import {
     albumSongActiveIndicatorStyle,
     albumSongTrackNumberStyle
-} from 'features/album/styles'
-import {artistDescriptionStyle}    from 'features/artist/styles'
-import {AnimatePresence}           from 'framer-motion'
+}                               from 'features/album/styles'
+import {artistDescriptionStyle} from 'features/artist/styles'
+import {AnimatePresence}        from 'framer-motion'
 import React, {
     useContext,
     useEffect
-}                                  from 'react'
+}                               from 'react'
 import {
     useDispatch,
     useSelector
-}                                  from 'react-redux'
-import Div                         from 'shared/Basic/Div'
-import LinkSwitch                  from 'shared/Basic/LinkSwitch'
-import MotionDiv                   from 'shared/Basic/MotionDiv'
-import RichText                    from 'shared/Basic/RichText'
-import S3Img                       from 'shared/Basic/S3Img'
-import Span                        from 'shared/Basic/Span'
-import {genericCardImageStyle}     from 'shared/Cards/styles'
-import {playerContext}             from 'shared/Containers/PlayerController'
-import ContentWrapper              from 'shared/Layout/ContentWrapper'
+}                               from 'react-redux'
+import Div                      from 'shared/Basic/Div'
+import LinkSwitch               from 'shared/Basic/LinkSwitch'
+import MotionDiv                from 'shared/Basic/MotionDiv'
+import RichText                 from 'shared/Basic/RichText'
+import S3Img                    from 'shared/Basic/S3Img'
+import Span                     from 'shared/Basic/Span'
+import {genericCardImageStyle}  from 'shared/Cards/styles'
+import {playerContext}          from 'shared/Containers/PlayerController'
+import ContentWrapper           from 'shared/Layout/ContentWrapper'
 import {
     fadeIn,
     fadeOut,
     nOpacity
-}                                  from 'shared/Layout/styles/animations'
-import {dashboardActiveIndicator}  from 'shared/Menus/styles'
+}                               from 'shared/Layout/styles/animations'
 import {
     getById,
     getNameById,
     resolvedPromise
-}                                  from 'utils/helpers'
+}                               from 'utils/helpers'
 import {
     albumInfoWrapperStyle,
     albumPrimaryArtistStyle,
@@ -41,7 +40,7 @@ import {
     albumWrapperImageWrapperStyle,
     albumWrapperInnerStyle,
     albumWrapperStyle
-}                                  from './styles'
+}                               from './styles'
 
 const Album = () => {
     const dispatch = useDispatch()

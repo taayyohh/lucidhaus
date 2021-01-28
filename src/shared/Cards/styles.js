@@ -9,13 +9,12 @@ import {
     flex,
     flexEnd,
     grid,
-    hidden,
     none,
     sv,
     uppercase,
     white,
     wrap
-} from 'utils/themer'
+}                from 'utils/themer'
 
 export const productCardImageStyle = {
     width: 80,

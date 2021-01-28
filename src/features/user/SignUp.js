@@ -4,7 +4,7 @@ import {
 }                       from 'config/fields/signUp'
 import {signUpFormStyle}  from 'features/user/styles'
 import React          from 'react'
-import Form           from 'shared/Field/Form'
+import Form           from 'shared/Fields/Form'
 import ContentWrapper from 'shared/Layout/ContentWrapper'
 
 const SignUp = () => {

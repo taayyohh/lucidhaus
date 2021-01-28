@@ -6,7 +6,7 @@ import {
 }                              from 'react-redux'
 import Div                     from 'shared/Basic/Div'
 import {productCardCountStyle} from 'shared/Cards/styles'
-import Form                    from 'shared/Field/Form'
+import Form                    from 'shared/Fields/Form'
 import {genericButtonStyle}    from './styles'
 
 const AddToCartButton = ({product}) => {

@@ -12,7 +12,7 @@ import Img                       from 'shared/Basic/Img'
 import S3Img                     from 'shared/Basic/S3Img'
 import Span                      from 'shared/Basic/Span'
 import {genericCardImageStyle}   from 'shared/Cards/styles'
-import {uploadErrorMessageStyle} from 'shared/Field/styles'
+import {uploadErrorMessageStyle} from 'shared/Fields/styles'
 import {slugify}                 from 'utils/slugify'
 import CropPortal                from './CropPortal'
 import {

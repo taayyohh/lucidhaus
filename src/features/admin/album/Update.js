@@ -19,9 +19,9 @@ import {
 }                              from 'react-redux'
 import Div                     from 'shared/Basic/Div'
 import {searchContext}         from 'shared/Containers/SearchController'
-import DangerZone              from 'shared/Controls/DangerZone'
-import Form                    from 'shared/Field/Form'
-import ContentWrapper          from 'shared/Layout/ContentWrapper'
+import DangerZone     from 'shared/Controls/DangerZone'
+import Form           from 'shared/Fields/Form'
+import ContentWrapper from 'shared/Layout/ContentWrapper'
 
 const Update = () => {
     const dispatch = useDispatch()

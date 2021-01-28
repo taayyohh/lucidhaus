@@ -5,7 +5,7 @@ import {useDispatch}      from 'react-redux'
 import Div                from 'shared/Basic/Div'
 import H3                 from 'shared/Basic/H3'
 import SubmitButton       from 'shared/Basic/SubmitButton'
-import FieldSwitch        from 'shared/Field'
+import FieldSwitch        from 'shared/Fields'
 import {defaultFormStyle} from './styles'
 
 const Form = ({

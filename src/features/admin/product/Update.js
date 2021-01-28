@@ -14,7 +14,7 @@ import {
 }                              from 'react-redux'
 import {searchContext}         from 'shared/Containers/SearchController'
 import DangerZone     from 'shared/Controls/DangerZone'
-import Form           from 'shared/Field/Form'
+import Form           from 'shared/Fields/Form'
 import ContentWrapper from 'shared/Layout/ContentWrapper'
 import {adminFormWrapperStyle} from 'features/admin/styles'
 

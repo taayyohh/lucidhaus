@@ -4,8 +4,8 @@ import {
 }                       from 'config/fields/song'
 import React            from 'react'
 import {useSelector}    from 'react-redux'
-import Form             from 'shared/Field/Form'
-import {songsFormStyle} from 'shared/Field/styles'
+import Form             from 'shared/Fields/Form'
+import {songsFormStyle} from 'shared/Fields/styles'
 
 
 const CreateSong = () => {

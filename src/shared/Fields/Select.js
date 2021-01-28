@@ -2,7 +2,7 @@ import {Field}                        from 'formik'
 import React                          from 'react'
 import Div                            from 'shared/Basic/Div'
 import Span                           from 'shared/Basic/Span'
-import {selectFieldErrorMessageStyle} from 'shared/Field/styles'
+import {selectFieldErrorMessageStyle} from 'shared/Fields/styles'
 import {
     defaultFieldHeadingStyle,
     selectFieldStyle
