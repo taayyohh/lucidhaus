@@ -22,6 +22,10 @@ export const artistsWrapperStyle = {
 }
 
 export const artistCardStyle = {
+    textWrapper: {
+        paddingLeft: [50, globals.style.layoutScalingValue, 20],
+        paddingRight: [50, globals.style.layoutScalingValue, 20]
+    },
     child: {
         selector: 'img',
         borderRadius: [300, globals.style.layoutScalingValue, 300],
