@@ -245,6 +245,11 @@ export const shippingAddressStyle = {
 
 export const shopCardStyle = {
     border: `1px solid ${globals.colors.borderColor}`,
+    textWrapper: {
+      mobile: {
+          paddingLeft: 25
+      }
+    },
     category: {
         marginTop: [20, .7, 20],
         letterSpacing: [1, .7, 1],

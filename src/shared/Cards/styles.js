@@ -155,9 +155,12 @@ export const genericCardArtistNameStyle = {
 
 export const genericCardArtistWrapperStyle = {
     display: 'flex',
+    mobile: {
+        flexDirection: column
+    },
     child: {
         selector: '> div',
-        marginLeft: [5, .7, 5]
+        marginLeft: [5, .7, '0']
     }
 }
 
