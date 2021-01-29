@@ -1,5 +1,8 @@
-import {cartSummaryStyle} from 'features/shop/styles'
-import React              from 'react'
+import {
+    cartSummaryStyle,
+    cartSummaryTotalStyle
+}            from 'features/shop/styles'
+import React from 'react'
 import {useSelector}      from 'react-redux'
 import Div                from 'shared/Basic/Div'
 import H2                 from 'shared/Basic/H2'
@@ -16,7 +19,7 @@ const CartPanel = () => {
         <Div theme={cartStyle}>
             <Div>
                 <Div theme={cartSummaryStyle}>
-                    <H2>Total: ${getTotal(cart)}</H2>
+                    <H2 theme={cartSummaryTotalStyle}>Total: ${getTotal(cart)}</H2>
                     <Div>Your cart has {`${cart.length}`} items</Div>
                 </Div>
             </Div>

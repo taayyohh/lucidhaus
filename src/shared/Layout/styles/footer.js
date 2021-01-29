@@ -29,7 +29,7 @@ export const footerStyle = {
     mobile: {
         paddingLeft: 25,
         paddingRight: 25,
-        paddingBottom: 50,
+        paddingBottom: 150,
         flexDirection: column
     },
     inner: {

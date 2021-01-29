@@ -18,8 +18,9 @@ import {
     relative,
     sv,
     transparent,
-    uppercase
-}                       from 'utils/themer'
+    uppercase,
+    white
+} from 'utils/themer'
 
 
 export const checkoutDropIn = {
@@ -140,6 +141,11 @@ export const cartStyle = {
     gridTemplateColumns: '1fr 4fr',
     gridGap: sv(30),
     paddingTop: [100, .7, 50],
+    mobile: {
+        display: flex,
+        flexDirection: column,
+        paddingTop: 100
+    },
     showItems: {
         display: flex,
         flexDirection: 'column'
@@ -148,7 +154,22 @@ export const cartStyle = {
 
 export const cartSummaryStyle = {
     position: 'fixed',
-    width: [157, globals.style.layoutScalingValue, '100%']
+    width: [157, globals.style.layoutScalingValue, '100%'],
+    mobile: {
+        left: 0,
+        zIndex: 2,
+        background: '#d2c8d4',
+        top: 80,
+        padding: '10px 25px',
+        borderBottom: '1px solid #000'
+    }
+}
+
+export const cartSummaryTotalStyle = {
+    mobile: {
+        fontWeight: 500,
+        size: 32
+    }
 }
 
 export const cartTotalWrapperStyle = {
@@ -246,9 +267,7 @@ export const shippingAddressStyle = {
 export const shopCardStyle = {
     border: `1px solid ${globals.colors.borderColor}`,
     textWrapper: {
-      mobile: {
-          paddingLeft: 25
-      }
+        paddingLeft: 25
     },
     category: {
         marginTop: [20, .7, 20],
