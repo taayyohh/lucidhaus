@@ -4,7 +4,8 @@ import {
     play,
     stepBackward,
     stepForward,
-    volumeMute
+    volumeMute,
+    windowMinimize
 }                      from 'config/icons/fa'
 import React, {
     useContext,
@@ -16,11 +17,13 @@ import ReactPlayer     from 'react-player'
 import Div             from 'shared/Basic/Div'
 import Icon            from 'shared/Basic/Icon'
 import LinkSwitch      from 'shared/Basic/LinkSwitch'
+import MotionDiv       from 'shared/Basic/MotionDiv'
 import {playerContext} from 'shared/Containers/PlayerController'
 import {
     playerControlsWrapperStyle,
     playerIconStyle,
     playerInnerStyle,
+    playerMinimizeIconStyle,
     playerMuteStyle,
     playerQueueArtistStyle,
     playerQueueInnerStyle,
@@ -49,6 +52,7 @@ const Player = () => {
     } = useContext(playerContext)
     const ref = useRef()
     const [playlistLength, setPlaylistLength] = useState(currentMedia?.length)
+    const [isQueueOpen, setIsQueueOpen] = useState(true)
     const isLastItem = (currentMediaIndex + 1) === playlistLength
     const isFirstItem = (currentMediaIndex) === 0
 
@@ -108,11 +112,15 @@ const Player = () => {
         <>
             {currentMedia.length > 0 && (
                 <>
-                    <Div theme={playerQueueStyle}>
+                    <MotionDiv
+                        theme={playerQueueStyle}
+                    >
                         <Div theme={playerQueueInnerStyle}>
-                            {/*<Div theme={playerMinimizeStyle}>*/}
-                            {/*    <Icon icon={windowMinimize} theme={playerMinimizeIconStyle}/>*/}
-                            {/*</Div>*/}
+                            <Icon
+                                icon={windowMinimize}
+                                theme={playerMinimizeIconStyle}
+                                onClick={() => setIsQueueOpen(flag => !flag)}
+                            />
                             <Div theme={playerSongsWrapperStyle}>
                                 {currentMedia && currentMedia.map((m, i) => {
                                         const currentAudio = currentMedia[currentMediaIndex]?.audio
@@ -140,7 +148,7 @@ const Player = () => {
                                 )}
                             </Div>
                         </Div>
-                    </Div>
+                    </MotionDiv>
                     <Div theme={playerStyle}>
                         <Div theme={playerInnerStyle}>
                             <Div theme={playerControlsWrapperStyle}>

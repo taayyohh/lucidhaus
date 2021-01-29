@@ -5,6 +5,7 @@ import {
 import {
     auto,
     black,
+    block,
     center,
     column,
     fixed,
@@ -61,6 +62,9 @@ export const playerMinimizeStyle = {
 }
 
 export const playerMinimizeIconStyle = {
+    display: block,
+    marginBottom: [15, .7, 15],
+    marginLeft: auto,
     hover: {
         color: colorPalette.purple,
         cursor: pointer
@@ -83,7 +87,7 @@ export const playerQueueStyle = {
     height: auto,
     width: [300, globals.style.layoutScalingValue, 350],
     maxHeight: [300, .7, 300],
-    paddingTop: [20, .7, 20],
+    paddingTop: [5, .7, 5],
     paddingBottom: [20, .7, 20],
     paddingLeft: [20, .7, 20],
     paddingRight: [20, .7, 20],

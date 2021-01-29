@@ -24,7 +24,7 @@ export function* createAlbum({payload}) {
     album.set('coverArt', coverArt)
     album.set('isPublished', isPublished)
     album.set('primaryArtist', primaryArtist)
-    if(collaborators.length > 0) {
+    if(!!collaborators) {
         album.set('collaborators', collaborators)
     }
 
@@ -59,7 +59,7 @@ export function* updateAlbumDetail({payload}) {
     updatedAlbum.set('coverArt', coverArt)
     updatedAlbum.set('isPublished', isPublished)
     updatedAlbum.set('primaryArtist', primaryArtist)
-    if(collaborators.length > 0) {
+    if(!!collaborators) {
         updatedAlbum.set('collaborators', collaborators)
     }
 
