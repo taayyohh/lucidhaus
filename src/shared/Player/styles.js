@@ -12,6 +12,7 @@ import {
     flex,
     flexEnd,
     grid,
+    hidden,
     none,
     pointer,
     relative,
@@ -61,17 +62,27 @@ export const playerMinimizeStyle = {
     paddingBottom: 20
 }
 
-export const playerMinimizeIconStyle = {
-    display: block,
-    marginBottom: [15, .7, 15],
-    marginLeft: auto,
-    hover: {
-        color: colorPalette.purple,
-        cursor: pointer
+export const playerMinimizeIconStyle = isOpen => {
+    return {
+        display: block,
+        marginBottom: [15, .7, 15],
+        marginLeft: auto,
+        mobile: {
+            size: 22,
+            marginTop: isOpen ? -10 : -3,
+            marginLeft: isOpen ? auto : -6,
+        },
+        hover: {
+            color: colorPalette.purple,
+            cursor: pointer
+        }
     }
+
 }
 
-export const playerSongsWrapperStyle = {}
+export const playerSongsWrapperStyle = {
+    overflow: hidden
+}
 
 export const playerQueueInnerStyle = {
     position: relative
@@ -86,6 +97,7 @@ export const playerQueueStyle = {
     minHeight: [50, .7, 50],
     height: auto,
     width: [300, globals.style.layoutScalingValue, 350],
+    maxWidth: [300, globals.style.layoutScalingValue, 350],
     maxHeight: [300, .7, 300],
     paddingTop: [5, .7, 5],
     paddingBottom: [20, .7, 20],
@@ -101,7 +113,6 @@ export const playerQueueStyle = {
     scrollBar: {
         display: none,
     },
-    transition: 'background-color 250ms ease',
     hover: {},
     mobile: {
         width: 'calc(100% - 50px)'

@@ -1,5 +1,6 @@
 import {CDN}           from 'config'
 import {
+    list,
     pause,
     play,
     stepBackward,
@@ -7,6 +8,8 @@ import {
     volumeMute,
     windowMinimize
 }                      from 'config/icons/fa'
+import {globals}       from 'config/styles'
+import {mobileFlag}    from 'features/site/slice'
 import React, {
     useContext,
     useEffect,
@@ -14,6 +17,7 @@ import React, {
     useState
 }                      from 'react'
 import ReactPlayer     from 'react-player'
+import {useSelector}   from 'react-redux'
 import Div             from 'shared/Basic/Div'
 import Icon            from 'shared/Basic/Icon'
 import LinkSwitch      from 'shared/Basic/LinkSwitch'
@@ -34,8 +38,13 @@ import {
     playerSongsWrapperStyle,
     playerStyle
 }                      from 'shared/Player/styles'
+import {
+    auto,
+    sv
+}                      from 'utils/themer'
 
 const Player = () => {
+    const isMobile = useSelector(mobileFlag)
     const {
         currentMedia,
         setCurrentMedia,
@@ -55,6 +64,34 @@ const Player = () => {
     const [isQueueOpen, setIsQueueOpen] = useState(true)
     const isLastItem = (currentMediaIndex + 1) === playlistLength
     const isFirstItem = (currentMediaIndex) === 0
+
+    const queueVariants = {
+        open: {
+            width: !isMobile ? 300 : 'calc(100% - 50px)',
+            height: 'auto',
+            borderRadius: 10
+        },
+        closed: {
+            width: 50,
+            height: 50,
+            paddingTop: 16,
+            borderRadius: 50
+        }
+    }
+
+    const queueListVariants = {
+        open: {
+            height: auto,
+            transition: {
+                ease: 'easeIn',
+                duration: 1,
+                delay: .5
+            }
+        },
+        closed: {
+            height: 0
+        }
+    }
 
     useEffect(() => {
         setPlaylistLength(currentMedia?.length)
@@ -114,14 +151,22 @@ const Player = () => {
                 <>
                     <MotionDiv
                         theme={playerQueueStyle}
+                        initial={false}
+                        animate={isQueueOpen ? 'open' : 'closed'}
+                        variants={queueVariants}
                     >
                         <Div theme={playerQueueInnerStyle}>
                             <Icon
-                                icon={windowMinimize}
-                                theme={playerMinimizeIconStyle}
+                                icon={isQueueOpen ? windowMinimize : list}
+                                theme={playerMinimizeIconStyle(isQueueOpen)}
                                 onClick={() => setIsQueueOpen(flag => !flag)}
                             />
-                            <Div theme={playerSongsWrapperStyle}>
+                            <MotionDiv
+                                theme={playerSongsWrapperStyle}
+                                variants={queueListVariants}
+                                initial={false}
+                                animate={isQueueOpen ? 'open' : 'closed'}
+                            >
                                 {currentMedia && currentMedia.map((m, i) => {
                                         const currentAudio = currentMedia[currentMediaIndex]?.audio
                                         const isActive = m.audio === currentAudio && currentMediaIndex === i
@@ -146,7 +191,7 @@ const Player = () => {
                                         )
                                     }
                                 )}
-                            </Div>
+                            </MotionDiv>
                         </Div>
                     </MotionDiv>
                     <Div theme={playerStyle}>

@@ -24,7 +24,7 @@ import {checkoutDropIn}  from './styles'
 const Checkout = ({cart}) => {
     const dispatch = useDispatch()
     const [dropInInstance, setDropInInstance] = useState({})
-    const {_id, token, email, name} = useSelector(state => state.user)
+    const {_id, token} = useSelector(state => state.user)
     const {braintreeClientToken, deliveryAddress, billingAddress} = useSelector(state => state.shop)
 
     useEffect(() => {
