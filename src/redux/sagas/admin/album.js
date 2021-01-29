@@ -15,7 +15,7 @@ import {
 }             from 'services/apiS3'
 
 export function* createAlbum({payload}) {
-    const {_id, token, coverArt, coverArtFile, albumName, primaryArtist, description, isPublished} = payload
+    const {_id, token, coverArt, coverArtFile, albumName, collaborators, primaryArtist, description, isPublished} = payload
 
     //add to formdata so api can read
     const album = new FormData()
@@ -24,6 +24,7 @@ export function* createAlbum({payload}) {
     album.set('coverArt', coverArt)
     album.set('isPublished', isPublished)
     album.set('primaryArtist', primaryArtist)
+    album.set('collaborators', collaborators)
 
     const s3Payload = yield call(getSignedRequest, coverArtFile)
     if (!!s3Payload.signedRequest) {
@@ -45,7 +46,7 @@ export function* createAlbum({payload}) {
 }
 
 export function* updateAlbumDetail({payload}) {
-    const {slug, _id, token, coverArt, coverArtFile, albumName, primaryArtist, description, isPublished} = payload
+    const {slug, _id, token, coverArt, coverArtFile, albumName, collaborators, primaryArtist, description, isPublished} = payload
 
     //add to formData so api can read
     const updatedAlbum = new FormData()
@@ -55,6 +56,8 @@ export function* updateAlbumDetail({payload}) {
     updatedAlbum.set('coverArt', coverArt)
     updatedAlbum.set('isPublished', isPublished)
     updatedAlbum.set('primaryArtist', primaryArtist)
+    updatedAlbum.set('collaborators', collaborators)
+
 
     if (!!coverArtFile) {
         const s3Payload = yield call(getSignedRequest, coverArtFile)

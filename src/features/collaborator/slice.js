@@ -2,7 +2,7 @@ import {createSlice} from '@reduxjs/toolkit'
 
 const initialState = {
     collaborator: [],
-    collaborators: [],
+    albumCollaborators: [],
     error: false
 }
 
@@ -14,7 +14,7 @@ export const slice = createSlice({
             state.collaborator = action.payload
         },
         getCollaboratorsSuccess: (state, action) => {
-            state.collaborators = action.payload
+            state.albumCollaborators = action.payload
         },
         getCollaboratorsFailure: (state, action) => {
             state.error = action.payload

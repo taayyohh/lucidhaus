@@ -7,19 +7,22 @@ import React, {useEffect}    from 'react'
 import {
     useDispatch,
     useSelector
-}                     from 'react-redux'
-import Form           from 'shared/Fields/Form'
-import ContentWrapper from 'shared/Layout/ContentWrapper'
+}                            from 'react-redux'
+import Form                  from 'shared/Fields/Form'
+import ContentWrapper        from 'shared/Layout/ContentWrapper'
 
 const Create = () => {
     const dispatch = useDispatch()
     const {_id, token} = useSelector(state => state.user)
     const {artists} = useSelector(state => state.artist)
+    const {albumCollaborators} = useSelector(state => state.collaborator)
+
     const initialValues = {
         _id: _id,
         token: token,
         albumName: '',
         primaryArtist: '',
+        collaborators: '',
         coverArt: '',
         coverArtFile: '',
         description: '',
@@ -30,11 +33,17 @@ const Create = () => {
         {
             name: 'primaryArtist',
             options: artists
+        },
+        {
+            name: 'collaborators',
+            options: albumCollaborators
         }
     ]
 
     useEffect(() => {
         dispatch({type: 'artist/getArtists'})
+        dispatch({type: 'collaborator/getCollaborators'})
+
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])

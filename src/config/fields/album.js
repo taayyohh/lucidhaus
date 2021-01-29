@@ -34,6 +34,11 @@ export const albumFields = [
         type: SELECT
     },
     {
+        name: 'collaborators',
+        inputLabel: 'Collaborators',
+        type: SELECT
+    },
+    {
         name: 'isPublished',
         inputLabel: 'Published',
         type: TOGGLE
