@@ -31,7 +31,7 @@ const PurchaseHistory = () => {
 
     return (
         <Div theme={purchaseHistoryStyle}>
-            {purchaseHistory.map((h, i) => (
+            {purchaseHistory && purchaseHistory?.map((h, i) => (
                 h.products.map((p, i) =>
                     <Div key={i} theme={purchaseHistoryItemStyle}>
                         <Div>{h.status}</Div>

@@ -11,9 +11,6 @@ const Payment = ({braintreeClientToken, setDropInInstance}) =>
                 paypal: {
                     flow: 'vault'
                 },
-                applePay: {},
-                samsungPay: {},
-                googlePay: {},
                 venmo: true
             }}
             onInstance={instance => setDropInInstance(instance)}

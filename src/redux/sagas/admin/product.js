@@ -44,7 +44,6 @@ export function* createProduct({payload}) {
         }
 
     } else {
-        yield console.log('pay', s3Payload)
     }
 }
 
