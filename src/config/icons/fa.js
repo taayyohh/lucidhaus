@@ -3,14 +3,20 @@ import {
     faTwitter
 } from '@fortawesome/free-brands-svg-icons'
 import {
+    faBackward,
     faCogs,
     faDollarSign,
+    faEllipsisH,
     faFileAudio,
     faForward,
-    faBackward,
     faHome,
+    faList,
     faMinusCircle,
+    faMusic,
     faNewspaper,
+    faPause,
+    faPlay,
+    faPlayCircle,
     faPlus,
     faPlusCircle,
     faReceipt,
@@ -18,25 +24,20 @@ import {
     faShoppingBag,
     faShoppingCart,
     faSignOutAlt,
+    faStepBackward,
+    faStepForward,
     faStore,
+    faStream,
+    faTimesCircle,
     faTrashAlt,
     faUser,
     faUserCog,
-    faTimesCircle,
-    faMusic,
-    faPlay,
-    faPlayCircle,
-    faPause,
+    faUsersCog,
     faVolumeMute,
     faVolumeUp,
-    faList,
-    faStream,
-    faEllipsisH,
-    faStepBackward,
-    faStepForward,
-    faWindowMinimize,
-    faWindowMaximize
-}                  from '@fortawesome/free-solid-svg-icons'
+    faWindowMaximize,
+    faWindowMinimize
+} from '@fortawesome/free-solid-svg-icons'
 
 export const
     cogs = faCogs,
@@ -69,6 +70,7 @@ export const
     twitter = faTwitter,
     instagram = faInstagram,
     user = faUser,
+    users = faUsersCog,
     userCog = faUserCog,
     windowMinimize = faWindowMinimize,
     windowMaximize = faWindowMaximize,

@@ -13,6 +13,7 @@ const SearchController = ({children}) => {
     const productsIndex = searchClient.initIndex('Products')
     const ordersIndex = searchClient.initIndex('Orders')
     const artistsIndex = searchClient.initIndex('Artists')
+    const collaboratorsIndex = searchClient.initIndex('Collaborators')
     const albumsIndex = searchClient.initIndex('Albums')
     const productCategoriesIndex = searchClient.initIndex('ProductCategories')
 
@@ -23,6 +24,7 @@ const SearchController = ({children}) => {
             productsIndex,
             ordersIndex,
             artistsIndex,
+            collaboratorsIndex,
             albumsIndex,
             productCategoriesIndex
         }}>

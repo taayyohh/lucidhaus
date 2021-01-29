@@ -6,7 +6,8 @@ import {
     receipt,
     signOut,
     store,
-    user
+    user,
+    users
 } from 'config/icons/fa'
 
 export const adminDashboardMenu = [
@@ -32,6 +33,11 @@ export const adminDashboardMenu = [
         active: ['artist'],
         icon: user,
         title: 'Manage Artists'
+    },
+    {
+        url: '/admin/collaborators',
+        icon: users,
+        title: 'Manage Collaborators'
     },
     {
         url: '/admin/music',

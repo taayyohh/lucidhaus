@@ -7,12 +7,13 @@ import {
     routerMiddleware
 }                             from 'connected-react-router'
 import adminReducer           from 'features/admin/slice'
+import albumReducer           from 'features/album/slice'
 import artistReducer          from 'features/artist/slice'
+import collaboratorReducer    from 'features/collaborator/slice'
 import postReducer            from 'features/post/slice'
 import shopReducer            from 'features/shop/slice'
 import siteReducer            from 'features/site/slice'
 import userReducer            from 'features/user/slice'
-import albumReducer            from 'features/album/slice'
 import {createBrowserHistory} from 'history'
 import {createLogger}         from 'redux-logger'
 import createSagaMiddleware   from 'redux-saga'
@@ -37,10 +38,12 @@ if (!['production'].includes(process.env.NODE_ENV)) {
                     'admin/createPost',
                     'admin/createProduct',
                     'admin/createArtist',
+                    'admin/createCollaborator',
                     'admin/createAlbum',
                     'admin/updatePost',
                     'admin/updateProduct',
                     'admin/updateArtist',
+                    'admin/updateCollaborator',
                     'admin/updateAlbum',
                     'shop/getPaymentNonce'
                 ],
@@ -59,6 +62,7 @@ export default configureStore({
         post: postReducer,
         shop: shopReducer,
         artist: artistReducer,
+        collaborator: collaboratorReducer,
         album: albumReducer,
         router: connectRouter(history)
     },

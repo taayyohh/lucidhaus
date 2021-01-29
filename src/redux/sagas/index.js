@@ -1,7 +1,7 @@
 import {
     all,
     fork
-} from 'redux-saga/effects'
+}                                from 'redux-saga/effects'
 import {
     watchAttemptDestroyArtist,
     watchCreateArtist,
@@ -9,6 +9,13 @@ import {
     watchDestroyArtistSuccess,
     watchUpdateArtist
 } from 'redux/sagas/admin/artist'
+import {
+    watchAttemptDestroyCollaborator,
+    watchCreateCollaborator,
+    watchDestroyCollaborator,
+    watchDestroyCollaboratorSuccess,
+    watchUpdateCollaborator
+} from 'redux/sagas/admin/collaborator'
 import {
     watchAttemptDestroyPost,
     watchCreatePost,
@@ -23,7 +30,7 @@ import {
     watchDestroyProductSuccess,
     watchUpdateProduct,
     watchUpdateProductQuantity
-} from 'redux/sagas/admin/product'
+}                                from 'redux/sagas/admin/product'
 import {
     watchCreateProductCategory,
     watchDestroyProductCategory,
@@ -40,20 +47,24 @@ import {
     watchDestroySong,
     watchDestroySongSuccess,
     watchUpdateAlbum
-} from 'redux/sagas/admin/album'
-import {watchUpdateProfile} from 'redux/sagas/admin/user'
+}                              from 'redux/sagas/admin/album'
+import {watchUpdateProfile}    from 'redux/sagas/admin/user'
+import {
+    watchGetCollaboratorDetail,
+    watchGetCollaborators
+} from 'redux/sagas/collaborator'
 import {
     watchGetArtistDetail,
     watchGetArtists
-}                           from './artist'
+}                              from './artist'
 import {
     watchAuthenticate,
     watchIsAuthenticated
-}                           from './auth'
+}                              from './auth'
 import {
     watchAddToCart,
     watchRemoveFromCart
-}                           from './cart'
+}                              from './cart'
 import {
     watchGetOrders,
     watchGetStatusValues,
@@ -121,6 +132,16 @@ export default function* rootSaga() {
         fork(watchDestroyArtistSuccess),
         fork(watchGetArtists),
         fork(watchGetArtistDetail),
+
+        // collaborator
+        fork(watchCreateCollaborator),
+        fork(watchUpdateCollaborator),
+        fork(watchAttemptDestroyCollaborator),
+        fork(watchDestroyCollaborator),
+        fork(watchDestroyCollaboratorSuccess),
+        fork(watchGetCollaborators),
+        fork(watchGetCollaboratorDetail),
+
 
         // album
         fork(watchCreateAlbum),
