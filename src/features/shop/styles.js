@@ -16,6 +16,7 @@ import {
     none,
     pointer,
     relative,
+    spaceBetween,
     sv,
     transparent,
     uppercase,
@@ -144,7 +145,8 @@ export const cartStyle = {
     mobile: {
         display: flex,
         flexDirection: column,
-        paddingTop: 100
+        paddingTop: 100,
+        paddingBottom: 100
     },
     showItems: {
         display: flex,
@@ -156,6 +158,9 @@ export const cartSummaryStyle = {
     position: 'fixed',
     width: [157, globals.style.layoutScalingValue, '100%'],
     mobile: {
+        display: flex,
+        justifyContent: spaceBetween,
+        alignItems: center,
         left: 0,
         zIndex: 2,
         background: '#d2c8d4',
@@ -170,6 +175,10 @@ export const cartSummaryTotalStyle = {
         fontWeight: 500,
         size: 32
     }
+}
+
+export const cartSummaryLengthStyle = {
+    size: [22, .7, 22]
 }
 
 export const cartTotalWrapperStyle = {

@@ -16,7 +16,7 @@ import {
     defaultFocusedInputLabelStyle
 }                 from './styles'
 
-const SmartInput = ({inputLabel, type, disabled, theme, id, className, errorMessage, onChange, value}) => {
+const SmartInput = ({inputLabel, type, disabled, theme, id, className, errorMessage, onChange, autoSubmit = false, formik, value}) => {
     const legendRef = useRef()
     const inputLabelRef = useRef()
     const inputLabelWidth = useMeasure(inputLabelRef).width * globals.style.inputLabelShrinkRatio
@@ -32,10 +32,15 @@ const SmartInput = ({inputLabel, type, disabled, theme, id, className, errorMess
 
     }, [setHasValue, setIsInputLabelFocused, inputLabelWidth, value])
 
+
     const handleBlur = () => {
         if (!hasValue) {
             setIsInputLabelFocused(false)
             setLegendWidth(0)
+        }
+
+        if (autoSubmit) {
+            formik.submitForm()
         }
     }
 

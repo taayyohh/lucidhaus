@@ -28,7 +28,7 @@ import SmartInput     from './SmartInput'
 import Toggle      from './Toggle'
 import UploadImage from 'shared/Fields/UploadImage'
 
-const FieldSwitch = memo(({field, formik, options}) => {
+const FieldSwitch = memo(({field, formik, options, autoSubmit}) => {
     switch (field.type) {
         case TEXT:
         case PASSWORD:
@@ -43,6 +43,8 @@ const FieldSwitch = memo(({field, formik, options}) => {
                 disabled={field.disabled}
                 className={formik.touched[field.name] && formik.errors[field.name] ? 'error' : ''}
                 errorMessage={formik.touched[field.name] && formik.errors[field.name] ? formik.errors[field.name] : null}
+                autoSubmit
+                formik={formik}
             />
         case RICH_TEXT:
             return <RichTextEditor

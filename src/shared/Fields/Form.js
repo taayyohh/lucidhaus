@@ -39,8 +39,7 @@ const Form = ({
                     as="form"
                     theme={{...defaultFormStyle, ...theme}}
                     onSubmit={formik.handleSubmit}
-                >
-                    <H3
+                ><H3
                         theme={{
                             ...defaultFormStyle.heading,
                             ...theme.heading
@@ -54,6 +53,7 @@ const Form = ({
                                 formik={formik}
                                 field={f}
                                 options={options}
+                                autoSubmit
                             />
                         )}
                     </Div>
