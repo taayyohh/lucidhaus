@@ -24,7 +24,10 @@ export function* createAlbum({payload}) {
     album.set('coverArt', coverArt)
     album.set('isPublished', isPublished)
     album.set('primaryArtist', primaryArtist)
-    album.set('collaborators', collaborators)
+    if(collaborators.length > 0) {
+        album.set('collaborators', collaborators)
+    }
+
 
     const s3Payload = yield call(getSignedRequest, coverArtFile)
     if (!!s3Payload.signedRequest) {
@@ -56,7 +59,9 @@ export function* updateAlbumDetail({payload}) {
     updatedAlbum.set('coverArt', coverArt)
     updatedAlbum.set('isPublished', isPublished)
     updatedAlbum.set('primaryArtist', primaryArtist)
-    updatedAlbum.set('collaborators', collaborators)
+    if(collaborators.length > 0) {
+        updatedAlbum.set('collaborators', collaborators)
+    }
 
 
     if (!!coverArtFile) {

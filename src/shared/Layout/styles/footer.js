@@ -56,6 +56,12 @@ export const footerContactStyle = {
     }
 }
 
+export const footerBuiltByStyle = {
+    size: [14, .7, 14],
+    textTransform: 'lowercase',
+    marginLeft: [10, .7, 10]
+}
+
 export const footerSocialStyle = {
     mobile: {
         display: flex,

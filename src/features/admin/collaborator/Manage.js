@@ -14,14 +14,14 @@ import ContentWrapper        from 'shared/Layout/ContentWrapper'
 import DashboardInfo         from 'shared/Layout/Dashboard/DashboardInfo'
 
 const Manage = () => {
-    const {collaborators} = useSelector(state => state.collaborator)
+    const {albumCollaborators} = useSelector(state => state.collaborator)
     const {collaboratorsIndex} = useContext(searchContext)
     const dispatch = useDispatch()
     const [isIndexed, setIsIndexed] = useState(false)
 
     useEffect(() => {
         dispatch({type: 'collaborator/getCollaborators'})
-        collaboratorsIndex.saveObjects(collaborators)
+        collaboratorsIndex.saveObjects(albumCollaborators)
             .then(() => setIsIndexed(true))
             .catch(error =>
                 dispatch({
@@ -41,7 +41,7 @@ const Manage = () => {
                     description={'Type & Enter to search. Click to edit.'}
                 />
                 {isIndexed && (
-                    <List collaborators={collaborators}/>
+                    <List collaborators={albumCollaborators}/>
                 )}
             </AdminDashboardWrapper>
         </ContentWrapper>
