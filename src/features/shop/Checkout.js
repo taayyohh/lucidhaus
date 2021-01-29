@@ -1,14 +1,15 @@
 import 'braintree-web'
-import {AnimatePresence} from 'framer-motion'
-import PropTypes         from 'prop-types'
+import {checkoutPurchaseButtonStyle} from 'features/shop/styles'
+import {AnimatePresence}             from 'framer-motion'
+import PropTypes                     from 'prop-types'
 import React, {
     useEffect,
     useState
-}                        from 'react'
+}                                    from 'react'
 import {
     useDispatch,
     useSelector
-}                        from 'react-redux'
+}                                    from 'react-redux'
 import Button            from 'shared/Basic/Button'
 import Div               from 'shared/Basic/Div'
 import MotionDiv         from 'shared/Basic/MotionDiv'
@@ -64,6 +65,7 @@ const Checkout = ({cart}) => {
                             <Button
                                 onClick={purchase}
                                 children={'Purchase'}
+                                theme={checkoutPurchaseButtonStyle}
                             />
                         )}
                     </MotionDiv>

@@ -39,6 +39,10 @@ export const checkoutDropIn = {
     ]
 }
 
+export const checkoutPurchaseButtonStyle = {
+    marginBottom: [50, .7, 50]
+}
+
 export const checkoutSectionStyle = {
     marginBottom: [50, .7, 50],
     paddingBottom: [50, .7, 50],
