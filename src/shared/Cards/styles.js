@@ -153,6 +153,14 @@ export const genericCardArtistNameStyle = {
     color: black
 }
 
+export const genericCardArtistWrapperStyle = {
+    display: 'flex',
+    child: {
+        selector: '> div',
+        marginLeft: [5, .7, 5]
+    }
+}
+
 export const genericCardDescriptionStyle = {
     color: '#201f1f'
 }

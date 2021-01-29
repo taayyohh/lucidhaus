@@ -80,6 +80,15 @@ export const albumPrimaryArtistStyle = {
     }
 }
 
+export const albumCollaboratorStyle = {
+    ...albumPrimaryArtistStyle,
+    color: black,
+    marginLeft: [15, .7, 15],
+    hover: {
+        color: black
+    }
+}
+
 export const albumSongsWrapperStyle = {
     width: '100%',
     paddingTop: [40, .7, 20],

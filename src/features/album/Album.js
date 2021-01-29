@@ -1,7 +1,8 @@
 import {
+    albumCollaboratorStyle,
     albumSongActiveIndicatorStyle,
     albumSongTrackNumberStyle
-}                               from 'features/album/styles'
+} from 'features/album/styles'
 import {artistDescriptionStyle} from 'features/artist/styles'
 import {AnimatePresence}        from 'framer-motion'
 import React, {
@@ -47,13 +48,16 @@ const Album = () => {
     const {album} = useSelector(state => state.album)
     const {slug} = useSelector(state => state.site)
     const {artists} = useSelector(state => state.artist)
-    const {albumName, primaryArtist, description, coverArt, songs} = album
+    const {albumCollaborators} = useSelector(state => state.collaborator)
+    const {albumName, primaryArtist, collaborators, description, coverArt, songs} = album
     const {currentMedia, setCurrentMedia, currentMediaIndex, setPlaying} = useContext(playerContext)
     const artist = getById(artists, primaryArtist)
 
     useEffect(() => {
         dispatch({type: 'album/getAlbum', payload: {slug: slug}})
         dispatch({type: 'artist/getArtists'})
+        dispatch({type: 'collaborator/getCollaborators'})
+
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
@@ -122,14 +126,24 @@ const Album = () => {
                                 >
                                     {albumName}
                                 </MotionDiv>
-                                {artist && (
-                                    <LinkSwitch
-                                        url={`/artists/${artist?.slug}`}
-                                        theme={albumPrimaryArtistStyle}
-                                    >
-                                        {getNameById(artists, primaryArtist)}
-                                    </LinkSwitch>
-                                )}
+                                <Div theme={{display: 'flex'}}>
+                                    {artist && (
+                                        <LinkSwitch
+                                            url={`/artists/${artist?.slug}`}
+                                            theme={albumPrimaryArtistStyle}
+                                        >
+                                            {getNameById(artists, primaryArtist)}
+                                        </LinkSwitch>
+                                    )}
+                                    {collaborators && (
+                                        <Div
+                                            theme={albumCollaboratorStyle}
+                                        >
+                                            {getNameById(albumCollaborators, collaborators)}
+                                        </Div>
+                                    )}
+                                </Div>
+
                                 <Div theme={albumSongsWrapperStyle}>
                                     {songs && songs.map((s) => {
                                             const isActive = currentMedia[currentMediaIndex]?.audio === s.audio

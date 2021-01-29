@@ -12,12 +12,14 @@ import {albumsWrapperStyle} from './styles'
 
 const Albums = () => {
     const {albums} = useSelector(state => state.album)
+    const {albumCollaborators} = useSelector(state => state.collaborator)
     const dispatch = useDispatch()
     const {artists} = useSelector(state => state.artist)
 
     useEffect(() => {
         dispatch({type: 'album/getAlbums'})
         dispatch({type: 'artist/getArtists'})
+        dispatch({type: 'collaborator/getCollaborators'})
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
@@ -45,6 +47,7 @@ const Albums = () => {
                             name={album.albumName}
                             photo={album.coverArt}
                             artist={getNameById(artists, album.primaryArtist)}
+                            collaborators={getNameById(albumCollaborators, album.collaborators)}
                             theme={albumCardStyle}
                         />
                     )
