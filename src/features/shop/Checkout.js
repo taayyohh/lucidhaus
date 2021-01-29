@@ -46,7 +46,7 @@ const Checkout = ({cart}) => {
                 products: cart,
                 deliveryAddress: deliveryAddress,
                 billingAddress: billingAddress,
-                user: _id
+                user: _id || undefined
             }
         })
 

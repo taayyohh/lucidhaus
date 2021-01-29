@@ -21,8 +21,8 @@ const Update = () => {
     const dispatch = useDispatch()
     const {_id, token} = useSelector(state => state.user)
     const {slug} = useSelector(state => state.site)
-    const {collaborator} = useSelector(state => state.collaborator)
-    const {name, photo, isPublished} = collaborator
+    const {albumCollaborator} = useSelector(state => state.collaborator)
+    const {name, photo, isPublished} = albumCollaborator
     const {collaboratorsIndex} = useContext(searchContext)
 
     const initialValues = {
@@ -63,7 +63,7 @@ const Update = () => {
                     attemptDestroyAction={'admin/attemptDestroyCollaborator'}
                     destroyAction={'admin/destroyCollaborator'}
                     slug={slug}
-                    objectID={collaborator.objectID}
+                    objectID={albumCollaborator.objectID}
                     index={collaboratorsIndex}
                     type={'collaborator'}
                 />

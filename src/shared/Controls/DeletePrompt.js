@@ -22,7 +22,6 @@ const DeletePrompt = ({destroyAction, type, index, objectID}) => {
     const {confirmDelete} = useSelector(state => state.admin)
     const {shouldDelete, destroy} = confirmDelete
     const dispatch = useDispatch()
-    console.log('type', type)
 
     return (
         <>

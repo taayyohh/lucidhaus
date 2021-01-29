@@ -104,9 +104,6 @@ const UploadImage = memo(({formik, id, file, cropWidth, cropHeight, s3Path, inpu
                     accept={globals.extensions}
                     maxFiles={1}
                     multiple={false}
-                    onDragOver={() => console.log('drag over')}
-                    onDragEnter={() => console.log('drag enter')}
-                    onDragLeave={() => console.log('drag leave')}
                     onDropAccepted={(acceptedFiles) => handleAcceptedFile(acceptedFiles)}
                     onDropRejected={() => console.log('error')}
                 >

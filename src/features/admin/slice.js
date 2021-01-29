@@ -105,7 +105,6 @@ export const slice = createSlice({
             state.songsToAdd.push({ title, audio, trackNumber })
         },
         confirmDestroySong: (state, action) => {
-            console.log('action', action)
             state.confirmDelete.shouldDelete = true
             state.confirmDelete.slug = action.payload.slug
         },

@@ -30,7 +30,6 @@ export function* createCollaborator({payload}) {
         console.log('upload', uploadImage)
 
         const createdCollaborator = yield call(addCollaborator, {_id: _id, token: token, collaborator: collaborator})
-        console.log('createdCollaborator', createdCollaborator)
         if (!createdCollaborator.error) {
             yield put({type: 'collaborator/getCollaborators'})
             yield put(push('/admin/collaborators/update/' + createdCollaborator.slug))

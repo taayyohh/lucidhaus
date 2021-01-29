@@ -1,5 +1,5 @@
-import queryString from 'query-string'
 import {API}       from 'config'
+import queryString from 'query-string'
 
 
 export const list = params => {
@@ -57,7 +57,6 @@ export const processPayment = ({paymentData}) =>
 
 
 export const createOrder = ({createOrderData}) => {
-    console.log('create order data', createOrderData)
     fetch(`${API}/order/create/`, {
         method: 'POST',
         headers: {
@@ -72,8 +71,5 @@ export const createOrder = ({createOrderData}) => {
         .catch(error => {
             return error
         })
-
-
-
 }
 

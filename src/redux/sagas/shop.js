@@ -81,23 +81,6 @@ export function* getPaymentNonce({payload}) {
         const createdOrder = yield call(createOrder, {createOrderData})
 
         if (!createdOrder?.error) {
-            //TODO: shippo integration
-
-            // shippo.address.create({
-            //     'name' : user.name ? user.name : 'Guest',
-            //     'company' : country,
-            //     'street1' : address,
-            //     'street2': address2,
-            //     'city' : city,
-            //     'state' : state,
-            //     'zip' : zip,
-            //     'country' : country,
-            //     'phone' : phone,
-            //     'email' : email
-            // }).then(function(address){
-            //     console.log("shipment : %s", JSON.stringify(address));
-            // })
-
             yield put({
                 type: 'site/setNotification',
                 payload: {
@@ -108,8 +91,6 @@ export function* getPaymentNonce({payload}) {
             })
             yield call(emptyCart)
             yield put({type: 'shop/emptyCart'})
-
-            console.log('isGuest', isGuest)
 
             if (!isGuest) {
                 yield put({type: 'user/getPurchaseHistory', payload: {_id, token}})
