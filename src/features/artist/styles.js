@@ -63,7 +63,14 @@ export const artistDescriptionStyle = {
     boxSizing: borderBox,
     paddingLeft: [30, globals.style.layoutScalingValue, '0'],
     paddingRight: [30, globals.style.layoutScalingValue, '0'],
-    borderTop: `1px solid ${colorPalette.gray}`
+    borderTop: `1px solid ${colorPalette.gray}`,
+    child: [
+        {
+            selector: 'p:first-child',
+            size: [26, .7, 26],
+            lineHeight:[34, .7, 34]
+        }
+    ]
 }
 
 export const artistImageStyle = {}
