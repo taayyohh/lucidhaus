@@ -280,7 +280,11 @@ export const productInfoWrapperStyle = {
 }
 
 export const productTitleStyle = {
-    ...postTitleStyle
+    ...postTitleStyle,
+    mobile: {
+        alignSelf: center,
+        marginTop: 40
+    }
 }
 
 export const productImageWrapperStyle = {}
