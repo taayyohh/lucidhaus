@@ -147,7 +147,6 @@ const Album = () => {
                                 <Div theme={albumSongsWrapperStyle}>
                                     {songs && songs.map((s) => {
                                             const isActive = currentMedia[currentMediaIndex]?.audio === s.audio
-
                                             return (
                                                 <Div
                                                     key={s.audio}
