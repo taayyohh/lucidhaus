@@ -11,6 +11,7 @@ import {
     center,
     column,
     flex,
+    flexEnd,
     flexStart,
     grid,
     hidden,
@@ -241,7 +242,7 @@ export const productDescriptionStyle = {
 export const productPriceStyle = {
     display: flex,
     justifyContent: center,
-    paddingTop: [30, .7, 30],
+    paddingTop: [10, .7, 10],
     font: globals.fonts.sans,
     size: [32, .7, 32],
     lineHeight: [16, .7, 16],
@@ -257,8 +258,25 @@ export const productCategoryStyle = {
     weight: 500,
     textAlign: center,
     color: '#656161',
-    size: [16, .7, 16],
+    size: [14, .7, 14],
+    textTransform: 'uppercase',
     letterSpacing: [0.3, .7, 0.3]
+}
+
+export const productInfoWrapperStyle = {
+    display: flex,
+    flexDirection: column,
+    alignItems: flexEnd,
+    marginTop: 60,
+    paddingTop: 30,
+    borderTop: `1px solid ${globals.colors.borderColor}`,
+    width: '30%',
+    marginLeft: 'auto',
+    mobile: {
+        width: '100%',
+        marginLeft: 0
+    }
+
 }
 
 export const productTitleStyle = {

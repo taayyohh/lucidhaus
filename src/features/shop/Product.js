@@ -1,8 +1,9 @@
 import ShopWrapper        from 'features/shop/ShopWrapper'
 import {
     productImageStyle,
-    productImageWrapperStyle
-}                         from 'features/shop/styles'
+    productImageWrapperStyle,
+    productInfoWrapperStyle
+} from 'features/shop/styles'
 import {AnimatePresence}  from 'framer-motion'
 import React, {useEffect} from 'react'
 import {
@@ -66,9 +67,6 @@ const Product = () => {
                 <ContentWrapper>
                     <ShopWrapper>
                         <Div theme={productWrapperStyle}>
-                            <Div theme={productCategoryStyle}>
-                                {getNameById(productCategories, category)}
-                            </Div>
                             <H2 theme={productTitleStyle}>
                                 {name}
                             </H2>
@@ -78,11 +76,16 @@ const Product = () => {
                                     alt={name}
                                     theme={productImageStyle}
                                 />
+                            </MotionDiv>
+                            <Div theme={productInfoWrapperStyle}>
+                                <Div theme={productCategoryStyle}>
+                                    {getNameById(productCategories, category)}
+                                </Div>
                                 <Div theme={productPriceStyle}>
                                     <Div>{price} <span>USD</span></Div>
                                 </Div>
                                 <AddToCartButton product={product}/>
-                            </MotionDiv>
+                            </Div>
                             <RichText
                                 children={description}
                                 theme={productDescriptionStyle}
