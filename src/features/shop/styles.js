@@ -11,7 +11,10 @@ import {
     center,
     column,
     flex,
+    flexEnd,
+    flexStart,
     grid,
+    hidden,
     inlineBlock,
     none,
     pointer,
@@ -58,7 +61,10 @@ export const checkoutSectionStyle = {
 
 export const shopWrapperStyle = {
     display: flex,
-    width: '100%'
+    width: '100%',
+    mobile: {
+        flexDirection: column
+    }
 
 }
 
@@ -70,12 +76,26 @@ export const shopLeftColumnStyle = {
 export const shopMenuStyle = {
     position: 'fixed',
     width: [300, globals.style.layoutScalingValue, 100],
-    borderRight: `1px solid ${globals.colors.borderColor}`
+    borderRight: `1px solid ${globals.colors.borderColor}`,
+    mobile: {
+        position: absolute,
+        backgroundColor: '#fff',
+        paddingLeft: 20,
+        width: 'calc(100% - 50px)',
+        overflow: hidden,
+        marginTop: -20,
+        border: `1px solid ${globals.colors.borderColor}`
+    }
 }
 
 export const shopMenuLinkStyle = {
     mobile: {
-        display: inlineBlock
+        display: flex,
+        alignItems: center,
+        justifyContent: spaceBetween,
+        marginBottom: 20,
+        padding: 15,
+        border: `1px solid ${globals.colors.borderColor}`
     }
 }
 
@@ -205,7 +225,10 @@ export const productWrapperStyle = {
     display: flex,
     flexDirection: column,
     width: [800, globals.style.layoutScalingValue, '100%'],
-    margin: '0 auto'
+    margin: '0 auto',
+    mobile: {
+        alignItems: flexStart
+    }
 }
 
 export const productDescriptionStyle = {

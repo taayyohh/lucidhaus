@@ -38,7 +38,6 @@ const Posts = () => {
                     post => post.isPublished && (
                         <GenericCard
                             key={post.slug}
-                            slug={`posts/${post.slug}`}
                             name={post.name}
                             photo={post.photo}
                             description={post.description}

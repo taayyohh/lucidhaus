@@ -28,7 +28,7 @@ const Footer = ({theme}) =>
         <Div theme={footerStyle.inner}>
             <Div>
                 &copy; {moment().format('YYYY')} {siteDisplayName}
-                <Span theme={footerBuiltByStyle}>built by <LinkSwitch url={'/artists/theo-mode'}>th&eacute;o</LinkSwitch></Span>
+                <Span theme={footerBuiltByStyle}>built by <LinkSwitch url={'/artists/theo-mode'}>th&eacute;o</LinkSwitch> | management: <LinkSwitch url={'/artists/ryann-holmes'}>Ryann Holmes</LinkSwitch></Span>
             </Div>
             <Div theme={footerContactStyle}>
                 <Div theme={footerSocialStyle}>

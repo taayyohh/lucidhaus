@@ -26,13 +26,19 @@ export const artistCardStyle = {
         paddingLeft: [50, globals.style.layoutScalingValue, 20],
         paddingRight: [50, globals.style.layoutScalingValue, 20]
     },
+    name: {
+        size: [42, .7, 28],
+        lineHeight: [32, .7, 32],
+        width: '100%',
+        textAlign: center
+    },
     child: {
         selector: 'img',
         borderRadius: [300, globals.style.layoutScalingValue, 300],
-        transform: 'scale(.75)',
+        transform: 'scale(.9)',
         transition: 'transform 500ms ease',
         hover: {
-            transform: 'scale(.9)'
+            transform: 'scale(.95)'
         }
     }
 }

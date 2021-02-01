@@ -5,6 +5,8 @@ import {
 import {
     faBackward,
     faCogs,
+    faCaretDown,
+    faCaretUp,
     faDollarSign,
     faEllipsisH,
     faFileAudio,
@@ -41,6 +43,8 @@ import {
 
 export const
     cogs = faCogs,
+    caretDown = faCaretDown,
+    caretUp = faCaretUp,
     ellipsis = faEllipsisH,
     usd = faDollarSign,
     fileAudio = faFileAudio,

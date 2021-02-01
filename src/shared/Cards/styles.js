@@ -188,5 +188,8 @@ export const productCardCountStyle = {
     boxShadow: none,
     alignSelf: flexEnd,
     padding: 0,
-    margin: 0
+    margin: 0,
+    mobile: {
+        marginTop: 20
+    }
 }

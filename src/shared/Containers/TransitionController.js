@@ -32,6 +32,8 @@ const TransitionController = props => {
     )
     const pathname = useSelector(pathSelector)
     const [currentPath, setCurrentPath] = useState(pathname)
+    const { setIsFilterOpen } = useContext(menuPanelContext)
+
 
 
     const pageInit = useMemo(() => async () => {
@@ -52,6 +54,8 @@ const TransitionController = props => {
     const pageOut = useMemo(() => async (currentPathName) => {
         await setPanel(null)
         await globals.style.resetBody()
+        await setIsFilterOpen(false)
+
         // await contentAnimation.start({
         //     opacity: 0,
         //     translateX: '4%',

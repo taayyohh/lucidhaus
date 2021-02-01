@@ -41,7 +41,6 @@ const Artists = () => {
                             slug={`artists/${artist.slug}`}
                             name={artist.name}
                             photo={artist.photo}
-                            //description={artist.description}
                             theme={artistCardStyle}
                         />
                     )
