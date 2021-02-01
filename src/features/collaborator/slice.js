@@ -11,7 +11,7 @@ export const slice = createSlice({
     initialState: initialState,
     reducers: {
         getCollaboratorSuccess: (state, action) => {
-            state.collaborator = action.payload
+            state.albumCollaborator = action.payload
         },
         getCollaboratorsSuccess: (state, action) => {
             state.albumCollaborators = action.payload
