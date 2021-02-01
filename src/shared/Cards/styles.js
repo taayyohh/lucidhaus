@@ -1,7 +1,4 @@
-import {
-    colorPalette,
-    globals
-} from 'config/styles'
+import {globals} from 'config/styles'
 import {
     auto,
     black,
@@ -174,11 +171,6 @@ export const genericCardDescriptionStyle = {
 export const genericCardQuantityStyle = {
     marginRight: 'auto',
     color: black,
-}
-
-export const shopCardImageStyle = {
-    width: auto,
-    //  height: auto
 }
 
 export const productCardCountStyle = {

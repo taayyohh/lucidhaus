@@ -8,7 +8,6 @@ import {
     volumeMute,
     windowMinimize
 }                      from 'config/icons/fa'
-import {globals}       from 'config/styles'
 import {mobileFlag}    from 'features/site/slice'
 import React, {
     useContext,
@@ -38,26 +37,20 @@ import {
     playerSongsWrapperStyle,
     playerStyle
 }                      from 'shared/Player/styles'
-import {
-    auto,
-    sv
-}                      from 'utils/themer'
+import {auto}          from 'utils/themer'
 
 const Player = () => {
     const isMobile = useSelector(mobileFlag)
     const {
         currentMedia,
-        setCurrentMedia,
         currentMediaIndex,
         setCurrentMediaIndex,
         playing,
         setPlaying,
         volume,
-        setVolume,
         muted,
         setMuted,
-        loop,
-        setLoop
+        loop
     } = useContext(playerContext)
     const ref = useRef()
     const [playlistLength, setPlaylistLength] = useState(currentMedia?.length)

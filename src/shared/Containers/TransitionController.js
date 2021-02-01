@@ -32,22 +32,11 @@ const TransitionController = props => {
     )
     const pathname = useSelector(pathSelector)
     const [currentPath, setCurrentPath] = useState(pathname)
-    const { setIsFilterOpen } = useContext(menuPanelContext)
-
-
+    const {setIsFilterOpen} = useContext(menuPanelContext)
 
     const pageInit = useMemo(() => async () => {
         await setTimeout(() => scrollToTop(), 0)
-        //  await contentAnimation.set({translateX: 0})
         await overlayAnimation.start(overlayFadeout)
-        // await contentAnimation.start({
-        //     opacity: 1,
-        //     translateX: 0,
-        //     transition: {
-        //         duration: .1,
-        //         ease: 'easeOut',
-        //     }
-        // })
 
     }, [overlayAnimation])
 
@@ -56,17 +45,9 @@ const TransitionController = props => {
         await globals.style.resetBody()
         await setIsFilterOpen(false)
 
-        // await contentAnimation.start({
-        //     opacity: 0,
-        //     translateX: '4%',
-        //     transition: {
-        //         duration: .2,
-        //         ease: 'easeOut',
-        //     }
-        // })
         await setCurrentPath(currentPathName)
         await pageInit()
-    }, [setPanel, pageInit])
+    }, [setPanel, pageInit, setIsFilterOpen])
 
     useEffect(() => {
         if (pathname !== currentPath) {

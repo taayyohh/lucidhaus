@@ -1,19 +1,17 @@
 import {
     signInFields,
     validateSignin
-}                          from 'config/fields/signIn'
+}                         from 'config/fields/signIn'
 import {
     signInFormStyle,
     signInFormWrapperStyle
-}                          from 'features/user/styles'
-import React, {useEffect}  from 'react'
-import {useSelector}       from 'react-redux'
-import {history}           from 'redux/store'
-import Div                 from 'shared/Basic/Div'
-import LinkSwitch     from 'shared/Basic/LinkSwitch'
-import Form           from 'shared/Fields/Form'
-import ContentWrapper from 'shared/Layout/ContentWrapper'
-import {signUpPromptStyle} from './styles'
+}                         from 'features/user/styles'
+import React, {useEffect} from 'react'
+import {useSelector}      from 'react-redux'
+import {history}          from 'redux/store'
+import Div                from 'shared/Basic/Div'
+import Form               from 'shared/Fields/Form'
+import ContentWrapper     from 'shared/Layout/ContentWrapper'
 
 const SignIn = () => {
     const {isAuthenticated, isAdmin} = useSelector(state => state.user)

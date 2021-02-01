@@ -11,7 +11,6 @@ import {
     center,
     column,
     flex,
-    flexEnd,
     flexStart,
     grid,
     hidden,
@@ -22,9 +21,8 @@ import {
     spaceBetween,
     sv,
     transparent,
-    uppercase,
-    white
-} from 'utils/themer'
+    uppercase
+}                       from 'utils/themer'
 
 
 export const checkoutDropIn = {

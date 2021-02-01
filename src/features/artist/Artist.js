@@ -9,19 +9,18 @@ import Div                       from 'shared/Basic/Div'
 import MotionDiv                 from 'shared/Basic/MotionDiv'
 import RichText                  from 'shared/Basic/RichText'
 import S3Img                     from 'shared/Basic/S3Img'
-import {genericCardImageStyle} from 'shared/Cards/styles'
-import ContentWrapper          from 'shared/Layout/ContentWrapper'
+import {genericCardImageStyle}   from 'shared/Cards/styles'
+import ContentWrapper            from 'shared/Layout/ContentWrapper'
 import {
     fadeIn,
     fadeOut,
     nOpacity
-} from 'shared/Layout/styles/animations'
-import {center}                from 'utils/themer'
+}                                from 'shared/Layout/styles/animations'
 import {
     artistDescriptionStyle,
     artistTitleStyle,
     artistWrapperStyle
-}                              from './styles'
+}                                from './styles'
 
 const Artist = () => {
     const dispatch = useDispatch()
@@ -33,7 +32,7 @@ const Artist = () => {
         dispatch({type: 'artist/getArtist', payload: {slug: slug}})
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, [slug])
 
     useEffect(() => {
         dispatch({
