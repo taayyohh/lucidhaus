@@ -1,7 +1,7 @@
 import {
     caretDown,
     caretUp
-} from 'config/icons/fa'
+}                         from 'config/icons/fa'
 import {
     shopActiveIndicatorStyle,
     shopCategoryListStyle,
@@ -9,12 +9,11 @@ import {
     shopHeadingStyle,
     shopMenuLinkStyle,
     shopMenuStyle
-} from 'features/shop/styles'
-import {mobileFlag} from 'features/site/slice'
+}                         from 'features/shop/styles'
+import {mobileFlag}       from 'features/site/slice'
 import React, {
     useContext,
-    useEffect,
-    useState
+    useEffect
 }                         from 'react'
 import {
     useDispatch,
@@ -32,7 +31,7 @@ const ShopMenu = () => {
     const {slug, url} = useSelector(state => state.site)
     const isMobile = useSelector(mobileFlag)
     const dispatch = useDispatch()
-    const { isFilterOpen, setIsFilterOpen } = useContext(menuPanelContext)
+    const {isFilterOpen, setIsFilterOpen} = useContext(menuPanelContext)
     const variants = {
         initial: {
             height: 0
@@ -56,9 +55,11 @@ const ShopMenu = () => {
                     onClick={() => setIsFilterOpen(flag => !flag)}
                 >
                     Shop
-                    <Icon
-                        icon={isFilterOpen ? caretUp : caretDown}
-                    />
+                    {isMobile && (
+                        <Icon
+                            icon={isFilterOpen ? caretUp : caretDown}
+                        />
+                    )}
                 </LinkSwitch>
             </H2>
             <MotionDiv

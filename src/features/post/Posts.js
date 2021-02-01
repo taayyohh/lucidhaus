@@ -7,14 +7,17 @@ import {
 import Div                 from 'shared/Basic/Div'
 import GenericCard         from 'shared/Cards/GenericCard'
 import FullContentWrapper  from 'shared/Layout/FullContentWrapper'
+import {getById}           from 'utils/helpers'
 import {postsWrapperStyle} from './styles'
 
 const Posts = () => {
     const {posts} = useSelector(state => state.post)
+    const {artists} = useSelector(state => state.artist)
     const dispatch = useDispatch()
 
     useEffect(() => {
         dispatch({type: 'post/getPosts'})
+        dispatch({type: 'artist/getArtists'})
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
@@ -42,6 +45,7 @@ const Posts = () => {
                             photo={post.photo}
                             description={post.description}
                             theme={postCardStyle}
+                            slug={`/artists/${getById(artists, post.primaryArtist)?.slug}`}
                         />
                     )
                 )}
