@@ -34,7 +34,7 @@ const ShopMenu = () => {
     const {isFilterOpen, setIsFilterOpen} = useContext(menuPanelContext)
     const variants = {
         initial: {
-            height: 0
+            height: isMobile ? 0 : 'auto'
         },
         open: {
             height: 'auto'
