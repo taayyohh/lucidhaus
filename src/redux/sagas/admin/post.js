@@ -15,7 +15,7 @@ import {
 } from 'services/apiS3'
 
 export function* createPost({payload}) {
-    const {_id, token, name, description, photo, photoFile, isPublished} = payload
+    const {_id, token, name, description, photo, primaryArtist, photoFile, isPublished} = payload
 
     //add to formdata so api can read
     const post = new FormData()
@@ -23,6 +23,9 @@ export function* createPost({payload}) {
     post.set('description', description)
     post.set('photo', photo)
     post.set('isPublished', isPublished)
+    if(!!primaryArtist) {
+        post.set('primaryArtist', primaryArtist)
+    }
 
     const s3Payload = yield call(getSignedRequest, photoFile)
     if (!!s3Payload.signedRequest) {
@@ -44,7 +47,7 @@ export function* createPost({payload}) {
 }
 
 export function* updatePostDetail({payload}) {
-    const {slug, _id, token, name, description, photo, isPublished, photoFile} = payload
+    const {slug, _id, token, name, description, photo, primaryArtist, isPublished, photoFile} = payload
 
     //add to formData so api can read
     const updatedPost = new FormData()
@@ -52,6 +55,9 @@ export function* updatePostDetail({payload}) {
     updatedPost.set('description', description)
     updatedPost.set('photo', photo)
     updatedPost.set('isPublished', isPublished)
+    if(!!primaryArtist) {
+        updatedPost.set('primaryArtist', primaryArtist)
+    }
 
     if (!!photoFile) {
         const s3Payload = yield call(getSignedRequest, photoFile)

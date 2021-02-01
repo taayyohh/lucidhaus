@@ -3,8 +3,9 @@ import {
     TEXT,
     TOGGLE,
     IMAGE_UPLOAD,
-    UPLOAD_PATHS
-}               from 'config'
+    UPLOAD_PATHS,
+    SELECT
+} from 'config'
 import * as Yup from 'yup'
 
 export const postFields = [
@@ -26,6 +27,11 @@ export const postFields = [
         name: 'description',
         inputLabel: 'Post Description',
         type: RICH_TEXT
+    },
+    {
+        name: 'primaryArtist',
+        inputLabel: 'Primary Artist',
+        type: SELECT
     },
     {
         name: 'isPublished',

@@ -38,12 +38,12 @@ const SignIn = () => {
                     buttonText={'Sign in'}
                     theme={signInFormStyle}
                 />
-                {!isAuthenticated && (
-                    <Div theme={signUpPromptStyle}>
-                        {`Need to create an account? `}
-                        <LinkSwitch url={'/signup'} children={'Sign Up'}/>
-                    </Div>
-                )}
+                {/*{!isAuthenticated && (*/}
+                {/*    <Div theme={signUpPromptStyle}>*/}
+                {/*        {`Need to create an account? `}*/}
+                {/*        <LinkSwitch url={'/signup'} children={'Sign Up'}/>*/}
+                {/*    </Div>*/}
+                {/*)}*/}
             </Div>
         </ContentWrapper>
     )

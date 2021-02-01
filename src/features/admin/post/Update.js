@@ -22,7 +22,8 @@ const Update = () => {
     const {_id, token} = useSelector(state => state.user)
     const {slug} = useSelector(state => state.site)
     const {post} = useSelector(state => state.post)
-    const {name, description, photo, isPublished} = post
+    const {name, description, primaryArtist, photo, isPublished} = post
+    const {artists} = useSelector(state => state.artist)
     const {postsIndex} = useContext(searchContext)
 
     const initialValues = {
@@ -31,10 +32,26 @@ const Update = () => {
         photo: photo,
         photoFile: '',
         isPublished: isPublished,
+        primaryArtist: primaryArtist,
         slug,
         _id,
         token,
     }
+
+    const options = [
+        {
+            name: 'primaryArtist',
+            options: artists
+        },
+    ]
+
+    useEffect(() => {
+        dispatch({type: 'artist/getArtists'})
+
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
 
     useEffect(() => {
         dispatch({
@@ -54,6 +71,7 @@ const Update = () => {
                     initialValues={initialValues}
                     fields={postFields}
                     validationSchema={validatePost}
+                    options={options}
                     dispatchAction={'admin/updatePost'}
                     formHeading={'Update Post'}
                     buttonText={'Update'}
