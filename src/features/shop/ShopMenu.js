@@ -49,25 +49,43 @@ const ShopMenu = () => {
 
     return (
         <>
-            <H2 theme={shopHeadingStyle(slug === 'shop')}>
-                <LinkSwitch
-                    theme={shopMenuLinkStyle}
-                    onClick={() => setIsFilterOpen(flag => !flag)}
-                >
-                    Shop
-                    {isMobile && (
-                        <Icon
-                            icon={isFilterOpen ? caretUp : caretDown}
-                        />
-                    )}
-                </LinkSwitch>
-            </H2>
+            {isMobile && (
+                <H2 theme={shopHeadingStyle(slug === 'shop')}>
+                    <LinkSwitch
+                        theme={shopMenuLinkStyle}
+                        onClick={() => setIsFilterOpen(flag => !flag)}
+                    >
+                        Shop
+                        {isMobile && (
+                            <Icon
+                                icon={isFilterOpen ? caretUp : caretDown}
+                            />
+                        )}
+                    </LinkSwitch>
+                </H2>
+            )}
+
             <MotionDiv
                 theme={shopMenuStyle}
                 initial={isMobile ? 'initial' : false}
                 variants={variants}
                 animate={isFilterOpen ? 'open' : 'initial'}
             >
+                {!isMobile && (
+                    <H2 theme={shopHeadingStyle(slug === 'shop')}>
+                        <LinkSwitch
+                            theme={shopMenuLinkStyle}
+                            url={'/shop'}
+                        >
+                            Shop
+                            {isMobile && (
+                                <Icon
+                                    icon={isFilterOpen ? caretUp : caretDown}
+                                />
+                            )}
+                        </LinkSwitch>
+                    </H2>
+                )}
                 <Div theme={shopCategoryListStyle}>
                     {productCategories && productCategories.map((cat) => {
                             const isActive = cat.slug === slug || (product.category === cat.objectID && url.length === 2)
