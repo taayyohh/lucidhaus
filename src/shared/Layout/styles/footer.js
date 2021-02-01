@@ -24,6 +24,7 @@ export const footerStyle = {
     background: white,
     marginTop: [150, .7],
     paddingTop: 30,
+    paddingBottom: [180, .7, 150],
     minHeight: [150, .7, 150],
     maxWidth: '100%',
     mobile: {

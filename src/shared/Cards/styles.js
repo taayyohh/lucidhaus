@@ -1,4 +1,7 @@
-import {globals} from 'config/styles'
+import {
+    colorPalette,
+    globals
+} from 'config/styles'
 import {
     auto,
     black,
@@ -166,6 +169,11 @@ export const genericCardArtistWrapperStyle = {
 
 export const genericCardDescriptionStyle = {
     color: '#201f1f'
+}
+
+export const genericCardQuantityStyle = {
+    marginRight: 'auto',
+    color: black,
 }
 
 export const shopCardImageStyle = {

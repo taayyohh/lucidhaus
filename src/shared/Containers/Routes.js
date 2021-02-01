@@ -17,6 +17,7 @@ import PrivateRoute           from 'shared/Basic/PrivateRoute'
 import Fallback               from 'shared/Layout/Fallback'
 import {TransitionAnimations} from './TransitionController'
 
+const Sitemap = lazy(() => import('./Sitemap'))
 const AdminDashboard = lazy(() => import('features/admin/AdminDashboard'))
 const UserDashboard = lazy(() => import('features/user/dashboard'))
 const CreatePost = lazy(() => import('features/admin/post/Create'))
@@ -105,6 +106,7 @@ const Routes = () => {
                             <AdminRoute path="/create/product" exact component={CreateProduct}/>
                             <AdminRoute path="/create/product-category" exact component={CreateProductCategory}/>
                             <AdminRoute path="/create/post" exact component={CreatePost}/>
+                            <AdminRoute path="/sitemap" exact component={Sitemap}/>
                             <Route component={NotFound} sitemapIndex={true}/>
                         </Switch>
                     </Suspense>

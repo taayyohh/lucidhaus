@@ -47,7 +47,7 @@ const FilteredShop = () => {
         <ContentWrapper>
             <ShopWrapper>
                 {shop && shop.map(
-                    product => product.isPublished && (
+                    product => product.isPublished && product.quantity > 0 && (
                         <GenericCard
                             key={product.slug}
                             slug={`/shop/${product.slug}`}
@@ -56,6 +56,7 @@ const FilteredShop = () => {
                             price={product.price}
                             productCategories={productCategories}
                             productCategory={product.category}
+                            quantity={product.quantity}
                             theme={shopCardStyle}
                         />
                     ))

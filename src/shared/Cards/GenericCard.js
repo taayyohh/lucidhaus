@@ -7,12 +7,14 @@ import Div               from 'shared/Basic/Div'
 import LinkSwitch        from 'shared/Basic/LinkSwitch'
 import MotionDiv         from 'shared/Basic/MotionDiv'
 import RichText          from 'shared/Basic/RichText'
+import Span              from 'shared/Basic/Span'
 import {
     genericCardArtistNameStyle,
     genericCardArtistWrapperStyle,
     genericCardPriceStyle,
-    genericCardProductCategoryStyle
-}                        from 'shared/Cards/styles'
+    genericCardProductCategoryStyle,
+    genericCardQuantityStyle
+} from 'shared/Cards/styles'
 import {
     fadeIn,
     fadeOut,
@@ -33,7 +35,7 @@ import {
 //TODO:code split elsewhere where necessary, define fallback component
 const S3Img = lazy(() => import('shared/Basic/S3Img'))
 
-const GenericCard = ({photo, name, slug, description, collaborators, productCategory, artist, productCategories, price, theme}) =>
+const GenericCard = ({photo, name, slug, description, collaborators, productCategory, quantity, artist, productCategories, price, theme}) =>
     <AnimatePresence>
         <MotionDiv initial={nOpacity} animate={fadeIn} exit={fadeOut}>
             <LinkSwitch
@@ -91,6 +93,9 @@ const GenericCard = ({photo, name, slug, description, collaborators, productCate
                             theme={{...genericCardDescriptionStyle, ...theme.description}}
                             children={excerpt(description)}
                         />
+                    )}
+                    {quantity && (
+                        <Span theme={{...genericCardQuantityStyle}}>qty: {quantity}</Span>
                     )}
                 </Div>
             </LinkSwitch>
