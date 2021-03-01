@@ -23,13 +23,14 @@ export const postsWrapperStyle = {
 }
 
 export const postCardStyle = {
+    display: 'inline',
     paddingBottom: 0,
     width: '100vw',
     height: `calc(100vh - ${sv(globals.style.headerHeight)})`,
     overflow: hidden,
     borderRadius: 0,
     mobile: {
-        height: auto
+        height: auto,
     },
     image: {
         objectFit: 'cover'
