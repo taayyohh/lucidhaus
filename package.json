@@ -1,6 +1,6 @@
 {
   "name": "inclusive-guide",
-  "version": "beta",
+  "version": "0.1.2",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
