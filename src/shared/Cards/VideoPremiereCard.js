@@ -8,12 +8,15 @@ import ReactPlayer from "react-player";
 import {globals} from "config/styles";
 import {sv} from "utils/themer";
 import {CDN} from "config";
+import {useSelector} from "react-redux";
+import {mobileFlag} from "../../features/site/slice";
 
 //TODO:code split elsewhere where necessary, define fallback component
 const S3Img = lazy(() => import('shared/Basic/S3Img'))
 
 const VideoPremiereCard = ({photo, video, theme}) => {
     const [isPlaying, setIsPlaying] = useState(false)
+    const isMobile = useSelector(mobileFlag)
 
     return (
         <AnimatePresence>
@@ -26,7 +29,11 @@ const VideoPremiereCard = ({photo, video, theme}) => {
                         <ReactPlayer
                             url={video}
                             controls={false}
-                            height={`calc(100vh - ${sv(globals.style.headerHeight)})`}
+                            height={
+                                !isMobile
+                                ? `calc(100vh - ${sv(globals.style.headerHeight)})`
+                                : '200px'
+                            }
                             width={'100%'}
                             light={`${CDN}${photo}`}
                             playing={isPlaying}
