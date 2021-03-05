@@ -28,7 +28,7 @@ const VideoPremiereCard = ({photo, video, theme}) => {
                     {video && (
                         <ReactPlayer
                             url={video}
-                            controls={false}
+                            controls
                             height={
                                 !isMobile
                                 ? `calc(100vh - ${sv(globals.style.headerHeight)})`
