@@ -14,7 +14,7 @@ import Div                  from 'shared/Basic/Div'
 import Icon                 from 'shared/Basic/Icon'
 import LinkSwitch           from 'shared/Basic/LinkSwitch'
 import Span                 from 'shared/Basic/Span'
-import Mailchimp            from 'shared/Layout/Mailchimp'
+import Subscribe            from 'shared/Layout/Mailchimp'
 import {footerBuiltByStyle} from 'shared/Layout/styles/footer'
 import {
     footerContactStyle,
@@ -39,7 +39,7 @@ const Footer = ({theme}) =>
                         <Icon icon={instagram} theme={footerIconStyle}/>
                     </LinkSwitch>
                 </Div>
-                <Mailchimp/>
+                <Subscribe/>
             </Div>
         </Div>
 

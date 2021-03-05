@@ -22,7 +22,7 @@ const Update = () => {
     const {_id, token} = useSelector(state => state.user)
     const {slug} = useSelector(state => state.site)
     const {post} = useSelector(state => state.post)
-    const {name, description, primaryArtist, photo, isPublished} = post
+    const {name, description, primaryArtist, photo, video, isPublished} = post
     const {artists} = useSelector(state => state.artist)
     const {postsIndex} = useContext(searchContext)
 
@@ -30,6 +30,7 @@ const Update = () => {
         name: name,
         description: description,
         photo: photo,
+        video: video,
         photoFile: '',
         isPublished: isPublished,
         primaryArtist: primaryArtist,

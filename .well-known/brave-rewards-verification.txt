@@ -1,4 +1,0 @@
-This is a Brave Rewards publisher verification file.
-
-Domain: lucid.haus
-Token: 63dfc2ccd4ac46596830b7e16e8014abc773a9f806fabbd2e71172e21113d73e

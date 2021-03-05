@@ -23,6 +23,7 @@ const Create = () => {
         primaryArtist: '',
         photo: '',
         photoFile: '',
+        video: '',
         isPublished: false
     }
 

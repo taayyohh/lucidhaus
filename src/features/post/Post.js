@@ -26,7 +26,7 @@ const Post = () => {
     const dispatch = useDispatch()
     const {post} = useSelector(state => state.post)
     const {slug} = useSelector(state => state.site)
-    const {name, description, photo} = post
+    const {name, description, photo, video} = post
 
     useEffect(() => {
         dispatch({type: 'post/getPost', payload: {slug: slug}})
@@ -41,6 +41,7 @@ const Post = () => {
                 title: name,
                 description,
                 image: photo,
+                video: video,
                 imageAlt: `${name} Product Photo`
             }
         })
@@ -63,6 +64,7 @@ const Post = () => {
                                 theme={genericCardImageStyle}
                             />
                         </Div>
+                        {console.log('video', video)}
                         <RichText
                             children={description}
                             theme={postDescriptionStyle}

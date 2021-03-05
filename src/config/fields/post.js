@@ -19,6 +19,11 @@ export const postFields = [
         type: IMAGE_UPLOAD,
     },
     {
+        name: 'video',
+        inputLabel: 'Video',
+        type: TEXT
+    },
+    {
         name: 'name',
         inputLabel: 'Name',
         type: TEXT

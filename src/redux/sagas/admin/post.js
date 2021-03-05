@@ -15,13 +15,14 @@ import {
 } from 'services/apiS3'
 
 export function* createPost({payload}) {
-    const {_id, token, name, description, photo, primaryArtist, photoFile, isPublished} = payload
+    const {_id, token, name, description, photo, video, primaryArtist, photoFile, isPublished} = payload
 
     //add to formdata so api can read
     const post = new FormData()
     post.set('name', name)
     post.set('description', description)
     post.set('photo', photo)
+    post.set('video', video)
     post.set('isPublished', isPublished)
     if(!!primaryArtist) {
         post.set('primaryArtist', primaryArtist)
@@ -47,13 +48,14 @@ export function* createPost({payload}) {
 }
 
 export function* updatePostDetail({payload}) {
-    const {slug, _id, token, name, description, photo, primaryArtist, isPublished, photoFile} = payload
+    const {slug, _id, token, name, description, photo, video, primaryArtist, isPublished, photoFile} = payload
 
     //add to formData so api can read
     const updatedPost = new FormData()
     updatedPost.set('name', name)
     updatedPost.set('description', description)
     updatedPost.set('photo', photo)
+    updatedPost.set('video', video)
     updatedPost.set('isPublished', isPublished)
     if(!!primaryArtist) {
         updatedPost.set('primaryArtist', primaryArtist)

@@ -15,7 +15,7 @@ import {
 
 export const postsWrapperStyle = {
     display: flex,
-    flexDirection: column,
+    flexDirection: 'column-reverse',
     mobile: {
         display: flex,
         flexDirection: column
