@@ -1,8 +1,10 @@
 import {
     ADDRESS,
+    AUDIO_UPLOAD,
     COUNT,
     COUNTRY,
     EMAIL,
+    IMAGE_UPLOAD,
     NUMBER,
     PASSWORD,
     REGION,
@@ -10,23 +12,19 @@ import {
     SELECT,
     TEL,
     TEXT,
-    TOGGLE,
-    IMAGE_UPLOAD,
-    AUDIO_UPLOAD,
-    SONGS
+    TOGGLE
 }                     from 'config'
-import React, {memo} from 'react'
-import CreateSong  from 'features/admin/album/song/CreateSong'
-import UploadAudio from 'shared/Fields/UploadAudio'
-import Address     from './Address'
+import React, {memo}  from 'react'
+import UploadAudio    from 'shared/Fields/UploadAudio'
+import UploadImage    from 'shared/Fields/UploadImage'
+import Address        from './Address'
 import Count          from './Count'
 import Country        from './Country'
 import Region         from './Region'
 import RichTextEditor from './RichTextEditor'
 import Select         from './Select'
 import SmartInput     from './SmartInput'
-import Toggle      from './Toggle'
-import UploadImage from 'shared/Fields/UploadImage'
+import Toggle         from './Toggle'
 
 const FieldSwitch = memo(({field, formik, options, autoSubmit}) => {
     switch (field.type) {
@@ -113,11 +111,7 @@ const FieldSwitch = memo(({field, formik, options, autoSubmit}) => {
                 name={field.name}
                 formik={formik}
             />
-        case SONGS:
-            return <CreateSong
-                name={field.name}
-                formik={formik}
-            />
+
 
         default:
             return null

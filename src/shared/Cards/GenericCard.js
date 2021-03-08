@@ -9,8 +9,8 @@ import MotionDiv         from 'shared/Basic/MotionDiv'
 import RichText          from 'shared/Basic/RichText'
 import Span              from 'shared/Basic/Span'
 import {
-    genericCardArtistNameStyle,
-    genericCardArtistWrapperStyle,
+    genericCardPlaceNameStyle,
+    genericCardPlaceWrapperStyle,
     genericCardPriceStyle,
     genericCardProductCategoryStyle,
     genericCardQuantityStyle
@@ -35,7 +35,7 @@ import {
 //TODO:code split elsewhere where necessary, define fallback component
 const S3Img = lazy(() => import('shared/Basic/S3Img'))
 
-const GenericCard = ({photo, name, slug, description, artistName, collaborators, productCategory, quantity, artist, productCategories, price, theme}) =>
+const GenericCard = ({photo, name, slug, description, placeName, collaborators, productCategory, quantity, place, productCategories, price, theme}) =>
     <AnimatePresence>
         <MotionDiv initial={nOpacity} animate={fadeIn} exit={fadeOut}>
             <LinkSwitch
@@ -59,16 +59,16 @@ const GenericCard = ({photo, name, slug, description, artistName, collaborators,
                             children={getNameById(productCategories, productCategory)}
                         />
                     )}
-                    <Div theme={genericCardArtistWrapperStyle}>
-                        {artist && (
+                    <Div theme={genericCardPlaceWrapperStyle}>
+                        {place && (
                             <MotionDiv
-                                theme={{...genericCardArtistNameStyle, ...theme.artistName}}
-                                children={artist}
+                                theme={{...genericCardPlaceNameStyle, ...theme.placeName}}
+                                children={place}
                             />
                         )}
                         {collaborators && (
                             <MotionDiv
-                                theme={{...genericCardArtistNameStyle, ...theme.artistName}}
+                                theme={{...genericCardPlaceNameStyle, ...theme.placeName}}
                                 children={collaborators}
                             />
                         )}
@@ -97,8 +97,8 @@ const GenericCard = ({photo, name, slug, description, artistName, collaborators,
                     {quantity && (
                         <Span theme={{...genericCardQuantityStyle}}>qty: {quantity}</Span>
                     )}
-                    {artistName && (
-                        <Span>{artistName}</Span>
+                    {placeName && (
+                        <Span>{placeName}</Span>
                     )}
                 </Div>
             </LinkSwitch>

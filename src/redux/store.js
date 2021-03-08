@@ -1,23 +1,14 @@
-import {
-    configureStore,
-    getDefaultMiddleware
-}                             from '@reduxjs/toolkit'
-import {
-    connectRouter,
-    routerMiddleware
-}                             from 'connected-react-router'
-import adminReducer           from 'features/admin/slice'
-import albumReducer           from 'features/album/slice'
-import artistReducer          from 'features/artist/slice'
-import collaboratorReducer    from 'features/collaborator/slice'
-import postReducer            from 'features/post/slice'
-import shopReducer            from 'features/shop/slice'
-import siteReducer            from 'features/site/slice'
-import userReducer            from 'features/user/slice'
-import {createBrowserHistory} from 'history'
-import {createLogger}         from 'redux-logger'
-import createSagaMiddleware   from 'redux-saga'
-import rootSaga               from './sagas'
+import {configureStore, getDefaultMiddleware} from '@reduxjs/toolkit'
+import {connectRouter, routerMiddleware}      from 'connected-react-router'
+import adminReducer                           from 'features/admin/slice'
+import placeReducer                          from 'features/place/slice'
+import shopReducer                            from 'features/shop/slice'
+import siteReducer                            from 'features/site/slice'
+import userReducer                            from 'features/user/slice'
+import {createBrowserHistory}                 from 'history'
+import {createLogger}                         from 'redux-logger'
+import createSagaMiddleware                   from 'redux-saga'
+import rootSaga                               from './sagas'
 
 export const history = createBrowserHistory()
 export const sagaMiddleware = createSagaMiddleware()
@@ -35,16 +26,10 @@ if (!['production'].includes(process.env.NODE_ENV)) {
             serializableCheck: {
                 // Ignore these action types
                 ignoredActions: [
-                    'admin/createPost',
                     'admin/createProduct',
-                    'admin/createArtist',
-                    'admin/createCollaborator',
-                    'admin/createAlbum',
-                    'admin/updatePost',
+                    'admin/createPlace',
                     'admin/updateProduct',
-                    'admin/updateArtist',
-                    'admin/updateCollaborator',
-                    'admin/updateAlbum',
+                    'admin/updatePlace',
                     'shop/getPaymentNonce'
                 ],
             },
@@ -59,11 +44,8 @@ export default configureStore({
         user: userReducer,
         site: siteReducer,
         admin: adminReducer,
-        post: postReducer,
         shop: shopReducer,
-        artist: artistReducer,
-        collaborator: collaboratorReducer,
-        album: albumReducer,
+        place: placeReducer,
         router: connectRouter(history)
     },
     middleware,

@@ -89,15 +89,15 @@ export const adminShopCardStyle = {
     ...adminPostCardStyle
 }
 
-export const adminArtistsInnerWrapperStyle = {
+export const adminPlacesInnerWrapperStyle = {
     ...postsWrapperStyle,
     width: '100%',
     display: 'grid',
     gridTemplateColumns: '1fr 1fr 1fr 1fr 1fr',
     gridGap: sv(30),
 }
-export const adminArtistCardWrapperStyle = {}
-export const adminArtistCardStyle = {
+export const adminPlaceCardWrapperStyle = {}
+export const adminPlaceCardStyle = {
     display: flex,
     width: '100%',
     mobile: {

@@ -16,27 +16,27 @@
         <changefreq>never</changefreq>
     </url>
     <url>
-        <loc>https://lucid.haus/artists</loc>
+        <loc>https://lucid.haus/places</loc>
         <priority>0</priority>
         <changefreq>never</changefreq>
     </url>
     <url>
-        <loc>https://lucid.haus/artists/theo-mode</loc>
+        <loc>https://lucid.haus/places/theo-mode</loc>
         <priority>0</priority>
         <changefreq>never</changefreq>
     </url>
     <url>
-        <loc>https://lucid.haus/artists/nappy-nina</loc>
+        <loc>https://lucid.haus/places/nappy-nina</loc>
         <priority>0</priority>
         <changefreq>never</changefreq>
     </url>
     <url>
-        <loc>https://lucid.haus/artists/stas-thee-boss</loc>
+        <loc>https://lucid.haus/places/stas-thee-boss</loc>
         <priority>0</priority>
         <changefreq>never</changefreq>
     </url>
     <url>
-        <loc>https://lucid.haus/artists/babyfang</loc>
+        <loc>https://lucid.haus/places/babyfang</loc>
         <priority>0</priority>
         <changefreq>never</changefreq>
     </url>

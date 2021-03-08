@@ -1,4 +1,4 @@
-import {artistImageWrapperStyle} from 'features/artist/styles'
+import {placeImageWrapperStyle} from 'features/place/styles'
 import {AnimatePresence}         from 'framer-motion'
 import React, {useEffect}        from 'react'
 import {
@@ -17,19 +17,19 @@ import {
     nOpacity
 }                                from 'shared/Layout/styles/animations'
 import {
-    artistDescriptionStyle,
-    artistTitleStyle,
-    artistWrapperStyle
+    placeDescriptionStyle,
+    placeTitleStyle,
+    placeWrapperStyle
 }                                from './styles'
 
-const Artist = () => {
+const Place = () => {
     const dispatch = useDispatch()
-    const {artist} = useSelector(state => state.artist)
+    const {place} = useSelector(state => state.place)
     const {slug} = useSelector(state => state.site)
-    const {name, description, photo} = artist
+    const {name, description, photo} = place
 
     useEffect(() => {
-        dispatch({type: 'artist/getArtist', payload: {slug: slug}})
+        dispatch({type: 'place/getPlace', payload: {slug: slug}})
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [slug])
@@ -46,17 +46,17 @@ const Artist = () => {
         })
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [artist])
+    }, [place])
 
     return (
         <AnimatePresence>
             <MotionDiv initial={nOpacity} animate={fadeIn} exit={fadeOut}>
                 <ContentWrapper>
-                    <MotionDiv theme={artistWrapperStyle}>
-                        <MotionDiv theme={artistTitleStyle}>
+                    <MotionDiv theme={placeWrapperStyle}>
+                        <MotionDiv theme={placeTitleStyle}>
                             {name}
                         </MotionDiv>
-                        <Div theme={artistImageWrapperStyle}>
+                        <Div theme={placeImageWrapperStyle}>
                             <S3Img
                                 url={photo}
                                 alt={name}
@@ -65,7 +65,7 @@ const Artist = () => {
                         </Div>
                         <RichText
                             children={description}
-                            theme={artistDescriptionStyle}
+                            theme={placeDescriptionStyle}
                         />
                     </MotionDiv>
                 </ContentWrapper>
@@ -74,4 +74,4 @@ const Artist = () => {
     )
 }
 
-export default Artist
+export default Place

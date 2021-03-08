@@ -1,8 +1,8 @@
 import AdminCreateButton from 'features/admin/AdminCreateButton'
 import {
-    adminArtistCardStyle,
-    adminArtistCardWrapperStyle,
-    adminArtistsInnerWrapperStyle,
+    adminPlaceCardStyle,
+    adminPlaceCardWrapperStyle,
+    adminPlacesInnerWrapperStyle,
     searchWrapperStyle
 }                        from 'features/admin/styles'
 import PropTypes         from 'prop-types'
@@ -16,22 +16,22 @@ import Div               from 'shared/Basic/Div'
 import GenericCard       from 'shared/Cards/GenericCard'
 import {searchContext}   from 'shared/Containers/SearchController'
 
-const List = ({artists}) => {
+const List = ({places}) => {
     const {searchClient} = useContext(searchContext)
 
     const Hits = connectHits(
         ({hits}) =>
             <>
-                {hits && hits.map((artist) =>
+                {hits && hits.map((place) =>
                     <Div
-                        key={artist.slug}
-                        theme={adminArtistCardWrapperStyle}
+                        key={place.slug}
+                        theme={adminPlaceCardWrapperStyle}
                     >
                         <GenericCard
-                            slug={`artists/update/${artist.slug}`}
-                            name={artist.name}
-                            photo={artist.photo}
-                            theme={adminArtistCardStyle}
+                            slug={`places/update/${place.slug}`}
+                            name={place.name}
+                            photo={place.photo}
+                            theme={adminPlaceCardStyle}
                         />
                     </Div>
                 )}
@@ -40,7 +40,7 @@ const List = ({artists}) => {
 
     return (
         <InstantSearch
-            indexName="Artists"
+            indexName="Places"
             searchClient={searchClient}
             stalledSearchDelay={500}
         >
@@ -49,9 +49,9 @@ const List = ({artists}) => {
                     searchAsYouType={false}
                     autoFocus
                 />
-                <AdminCreateButton url={'/create/artist'}/>
+                <AdminCreateButton url={'/create/place'}/>
             </Div>
-            <Div theme={adminArtistsInnerWrapperStyle}>
+            <Div theme={adminPlacesInnerWrapperStyle}>
                 <Hits/>
             </Div>
         </InstantSearch>
@@ -60,7 +60,7 @@ const List = ({artists}) => {
 
 
 List.propTypes = {
-    artists: PropTypes.array.isRequired
+    places: PropTypes.array.isRequired
 }
 
 export default List

@@ -120,18 +120,18 @@ export const slice = createSlice({
             state.confirmDelete.slug = ''
         },
 
-        //artist
-        confirmDestroyArtist: (state, action) => {
+        //place
+        confirmDestroyPlace: (state, action) => {
             state.confirmDelete.shouldDelete = true
             state.confirmDelete.slug = action.payload.slug
         },
-        denyDestroyArtist: state => {
+        denyDestroyPlace: state => {
             state.confirmDelete.shouldDelete = false
         },
-        acceptDestroyArtist: state => {
+        acceptDestroyPlace: state => {
             state.confirmDelete.destroy = true
         },
-        destroyArtistSuccess: state => {
+        destroyPlaceSuccess: state => {
             state.confirmDelete.shouldDelete = false
             state.confirmDelete.destroy = false
             state.confirmDelete.slug = ''

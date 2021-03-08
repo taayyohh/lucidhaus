@@ -1,7 +1,7 @@
 import {
-    artistFields,
-    validateArtist
-}                            from 'config/fields/artist'
+    placeFields,
+    validatePlace
+}                            from 'config/fields/place'
 import AdminDashboardWrapper from 'features/admin/AdminDashboardWrapper'
 import React                 from 'react'
 import {useSelector}  from 'react-redux'
@@ -25,10 +25,10 @@ const Create = () => {
             <AdminDashboardWrapper>
                 <Form
                     initialValues={initialValues}
-                    fields={artistFields}
-                    validationSchema={validateArtist}
-                    dispatchAction={'admin/createArtist'}
-                    formHeading={'Create Artist'}
+                    fields={placeFields}
+                    validationSchema={validatePlace}
+                    dispatchAction={'admin/createPlace'}
+                    formHeading={'Create Place'}
                     buttonText={'Create'}
                 />
             </AdminDashboardWrapper>

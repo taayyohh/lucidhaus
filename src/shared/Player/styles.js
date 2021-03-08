@@ -166,7 +166,7 @@ export const playerQueueTitleStyle = {
     }
 }
 
-export const playerQueueArtistStyle = {
+export const playerQueuePlaceStyle = {
     textDecoration: none,
     whiteSpace: 'nowrap',
     paddingLeft: 20,

@@ -2,19 +2,19 @@ import {API} from 'config'
 
 /**
  * to perform crud on admin
- * get all artists
+ * get all places
  * get a single admin
  * update single admin
  * delete single admin
  */
-export const addArtist = ({_id, token, artist}) =>
-    fetch(`${API}/artist/create/${_id}`, {
+export const addPlace = ({_id, token, place}) =>
+    fetch(`${API}/place/create/${_id}`, {
         method: 'POST',
         headers: {
             Accept: 'application/json',
             Authorization: `Bearer ${token}`
         },
-        body: artist
+        body: place
     })
         .then(response => {
             return response.json()
@@ -24,8 +24,8 @@ export const addArtist = ({_id, token, artist}) =>
         })
 
 
-export const getArtists = () =>
-    fetch(`${API}/artists?limit=undefined`, {
+export const getPlaces = () =>
+    fetch(`${API}/places?limit=undefined`, {
         method: 'GET'
     })
         .then(response => {
@@ -36,8 +36,8 @@ export const getArtists = () =>
         })
 
 
-export const deleteArtist = ({_id, token, slug}) =>
-    fetch(`${API}/artist/${slug}/${_id}`, {
+export const deletePlace = ({_id, token, slug}) =>
+    fetch(`${API}/place/${slug}/${_id}`, {
         method: 'DELETE',
         headers: {
             Accept: 'application/json',
@@ -53,8 +53,8 @@ export const deleteArtist = ({_id, token, slug}) =>
         })
 
 
-export const getArtist = ({slug}) =>
-    fetch(`${API}/artist/${slug}`, {
+export const getPlace = ({slug}) =>
+    fetch(`${API}/place/${slug}`, {
         method: 'GET'
     })
         .then(response => {
@@ -65,14 +65,14 @@ export const getArtist = ({slug}) =>
         })
 
 
-export const updateArtist = ({slug, _id, token, artist}) =>
-    fetch(`${API}/artist/${slug}/${_id}`, {
+export const updatePlace = ({slug, _id, token, place}) =>
+    fetch(`${API}/place/${slug}/${_id}`, {
         method: 'PUT',
         headers: {
             Accept: 'application/json',
             Authorization: `Bearer ${token}`
         },
-        body: artist
+        body: place
     })
         .then(response => {
             return response.json()

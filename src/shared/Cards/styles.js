@@ -146,14 +146,14 @@ export const genericCardProductCategoryStyle = {
     color: black
 }
 
-export const genericCardArtistNameStyle = {
+export const genericCardPlaceNameStyle = {
     textTransform: uppercase,
     size: [15, .7, 15],
     letterSpacing: [0.7, .7, 0.7],
     color: black
 }
 
-export const genericCardArtistWrapperStyle = {
+export const genericCardPlaceWrapperStyle = {
     display: 'flex',
     mobile: {
         flexDirection: column

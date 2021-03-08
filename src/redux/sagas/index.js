@@ -3,26 +3,12 @@ import {
     fork
 }                                from 'redux-saga/effects'
 import {
-    watchAttemptDestroyArtist,
-    watchCreateArtist,
-    watchDestroyArtist,
-    watchDestroyArtistSuccess,
-    watchUpdateArtist
-} from 'redux/sagas/admin/artist'
-import {
-    watchAttemptDestroyCollaborator,
-    watchCreateCollaborator,
-    watchDestroyCollaborator,
-    watchDestroyCollaboratorSuccess,
-    watchUpdateCollaborator
-} from 'redux/sagas/admin/collaborator'
-import {
-    watchAttemptDestroyPost,
-    watchCreatePost,
-    watchDestroyPost,
-    watchDestroyPostSuccess,
-    watchUpdatePost
-} from 'redux/sagas/admin/post'
+    watchAttemptDestroyPlace,
+    watchCreatePlace,
+    watchDestroyPlace,
+    watchDestroyPlaceSuccess,
+    watchUpdatePlace
+} from 'redux/sagas/admin/place'
 import {
     watchAttemptDestroyProduct,
     watchCreateProduct,
@@ -37,26 +23,11 @@ import {
     watchDestroyProductCategorySuccess,
     watchUpdateProductCategory
 } from 'redux/sagas/admin/productCategory'
-import {
-    watchAddSongToAlbum,
-    watchAttemptDestroyAlbum,
-    watchAttemptDestroySong,
-    watchCreateAlbum,
-    watchDestroyAlbum,
-    watchDestroyAlbumSuccess,
-    watchDestroySong,
-    watchDestroySongSuccess,
-    watchUpdateAlbum
-}                              from 'redux/sagas/admin/album'
 import {watchUpdateProfile}    from 'redux/sagas/admin/user'
 import {
-    watchGetCollaboratorDetail,
-    watchGetCollaborators
-} from 'redux/sagas/collaborator'
-import {
-    watchGetArtistDetail,
-    watchGetArtists
-}                              from './artist'
+    watchGetPlaceDetail,
+    watchGetPlaces
+}                              from './place'
 import {
     watchAuthenticate,
     watchIsAuthenticated
@@ -70,10 +41,6 @@ import {
     watchGetStatusValues,
     watchUpdateStatusValue
 }                           from './orders'
-import {
-    watchGetPostDetail,
-    watchGetPosts
-}                           from './post'
 import {
     watchGetProductDetail,
     watchGetRelatedProducts
@@ -92,10 +59,6 @@ import {
     watchLoadConfig,
     watchNavigate
 }                           from './site'
-import {
-    watchGetAlbumDetail,
-    watchGetAlbums
-}                           from './album'
 import {
     watchSignIn,
     watchSignOut,
@@ -124,49 +87,14 @@ export default function* rootSaga() {
         fork(watchUpdateProfile),
 
 
-        // artist
-        fork(watchCreateArtist),
-        fork(watchUpdateArtist),
-        fork(watchAttemptDestroyArtist),
-        fork(watchDestroyArtist),
-        fork(watchDestroyArtistSuccess),
-        fork(watchGetArtists),
-        fork(watchGetArtistDetail),
-
-        // collaborator
-        fork(watchCreateCollaborator),
-        fork(watchUpdateCollaborator),
-        fork(watchAttemptDestroyCollaborator),
-        fork(watchDestroyCollaborator),
-        fork(watchDestroyCollaboratorSuccess),
-        fork(watchGetCollaborators),
-        fork(watchGetCollaboratorDetail),
-
-
-        // album
-        fork(watchCreateAlbum),
-        fork(watchUpdateAlbum),
-        fork(watchAttemptDestroyAlbum),
-        fork(watchDestroyAlbum),
-        fork(watchDestroyAlbumSuccess),
-        fork(watchGetAlbums),
-        fork(watchGetAlbumDetail),
-        fork(watchAddSongToAlbum),
-        fork(watchAttemptDestroySong),
-        fork(watchDestroySong),
-        fork(watchDestroySongSuccess),
-
-
-
-        // post
-        fork(watchCreatePost),
-        fork(watchUpdatePost),
-        fork(watchAttemptDestroyPost),
-        fork(watchDestroyPost),
-        fork(watchDestroyPostSuccess),
-        fork(watchGetPosts),
-        fork(watchGetPostDetail),
-
+        // place
+        fork(watchCreatePlace),
+        fork(watchUpdatePlace),
+        fork(watchAttemptDestroyPlace),
+        fork(watchDestroyPlace),
+        fork(watchDestroyPlaceSuccess),
+        fork(watchGetPlaces),
+        fork(watchGetPlaceDetail),
 
         // shop
         fork(watchCreateProduct),

@@ -28,7 +28,7 @@ import {
     playerInnerStyle,
     playerMinimizeIconStyle,
     playerMuteStyle,
-    playerQueueArtistStyle,
+    playerQueuePlaceStyle,
     playerQueueInnerStyle,
     playerQueueStyle,
     playerQueueTitleStyle,
@@ -168,10 +168,10 @@ const Player = () => {
                                             <Div key={i} theme={playerQueueTrackStyle}>
                                                 <Div theme={playerQueueTrackInnerStyle(isActive)}>
                                                     <LinkSwitch
-                                                        url={`/artists/${m.primaryArtistSlug}`}
-                                                        theme={playerQueueArtistStyle}
+                                                        url={`/places/${m.primaryPlaceSlug}`}
+                                                        theme={playerQueuePlaceStyle}
                                                     >
-                                                        {m.primaryArtist}
+                                                        {m.primaryPlace}
                                                     </LinkSwitch>
                                                     <LinkSwitch
                                                         url={`/music/${m.albumSlug}`}

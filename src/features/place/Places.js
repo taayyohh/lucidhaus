@@ -1,4 +1,4 @@
-import {artistCardStyle}     from 'features/artist/styles'
+import {placeCardStyle}     from 'features/place/styles'
 import React, {useEffect}    from 'react'
 import {
     useDispatch,
@@ -7,14 +7,14 @@ import {
 import Div                   from 'shared/Basic/Div'
 import GenericCard           from 'shared/Cards/GenericCard'
 import ContentWrapper        from 'shared/Layout/ContentWrapper'
-import {artistsWrapperStyle} from './styles'
+import {placesWrapperStyle} from './styles'
 
-const Artists = () => {
-    const {artists} = useSelector(state => state.artist)
+const Places = () => {
+    const {places} = useSelector(state => state.place)
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch({type: 'artist/getArtists'})
+        dispatch({type: 'place/getPlaces'})
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
@@ -23,25 +23,25 @@ const Artists = () => {
         dispatch({
             type: 'site/setDocumentHead',
             payload: {
-                title: 'Artists',
-                description: 'The artists description'
+                title: 'Places',
+                description: 'The places description'
             }
         })
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [artists])
+    }, [places])
 
     return (
         <ContentWrapper>
-            <Div theme={artistsWrapperStyle}>
-                {artists && artists?.map(
-                    artist => artist.isPublished && (
+            <Div theme={placesWrapperStyle}>
+                {places && places?.map(
+                    place => place.isPublished && (
                         <GenericCard
-                            key={artist.slug}
-                            slug={`artists/${artist.slug}`}
-                            name={artist.name}
-                            photo={artist.photo}
-                            theme={artistCardStyle}
+                            key={place.slug}
+                            slug={`places/${place.slug}`}
+                            name={place.name}
+                            photo={place.photo}
+                            theme={placeCardStyle}
                         />
                     )
                 )}
@@ -50,4 +50,4 @@ const Artists = () => {
     )
 }
 
-export default Artists
+export default Places

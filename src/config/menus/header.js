@@ -1,15 +1,7 @@
 export const headerMenu = [
     {
-        url: '/shop',
-        title: 'Shop'
-    },
-    {
-        url: '/artists',
-        title: 'Artists'
-    },
-    {
-        url: '/music',
-        title: 'Music',
-        active: ['albums'],
+        url: '/places',
+        title: 'Places',
+        active: ['places'],
     }
 ]

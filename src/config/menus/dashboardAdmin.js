@@ -1,14 +1,4 @@
-import {
-    cogs,
-    home,
-    music,
-    newsPaper,
-    receipt,
-    signOut,
-    store,
-    user,
-    users
-} from 'config/icons/fa'
+import {cogs, home, music, receipt, signOut, store, user} from 'config/icons/fa'
 
 export const adminDashboardMenu = [
     {
@@ -17,27 +7,16 @@ export const adminDashboardMenu = [
         title: 'Dashboard'
     },
     {
-        url: '/admin/posts',
-        active: ['post'],
-        icon: newsPaper,
-        title: 'Manage Posts'
-    },
-    {
         url: '/admin/shop',
         active: ['product'],
         icon: store,
         title: 'Manage Shop'
     },
     {
-        url: '/admin/artists',
-        active: ['artist'],
+        url: '/admin/places',
+        active: ['place'],
         icon: user,
-        title: 'Manage Artists'
-    },
-    {
-        url: '/admin/collaborators',
-        icon: users,
-        title: 'Manage Collaborators'
+        title: 'Manage Places'
     },
     {
         url: '/admin/music',

@@ -1,16 +1,10 @@
-import {globals}          from 'config/styles'
-import {useAnimation}     from 'framer-motion'
-import React, {
-    createContext,
-    useContext,
-    useEffect,
-    useMemo,
-    useState
-}                         from 'react'
-import {useSelector}      from 'react-redux'
-import {createSelector}   from 'reselect'
-import {overlayFadeout}   from './animations'
-import {menuPanelContext} from './MenuPanelController'
+import {globals}                                                        from 'config/styles'
+import {useAnimation}                                                   from 'framer-motion'
+import React, {createContext, useContext, useEffect, useMemo, useState} from 'react'
+import {useSelector}                                                    from 'react-redux'
+import {createSelector}                                                 from 'reselect'
+import {overlayFadeout}                                                 from './animations'
+import {menuPanelContext}                                               from './MenuPanelController'
 
 export const TransitionAnimations = createContext({})
 
