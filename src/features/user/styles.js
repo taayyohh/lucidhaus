@@ -15,12 +15,12 @@ export const signUpPromptStyle = {
 }
 
 export const signInFormWrapperStyle = {
-    maxWidth: [700, globals.style.layoutScalingValue, '100%'],
+    maxWidth: [700, .7, '100%'],
     margin: '0 auto'
 }
 
 export const signUpFormStyle = {
-    maxWidth: [700, globals.style.layoutScalingValue, '100%'],
+    maxWidth: [700, .7, '100%'],
     margin: '0 auto',
     padding: 70,
     inner: {

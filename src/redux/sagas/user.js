@@ -1,15 +1,7 @@
-import {push}      from 'connected-react-router'
-import {takeEvery} from 'redux-saga/dist/redux-saga-effects-npm-proxy.esm'
-import {
-    call,
-    put
-}                  from 'redux-saga/effects'
-import {
-    getPurchaseHistory,
-    signin,
-    signout,
-    signup
-}                  from 'services/apiUser'
+import {push}                                        from 'connected-react-router'
+import {takeEvery}                                   from 'redux-saga/dist/redux-saga-effects-npm-proxy.esm'
+import {call, put}                                   from 'redux-saga/effects'
+import {getPurchaseHistory, signin, signout, signup} from 'services/apiUser'
 
 export function* signIn({payload}) {
     try {
@@ -44,9 +36,9 @@ export function* signOut() {
 
 export function* signUp({payload}) {
     //TODO: if no users exists in database make first user a superAdmin
-   // const newPayload = {...payload, role: 1}
-
-    const user = yield call(signup, payload)
+    const newPayload = {...payload, role: 1}
+    const user = yield call(signup, newPayload)
+    console.log('user', newPayload)
     try {
         if (!user.error) {
             yield put({type: 'user/signUpSuccess', payload: user})
