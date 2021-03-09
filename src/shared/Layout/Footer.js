@@ -6,7 +6,6 @@ import React                                                                 fro
 import Div                                                                   from 'shared/Basic/Div'
 import Icon                                                                  from 'shared/Basic/Icon'
 import LinkSwitch                                                            from 'shared/Basic/LinkSwitch'
-import Mailchimp                                                             from 'shared/Layout/Mailchimp'
 import {footerContactStyle, footerIconStyle, footerSocialStyle, footerStyle} from './styles/footer'
 
 const Footer = ({theme}) =>
@@ -24,7 +23,7 @@ const Footer = ({theme}) =>
                         <Icon icon={instagram} theme={footerIconStyle}/>
                     </LinkSwitch>
                 </Div>
-                <Mailchimp/>
+                {/*<Mailchimp/>*/}
             </Div>
         </Div>
 

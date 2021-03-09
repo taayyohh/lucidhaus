@@ -1,9 +1,4 @@
-import {
-    home,
-    receipt,
-    signOut,
-    userCog
-} from 'config/icons/fa'
+import {home, signOut, userCog} from 'config/icons/fa'
 
 export const userDashboardMenu = [
     {
@@ -15,11 +10,6 @@ export const userDashboardMenu = [
         url: '/dashboard/settings',
         icon: userCog,
         title: 'Settings'
-    },
-    {
-        url: '/dashboard/orders',
-        icon: receipt,
-        title: 'Orders'
     },
     {
         dispatchAction: 'user/signOut',
