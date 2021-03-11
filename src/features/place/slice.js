@@ -28,6 +28,9 @@ export const slice = createSlice({
         destroyPlaceSuccess: (state, action) => {
             state.places = state.places.filter(item => item.objectID !== action.payload.objectID)
         },
+        getBooneAutoCompleteSuccess: (state, action) => {
+            state.boonePlaces = action.payload
+        }
     },
 })
 

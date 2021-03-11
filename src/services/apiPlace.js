@@ -81,3 +81,4 @@ export const updatePlace = ({slug, _id, token, place}) =>
             return error
         })
 
+

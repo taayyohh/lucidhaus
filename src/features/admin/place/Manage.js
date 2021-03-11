@@ -33,6 +33,19 @@ const Manage = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
+
+    useEffect(() => {
+        dispatch({
+            type: 'place/getBooneAutoComplete',
+            payload: {
+                input: 'donut'
+            }
+        })
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
+
     return (
         <ContentWrapper>
             <AdminDashboardWrapper>
