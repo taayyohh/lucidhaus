@@ -3,14 +3,15 @@
 
 export const API = process.env.REACT_APP_API_URL
 export const CDN = process.env.REACT_APP_CDN_URL
-export const algoliaAppId = process.env.REACT_APP_ALGOLIA_APP_ID
-export const algoliaSearchApiKey = process.env.REACT_APP_ALGOLIA_ADMIN_API_KEY
-export const alogiaAdminKey = process.env.REACT_APP_ALGOLIA_ADMIN_API_KEY
-export const googlePlacesApiKey = process.env.REACT_APP_PLACES_API_KEY
-// export const shippoApiKey = process.env.REACT_APP_SHIPPO_API_KEY
-export const shippoApiKeyTest = process.env.REACT_APP_SHIPPO_TEST_API_KEY
-export const shippo = require('shippo')(shippoApiKeyTest)
-export const googleAnalyticsId = process.env.REACT_APP_GOOGLE_ANALYTICS_ID
+export const BOONE_HOST = process.env.REACT_APP_BOONE_HOST
+export const BOONE_CLIENT_ID = process.env.REACT_APP_BOONE_CLIENT_ID
+export const BOONE_CLIENT_SECRET = process.env.REACT_APP_BOONE_CLIENT_SECRET
+export const BOONE_API = process.env.REACT_APP_BOONE_API
+export const ALGOLIA_APP_ID = process.env.REACT_APP_ALGOLIA_APP_ID
+export const ALGOLIA_SEARCH_API_KEY = process.env.REACT_APP_ALGOLIA_SEARCH_API_KEY
+export const ALGOLIA_ADMIN_KEY = process.env.REACT_APP_ALGOLIA_ADMIN_API_KEY
+export const GOOGLE_PLACES_API_KEY = process.env.REACT_APP_PLACES_API_KEY
+export const GOOGLE_ANALYTICS_ID = process.env.REACT_APP_GOOGLE_ANALYTICS_ID
 
 
 /** INPUT TYPES **/

@@ -1,14 +1,11 @@
-import {
-    all,
-    fork
-}                                from 'redux-saga/effects'
+import {all, fork}                 from 'redux-saga/effects'
 import {
     watchAttemptDestroyPlace,
     watchCreatePlace,
     watchDestroyPlace,
     watchDestroyPlaceSuccess,
     watchUpdatePlace
-} from 'redux/sagas/admin/place'
+}                                  from 'redux/sagas/admin/place'
 import {
     watchAttemptDestroyProduct,
     watchCreateProduct,
@@ -16,55 +13,56 @@ import {
     watchDestroyProductSuccess,
     watchUpdateProduct,
     watchUpdateProductQuantity
-}                                from 'redux/sagas/admin/product'
+}                                  from 'redux/sagas/admin/product'
 import {
     watchCreateProductCategory,
     watchDestroyProductCategory,
     watchDestroyProductCategorySuccess,
     watchUpdateProductCategory
-} from 'redux/sagas/admin/productCategory'
-import {watchUpdateProfile}    from 'redux/sagas/admin/user'
-import {
-    watchGetPlaceDetail,
-    watchGetPlaces
-}                              from './place'
+}                                  from 'redux/sagas/admin/productCategory'
+import {watchUpdateProfile}        from 'redux/sagas/admin/user'
 import {
     watchAuthenticate,
     watchIsAuthenticated
-}                              from './auth'
+}                                  from './auth'
+import {watchGetBooneAutoComplete} from './boone'
 import {
     watchAddToCart,
     watchRemoveFromCart
-}                              from './cart'
+}                                  from './cart'
 import {
     watchGetOrders,
     watchGetStatusValues,
     watchUpdateStatusValue
-}                           from './orders'
+}                                  from './orders'
+import {
+    watchGetPlaceDetail,
+    watchGetPlaces
+}                                  from './place'
 import {
     watchGetProductDetail,
     watchGetRelatedProducts
-}                           from './product'
+}                                  from './product'
 import {
     watchGetProductCategories,
     watchGetProductCategory
-}                           from './productCategory'
+}                                  from './productCategory'
 import {
     watchGetBraintreeToken,
     watchGetFilteredShop,
     watchGetPaymentNonce,
     watchGetShop
-}                           from './shop'
+}                                  from './shop'
 import {
     watchLoadConfig,
     watchNavigate
-}                           from './site'
+}                                  from './site'
 import {
     watchSignIn,
     watchSignOut,
     watchSignUp,
     watchUserHistory
-}                           from './user'
+}                                  from './user'
 
 
 //TODO: determine best method of combining rootSaga
@@ -126,6 +124,10 @@ export default function* rootSaga() {
         fork(watchRemoveFromCart),
         fork(watchGetBraintreeToken),
         fork(watchGetPaymentNonce),
+
+
+        //boone
+        fork(watchGetBooneAutoComplete)
 
         //Todo: optimize
 

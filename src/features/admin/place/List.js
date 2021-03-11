@@ -38,6 +38,8 @@ const List = ({places}) => {
             </>
     )
 
+
+
     return (
         <InstantSearch
             indexName="Places"
