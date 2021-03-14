@@ -3,6 +3,7 @@
 
 export const API = process.env.REACT_APP_API_URL
 export const CDN = process.env.REACT_APP_CDN_URL
+export const CORS = process.env.REACT_APP_CORS_PROXY
 export const BOONE_HOST = process.env.REACT_APP_BOONE_HOST
 export const BOONE_CLIENT_ID = process.env.REACT_APP_BOONE_CLIENT_ID
 export const BOONE_CLIENT_SECRET = process.env.REACT_APP_BOONE_CLIENT_SECRET
