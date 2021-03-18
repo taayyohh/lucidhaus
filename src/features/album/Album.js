@@ -104,94 +104,99 @@ const Album = () => {
 
 
     return (
-        <AnimatePresence>
-            <MotionDiv initial={nOpacity} animate={fadeIn} exit={fadeOut}>
-                <ContentWrapper>
-                    <MotionDiv theme={albumWrapperStyle}>
-                        <Div theme={albumWrapperInnerStyle}>
-                            <Div theme={albumWrapperImageWrapperStyle}>
-                                <S3Img
-                                    url={coverArt}
-                                    alt={albumName}
-                                    theme={genericCardImageStyle}
-                                />
-                            </Div>
-                            <Div theme={albumInfoWrapperStyle}>
-                                <MotionDiv
-                                    theme={albumTitleStyle}
-                                    onClick={async () => {
-                                        await resolvedPromise(queueAlbum(songs))
-                                        await setPlaying(true)
-                                    }}
-                                >
-                                    {albumName}
-                                </MotionDiv>
-                                <Div theme={{display: 'flex'}}>
-                                    {artist && (
-                                        <LinkSwitch
-                                            url={`/artists/${artist?.slug}`}
-                                            theme={albumPrimaryArtistStyle}
+        <>
+            {album.isPublished && (
+                <AnimatePresence>
+                    <MotionDiv initial={nOpacity} animate={fadeIn} exit={fadeOut}>
+                        <ContentWrapper>
+                            <MotionDiv theme={albumWrapperStyle}>
+                                <Div theme={albumWrapperInnerStyle}>
+                                    <Div theme={albumWrapperImageWrapperStyle}>
+                                        <S3Img
+                                            url={coverArt}
+                                            alt={albumName}
+                                            theme={genericCardImageStyle}
+                                        />
+                                    </Div>
+                                    <Div theme={albumInfoWrapperStyle}>
+                                        <MotionDiv
+                                            theme={albumTitleStyle}
+                                            onClick={async () => {
+                                                await resolvedPromise(queueAlbum(songs))
+                                                await setPlaying(true)
+                                            }}
                                         >
-                                            {getNameById(artists, primaryArtist)}
-                                        </LinkSwitch>
-                                    )}
-                                    {collaborators && (
-                                        <Div
-                                            theme={albumCollaboratorStyle}
-                                        >
-                                            {getNameById(albumCollaborators, collaborators)}
-                                        </Div>
-                                    )}
-                                </Div>
-
-                                <Div theme={albumSongsWrapperStyle}>
-                                    {songs && songs.map((s) => {
-                                            const isActive = currentMedia[currentMediaIndex]?.audio === s.audio
-                                            return (
-                                                <Div
-                                                    key={s.audio}
-                                                    onClick={async () => {
-                                                        await setCurrentMedia([...currentMedia, {
-                                                            title: s.title,
-                                                            audio: s.audio,
-                                                            trackNumber: s.trackNumber,
-                                                            primaryArtist: getNameById(artists, primaryArtist),
-                                                            primaryArtistSlug: getById(artists, primaryArtist).slug,
-                                                            albumSlug: slug,
-                                                            coverArt: coverArt,
-                                                            _id: s._id
-                                                        }])
-                                                        await setPlaying(true)
-                                                    }}
+                                            {albumName}
+                                        </MotionDiv>
+                                        <Div theme={{display: 'flex'}}>
+                                            {artist && (
+                                                <LinkSwitch
+                                                    url={`/artists/${artist?.slug}`}
+                                                    theme={albumPrimaryArtistStyle}
                                                 >
-                                                    <Div
-                                                        theme={albumSongWrapperStyle(isActive)}>
-                                                        <Div>
-                                                            <Span theme={albumSongTrackNumberStyle}>{s.trackNumber}</Span>
-                                                            <Span>{s.title}</Span>
-                                                        </Div>
-                                                        {isActive && (
-                                                            <MotionDiv
-                                                                theme={albumSongActiveIndicatorStyle}
-                                                                layoutId={'activeSongIndicator'}
-                                                            />
-                                                        )}
-                                                    </Div>
+                                                    {getNameById(artists, primaryArtist)}
+                                                </LinkSwitch>
+                                            )}
+                                            {collaborators && (
+                                                <Div
+                                                    theme={albumCollaboratorStyle}
+                                                >
+                                                    {getNameById(albumCollaborators, collaborators)}
                                                 </Div>
-                                            )
-                                        }
-                                    )}
+                                            )}
+                                        </Div>
+
+                                        <Div theme={albumSongsWrapperStyle}>
+                                            {songs && songs.map((s) => {
+                                                    const isActive = currentMedia[currentMediaIndex]?.audio === s.audio
+                                                    return (
+                                                        <Div
+                                                            key={s.audio}
+                                                            onClick={async () => {
+                                                                await setCurrentMedia([...currentMedia, {
+                                                                    title: s.title,
+                                                                    audio: s.audio,
+                                                                    trackNumber: s.trackNumber,
+                                                                    primaryArtist: getNameById(artists, primaryArtist),
+                                                                    primaryArtistSlug: getById(artists, primaryArtist).slug,
+                                                                    albumSlug: slug,
+                                                                    coverArt: coverArt,
+                                                                    _id: s._id
+                                                                }])
+                                                                await setPlaying(true)
+                                                            }}
+                                                        >
+                                                            <Div
+                                                                theme={albumSongWrapperStyle(isActive)}>
+                                                                <Div>
+                                                                    <Span theme={albumSongTrackNumberStyle}>{s.trackNumber}</Span>
+                                                                    <Span>{s.title}</Span>
+                                                                </Div>
+                                                                {isActive && (
+                                                                    <MotionDiv
+                                                                        theme={albumSongActiveIndicatorStyle}
+                                                                        layoutId={'activeSongIndicator'}
+                                                                    />
+                                                                )}
+                                                            </Div>
+                                                        </Div>
+                                                    )
+                                                }
+                                            )}
+                                        </Div>
+                                    </Div>
                                 </Div>
-                            </Div>
-                        </Div>
-                        <RichText
-                            children={description}
-                            theme={artistDescriptionStyle}
-                        />
+                                <RichText
+                                    children={description}
+                                    theme={artistDescriptionStyle}
+                                />
+                            </MotionDiv>
+                        </ContentWrapper>
                     </MotionDiv>
-                </ContentWrapper>
-            </MotionDiv>
-        </AnimatePresence>
+                </AnimatePresence>
+            )}
+        </>
+
     )
 }
 
