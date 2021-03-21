@@ -3,6 +3,8 @@ import {createSlice} from '@reduxjs/toolkit'
 const initialState = {
     place: [],
     places: [],
+    boonePlaces: {},
+    boonePlace: {},
     error: false
 }
 
@@ -30,6 +32,9 @@ export const slice = createSlice({
         },
         getBooneAutoCompleteSuccess: (state, action) => {
             state.boonePlaces = action.payload
+        },
+        getBoonePlaceSuccess: (state, action) => {
+            state.boonePlace = action.payload.data
         }
     },
 })

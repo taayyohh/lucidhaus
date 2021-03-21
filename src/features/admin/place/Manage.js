@@ -1,17 +1,10 @@
-import AdminDashboardWrapper from 'features/admin/AdminDashboardWrapper'
-import List                  from 'features/admin/place/List'
-import React, {
-    useContext,
-    useEffect,
-    useState
-}                            from 'react'
-import {
-    useDispatch,
-    useSelector
-}                            from 'react-redux'
-import {searchContext}       from 'shared/Containers/SearchController'
-import ContentWrapper        from 'shared/Layout/ContentWrapper'
-import DashboardInfo         from 'shared/Layout/Dashboard/DashboardInfo'
+import AdminDashboardWrapper                    from 'features/admin/AdminDashboardWrapper'
+import List                                     from 'features/admin/place/List'
+import React, {useContext, useEffect, useState} from 'react'
+import {useDispatch, useSelector}               from 'react-redux'
+import {searchContext}                          from 'shared/Containers/SearchController'
+import ContentWrapper                           from 'shared/Layout/ContentWrapper'
+import DashboardInfo                            from 'shared/Layout/Dashboard/DashboardInfo'
 
 const Manage = () => {
     const {places} = useSelector(state => state.place)
@@ -32,19 +25,6 @@ const Manage = () => {
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
-
-
-    useEffect(() => {
-        dispatch({
-            type: 'place/getBooneAutoComplete',
-            payload: {
-                input: 'donut'
-            }
-        })
-
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
-
 
     return (
         <ContentWrapper>
