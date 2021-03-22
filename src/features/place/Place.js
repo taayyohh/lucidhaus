@@ -10,6 +10,7 @@ import {genericCardImageStyle}                                     from 'shared/
 import ContentWrapper                                              from 'shared/Layout/ContentWrapper'
 import {fadeIn, fadeOut, nOpacity}                                 from 'shared/Layout/styles/animations'
 import LinkSwitch                                                  from '../../shared/Basic/LinkSwitch'
+import Map                                                         from '../../shared/Map'
 import {placeDescriptionStyle, placeTitleStyle, placeWrapperStyle} from './styles'
 
 const Place = () => {
@@ -86,6 +87,9 @@ const Place = () => {
                                 {name || boonePlace?.name}
                             </MotionDiv>
                         )}
+                        {description || boonePlace?.description && (
+                            <Div>{description || boonePlace?.description}</Div>
+                        )}
                         <Div theme={{display: 'flex', flexDirection: 'column'}}>
                             <LinkSwitch
                                 url={boonePlace?.contact_info?.website}>{boonePlace?.contact_info?.website}</LinkSwitch>
@@ -95,12 +99,25 @@ const Place = () => {
                                     <Div>Locations:</Div>
                                     {boonePlace.locations.map((location) => (
                                         <Div key={location.address1}>
-                                            {location?.address1}
-                                            {}
+                                            <Div>Address: {location?.address1}</Div>
+                                            <Div>City: {location?.city}</Div>
+                                            <Div>Country: {location?.country}</Div>
+                                            <Div>Latitude: {location?.latitude}</Div>
+                                            <Div>Longitude: {location?.longitude}</Div>
+                                            <Div>Navigable: {location?.navigable}</Div>
+                                            <Div>Postal Code: {location?.postal_code}</Div>
+                                            <Div>State: {location?.state}</Div>
+                                            <Div>Timezone: {location?.timezone}</Div>
+                                            <Map
+                                                lon={location?.longitude}
+                                                lat={location?.latitude}
+                                                theme={{height: 500, width: 500}}
+                                            />
                                         </Div>
                                     ))}
                                 </Div>
                             )}
+
 
                         </Div>
 

@@ -1,28 +1,14 @@
-import React          from 'react'
-import ContentWrapper from 'shared/Layout/ContentWrapper'
+import React, {useContext} from 'react'
+import {mapContext}        from 'shared/Containers/MapController'
+import ContentWrapper      from 'shared/Layout/ContentWrapper'
+import Map                 from 'shared/Map'
 
 const Home = () => {
-
+    const {coords} = useContext(mapContext)
 
     return (
         <ContentWrapper>
-            {/*<MotionDiv*/}
-            {/*    initial={{ transform: 'rotate(0)', height: 50, width: 50, borderRadius: 0}}*/}
-            {/*    theme={{margin: '0 auto', background: '#afe'}}*/}
-            {/*    animate={{*/}
-            {/*        scale: [1, 2, 2, 1, 1],*/}
-            {/*        rotate: [0, 360, 0],*/}
-            {/*        borderRadius: ["50%", "20%", "50%"],*/}
-            {/*        backgroundColor: ["#1da", "#1fa", "#e3a"]*/}
-            {/*    }}*/}
-            {/*    transition={{*/}
-            {/*        duration: 2,*/}
-            {/*        ease: "easeInOut",*/}
-            {/*       // times: [0, 0.2, 0.5, 0.8, 1],*/}
-            {/*        loop: Infinity,*/}
-            {/*        repeatDelay: 1*/}
-            {/*    }}*/}
-            {/*/>*/}
+            <Map lon={coords?.lon} lat={coords?.lat}/>
         </ContentWrapper>
     )
 }

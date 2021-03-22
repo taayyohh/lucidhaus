@@ -1,4 +1,4 @@
-import React, {createContext, useState} from 'react'
+import React, {createContext, useEffect, useState} from 'react'
 
 export const mapContext = createContext(null)
 
@@ -11,6 +11,12 @@ const MapController = ({children}) => {
             lat: pos.coords.latitude
         })
     })
+
+    useEffect(() => {
+        if(geo)
+            getLocation()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
 
     return (

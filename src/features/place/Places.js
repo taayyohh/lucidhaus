@@ -14,10 +14,9 @@ const Places = () => {
     const dispatch = useDispatch()
     const {booneIndex, searchClient} = useContext(searchContext)
     const {geo, getLocation, coords} = useContext(mapContext)
-    const [isIndexed, setIsIndexed] = useState(false)
 
     useEffect(() => {
-        if (!isEmpty(coords))
+        if (!isEmpty(coords)) {
             dispatch({
                 type: 'place/getBooneAutoComplete',
                 payload: {
@@ -27,6 +26,8 @@ const Places = () => {
                     radius: 10000
                 }
             })
+        }
+
 
 
         // if(!!booneIndex)
@@ -44,16 +45,12 @@ const Places = () => {
 
 
     useEffect(() => {
-        dispatch({type: 'place/getPlaces'})
+      //  dispatch({type: 'place/getPlaces'})
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    useEffect(() => {
-        if (geo)
-            getLocation()
 
-    }, [])
 
 
     useEffect(() => {
