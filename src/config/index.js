@@ -13,8 +13,8 @@ export const ALGOLIA_SEARCH_API_KEY = process.env.REACT_APP_ALGOLIA_SEARCH_API_K
 export const ALGOLIA_ADMIN_KEY = process.env.REACT_APP_ALGOLIA_ADMIN_API_KEY
 export const GOOGLE_PLACES_API_KEY = process.env.REACT_APP_PLACES_API_KEY
 export const GOOGLE_ANALYTICS_ID = process.env.REACT_APP_GOOGLE_ANALYTICS_ID
-export const MAPBOX_SECRET = process.env.REACT_MAPBOX_SECRET
-export const MAPBOX_PUBLIC = process.env.REACT_MAPBOX_PUBLIC
+export const MAPBOX_SECRET = process.env.REACT_APP_MAPBOX_SECRET
+export const MAPBOX_PUBLIC = process.env.REACT_APP_MAPBOX_PUBLIC
 
 
 /** INPUT TYPES **/
