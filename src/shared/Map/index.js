@@ -7,7 +7,7 @@ const Map = ({lon, lat, theme}) => {
 
     useEffect(() => {
         if (!!lon && !!lat) {
-            mapboxgl.accessToken = {MAPBOX_PUBLIC}
+            mapboxgl.accessToken = MAPBOX_PUBLIC
             // console.log('secret', MAPBOX_PUBLIC)
             const map = new mapboxgl.Map({
                 container: 'map', // container id
