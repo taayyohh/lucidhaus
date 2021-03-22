@@ -9,6 +9,7 @@ const SearchController = ({children}) => {
     const productsIndex = searchClient.initIndex('Products')
     const ordersIndex = searchClient.initIndex('Orders')
     const placesIndex = searchClient.initIndex('Places')
+    const booneIndex = searchClient.initIndex('Boone')
     const productCategoriesIndex = searchClient.initIndex('ProductCategories')
 
     return (
@@ -17,6 +18,7 @@ const SearchController = ({children}) => {
             productsIndex,
             ordersIndex,
             placesIndex,
+            booneIndex,
             productCategoriesIndex
         }}>
             {children}

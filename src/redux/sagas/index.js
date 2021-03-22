@@ -24,12 +24,12 @@ import {watchUpdateProfile}        from 'redux/sagas/admin/user'
 import {
     watchAuthenticate,
     watchIsAuthenticated
-}                                  from './auth'
-import {watchGetBooneAutoComplete} from './boone'
+}                                                      from './auth'
+import {watchGetBooneAutoComplete, watchGetBoonePlace} from './boone'
 import {
     watchAddToCart,
     watchRemoveFromCart
-}                                  from './cart'
+}                                                      from './cart'
 import {
     watchGetOrders,
     watchGetStatusValues,
@@ -127,7 +127,9 @@ export default function* rootSaga() {
 
 
         //boone
-        fork(watchGetBooneAutoComplete)
+        fork(watchGetBooneAutoComplete),
+        fork(watchGetBoonePlace)
+
 
         //Todo: optimize
 

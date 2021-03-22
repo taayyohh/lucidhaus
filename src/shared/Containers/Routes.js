@@ -8,6 +8,7 @@ import Fallback                               from 'shared/Layout/Fallback'
 import {TransitionAnimations}                 from './TransitionController'
 
 const Sitemap = lazy(() => import('./Sitemap'))
+const Home = lazy(() => import('features/site/Home'))
 const AdminDashboard = lazy(() => import('features/admin/AdminDashboard'))
 const UserDashboard = lazy(() => import('features/user/dashboard'))
 const CreatePlace = lazy(() => import('features/admin/place/Create'))
@@ -41,7 +42,7 @@ const Routes = () => {
                 <MotionDiv animate={contentAnimation} theme={{width: '100%'}}>
                     <Suspense fallback={<Fallback/>}>
                         <Switch location={{pathname: currentPath}}>
-                            <Route path="/" exact component={Places} sitemapIndex={true}/>
+                            <Route path="/" exact component={Home} sitemapIndex={true}/>
                             <Route path="/signup" exact component={SignUp} sitemapIndex={true}/>
                             <Route path="/signin" exact component={SignIn} sitemapIndex={true}/>
                             <Route path="/places" exact component={Places} sitemapIndex={true}/>

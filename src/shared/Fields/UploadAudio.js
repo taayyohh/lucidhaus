@@ -21,9 +21,8 @@ import {
 }                      from 'shared/Fields/styles'
 import {
     bytesToMegaBytes,
-    isEmpty
-}                      from 'utils/helpers'
-import {slugify}       from 'utils/slugify'
+    isEmpty, slugify
+} from 'utils/helpers'
 import {
     imageDropZonePreviewWrapperStyle,
     imageDropZoneStyle,

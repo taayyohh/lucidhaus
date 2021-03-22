@@ -7,8 +7,8 @@ import {
 }                            from 'react-redux'
 import DeletePrompt          from 'shared/Controls/DeletePrompt'
 import ContentWrapper        from 'shared/Layout/ContentWrapper'
-import DashboardInfo         from 'shared/Layout/Dashboard/DashboardInfo'
-import {slugify}             from 'utils/slugify'
+import DashboardInfo from 'shared/Layout/Dashboard/DashboardInfo'
+import {slugify}     from '../../../utils/helpers'
 
 const Manage = () => {
     const {productCategories} = useSelector(state => state.shop)

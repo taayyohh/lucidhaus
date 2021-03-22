@@ -77,7 +77,7 @@ export const stripLastSlug = url => {
 }
 
 /**
- * Builds a Google Maps URL from a given address
+ * Builds a Google Map URL from a given address
  *
  * @param address1
  * @param address2
