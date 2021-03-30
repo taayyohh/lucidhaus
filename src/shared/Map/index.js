@@ -7,6 +7,10 @@ const Map = ({lon, lat, zoom = 14, theme}) => {
 
 
     useEffect(() => {
+        console.log('lon', lon)
+        console.log('lat', lat)
+        console.log('mpb', MAPBOX_PUBLIC)
+        
         if (!!lon && !!lat) {
             mapboxgl.accessToken = MAPBOX_PUBLIC
             const map = new mapboxgl.Map({
