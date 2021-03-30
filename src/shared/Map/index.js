@@ -1,16 +1,11 @@
 import {MAPBOX_PUBLIC}    from 'config'
-import mapboxgl           from 'mapbox-gl'
 import React, {useEffect} from 'react'
 import Div                from 'shared/Basic/Div'
+import mapboxgl           from '!mapbox-gl'
+/* eslint import/no-webpack-loader-syntax: off */
 
 const Map = ({lon, lat, zoom = 14, theme}) => {
-
-
     useEffect(() => {
-        console.log('lon', lon)
-        console.log('lat', lat)
-        console.log('mpb', MAPBOX_PUBLIC)
-        
         if (!!lon && !!lat) {
             mapboxgl.accessToken = MAPBOX_PUBLIC
             const map = new mapboxgl.Map({
