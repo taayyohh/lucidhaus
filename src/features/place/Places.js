@@ -1,13 +1,16 @@
-import {placeCardStyle}                         from 'features/place/styles'
-import React, {useContext, useEffect, useState} from 'react'
-import {useDispatch, useSelector}               from 'react-redux'
-import Div                                      from 'shared/Basic/Div'
-import GenericCard                              from 'shared/Cards/GenericCard'
-import {mapContext}                             from 'shared/Containers/MapController'
-import {searchContext}                          from 'shared/Containers/SearchController'
-import ContentWrapper       from 'shared/Layout/ContentWrapper'
-import {isEmpty, slugify}   from 'utils/helpers'
-import {placesWrapperStyle} from './styles'
+import {placeCardStyle}               from 'features/place/styles'
+import {Formik}                       from 'formik'
+import React, {useContext, useEffect} from 'react'
+import {useDispatch, useSelector}     from 'react-redux'
+import Div                            from 'shared/Basic/Div'
+import GenericCard                    from 'shared/Cards/GenericCard'
+import {mapContext}                   from 'shared/Containers/MapController'
+import {searchContext}                from 'shared/Containers/SearchController'
+import ContentWrapper                 from 'shared/Layout/ContentWrapper'
+import {isEmpty, slugify}             from 'utils/helpers'
+import {placeSearchFields}            from '../../config/fields/placeSearch'
+import Form                           from '../../shared/Fields/Form'
+import {placesWrapperStyle}           from './styles'
 
 const Places = () => {
     const {boonePlaces, places} = useSelector(state => state.place)
@@ -20,14 +23,13 @@ const Places = () => {
             dispatch({
                 type: 'place/getBooneAutoComplete',
                 payload: {
-                    input: 'donut',
+                    input: 'bakery',
                     longitude: coords.lon,
                     latitude: coords.lat,
                     radius: 10000
                 }
             })
         }
-
 
 
         // if(!!booneIndex)
@@ -42,15 +44,6 @@ const Places = () => {
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [coords])
-
-
-    useEffect(() => {
-      //  dispatch({type: 'place/getPlaces'})
-
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
-
-
 
 
     useEffect(() => {
@@ -71,6 +64,18 @@ const Places = () => {
     return (
         <ContentWrapper>
             <Div theme={placesWrapperStyle}>
+                <Form
+                    initialValues={{input: ''}}
+                    fields={placeSearchFields}
+                    dispatchAction={'place/getBooneAutoComplete'}
+                    formHeading={'Search'}
+                    buttonText={'Search'}
+                    payload={{
+                        longitude: coords.lon,
+                        latitude: coords.lat,
+                        radius: 10000
+                    }}
+                />
 
                 {boonePlaces && boonePlaces?.data?.map(
                     boonePlace => {

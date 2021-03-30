@@ -2,54 +2,29 @@ import {placeImageWrapperStyle}                                    from 'feature
 import {AnimatePresence}                                           from 'framer-motion'
 import React, {useEffect}                                          from 'react'
 import {useDispatch, useSelector}                                  from 'react-redux'
+import {history}                                                   from 'redux/store'
 import Div                                                         from 'shared/Basic/Div'
+import LinkSwitch                                                  from 'shared/Basic/LinkSwitch'
 import MotionDiv                                                   from 'shared/Basic/MotionDiv'
 import RichText                                                    from 'shared/Basic/RichText'
 import S3Img                                                       from 'shared/Basic/S3Img'
 import {genericCardImageStyle}                                     from 'shared/Cards/styles'
 import ContentWrapper                                              from 'shared/Layout/ContentWrapper'
 import {fadeIn, fadeOut, nOpacity}                                 from 'shared/Layout/styles/animations'
-import LinkSwitch                                                  from '../../shared/Basic/LinkSwitch'
-import Map                                                         from '../../shared/Map'
+import Map                                                         from 'shared/Map'
+import {isEmpty}                                                   from 'utils/themer'
 import {placeDescriptionStyle, placeTitleStyle, placeWrapperStyle} from './styles'
 
 const Place = () => {
     const dispatch = useDispatch()
-    const {place, boonePlace} = useSelector(state => state.place)
-    const {slug} = useSelector(state => state.site)
+    const {place, boonePlace, error} = useSelector(state => state.place)
     const {name, description, photo} = place
+    const {slug} = useSelector(state => state.site)
     const placeId = slug.substr(slug.lastIndexOf('-') + 1)
-    // const {
-    //     alt_names,
-    //     attribution,
-    //     categories,
-    //     contact_info,
-    //     contact_infos,
-    //     details,
-    //     engagement,
-    //     hours,
-    //     icon,
-    //     icon_url,
-    //     id,
-    //     images,
-    //     locations,
-    //     // name,
-    //     open_now,
-    //     owner_verified,
-    //     parking_details,
-    //     ranking_score,
-    //     regions_hierarchy,
-    //     restaurant_details,
-    //     tags,
-    // } = boonePlace
-
+    const hasNoPlace = error.place?.status === 400
+    const hasNoBoonePlace = error.boonePlace?.status === 500
 
     useEffect(() => {
-        dispatch({
-            type: 'place/getPlace',
-            payload: {slug: slug}
-        })
-
         dispatch({
             type: 'place/getBoonePlace',
             payload: {
@@ -57,11 +32,27 @@ const Place = () => {
             }
         })
 
-
-        console.log('slug', slug)
+        dispatch({
+            type: 'place/getPlace',
+            payload: {
+                placeId: placeId
+            }
+        })
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [slug])
+    }, [])
+
+    useEffect(() => {
+        if (hasNoPlace && hasNoBoonePlace) {
+            history.push(`/places`)
+            console.log('truly doesnnt exist')
+        } else if (!hasNoPlace && !isEmpty(boonePlace)) {
+            console.log('allow auth user to create boone place')
+        }
+
+
+    }, [error])
+
 
     useEffect(() => {
         dispatch({
@@ -91,9 +82,19 @@ const Place = () => {
                             <Div>{description || boonePlace?.description}</Div>
                         )}
                         <Div theme={{display: 'flex', flexDirection: 'column'}}>
-                            <LinkSwitch
-                                url={boonePlace?.contact_info?.website}>{boonePlace?.contact_info?.website}</LinkSwitch>
-                            <Div>{boonePlace?.contact_info?.phone}</Div>
+                            {boonePlace?.contact_info && (
+                                <>
+                                    {boonePlace?.contact_info?.website && (
+                                        <LinkSwitch url={boonePlace?.contact_info?.website}>
+                                            {boonePlace?.contact_info?.website}
+                                        </LinkSwitch>
+                                    )}
+                                    <Div>
+                                        {boonePlace?.contact_info?.phone}
+                                    </Div>
+                                </>
+                            )}
+
                             {boonePlace?.locations && (
                                 <Div>
                                     <Div>Locations:</Div>
@@ -117,8 +118,6 @@ const Place = () => {
                                     ))}
                                 </Div>
                             )}
-
-
                         </Div>
 
 

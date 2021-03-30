@@ -6,8 +6,6 @@ export function* getBooneAutoComplete({payload}) {
     try {
         const suggestions = yield call(getBooneSuggestions, payload)
 
-        console.log('sugg', suggestions)
-
         if (!suggestions.error) {
             yield put({type: 'place/getBooneAutoCompleteSuccess', payload: suggestions})
         } else {

@@ -19,6 +19,7 @@ const Form = ({
                   enableReinitialize,
                   autoSubmit = false,
                   extra = [],
+                  payload = {},
                   children,
                   theme
               }) => {
@@ -30,7 +31,7 @@ const Form = ({
             validationSchema={validationSchema}
             onSubmit={values => dispatch({
                 type: dispatchAction,
-                payload: values
+                payload: {...values, ...payload}
             })}
             enableReinitialize={enableReinitialize}
         >
@@ -40,12 +41,12 @@ const Form = ({
                     theme={{...defaultFormStyle, ...theme}}
                     onSubmit={formik.handleSubmit}
                 ><H3
-                        theme={{
-                            ...defaultFormStyle.heading,
-                            ...theme.heading
-                        }}
-                        children={formHeading}
-                    />
+                    theme={{
+                        ...defaultFormStyle.heading,
+                        ...theme.heading
+                    }}
+                    children={formHeading}
+                />
                     <Div theme={{...defaultFormStyle.inner, ...theme.inner}}>
                         {fields.map((f, i) =>
                             <FieldSwitch

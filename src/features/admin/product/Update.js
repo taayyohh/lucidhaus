@@ -1,22 +1,13 @@
-import {
-    productFields,
-    validateProduct
-}                              from 'config/fields/product'
-import AdminDashboardWrapper   from 'features/admin/AdminDashboardWrapper'
-import React, {
-    useContext,
-    useEffect
-}                              from 'react'
+import {productFields, validateProduct} from 'config/fields/product'
+import AdminDashboardWrapper            from 'features/admin/AdminDashboardWrapper'
+import {adminFormWrapperStyle}          from 'features/admin/styles'
+import React, {useContext, useEffect}   from 'react'
 import 'react-image-crop/dist/ReactCrop.css'
-import {
-    useDispatch,
-    useSelector
-}                              from 'react-redux'
-import {searchContext}         from 'shared/Containers/SearchController'
-import DangerZone     from 'shared/Controls/DangerZone'
-import Form           from 'shared/Fields/Form'
-import ContentWrapper from 'shared/Layout/ContentWrapper'
-import {adminFormWrapperStyle} from 'features/admin/styles'
+import {useDispatch, useSelector}       from 'react-redux'
+import {searchContext}                  from 'shared/Containers/SearchController'
+import DangerZone                       from 'shared/Controls/DangerZone'
+import Form                             from 'shared/Fields/Form'
+import ContentWrapper                   from 'shared/Layout/ContentWrapper'
 
 const Update = () => {
     const dispatch = useDispatch()

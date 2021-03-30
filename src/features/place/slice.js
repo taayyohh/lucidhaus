@@ -3,38 +3,53 @@ import {createSlice} from '@reduxjs/toolkit'
 const initialState = {
     place: [],
     places: [],
+    error: {
+        places: {},
+        boonePlaces: {},
+        place: {},
+        boonePlace: {}
+    },
     boonePlaces: {},
-    boonePlace: {},
-    error: false
+    boonePlace: {}
 }
 
 export const slice = createSlice({
     name: 'place',
     initialState: initialState,
     reducers: {
+        clear: (state, action) => {
+          error: {}
+        },
         getPlaceSuccess: (state, action) => {
             state.place = action.payload
+        },
+        getPlaceFailure: (state, action) => {
+            state.error.place = action.payload
         },
         getPlacesSuccess: (state, action) => {
             state.places = action.payload
         },
         getPlacesFailure: (state, action) => {
-            state.error = action.payload
-        },
-        updatePlaceFailure: (state, action) => {
-            state.error = action.payload
-        },
-        updatePlaceSuccess: (state, action) => {
-            state.place = action.payload
-        },
-        destroyPlaceSuccess: (state, action) => {
-            state.places = state.places.filter(item => item.objectID !== action.payload.objectID)
+            state.error.places = action.payload
         },
         getBooneAutoCompleteSuccess: (state, action) => {
             state.boonePlaces = action.payload
         },
         getBoonePlaceSuccess: (state, action) => {
             state.boonePlace = action.payload.data
+            state.error = {}
+        },
+        getBoonePlaceFailure: (state, action) => {
+            state.error.boonePlace = action.payload
+        },
+        updatePlaceFailure: (state, action) => {
+            state.error.place = action.payload
+        },
+        updatePlaceSuccess: (state, action) => {
+            state.place = action.payload
+        },
+        destroyPlaceSuccess: (state, action) => {
+            state.places = state.places.filter(item => item.objectID !== action.payload.objectID)
         }
     },
 })

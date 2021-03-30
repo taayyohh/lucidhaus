@@ -8,7 +8,11 @@ const Home = () => {
 
     return (
         <ContentWrapper>
-            <Map lon={coords?.lon} lat={coords?.lat}/>
+            <Map
+                lon={coords?.lon}
+                lat={coords?.lat}
+                zoom={13}
+            />
         </ContentWrapper>
     )
 }
