@@ -1,8 +1,8 @@
 import {
     EMAIL,
-    PASSWORD,
+    PASSWORD, TEL,
     TEXT
-}               from 'config'
+} from 'config'
 import * as Yup from 'yup'
 
 export const signUpFields = [
@@ -12,9 +12,9 @@ export const signUpFields = [
         type: TEXT
     },
     {
-        name: 'email',
-        inputLabel: 'Email',
-        type: EMAIL
+        name: 'tel',
+        inputLabel: 'Telephone',
+        type: TEL
     },
     {
         name: 'password',
@@ -35,9 +35,8 @@ export const validateSignup = Yup.object().shape({
         .string()
         .max(50)
         .required('Required'),
-    email: Yup
+    tel: Yup
         .string()
-        .email('Invalid email')
         .required('Required'),
     password: Yup
         .string()

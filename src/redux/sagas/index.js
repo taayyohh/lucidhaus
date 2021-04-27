@@ -1,11 +1,12 @@
 import {all, fork}                 from 'redux-saga/effects'
+import {watchCreatePlaceFromBoone} from './admin/boone'
 import {
     watchAttemptDestroyPlace,
     watchCreatePlace,
     watchDestroyPlace,
     watchDestroyPlaceSuccess,
     watchUpdatePlace
-}                                  from 'redux/sagas/admin/place'
+}                                  from './admin/place'
 import {
     watchAttemptDestroyProduct,
     watchCreateProduct,
@@ -13,23 +14,26 @@ import {
     watchDestroyProductSuccess,
     watchUpdateProduct,
     watchUpdateProductQuantity
-}                                  from 'redux/sagas/admin/product'
+}                                  from './admin/product'
 import {
     watchCreateProductCategory,
     watchDestroyProductCategory,
     watchDestroyProductCategorySuccess,
     watchUpdateProductCategory
-}                                  from 'redux/sagas/admin/productCategory'
-import {watchUpdateProfile}        from 'redux/sagas/admin/user'
+}                                  from './admin/productCategory'
+import {watchUpdateProfile}        from './admin/user'
 import {
     watchAuthenticate,
     watchIsAuthenticated
-}                                                      from './auth'
-import {watchGetBooneAutoComplete, watchGetBoonePlace} from './boone'
+}                                  from './auth'
+import {
+    watchGetBooneAutoComplete,
+    watchGetBoonePlace
+}                                  from './boone'
 import {
     watchAddToCart,
     watchRemoveFromCart
-}                                                      from './cart'
+}                                  from './cart'
 import {
     watchGetOrders,
     watchGetStatusValues,
@@ -93,6 +97,7 @@ export default function* rootSaga() {
         fork(watchDestroyPlaceSuccess),
         fork(watchGetPlaces),
         fork(watchGetPlaceDetail),
+        fork(watchCreatePlaceFromBoone),
 
         // shop
         fork(watchCreateProduct),

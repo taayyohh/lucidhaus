@@ -82,3 +82,19 @@ export const updatePlace = ({slug, _id, token, place}) =>
         })
 
 
+export const addPlaceFromBoone = ({_id, token, place}) =>
+    fetch(`${API}/place/create-from-boone/${_id}`, {
+        method: 'POST',
+        headers: {
+            Accept: 'application/json',
+            Authorization: `Bearer ${token}`
+        },
+        body: place
+    })
+        .then(response => {
+            return response.json()
+        })
+        .catch(error => {
+            return error
+        })
+

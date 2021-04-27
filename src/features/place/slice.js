@@ -7,7 +7,10 @@ const initialState = {
         places: {},
         boonePlaces: {},
         place: {},
-        boonePlace: {}
+        boonePlace: {
+            status: '',
+            message: ''
+        }
     },
     boonePlaces: {},
     boonePlace: {}
@@ -37,7 +40,7 @@ export const slice = createSlice({
         },
         getBoonePlaceSuccess: (state, action) => {
             state.boonePlace = action.payload.data
-            state.error = {}
+            state.error.boonePlace = {}
         },
         getBoonePlaceFailure: (state, action) => {
             state.error.boonePlace = action.payload

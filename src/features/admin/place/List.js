@@ -38,6 +38,8 @@ const List = ({places}) => {
             </>
     )
 
+    console.log('places', places)
+
 
 
     return (

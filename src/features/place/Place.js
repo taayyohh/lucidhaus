@@ -13,18 +13,32 @@ import ContentWrapper                                              from 'shared/
 import {fadeIn, fadeOut, nOpacity}                                 from 'shared/Layout/styles/animations'
 import Map                                                         from 'shared/Map'
 import {isEmpty}                                                   from 'utils/themer'
+import {debounce}                                                  from '../../utils/helpers'
 import {placeDescriptionStyle, placeTitleStyle, placeWrapperStyle} from './styles'
 
 const Place = () => {
     const dispatch = useDispatch()
     const {place, boonePlace, error} = useSelector(state => state.place)
+    const {isAuthenticated, _id, token} = useSelector(state => state.user)
+
     const {name, description, photo} = place
     const {slug} = useSelector(state => state.site)
     const placeId = slug.substr(slug.lastIndexOf('-') + 1)
     const hasNoPlace = error.place?.status === 400
     const hasNoBoonePlace = error.boonePlace?.status === 500
 
-    useEffect(() => {
+    const hasError = (response) => {
+        switch (parseInt(response)) {
+            case 410:
+                return true
+            case 500:
+                return true
+            default:
+                return false
+        }
+    }
+
+    const init = () => {
         dispatch({
             type: 'place/getBoonePlace',
             payload: {
@@ -38,16 +52,53 @@ const Place = () => {
                 placeId: placeId
             }
         })
+    }
+    const handleGetPlace = () => {
+
+    }
+
+    useEffect(() => {
+        init()
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
-
+    //
     useEffect(() => {
-        if (hasNoPlace && hasNoBoonePlace) {
-            history.push(`/places`)
-            console.log('truly doesnnt exist')
-        } else if (!hasNoPlace && !isEmpty(boonePlace)) {
-            console.log('allow auth user to create boone place')
+        const boonePlaceRemoved = hasError(error?.boonePlace?.[0]?.status)
+        const hasNoBoonePlace = hasError(error?.boonePlace?.status)
+        const hasNoPlace = hasError(error?.place?.status)
+        const hasBoonePlace = !isEmpty(boonePlace)
+
+        console.log('boonePlaceRemoved', boonePlaceRemoved)
+        console.log('hasNoBoonePlace', hasNoBoonePlace)
+        console.log('hasNoPlace', hasNoPlace)
+        console.log('hasBoonePlace', hasBoonePlace)
+
+        if (hasNoPlace && hasNoBoonePlace || boonePlaceRemoved) {
+            debounce(history.push(`/places`), 500)
+
+            //TODO::add 404 error
+        } else if (hasNoPlace && hasBoonePlace) {
+            console.log('ADDDD MEEE')
+            console.log('isAuth', isAuthenticated)
+            if (isAuthenticated) {
+
+
+                    console.log('boonePlace', boonePlace)
+                    console.log('is authenticated, so create dispatch action')
+                    dispatch({
+                        type: 'admin/createPlaceFromBoone',
+                        payload: {
+                            // placeId: placeId,
+                            boonePlace: boonePlace,
+                            _id: _id,
+                            token: token
+                        }
+                    })
+
+
+
+            }
         }
 
 

@@ -19,7 +19,7 @@ export const getBooneAutoComplete = ({input, longitude, latitude, radius}) => {
     )
 }
 
-export const getBoonePlace = ({placeId}) => {
+export const getPlaceFromBoone = ({placeId}) => {
     return (
         fetch(`${CORS}${BOONE_HOST}${BOONE_API}canonical_places/${placeId}`, {
             method: 'GET',

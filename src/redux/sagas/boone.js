@@ -1,5 +1,5 @@
-import {call, put, takeEvery}                                                   from 'redux-saga/effects'
-import {getBooneAutoComplete as getBooneSuggestions, getBoonePlace as getPlace} from 'services/apiBoone'
+import {call, put, takeEvery}                                                                from 'redux-saga/effects'
+import {getBooneAutoComplete as getBooneSuggestions, getPlaceFromBoone as getPlaceFromBoone} from 'services/apiBoone'
 
 
 export function* getBooneAutoComplete({payload}) {
@@ -18,14 +18,12 @@ export function* getBooneAutoComplete({payload}) {
 
 export function* getBoonePlace({payload}) {
     try {
-        const place = yield call(getPlace, payload)
+        const place = yield call(getPlaceFromBoone, payload)
 
-        console.log('place', place)
-
-        if (!place.error) {
+        if (!place.errors && !place.error) {
             yield put({type: 'place/getBoonePlaceSuccess', payload: place})
         } else {
-            yield put({type: 'place/getBoonePlaceFailure', payload: place})
+            yield put({type: 'place/getBoonePlaceFailure', payload: place.errors || place})
         }
     } catch (error) {
         yield put({type: 'place/getBooneFailure', error})

@@ -1,14 +1,15 @@
 import {push} from 'connected-react-router'
+import moment from 'moment'
 import {
     call,
     put,
     takeLatest
-} from 'redux-saga/effects'
+}             from 'redux-saga/effects'
 import {
     addPlace,
     deletePlace,
     updatePlace
-} from 'services/apiPlace'
+}             from 'services/apiPlace'
 import {
     getSignedRequest,
     uploadFile
@@ -19,6 +20,7 @@ export function* createPlace({payload}) {
 
     //add to formdata so api can read
     const place = new FormData()
+    place.set('_id', moment().format().replace(/\D+/g, ''))
     place.set('name', name)
     place.set('description', description)
     place.set('photo', photo)

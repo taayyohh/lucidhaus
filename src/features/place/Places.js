@@ -19,17 +19,17 @@ const Places = () => {
     const {geo, getLocation, coords} = useContext(mapContext)
 
     useEffect(() => {
-        if (!isEmpty(coords)) {
-            dispatch({
-                type: 'place/getBooneAutoComplete',
-                payload: {
-                    input: 'bakery',
-                    longitude: coords.lon,
-                    latitude: coords.lat,
-                    radius: 10000
-                }
-            })
-        }
+        // if (!isEmpty(coords)) {
+        //     dispatch({
+        //         type: 'place/getBooneAutoComplete',
+        //         payload: {
+        //             input: 'bakery',
+        //             longitude: coords.lon,
+        //             latitude: coords.lat,
+        //             radius: 10000
+        //         }
+        //     })
+        // }
 
 
         // if(!!booneIndex)

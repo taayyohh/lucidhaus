@@ -1,7 +1,4 @@
-import {
-    useEffect,
-    useState
-} from 'react'
+import {useEffect, useState} from 'react'
 
 export function getBrowserVisibilityProp() {
     if (typeof document.hidden !== "undefined") {
@@ -13,6 +10,7 @@ export function getBrowserVisibilityProp() {
         return "webkitvisibilitychange"
     }
 }
+
 export function getBrowserDocumentHiddenProp() {
     if (typeof document.hidden !== "undefined") {
         return "hidden"
@@ -22,6 +20,7 @@ export function getBrowserDocumentHiddenProp() {
         return "webkitHidden"
     }
 }
+
 export function getIsDocumentHidden() {
     return !document[getBrowserDocumentHiddenProp()]
 }
