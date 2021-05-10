@@ -56,8 +56,12 @@ const Event = () => {
                             )}
                         </Div>
                         <Div theme={eventInfoStyle}>
-                            {attendees?.length < maxAttendees && (
+                            {(attendees?.length < maxAttendees && (
                                 <CreateRsvp/>
+                            ))|| (
+                                <Div theme={{size: [46, .7, 18], maxWidth: 300}}>
+                                    The RSVP list is full, but there still may be space if you come by!
+                                </Div>
                             )}
 
 
