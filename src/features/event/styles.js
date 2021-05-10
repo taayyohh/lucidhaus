@@ -3,7 +3,7 @@ import {auto, borderBox, center, column, flex, row, sv, transparent} from 'utils
 
 export const eventsWrapperStyle = {
     display: 'grid',
-    gridTemplateColumns: '1fr 1fr',
+    gridTemplateColumns: '1fr 1fr 1fr 1fr',
     gridGap: sv(50, globals.style.layoutScalingValue),
     margin: '0 auto',
     mobile: {
@@ -13,6 +13,8 @@ export const eventsWrapperStyle = {
 }
 
 export const eventCardStyle = {
+    border: 0,
+    padding: 0,
     hover: {
         background: transparent
     },
