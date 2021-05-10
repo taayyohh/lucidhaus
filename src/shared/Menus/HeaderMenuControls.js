@@ -45,21 +45,21 @@ const HeaderMenuControls = () => {
                     children={cart.length}
                 />
             </Div>
-            <LinkSwitch
-                url={
-                    isAuthenticated && isAdmin
-                        ? '/admin'
-                        : isAuthenticated
-                        ? '/dashboard'
-                        : '/signin'
-                }
-                theme={headerMenuIconWrapperStyle}
-            >
-                <Icon
-                    icon={user}
-                    theme={headerIconStyle}
-                />
-            </LinkSwitch>
+            {/*<LinkSwitch*/}
+            {/*    url={*/}
+            {/*        isAuthenticated && isAdmin*/}
+            {/*            ? '/admin'*/}
+            {/*            : isAuthenticated*/}
+            {/*            ? '/dashboard'*/}
+            {/*            : '/signin'*/}
+            {/*    }*/}
+            {/*    theme={headerMenuIconWrapperStyle}*/}
+            {/*>*/}
+            {/*    <Icon*/}
+            {/*        icon={user}*/}
+            {/*        theme={headerIconStyle}*/}
+            {/*    />*/}
+            {/*</LinkSwitch>*/}
         </Div>
 
     )

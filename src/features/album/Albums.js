@@ -39,7 +39,7 @@ const Albums = () => {
     return (
         <ContentWrapper>
             <Div theme={albumsWrapperStyle}>
-                {albums && albums?.map(
+                {albums && albums.map(
                     album => album.isPublished && (
                         <GenericCard
                             key={album.slug}

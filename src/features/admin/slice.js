@@ -11,6 +11,7 @@ const initialState = {
     error: '',
     createdPost: '',
     songsToAdd: [],
+    rsvpsToAdd: [],
     redirectToProfile: false,
     formData: '',
     confirmDelete: {
@@ -99,6 +100,24 @@ export const slice = createSlice({
             state.confirmDelete.slug = ''
         },
 
+        //event
+        confirmDestroyEvent: (state, action) => {
+            state.confirmDelete.shouldDelete = true
+            state.confirmDelete.slug = action.payload.slug
+        },
+        denyDestroyEvent: state => {
+            state.confirmDelete.shouldDelete = false
+        },
+        acceptDestroyEvent: state => {
+            state.confirmDelete.destroy = true
+        },
+        destroyEventSuccess: state => {
+            state.confirmDelete.shouldDelete = false
+            state.confirmDelete.destroy = false
+            state.confirmDelete.slug = ''
+        },
+
+
         //songs
         addSongToAlbum: (state, action) => {
             const { title, audio, trackNumber } = action.payload
@@ -115,6 +134,27 @@ export const slice = createSlice({
             state.confirmDelete.destroy = true
         },
         destroySongSuccess: state => {
+            state.confirmDelete.shouldDelete = false
+            state.confirmDelete.destroy = false
+            state.confirmDelete.slug = ''
+        },
+
+        //rsvps
+        addRsvpToEvent: (state, action) => {
+            const { name, email } = action.payload
+            state.rsvpsToAdd.push({ name, email })
+        },
+        confirmDestroyRsvp: (state, action) => {
+            state.confirmDelete.shouldDelete = true
+            state.confirmDelete.slug = action.payload.slug
+        },
+        denyDestroyRsvp: state => {
+            state.confirmDelete.shouldDelete = false
+        },
+        acceptDestroyRsvp: state => {
+            state.confirmDelete.destroy = true
+        },
+        destroyRsvpSuccess: state => {
             state.confirmDelete.shouldDelete = false
             state.confirmDelete.destroy = false
             state.confirmDelete.slug = ''

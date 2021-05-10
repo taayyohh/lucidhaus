@@ -39,7 +39,8 @@ const SmartInput = ({inputLabel, type, disabled, theme, id, className, errorMess
             setLegendWidth(0)
         }
 
-        if (autoSubmit) {
+        if (!!autoSubmit) {
+            console.log('auto', autoSubmit)
             formik.submitForm()
         }
     }

@@ -1,42 +1,4 @@
-import {
-    all,
-    fork
-}                                from 'redux-saga/effects'
-import {
-    watchAttemptDestroyArtist,
-    watchCreateArtist,
-    watchDestroyArtist,
-    watchDestroyArtistSuccess,
-    watchUpdateArtist
-} from 'redux/sagas/admin/artist'
-import {
-    watchAttemptDestroyCollaborator,
-    watchCreateCollaborator,
-    watchDestroyCollaborator,
-    watchDestroyCollaboratorSuccess,
-    watchUpdateCollaborator
-} from 'redux/sagas/admin/collaborator'
-import {
-    watchAttemptDestroyPost,
-    watchCreatePost,
-    watchDestroyPost,
-    watchDestroyPostSuccess,
-    watchUpdatePost
-} from 'redux/sagas/admin/post'
-import {
-    watchAttemptDestroyProduct,
-    watchCreateProduct,
-    watchDestroyProduct,
-    watchDestroyProductSuccess,
-    watchUpdateProduct,
-    watchUpdateProductQuantity
-}                                from 'redux/sagas/admin/product'
-import {
-    watchCreateProductCategory,
-    watchDestroyProductCategory,
-    watchDestroyProductCategorySuccess,
-    watchUpdateProductCategory
-} from 'redux/sagas/admin/productCategory'
+import {all, fork}          from 'redux-saga/effects'
 import {
     watchAddSongToAlbum,
     watchAttemptDestroyAlbum,
@@ -47,24 +9,78 @@ import {
     watchDestroySong,
     watchDestroySongSuccess,
     watchUpdateAlbum
-}                              from 'redux/sagas/admin/album'
-import {watchUpdateProfile}    from 'redux/sagas/admin/user'
+}                           from './admin/album'
 import {
-    watchGetCollaboratorDetail,
-    watchGetCollaborators
-} from 'redux/sagas/collaborator'
+    watchAttemptDestroyArtist,
+    watchCreateArtist,
+    watchDestroyArtist,
+    watchDestroyArtistSuccess,
+    watchUpdateArtist
+}                           from './admin/artist'
+import {
+    watchAttemptDestroyCollaborator,
+    watchCreateCollaborator,
+    watchDestroyCollaborator,
+    watchDestroyCollaboratorSuccess,
+    watchUpdateCollaborator
+}                           from './admin/collaborator'
+import {
+    watchAddRsvpToEvent,
+    watchAttemptDestroyRsvp,
+    watchAttemptDestroyEvent,
+    watchCreateEvent,
+    watchDestroyEvent,
+    watchDestroyEventSuccess,
+    watchDestroyRsvp,
+    watchDestroyRsvpSuccess,
+    watchUpdateEvent
+}                           from './admin/event'
+import {
+    watchAttemptDestroyPost,
+    watchCreatePost,
+    watchDestroyPost,
+    watchDestroyPostSuccess,
+    watchUpdatePost
+}                           from './admin/post'
+import {
+    watchAttemptDestroyProduct,
+    watchCreateProduct,
+    watchDestroyProduct,
+    watchDestroyProductSuccess,
+    watchUpdateProduct,
+    watchUpdateProductQuantity
+}                           from './admin/product'
+import {
+    watchCreateProductCategory,
+    watchDestroyProductCategory,
+    watchDestroyProductCategorySuccess,
+    watchUpdateProductCategory
+}                           from './admin/productCategory'
+import {watchUpdateProfile} from './admin/user'
+import {
+    watchGetAlbumDetail,
+    watchGetAlbums
+}                           from './album'
 import {
     watchGetArtistDetail,
     watchGetArtists
-}                              from './artist'
+}                           from './artist'
 import {
     watchAuthenticate,
     watchIsAuthenticated
-}                              from './auth'
+}                           from './auth'
 import {
     watchAddToCart,
     watchRemoveFromCart
-}                              from './cart'
+}                           from './cart'
+import {
+    watchGetCollaboratorDetail,
+    watchGetCollaborators
+}                           from './collaborator'
+import {
+    watchGetEventDetail,
+    watchGetEvents
+}                           from './event'
 import {
     watchGetOrders,
     watchGetStatusValues,
@@ -92,10 +108,6 @@ import {
     watchLoadConfig,
     watchNavigate
 }                           from './site'
-import {
-    watchGetAlbumDetail,
-    watchGetAlbums
-}                           from './album'
 import {
     watchSignIn,
     watchSignOut,
@@ -142,6 +154,19 @@ export default function* rootSaga() {
         fork(watchGetCollaborators),
         fork(watchGetCollaboratorDetail),
 
+        // event
+        fork(watchCreateEvent),
+        fork(watchUpdateEvent),
+        fork(watchAttemptDestroyEvent),
+        fork(watchDestroyEvent),
+        fork(watchDestroyEventSuccess),
+        fork(watchGetEvents),
+        fork(watchGetEventDetail),
+        fork(watchAddRsvpToEvent),
+        fork(watchAttemptDestroyRsvp),
+        fork(watchDestroySong),
+        fork(watchDestroySongSuccess),
+
 
         // album
         fork(watchCreateAlbum),
@@ -155,7 +180,6 @@ export default function* rootSaga() {
         fork(watchAttemptDestroySong),
         fork(watchDestroySong),
         fork(watchDestroySongSuccess),
-
 
 
         // post

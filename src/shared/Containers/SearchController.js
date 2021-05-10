@@ -15,6 +15,7 @@ const SearchController = ({children}) => {
     const artistsIndex = searchClient.initIndex('Artists')
     const collaboratorsIndex = searchClient.initIndex('Collaborators')
     const albumsIndex = searchClient.initIndex('Albums')
+    const eventsIndex = searchClient.initIndex('Events')
     const productCategoriesIndex = searchClient.initIndex('ProductCategories')
 
     return (
@@ -26,6 +27,7 @@ const SearchController = ({children}) => {
             artistsIndex,
             collaboratorsIndex,
             albumsIndex,
+            eventsIndex,
             productCategoriesIndex
         }}>
             {children}

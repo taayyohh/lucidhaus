@@ -40,6 +40,11 @@ export const adminDashboardMenu = [
         title: 'Manage Collaborators'
     },
     {
+        url: '/admin/events',
+        icon: users,
+        title: 'Manage Events'
+    },
+    {
         url: '/admin/music',
         active: ['music'],
         icon: music,

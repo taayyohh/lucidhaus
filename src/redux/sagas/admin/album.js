@@ -3,16 +3,16 @@ import {
     call,
     put,
     takeLatest
-}             from 'redux-saga/effects'
+}                       from 'redux-saga/effects'
 import {
     addAlbum,
     deleteAlbum,
     updateAlbum
-}             from 'services/apiAlbum'
+}                       from 'services/apiAlbum'
 import {
     getSignedRequest,
     uploadFile
-}             from 'services/apiS3'
+}                       from 'services/apiS3'
 
 export function* createAlbum({payload}) {
     const {_id, token, coverArt, coverArtFile, albumName, collaborators, primaryArtist, description, isPublished} = payload
@@ -114,11 +114,9 @@ export function* destroyAlbum({payload}) {
     }
 }
 
-
 export function* destroyAlbumSuccess() {
     yield put(push('/admin/music'))
 }
-
 
 export function* addSongToAlbum({payload}) {
     const {slug, _id, token, audio, audioId, audioFile, title, trackNumber} = payload

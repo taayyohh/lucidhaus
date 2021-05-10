@@ -23,18 +23,21 @@ const UserDashboard = lazy(() => import('features/user/dashboard'))
 const CreatePost = lazy(() => import('features/admin/post/Create'))
 const CreateArtist = lazy(() => import('features/admin/artist/Create'))
 const CreateCollaborator = lazy(() => import('features/admin/collaborator/Create'))
+const CreateEvent = lazy(() => import('features/admin/event/Create'))
 const CreateAlbum = lazy(() => import('features/admin/album/Create'))
 const CreateProduct = lazy(() => import('features/admin/product/Create'))
 const CreateProductCategory = lazy(() => import('features/admin/taxonomy/productCategory/Create'))
 const ManagePosts = lazy(() => import('features/admin/post/Manage'))
 const ManageArtists = lazy(() => import('features/admin/artist/Manage'))
 const ManageCollaborators = lazy(() => import('features/admin/collaborator/Manage'))
+const ManageEvents = lazy(() => import('features/admin/event/Manage'))
 const ManageAlbums = lazy(() => import('features/admin/album/Manage'))
 const ManageOrders = lazy(() => import('features/admin/order/Manage'))
 const ManageShop = lazy(() => import('features/admin/product/Manage'))
 const ManageTaxonomy = lazy(() => import('features/admin/taxonomy/Manage'))
 const UpdateArtist = lazy(() => import('features/admin/artist/Update'))
 const UpdateCollaborator = lazy(() => import('features/admin/collaborator/Update'))
+const UpdateEvent = lazy(() => import('features/admin/event/Update'))
 const UpdateAlbum = lazy(() => import('features/admin/album/Update'))
 const UpdatePost = lazy(() => import('features/admin/post/Update'))
 const UpdateProduct = lazy(() => import('features/admin/product/Update'))
@@ -43,6 +46,8 @@ const Artist = lazy(() => import('features/artist/Artist'))
 const Artists = lazy(() => import('features/artist/Artists'))
 const Collaborator = lazy(() => import('features/collaborator/Collaborator'))
 const Collaborators = lazy(() => import('features/collaborator/Collaborators'))
+const Event = lazy(() => import('features/event/Event'))
+const Events = lazy(() => import('features/event/Events'))
 const Album = lazy(() => import('features/album/Album'))
 const Albums = lazy(() => import('features/album/Albums'))
 const Post = lazy(() => import('features/post/Post'))
@@ -73,6 +78,8 @@ const Routes = () => {
                             <Route path="/artists/:slug" exact component={Artist} sitemapIndex={true}/>
                             <Route path="/collaborators" exact component={Collaborators} sitemapIndex={true}/>
                             <Route path="/collaborators/:slug" exact component={Collaborator} sitemapIndex={true}/>
+                            <Route path="/events" exact component={Events} sitemapIndex={true}/>
+                            <Route path="/events/:slug" exact component={Event} sitemapIndex={true}/>
                             <Route path="/music" exact component={Albums} sitemapIndex={true}/>
                             <Route path="/music/:slug" exact component={Album} sitemapIndex={true}/>
                             <Route path="/posts" exact component={Posts} sitemapIndex={true}/>
@@ -94,6 +101,11 @@ const Routes = () => {
                             <AdminRoute path="/admin/collaborators" exact component={ManageCollaborators}/>
                             <AdminRoute path="/admin/collaborators/update/:slug" exact component={UpdateCollaborator}/>
                             <AdminRoute path="/create/collaborator" exact component={CreateCollaborator}/>
+
+                            <AdminRoute path="/admin/events" exact component={ManageEvents}/>
+                            <AdminRoute path="/admin/events/update/:slug" exact component={UpdateEvent}/>
+                            <AdminRoute path="/create/event" exact component={CreateEvent}/>
+
                             <AdminRoute path="/admin/music" exact component={ManageAlbums}/>
                             <AdminRoute path="/admin/music/update/:slug" exact component={UpdateAlbum}/>
                             <AdminRoute path="/create/album" exact component={CreateAlbum}/>

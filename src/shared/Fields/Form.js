@@ -47,13 +47,13 @@ const Form = ({
                         children={formHeading}
                     />
                     <Div theme={{...defaultFormStyle.inner, ...theme.inner}}>
-                        {fields.map((f, i) =>
+                        {fields?.map((f, i) =>
                             <FieldSwitch
                                 key={i}
                                 formik={formik}
                                 field={f}
                                 options={options}
-                                autoSubmit
+                              //  autoSubmit
                             />
                         )}
                     </Div>

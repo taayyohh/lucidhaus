@@ -14,6 +14,7 @@ import postReducer            from 'features/post/slice'
 import shopReducer            from 'features/shop/slice'
 import siteReducer            from 'features/site/slice'
 import userReducer            from 'features/user/slice'
+import eventReducer            from 'features/event/slice'
 import {createBrowserHistory} from 'history'
 import {createLogger}         from 'redux-logger'
 import createSagaMiddleware   from 'redux-saga'
@@ -40,10 +41,12 @@ if (!['production'].includes(process.env.NODE_ENV)) {
                     'admin/createArtist',
                     'admin/createCollaborator',
                     'admin/createAlbum',
+                    'admin/createEvent',
                     'admin/updatePost',
                     'admin/updateProduct',
                     'admin/updateArtist',
                     'admin/updateCollaborator',
+                    'admin/updateEvent',
                     'admin/updateAlbum',
                     'shop/getPaymentNonce'
                 ],
@@ -63,6 +66,7 @@ export default configureStore({
         shop: shopReducer,
         artist: artistReducer,
         collaborator: collaboratorReducer,
+        event: eventReducer,
         album: albumReducer,
         router: connectRouter(history)
     },

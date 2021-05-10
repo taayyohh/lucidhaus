@@ -11,5 +11,9 @@ export const headerMenu = [
         url: '/music',
         title: 'Music',
         active: ['albums'],
+    },
+    {
+        url: '/events',
+        title: 'Events',
     }
 ]

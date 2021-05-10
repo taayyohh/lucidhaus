@@ -43,7 +43,7 @@ const FieldSwitch = memo(({field, formik, options, autoSubmit}) => {
                 disabled={field.disabled}
                 className={formik.touched[field.name] && formik.errors[field.name] ? 'error' : ''}
                 errorMessage={formik.touched[field.name] && formik.errors[field.name] ? formik.errors[field.name] : null}
-                autoSubmit
+                autoSubmit={false}
                 formik={formik}
             />
         case RICH_TEXT:

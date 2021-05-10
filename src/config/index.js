@@ -56,6 +56,7 @@ export const UPLOAD_PATHS = {
     post: 'post/',
     shop: 'shop/',
     artist: 'artist/',
+    event: 'event/',
     collaborator: 'collaborator/',
     audio: 'audio/',
     audioCoverArt: 'audio/coverArt/'
