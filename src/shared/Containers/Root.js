@@ -10,7 +10,6 @@ import MenuPanelController        from './MenuPanelController'
 import SearchController           from './SearchController'
 import TransitionController       from './TransitionController'
 
-
 const Root = () => {
     const {isInitialized} = useSelector(state => state.site)
     const dispatch = useDispatch()
@@ -20,7 +19,6 @@ const Root = () => {
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
-
 
     return (
         <>

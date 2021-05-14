@@ -9,19 +9,18 @@ import FieldSwitch        from 'shared/Fields'
 import {defaultFormStyle} from './styles'
 
 const Form = ({
-                  initialValues,
-                  fields,
-                  options,
-                  validationSchema,
-                  dispatchAction,
-                  formHeading,
-                  buttonText,
-                  enableReinitialize,
                   autoSubmit = false,
-                  extra = [],
-                  payload = {},
+                  buttonText,
                   children,
-                  theme
+                  dispatchAction,
+                  enableReinitialize,
+                  fields,
+                  formHeading,
+                  initialValues,
+                  options,
+                  payload = {},
+                  theme,
+                  validationSchema
               }) => {
     const dispatch = useDispatch()
 
@@ -40,13 +39,14 @@ const Form = ({
                     as="form"
                     theme={{...defaultFormStyle, ...theme}}
                     onSubmit={formik.handleSubmit}
-                ><H3
-                    theme={{
-                        ...defaultFormStyle.heading,
-                        ...theme.heading
-                    }}
-                    children={formHeading}
-                />
+                >
+                    <H3
+                        theme={{
+                            ...defaultFormStyle.heading,
+                            ...theme.heading
+                        }}
+                        children={formHeading}
+                    />
                     <Div theme={{...defaultFormStyle.inner, ...theme.inner}}>
                         {fields.map((f, i) =>
                             <FieldSwitch
@@ -54,7 +54,7 @@ const Form = ({
                                 formik={formik}
                                 field={f}
                                 options={options}
-                                autoSubmit
+                                // autoSubmit
                             />
                         )}
                     </Div>

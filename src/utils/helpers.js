@@ -170,14 +170,13 @@ export const getScrollbarWidth = () => {
 
 }
 
-export const bytesToMegaBytes = bytes => (bytes / (1024*1024)).toFixed(2)
+export const bytesToMegaBytes = bytes => (bytes / (1024 * 1024)).toFixed(2)
 
 export const getById = (arr, id) =>
     arr.filter(item => item._id === id)[0]
 
 export const getNameById = (arr, id) =>
     arr.filter(item => item._id === id)[0]?.name
-
 
 
 /**
@@ -222,3 +221,23 @@ export const debounce = (func, wait) => {
         timeout = setTimeout(later, wait)
     }
 }
+
+
+/**
+ *
+ * Format Phone Number
+ *
+ */
+
+
+export const formatPhone = (value) => value
+    .match(/\d*/g).join('')
+    .match(/(\d{0,3})(\d{0,3})(\d{0,4})/).slice(1).join('-')
+    .replace(/-*$/g, '')
+
+
+export const phoneRegExp = /^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/
+export const passwordRegExp = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/
+
+
+

@@ -30,7 +30,8 @@ if (!['production'].includes(process.env.NODE_ENV)) {
                     'admin/createPlace',
                     'admin/updateProduct',
                     'admin/updatePlace',
-                    'shop/getPaymentNonce'
+                    'shop/getPaymentNonce',
+                    'user/signUp'
                 ],
             },
             immutableCheck: false

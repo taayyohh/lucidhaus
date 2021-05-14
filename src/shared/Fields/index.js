@@ -35,14 +35,14 @@ const FieldSwitch = memo(({field, formik, options, autoSubmit}) => {
         case TEL:
             return <SmartInput
                 {...formik.getFieldProps(field.name)}
+                className={formik.touched[field.name] && formik.errors[field.name] ? 'error' : ''}
+                disabled={field.disabled}
+                errorMessage={formik.touched[field.name] && formik.errors[field.name] ? formik.errors[field.name] : null}
+                formik={formik}
                 id={field.name}
                 inputLabel={field.inputLabel}
                 type={field.type}
-                disabled={field.disabled}
-                className={formik.touched[field.name] && formik.errors[field.name] ? 'error' : ''}
-                errorMessage={formik.touched[field.name] && formik.errors[field.name] ? formik.errors[field.name] : null}
-                autoSubmit
-                formik={formik}
+                //autoSubmit
             />
         case RICH_TEXT:
             return <RichTextEditor

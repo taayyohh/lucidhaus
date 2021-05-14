@@ -1,28 +1,36 @@
-import {globals}  from 'config/styles'
-import PropTypes  from 'prop-types'
-import React, {
-    useEffect,
-    useRef,
-    useState
-}                 from 'react'
-import Fieldset   from 'shared/Basic/Fieldset'
-import Input      from 'shared/Basic/Input'
-import InputLabel from 'shared/Basic/InputLabel'
-import Legend     from 'shared/Basic/Legend'
-import Span       from 'shared/Basic/Span'
-import useMeasure from 'utils/useMeasure'
-import {
-    defaultFieldErrorStyle,
-    defaultFocusedInputLabelStyle
-}                 from './styles'
+import {TEL}                                                   from 'config'
+import {globals}                                               from 'config/styles'
+import PropTypes                                               from 'prop-types'
+import React, {useEffect, useRef, useState}                    from 'react'
+import Fieldset                                                from 'shared/Basic/Fieldset'
+import Input                                                   from 'shared/Basic/Input'
+import InputLabel                                              from 'shared/Basic/InputLabel'
+import Legend                                                  from 'shared/Basic/Legend'
+import Span                                                    from 'shared/Basic/Span'
+import {formatPhone}                                           from 'utils/helpers'
+import useMeasure                                              from 'utils/useMeasure'
+import {defaultFieldErrorStyle, defaultFocusedInputLabelStyle} from './styles'
 
-const SmartInput = ({inputLabel, type, disabled, theme, id, className, errorMessage, onChange, autoSubmit = false, formik, value}) => {
+const SmartInput = ({
+                        autoSubmit = false,
+                        className,
+                        disabled,
+                        errorMessage,
+                        formik,
+                        id,
+                        inputLabel,
+                        onChange,
+                        theme,
+                        type,
+                        value
+                    }) => {
     const legendRef = useRef()
     const inputLabelRef = useRef()
     const inputLabelWidth = useMeasure(inputLabelRef).width * globals.style.inputLabelShrinkRatio
     const [isInputLabelFocused, setIsInputLabelFocused] = useState(false)
     const [hasValue, setHasValue] = useState(false)
     const [legendWidth, setLegendWidth] = useState(0)
+    const [tel, setTel] = useState(undefined)
 
     useEffect(() => {
         const valueExists = Number.isInteger(value) || value?.length > 0
@@ -31,7 +39,6 @@ const SmartInput = ({inputLabel, type, disabled, theme, id, className, errorMess
         setLegendWidth(value?.length < 1 ? 0 : inputLabelWidth)
 
     }, [setHasValue, setIsInputLabelFocused, inputLabelWidth, value])
-
 
     const handleBlur = () => {
         if (!hasValue) {
@@ -43,10 +50,17 @@ const SmartInput = ({inputLabel, type, disabled, theme, id, className, errorMess
             formik.submitForm()
         }
     }
-
     const handleFocus = () => {
         setIsInputLabelFocused(true)
         setLegendWidth(inputLabelWidth)
+    }
+    const handleKeyUp = () => {
+        switch (type) {
+            case TEL:
+                return setTel(formatPhone(value))
+            default:
+                return null
+        }
     }
 
     return (
@@ -72,8 +86,9 @@ const SmartInput = ({inputLabel, type, disabled, theme, id, className, errorMess
                 onChange={onChange}
                 onFocus={handleFocus}
                 onBlur={handleBlur}
+                onKeyUp={handleKeyUp}
                 type={type || 'text'}
-                value={value || ''}
+                value={tel || value || ''}
                 theme={theme.field}
                 disabled={disabled}
             />

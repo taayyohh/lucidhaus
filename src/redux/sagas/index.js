@@ -62,11 +62,12 @@ import {
     watchNavigate
 }                                  from './site'
 import {
+    watchConfirmUser,
     watchSignIn,
     watchSignOut,
     watchSignUp,
     watchUserHistory
-}                                  from './user'
+} from './user'
 
 
 //TODO: determine best method of combining rootSaga
@@ -87,6 +88,7 @@ export default function* rootSaga() {
         //user
         fork(watchUserHistory),
         fork(watchUpdateProfile),
+        fork(watchConfirmUser),
 
 
         // place

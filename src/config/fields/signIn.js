@@ -16,15 +16,16 @@
 
 import {
     EMAIL,
-    PASSWORD
-}               from 'config'
-import * as Yup from 'yup'
+    PASSWORD, TEXT
+}                    from 'config'
+import * as Yup      from 'yup'
+import {phoneRegExp} from '../../utils/helpers'
 
 export const signInFields = [
     {
-        name: 'email',
-        inputLabel: 'Email',
-        type: EMAIL
+        name: 'tel',
+        inputLabel: 'Telephone',
+        type: TEXT
     },
     {
         name: 'password',
@@ -42,9 +43,8 @@ export const signInFields = [
  */
 
 export const validateSignin = Yup.object().shape({
-    email: Yup
-        .string()
-        .email('Invalid email')
+    tel: Yup.string()
+        .matches(phoneRegExp, 'Phone number is not valid')
         .required('Required'),
     password: Yup
         .string()

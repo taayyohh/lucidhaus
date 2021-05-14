@@ -16,6 +16,22 @@ export const signup = user =>
             return error
     })
 
+export const confirmSignup = user =>
+    fetch(`${API}/confirmSignup`, {
+        method: "POST",
+        headers: {
+            Accept: 'application/json',
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(user)
+    })
+        .then(response => {
+            return response.json()
+        })
+        .catch(error => {
+            return error
+        })
+
 
 export const signin = user =>
     fetch(`${API}/signin`, {

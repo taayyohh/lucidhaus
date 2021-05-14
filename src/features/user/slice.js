@@ -11,7 +11,8 @@ const initialState = {
     error: false,
     loading: false,
     redirectToReferrer: false,
-    purchaseHistory: []
+    purchaseHistory: [],
+    confirmationRequest: undefined
 }
 
 export const slice = createSlice({
@@ -87,6 +88,9 @@ export const slice = createSlice({
         },
         updateFailure: (state, action) => {
             state.error = action.payload.error
+        },
+        requestTwilioCodeConfirmation: (state, action) => {
+            state.confirmationRequest = action.payload
         }
     },
 })
