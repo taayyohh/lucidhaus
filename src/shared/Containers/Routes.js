@@ -15,6 +15,7 @@ const CreatePlace = lazy(() => import('features/admin/place/Create'))
 const CreateProduct = lazy(() => import('features/admin/product/Create'))
 const CreateProductCategory = lazy(() => import('features/admin/taxonomy/productCategory/Create'))
 const ManagePlaces = lazy(() => import('features/admin/place/Manage'))
+const ManageUsers= lazy(() => import('features/admin/user/Manage'))
 const ManageOrders = lazy(() => import('features/admin/order/Manage'))
 const ManageShop = lazy(() => import('features/admin/product/Manage'))
 const ManageTaxonomy = lazy(() => import('features/admin/taxonomy/Manage'))
@@ -35,21 +36,20 @@ const UserSettings = lazy(() => import('features/user/dashboard/Settings'))
 const Routes = () => {
     const {contentAnimation, currentPath} = useContext(TransitionAnimations)
 
-
     return (
         <AnimateSharedLayout type="crossfade">
             <AnimatePresence>
                 <MotionDiv animate={contentAnimation} theme={{width: '100%'}}>
                     <Suspense fallback={<Fallback/>}>
                         <Switch location={{pathname: currentPath}}>
-                            <Route path="/" exact component={Home} sitemapIndex={true}/>
-                            <Route path="/signup" exact component={SignUp} sitemapIndex={true}/>
-                            <Route path="/signin" exact component={SignIn} sitemapIndex={true}/>
-                            <Route path="/places" exact component={Places} sitemapIndex={true}/>
-                            <Route path="/places/:slug" exact component={Place} sitemapIndex={true}/>
-                            <Route path="/shop" exact component={Shop} sitemapIndex={true}/>
-                            <Route path="/shop/:slug" exact component={Product} sitemapIndex={true}/>
-                            <Route path="/shop/category/:slug" exact component={FilteredProduct} sitemapIndex={true}/>
+                            <Route path="/" exact component={Home} />
+                            <Route path="/signup" exact component={SignUp} />
+                            <Route path="/signin" exact component={SignIn} />
+                            <Route path="/places" exact component={Places} />
+                            <Route path="/places/:slug" exact component={Place} />
+                            <Route path="/shop" exact component={Shop} />
+                            <Route path="/shop/:slug" exact component={Product} />
+                            <Route path="/shop/category/:slug" exact component={FilteredProduct} />
                             <PrivateRoute path="/dashboard" exact component={UserDashboard}/>
                             <PrivateRoute path="/dashboard/orders" exact component={UserOrders}/>
                             <PrivateRoute path="/dashboard/settings" exact component={UserSettings}/>
@@ -58,6 +58,7 @@ const Routes = () => {
                             <AdminRoute path="/admin/taxonomy" exact component={ManageTaxonomy}/>
                             <AdminRoute path="/admin/product-category" exact component={ManageTaxonomy}/>
                             <AdminRoute path="/admin/places" exact component={ManagePlaces}/>
+                            <AdminRoute path="/admin/users" exact component={ManageUsers}/>
                             <AdminRoute path="/admin/places/update/:slug" exact component={UpdatePlace}/>
                             <AdminRoute path="/create/place" exact component={CreatePlace}/>
                             <AdminRoute path="/admin/shop/update/:slug" exact component={UpdateProduct}/>
@@ -68,7 +69,7 @@ const Routes = () => {
                             <AdminRoute path="/create/product" exact component={CreateProduct}/>
                             <AdminRoute path="/create/product-category" exact component={CreateProductCategory}/>
                             <AdminRoute path="/sitemap" exact component={Sitemap}/>
-                            <Route component={NotFound} sitemapIndex={true}/>
+                            <Route component={NotFound} />
                         </Switch>
                     </Suspense>
                 </MotionDiv>

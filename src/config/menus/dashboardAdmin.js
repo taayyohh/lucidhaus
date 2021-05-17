@@ -7,6 +7,12 @@ export const adminDashboardMenu = [
         title: 'Dashboard'
     },
     {
+        url: '/admin/users',
+        active: ['user'],
+        icon: user,
+        title: 'Manage Users'
+    },
+    {
         url: '/admin/places',
         active: ['place'],
         icon: user,

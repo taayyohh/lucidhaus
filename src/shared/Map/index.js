@@ -1,7 +1,7 @@
+import mapboxgl           from '!mapbox-gl'
 import {MAPBOX_PUBLIC}    from 'config'
 import React, {useEffect} from 'react'
 import Div                from 'shared/Basic/Div'
-import mapboxgl           from '!mapbox-gl'
 /* eslint import/no-webpack-loader-syntax: off */
 
 const Map = ({lon, lat, zoom = 14, theme}) => {
@@ -17,8 +17,10 @@ const Map = ({lon, lat, zoom = 14, theme}) => {
 
             const marker = new mapboxgl.Marker()
                 .setLngLat([lon, lat])
-                .addTo(map);
+                .addTo(map)
         }
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [lon, lat])
 
     return (

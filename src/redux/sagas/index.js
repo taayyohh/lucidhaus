@@ -62,7 +62,7 @@ import {
     watchNavigate
 }                                  from './site'
 import {
-    watchConfirmUser,
+    watchConfirmUser, watchGetUsers,
     watchSignIn,
     watchSignOut,
     watchSignUp,
@@ -89,6 +89,7 @@ export default function* rootSaga() {
         fork(watchUserHistory),
         fork(watchUpdateProfile),
         fork(watchConfirmUser),
+        fork(watchGetUsers),
 
 
         // place

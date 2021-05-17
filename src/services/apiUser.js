@@ -141,3 +141,14 @@ export const updateUser = ({user}) => {
         }
     }
 }
+
+export const getUsers = () =>
+    fetch(`${API}/users?limit=undefined`, {
+        method: 'GET'
+    })
+        .then(response => {
+            return response.json()
+        })
+        .catch(error => {
+            return error
+        })

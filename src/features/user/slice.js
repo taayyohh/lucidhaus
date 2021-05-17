@@ -4,7 +4,7 @@ const initialState = {
     _id: '',
     token: '',
     name: '',
-    email: '',
+    tel: '',
     slug: '',
     isAuthenticated: false,
     isAdmin: false,
@@ -12,7 +12,8 @@ const initialState = {
     loading: false,
     redirectToReferrer: false,
     purchaseHistory: [],
-    confirmationRequest: undefined
+    confirmationRequest: undefined,
+    users: []
 }
 
 export const slice = createSlice({
@@ -26,7 +27,7 @@ export const slice = createSlice({
             state.loading = false
             state.error = false
             state.name = action.payload.user.name
-            state.email = action.payload.user.email
+            state.tel = action.payload.user.tel
             state.isAdmin = action.payload.user.role === 1
         },
         signInFailure: (state, action) => {
@@ -45,7 +46,7 @@ export const slice = createSlice({
         isAuthenticatedSuccess: (state, action) => {
             state.token = action.payload.token
             state.isAuthenticated = true
-            state.email = action.payload.user.email
+            state.tel = action.payload.user.tel
             state.name = action.payload.user.name
             state._id = action.payload.user._id
             state.isAdmin = action.payload.user.role === 1
@@ -55,7 +56,7 @@ export const slice = createSlice({
         },
         signOutSuccess: state => {
             state.name = ''
-            state.email = ''
+            state.tel = ''
             state.error = false
             state.loading = false
             state.redirectToReferrer = false
@@ -83,7 +84,7 @@ export const slice = createSlice({
         },
         updateSuccess: (state, action) => {
             state.name = action.payload.name
-            state.email = action.payload.email
+            state.tel = action.payload.tel
             state.slug = action.payload.slug
         },
         updateFailure: (state, action) => {
@@ -91,7 +92,10 @@ export const slice = createSlice({
         },
         requestTwilioCodeConfirmation: (state, action) => {
             state.confirmationRequest = action.payload
-        }
+        },
+        getUsersSuccess: (state, action) => {
+            state.users = action.payload
+        },
     },
 })
 

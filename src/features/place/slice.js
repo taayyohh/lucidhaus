@@ -21,7 +21,15 @@ export const slice = createSlice({
     initialState: initialState,
     reducers: {
         clear: (state, action) => {
-          error: {}
+          state.error = {
+              places: {},
+              boonePlaces: {},
+              place: {},
+              boonePlace: {
+                  status: '',
+                  message: ''
+              }
+          }
         },
         getPlaceSuccess: (state, action) => {
             state.place = action.payload

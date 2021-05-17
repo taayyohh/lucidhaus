@@ -1,5 +1,3 @@
-import {push}                  from 'connected-react-router'
-import moment                  from 'moment'
 import {call, put, takeLatest} from 'redux-saga/effects'
 import {addPlaceFromBoone}     from 'services/apiPlace'
 

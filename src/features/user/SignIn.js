@@ -11,7 +11,7 @@ import {signUpPromptStyle}                       from "./styles";
 
 const SignIn = () => {
     const {isAuthenticated, isAdmin} = useSelector(state => state.user)
-    const initialValues = {email: '', password: ''}
+    const initialValues = {tel: '', password: ''}
 
     useEffect(() => {
         if (isAuthenticated)

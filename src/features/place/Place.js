@@ -12,8 +12,8 @@ import {genericCardImageStyle}                                     from 'shared/
 import ContentWrapper                                              from 'shared/Layout/ContentWrapper'
 import {fadeIn, fadeOut, nOpacity}                                 from 'shared/Layout/styles/animations'
 import Map                                                         from 'shared/Map'
+import {debounce}                                                  from 'utils/helpers'
 import {isEmpty}                                                   from 'utils/themer'
-import {debounce}                                                  from '../../utils/helpers'
 import {placeDescriptionStyle, placeTitleStyle, placeWrapperStyle} from './styles'
 
 const Place = () => {
@@ -24,8 +24,6 @@ const Place = () => {
     const {name, description, photo} = place
     const {slug} = useSelector(state => state.site)
     const placeId = slug.substr(slug.lastIndexOf('-') + 1)
-    const hasNoPlace = error.place?.status === 400
-    const hasNoBoonePlace = error.boonePlace?.status === 500
 
     const hasError = (response) => {
         switch (parseInt(response)) {
@@ -53,55 +51,39 @@ const Place = () => {
             }
         })
     }
-    const handleGetPlace = () => {
-
-    }
 
     useEffect(() => {
         init()
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
-    //
+
     useEffect(() => {
         const boonePlaceRemoved = hasError(error?.boonePlace?.[0]?.status)
         const hasNoBoonePlace = hasError(error?.boonePlace?.status)
         const hasNoPlace = hasError(error?.place?.status)
         const hasBoonePlace = !isEmpty(boonePlace)
 
-        console.log('boonePlaceRemoved', boonePlaceRemoved)
-        console.log('hasNoBoonePlace', hasNoBoonePlace)
-        console.log('hasNoPlace', hasNoPlace)
-        console.log('hasBoonePlace', hasBoonePlace)
 
-        if (hasNoPlace && hasNoBoonePlace || boonePlaceRemoved) {
+        if ((hasNoPlace && hasNoBoonePlace) || boonePlaceRemoved) {
             debounce(history.push(`/places`), 500)
 
             //TODO::add 404 error
         } else if (hasNoPlace && hasBoonePlace) {
-            console.log('ADDDD MEEE')
-            console.log('isAuth', isAuthenticated)
             if (isAuthenticated) {
-
-
-                    console.log('boonePlace', boonePlace)
-                    console.log('is authenticated, so create dispatch action')
-                    dispatch({
-                        type: 'admin/createPlaceFromBoone',
-                        payload: {
-                            // placeId: placeId,
-                            boonePlace: boonePlace,
-                            _id: _id,
-                            token: token
-                        }
-                    })
-
-
-
+                dispatch({
+                    type: 'admin/createPlaceFromBoone',
+                    payload: {
+                        // placeId: placeId,
+                        boonePlace: boonePlace,
+                        _id: _id,
+                        token: token
+                    }
+                })
             }
         }
 
-
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [error])
 
 
@@ -129,7 +111,7 @@ const Place = () => {
                                 {name || boonePlace?.name}
                             </MotionDiv>
                         )}
-                        {description || boonePlace?.description && (
+                        {(description || boonePlace?.description) && (
                             <Div>{description || boonePlace?.description}</Div>
                         )}
                         <Div theme={{display: 'flex', flexDirection: 'column'}}>

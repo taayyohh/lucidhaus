@@ -2,7 +2,7 @@ import {push}                                              from 'connected-react
 import {takeEvery}                                         from 'redux-saga/dist/redux-saga-effects-npm-proxy.esm'
 import {call, put}                                         from 'redux-saga/effects'
 import {confirmTwilioVerification, sendTwilioVerification} from 'services/apiTwilio'
-import {getPurchaseHistory, signin, signout, signup}       from 'services/apiUser'
+import {getPurchaseHistory, signin, signout, signup, getUsers}       from 'services/apiUser'
 
 export function* signIn({payload}) {
     try {
@@ -37,7 +37,6 @@ export function* signOut() {
 
 export function* signUp({payload}) {
     //TODO: if no users exists in database make first user a superAdmin
-    const to = `+1${payload.tel.replace(/-/g, "")}`
 
     const verificationToken = yield call(sendTwilioVerification, payload)
     if (verificationToken === 'pending') {
@@ -59,6 +58,13 @@ export function* confirmUser({payload}) {
         try {
             if (!user.error) {
                 yield put({type: 'user/signUpSuccess', payload: user})
+                yield put({
+                    type: 'site/setNotification',
+                    payload: {
+                        notification: 'account created!',
+                        theme: 'green'
+                    }
+                })
                 yield put(push('/signin/'))
             } else {
                 yield put({
@@ -73,7 +79,13 @@ export function* confirmUser({payload}) {
             yield put({type: 'user/signUpFailure', payload: error})
         }
     } else {
-        console.log('confirmedUser', confirmedUser)
+        yield put({
+            type: 'site/setNotification',
+            payload: {
+                notification: 'incorrect code',
+                theme: 'red'
+            }
+        })
     }
 }
 
@@ -87,6 +99,19 @@ export function* purchaseHistory({payload}) {
         }
     } catch (error) {
         yield put({type: 'user/getPurchaseHistoryFailure', error})
+    }
+}
+
+export function* getUsersListing() {
+    try {
+        const payload = yield call(getUsers)
+        if (!payload.error) {
+            yield put({type: 'user/getUsersSuccess', payload})
+        } else {
+            yield put({type: 'user/getUsersFailure', payload})
+        }
+    } catch (error) {
+        yield put({type: 'user/getUsersFailure', error})
     }
 }
 
@@ -116,6 +141,10 @@ export function* watchUserHistory() {
 
 export function* watchConfirmUser() {
     yield takeEvery('user/confirmUser', confirmUser)
+}
+
+export function* watchGetUsers() {
+    yield takeEvery('user/getUsers', getUsersListing)
 }
 
 
