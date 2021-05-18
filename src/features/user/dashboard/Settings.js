@@ -8,8 +8,8 @@ import DashboardInfo    from 'shared/Layout/Dashboard/DashboardInfo'
 import DashboardWrapper from 'shared/Layout/Dashboard/DashboardWrapper'
 
 const Settings = () => {
-    const {name, token, _id} = useSelector(state => state.user)
-    const initialValues = {name: name, token: token, _id: _id}
+    const {nameFirst, token, _id} = useSelector(state => state.user)
+    const initialValues = {name: nameFirst, token: token, _id: _id}
     return (
         <ContentWrapper>
             <DashboardWrapper menu={userDashboardMenu}>

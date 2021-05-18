@@ -6,13 +6,13 @@ import DashboardInfo    from 'shared/Layout/Dashboard/DashboardInfo'
 import DashboardWrapper from 'shared/Layout/Dashboard/DashboardWrapper'
 
 const UserDashboard = () => {
-    const {name, tel} = useSelector(state => state.user)
+    const {nameFirst, tel} = useSelector(state => state.user)
 
     return (
         <ContentWrapper>
             <DashboardWrapper menu={userDashboardMenu}>
                 <DashboardInfo
-                    heading={`Hey, ${name}`}
+                    heading={`Hey, ${nameFirst}`}
                     description={`${tel}`}
                 />
             </DashboardWrapper>

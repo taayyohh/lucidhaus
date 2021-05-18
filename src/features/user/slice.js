@@ -3,7 +3,7 @@ import {createSlice} from '@reduxjs/toolkit'
 const initialState = {
     _id: '',
     token: '',
-    name: '',
+    nameFirst: '',
     tel: '',
     slug: '',
     isAuthenticated: false,
@@ -26,7 +26,7 @@ export const slice = createSlice({
         signInSuccess: (state, action) => {
             state.loading = false
             state.error = false
-            state.name = action.payload.user.name
+            state.nameFirst = action.payload.user.nameFirst
             state.tel = action.payload.user.tel
             state.isAdmin = action.payload.user.role === 1
         },
@@ -47,7 +47,7 @@ export const slice = createSlice({
             state.token = action.payload.token
             state.isAuthenticated = true
             state.tel = action.payload.user.tel
-            state.name = action.payload.user.name
+            state.nameFirst = action.payload.user.nameFirst
             state._id = action.payload.user._id
             state.isAdmin = action.payload.user.role === 1
         },
@@ -55,7 +55,7 @@ export const slice = createSlice({
             state.isAuthenticated = false
         },
         signOutSuccess: state => {
-            state.name = ''
+            state.nameFirst = ''
             state.tel = ''
             state.error = false
             state.loading = false
@@ -83,7 +83,7 @@ export const slice = createSlice({
             state.redirectToReferrer = false
         },
         updateSuccess: (state, action) => {
-            state.name = action.payload.name
+            state.nameFirst = action.payload.nameFirst
             state.tel = action.payload.tel
             state.slug = action.payload.slug
         },

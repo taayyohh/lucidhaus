@@ -1,8 +1,8 @@
 import {
     placeFields,
     validatePlace
-}                              from 'config/fields/place'
-import AdminDashboardWrapper   from 'features/admin/AdminDashboardWrapper'
+}                            from 'config/fields/place'
+import AdminDashboardWrapper from 'features/admin/AdminDashboardWrapper'
 import React, {
     useContext,
     useEffect

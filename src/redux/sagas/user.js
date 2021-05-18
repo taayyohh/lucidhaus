@@ -53,6 +53,8 @@ export function* signUp({payload}) {
 export function* confirmUser({payload}) {
     const confirmedUser = yield call(confirmTwilioVerification, payload)
 
+    console.log('confimed', confirmedUser)
+
     if (confirmedUser === 'approved') {
         const user = yield call(signup, payload)
         try {

@@ -1,13 +1,10 @@
-import {
-    RICH_TEXT,
-    TEXT,
-    TOGGLE,
-    IMAGE_UPLOAD,
-    UPLOAD_PATHS
-}               from 'config'
-import * as Yup from 'yup'
+import {IMAGE_UPLOAD, RICH_TEXT, TEXT, TOGGLE, UPLOAD_PATHS} from 'config/index'
+import * as Yup                                              from 'yup'
 
 export const placeFields = [
+    {
+        name: 'accessibility',
+    },
     {
         name: 'photo',
         file: 'photoFile',

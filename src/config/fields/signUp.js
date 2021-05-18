@@ -5,8 +5,8 @@ import "yup-phone"
 
 export const signUpFields = [
     {
-        name: 'name',
-        inputLabel: 'Name',
+        name: 'nameFirst',
+        inputLabel: 'First Name',
         type: TEXT
     },
     {
@@ -37,7 +37,7 @@ export const confirmationCodeFields = [
  */
 
 export const validateSignup = Yup.object().shape({
-    name: Yup
+    nameFirst: Yup
         .string()
         .max(50)
         .required('Required'),
