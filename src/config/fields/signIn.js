@@ -14,15 +14,15 @@
  * cropWidth, cropWidth: set the height and width of cropper tool
  **/
 
-import {PASSWORD, TEXT} from 'config'
-import * as Yup         from 'yup'
-import {phoneRegExp}    from '../../utils/helpers'
+import {PASSWORD, TEL} from 'config'
+import * as Yup        from 'yup'
+import {phoneRegExp}   from '../../utils/helpers'
 
 export const signInFields = [
     {
         name: 'tel',
         inputLabel: 'Telephone',
-        type: TEXT
+        type: TEL
     },
     {
         name: 'password',
