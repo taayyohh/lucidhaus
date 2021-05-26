@@ -3,16 +3,16 @@ import {
     call,
     put,
     takeLatest
-}                   from 'redux-saga/effects'
+} from 'redux-saga/effects'
 import {
     addProduct,
     deleteProduct,
     updateProduct
-}                   from 'services/apiProduct'
+} from 'services/product'
 import {
     getSignedRequest,
     uploadFile
-}                   from 'services/apiS3'
+} from 'services/s3'
 import {updateItem} from 'utils/cartHelpers'
 
 export function* createProduct({payload}) {

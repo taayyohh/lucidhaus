@@ -18,6 +18,11 @@ export const signUpFields = [
         name: 'password',
         inputLabel: 'Password',
         type: PASSWORD
+    },
+    {
+        name: 'passwordConfirm',
+        inputLabel: 'Confirm Password',
+        type: PASSWORD
     }
 ]
 
@@ -51,4 +56,8 @@ export const validateSignup = Yup.object().shape({
             passwordRegExp,
             'Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character'
         ),
+    passwordConfirm: Yup
+        .string()
+        .oneOf([Yup.ref('password')], 'passwords do not match')
+        .required('Password confirm is required')
 })

@@ -8,7 +8,7 @@ import {
     addProductCategory,
     deleteProductCategory,
     updateProductCategory
-} from 'services/apiProductCategory'
+} from 'services/productCategory'
 
 
 export function* createProductCategory({payload}) {

@@ -1,23 +1,22 @@
 import {createSlice} from '@reduxjs/toolkit'
 
 const initialState = {
-    name: '',
-    slug: '',
-    description: '',
-    photo: '',
-    uploadedFile: undefined,
-    uploadedFileName: '',
-    loading: false,
-    error: '',
-    createdPost: '',
-    songsToAdd: [],
-    redirectToProfile: false,
-    formData: '',
     confirmDelete: {
         shouldDelete: false,
         destroy: false,
         slug: ''
-    }
+    },
+    description: '',
+    error: '',
+    formData: '',
+    loading: false,
+    name: '',
+    redirectToProfile: false,
+    photo: '',
+    uploadedFile: undefined,
+    uploadedFileName: '',
+    slug: '',
+    user: {}
 }
 
 export const slice = createSlice({
@@ -31,93 +30,25 @@ export const slice = createSlice({
             state.confirmDelete.destroy = true
         },
 
-        //post
-        confirmDestroyPost: (state, action) => {
+
+        //user
+        confirmDestroyUser: (state, action) => {
             state.confirmDelete.shouldDelete = true
             state.confirmDelete.slug = action.payload.slug
         },
-        denyDestroyPost: state => {
+        denyDestroyUser: state => {
             state.confirmDelete.shouldDelete = false
         },
-        acceptDestroyPost: state => {
+        acceptDestroyUser: state => {
             state.confirmDelete.destroy = true
         },
-        destroyPostSuccess: state => {
+        destroyUserSuccess: state => {
             state.confirmDelete.shouldDelete = false
             state.confirmDelete.destroy = false
             state.confirmDelete.slug = ''
         },
-
-        //product
-        confirmDestroyProduct: (state, action) => {
-            state.confirmDelete.shouldDelete = true
-            state.confirmDelete.slug = action.payload.slug
-        },
-        denyDestroyProduct: state => {
-            state.confirmDelete.shouldDelete = false
-        },
-        acceptDestroyProduct: state => {
-            state.confirmDelete.destroy = true
-        },
-        destroyProductSuccess: state => {
-            state.confirmDelete.shouldDelete = false
-            state.confirmDelete.destroy = false
-            state.confirmDelete.slug = ''
-        },
-
-        //product category
-        confirmDestroyProductCategory: (state, action) => {
-            state.confirmDelete.shouldDelete = true
-            state.confirmDelete.slug = action.payload._id
-        },
-        denyDestroyProductCategory: state => {
-            state.confirmDelete.shouldDelete = false
-        },
-        acceptDestroyProductCategory: state => {
-            state.confirmDelete.destroy = true
-        },
-        destroyProductCategorySuccess: state => {
-            state.confirmDelete.shouldDelete = false
-            state.confirmDelete.destroy = false
-            state.confirmDelete.slug = ''
-        },
-
-        //album
-        confirmDestroyAlbum: (state, action) => {
-            state.confirmDelete.shouldDelete = true
-            state.confirmDelete.slug = action.payload.slug
-        },
-        denyDestroyAlbum: state => {
-            state.confirmDelete.shouldDelete = false
-        },
-        acceptDestroyAlbum: state => {
-            state.confirmDelete.destroy = true
-        },
-        destroyAlbumSuccess: state => {
-            state.confirmDelete.shouldDelete = false
-            state.confirmDelete.destroy = false
-            state.confirmDelete.slug = ''
-        },
-
-        //songs
-        addSongToAlbum: (state, action) => {
-            const { title, audio, trackNumber } = action.payload
-            state.songsToAdd.push({ title, audio, trackNumber })
-        },
-        confirmDestroySong: (state, action) => {
-            state.confirmDelete.shouldDelete = true
-            state.confirmDelete.slug = action.payload.slug
-        },
-        denyDestroySong: state => {
-            state.confirmDelete.shouldDelete = false
-        },
-        acceptDestroySong: state => {
-            state.confirmDelete.destroy = true
-        },
-        destroySongSuccess: state => {
-            state.confirmDelete.shouldDelete = false
-            state.confirmDelete.destroy = false
-            state.confirmDelete.slug = ''
+        getUserSuccess: (state, action) => {
+            state.user = action.payload
         },
 
         //place

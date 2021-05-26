@@ -4,16 +4,16 @@ import {
     call,
     put,
     takeLatest
-}             from 'redux-saga/effects'
+} from 'redux-saga/effects'
 import {
     addPlace,
     deletePlace,
     updatePlace
-}             from 'services/apiPlace'
+} from 'services/place'
 import {
     getSignedRequest,
     uploadFile
-} from 'services/apiS3'
+} from 'services/s3'
 
 export function* createPlace({payload}) {
     const {_id, token, name, description, photo, photoFile, isPublished} = payload

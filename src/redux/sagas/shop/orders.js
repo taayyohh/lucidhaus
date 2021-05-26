@@ -3,12 +3,12 @@ import {
     put,
     takeLatest,
     takeEvery
-}                   from 'redux-saga/effects'
+} from 'redux-saga/effects'
 import {
     listOrders,
     listStatusValues,
     updateOrderStatus
-}                   from 'services/apiOrders'
+} from 'services/order'
 
 export function* getOrders({payload}) {
     try {

@@ -14,17 +14,22 @@ const Manage = () => {
 
     useEffect(() => {
         dispatch({type: 'place/getPlaces'})
-        placesIndex.saveObjects(places)
-            .then(() => setIsIndexed(true))
-            .catch(error =>
-                dispatch({
-                    type: 'site/setNotification',
-                    payload: {notification: error}
-                })
-            )
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
+
+    useEffect(() => {
+        if (places.length > 0)
+            placesIndex.saveObjects(places)
+                .then(() => setIsIndexed(true))
+                .catch(error =>
+                    dispatch({
+                        type: 'site/setNotification',
+                        payload: {notification: error}
+                    })
+                )
+
+    }, [places])
 
     return (
         <ContentWrapper>

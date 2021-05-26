@@ -2,11 +2,11 @@ import {takeEvery} from 'redux-saga/dist/redux-saga-effects-npm-proxy.esm'
 import {
     call,
     put
-}                  from 'redux-saga/effects'
+} from 'redux-saga/effects'
 import {
     authenticate,
     isAuthenticated
-}                  from 'services/apiUser'
+} from 'services/user'
 
 export function* authenticateUser({payload}) {
     yield call(authenticate, payload)

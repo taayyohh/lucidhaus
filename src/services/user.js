@@ -152,3 +152,14 @@ export const getUsers = () =>
         .catch(error => {
             return error
         })
+
+export const getUser = ({slug}) =>
+    fetch(`${API}/user/${slug}`, {
+        method: 'GET'
+    })
+        .then(response => {
+            return response.json()
+        })
+        .catch(error => {
+            return error
+        })

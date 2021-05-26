@@ -27,22 +27,13 @@ import {
     watchIsAuthenticated
 }                                  from './auth'
 import {
-    watchGetBooneAutoComplete,
-    watchGetBoonePlace
-}                                  from './boone'
-import {
-    watchAddToCart,
-    watchRemoveFromCart
-}                                  from './cart'
-import {
-    watchGetOrders,
-    watchGetStatusValues,
-    watchUpdateStatusValue
-}                                  from './orders'
-import {
     watchGetPlaceDetail,
     watchGetPlaces
 }                                  from './place'
+import {
+    watchGetBooneAutoComplete,
+    watchGetBoonePlace
+}                                  from './place/boone'
 import {
     watchGetProductDetail,
     watchGetRelatedProducts
@@ -50,7 +41,7 @@ import {
 import {
     watchGetProductCategories,
     watchGetProductCategory
-}                                  from './productCategory'
+}                                  from './product/category'
 import {
     watchGetBraintreeToken,
     watchGetFilteredShop,
@@ -58,16 +49,27 @@ import {
     watchGetShop
 }                                  from './shop'
 import {
+    watchAddToCart,
+    watchRemoveFromCart
+}                                  from './shop/cart'
+import {
+    watchGetOrders,
+    watchGetStatusValues,
+    watchUpdateStatusValue
+}                                  from './shop/orders'
+import {
     watchLoadConfig,
     watchNavigate
 }                                  from './site'
 import {
-    watchConfirmUser, watchGetUsers,
+    watchConfirmUser,
+    watchGetUser,
+    watchGetUsers,
     watchSignIn,
     watchSignOut,
     watchSignUp,
     watchUserHistory
-} from './user'
+}                                  from './user'
 
 
 //TODO: determine best method of combining rootSaga
@@ -90,6 +92,7 @@ export default function* rootSaga() {
         fork(watchUpdateProfile),
         fork(watchConfirmUser),
         fork(watchGetUsers),
+        fork(watchGetUser),
 
 
         // place

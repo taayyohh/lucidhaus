@@ -6,7 +6,7 @@ import {
 import {
     getPlace,
     getPlaces
-} from 'services/apiPlace'
+} from 'services/place'
 
 /**
  *

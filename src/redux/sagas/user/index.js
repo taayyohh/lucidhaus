@@ -1,8 +1,8 @@
-import {push}                                              from 'connected-react-router'
-import {takeEvery}                                         from 'redux-saga/dist/redux-saga-effects-npm-proxy.esm'
-import {call, put}                                         from 'redux-saga/effects'
-import {confirmTwilioVerification, sendTwilioVerification} from 'services/apiTwilio'
-import {getPurchaseHistory, signin, signout, signup, getUsers}       from 'services/apiUser'
+import {push}                                                           from 'connected-react-router'
+import {takeEvery}                                                      from 'redux-saga/dist/redux-saga-effects-npm-proxy.esm'
+import {call, put}                                                      from 'redux-saga/effects'
+import {confirmTwilioVerification, sendTwilioVerification}              from 'services/twilio'
+import {getPurchaseHistory, getUser, getUsers, signin, signout, signup} from 'services/user'
 
 export function* signIn({payload}) {
     try {
@@ -10,7 +10,7 @@ export function* signIn({payload}) {
         if (!user.error) {
             yield put({type: 'user/signInSuccess', payload: user})
             yield put({type: 'user/authenticate', payload: user})
-            yield put(push(user?.user?.role === 1 ? '/admin' : '/dashboard'))
+            yield put(push(user?.user?.role === 0 ? '/admin' : '/dashboard'))
         } else {
             yield put({
                 type: 'site/setNotification',
@@ -52,8 +52,6 @@ export function* signUp({payload}) {
 
 export function* confirmUser({payload}) {
     const confirmedUser = yield call(confirmTwilioVerification, payload)
-
-    console.log('confimed', confirmedUser)
 
     if (confirmedUser === 'approved') {
         const user = yield call(signup, payload)
@@ -117,6 +115,19 @@ export function* getUsersListing() {
     }
 }
 
+export function* getUserDetail({payload}) {
+    try {
+        const user = yield call(getUser, payload)
+        if (!user.error) {
+            yield put({type: 'admin/getUserSuccess', payload: user})
+        } else {
+            yield put({type: 'admin/getUserFailure', payload: user})
+        }
+    } catch (error) {
+        yield put({type: 'admin/getUserFailure', error})
+    }
+}
+
 /**
  *
  *
@@ -147,6 +158,10 @@ export function* watchConfirmUser() {
 
 export function* watchGetUsers() {
     yield takeEvery('user/getUsers', getUsersListing)
+}
+
+export function* watchGetUser() {
+    yield takeEvery('user/getUser', getUserDetail)
 }
 
 

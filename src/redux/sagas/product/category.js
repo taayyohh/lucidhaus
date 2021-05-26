@@ -2,11 +2,11 @@ import {
     call,
     put,
     takeLatest
-}                   from 'redux-saga/effects'
+} from 'redux-saga/effects'
 import {
     allProductCategories,
     getProductCategory
-}                   from 'services/apiProductCategory'
+} from 'services/productCategory'
 
 export function* getProductCategories() {
     const productCategories = yield call(allProductCategories)

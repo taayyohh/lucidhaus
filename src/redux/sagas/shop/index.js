@@ -8,15 +8,15 @@ import {
 import {
     getBraintreeClientToken,
     getPaymentMethod
-}                  from 'services/apiBraintree'
+}                  from 'services/braintree'
 import {
     getFilteredProducts,
     getProducts
-}                  from 'services/apiProduct'
+}                  from 'services/product'
 import {
     createOrder,
     processPayment
-}                  from 'services/apiShop'
+}                  from 'services/shop'
 import {emptyCart} from 'utils/cartHelpers'
 
 export function* getShop() {

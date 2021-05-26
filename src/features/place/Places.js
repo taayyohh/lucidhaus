@@ -1,3 +1,4 @@
+import {placeSearchFields}            from 'config/fields/placeSearch'
 import {placeCardStyle}               from 'features/place/styles'
 import React, {useContext, useEffect} from 'react'
 import {useDispatch, useSelector}     from 'react-redux'
@@ -5,10 +6,9 @@ import Div                            from 'shared/Basic/Div'
 import GenericCard                    from 'shared/Cards/GenericCard'
 import {mapContext}                   from 'shared/Containers/MapController'
 import {searchContext}                from 'shared/Containers/SearchController'
+import Form                           from 'shared/Fields/Form'
 import ContentWrapper                 from 'shared/Layout/ContentWrapper'
 import {slugify}                      from 'utils/helpers'
-import {placeSearchFields}            from '../../config/fields/placeSearch'
-import Form                           from '../../shared/Fields/Form'
 import {placesWrapperStyle}           from './styles'
 
 const Places = () => {

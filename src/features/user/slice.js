@@ -28,7 +28,7 @@ export const slice = createSlice({
             state.error = false
             state.nameFirst = action.payload.user.nameFirst
             state.tel = action.payload.user.tel
-            state.isAdmin = action.payload.user.role === 1
+            state.isAdmin = action.payload.user.role === 0
         },
         signInFailure: (state, action) => {
             state.loading = false
@@ -49,7 +49,7 @@ export const slice = createSlice({
             state.tel = action.payload.user.tel
             state.nameFirst = action.payload.user.nameFirst
             state._id = action.payload.user._id
-            state.isAdmin = action.payload.user.role === 1
+            state.isAdmin = action.payload.user.role === 0
         },
         isAuthenticatedFailure: state => {
             state.isAuthenticated = false
@@ -70,6 +70,9 @@ export const slice = createSlice({
         },
         signUpFailure: (state, action) => {
             state.error = action.payload.error
+        },
+        signUpSuccess: (state) => {
+            state.confirmationRequest = undefined
         },
         getPurchaseHistorySuccess: (state, action) => {
             state.purchaseHistory = action.payload
