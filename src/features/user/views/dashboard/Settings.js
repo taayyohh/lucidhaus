@@ -1,5 +1,5 @@
-import {userFields}        from 'features/user/admin/fields'
 import {userDashboardMenu} from 'config/menus/dashboardUser'
+import {userFields}        from 'features/user/admin/fields'
 import React               from 'react'
 import {useSelector}       from 'react-redux'
 import Form                from 'shared/Fields/Form'

@@ -1,12 +1,9 @@
-import {
-    faInstagram,
-    faTwitter
-} from '@fortawesome/free-brands-svg-icons'
+import {faInstagram, faTwitter} from '@fortawesome/free-brands-svg-icons'
 import {
     faBackward,
-    faCogs,
     faCaretDown,
     faCaretUp,
+    faCogs,
     faDollarSign,
     faEllipsisH,
     faFileAudio,
@@ -39,7 +36,7 @@ import {
     faVolumeUp,
     faWindowMaximize,
     faWindowMinimize
-} from '@fortawesome/free-solid-svg-icons'
+}                               from '@fortawesome/free-solid-svg-icons'
 
 export const
     cogs = faCogs,
@@ -80,7 +77,3 @@ export const
     windowMaximize = faWindowMaximize,
     volumeMute = faVolumeMute,
     volumeUp = faVolumeUp
-
-
-
-

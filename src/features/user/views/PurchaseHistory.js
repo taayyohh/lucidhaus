@@ -1,16 +1,10 @@
-import {
-    purchaseHistoryItemStyle,
-    purchaseHistoryStyle
-}             from 'features/user/views/styles'
-import moment from 'moment'
-import PropTypes              from 'prop-types'
-import React, {useEffect}     from 'react'
-import {
-    useDispatch,
-    useSelector
-}             from 'react-redux'
-import Div    from 'shared/Basic/Div'
-import H3     from 'shared/Basic/H3'
+import {purchaseHistoryItemStyle, purchaseHistoryStyle} from 'features/user/views/styles'
+import moment                                           from 'moment'
+import PropTypes                                        from 'prop-types'
+import React, {useEffect}                               from 'react'
+import {useDispatch, useSelector}                       from 'react-redux'
+import Div                                              from 'shared/Basic/Div'
+import H3                                               from 'shared/Basic/H3'
 
 const PurchaseHistory = () => {
     const {token, _id, purchaseHistory} = useSelector(state => state.user)

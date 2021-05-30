@@ -1,12 +1,9 @@
-import ShopWrapper        from 'features/shop/views/ShopWrapper'
-import {shopCardStyle}    from 'features/shop/views/styles'
-import React, {useEffect} from 'react'
-import {
-    useDispatch,
-    useSelector
-}                         from 'react-redux'
-import GenericCard        from 'shared/Cards/GenericCard'
-import ContentWrapper     from 'shared/Layout/ContentWrapper'
+import ShopWrapper                from 'features/shop/views/ShopWrapper'
+import {shopCardStyle}            from 'features/shop/views/styles'
+import React, {useEffect}         from 'react'
+import {useDispatch, useSelector} from 'react-redux'
+import GenericCard                from 'shared/Cards/GenericCard'
+import ContentWrapper             from 'shared/Layout/ContentWrapper'
 
 const Shop = () => {
     const {shop, productCategories} = useSelector(state => state.shop)

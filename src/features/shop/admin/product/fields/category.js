@@ -10,7 +10,6 @@ export const productCategoryFields = [
 ]
 
 
-
 /**
  *
  * Validation Objects written with Yup

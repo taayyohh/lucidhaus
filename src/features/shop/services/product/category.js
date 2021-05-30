@@ -14,7 +14,6 @@ import {API} from 'config/variables'
  *
  **/
 
-
 export const getProductCategory = ({slug}) =>
     fetch(`${API}/product-category/${slug}`, {
         method: 'GET'
@@ -25,7 +24,6 @@ export const getProductCategory = ({slug}) =>
         .catch(error => {
             return error
         })
-
 
 export const addProductCategory = ({_id, token, category}) =>
     fetch(`${API}/product-category/create/${_id}`, {
@@ -43,7 +41,6 @@ export const addProductCategory = ({_id, token, category}) =>
             return error
         })
 
-
 export const updateProductCategory = ({categoryId, _id, token, productCategory}) =>
     fetch(`${API}/product-category/${categoryId}/${_id}`, {
         method: 'PUT',
@@ -60,7 +57,6 @@ export const updateProductCategory = ({categoryId, _id, token, productCategory})
             return error
         })
 
-
 export const allProductCategories = () =>
     fetch(`${API}/product-categories`, {
         method: 'GET'
@@ -70,7 +66,6 @@ export const allProductCategories = () =>
         }).catch(error => {
         return error
     })
-
 
 export const deleteProductCategory = ({slug, _id, token}) =>
     fetch(`${API}/product-category/${slug}/${_id}`, {

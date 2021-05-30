@@ -1,5 +1,5 @@
-import {placeSearchFields} from 'features/place/admin/fields/search'
-import {placeCardStyle}    from 'features/place/views/styles'
+import {placeSearchFields}            from 'features/place/admin/fields/search'
+import {placeCardStyle}               from 'features/place/views/styles'
 import React, {useContext, useEffect} from 'react'
 import {useDispatch, useSelector}     from 'react-redux'
 import Div                            from 'shared/Basic/Div'

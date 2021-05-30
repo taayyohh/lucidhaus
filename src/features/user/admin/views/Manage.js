@@ -20,7 +20,7 @@ const Manage = () => {
     }, [])
 
     useEffect(() => {
-        if(users.length > 0) {
+        if (users.length > 0) {
             usersIndex.saveObjects(users)
                 .then(() => setIsIndexed(true))
                 .catch(error =>

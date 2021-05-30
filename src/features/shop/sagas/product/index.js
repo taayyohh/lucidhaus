@@ -1,10 +1,6 @@
-import {
-    call,
-    put,
-    takeLatest
-}                    from 'redux-saga/effects'
-import {getProduct}  from 'features/shop/services/product/product'
-import {listRelated} from 'features/shop/services'
+import {listRelated}           from 'features/shop/services'
+import {getProduct}            from 'features/shop/services/product/product'
+import {call, put, takeLatest} from 'redux-saga/effects'
 
 export function* getProductDetail({payload}) {
     try {

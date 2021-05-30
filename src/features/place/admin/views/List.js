@@ -1,20 +1,20 @@
-import AdminCreateButton from 'features/admin/views/AdminCreateButton'
+import AdminCreateButton   from 'features/admin/views/AdminCreateButton'
 import {
     adminPlaceCardStyle,
     adminPlaceCardWrapperStyle,
     adminPlacesInnerWrapperStyle,
     searchWrapperStyle
-}                        from 'features/admin/views/styles'
-import PropTypes         from 'prop-types'
+}                          from 'features/admin/views/styles'
+import PropTypes           from 'prop-types'
 import React, {useContext} from 'react'
 import {
     connectHits,
     InstantSearch,
     SearchBox
-}                        from 'react-instantsearch-dom'
-import Div               from 'shared/Basic/Div'
-import GenericCard       from 'shared/Cards/GenericCard'
-import {searchContext}   from 'shared/Containers/SearchController'
+}                          from 'react-instantsearch-dom'
+import Div                 from 'shared/Basic/Div'
+import GenericCard         from 'shared/Cards/GenericCard'
+import {searchContext}     from 'shared/Containers/SearchController'
 
 const List = ({places}) => {
     const {searchClient} = useContext(searchContext)

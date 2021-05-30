@@ -1,12 +1,5 @@
-import {
-    ADDRESS,
-    COUNTRY,
-    REGION,
-    TEL,
-    TEXT
-}               from 'config/variables'
-import {EMAIL}  from 'config/variables'
-import * as Yup from 'yup'
+import {ADDRESS, COUNTRY, EMAIL, REGION, TEL, TEXT} from 'config/variables'
+import * as Yup                                     from 'yup'
 
 
 /**

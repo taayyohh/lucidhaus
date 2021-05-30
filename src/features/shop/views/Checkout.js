@@ -2,21 +2,12 @@ import 'braintree-web'
 import {checkoutPurchaseButtonStyle} from 'features/shop/views/styles'
 import {AnimatePresence}             from 'framer-motion'
 import PropTypes                     from 'prop-types'
-import React, {
-    useEffect,
-    useState
-}                                    from 'react'
-import {
-    useDispatch,
-    useSelector
-}                                    from 'react-redux'
+import React, {useEffect, useState}  from 'react'
+import {useDispatch, useSelector}    from 'react-redux'
 import Button                        from 'shared/Basic/Button'
 import Div                           from 'shared/Basic/Div'
 import MotionDiv                     from 'shared/Basic/MotionDiv'
-import {
-    fadeIn,
-    nOpacity
-}                                    from 'shared/Layout/styles/animations'
+import {fadeIn, nOpacity}            from 'shared/Layout/styles/animations'
 import {getTotal}                    from 'utils/cartHelpers'
 import Payment                       from './Payment'
 import ShippingAddress               from './ShippingAddress'

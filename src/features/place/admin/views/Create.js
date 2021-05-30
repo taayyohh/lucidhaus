@@ -1,12 +1,9 @@
-import {
-    placeFields,
-    validatePlace
-}                            from 'features/place/admin/fields'
-import AdminDashboardWrapper from 'features/admin/views/AdminDashboardWrapper'
-import React                 from 'react'
-import {useSelector}         from 'react-redux'
-import Form                  from 'shared/Fields/Form'
-import ContentWrapper        from 'shared/Layout/ContentWrapper'
+import AdminDashboardWrapper        from 'features/admin/views/AdminDashboardWrapper'
+import {placeFields, validatePlace} from 'features/place/admin/fields'
+import React                        from 'react'
+import {useSelector}                from 'react-redux'
+import Form                         from 'shared/Fields/Form'
+import ContentWrapper               from 'shared/Layout/ContentWrapper'
 
 const Create = () => {
     const {_id, token} = useSelector(state => state.user)

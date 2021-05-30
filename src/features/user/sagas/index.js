@@ -1,9 +1,9 @@
 import {push}                                              from 'connected-react-router'
+import {signin, signout, signup}                           from 'features/site/services'
+import {getPurchaseHistory, getUser, getUsers}             from 'features/user/services'
 import {takeEvery}                                         from 'redux-saga/dist/redux-saga-effects-npm-proxy.esm'
 import {call, put}                                         from 'redux-saga/effects'
 import {confirmTwilioVerification, sendTwilioVerification} from 'services/twilio'
-import {getPurchaseHistory, getUser, getUsers}             from 'features/user/services'
-import {signin, signout, signup}                           from '../../site/services'
 
 export function* signIn({payload}) {
     try {

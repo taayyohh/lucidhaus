@@ -1,12 +1,5 @@
-import {
-    call,
-    put,
-    takeLatest
-} from 'redux-saga/effects'
-import {
-    addItem,
-    removeItem
-} from 'utils/cartHelpers'
+import {call, put, takeLatest} from 'redux-saga/effects'
+import {addItem, removeItem}   from 'utils/cartHelpers'
 
 export function* addToCart({payload}) {
     const cart = yield call(addItem, payload)

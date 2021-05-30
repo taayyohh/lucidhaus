@@ -1,11 +1,8 @@
-import {
-    orderFields,
-    validateCheckoutAddress
-}                      from 'features/shop/admin/order/fields/order'
-import CheckoutSection from 'features/shop/views/CheckoutSection'
-import {shippingAddressStyle} from 'features/shop/views/styles'
-import React                  from 'react'
-import Form                   from 'shared/Fields/Form'
+import {orderFields, validateCheckoutAddress} from 'features/shop/admin/order/fields/order'
+import CheckoutSection                        from 'features/shop/views/CheckoutSection'
+import {shippingAddressStyle}                 from 'features/shop/views/styles'
+import React                                  from 'react'
+import Form                                   from 'shared/Fields/Form'
 
 const ShippingAddress = () => {
     const initialValues = {

@@ -1,25 +1,18 @@
-import AdminDashboardWrapper    from 'features/admin/views/AdminDashboardWrapper'
-import List                     from 'features/shop/admin/order/views/List'
+import AdminDashboardWrapper                    from 'features/admin/views/AdminDashboardWrapper'
 import {
+    adminOrderWrapperStyle,
     orderStatusActiveIndicatorStyle,
     orderStatusFilterStyle,
     orderStatusFilterWrapperStyle
-}                               from 'features/admin/views/styles'
-import React, {
-    useContext,
-    useEffect,
-    useState
-}                               from 'react'
-import {
-    useDispatch,
-    useSelector
-}                               from 'react-redux'
-import Div                      from 'shared/Basic/Div'
-import MotionDiv                from 'shared/Basic/MotionDiv'
-import {searchContext}          from 'shared/Containers/SearchController'
-import ContentWrapper           from 'shared/Layout/ContentWrapper'
-import DashboardInfo            from 'shared/Layout/Dashboard/DashboardInfo'
-import {adminOrderWrapperStyle} from 'features/admin/views/styles'
+}                                               from 'features/admin/views/styles'
+import List                                     from 'features/shop/admin/order/views/List'
+import React, {useContext, useEffect, useState} from 'react'
+import {useDispatch, useSelector}               from 'react-redux'
+import Div                                      from 'shared/Basic/Div'
+import MotionDiv                                from 'shared/Basic/MotionDiv'
+import {searchContext}                          from 'shared/Containers/SearchController'
+import ContentWrapper                           from 'shared/Layout/ContentWrapper'
+import DashboardInfo                            from 'shared/Layout/Dashboard/DashboardInfo'
 
 const Manage = () => {
     const dispatch = useDispatch()

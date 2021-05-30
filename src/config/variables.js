@@ -15,7 +15,6 @@ export const GOOGLE_ANALYTICS_ID = process.env.REACT_APP_GOOGLE_ANALYTICS_ID
 export const MAPBOX_SECRET = process.env.REACT_APP_MAPBOX_SECRET
 export const MAPBOX_PUBLIC = process.env.REACT_APP_MAPBOX_PUBLIC
 
-
 /** INPUT TYPES **/
 // HTML INPUT TYPES
 export const BUTTON = "button"
@@ -52,7 +51,6 @@ export const AUDIO_UPLOAD = 'audioUpload'
 export const RICH_TEXT = 'richText'
 export const TOGGLE = 'toggle'
 export const SONGS = 'songs'
-
 
 export const ACCEPTABLE_EXTENSIONS = [
     '.png',

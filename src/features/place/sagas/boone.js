@@ -1,5 +1,5 @@
-import {call, put, takeEvery}                                           from 'redux-saga/effects'
 import {getBooneAutoComplete as getBooneSuggestions, getPlaceFromBoone} from 'features/place/services/boone'
+import {call, put, takeEvery}                                           from 'redux-saga/effects'
 
 
 export function* getBooneAutoComplete({payload}) {

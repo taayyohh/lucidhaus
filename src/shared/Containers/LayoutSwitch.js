@@ -1,12 +1,6 @@
-import {
-    useCallback,
-    useEffect
-}                             from 'react'
-import {
-    useDispatch,
-    useSelector
-}                             from 'react-redux'
-import {breakpointUpperLimit} from 'config/styles'
+import {breakpointUpperLimit}     from 'config/styles'
+import {useCallback, useEffect}   from 'react'
+import {useDispatch, useSelector} from 'react-redux'
 
 const getLayout = () => {
     if (window.innerWidth < breakpointUpperLimit.mobile)

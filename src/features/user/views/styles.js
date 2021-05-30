@@ -1,9 +1,5 @@
-import {globals} from 'config/styles'
-import {
-    borderBox,
-    grid,
-    sv
-}                from 'utils/themer'
+import {globals}             from 'config/styles'
+import {borderBox, grid, sv} from 'utils/themer'
 
 export const signUpPromptStyle = {
     font: globals.fonts.sans,

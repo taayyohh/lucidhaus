@@ -1,7 +1,7 @@
 import {
     productCategoryFields,
     validateProductCategory
-}                            from 'features/shop/admin/product/fields/productCategory'
+}                            from 'features/shop/admin/product/fields/category'
 import AdminDashboardWrapper from 'features/admin/views/AdminDashboardWrapper'
 import React                 from 'react'
 import {useSelector}         from 'react-redux'

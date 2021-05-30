@@ -1,7 +1,4 @@
-import {
-    createSelector,
-    createSlice
-} from '@reduxjs/toolkit'
+import {createSelector, createSlice} from '@reduxjs/toolkit'
 
 const initialState = {
     isInitialized: false,

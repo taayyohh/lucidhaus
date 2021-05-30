@@ -1,21 +1,12 @@
-import {
-    placeFields,
-    validatePlace
-}                              from 'features/place/admin/fields'
-import AdminDashboardWrapper   from 'features/admin/views/AdminDashboardWrapper'
-import React, {
-    useContext,
-    useEffect
-}                              from 'react'
-import {
-    useDispatch,
-    useSelector
-}                              from 'react-redux'
-import {searchContext}         from 'shared/Containers/SearchController'
-import DangerZone              from 'shared/Controls/DangerZone'
-import Form                    from 'shared/Fields/Form'
-import ContentWrapper          from 'shared/Layout/ContentWrapper'
-import {adminFormWrapperStyle} from 'features/admin/views/styles'
+import AdminDashboardWrapper          from 'features/admin/views/AdminDashboardWrapper'
+import {adminFormWrapperStyle}        from 'features/admin/views/styles'
+import {placeFields, validatePlace}   from 'features/place/admin/fields'
+import React, {useContext, useEffect} from 'react'
+import {useDispatch, useSelector}     from 'react-redux'
+import {searchContext}                from 'shared/Containers/SearchController'
+import DangerZone                     from 'shared/Controls/DangerZone'
+import Form                           from 'shared/Fields/Form'
+import ContentWrapper                 from 'shared/Layout/ContentWrapper'
 
 const Update = () => {
     const dispatch = useDispatch()

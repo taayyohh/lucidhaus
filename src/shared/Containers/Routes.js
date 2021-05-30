@@ -16,7 +16,7 @@ const CreateProduct = lazy(() => import('features/shop/admin/product/views/Creat
 const CreateProductCategory = lazy(() => import('features/shop/admin/product/taxonomy/category/Create'))
 const CreateUser = lazy(() => import('features/user/admin/views/Create'))
 const ManagePlaces = lazy(() => import('features/place/admin/views/Manage'))
-const ManageUsers= lazy(() => import('features/user/admin/views/Manage'))
+const ManageUsers = lazy(() => import('features/user/admin/views/Manage'))
 const ManageOrders = lazy(() => import('features/shop/admin/order/views/Manage'))
 const ManageShop = lazy(() => import('features/shop/admin/product/views/Manage'))
 const ManageTaxonomy = lazy(() => import('features/site/admin/Manage'))
@@ -44,21 +44,22 @@ const Routes = () => {
                 <MotionDiv animate={contentAnimation} theme={{width: '100%'}}>
                     <Suspense fallback={<Fallback/>}>
                         <Switch location={{pathname: currentPath}}>
-                            <Route path="/" exact component={Home} />
-                            <Route path="/signup" exact component={SignUp} />
-                            <Route path="/signin" exact component={SignIn} />
-                            <Route path="/places" exact component={Places} />
-                            <Route path="/places/:slug" exact component={Place} />
-                            <Route path="/shop" exact component={Shop} />
-                            <Route path="/shop/:slug" exact component={Product} />
-                            <Route path="/shop/category/:slug" exact component={FilteredProduct} />
+                            <Route path="/" exact component={Home}/>
+                            <Route path="/signup" exact component={SignUp}/>
+                            <Route path="/signin" exact component={SignIn}/>
+                            <Route path="/places" exact component={Places}/>
+                            <Route path="/places/:slug" exact component={Place}/>
+                            <Route path="/shop" exact component={Shop}/>
+                            <Route path="/shop/:slug" exact component={Product}/>
+                            <Route path="/shop/category/:slug" exact component={FilteredProduct}/>
                             <PrivateRoute path="/dashboard" exact component={UserDashboard}/>
                             <PrivateRoute path="/dashboard/orders" exact component={UserOrders}/>
                             <PrivateRoute path="/dashboard/settings" exact component={UserSettings}/>
                             <AdminRoute path="/admin" exact component={AdminDashboard}/>
                             <AdminRoute path="/admin/shop" exact component={ManageShop}/>
                             <AdminRoute path="/admin/product-category" exact component={ManageTaxonomy}/>
-                            <AdminRoute path="/admin/product-category/update/:slug" exact component={UpdateProductCategory}/>
+                            <AdminRoute path="/admin/product-category/update/:slug" exact
+                                        component={UpdateProductCategory}/>
                             <AdminRoute path="/create/product-category" exact component={CreateProductCategory}/>
                             <AdminRoute path="/create/category" exact component={CreateProductCategory}/>
                             <AdminRoute path="/admin/taxonomy" exact component={ManageTaxonomy}/>
@@ -72,7 +73,7 @@ const Routes = () => {
                             <AdminRoute path="/admin/shop/update/:slug" exact component={UpdateProduct}/>
                             <AdminRoute path="/create/product" exact component={CreateProduct}/>
                             <AdminRoute path="/sitemap" exact component={Sitemap}/>
-                            <Route component={NotFound} />
+                            <Route component={NotFound}/>
                         </Switch>
                     </Suspense>
                 </MotionDiv>

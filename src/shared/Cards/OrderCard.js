@@ -1,27 +1,20 @@
-import {shoppingBag}     from 'config/icons'
-import {AnimatePresence} from 'framer-motion'
-import moment                  from 'moment'
-import React                   from 'react'
-import {
-    useDispatch,
-    useSelector
-}                              from 'react-redux'
-import Div                     from 'shared/Basic/Div'
-import Icon                    from 'shared/Basic/Icon'
-import MotionDiv               from 'shared/Basic/MotionDiv'
+import {shoppingBag}               from 'config/icons'
+import {AnimatePresence}           from 'framer-motion'
+import moment                      from 'moment'
+import React                       from 'react'
+import {useDispatch, useSelector}  from 'react-redux'
+import Div                         from 'shared/Basic/Div'
+import Icon                        from 'shared/Basic/Icon'
+import MotionDiv                   from 'shared/Basic/MotionDiv'
 import {
     orderCardProductsStyle,
+    orderCardWrapperStyle,
     orderDetailInnerStyle,
     orderDetailStyle,
     orderDetailWrapperStyle
-}                              from 'shared/Controls/styles'
-import {
-    fadeIn,
-    fadeOut,
-    nOpacity
-}                              from 'shared/Layout/styles/animations'
-import {flex}                  from 'utils/themer'
-import {orderCardWrapperStyle} from '../Controls/styles'
+}                                  from 'shared/Controls/styles'
+import {fadeIn, fadeOut, nOpacity} from 'shared/Layout/styles/animations'
+import {flex}                      from 'utils/themer'
 
 const OrderCard = ({o, theme}) => {
     const dispatch = useDispatch()
@@ -88,7 +81,6 @@ const OrderCard = ({o, theme}) => {
                                 <Div>Ordered by</Div>
                                 <Div theme={orderDetailStyle}>{!!user ? user?.name : 'Guest'}</Div>
                             </Div>
-
 
 
                             <Div theme={orderDetailInnerStyle}>

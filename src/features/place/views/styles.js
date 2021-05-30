@@ -1,14 +1,5 @@
-import {
-    colorPalette,
-    globals
-} from 'config/styles'
-import {
-    borderBox,
-    center,
-    column,
-    flex,
-    sv
-} from 'utils/themer'
+import {colorPalette, globals}               from 'config/styles'
+import {borderBox, center, column, flex, sv} from 'utils/themer'
 
 export const placesWrapperStyle = {
     display: 'grid',
@@ -74,7 +65,7 @@ export const placeDescriptionStyle = {
         {
             selector: 'p:first-child',
             size: [26, .7, 26],
-            lineHeight:[34, .7, 34]
+            lineHeight: [34, .7, 34]
         }
     ]
 }

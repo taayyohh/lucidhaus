@@ -7,6 +7,7 @@ import {API} from 'config/variables'
  * update single product
  * delete single product
  */
+
 export const addProduct = ({_id, token, product}) =>
     fetch(`${API}/product/create/${_id}`, {
         method: 'POST',
@@ -88,23 +89,3 @@ export const getFilteredProducts = ({category}) => {
             return error
         })
 }
-
-// export const getFilteredProducts = (skip, limit, filters = {}) => {
-//     const data = {
-//         limit, skip, filters
-//     }
-//     return fetch(`${API}/products/by/search`, {
-//         method: 'POST',
-//         headers: {
-//             Accept: 'application/json',
-//             'Content-Type': 'application/json',
-//         },
-//         body: JSON.stringify(data)
-//     })
-//         .then(response => {
-//             return response.json()
-//         })
-//         .catch(error => {
-//             return error
-//         })
-// }

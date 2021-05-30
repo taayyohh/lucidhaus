@@ -1,21 +1,18 @@
-import {timesCircle}     from 'config/icons'
-import {AnimatePresence} from 'framer-motion'
-import React               from 'react'
-import {Portal}            from 'react-portal'
-import {
-    useDispatch,
-    useSelector
-}                          from 'react-redux'
-import Div                 from 'shared/Basic/Div'
-import Icon                from 'shared/Basic/Icon'
-import MotionDiv           from 'shared/Basic/MotionDiv'
+import {timesCircle}              from 'config/icons'
+import {AnimatePresence}          from 'framer-motion'
+import React                      from 'react'
+import {Portal}                   from 'react-portal'
+import {useDispatch, useSelector} from 'react-redux'
+import Div                        from 'shared/Basic/Div'
+import Icon                       from 'shared/Basic/Icon'
+import MotionDiv                  from 'shared/Basic/MotionDiv'
 import {
     deletePromptButtonStyle,
     deletePromptCloseIconStyle,
     deletePromptConfirmButtonStyle,
     deletePromptHeadingStyle
-}                          from 'shared/Controls/styles'
-import {defaultModalStyle} from 'shared/Layout/styles'
+}                                 from 'shared/Controls/styles'
+import {defaultModalStyle}        from 'shared/Layout/styles'
 
 const DeletePrompt = ({destroyAction, type, index, objectID}) => {
     const {_id, token} = useSelector(state => state.user)

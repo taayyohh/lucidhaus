@@ -19,12 +19,6 @@ export const adminDashboardMenu = [
         title: 'Manage Places'
     },
     {
-        url: '/admin/taxonomy',
-        active: ['product-category'],
-        icon: cogs,
-        title: 'Manage Taxonomy'
-    },
-    {
         dispatchAction: 'user/signOut',
         icon: signOut,
         title: 'Sign Out'

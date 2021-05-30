@@ -1,23 +1,10 @@
-import {push} from 'connected-react-router'
+import {push}                             from 'connected-react-router'
+import {createOrder, processPayment}      from 'features/shop/services'
+import {getFilteredProducts, getProducts} from 'features/shop/services/product/product'
 
-import {
-    call,
-    put,
-    takeLatest
-} from 'redux-saga/effects'
-import {
-    getBraintreeClientToken,
-    getPaymentMethod
-} from 'services/braintree'
-import {
-    getFilteredProducts,
-    getProducts
-} from 'features/shop/services/product/product'
-import {
-    createOrder,
-    processPayment
-} from 'features/shop/services'
-import {emptyCart} from 'utils/cartHelpers'
+import {call, put, takeLatest}                     from 'redux-saga/effects'
+import {getBraintreeClientToken, getPaymentMethod} from 'services/braintree'
+import {emptyCart}                                 from 'utils/cartHelpers'
 
 export function* getShop() {
     try {

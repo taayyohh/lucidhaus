@@ -1,14 +1,6 @@
-import {push} from 'connected-react-router'
-import {
-    call,
-    put,
-    takeLatest
-} from 'redux-saga/effects'
-import {
-    addProductCategory,
-    deleteProductCategory,
-    updateProductCategory
-} from 'features/shop/services/product/category'
+import {push}                                                             from 'connected-react-router'
+import {addProductCategory, deleteProductCategory, updateProductCategory} from 'features/shop/services/product/category'
+import {call, put, takeLatest}                                            from 'redux-saga/effects'
 
 
 export function* createProductCategory({payload}) {

@@ -1,14 +1,8 @@
-import {
-    CDN,
-    siteDisplayName
-}            from 'config/variables'
-import React from 'react'
-import {Helmet}      from 'react-helmet-async'
-import {useSelector} from 'react-redux'
-import {
-    excerpt,
-    stripHtml
-}                    from 'utils/helpers'
+import {CDN, siteDisplayName} from 'config/variables'
+import React                  from 'react'
+import {Helmet}               from 'react-helmet-async'
+import {useSelector}          from 'react-redux'
+import {excerpt, stripHtml}   from 'utils/helpers'
 
 const DocumentHead = () => {
     const {documentHead} = useSelector(state => state.site)

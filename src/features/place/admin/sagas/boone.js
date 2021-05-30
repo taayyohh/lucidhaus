@@ -1,5 +1,5 @@
-import {call, put, takeLatest} from 'redux-saga/effects'
 import {addPlaceFromBoone}     from 'features/place/services'
+import {call, put, takeLatest} from 'redux-saga/effects'
 
 export function* createPlaceFromBoone({payload}) {
     const {

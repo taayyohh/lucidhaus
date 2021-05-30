@@ -22,7 +22,6 @@ import {
     white
 }                              from 'utils/themer'
 
-
 export const addTrackButtonStyle = {
     ...genericButtonStyle,
     display: flex,

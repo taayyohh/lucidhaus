@@ -1,13 +1,6 @@
-import {push} from 'connected-react-router'
-import {
-    call,
-    put,
-    takeEvery
-} from 'redux-saga/dist/redux-saga-effects-npm-proxy.esm'
-import {
-    update,
-    updateUser
-} from 'features/user/services'
+import {push}                 from 'connected-react-router'
+import {update, updateUser}   from 'features/user/services'
+import {call, put, takeEvery} from 'redux-saga/dist/redux-saga-effects-npm-proxy.esm'
 
 export function* updateProfile({payload}) {
     try {

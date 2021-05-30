@@ -1,19 +1,8 @@
-import {push}       from 'connected-react-router'
-import {
-    call,
-    put,
-    takeLatest
-}                   from 'redux-saga/effects'
-import {
-    addProduct,
-    deleteProduct,
-    updateProduct
-}                   from 'features/shop/services/product/product'
-import {
-    getSignedRequest,
-    uploadFile
-}                   from 'services/s3'
-import {updateItem} from 'utils/cartHelpers'
+import {push}                                     from 'connected-react-router'
+import {addProduct, deleteProduct, updateProduct} from 'features/shop/services/product/product'
+import {call, put, takeLatest}                    from 'redux-saga/effects'
+import {getSignedRequest, uploadFile}             from 'services/s3'
+import {updateItem}                               from 'utils/cartHelpers'
 
 export function* createProduct({payload}) {
     const {_id, token, name, description, photo, photoFile, quantity, price, isPublished, category} = payload

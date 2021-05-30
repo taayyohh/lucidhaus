@@ -13,7 +13,7 @@ const MapController = ({children}) => {
     })
 
     useEffect(() => {
-        if(geo)
+        if (geo)
             getLocation()
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])

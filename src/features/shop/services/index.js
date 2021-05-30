@@ -1,7 +1,6 @@
 import {API}       from 'config/variables'
 import queryString from 'query-string'
 
-
 export const list = params => {
     const query = queryString.stringify(params)
     return fetch(`${API}/products/search/?${query}`, {
@@ -26,7 +25,6 @@ export const read = productId =>
             return error
         })
 
-
 export const listRelated = ({slug}) =>
     fetch(`${API}/products/related/${slug}`, {
         method: 'GET'
@@ -37,7 +35,6 @@ export const listRelated = ({slug}) =>
         .catch(error => {
             return error
         })
-
 
 export const processPayment = ({paymentData}) =>
     fetch(`${API}/braintree/payment/`, {
@@ -55,7 +52,6 @@ export const processPayment = ({paymentData}) =>
             return error
         })
 
-
 export const createOrder = ({createOrderData}) => {
     fetch(`${API}/order/create/`, {
         method: 'POST',
@@ -72,4 +68,3 @@ export const createOrder = ({createOrderData}) => {
             return error
         })
 }
-

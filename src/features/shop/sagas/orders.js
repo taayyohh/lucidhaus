@@ -1,14 +1,5 @@
-import {
-    call,
-    put,
-    takeLatest,
-    takeEvery
-} from 'redux-saga/effects'
-import {
-    listOrders,
-    listStatusValues,
-    updateOrderStatus
-} from 'features/shop/services/order'
+import {listOrders, listStatusValues, updateOrderStatus} from 'features/shop/services/order'
+import {call, put, takeEvery, takeLatest}                from 'redux-saga/effects'
 
 export function* getOrders({payload}) {
     try {

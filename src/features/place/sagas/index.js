@@ -1,12 +1,5 @@
-import {
-    call,
-    put,
-    takeEvery
-} from 'redux-saga/effects'
-import {
-    getPlace,
-    getPlaces
-} from 'features/place/services'
+import {getPlace, getPlaces}  from 'features/place/services'
+import {call, put, takeEvery} from 'redux-saga/effects'
 
 /**
  *

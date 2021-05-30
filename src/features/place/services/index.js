@@ -7,6 +7,7 @@ import {API} from 'config/variables'
  * update single admin
  * delete single admin
  */
+
 export const addPlace = ({_id, token, place}) =>
     fetch(`${API}/place/create/${_id}`, {
         method: 'POST',
@@ -23,7 +24,6 @@ export const addPlace = ({_id, token, place}) =>
             return error
         })
 
-
 export const getPlaces = () =>
     fetch(`${API}/places?limit=undefined`, {
         method: 'GET'
@@ -34,7 +34,6 @@ export const getPlaces = () =>
         .catch(error => {
             return error
         })
-
 
 export const deletePlace = ({_id, token, slug}) =>
     fetch(`${API}/place/${slug}/${_id}`, {
@@ -52,7 +51,6 @@ export const deletePlace = ({_id, token, slug}) =>
             return error
         })
 
-
 export const getPlace = ({slug}) =>
     fetch(`${API}/place/${slug}`, {
         method: 'GET'
@@ -63,7 +61,6 @@ export const getPlace = ({slug}) =>
         .catch(error => {
             return error
         })
-
 
 export const updatePlace = ({slug, _id, token, place}) =>
     fetch(`${API}/place/${slug}/${_id}`, {
@@ -81,7 +78,6 @@ export const updatePlace = ({slug, _id, token, place}) =>
             return error
         })
 
-
 export const addPlaceFromBoone = ({_id, token, place}) =>
     fetch(`${API}/place/create-from-boone/${_id}`, {
         method: 'POST',
@@ -97,4 +93,3 @@ export const addPlaceFromBoone = ({_id, token, place}) =>
         .catch(error => {
             return error
         })
-

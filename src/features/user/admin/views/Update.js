@@ -1,24 +1,15 @@
-import {
-    userFields,
-    validateUser
-}                              from 'features/user/admin/fields'
-import AdminDashboardWrapper   from 'features/admin/views/AdminDashboardWrapper'
-import React, {
-    useContext,
-    useEffect
-}                              from 'react'
-import {
-    useDispatch,
-    useSelector
-}                              from 'react-redux'
-import {searchContext}         from 'shared/Containers/SearchController'
-import DangerZone              from 'shared/Controls/DangerZone'
-import Form                    from 'shared/Fields/Form'
-import ContentWrapper          from 'shared/Layout/ContentWrapper'
-import {adminFormWrapperStyle} from 'features/admin/views/styles'
+import AdminDashboardWrapper          from 'features/admin/views/AdminDashboardWrapper'
+import {adminFormWrapperStyle}        from 'features/admin/views/styles'
+import {userFields}                   from 'features/user/admin/fields'
+import React, {useContext, useEffect} from 'react'
+import {useDispatch, useSelector}     from 'react-redux'
+import {searchContext}                from 'shared/Containers/SearchController'
+import DangerZone                     from 'shared/Controls/DangerZone'
+import Form                           from 'shared/Fields/Form'
+import ContentWrapper                 from 'shared/Layout/ContentWrapper'
 
 const roleSwitch = ({role}) => {
-    switch(role) {
+    switch (role) {
         case 0:
             return 'Super Admin'
         case 1:

@@ -1,4 +1,4 @@
-import {productCategoryFields} from 'features/shop/admin/product/fields/productCategory'
+import {productCategoryFields} from 'features/shop/admin/product/fields/category'
 import AdminDashboardWrapper   from 'features/admin/views/AdminDashboardWrapper'
 import {adminFormWrapperStyle} from 'features/admin/views/styles'
 import React, {useEffect}      from 'react'

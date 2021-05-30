@@ -1,9 +1,5 @@
-import {
-    put,
-    takeEvery,
-    takeLatest
-}                from 'redux-saga/effects'
-import {getCart} from 'utils/cartHelpers'
+import {put, takeEvery, takeLatest} from 'redux-saga/effects'
+import {getCart}                    from 'utils/cartHelpers'
 
 export function* loadConfig() {
     yield put({type: 'user/isAuthenticated'})

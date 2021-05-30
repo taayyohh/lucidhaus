@@ -1,5 +1,5 @@
-import AdminDashboardWrapper from 'features/admin/views/AdminDashboardWrapper'
-import List                  from 'features/shop/admin/product/taxonomy/category/List'
+import AdminDashboardWrapper      from 'features/admin/views/AdminDashboardWrapper'
+import List                       from 'features/shop/admin/product/taxonomy/category/List'
 import React, {useEffect}         from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import DeletePrompt               from 'shared/Controls/DeletePrompt'

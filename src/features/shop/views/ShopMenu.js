@@ -1,7 +1,4 @@
-import {
-    caretDown,
-    caretUp
-} from 'config/icons'
+import {caretDown, caretUp}           from 'config/icons'
 import {
     shopActiveIndicatorStyle,
     shopCategoryListStyle,
@@ -9,22 +6,16 @@ import {
     shopHeadingStyle,
     shopMenuLinkStyle,
     shopMenuStyle
-} from 'features/shop/views/styles'
-import {mobileFlag}       from 'features/site/slice'
-import React, {
-    useContext,
-    useEffect
-}                         from 'react'
-import {
-    useDispatch,
-    useSelector
-}                         from 'react-redux'
-import Div                from 'shared/Basic/Div'
-import H2                 from 'shared/Basic/H2'
-import Icon               from 'shared/Basic/Icon'
-import LinkSwitch         from 'shared/Basic/LinkSwitch'
-import MotionDiv          from 'shared/Basic/MotionDiv'
-import {menuPanelContext} from 'shared/Containers/MenuPanelController'
+}                                     from 'features/shop/views/styles'
+import {mobileFlag}                   from 'features/site/slice'
+import React, {useContext, useEffect} from 'react'
+import {useDispatch, useSelector}     from 'react-redux'
+import Div                            from 'shared/Basic/Div'
+import H2                             from 'shared/Basic/H2'
+import Icon                           from 'shared/Basic/Icon'
+import LinkSwitch                     from 'shared/Basic/LinkSwitch'
+import MotionDiv                      from 'shared/Basic/MotionDiv'
+import {menuPanelContext}             from 'shared/Containers/MenuPanelController'
 
 const ShopMenu = () => {
     const {productCategories, product} = useSelector(state => state.shop)

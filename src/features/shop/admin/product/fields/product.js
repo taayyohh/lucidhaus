@@ -1,13 +1,5 @@
-import {
-    NUMBER,
-    RICH_TEXT,
-    SELECT,
-    TEXT,
-    TOGGLE,
-    IMAGE_UPLOAD,
-    UPLOAD_PATHS
-}               from 'config/variables'
-import * as Yup from 'yup'
+import {IMAGE_UPLOAD, NUMBER, RICH_TEXT, SELECT, TEXT, TOGGLE, UPLOAD_PATHS} from 'config/variables'
+import * as Yup                                                              from 'yup'
 
 export const productFields = [
     {

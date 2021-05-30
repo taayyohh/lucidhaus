@@ -1,13 +1,10 @@
-import React                   from 'react'
-import {
-    useDispatch,
-    useSelector
-}                              from 'react-redux'
-import Div                     from 'shared/Basic/Div'
-import {productCardCountStyle} from 'shared/Cards/styles'
-import Form                 from 'shared/Fields/Form'
-import {quantityFields}     from '../../features/shop/admin/order/fields/cart'
-import {genericButtonStyle} from './styles'
+import {quantityFields}           from 'features/shop/admin/order/fields/cart'
+import React                      from 'react'
+import {useDispatch, useSelector} from 'react-redux'
+import Div                        from 'shared/Basic/Div'
+import {productCardCountStyle}    from 'shared/Cards/styles'
+import Form                       from 'shared/Fields/Form'
+import {genericButtonStyle}       from './styles'
 
 const AddToCartButton = ({product}) => {
     const dispatch = useDispatch()

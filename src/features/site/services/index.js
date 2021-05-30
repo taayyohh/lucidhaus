@@ -15,6 +15,7 @@ export const signup = user =>
         .catch(error => {
             return error
         })
+
 export const confirmSignup = user =>
     fetch(`${API}/confirmSignup`, {
         method: "POST",
@@ -30,6 +31,7 @@ export const confirmSignup = user =>
         .catch(error => {
             return error
         })
+
 export const signin = user =>
     fetch(`${API}/signin`, {
         method: "POST",
@@ -43,6 +45,7 @@ export const signin = user =>
     }).catch(err => {
         return err
     })
+
 export const signout = () => {
     if (typeof window !== 'undefined') {
         localStorage.removeItem('jwt')
@@ -57,11 +60,13 @@ export const signout = () => {
             })
     }
 }
+
 export const authenticate = (data) => {
     if (typeof window !== 'undefined') {
         localStorage.setItem('jwt', JSON.stringify(data))
     }
 }
+
 export const isAuthenticated = () => {
     if (typeof window === 'undefined') {
         return false

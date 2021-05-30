@@ -1,35 +1,35 @@
-import ShopWrapper       from 'features/shop/views/ShopWrapper'
+import ShopWrapper        from 'features/shop/views/ShopWrapper'
 import {
     productImageStyle,
     productImageWrapperStyle,
     productInfoWrapperStyle
-}                        from 'features/shop/views/styles'
-import {AnimatePresence} from 'framer-motion'
+}                         from 'features/shop/views/styles'
+import {AnimatePresence}  from 'framer-motion'
 import React, {useEffect} from 'react'
 import {
     useDispatch,
     useSelector
-}                        from 'react-redux'
-import Div               from 'shared/Basic/Div'
-import H2                from 'shared/Basic/H2'
-import MotionDiv         from 'shared/Basic/MotionDiv'
-import RichText          from 'shared/Basic/RichText'
-import S3Img             from 'shared/Basic/S3Img'
-import AddToCartButton   from 'shared/Controls/AddToCartButton'
-import ContentWrapper    from 'shared/Layout/ContentWrapper'
+}                         from 'react-redux'
+import Div                from 'shared/Basic/Div'
+import H2                 from 'shared/Basic/H2'
+import MotionDiv          from 'shared/Basic/MotionDiv'
+import RichText           from 'shared/Basic/RichText'
+import S3Img              from 'shared/Basic/S3Img'
+import AddToCartButton    from 'shared/Controls/AddToCartButton'
+import ContentWrapper     from 'shared/Layout/ContentWrapper'
 import {
     fadeIn,
     fadeOut,
     nOpacity
-}                        from 'shared/Layout/styles/animations'
-import {getNameById}     from 'utils/helpers'
+}                         from 'shared/Layout/styles/animations'
+import {getNameById}      from 'utils/helpers'
 import {
     productCategoryStyle,
     productDescriptionStyle,
     productPriceStyle,
     productTitleStyle,
     productWrapperStyle
-}                        from './styles'
+}                         from './styles'
 
 
 const Product = () => {

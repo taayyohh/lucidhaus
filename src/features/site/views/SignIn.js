@@ -1,13 +1,12 @@
-import {signInFields, validateSignin}            from 'features/site/admin/fields/signIn'
-import {signInFormStyle, signInFormWrapperStyle} from 'features/user/views/styles'
-import React, {useEffect}                        from 'react'
-import {useSelector}                             from 'react-redux'
-import {history}                                 from 'store'
-import Div                                       from 'shared/Basic/Div'
-import LinkSwitch                                from "shared/Basic/LinkSwitch";
-import Form                                      from 'shared/Fields/Form'
-import ContentWrapper                            from 'shared/Layout/ContentWrapper'
-import {signUpPromptStyle}                       from "../../user/views/styles";
+import {signInFields, validateSignin}                               from 'features/site/admin/fields/signIn'
+import {signInFormStyle, signInFormWrapperStyle, signUpPromptStyle} from 'features/user/views/styles'
+import React, {useEffect}                                           from 'react'
+import {useSelector}                                                from 'react-redux'
+import Div                                                          from 'shared/Basic/Div'
+import LinkSwitch                                                   from "shared/Basic/LinkSwitch";
+import Form                                                         from 'shared/Fields/Form'
+import ContentWrapper                                               from 'shared/Layout/ContentWrapper'
+import {history}                                                    from 'store'
 
 const SignIn = () => {
     const {isAuthenticated, isAdmin} = useSelector(state => state.user)

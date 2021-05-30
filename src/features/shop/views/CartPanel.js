@@ -1,17 +1,13 @@
-import {
-    cartSummaryLengthStyle,
-    cartSummaryStyle,
-    cartSummaryTotalStyle
-}                    from 'features/shop/views/styles'
-import React         from 'react'
-import {useSelector} from 'react-redux'
-import Div           from 'shared/Basic/Div'
-import H2            from 'shared/Basic/H2'
-import Span          from 'shared/Basic/Span'
-import {getTotal}    from 'utils/cartHelpers'
-import Cart          from './Cart'
-import Checkout      from './Checkout'
-import {cartStyle}   from './styles'
+import {cartSummaryLengthStyle, cartSummaryStyle, cartSummaryTotalStyle} from 'features/shop/views/styles'
+import React                                                             from 'react'
+import {useSelector}                                                     from 'react-redux'
+import Div                                                               from 'shared/Basic/Div'
+import H2                                                                from 'shared/Basic/H2'
+import Span                                                              from 'shared/Basic/Span'
+import {getTotal}                                                        from 'utils/cartHelpers'
+import Cart                                                              from './Cart'
+import Checkout                                                          from './Checkout'
+import {cartStyle}                                                       from './styles'
 
 const CartPanel = () => {
     const {cart} = useSelector(state => state.shop)
