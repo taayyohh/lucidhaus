@@ -1,4 +1,4 @@
-import {home, signOut, userCog} from 'config/icons/fa'
+import {home, signOut, userCog} from 'config/icons'
 
 export const userDashboardMenu = [
     {

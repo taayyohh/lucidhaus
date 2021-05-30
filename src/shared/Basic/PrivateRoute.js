@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react'
 import {useSelector}      from 'react-redux'
 import {Route}   from 'react-router-dom'
-import {history} from 'redux/store'
+import {history} from 'store'
 
 const PrivateRoute = ({component: Component, ...rest}) => {
     const {isAuthenticated} = useSelector(state => state.user)

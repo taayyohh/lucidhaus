@@ -1,5 +1,5 @@
-import {TEL}                                                   from 'config'
-import {globals}                                               from 'config/styles'
+import {TEL}     from 'config/variables'
+import {globals} from 'config/styles'
 import PropTypes                                               from 'prop-types'
 import React, {useEffect, useRef, useState}                    from 'react'
 import Fieldset                                                from 'shared/Basic/Fieldset'

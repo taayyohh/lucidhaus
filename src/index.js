@@ -1,12 +1,12 @@
 import {ConnectedRouter} from 'connected-react-router'
 import React             from 'react'
 import ReactDOM          from 'react-dom'
-import {Provider}       from 'react-redux'
-import store, {history} from './redux/store'
-import Root             from './shared/Containers/Root'
+import {Provider}        from 'react-redux'
 import './index.css'
 
 import * as serviceWorker from './serviceWorker'
+import Root               from './shared/Containers/Root'
+import store, {history}   from './store'
 
 ReactDOM.render(
     <React.StrictMode>

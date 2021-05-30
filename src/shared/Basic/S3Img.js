@@ -1,4 +1,4 @@
-import {CDN} from 'config'
+import {CDN} from 'config/variables'
 import React from 'react'
 import Img   from './Img'
 

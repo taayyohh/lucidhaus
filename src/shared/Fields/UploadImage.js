@@ -1,29 +1,36 @@
-import {globals}                 from 'config/styles'
-import moment                    from 'moment'
-import React, {
-    memo,
-    useEffect,
-    useState
-}                                from 'react'
-import Dropzone                  from 'react-dropzone'
+import {ACCEPTABLE_EXTENSIONS} from 'config/variables'
+import moment from 'moment'
+import React, {memo, useEffect, useState} from 'react'
+import Dropzone from 'react-dropzone'
 import 'react-image-crop/dist/ReactCrop.css'
-import Div                       from 'shared/Basic/Div'
-import Img                       from 'shared/Basic/Img'
-import S3Img                     from 'shared/Basic/S3Img'
-import Span                      from 'shared/Basic/Span'
-import {genericCardImageStyle}   from 'shared/Cards/styles'
+import Div from 'shared/Basic/Div'
+import Img from 'shared/Basic/Img'
+import S3Img from 'shared/Basic/S3Img'
+import Span from 'shared/Basic/Span'
+import {genericCardImageStyle} from 'shared/Cards/styles'
 import {uploadErrorMessageStyle} from 'shared/Fields/styles'
-import {slugify}                 from '../../utils/helpers'
-import CropPortal                from './CropPortal'
+import {slugify} from 'utils/helpers'
+import CropPortal from './CropPortal'
 import {
     defaultFieldHeadingStyle,
     imageDropZonePreviewStyle,
     imageDropZonePreviewWrapperStyle,
     imageDropZoneStyle,
     imageDropZoneWrapperStyle
-}                                from './styles'
+} from './styles'
 
-const UploadImage = memo(({formik, id, file, cropWidth, cropHeight, s3Path, inputLabel, className, aspect = 1, errorMessage}) => {
+const UploadImage = memo(({
+                              formik,
+                              id,
+                              file,
+                              cropWidth,
+                              cropHeight,
+                              s3Path,
+                              inputLabel,
+                              className,
+                              aspect = 1,
+                              errorMessage
+                          }) => {
     const [cropPortalOpen, setCropPortalOpen] = useState(false)
     const [uploadedImage, setUploadedImage] = useState({})
     const {uploadBlob, uploadType, sanitizedName} = uploadedImage
@@ -101,7 +108,7 @@ const UploadImage = memo(({formik, id, file, cropWidth, cropHeight, s3Path, inpu
             <Div theme={imageDropZoneWrapperStyle} className={className ? className : ''}>
                 <Dropzone
                     id={id}
-                    accept={globals.extensions}
+                    accept={ACCEPTABLE_EXTENSIONS}
                     maxFiles={1}
                     multiple={false}
                     onDropAccepted={(acceptedFiles) => handleAcceptedFile(acceptedFiles)}

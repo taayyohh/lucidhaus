@@ -1,5 +1,5 @@
 import algoliasearch                       from 'algoliasearch'
-import {ALGOLIA_ADMIN_KEY, ALGOLIA_APP_ID} from 'config'
+import {ALGOLIA_ADMIN_KEY, ALGOLIA_APP_ID} from 'config/variables'
 import React, {createContext}              from 'react'
 
 export const searchContext = createContext(null)

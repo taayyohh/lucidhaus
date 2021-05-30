@@ -15,10 +15,7 @@ export const colorPalette = {
     black: '#0A1626',
     gray: '#dadce0',
     lightGray: '#dadce0',
-    tan: '#D9D7BA',
     purple: '#822cbf',
-    brown: '#73462C',
-    lightGold: 'rgba(217, 215, 186, 0.32)',
     grayPurple: '#908999',
     borderColor: '#dedede'
 }
@@ -56,15 +53,7 @@ export const globals = {
         borderHoverColor: colorPalette.purple,
         borderColor: colorPalette.lightGray,
         errorColor: colorPalette.brightRed
-    },
-    extensions: [
-        '.png',
-        '.jpg',
-        '.jpeg',
-        '.svg',
-        '.wav',
-        '.mp3'
-    ]
+    }
 }
 
 export const genericMobileContainerStyles = {

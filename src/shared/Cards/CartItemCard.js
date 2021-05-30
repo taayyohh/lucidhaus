@@ -1,18 +1,18 @@
-import {quantityFields}  from 'config/fields'
 import {AnimatePresence} from 'framer-motion'
 import PropTypes         from 'prop-types'
 import React             from 'react'
-import Div               from 'shared/Basic/Div'
-import LinkSwitch        from 'shared/Basic/LinkSwitch'
-import MotionDiv         from 'shared/Basic/MotionDiv'
-import S3Img             from 'shared/Basic/S3Img'
-import Span from 'shared/Basic/Span'
-import Form from 'shared/Fields/Form'
+import Div              from 'shared/Basic/Div'
+import LinkSwitch       from 'shared/Basic/LinkSwitch'
+import MotionDiv        from 'shared/Basic/MotionDiv'
+import S3Img            from 'shared/Basic/S3Img'
+import Span             from 'shared/Basic/Span'
+import Form             from 'shared/Fields/Form'
 import {
     fadeIn,
     fadeOut,
     nOpacity
-}           from 'shared/Layout/styles/animations'
+}                       from 'shared/Layout/styles/animations'
+import {quantityFields} from '../../features/shop/admin/order/fields/cart'
 import {
     productCardControlsStyle,
     productCardCountStyle,
@@ -22,7 +22,7 @@ import {
     productCardStyle,
     productCardTextWrapperStyle,
     productCardTitleStyle
-}                        from './styles'
+}                       from './styles'
 
 
 const CartItemCard = ({product, theme}) =>

@@ -4,7 +4,7 @@ import {
     useDispatch,
     useSelector
 }                       from 'react-redux'
-import {adminMenuStyle} from 'features/admin/styles'
+import {adminMenuStyle} from 'features/admin/views/styles'
 import Div              from 'shared/Basic/Div'
 import LinkSwitch       from 'shared/Basic/LinkSwitch'
 import Span             from 'shared/Basic/Span'

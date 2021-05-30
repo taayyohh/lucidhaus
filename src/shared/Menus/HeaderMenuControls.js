@@ -1,5 +1,5 @@
-import {user}                                        from 'config/icons/fa'
-import React                                         from 'react'
+import {user} from 'config/icons'
+import React  from 'react'
 import {useSelector}                                 from 'react-redux'
 import Div                                           from 'shared/Basic/Div'
 import Icon                                          from 'shared/Basic/Icon'

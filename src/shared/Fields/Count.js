@@ -1,8 +1,8 @@
 import {
     minusCircle,
     plusCircle
-}                    from 'config/icons/fa'
-import React         from 'react'
+}            from 'config/icons'
+import React from 'react'
 import {useDispatch} from 'react-redux'
 import Div           from 'shared/Basic/Div'
 import Icon          from 'shared/Basic/Icon'

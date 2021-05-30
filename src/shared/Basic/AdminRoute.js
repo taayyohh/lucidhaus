@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react'
 import {useSelector}      from 'react-redux'
 import {Route}   from 'react-router-dom'
-import {history} from 'redux/store'
+import {history} from 'store'
 
 
 const AdminRoute = ({component: Component, ...rest}) => {

@@ -1,5 +1,5 @@
-import {timesCircle}       from 'config/icons/fa'
-import {AnimatePresence}   from 'framer-motion'
+import {timesCircle}     from 'config/icons'
+import {AnimatePresence} from 'framer-motion'
 import React               from 'react'
 import {Portal}            from 'react-portal'
 import {

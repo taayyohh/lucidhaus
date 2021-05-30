@@ -1,4 +1,4 @@
-import {CDN}           from 'config'
+import {CDN} from 'config/variables'
 import {
     list,
     pause,
@@ -7,8 +7,8 @@ import {
     stepForward,
     volumeMute,
     windowMinimize
-}                      from 'config/icons/fa'
-import {mobileFlag}    from 'features/site/slice'
+}            from 'config/icons'
+import {mobileFlag} from 'features/site/slice'
 import React, {
     useContext,
     useEffect,

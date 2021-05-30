@@ -1,5 +1,5 @@
 import mapboxgl           from '!mapbox-gl'
-import {MAPBOX_PUBLIC}    from 'config'
+import {MAPBOX_PUBLIC}    from 'config/variables'
 import React, {useEffect} from 'react'
 import Div                from 'shared/Basic/Div'
 /* eslint import/no-webpack-loader-syntax: off */

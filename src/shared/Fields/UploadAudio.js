@@ -1,6 +1,6 @@
-import {CDN}           from 'config'
-import {play}          from 'config/icons/fa'
-import {globals}       from 'config/styles'
+import {ACCEPTABLE_EXTENSIONS, CDN} from 'config/variables'
+import {play}                       from 'config/icons'
+import {globals} from 'config/styles'
 import moment          from 'moment'
 import React, {
     memo,
@@ -70,7 +70,7 @@ const UploadAudio = memo(({formik, id, file, s3Path, inputLabel, className, erro
             <Div theme={imageDropZoneWrapperStyle} className={className ? className : ''}>
                 <Dropzone
                     id={id}
-                    accept={globals.extensions}
+                    accept={ACCEPTABLE_EXTENSIONS}
                     maxFiles={1}
                     multiple={false}
                     onDropAccepted={(acceptedFiles) => handleAcceptedFile(acceptedFiles)}

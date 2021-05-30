@@ -13,8 +13,8 @@ import {
     TEL,
     TEXT,
     TOGGLE
-}                     from 'config'
-import React, {memo}  from 'react'
+}                    from 'config/variables'
+import React, {memo} from 'react'
 import UploadAudio    from 'shared/Fields/UploadAudio'
 import UploadImage    from 'shared/Fields/UploadImage'
 import Address        from './Address'

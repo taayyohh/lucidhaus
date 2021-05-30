@@ -1,4 +1,4 @@
-import {API} from 'config'
+import {API} from 'config/variables'
 
 export const sendTwilioVerification = user =>
     fetch(`${API}/twilio/sendVerification`, {
