@@ -16,10 +16,38 @@ const CreateProduct = lazy(() => import('features/shop/admin/product/views/Creat
 const CreateProductCategory = lazy(() => import('features/shop/admin/product/taxonomy/category/Create'))
 const CreateUser = lazy(() => import('features/user/admin/views/Create'))
 const ManagePlaces = lazy(() => import('features/place/admin/views/Manage'))
+const ManagePlaceTaxonomy = lazy(() => import('features/place/admin/taxonomy/Manage'))
+const ManagePlaceCategories = lazy(() => import('features/place/admin/taxonomy/categories/Manage'))
+const ManageBathrooms = lazy(() => import('features/place/admin/taxonomy/bathrooms/Manage'))
+const ManageBusinessOwner = lazy(() => import('features/place/admin/taxonomy/businessOwner/Manage'))
+const ManageCommunitiesServed  = lazy(() => import('features/place/admin/taxonomy/communitiesServed/Manage'))
+const ManageFoodOptions  = lazy(() => import('features/place/admin/taxonomy/foodOptions/Manage'))
+const ManageLanguagesSpoken = lazy(() => import('features/place/admin/taxonomy/language/Manage'))
+
+const ManageProductTaxonomy = lazy(() => import('features/shop/admin/product/taxonomy/Manage'))
+const ManageUserTaxonomy = lazy(() => import('features/user/admin/taxonomy/Manage'))
+
+const ManageAdaptiveEquipment = lazy(() => import('features/user/admin/taxonomy/adaptiveEquipment/Manage'))
+const ManageBodyModifications = lazy(() => import('features/user/admin/taxonomy/bodyModifications/Manage'))
+const ManageGender = lazy(() => import('features/user/admin/taxonomy/gender/Manage'))
+const ManageUserLanguage = lazy(() => import('features/user/admin/taxonomy/language/Manage'))
+const ManageMethodsOfCommunication = lazy(() => import('features/user/admin/taxonomy/methodsOfCommunication/Manage'))
+const ManagePhysicalAppearance = lazy(() => import('features/user/admin/taxonomy/physicalAppearance/Manage'))
+const ManagePronouns = lazy(() => import('features/user/admin/taxonomy/pronoun/Manage'))
+const ManageRace = lazy(() => import('features/user/admin/taxonomy/race/Manage'))
+const ManageServiceAnimals = lazy(() => import('features/user/admin/taxonomy/serviceAnimal/Manage'))
+const ManageSexualOrientation = lazy(() => import('features/user/admin/taxonomy/sexualOrientation/Manage'))
+
+
+// const ManageUserTaxonomy = lazy(() => import('features/user/admin/taxonomy/Manage'))
+// const ManageUserTaxonomy = lazy(() => import('features/user/admin/taxonomy/Manage'))
+// const ManageUserTaxonomy  lazy(() => import('features/user/admin/taxonomy/Manage'))
+// const ManageUserTaxonomy = lazy(() => import('features/user/admin/taxonomy/Manage'))
+
+
 const ManageUsers = lazy(() => import('features/user/admin/views/Manage'))
 const ManageOrders = lazy(() => import('features/shop/admin/order/views/Manage'))
 const ManageShop = lazy(() => import('features/shop/admin/product/views/Manage'))
-const ManageTaxonomy = lazy(() => import('features/site/admin/Manage'))
 const UpdatePlace = lazy(() => import('features/place/admin/views/Update'))
 const UpdateProduct = lazy(() => import('features/shop/admin/product/views/Update'))
 const UpdateProductCategory = lazy(() => import('features/shop/admin/product/taxonomy/category/Update'))
@@ -52,26 +80,53 @@ const Routes = () => {
                             <Route path="/shop" exact component={Shop}/>
                             <Route path="/shop/:slug" exact component={Product}/>
                             <Route path="/shop/category/:slug" exact component={FilteredProduct}/>
+
                             <PrivateRoute path="/dashboard" exact component={UserDashboard}/>
                             <PrivateRoute path="/dashboard/orders" exact component={UserOrders}/>
                             <PrivateRoute path="/dashboard/settings" exact component={UserSettings}/>
+
                             <AdminRoute path="/admin" exact component={AdminDashboard}/>
                             <AdminRoute path="/admin/shop" exact component={ManageShop}/>
-                            <AdminRoute path="/admin/product-category" exact component={ManageTaxonomy}/>
+                            <AdminRoute path="/admin/product-category" exact component={ManageProductTaxonomy}/>
                             <AdminRoute path="/admin/product-category/update/:slug" exact
                                         component={UpdateProductCategory}/>
-                            <AdminRoute path="/create/product-category" exact component={CreateProductCategory}/>
-                            <AdminRoute path="/create/category" exact component={CreateProductCategory}/>
-                            <AdminRoute path="/admin/taxonomy" exact component={ManageTaxonomy}/>
+                            <AdminRoute path="/admin/create/product-category" exact component={CreateProductCategory}/>
+
                             <AdminRoute path="/admin/places" exact component={ManagePlaces}/>
                             <AdminRoute path="/admin/places/update/:slug" exact component={UpdatePlace}/>
-                            <AdminRoute path="/create/place" exact component={CreatePlace}/>
+                            <AdminRoute path="/admin/place/taxonomy" exact component={ManagePlaceTaxonomy}/>
+
+                            <AdminRoute path="/admin/place/taxonomy/bathroom" exact component={ManageBathrooms}/>
+                            <AdminRoute path="/admin/place/taxonomy/business-owner" exact component={ManageBusinessOwner}/>
+                            <AdminRoute path="/admin/place/taxonomy/categories" exact component={ManagePlaceCategories}/>
+                            <AdminRoute path="/admin/place/taxonomy/communities-served" exact component={ManageCommunitiesServed}/>
+                            <AdminRoute path="/admin/place/taxonomy/food-options" exact component={ManageFoodOptions}/>
+                            <AdminRoute path="/admin/place/taxonomy/language-spoken" exact component={ManageLanguagesSpoken}/>
+
+
+                            <AdminRoute path="/admin/create/place" exact component={CreatePlace}/>
+
                             <AdminRoute path="/admin/users" exact component={ManageUsers}/>
                             <AdminRoute path="/admin/users/update/:slug" exact component={UpdateUser}/>
-                            <AdminRoute path="/create/user" exact component={CreateUser}/>
+                            <AdminRoute path="/admin/users/taxonomy" exact component={ManageUserTaxonomy}/>
+
+                            <AdminRoute path="/admin/users/taxonomy/adaptive-equipment" exact component={ManageAdaptiveEquipment}/>
+                            <AdminRoute path="/admin/users/taxonomy/body-modifications" exact component={ManageBodyModifications}/>
+                            <AdminRoute path="/admin/users/taxonomy/gender" exact component={ManageGender}/>
+                            <AdminRoute path="/admin/users/taxonomy/language" exact component={ManageUserLanguage}/>
+                            <AdminRoute path="/admin/users/taxonomy/methods-of-communication" exact component={ManageMethodsOfCommunication}/>
+                            <AdminRoute path="/admin/users/taxonomy/physical-appearance" exact component={ManagePhysicalAppearance}/>
+                            <AdminRoute path="/admin/users/taxonomy/pronoun" exact component={ManagePronouns}/>
+                            <AdminRoute path="/admin/users/taxonomy/race" exact component={ManageRace}/>
+                            <AdminRoute path="/admin/users/taxonomy/service-animal" exact component={ManageServiceAnimals}/>
+                            <AdminRoute path="/admin/users/taxonomy/sexual-orientation" exact component={ManageSexualOrientation}/>
+                            <AdminRoute path="/admin/create/user" exact component={CreateUser}/>
+
+
                             <AdminRoute path="/admin/orders" exact component={ManageOrders}/>
-                            <AdminRoute path="/admin/shop/update/:slug" exact component={UpdateProduct}/>
-                            <AdminRoute path="/create/product" exact component={CreateProduct}/>
+                            <AdminRoute path="/admin/product/update/:slug" exact component={UpdateProduct}/>
+                            <AdminRoute path="/admin/create/product" exact component={CreateProduct}/>
+
                             <AdminRoute path="/sitemap" exact component={Sitemap}/>
                             <Route component={NotFound}/>
                         </Switch>

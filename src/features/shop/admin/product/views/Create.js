@@ -52,7 +52,7 @@ const Create = () => {
                     options={options}
                     validationSchema={validateProduct}
                     dispatchAction={'admin/createProduct'}
-                    formHeading={'Create Product'}
+                    formHeading={'Create.js Product'}
                     buttonText={'Create'}
                     theme={adminFormWrapperStyle}
                 />

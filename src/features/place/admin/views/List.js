@@ -49,7 +49,7 @@ const List = ({places}) => {
                     searchAsYouType={false}
                     autoFocus
                 />
-                <AdminCreateButton url={'/create/place'}/>
+                <AdminCreateButton url={'/admin/create/place'}/>
             </Div>
             <Div theme={adminPlacesInnerWrapperStyle}>
                 <Hits/>

@@ -1,4 +1,4 @@
-import {adminDashboardMenu} from 'config/menus/dashboardAdmin'
+import {adminDashboardMenu} from 'config/menus/dashboard/admin'
 import React, {useContext}  from 'react'
 import {useSelector}        from 'react-redux'
 import Div                  from 'shared/Basic/Div'

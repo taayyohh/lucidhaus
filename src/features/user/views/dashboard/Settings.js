@@ -1,4 +1,4 @@
-import {userDashboardMenu} from 'config/menus/dashboardUser'
+import {userDashboardMenu} from 'config/menus/dashboard/user'
 import {userFields}        from 'features/user/admin/fields'
 import React               from 'react'
 import {useSelector}       from 'react-redux'

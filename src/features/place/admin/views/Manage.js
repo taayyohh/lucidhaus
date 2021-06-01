@@ -5,6 +5,7 @@ import {useDispatch, useSelector}               from 'react-redux'
 import {searchContext}                          from 'shared/Containers/SearchController'
 import ContentWrapper                           from 'shared/Layout/ContentWrapper'
 import DashboardInfo                            from 'shared/Layout/Dashboard/DashboardInfo'
+import LinkSwitch                               from '../../../../shared/Basic/LinkSwitch'
 
 const Manage = () => {
     const {places} = useSelector(state => state.place)
@@ -38,6 +39,8 @@ const Manage = () => {
                     heading={'Manage Places'}
                     description={'Type & Enter to search. Click to edit.'}
                 />
+                <LinkSwitch url={'/admin/place/taxonomy'} children={'Taxonomy'}/>
+
                 {isIndexed && (
                     <List places={places}/>
                 )}

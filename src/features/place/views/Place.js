@@ -1,5 +1,5 @@
-import {placeImageWrapperStyle}                                    from 'features/place/views/styles'
-import {AnimatePresence}                                           from 'framer-motion'
+import {placeImageWrapperStyle} from 'features/place/views/styles'
+import {AnimatePresence}        from 'framer-motion'
 import React, {useEffect}                                          from 'react'
 import {useDispatch, useSelector}                                  from 'react-redux'
 import Div                                                         from 'shared/Basic/Div'

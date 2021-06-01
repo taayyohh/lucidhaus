@@ -53,7 +53,7 @@ const List = ({taxonomies}) => {
                             theme={adminShopCardStyle}
                         />
                         <GenericCardAdminControls
-                            edit={'/admin/product-category/update'}
+                            edit={'/admin/product-categories/update'}
                             destroyAction={'admin/attemptDestroyProduct'}
                             slug={cat.slug}
                             id={cat._id}

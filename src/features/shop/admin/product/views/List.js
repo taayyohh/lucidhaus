@@ -48,7 +48,7 @@ const List = ({shop}) => {
                     searchAsYouType={false}
                     autoFocus
                 />
-                <AdminCreateButton url={'/create/product'}/>
+                <AdminCreateButton url={'/admin/create/product'}/>
             </Div>
             <Div theme={adminPostsInnerWrapperStyle}>
                 <Hits/>

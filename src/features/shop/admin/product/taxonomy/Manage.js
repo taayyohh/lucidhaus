@@ -31,7 +31,7 @@ const Manage = () => {
         <ContentWrapper>
             <AdminDashboardWrapper>
                 <DashboardInfo
-                    heading={'Manage Taxonomy'}
+                    heading={'Manage Product Taxonomy'}
                     description={'Click to edit.'}
                 />
                 <List taxonomies={taxonomies}/>

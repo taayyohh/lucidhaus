@@ -1,4 +1,4 @@
-import {userDashboardMenu} from 'config/menus/dashboardUser'
+import {userDashboardMenu} from 'config/menus/dashboard/user'
 import React               from 'react'
 import {useSelector}       from 'react-redux'
 import ContentWrapper      from 'shared/Layout/ContentWrapper'

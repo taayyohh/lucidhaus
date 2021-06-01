@@ -1,22 +1,19 @@
-import {watchGetPlaceDetail, watchGetPlaces} from 'features/place/sagas'
 import {
     watchAttemptDestroyPlace,
     watchCreatePlace,
     watchDestroyPlace,
     watchDestroyPlaceSuccess,
     watchUpdatePlace
-}                                            from 'features/place/admin/sagas'
-import {watchCreatePlaceFromBoone}           from 'features/place/admin/sagas/boone'
+}                                  from 'features/place/admin/sagas'
+import {watchCreatePlaceFromBoone} from 'features/place/admin/sagas/boone'
+import {
+    watchGetPlaceDetail,
+    watchGetPlaces
+}                                  from 'features/place/sagas'
 import {
     watchGetBooneAutoComplete,
     watchGetBoonePlace
-}                                            from 'features/place/sagas/boone'
-import {
-    watchGetBraintreeToken,
-    watchGetFilteredShop,
-    watchGetPaymentNonce,
-    watchGetShop
-} from 'features/shop/sagas'
+}                                  from 'features/place/sagas/boone'
 import {
     watchAttemptDestroyProduct,
     watchCreateProduct,
@@ -24,34 +21,41 @@ import {
     watchDestroyProductSuccess,
     watchUpdateProduct,
     watchUpdateProductQuantity
-} from 'features/shop/admin/product/sagas'
+}                                  from 'features/shop/admin/product/sagas'
 import {
     watchCreateProductCategory,
     watchDestroyProductCategory,
     watchDestroyProductCategorySuccess,
     watchUpdateProductCategory
-} from 'features/shop/admin/product/sagas/category'
+}                                  from 'features/shop/admin/product/sagas/category'
+import {
+    watchGetBraintreeToken,
+    watchGetFilteredShop,
+    watchGetPaymentNonce,
+    watchGetShop
+}                                  from 'features/shop/sagas'
 import {
     watchAddToCart,
     watchRemoveFromCart
-} from 'features/shop/sagas/cart'
+}                                  from 'features/shop/sagas/cart'
 import {
     watchGetOrders,
     watchGetStatusValues,
     watchUpdateStatusValue
-}                                            from 'features/shop/sagas/orders'
+}                                  from 'features/shop/sagas/orders'
 import {
     watchGetProductDetail,
     watchGetRelatedProducts
-}                                            from 'features/shop/sagas/product'
+}                                  from 'features/shop/sagas/product'
 import {
     watchGetProductCategories,
     watchGetProductCategory
-}                                            from 'features/shop/sagas/product/category'
+}                                  from 'features/shop/sagas/product/category'
 import {
     watchLoadConfig,
     watchNavigate
-}                                            from 'features/site/sagas'
+}                                  from 'features/site/sagas'
+import {watchUpdateProfile}        from 'features/user/admin/sagas'
 import {
     watchConfirmUser,
     watchGetUser,
@@ -60,16 +64,15 @@ import {
     watchSignOut,
     watchSignUp,
     watchUserHistory
-}                           from 'features/user/sagas'
-import {watchUpdateProfile} from 'features/user/admin/sagas'
+}                                  from 'features/user/sagas'
 import {
     watchAuthenticate,
     watchIsAuthenticated
-}                           from 'features/user/sagas/auth'
+}                                  from 'features/user/sagas/auth'
 import {
     all,
     fork
-}                                            from 'redux-saga/effects'
+}                                  from 'redux-saga/effects'
 
 
 //TODO: determine best method of combining rootSaga
@@ -116,7 +119,7 @@ export default function* rootSaga() {
         fork(watchGetFilteredShop),
         fork(watchUpdateProductQuantity),
 
-        // product category
+        // product categories
         fork(watchCreateProductCategory),
         fork(watchUpdateProductCategory),
         fork(watchDestroyProductCategory),

@@ -4,6 +4,7 @@ import {useDispatch, useSelector}               from 'react-redux'
 import {searchContext}                          from 'shared/Containers/SearchController'
 import ContentWrapper                           from 'shared/Layout/ContentWrapper'
 import DashboardInfo                            from 'shared/Layout/Dashboard/DashboardInfo'
+import LinkSwitch                               from '../../../../shared/Basic/LinkSwitch'
 import List                                     from './List'
 
 const Manage = () => {
@@ -52,17 +53,7 @@ const Manage = () => {
                     heading={'Manage Users'}
                     description={'Type & Enter to search. Click to edit.'}
                 />
-                {/*{users.length > 0 && (*/}
-                {/*    <Div>*/}
-                {/*        {users.map((user) => (*/}
-                {/*            <Div>*/}
-                {/*                <Div>Name: {user.name}</Div>*/}
-                {/*                <Div>Verified Phone No: {user.tel}</Div>*/}
-                {/*                <Div>Role: {roleKey(user.role)}</Div>*/}
-                {/*            </Div>*/}
-                {/*        ))}*/}
-                {/*    </Div>*/}
-                {/*)}*/}
+                <LinkSwitch url={'/admin/users/taxonomy'} children={'Taxonomy'}/>
                 {isIndexed && (
                     <List users={users}/>
                 )}

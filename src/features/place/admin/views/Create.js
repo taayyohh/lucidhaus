@@ -25,7 +25,7 @@ const Create = () => {
                     fields={placeFields}
                     validationSchema={validatePlace}
                     dispatchAction={'admin/createPlace'}
-                    formHeading={'Create Place'}
+                    formHeading={'Create.js Place'}
                     buttonText={'Create'}
                 />
             </AdminDashboardWrapper>

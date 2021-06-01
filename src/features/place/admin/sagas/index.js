@@ -81,8 +81,8 @@ export function* destroyPlace({payload}) {
     const {objectID} = payload
 
     if (!destroyed.error) {
-        yield put({type: 'admin/destroyPlaceSuccess'})
-        yield put({type: 'place/destroyPlaceSuccess', payload: {objectID}})
+        yield put({type: 'place/destroyPlaceSuccess'})
+        yield put({type: 'admin/destroyPlaceSuccess', payload: {objectID}})
         yield put({type: 'place/getPlaces'})
         yield put(push('/admin/places'))
     } else {
