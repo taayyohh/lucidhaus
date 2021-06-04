@@ -88,8 +88,7 @@ const Routes = () => {
                             <AdminRoute path="/admin" exact component={AdminDashboard}/>
                             <AdminRoute path="/admin/shop" exact component={ManageShop}/>
                             <AdminRoute path="/admin/product-category" exact component={ManageProductTaxonomy}/>
-                            <AdminRoute path="/admin/product-category/update/:slug" exact
-                                        component={UpdateProductCategory}/>
+                            <AdminRoute path="/admin/product-category/update/:slug" exact component={UpdateProductCategory}/>
                             <AdminRoute path="/admin/create/product-category" exact component={CreateProductCategory}/>
 
                             <AdminRoute path="/admin/places" exact component={ManagePlaces}/>

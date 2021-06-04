@@ -1,8 +1,8 @@
+import AdminDashboardWrapper from 'features/admin/views/AdminDashboardWrapper'
 import React                 from 'react'
 import Div                   from 'shared/Basic/Div'
 import ContentWrapper        from 'shared/Layout/ContentWrapper'
 import DashboardInfo         from 'shared/Layout/Dashboard/DashboardInfo'
-import AdminDashboardWrapper from 'features/admin/views/AdminDashboardWrapper'
 
 const ManageBathrooms = () => {
     return (

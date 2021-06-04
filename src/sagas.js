@@ -54,8 +54,8 @@ import {
 import {
     watchLoadConfig,
     watchNavigate
-}                                  from 'features/site/sagas'
-import {watchUpdateProfile}        from 'features/user/admin/sagas'
+}                                                         from 'features/site/sagas'
+import {watchCreateAdaptiveEquipment, watchUpdateProfile} from 'features/user/admin/sagas'
 import {
     watchConfirmUser,
     watchGetUser,
@@ -64,7 +64,7 @@ import {
     watchSignOut,
     watchSignUp,
     watchUserHistory
-}                                  from 'features/user/sagas'
+}                                                         from 'features/user/sagas'
 import {
     watchAuthenticate,
     watchIsAuthenticated
@@ -96,6 +96,8 @@ export default function* rootSaga() {
         fork(watchConfirmUser),
         fork(watchGetUsers),
         fork(watchGetUser),
+        //user -- taxonomy
+        fork(watchCreateAdaptiveEquipment),
 
 
         // place

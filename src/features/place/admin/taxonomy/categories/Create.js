@@ -1,5 +1,5 @@
 import AdminDashboardWrapper                        from 'features/admin/views/AdminDashboardWrapper'
-import {placeCategoryFields, validatePlaceCategory} from 'features/place/admin/fields/category'
+import {placeCategoryFields, validatePlaceCategory} from 'features/place/admin/fields/categories'
 import React                                        from 'react'
 import {useSelector}                                from 'react-redux'
 import Form                                         from 'shared/Fields/Form'

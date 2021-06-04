@@ -67,6 +67,9 @@ export const slice = createSlice({
             state.confirmDelete.destroy = false
             state.confirmDelete.slug = ''
         },
+
+
+
     },
 })
 

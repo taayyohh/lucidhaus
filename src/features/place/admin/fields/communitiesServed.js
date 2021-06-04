@@ -1,7 +1,7 @@
 import {RICH_TEXT, TEXT} from 'config/variables'
 import * as Yup          from 'yup'
 
-export const adaptiveEquipmentField = [
+export const communitiesServedFields = [
     {
         name: 'name',
         inputLabel: 'Name',
@@ -9,10 +9,11 @@ export const adaptiveEquipmentField = [
     },
     {
         name: 'description',
-        inputLabel: 'Description',
+        inputLabel: 'Post Description',
         type: RICH_TEXT
     }
 ]
+
 
 /**
  *
@@ -21,11 +22,12 @@ export const adaptiveEquipmentField = [
  *
  */
 
-export const validateAdaptiveEquipment = Yup.object().shape({
+export const validateCommunitiesServed = Yup.object().shape({
     name: Yup
         .string()
         .max(50)
         .required('Required'),
     description: Yup
         .string()
+        .required('Required'),
 })
