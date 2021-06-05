@@ -3,7 +3,7 @@ import {createOrder, processPayment}      from 'features/shop/services'
 import {getFilteredProducts, getProducts} from 'features/shop/services/product/product'
 
 import {call, put, takeLatest}                     from 'redux-saga/effects'
-import {getBraintreeClientToken, getPaymentMethod} from 'services/braintree'
+import {getBraintreeClientToken, getPaymentMethod} from 'features/shop/services/braintree'
 import {emptyCart}                                 from 'utils/cartHelpers'
 
 export function* getShop() {

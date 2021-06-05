@@ -55,7 +55,7 @@ import {
     watchLoadConfig,
     watchNavigate
 }                                                         from 'features/site/sagas'
-import {watchCreateAdaptiveEquipment, watchUpdateProfile} from 'features/user/admin/sagas'
+import {watchUpdateProfile} from 'features/user/admin/sagas'
 import {
     watchConfirmUser,
     watchGetUser,
@@ -64,15 +64,16 @@ import {
     watchSignOut,
     watchSignUp,
     watchUserHistory
-}                                                         from 'features/user/sagas'
+}                                     from 'features/user/sagas'
 import {
     watchAuthenticate,
     watchIsAuthenticated
-}                                  from 'features/user/sagas/auth'
+}                                     from 'features/user/sagas/auth'
 import {
     all,
     fork
-}                                  from 'redux-saga/effects'
+}                                     from 'redux-saga/effects'
+import {watchCreateAdaptiveEquipment} from './features/user/admin/sagas/adaptiveEquipment'
 
 
 //TODO: determine best method of combining rootSaga

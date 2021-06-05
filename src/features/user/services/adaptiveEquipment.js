@@ -1,14 +1,21 @@
-import {API} from "config/variables";
+import {API} from 'config/variables'
 
+/**
+ * to perform crud on admin
+ * get all places
+ * get a single admin
+ * update single admin
+ * delete single admin
+ */
 
-export const read = (userId, token) =>
-    fetch(`${API}/user/${userId}`, {
-        method: 'GET',
+export const addAdaptiveEquipment = ({_id, token, place}) =>
+    fetch(`${API}/adaptive-equipment/create/${_id}`, {
+        method: 'POST',
         headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
+            Accept: 'application/json',
             Authorization: `Bearer ${token}`
         },
+        body: place
     })
         .then(response => {
             return response.json()
@@ -17,8 +24,8 @@ export const read = (userId, token) =>
             return error
         })
 
-export const getUsers = () =>
-    fetch(`${API}/users?limit=undefined`, {
+export const getAdaptiveEquipments = () =>
+    fetch(`${API}/adaptive-equipment?limit=undefined`, {
         method: 'GET'
     })
         .then(response => {
@@ -28,56 +35,45 @@ export const getUsers = () =>
             return error
         })
 
-export const getUser = ({slug}) =>
-    fetch(`${API}/user/${slug}`, {
-        method: 'GET'
-    })
-        .then(response => {
-            return response.json()
-        })
-        .catch(error => {
-            return error
-        })
-
-export const getPurchaseHistory = ({_id, token}) =>
-    fetch(`${API}/orders/by/user/${_id}`, {
-        method: 'GET',
+export const deleteAdaptiveEquipment = ({_id, token, slug}) =>
+    fetch(`${API}/adaptive-equipment/${slug}/${_id}`, {
+        method: 'DELETE',
         headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
             Authorization: `Bearer ${token}`
-        },
-    })
-        .then(response => {
-            return response.json()
-        })
-        .catch(error => {
-            return error
-        })
-
-export const update = ({_id, token, user}) =>
-    fetch(`${API}/user/${_id}`, {
-        method: "PUT",
-        headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`
-        },
-        body: JSON.stringify(user)
-    })
-        .then(response => {
-            return response.json()
-        })
-        .catch(error => {
-            return error
-        })
-
-export const updateUser = ({user}) => {
-    if (typeof window !== 'undefined') {
-        if (localStorage.getItem('jwt')) {
-            let auth = JSON.parse(localStorage.getItem('jwt'))
-            auth.user = user
-            localStorage.setItem('jwt', JSON.stringify(auth))
         }
-    }
-}
+    })
+        .then(response => {
+            return response.json()
+        })
+        .catch(error => {
+            return error
+        })
+
+export const getAdaptiveEquipment = ({slug}) =>
+    fetch(`${API}/adaptive-equipment/${slug}`, {
+        method: 'GET'
+    })
+        .then(response => {
+            return response.json()
+        })
+        .catch(error => {
+            return error
+        })
+
+export const updateAdaptiveEquipment = ({slug, _id, token, place}) =>
+    fetch(`${API}/adaptive-equipment/${slug}/${_id}`, {
+        method: 'PUT',
+        headers: {
+            Accept: 'application/json',
+            Authorization: `Bearer ${token}`
+        },
+        body: place
+    })
+        .then(response => {
+            return response.json()
+        })
+        .catch(error => {
+            return error
+        })

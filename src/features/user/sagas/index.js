@@ -3,7 +3,7 @@ import {signin, signout, signup}                           from 'features/site/s
 import {getPurchaseHistory, getUser, getUsers}             from 'features/user/services'
 import {takeEvery}                                         from 'redux-saga/dist/redux-saga-effects-npm-proxy.esm'
 import {call, put}                                         from 'redux-saga/effects'
-import {confirmTwilioVerification, sendTwilioVerification} from 'services/twilio'
+import {confirmTwilioVerification, sendTwilioVerification} from 'features/site/services/twilio'
 
 export function* signIn({payload}) {
     try {

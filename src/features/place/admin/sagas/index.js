@@ -1,8 +1,8 @@
 import {push}                               from 'connected-react-router'
 import {addPlace, deletePlace, updatePlace} from 'features/place/services'
 import moment                               from 'moment'
-import {call, put, takeLatest}              from 'redux-saga/effects'
-import {getSignedRequest, uploadFile}       from 'services/s3'
+import {call, put, takeLatest}        from 'redux-saga/effects'
+import {getSignedRequest, uploadFile} from 'features/site/services/s3'
 
 export function* createPlace({payload}) {
     const {_id, token, name, description, photo, photoFile, isPublished} = payload

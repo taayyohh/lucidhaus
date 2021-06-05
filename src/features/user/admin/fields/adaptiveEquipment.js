@@ -11,6 +11,7 @@ export const adaptiveEquipmentField = [
         name: 'description',
         inputLabel: 'Description',
         type: RICH_TEXT
+
     }
 ]
 
