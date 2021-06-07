@@ -1,5 +1,5 @@
 import {userDashboardMenu} from 'config/menus/dashboard/user'
-import {userFields}        from 'features/user/admin/fields'
+import {userField}         from 'features/user/admin/fields'
 import React               from 'react'
 import {useSelector}       from 'react-redux'
 import Form                from 'shared/Fields/Form'
@@ -19,7 +19,7 @@ const Settings = () => {
                 />
                 <Form
                     initialValues={initialValues}
-                    fields={userFields}
+                    fields={userField}
                     //validationSchema={validateProfile}
                     dispatchAction={'user/updateProfile'}
                     formHeading={'Update Profile'}

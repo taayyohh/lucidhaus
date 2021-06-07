@@ -31,7 +31,7 @@ export function* createPlaceFromBoone({payload}) {
 
 
     } else {
-        yield put({type: 'admin/createPlacesFailure', payload})
+        yield put({type: 'place/createPlacesFailure', payload})
     }
 
 }
@@ -46,5 +46,5 @@ export function* createPlaceFromBoone({payload}) {
  */
 
 export function* watchCreatePlaceFromBoone() {
-    yield takeLatest('admin/createPlaceFromBoone', createPlaceFromBoone)
+    yield takeLatest('place/createPlaceFromBoone', createPlaceFromBoone)
 }

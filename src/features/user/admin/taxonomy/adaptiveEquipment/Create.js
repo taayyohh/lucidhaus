@@ -1,4 +1,4 @@
-import {adaptiveEquipmentField, validateAdaptiveEquipment} from 'features/user/admin/fields/adaptiveEquipment'
+import {adaptiveEquipmentField, validateAdaptiveEquipment} from 'features/user/admin/taxonomy/adaptiveEquipment/fields'
 import React                                               from 'react'
 import {useSelector}                                       from 'react-redux'
 import Form                                                from 'shared/Fields/Form'
@@ -13,16 +13,14 @@ const Create = () => {
     }
 
     return (
-        <>
-            <Form
-                initialValues={initialValues}
-                fields={adaptiveEquipmentField}
-                validationSchema={validateAdaptiveEquipment}
-                dispatchAction={'admin/createAdaptiveEquipment'}
-                formHeading={'Create Adaptive Equipment Type'}
-                buttonText={'Create'}
-            />
-        </>
+        <Form
+            initialValues={initialValues}
+            fields={adaptiveEquipmentField}
+            validationSchema={validateAdaptiveEquipment}
+            dispatchAction={'user/createAdaptiveEquipment'}
+            formHeading={'Create Adaptive Equipment'}
+            buttonText={'Create'}
+        />
     )
 }
 

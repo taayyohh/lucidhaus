@@ -5,11 +5,12 @@ import {call, put, takeEvery}                                           from 're
 export function* getBooneAutoComplete({payload}) {
     try {
         const suggestions = yield call(getBooneSuggestions, payload)
+        const failedToFetch = !!suggestions.stack && suggestions.stack.includes('TypeError')
 
-        if (!suggestions.error) {
+        if (!suggestions.error && !failedToFetch) {
             yield put({type: 'place/getBooneAutoCompleteSuccess', payload: suggestions})
         } else {
-            yield put({type: 'place/getBooneAutoCompleteFailure', payload: suggestions})
+            yield put({type: 'place/getBooneAutoCompleteFailure', payload: suggestions?.message || suggestions})
         }
     } catch (error) {
         yield put({type: 'place/getBooneFailure', error})
@@ -19,6 +20,7 @@ export function* getBooneAutoComplete({payload}) {
 export function* getBoonePlace({payload}) {
     try {
         const place = yield call(getPlaceFromBoone, payload)
+
 
         if (!place.errors && !place.error) {
             yield put({type: 'place/getBoonePlaceSuccess', payload: place})

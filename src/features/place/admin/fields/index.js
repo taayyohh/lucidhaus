@@ -1,7 +1,7 @@
 import {IMAGE_UPLOAD, RICH_TEXT, TEXT, TOGGLE, UPLOAD_PATHS} from 'config/variables'
 import * as Yup                                              from 'yup'
 
-export const placeFields = [
+export const placeField = [
     {
         name: 'accessibility',
     },

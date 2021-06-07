@@ -1,11 +1,11 @@
-import AdminDashboardWrapper                    from 'features/admin/views/AdminDashboardWrapper'
+import AdminDashboardWrapper from 'shared/Layout/Dashboard/admin/AdminDashboardWrapper'
 import {
     adminOrderWrapperStyle,
     orderStatusActiveIndicatorStyle,
     orderStatusFilterStyle,
     orderStatusFilterWrapperStyle
-}                                               from 'features/admin/views/styles'
-import List                                     from 'features/shop/admin/order/views/List'
+}                            from 'shared/Layout/Dashboard/admin/styles'
+import List                  from 'features/shop/admin/order/views/List'
 import React, {useContext, useEffect, useState} from 'react'
 import {useDispatch, useSelector}               from 'react-redux'
 import Div                                      from 'shared/Basic/Div'
@@ -23,7 +23,7 @@ const Manage = () => {
     const {ordersIndex} = useContext(searchContext)
 
     useEffect(() => {
-        if (orders.length > 0)
+        if (orders?.length > 0)
             ordersIndex.saveObjects(orders)
                 .then(({objectIDs}) => {
 

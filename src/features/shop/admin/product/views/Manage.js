@@ -1,4 +1,4 @@
-import AdminDashboardWrapper from 'features/admin/views/AdminDashboardWrapper'
+import AdminDashboardWrapper from 'shared/Layout/Dashboard/admin/AdminDashboardWrapper'
 import List                  from 'features/shop/admin/product/views/List'
 import React, {
     useContext,

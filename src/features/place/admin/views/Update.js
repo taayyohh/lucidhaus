@@ -1,6 +1,6 @@
-import AdminDashboardWrapper          from 'features/admin/views/AdminDashboardWrapper'
-import {adminFormWrapperStyle}        from 'features/admin/views/styles'
-import {placeFields, validatePlace}   from 'features/place/admin/fields'
+import AdminDashboardWrapper        from 'shared/Layout/Dashboard/admin/AdminDashboardWrapper'
+import {adminFormWrapperStyle}        from 'shared/Layout/Dashboard/admin/styles'
+import {placeField, validatePlace}    from 'features/place/admin/fields'
 import React, {useContext, useEffect} from 'react'
 import {useDispatch, useSelector}     from 'react-redux'
 import {searchContext}                from 'shared/Containers/SearchController'
@@ -43,17 +43,17 @@ const Update = () => {
             <AdminDashboardWrapper>
                 <Form
                     initialValues={initialValues}
-                    fields={placeFields}
+                    fields={placeField}
                     validationSchema={validatePlace}
-                    dispatchAction={'admin/updatePlace'}
+                    dispatchAction={'place/updatePlace'}
                     formHeading={'Update Place'}
                     buttonText={'Update'}
                     theme={adminFormWrapperStyle}
                     enableReinitialize={true}
                 />
                 <DangerZone
-                    attemptDestroyAction={'admin/attemptDestroyPlace'}
-                    destroyAction={'admin/destroyPlace'}
+                    attemptDestroyAction={'place/attemptDestroyPlace'}
+                    destroyAction={'place/destroyPlace'}
                     slug={slug}
                     objectID={place.objectID}
                     index={placesIndex}

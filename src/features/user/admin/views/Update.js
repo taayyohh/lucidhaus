@@ -1,6 +1,6 @@
-import AdminDashboardWrapper          from 'features/admin/views/AdminDashboardWrapper'
-import {adminFormWrapperStyle}        from 'features/admin/views/styles'
-import {userFields}                   from 'features/user/admin/fields'
+import AdminDashboardWrapper   from 'shared/Layout/Dashboard/admin/AdminDashboardWrapper'
+import {adminFormWrapperStyle}        from 'shared/Layout/Dashboard/admin/styles'
+import {userField}                    from 'features/user/admin/fields'
 import React, {useContext, useEffect} from 'react'
 import {useDispatch, useSelector}     from 'react-redux'
 import {searchContext}                from 'shared/Containers/SearchController'
@@ -23,16 +23,21 @@ const roleSwitch = ({role}) => {
 
 const Update = () => {
     const dispatch = useDispatch()
-    const {_id, token} = useSelector(state => state.user)
+    const {_id, token, user} = useSelector(state => state.user)
     const {slug} = useSelector(state => state.site)
-    const {user} = useSelector(state => state.admin)
     const {usersIndex} = useContext(searchContext)
-    const {nameFirst, role, tel} = user
+    const {description, avatar, email, ethnicHispanicOrigin, handle, nameMiddle, nameFirst, nameLast, tel, role, type} = user
 
     const initialValues = {
         nameFirst: nameFirst,
-        photoFile: '',
+        nameMiddle: nameMiddle,
+        nameLast: nameLast,
+        description: description,
+        avatar: avatar,
+        email: email,
+        handle:  handle,
         tel: tel,
+        ethnicHispanicOrigin: ethnicHispanicOrigin,
         role: role,
         slug,
         _id,
@@ -43,7 +48,9 @@ const Update = () => {
         dispatch({
             type: 'user/getUser',
             payload: {
-                slug: slug
+                slug: slug,
+                _id: _id,
+                token: token
             }
         })
 
@@ -55,21 +62,21 @@ const Update = () => {
             <AdminDashboardWrapper>
                 <Form
                     initialValues={initialValues}
-                    fields={userFields}
+                    fields={userField}
                     // validationSchema={validateUser}
-                    dispatchAction={'admin/updateUser'}
+                    dispatchAction={'user/updateUser'}
                     formHeading={'Update User'}
                     buttonText={'Update'}
                     theme={adminFormWrapperStyle}
                     enableReinitialize={true}
                 />
                 <DangerZone
-                    attemptDestroyAction={'admin/attemptDestroyUser'}
-                    destroyAction={'admin/destroyUser'}
+                    attemptDestroyAction={'site/attemptDestroyEntity'}
+                    destroyAction={'site/destroyEntity'}
                     slug={slug}
                     objectID={user?.objectID}
                     index={usersIndex}
-                    type={'user'}
+                    type={type}
                 />
             </AdminDashboardWrapper>
         </ContentWrapper>

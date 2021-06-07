@@ -1,9 +1,7 @@
-import AdminDashboardWrapper                                 from 'features/admin/views/AdminDashboardWrapper'
-import {pronounField, validatePronoun} from 'features/user/admin/fields/pronoun'
-import React                                                 from 'react'
-import {useSelector}                                         from 'react-redux'
-import Form                                                  from 'shared/Fields/Form'
-import ContentWrapper                                        from 'shared/Layout/ContentWrapper'
+import {pronounField, validatePronoun} from 'features/user/admin/taxonomy/pronoun/fields'
+import React                           from 'react'
+import {useSelector}                   from 'react-redux'
+import Form                            from 'shared/Fields/Form'
 
 const Create = () => {
     const {_id, token} = useSelector(state => state.user)
@@ -11,22 +9,21 @@ const Create = () => {
         _id,
         token,
         name: '',
-        description: ''
+        description: '',
+        subjectiveSingular: '',
+        objectiveSingular: '',
+        objectivePossessive: ''
     }
 
     return (
-        <ContentWrapper>
-            <AdminDashboardWrapper>
-                <Form
-                    initialValues={initialValues}
-                    fields={pronounField}
-                    validationSchema={validatePronoun}
-                    dispatchAction={'admin/createPronounType'}
-                    formHeading={'Create Pronoun Type'}
-                    buttonText={'Create'}
-                />
-            </AdminDashboardWrapper>
-        </ContentWrapper>
+        <Form
+            initialValues={initialValues}
+            fields={pronounField}
+            validationSchema={validatePronoun}
+            dispatchAction={'user/createPronoun'}
+            formHeading={'Create Pronoun'}
+            buttonText={'Create'}
+        />
     )
 }
 

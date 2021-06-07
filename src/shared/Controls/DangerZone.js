@@ -14,7 +14,7 @@ import {
 
 const DangerZone = ({attemptDestroyAction, destroyAction, slug, type, objectID, index, _id}) => {
     const dispatch = useDispatch()
-    const {confirmDelete} = useSelector(state => state.admin)
+    const {confirmDelete} = useSelector(state => state.site)
     const {shouldDelete} = confirmDelete
 
     return (
@@ -31,7 +31,13 @@ const DangerZone = ({attemptDestroyAction, destroyAction, slug, type, objectID, 
                 </Div>
                 <Div
                     theme={dangerZoneButtonStyle}
-                    onClick={() => dispatch({type: attemptDestroyAction, payload: {slug: (_id || slug)}})}
+                    onClick={() => dispatch({
+                        type: attemptDestroyAction,
+                        payload: {
+                            slug: (_id || slug),
+                            type: type
+                        }
+                    })}
                 >
                     Delete
                 </Div>

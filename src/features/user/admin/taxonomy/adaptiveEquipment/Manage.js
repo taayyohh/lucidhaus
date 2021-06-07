@@ -1,12 +1,24 @@
-import React                 from 'react'
-import Div                   from 'shared/Basic/Div'
-import ContentWrapper        from 'shared/Layout/ContentWrapper'
-import DashboardInfo         from 'shared/Layout/Dashboard/DashboardInfo'
-import AdminDashboardWrapper from 'features/admin/views/AdminDashboardWrapper'
-import LinkSwitch            from '../../../../../shared/Basic/LinkSwitch'
-import Create                from './Create'
+import AdminDashboardWrapper      from 'shared/Layout/Dashboard/admin/AdminDashboardWrapper'
+import React, {useEffect}         from 'react'
+import {useDispatch, useSelector} from 'react-redux'
+import Div                        from 'shared/Basic/Div'
+import LinkSwitch                 from 'shared/Basic/LinkSwitch'
+import ContentWrapper             from 'shared/Layout/ContentWrapper'
+import DashboardInfo              from 'shared/Layout/Dashboard/DashboardInfo'
+import BreadCrumb                 from 'features/user/admin/views/Breadcrumb'
+import Create                     from './Create'
 
 const ManageAdaptiveEquipment = () => {
+    const dispatch = useDispatch()
+    const {adaptiveEquipment} = useSelector(state => state.user.taxonomy)
+    const {slug} = useSelector(state => state.site)
+
+    useEffect(() => {
+        dispatch({type: 'user/listAdaptiveEquipment'})
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
     return (
         <ContentWrapper>
             <AdminDashboardWrapper>
@@ -14,10 +26,28 @@ const ManageAdaptiveEquipment = () => {
                     heading={'Manage Adaptive Equipment Taxonomy'}
                     description={'Click to edit.'}
                 />
-                <LinkSwitch url={'/admin/users/taxonomy'} children={'Taxonomy'}/>
 
-                <Div>Manage Adaptive Equipment</Div>
-                <Create/>
+               <BreadCrumb />
+                <Div theme={{display: 'flex'}}>
+                    {adaptiveEquipment?.length > 0 && (
+                        <Div>
+                            Total: {adaptiveEquipment?.length}
+                            <Div>
+                                {adaptiveEquipment?.map((item) => (
+                                    <LinkSwitch
+                                        theme={{display: 'block'}}
+                                        url={`${slug}/update/${item.slug}`}
+                                        key={item._id}
+                                    >
+                                        {item.name}
+                                    </LinkSwitch>
+                                ))}
+                            </Div>
+                        </Div>
+                    )}
+                    <Create/>
+                </Div>
+
             </AdminDashboardWrapper>
         </ContentWrapper>
     )

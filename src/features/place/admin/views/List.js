@@ -1,11 +1,11 @@
-import AdminCreateButton   from 'features/admin/views/AdminCreateButton'
+import AdminCreateButton from 'shared/Layout/Dashboard/admin/AdminCreateButton'
 import {
     adminPlaceCardStyle,
     adminPlaceCardWrapperStyle,
     adminPlacesInnerWrapperStyle,
     searchWrapperStyle
-}                          from 'features/admin/views/styles'
-import PropTypes           from 'prop-types'
+}                        from 'shared/Layout/Dashboard/admin/styles'
+import PropTypes         from 'prop-types'
 import React, {useContext} from 'react'
 import {
     connectHits,

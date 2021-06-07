@@ -1,4 +1,4 @@
-import AdminDashboardWrapper                    from 'features/admin/views/AdminDashboardWrapper'
+import AdminDashboardWrapper                    from 'shared/Layout/Dashboard/admin/AdminDashboardWrapper'
 import React, {useContext, useEffect, useState} from 'react'
 import {useDispatch, useSelector}               from 'react-redux'
 import {searchContext}                          from 'shared/Containers/SearchController'
@@ -21,7 +21,7 @@ const Manage = () => {
     }, [])
 
     useEffect(() => {
-        if (users.length > 0) {
+        if (users?.length > 0) {
             usersIndex.saveObjects(users)
                 .then(() => setIsIndexed(true))
                 .catch(error =>

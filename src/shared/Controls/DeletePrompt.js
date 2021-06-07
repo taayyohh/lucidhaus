@@ -16,7 +16,7 @@ import {defaultModalStyle}        from 'shared/Layout/styles'
 
 const DeletePrompt = ({destroyAction, type, index, objectID}) => {
     const {_id, token} = useSelector(state => state.user)
-    const {confirmDelete} = useSelector(state => state.admin)
+    const {confirmDelete} = useSelector(state => state.site)
     const {shouldDelete, destroy} = confirmDelete
     const dispatch = useDispatch()
 
@@ -29,20 +29,20 @@ const DeletePrompt = ({destroyAction, type, index, objectID}) => {
                             <Icon
                                 icon={timesCircle}
                                 theme={deletePromptCloseIconStyle}
-                                onClick={() => dispatch({type: 'admin/denyDestroyPost'})}
+                                onClick={() => dispatch({type: 'site/denyDestroyEntity'})}
                             />
                             {!destroy && (
                                 <Div>
                                     <Div theme={deletePromptHeadingStyle}>Are you sure?</Div>
                                     <Div
                                         theme={deletePromptButtonStyle}
-                                        onClick={() => dispatch({type: 'admin/denyDestroyPost'})}
+                                        onClick={() => dispatch({type: 'site/denyDestroyEntity'})}
                                     >
                                         No, I want keep this {type}
                                     </Div>
                                     <Div
                                         theme={{...deletePromptButtonStyle, ...deletePromptConfirmButtonStyle}}
-                                        onClick={() => dispatch({type: 'admin/acceptDestroyItem'})}
+                                        onClick={() => dispatch({type: 'site/acceptDestroyEntity'})}
                                     >
                                         Yes, delete this {type}
                                     </Div>
@@ -63,7 +63,8 @@ const DeletePrompt = ({destroyAction, type, index, objectID}) => {
                                                         _id: _id,
                                                         objectID: objectID,
                                                         token: token,
-                                                        slug: confirmDelete.slug
+                                                        slug: confirmDelete.slug,
+                                                        type: confirmDelete.type
                                                     }
                                                 })
                                             }
@@ -87,7 +88,8 @@ const DeletePrompt = ({destroyAction, type, index, objectID}) => {
                                                     payload: {
                                                         _id: _id,
                                                         token: token,
-                                                        slug: confirmDelete.slug
+                                                        slug: confirmDelete.slug,
+                                                        type: confirmDelete.type
                                                     }
                                                 })
                                             }

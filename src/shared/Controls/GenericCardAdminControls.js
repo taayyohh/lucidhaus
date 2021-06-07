@@ -1,4 +1,4 @@
-import {adminCardControlsButtonStyle, adminCardControlsButtonWrapperStyle} from 'features/admin/views/styles'
+import {adminCardControlsButtonStyle, adminCardControlsButtonWrapperStyle} from 'shared/Layout/Dashboard/admin/styles'
 import React                                                               from 'react'
 import {useDispatch}                                                       from 'react-redux'
 import Div                                                                 from 'shared/Basic/Div'

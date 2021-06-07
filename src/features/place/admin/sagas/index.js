@@ -27,7 +27,7 @@ export function* createPlace({payload}) {
             yield put(push('/admin/places/update/' + createdPlace.slug))
 
         } else {
-            yield put({type: 'admin/createPlacesFailure', payload})
+            yield put({type: 'place/createPlacesFailure', payload})
 
         }
 
@@ -73,7 +73,7 @@ export function* updatePlaceDetail({payload}) {
 }
 
 export function* attemptDestroyPlace({payload}) {
-    yield put({type: 'admin/confirmDestroyPlace', payload: payload})
+    yield put({type: 'place/confirmDestroyPlace', payload: payload})
 }
 
 export function* destroyPlace({payload}) {
@@ -81,12 +81,12 @@ export function* destroyPlace({payload}) {
     const {objectID} = payload
 
     if (!destroyed.error) {
-        yield put({type: 'place/destroyPlaceSuccess'})
-        yield put({type: 'admin/destroyPlaceSuccess', payload: {objectID}})
+        // yield put({type: 'place/destroyPlaceSuccess'})
+        yield put({type: 'place/destroyPlaceSuccess', payload: {objectID}})
         yield put({type: 'place/getPlaces'})
         yield put(push('/admin/places'))
     } else {
-        yield put({type: 'admin/destroyPlaceFailure'})
+        yield put({type: 'place/destroyPlaceFailure'})
     }
 }
 
@@ -103,21 +103,21 @@ export function* destroyPlaceSuccess() {
  */
 
 export function* watchCreatePlace() {
-    yield takeLatest('admin/createPlace', createPlace)
+    yield takeLatest('place/createPlace', createPlace)
 }
 
 export function* watchAttemptDestroyPlace() {
-    yield takeLatest('admin/attemptDestroyPlace', attemptDestroyPlace)
+    yield takeLatest('place/attemptDestroyPlace', attemptDestroyPlace)
 }
 
 export function* watchDestroyPlace() {
-    yield takeLatest('admin/destroyPlace', destroyPlace)
+    yield takeLatest('place/destroyPlace', destroyPlace)
 }
 
 export function* watchDestroyPlaceSuccess() {
-    yield takeLatest('admin/attemptDestroyPlaceSuccess', destroyPlaceSuccess)
+    yield takeLatest('place/attemptDestroyPlaceSuccess', destroyPlaceSuccess)
 }
 
 export function* watchUpdatePlace() {
-    yield takeLatest('admin/updatePlace', updatePlaceDetail)
+    yield takeLatest('place/updatePlace', updatePlaceDetail)
 }

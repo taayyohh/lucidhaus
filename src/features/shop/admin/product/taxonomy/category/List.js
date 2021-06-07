@@ -9,7 +9,7 @@ import {
     adminShopCardStyle,
     adminShopCardWrapperStyle,
     adminTaxonomyStyle
-}                               from 'features/admin/views/styles'
+}                               from 'shared/Layout/Dashboard/admin/styles'
 
 const List = ({taxonomies}) => {
     const [currentTax, setCurrentTax] = useState([])
@@ -53,7 +53,7 @@ const List = ({taxonomies}) => {
                             theme={adminShopCardStyle}
                         />
                         <GenericCardAdminControls
-                            edit={'/admin/product-categories/update'}
+                            edit={'/admin/product-placeCategory/update'}
                             destroyAction={'admin/attemptDestroyProduct'}
                             slug={cat.slug}
                             id={cat._id}

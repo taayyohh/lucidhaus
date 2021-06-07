@@ -1,11 +1,11 @@
-import AdminDashboardWrapper                    from 'features/admin/views/AdminDashboardWrapper'
-import List                                     from 'features/place/admin/views/List'
+import AdminDashboardWrapper from 'shared/Layout/Dashboard/admin/AdminDashboardWrapper'
+import List                  from 'features/place/admin/views/List'
 import React, {useContext, useEffect, useState} from 'react'
 import {useDispatch, useSelector}               from 'react-redux'
+import LinkSwitch                               from 'shared/Basic/LinkSwitch'
 import {searchContext}                          from 'shared/Containers/SearchController'
 import ContentWrapper                           from 'shared/Layout/ContentWrapper'
 import DashboardInfo                            from 'shared/Layout/Dashboard/DashboardInfo'
-import LinkSwitch                               from '../../../../shared/Basic/LinkSwitch'
 
 const Manage = () => {
     const {places} = useSelector(state => state.place)
@@ -20,7 +20,7 @@ const Manage = () => {
     }, [])
 
     useEffect(() => {
-        if (places.length > 0)
+        if (places?.length > 0)
             placesIndex.saveObjects(places)
                 .then(() => setIsIndexed(true))
                 .catch(error =>

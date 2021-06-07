@@ -1,6 +1,5 @@
 import {configureStore, getDefaultMiddleware} from '@reduxjs/toolkit'
 import {connectRouter, routerMiddleware}      from 'connected-react-router'
-import adminReducer                           from 'features/admin/slice'
 import placeReducer                           from 'features/place/slice'
 import shopReducer                            from 'features/shop/slice'
 import siteReducer                            from 'features/site/slice'
@@ -26,11 +25,11 @@ if (!['production'].includes(process.env.NODE_ENV)) {
             serializableCheck: {
                 // Ignore these action types
                 ignoredActions: [
-                    'admin/createProduct',
-                    'admin/createPlace',
-                    'admin/updateProduct',
-                    'admin/updatePlace',
+                    'shop/createProduct',
+                    'shop/updateProduct',
                     'shop/getPaymentNonce',
+                    'place/createPlace',
+                    'place/updatePlace',
                     'user/signUp'
                 ],
             },
@@ -42,7 +41,6 @@ if (!['production'].includes(process.env.NODE_ENV)) {
 
 export default configureStore({
     reducer: {
-        admin: adminReducer,
         place: placeReducer,
         shop: shopReducer,
         site: siteReducer,

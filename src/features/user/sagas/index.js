@@ -120,12 +120,12 @@ export function* getUserDetail({payload}) {
     try {
         const user = yield call(getUser, payload)
         if (!user.error) {
-            yield put({type: 'admin/getUserSuccess', payload: user})
+            yield put({type: 'user/getUserSuccess', payload: user})
         } else {
-            yield put({type: 'admin/getUserFailure', payload: user})
+            yield put({type: 'user/getUserFailure', payload: user})
         }
     } catch (error) {
-        yield put({type: 'admin/getUserFailure', error})
+        yield put({type: 'user/getUserFailure', error})
     }
 }
 

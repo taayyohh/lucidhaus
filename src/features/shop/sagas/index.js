@@ -15,7 +15,7 @@ export function* getShop() {
             yield put({type: 'shop/getShopFailure', payload})
         }
     } catch (error) {
-        yield put({type: 'admin/getShopFailure', error})
+        yield put({type: 'shop/getShopFailure', error})
     }
 }
 
@@ -28,7 +28,7 @@ export function* getFilteredShop({payload}) {
             yield put({type: 'shop/getShopFailure', payload: filtered})
         }
     } catch (error) {
-        yield put({type: 'admin/getShopFailure', error})
+        yield put({type: 'shop/getShopFailure', error})
     }
 }
 

@@ -1,6 +1,6 @@
-import AdminDashboardWrapper        from 'features/admin/views/AdminDashboardWrapper'
-import {placeFields, validatePlace} from 'features/place/admin/fields'
-import React                        from 'react'
+import AdminDashboardWrapper       from 'shared/Layout/Dashboard/admin/AdminDashboardWrapper'
+import {placeField, validatePlace} from 'features/place/admin/fields'
+import React                       from 'react'
 import {useSelector}                from 'react-redux'
 import Form                         from 'shared/Fields/Form'
 import ContentWrapper               from 'shared/Layout/ContentWrapper'
@@ -22,10 +22,10 @@ const Create = () => {
             <AdminDashboardWrapper>
                 <Form
                     initialValues={initialValues}
-                    fields={placeFields}
+                    fields={placeField}
                     validationSchema={validatePlace}
-                    dispatchAction={'admin/createPlace'}
-                    formHeading={'Create.js Place'}
+                    dispatchAction={'place/createPlace'}
+                    formHeading={'Create Place'}
                     buttonText={'Create'}
                 />
             </AdminDashboardWrapper>

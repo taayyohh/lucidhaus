@@ -1,4 +1,10 @@
-import {createSlice} from '@reduxjs/toolkit'
+import {createSlice}       from '@reduxjs/toolkit'
+import {bathroom}          from './admin/taxonomy/bathroom/reducers'
+import {businessOwner}     from './admin/taxonomy/businessOwner/reducers'
+import {communitiesServed} from './admin/taxonomy/communitiesServed/reducers'
+import {foodOptions}       from './admin/taxonomy/foodOptions/reducers'
+import {languageSpoken}    from './admin/taxonomy/languageSpoken/reducers'
+import {placeCategory}     from './admin/taxonomy/placeCategory/reducers'
 
 const initialState = {
     place: [],
@@ -13,7 +19,15 @@ const initialState = {
         }
     },
     boonePlaces: {},
-    boonePlace: {}
+    boonePlace: {},
+    taxonomy: {
+        bathroom: [],
+        businessOwner: [],
+        communitiesServed: [],
+        foodOptions: [],
+        languageSpoken: [],
+        placeCategory: [],
+    }
 }
 
 export const slice = createSlice({
@@ -59,9 +73,16 @@ export const slice = createSlice({
         updatePlaceSuccess: (state, action) => {
             state.place = action.payload
         },
-        destroyPlaceSuccess: (state, action) => {
-            state.places = state.places.filter(item => item.objectID !== action.payload.objectID)
-        }
+
+        /*   ADMIN  */
+
+        //taxonomy
+        ...bathroom,
+        ...businessOwner,
+        ...communitiesServed,
+        ...foodOptions,
+        ...languageSpoken,
+        ...placeCategory
     },
 })
 

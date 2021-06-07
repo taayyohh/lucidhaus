@@ -28,7 +28,7 @@ export function* createProduct({payload}) {
             yield put(push('/admin/shop/update/' + createdProduct.slug))
 
         } else {
-            yield put({type: 'admin/createProductFailure', payload})
+            yield put({type: 'shop/createProductFailure', payload})
 
         }
 
@@ -85,7 +85,7 @@ export function* updateProductDetail({payload}) {
 }
 
 export function* attemptDestroyProduct({payload}) {
-    yield put({type: 'admin/confirmDestroyProduct', payload: payload})
+    yield put({type: 'shop/confirmDestroyProduct', payload: payload})
 }
 
 export function* destroyProduct({payload}) {
@@ -93,12 +93,12 @@ export function* destroyProduct({payload}) {
     const {objectID} = payload
 
     if (!destroyed.error) {
-        yield put({type: 'admin/destroyProductSuccess'})
+        yield put({type: 'shop/destroyProductSuccess'})
         yield put({type: 'shop/destroyProductSuccess', payload: {objectID}})
         yield put({type: 'shop/getShop'})
         yield put(push('/admin/shop'))
     } else {
-        yield put({type: 'admin/destroyProductFailure'})
+        yield put({type: 'shop/destroyProductFailure'})
     }
 }
 
@@ -122,23 +122,23 @@ export function* updateProductQuantity({payload}) {
 
 
 export function* watchCreateProduct() {
-    yield takeLatest('admin/createProduct', createProduct)
+    yield takeLatest('shop/createProduct', createProduct)
 }
 
 export function* watchAttemptDestroyProduct() {
-    yield takeLatest('admin/attemptDestroyProduct', attemptDestroyProduct)
+    yield takeLatest('shop/attemptDestroyProduct', attemptDestroyProduct)
 }
 
 export function* watchDestroyProduct() {
-    yield takeLatest('admin/destroyProduct', destroyProduct)
+    yield takeLatest('shop/destroyProduct', destroyProduct)
 }
 
 export function* watchDestroyProductSuccess() {
-    yield takeLatest('admin/attemptDestroyProductSuccess', destroyProductSuccess)
+    yield takeLatest('shop/attemptDestroyProductSuccess', destroyProductSuccess)
 }
 
 export function* watchUpdateProduct() {
-    yield takeLatest('admin/updateProduct', updateProductDetail)
+    yield takeLatest('shop/updateProduct', updateProductDetail)
 }
 
 export function* watchUpdateProductQuantity() {

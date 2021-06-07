@@ -1,9 +1,7 @@
-import AdminDashboardWrapper              from 'features/admin/views/AdminDashboardWrapper'
-import {businessOwnerFields, validateBusinessOwner} from 'features/place/admin/fields/businessOwner'
-import React                              from 'react'
-import {useSelector}                      from 'react-redux'
-import Form                               from 'shared/Fields/Form'
-import ContentWrapper                     from 'shared/Layout/ContentWrapper'
+import {businessOwnerField, validateBusinessOwner} from 'features/place/admin/taxonomy/businessOwner/fields'
+import React                                       from 'react'
+import {useSelector}                                from 'react-redux'
+import Form                                         from 'shared/Fields/Form'
 
 const CreateBusinessOwner = () => {
     const {_id, token} = useSelector(state => state.user)
@@ -11,25 +9,21 @@ const CreateBusinessOwner = () => {
         _id,
         token,
         avatar: '',
-        bio: '',
+        description: '',
         email: '',
         name: '',
         tel: ''
     }
 
     return (
-        <ContentWrapper>
-            <AdminDashboardWrapper>
-                <Form
-                    initialValues={initialValues}
-                    fields={businessOwnerFields}
-                    validationSchema={validateBusinessOwner}
-                    dispatchAction={'admin/createBusinessOwnerType'}
-                    formHeading={'Create Bathroom'}
-                    buttonText={'Create'}
-                />
-            </AdminDashboardWrapper>
-        </ContentWrapper>
+        <Form
+            initialValues={initialValues}
+            fields={businessOwnerField}
+            validationSchema={validateBusinessOwner}
+            dispatchAction={'place/createBusinessOwner'}
+            formHeading={'Create Business Owner'}
+            buttonText={'Create'}
+        />
     )
 }
 

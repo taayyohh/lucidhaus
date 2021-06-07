@@ -1,5 +1,5 @@
-import AdminDashboardWrapper      from 'features/admin/views/AdminDashboardWrapper'
-import List                       from 'features/shop/admin/product/taxonomy/category/List'
+import AdminDashboardWrapper from 'shared/Layout/Dashboard/admin/AdminDashboardWrapper'
+import List                  from 'features/shop/admin/product/taxonomy/category/List'
 import React, {useEffect}         from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import DeletePrompt               from 'shared/Controls/DeletePrompt'
@@ -9,7 +9,7 @@ import {slugify}                  from 'utils/helpers'
 
 const Manage = () => {
     const {productCategories} = useSelector(state => state.shop)
-    const {confirmDelete} = useSelector(state => state.admin)
+    const {confirmDelete} = useSelector(state => state.site)
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -35,7 +35,7 @@ const Manage = () => {
                     description={'Click to edit.'}
                 />
                 <List taxonomies={taxonomies}/>
-                <DeletePrompt destroyAction={'admin/destroyProductCategory'}/>
+                <DeletePrompt destroyAction={'shop/destroyProductCategory'}/>
             </AdminDashboardWrapper>
         </ContentWrapper>
     )

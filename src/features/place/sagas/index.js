@@ -19,7 +19,7 @@ export function* getPlacesDetail() {
             yield put({type: 'place/getPlacesFailure', payload})
         }
     } catch (error) {
-        yield put({type: 'admin/getPlacesFailure', error})
+        yield put({type: 'place/getPlacesFailure', error})
     }
 }
 

@@ -1,9 +1,7 @@
-import AdminDashboardWrapper                                 from 'features/admin/views/AdminDashboardWrapper'
-import {physicalAppearanceField, validatePhysicalAppearance} from 'features/user/admin/fields/physicalAppearance'
+import {physicalAppearanceField, validatePhysicalAppearance} from 'features/user/admin/taxonomy/physicalAppearance/fields'
 import React                                                 from 'react'
 import {useSelector}                                         from 'react-redux'
 import Form                                                  from 'shared/Fields/Form'
-import ContentWrapper                                        from 'shared/Layout/ContentWrapper'
 
 const Create = () => {
     const {_id, token} = useSelector(state => state.user)
@@ -15,18 +13,14 @@ const Create = () => {
     }
 
     return (
-        <ContentWrapper>
-            <AdminDashboardWrapper>
-                <Form
-                    initialValues={initialValues}
-                    fields={physicalAppearanceField}
-                    validationSchema={validatePhysicalAppearance}
-                    dispatchAction={'admin/createPhysicalAppearanceType'}
-                    formHeading={'Create Physical Appearance Type'}
-                    buttonText={'Create'}
-                />
-            </AdminDashboardWrapper>
-        </ContentWrapper>
+        <Form
+            initialValues={initialValues}
+            fields={physicalAppearanceField}
+            validationSchema={validatePhysicalAppearance}
+            dispatchAction={'user/createPhysicalAppearance'}
+            formHeading={'Create Physical Appearance'}
+            buttonText={'Create'}
+        />
     )
 }
 

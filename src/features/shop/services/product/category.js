@@ -4,11 +4,11 @@ import {API} from 'config/variables'
  *
  *
  *
- * to perform crud on categories
- * get all categories
- * get a single categories
- * update single categories
- * delete single categories
+ * to perform crud on placeCategory
+ * get all placeCategory
+ * get a single placeCategory
+ * update single placeCategory
+ * delete single placeCategory
  *
  *
  *

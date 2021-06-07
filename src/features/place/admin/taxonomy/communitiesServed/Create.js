@@ -1,9 +1,7 @@
-import AdminDashboardWrapper                                from 'features/admin/views/AdminDashboardWrapper'
-import {communitiesServedFields, validateCommunitiesServed} from 'features/place/admin/fields/communitiesServed'
-import React                                                from 'react'
+import {communitiesServedField, validateCommunitiesServed} from 'features/place/admin/taxonomy/communitiesServed/fields'
+import React                                               from 'react'
 import {useSelector}                                        from 'react-redux'
 import Form                                                 from 'shared/Fields/Form'
-import ContentWrapper                                       from 'shared/Layout/ContentWrapper'
 
 const Create = () => {
     const {_id, token} = useSelector(state => state.user)
@@ -15,18 +13,14 @@ const Create = () => {
     }
 
     return (
-        <ContentWrapper>
-            <AdminDashboardWrapper>
-                <Form
-                    initialValues={initialValues}
-                    fields={communitiesServedFields}
-                    validationSchema={validateCommunitiesServed}
-                    dispatchAction={'admin/createCommunitiesServedType'}
-                    formHeading={'Create Adaptive Equipment Type'}
-                    buttonText={'Create'}
-                />
-            </AdminDashboardWrapper>
-        </ContentWrapper>
+        <Form
+            initialValues={initialValues}
+            fields={communitiesServedField}
+            validationSchema={validateCommunitiesServed}
+            dispatchAction={'place/createCommunitiesServed'}
+            formHeading={'Create Adaptive Equipment'}
+            buttonText={'Create'}
+        />
     )
 }
 

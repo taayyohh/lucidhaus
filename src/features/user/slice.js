@@ -1,4 +1,14 @@
-import {createSlice} from '@reduxjs/toolkit'
+import {createSlice}           from '@reduxjs/toolkit'
+import {adaptiveEquipment} from './admin/taxonomy/adaptiveEquipment/reducers'
+import {bodyModification}  from './admin/taxonomy/bodyModification/reducers'
+import {gender}            from './admin/taxonomy/gender/reducers'
+import {language}         from './admin/taxonomy/language/reducers'
+import {methodOfCommunication} from './admin/taxonomy/methodOfCommunication/reducers'
+import {physicalAppearance}    from './admin/taxonomy/physicalAppearance/reducers'
+import {pronoun}               from './admin/taxonomy/pronoun/reducers'
+import {race}                  from './admin/taxonomy/race/reducers'
+import {serviceAnimal}         from './admin/taxonomy/serviceAnimal/reducers'
+import {sexualOrientation}     from './admin/taxonomy/sexualOrientation/reducers'
 
 const initialState = {
     _id: '',
@@ -13,7 +23,31 @@ const initialState = {
     redirectToReferrer: false,
     purchaseHistory: [],
     confirmationRequest: undefined,
-    users: []
+    users: [],
+    user: {
+      avatar: '',
+      description: '',
+      email: '',
+      ethnicHispanicOrigin: '',
+      nameFirst: '',
+      nameMiddle: '',
+      nameLast: '',
+      tel: '',
+      role: '',
+      type: ''
+    },
+    taxonomy: {
+        adaptiveEquipment: [],
+        bodyModification: [],
+        gender: [],
+        language: [],
+        methodOfCommunication: [],
+        physicalAppearance: [],
+        pronoun: [],
+        race: [],
+        serviceAnimal: [],
+        sexualOrientation: []
+    }
 }
 
 export const slice = createSlice({
@@ -99,9 +133,24 @@ export const slice = createSlice({
         getUsersSuccess: (state, action) => {
             state.users = action.payload
         },
+        getUserSuccess: (state, action) => {
+            state.user = action.payload
+        },
 
 
+        /*   ADMIN  */
 
+        //taxonomy
+        ...adaptiveEquipment,
+        ...bodyModification,
+        ...gender,
+        ...language,
+        ...methodOfCommunication,
+        ...physicalAppearance,
+        ...pronoun,
+        ...race,
+        ...serviceAnimal,
+        ...sexualOrientation
     },
 })
 

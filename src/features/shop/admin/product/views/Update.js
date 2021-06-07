@@ -1,6 +1,6 @@
 import {productFields, validateProduct} from 'features/shop/admin/product/fields/product'
-import AdminDashboardWrapper            from 'features/admin/views/AdminDashboardWrapper'
-import {adminFormWrapperStyle}          from 'features/admin/views/styles'
+import AdminDashboardWrapper            from 'shared/Layout/Dashboard/admin/AdminDashboardWrapper'
+import {adminFormWrapperStyle}          from 'shared/Layout/Dashboard/admin/styles'
 import React, {useContext, useEffect}   from 'react'
 import 'react-image-crop/dist/ReactCrop.css'
 import {useDispatch, useSelector}       from 'react-redux'
@@ -54,15 +54,15 @@ const Update = () => {
                     fields={productFields}
                     options={options}
                     validationSchema={validateProduct}
-                    dispatchAction={'admin/updateProduct'}
+                    dispatchAction={'shop/updateProduct'}
                     formHeading={'Update Product'}
                     buttonText={'Update'}
                     theme={adminFormWrapperStyle}
                     enableReinitialize={true}
                 />
                 <DangerZone
-                    attemptDestroyAction={'admin/attemptDestroyProduct'}
-                    destroyAction={'admin/destroyProduct'}
+                    attemptDestroyAction={'shop/attemptDestroyProduct'}
+                    destroyAction={'shop/destroyProduct'}
                     slug={slug}
                     objectID={product.objectID}
                     index={productsIndex}

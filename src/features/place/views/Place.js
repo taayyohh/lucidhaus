@@ -72,7 +72,7 @@ const Place = () => {
         } else if (hasNoPlace && hasBoonePlace) {
             if (isAuthenticated) {
                 dispatch({
-                    type: 'admin/createPlaceFromBoone',
+                    type: 'place/createPlaceFromBoone',
                     payload: {
                         // placeId: placeId,
                         boonePlace: boonePlace,

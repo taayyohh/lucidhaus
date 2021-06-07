@@ -1,5 +1,5 @@
-import AdminDashboardWrapper      from 'features/admin/views/AdminDashboardWrapper'
-import React, {useEffect}         from 'react'
+import AdminDashboardWrapper from 'shared/Layout/Dashboard/admin/AdminDashboardWrapper'
+import React, {useEffect}    from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import Div                        from 'shared/Basic/Div'
 import LinkSwitch                 from 'shared/Basic/LinkSwitch'
@@ -8,8 +8,7 @@ import ContentWrapper             from 'shared/Layout/ContentWrapper'
 import DashboardInfo              from 'shared/Layout/Dashboard/DashboardInfo'
 
 const Manage = () => {
-    const {productCategories} = useSelector(state => state.shop)
-    const {confirmDelete} = useSelector(state => state.admin)
+    const {confirmDelete} = useSelector(state => state.site)
     const dispatch = useDispatch()
     const TAX_PATH = '/admin/users/taxonomy'
 
@@ -32,7 +31,7 @@ const Manage = () => {
                     <LinkSwitch url={`${TAX_PATH}/adaptive-equipment`}>
                         Adaptive Equipment
                     </LinkSwitch>
-                    <LinkSwitch url={`${TAX_PATH}/body-modifications`}>
+                    <LinkSwitch url={`${TAX_PATH}/body-modification`}>
                         Body Modifications
                     </LinkSwitch>
                     <LinkSwitch url={`${TAX_PATH}/gender`}>
@@ -41,8 +40,8 @@ const Manage = () => {
                     <LinkSwitch url={`${TAX_PATH}/language`}>
                         Language
                     </LinkSwitch>
-                    <LinkSwitch url={`${TAX_PATH}/methods-of-communication`}>
-                        Methods of Communication
+                    <LinkSwitch url={`${TAX_PATH}/method-of-communication`}>
+                        Method of Communication
                     </LinkSwitch>
                     <LinkSwitch url={`${TAX_PATH}/physical-appearance`}>
                         Physical Appearance
@@ -61,7 +60,7 @@ const Manage = () => {
                     </LinkSwitch>
                 </Div>
 
-                <DeletePrompt destroyAction={'admin/destroyProductCategory'}/>
+                <DeletePrompt destroyAction={'shop/destroyProductCategory'}/>
             </AdminDashboardWrapper>
         </ContentWrapper>
     )

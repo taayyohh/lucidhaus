@@ -1,10 +1,10 @@
-import AdminCreateButton   from 'features/admin/views/AdminCreateButton'
+import AdminCreateButton   from 'shared/Layout/Dashboard/admin/AdminCreateButton'
 import {
     adminPostsInnerWrapperStyle,
     adminShopCardStyle,
     adminShopCardWrapperStyle,
     searchWrapperStyle
-}                          from 'features/admin/views/styles'
+}                          from 'shared/Layout/Dashboard/admin/styles'
 import React, {useContext} from 'react'
 import {
     connectHits,

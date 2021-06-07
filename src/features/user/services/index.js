@@ -28,9 +28,14 @@ export const getUsers = () =>
             return error
         })
 
-export const getUser = ({slug}) =>
-    fetch(`${API}/user/${slug}`, {
-        method: 'GET'
+export const getUser = ({slug, _id, token}) =>
+    fetch(`${API}/user/${slug}/${_id}`, {
+        method: 'GET',
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+        }
     })
         .then(response => {
             return response.json()

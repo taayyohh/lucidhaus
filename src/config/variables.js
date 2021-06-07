@@ -66,9 +66,8 @@ export const UPLOAD_PATHS = {
     post: 'post/',
     shop: 'shop/',
     place: 'place/',
-    collaborator: 'collaborator/',
-    audio: 'audio/',
-    audioCoverArt: 'audio/coverArt/'
+    user: 'user/',
+    businessOwner: 'business-owner/'
 }
 
 /** SITE CONFIG **/

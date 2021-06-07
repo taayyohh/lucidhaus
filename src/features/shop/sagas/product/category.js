@@ -15,7 +15,7 @@ export function* getProductCategoryDetail({payload}) {
             yield put({type: 'shop/getProductCategoryFailure', payload: {productCategory: productCategory}})
         }
     } catch (error) {
-        yield put({type: 'admin/getProductCategoryFailure', payload: error})
+        yield put({type: 'shop/getProductCategoryFailure', payload: error})
     }
 }
 

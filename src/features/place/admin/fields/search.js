@@ -1,7 +1,7 @@
 import {TEXT}   from 'config/variables'
 import * as Yup from 'yup'
 
-export const placeSearchFields = [
+export const placeSearchField = [
     {
         name: 'input',
         inputLabel: 'Search',

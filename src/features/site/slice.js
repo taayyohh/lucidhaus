@@ -1,6 +1,12 @@
 import {createSelector, createSlice} from '@reduxjs/toolkit'
 
 const initialState = {
+    confirmDelete: {
+        shouldDelete: false,
+        destroy: false,
+        slug: '',
+        type: ''
+    },
     isInitialized: false,
     loading: false,
     slug: '',
@@ -47,7 +53,30 @@ export const slice = createSlice({
         },
         setDocumentHead: (state, action) => {
             state.documentHead = {...state.documentHead, ...action.payload}
-        }
+        },
+
+
+
+        /* ADMIN */
+        //product
+        confirmDestroyEntity: (state, action) => {
+            console.log('action', action.payload)
+            state.confirmDelete.shouldDelete = true
+            state.confirmDelete.slug = action.payload.slug
+            state.confirmDelete.type = action.payload.type
+        },
+        denyDestroyEntity: state => {
+            state.confirmDelete.shouldDelete = false
+        },
+        acceptDestroyEntity: state => {
+            state.confirmDelete.destroy = true
+        },
+        destroyEntitySuccess: state => {
+            state.confirmDelete.shouldDelete = false
+            state.confirmDelete.destroy = false
+            state.confirmDelete.slug = ''
+            state.confirmDelete.type = ''
+        },
     },
 })
 

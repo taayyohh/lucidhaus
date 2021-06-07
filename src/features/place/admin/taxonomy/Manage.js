@@ -1,5 +1,5 @@
-import AdminDashboardWrapper      from 'features/admin/views/AdminDashboardWrapper'
-import React, {useEffect}         from 'react'
+import AdminDashboardWrapper from 'shared/Layout/Dashboard/admin/AdminDashboardWrapper'
+import React, {useEffect}    from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import Div                        from 'shared/Basic/Div'
 import LinkSwitch                 from 'shared/Basic/LinkSwitch'
@@ -8,7 +8,7 @@ import ContentWrapper             from 'shared/Layout/ContentWrapper'
 import DashboardInfo              from 'shared/Layout/Dashboard/DashboardInfo'
 
 const Manage = () => {
-    const {confirmDelete} = useSelector(state => state.admin)
+    const {confirmDelete} = useSelector(state => state.site)
     const dispatch = useDispatch()
     const TAX_PATH = '/admin/place/taxonomy'
 
@@ -32,9 +32,6 @@ const Manage = () => {
                     <LinkSwitch url={`${TAX_PATH}/business-owner`}>
                         Business Owner
                     </LinkSwitch>
-                    <LinkSwitch url={`${TAX_PATH}/categories`}>
-                        Categories
-                    </LinkSwitch>
                     <LinkSwitch url={`${TAX_PATH}/communities-served`}>
                         Communities Served
                     </LinkSwitch>
@@ -43,6 +40,9 @@ const Manage = () => {
                     </LinkSwitch>
                     <LinkSwitch url={`${TAX_PATH}/language-spoken`}>
                         Languages Spoken
+                    </LinkSwitch>
+                    <LinkSwitch url={`${TAX_PATH}/place-category`}>
+                        Place Category
                     </LinkSwitch>
                 </Div>
 

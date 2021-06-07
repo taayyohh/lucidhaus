@@ -23,7 +23,7 @@ export function* createProductCategory({payload}) {
             })
         }
     } catch (error) {
-        yield put({type: 'admin/updateProductCategoryFailure', error})
+        yield put({type: 'shop/updateProductCategoryFailure', error})
     }
 }
 
@@ -43,17 +43,17 @@ export function* updateProductCategoryDetail({payload}) {
             yield put({type: 'shop/updateProductCategoryFailure', category})
         }
     } catch (error) {
-        yield put({type: 'admin/updateProductCategoryFailure', error})
+        yield put({type: 'shop/updateProductCategoryFailure', error})
     }
 }
 
 export function* destroyProductCategory({payload}) {
     const destroyed = yield call(deleteProductCategory, payload)
     if (!destroyed.error) {
-        yield put({type: 'admin/destroyProductCategorySuccess'})
+        yield put({type: 'shop/destroyProductCategorySuccess'})
         yield put(push('/admin/taxonomy'))
     } else {
-        yield put({type: 'admin/destroyProductCategoryFailure'})
+        yield put({type: 'shop/destroyProductCategoryFailure'})
     }
 }
 
@@ -70,11 +70,11 @@ export function* destroyProductCategorySuccess() {
  */
 
 export function* watchDestroyProductCategory() {
-    yield takeLatest('admin/destroyProductCategory', destroyProductCategory)
+    yield takeLatest('shop/destroyProductCategory', destroyProductCategory)
 }
 
 export function* watchDestroyProductCategorySuccess() {
-    yield takeLatest('admin/attemptDestroyProductCategorySuccess', destroyProductCategorySuccess)
+    yield takeLatest('shop/attemptDestroyProductCategorySuccess', destroyProductCategorySuccess)
 }
 
 export function* watchCreateProductCategory() {

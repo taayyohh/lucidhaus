@@ -1,9 +1,7 @@
-import AdminDashboardWrapper                       from 'features/admin/views/AdminDashboardWrapper'
-import {serviceAnimalField, validateServiceAnimal} from 'features/user/admin/fields/serviceAnimal'
+import {serviceAnimalField, validateServiceAnimal} from 'features/user/admin/taxonomy/serviceAnimal/fields'
 import React                                       from 'react'
 import {useSelector}                               from 'react-redux'
 import Form                                        from 'shared/Fields/Form'
-import ContentWrapper                              from 'shared/Layout/ContentWrapper'
 
 const Create = () => {
     const {_id, token} = useSelector(state => state.user)
@@ -15,18 +13,14 @@ const Create = () => {
     }
 
     return (
-        <ContentWrapper>
-            <AdminDashboardWrapper>
-                <Form
-                    initialValues={initialValues}
-                    fields={serviceAnimalField}
-                    validationSchema={validateServiceAnimal}
-                    dispatchAction={'admin/createServiceAnimalType'}
-                    formHeading={'Create Service Animal Type'}
-                    buttonText={'Create'}
-                />
-            </AdminDashboardWrapper>
-        </ContentWrapper>
+        <Form
+            initialValues={initialValues}
+            fields={serviceAnimalField}
+            validationSchema={validateServiceAnimal}
+            dispatchAction={'user/createServiceAnimal'}
+            formHeading={'Create Service Animal'}
+            buttonText={'Create'}
+        />
     )
 }
 

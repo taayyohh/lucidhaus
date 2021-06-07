@@ -1,6 +1,6 @@
 import {productCategoryFields} from 'features/shop/admin/product/fields/category'
-import AdminDashboardWrapper   from 'features/admin/views/AdminDashboardWrapper'
-import {adminFormWrapperStyle} from 'features/admin/views/styles'
+import AdminDashboardWrapper   from 'shared/Layout/Dashboard/admin/AdminDashboardWrapper'
+import {adminFormWrapperStyle} from 'shared/Layout/Dashboard/admin/styles'
 import React, {useEffect}      from 'react'
 import {
     useDispatch,

@@ -1,5 +1,5 @@
-import {placeSearchFields}            from 'features/place/admin/fields/search'
-import {placeCardStyle}               from 'features/place/views/styles'
+import {placeSearchField} from 'features/place/admin/fields/search'
+import {placeCardStyle}   from 'features/place/views/styles'
 import React, {useContext, useEffect} from 'react'
 import {useDispatch, useSelector}     from 'react-redux'
 import Div                            from 'shared/Basic/Div'
@@ -65,7 +65,7 @@ const Places = () => {
             <Div theme={placesWrapperStyle}>
                 <Form
                     initialValues={{input: ''}}
-                    fields={placeSearchFields}
+                    fields={placeSearchField}
                     dispatchAction={'place/getBooneAutoComplete'}
                     formHeading={'Search'}
                     buttonText={'Search'}
