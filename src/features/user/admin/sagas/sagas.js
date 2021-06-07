@@ -1,5 +1,7 @@
-import {call, put, takeEvery} from 'redux-saga/dist/redux-saga-effects-npm-proxy.esm'
-import {updateEntity}         from '../../../../utils/abstractions'
+import {getSignedRequest, uploadFile} from 'features/site/services/s3'
+import {updateUser}                   from 'features/user/services'
+import {call, put, takeEvery}         from 'redux-saga/effects'
+import {updateEntity}                 from 'utils/abstractions'
 
 export function* updateProfile({payload}) {
     const {
@@ -10,6 +12,7 @@ export function* updateProfile({payload}) {
         nameMiddle,
         nameLast,
         avatar,
+        avatarFile,
         email,
         handle,
         ethnicHispanicOrigin,
@@ -27,6 +30,14 @@ export function* updateProfile({payload}) {
     updatedUser.set('handle', handle)
     updatedUser.set('ethnicHispanicOrigin', ethnicHispanicOrigin)
 
+    if (!!avatarFile) {
+        const s3Payload = yield call(getSignedRequest, avatarFile)
+        if (!!s3Payload.signedRequest) {
+            const uploadImage = yield call(uploadFile, {file: avatarFile, signedRequest: s3Payload.signedRequest})
+        }
+    }
+
+
     try {
         const updated = yield call(updateEntity, {
             slug: slug,
@@ -36,7 +47,9 @@ export function* updateProfile({payload}) {
             token: token,
         })
         if (!updated.error) {
-            yield put({type: 'place/updateUserSuccess', payload: updated})
+            console.log('UPDATED', updated)
+            const updateCookie = yield call(updateUser, updated)
+            yield put({type: 'user/updateUserSuccess', payload: updated})
             yield put({
                 type: 'site/setNotification',
                 payload: {
@@ -46,10 +59,10 @@ export function* updateProfile({payload}) {
             })
 
         } else {
-            yield put({type: 'place/updateUserFailure', payload: updated})
+            yield put({type: 'user/updateUserFailure', payload: updated})
         }
     } catch (error) {
-        yield put({type: 'place/updateUserFailure'})
+        yield put({type: 'user/updateUserFailure'})
     }
 }
 

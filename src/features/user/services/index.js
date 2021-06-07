@@ -77,11 +77,13 @@ export const update = ({_id, token, user}) =>
             return error
         })
 
-export const updateUser = ({user}) => {
+export const updateUser = (user) => {
     if (typeof window !== 'undefined') {
         if (localStorage.getItem('jwt')) {
             let auth = JSON.parse(localStorage.getItem('jwt'))
+
             auth.user = user
+
             localStorage.setItem('jwt', JSON.stringify(auth))
         }
     }

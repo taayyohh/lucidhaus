@@ -45,7 +45,7 @@ const Update = () => {
                     fields={bathroomField}
                     validationSchema={validateBathroom}
                     dispatchAction={'place/updateBathroom'}
-                    formHeading={'Update Adaptive Equipment'}
+                    formHeading={'Update Bathroom'}
                     buttonText={'Update'}
                     theme={adminFormWrapperStyle}
                     enableReinitialize={true}

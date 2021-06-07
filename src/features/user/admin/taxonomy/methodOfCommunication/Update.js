@@ -41,7 +41,7 @@ const Update = () => {
                     fields={methodOfCommunicationField}
                     validationSchema={validateMethodOfCommunication}
                     dispatchAction={'user/updateMethodOfCommunication'}
-                    formHeading={'Update Adaptive Equipment'}
+                    formHeading={'Update Method of Communication'}
                     buttonText={'Update'}
                     theme={adminFormWrapperStyle}
                     enableReinitialize={true}

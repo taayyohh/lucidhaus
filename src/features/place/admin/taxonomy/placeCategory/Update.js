@@ -41,7 +41,7 @@ const Update = () => {
                     fields={placeCategoryField}
                     validationSchema={validatePlaceCategory}
                     dispatchAction={'place/updatePlaceCategory'}
-                    formHeading={'Update Adaptive Equipment'}
+                    formHeading={'Update Place Category'}
                     buttonText={'Update'}
                     theme={adminFormWrapperStyle}
                     enableReinitialize={true}

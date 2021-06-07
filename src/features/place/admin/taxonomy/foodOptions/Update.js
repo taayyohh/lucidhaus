@@ -41,7 +41,7 @@ const Update = () => {
                     fields={foodOptionsField}
                     validationSchema={validateFoodOptions}
                     dispatchAction={'place/updateFoodOptions'}
-                    formHeading={'Update Adaptive Equipment'}
+                    formHeading={'Update Food Options'}
                     buttonText={'Update'}
                     theme={adminFormWrapperStyle}
                     enableReinitialize={true}

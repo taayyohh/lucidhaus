@@ -34,6 +34,7 @@ const Update = () => {
         nameLast: nameLast,
         description: description,
         avatar: avatar,
+        avatarFile: '',
         email: email,
         handle:  handle,
         tel: tel,

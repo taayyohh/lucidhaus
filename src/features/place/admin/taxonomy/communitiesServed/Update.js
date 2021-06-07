@@ -41,7 +41,7 @@ const Update = () => {
                     fields={communitiesServedField}
                     validationSchema={validateCommunitiesServed}
                     dispatchAction={'place/updateCommunitiesServed'}
-                    formHeading={'Update Adaptive Equipment'}
+                    formHeading={'Update Communities Served'}
                     buttonText={'Update'}
                     theme={adminFormWrapperStyle}
                     enableReinitialize={true}

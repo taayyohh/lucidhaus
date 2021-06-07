@@ -41,7 +41,7 @@ const Update = () => {
                     fields={serviceAnimalField}
                     validationSchema={validateServiceAnimal}
                     dispatchAction={'user/updateServiceAnimal'}
-                    formHeading={'Update Adaptive Equipment'}
+                    formHeading={'Update Service Animal'}
                     buttonText={'Update'}
                     theme={adminFormWrapperStyle}
                     enableReinitialize={true}

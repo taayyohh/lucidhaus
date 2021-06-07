@@ -41,7 +41,7 @@ const Update = () => {
                     fields={languageField}
                     validationSchema={validateLanguage}
                     dispatchAction={'user/updateLanguage'}
-                    formHeading={'Update Adaptive Equipment'}
+                    formHeading={'Update Language'}
                     buttonText={'Update'}
                     theme={adminFormWrapperStyle}
                     enableReinitialize={true}

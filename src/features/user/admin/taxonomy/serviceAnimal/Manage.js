@@ -23,7 +23,7 @@ const ManageServiceAnimal = () => {
         <ContentWrapper>
             <AdminDashboardWrapper>
                 <DashboardInfo
-                    heading={'Manage ServiceAnimal Taxonomy'}
+                    heading={'Manage Service Animal Taxonomy'}
                     description={'Click to edit.'}
                 />
                 <BreadCrumb/>

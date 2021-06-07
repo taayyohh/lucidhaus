@@ -66,7 +66,7 @@ export function* getBusinessOwnerDetail({payload}) {
 }
 
 export function* updateBusinessOwnerDetail({payload}) {
-    const {slug, _id, token, name, avatar, email, tel, description} = payload
+    const {slug, _id, token, name, avatar, avatarFile, email, tel, description} = payload
 
     //add to formData so api can read
     const updatedBusinessOwner = new FormData()
@@ -76,6 +76,13 @@ export function* updateBusinessOwnerDetail({payload}) {
     updatedBusinessOwner.set('email', email)
     updatedBusinessOwner.set('description', description)
     updatedBusinessOwner.set('tel', tel)
+
+    if (!!avatarFile) {
+        const s3Payload = yield call(getSignedRequest, avatarFile)
+        if (!!s3Payload.signedRequest) {
+            const uploadImage = yield call(uploadFile, {file: avatarFile, signedRequest: s3Payload.signedRequest})
+        }
+    }
 
     try {
         const updated = yield call(updateEntity, {

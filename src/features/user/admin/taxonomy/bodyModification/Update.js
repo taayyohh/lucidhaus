@@ -41,7 +41,7 @@ const Update = () => {
                     fields={bodyModificationField}
                     validationSchema={validateBodyModification}
                     dispatchAction={'user/updateBodyModification'}
-                    formHeading={'Update Adaptive Equipment'}
+                    formHeading={'Update Body Modification'}
                     buttonText={'Update'}
                     theme={adminFormWrapperStyle}
                     enableReinitialize={true}

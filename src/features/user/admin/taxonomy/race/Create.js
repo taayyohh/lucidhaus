@@ -18,7 +18,7 @@ const Create = () => {
             fields={raceField}
             validationSchema={validateRace}
             dispatchAction={'user/createRace'}
-            formHeading={'Create Race Type'}
+            formHeading={'Create Race'}
             buttonText={'Create'}
         />
     )

@@ -18,6 +18,7 @@ const Update = () => {
         name: name,
         description: description,
         avatar: avatar,
+        avatarFile: '',
         email: email,
         tel: tel,
         slug,
@@ -44,7 +45,7 @@ const Update = () => {
                     fields={businessOwnerField}
                     validationSchema={validateBusinessOwner}
                     dispatchAction={'place/updateBusinessOwner'}
-                    formHeading={'Update Adaptive Equipment'}
+                    formHeading={'Update Business Owner'}
                     buttonText={'Update'}
                     theme={adminFormWrapperStyle}
                     enableReinitialize={true}

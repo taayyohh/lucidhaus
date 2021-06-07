@@ -44,7 +44,7 @@ const Update = () => {
                     fields={pronounField}
                     validationSchema={validatePronoun}
                     dispatchAction={'user/updatePronoun'}
-                    formHeading={'Update Adaptive Equipment'}
+                    formHeading={'Update Pronoun'}
                     buttonText={'Update'}
                     theme={adminFormWrapperStyle}
                     enableReinitialize={true}

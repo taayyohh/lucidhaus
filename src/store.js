@@ -30,6 +30,8 @@ if (!['production'].includes(process.env.NODE_ENV)) {
                     'shop/getPaymentNonce',
                     'place/createPlace',
                     'place/updatePlace',
+                    'place/updateBusinessOwner',
+                    'user/updateUser',
                     'user/signUp'
                 ],
             },

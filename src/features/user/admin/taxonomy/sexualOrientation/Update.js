@@ -41,7 +41,7 @@ const Update = () => {
                     fields={sexualOrientationField}
                     validationSchema={validateSexualOrientation}
                     dispatchAction={'user/updateSexualOrientation'}
-                    formHeading={'Update Adaptive Equipment'}
+                    formHeading={'Update Sexual Orientation'}
                     buttonText={'Update'}
                     theme={adminFormWrapperStyle}
                     enableReinitialize={true}

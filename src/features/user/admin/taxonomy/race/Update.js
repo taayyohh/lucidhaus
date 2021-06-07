@@ -41,7 +41,7 @@ const Update = () => {
                     fields={raceField}
                     validationSchema={validateRace}
                     dispatchAction={'user/updateRace'}
-                    formHeading={'Update Adaptive Equipment'}
+                    formHeading={'Update Race'}
                     buttonText={'Update'}
                     theme={adminFormWrapperStyle}
                     enableReinitialize={true}
