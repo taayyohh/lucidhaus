@@ -54,8 +54,8 @@ import {
 import {
     watchLoadConfig,
     watchNavigate
-}                           from 'features/site/sagas'
-import {watchUpdateProfile} from 'features/user/admin/sagas/sagas'
+}                                                   from 'features/site/sagas'
+import {watchUpdateProfile, watchUpdateUserProfile} from 'features/user/admin/sagas/sagas'
 import {
     watchConfirmUser,
     watchGetUser,
@@ -64,7 +64,7 @@ import {
     watchSignOut,
     watchSignUp,
     watchUserHistory
-}                           from 'features/user/sagas'
+}                                                   from 'features/user/sagas'
 import {
     watchAuthenticate,
     watchIsAuthenticated
@@ -181,6 +181,7 @@ export default function* rootSaga() {
         //user
         fork(watchUserHistory),
         fork(watchUpdateProfile),
+        fork(watchUpdateUserProfile),
         fork(watchConfirmUser),
         fork(watchGetUsers),
         fork(watchGetUser),

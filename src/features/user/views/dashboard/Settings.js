@@ -41,7 +41,7 @@ const Settings = () => {
                     initialValues={initialValues}
                     fields={userField}
                     //validationSchema={validateProfile}
-                    dispatchAction={'user/updateUser'}
+                    dispatchAction={'user/updateUserProfile'}
                     formHeading={'Update Profile'}
                     buttonText={'Update'}
                     enableReinitialize={true}
