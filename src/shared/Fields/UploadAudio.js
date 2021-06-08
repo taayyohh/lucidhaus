@@ -1,33 +1,17 @@
-import {ACCEPTABLE_EXTENSIONS, CDN} from 'config/variables'
-import {play}                       from 'config/icons'
-import {globals} from 'config/styles'
-import moment          from 'moment'
-import React, {
-    memo,
-    useContext,
-    useEffect,
-    useState
-}                      from 'react'
-import Dropzone        from 'react-dropzone'
+import {play}                                                                            from 'config/icons'
+import {ACCEPTABLE_EXTENSIONS, CDN}                                                      from 'config/variables'
+import moment                                                                            from 'moment'
+import React, {memo, useContext, useEffect, useState}                                    from 'react'
+import Dropzone                                                                          from 'react-dropzone'
 import 'react-image-crop/dist/ReactCrop.css'
-import ReactPlayer     from 'react-player'
-import Div             from 'shared/Basic/Div'
-import Icon            from 'shared/Basic/Icon'
-import Span            from 'shared/Basic/Span'
-import {playerContext} from 'shared/Containers/PlayerController'
-import {
-    audioUploadPreviewWrapperStyle,
-    uploadErrorMessageStyle
-}                      from 'shared/Fields/styles'
-import {
-    bytesToMegaBytes,
-    isEmpty, slugify
-} from 'utils/helpers'
-import {
-    imageDropZonePreviewWrapperStyle,
-    imageDropZoneStyle,
-    imageDropZoneWrapperStyle
-}                      from './styles'
+import ReactPlayer                                                                       from 'react-player'
+import Div                                                                               from 'shared/Basic/Div'
+import Icon                                                                              from 'shared/Basic/Icon'
+import Span                                                                              from 'shared/Basic/Span'
+import {playerContext}                                                                   from 'shared/Containers/PlayerController'
+import {audioUploadPreviewWrapperStyle, uploadErrorMessageStyle}                         from 'shared/Fields/styles'
+import {bytesToMegaBytes, isEmpty, slugify}                                              from 'utils/helpers'
+import {imageDropZonePreviewWrapperStyle, imageDropZoneStyle, imageDropZoneWrapperStyle} from './styles'
 
 const UploadAudio = memo(({formik, id, file, s3Path, inputLabel, className, errorMessage}) => {
     const [uploadedAudio, setUploadedAudio] = useState({})

@@ -1,4 +1,4 @@
-import AdminDashboardWrapper   from 'shared/Layout/Dashboard/admin/AdminDashboardWrapper'
+import AdminDashboardWrapper          from 'shared/Layout/Dashboard/admin/AdminDashboardWrapper'
 import {adminFormWrapperStyle}        from 'shared/Layout/Dashboard/admin/styles'
 import {userField}                    from 'features/user/admin/fields'
 import React, {useContext, useEffect} from 'react'
@@ -7,6 +7,7 @@ import {searchContext}                from 'shared/Containers/SearchController'
 import DangerZone                     from 'shared/Controls/DangerZone'
 import Form                           from 'shared/Fields/Form'
 import ContentWrapper                 from 'shared/Layout/ContentWrapper'
+import Identity                       from './Indentity'
 
 const roleSwitch = ({role}) => {
     switch (role) {
@@ -71,6 +72,7 @@ const Update = () => {
                     theme={adminFormWrapperStyle}
                     enableReinitialize={true}
                 />
+                <Identity />
                 <DangerZone
                     attemptDestroyAction={'site/attemptDestroyEntity'}
                     destroyAction={'site/destroyEntity'}

@@ -1,0 +1,80 @@
+import {IMAGE_UPLOAD, MULTI_SELECT, NUMBER, SELECT, TEL, TEXT, TOGGLE, UPLOAD_PATHS} from 'config/variables'
+
+export const identityField = [
+    {
+        name: 'adaptiveEquipment',
+        inputLabel: 'Adaptive Equipment',
+        type: MULTI_SELECT
+    },
+    {
+        name: 'bodyModification',
+        inputLabel: 'Body Modification',
+        type: MULTI_SELECT
+    },
+    // blind and deaf should be taxonomy
+    {
+        name: 'blind',
+        inputLabel: 'Blind?',
+        type: TOGGLE
+    },
+    {
+        name: 'deaf',
+        inputLabel: 'Deaf',
+        type: TOGGLE
+    },
+    {
+        name: 'gender',
+        inputLabel: 'Gender',
+        type: MULTI_SELECT
+    },
+    {
+        name: 'guideAnimal',
+        inputLabel: 'Guide Animal',
+        type: TOGGLE
+    },
+    {
+        name: 'languagePrimary',
+        inputLabel: 'Primary Language',
+        type: SELECT
+    },
+    {
+        name: 'languageSecondary',
+        inputLabel: 'Secondary Language',
+        type: SELECT
+    },
+    {
+        name: 'methodOfCommunication',
+        inputLabel: 'Method of Communication',
+        type: MULTI_SELECT
+    },
+    {
+        name: 'physicalAppearance',
+        inputLabel: 'Physical Appearance',
+        type: MULTI_SELECT
+    },
+    {
+        name: 'pronoun',
+        inputLabel: 'Pronouns',
+        type: SELECT
+    },
+    {
+        name: 'race',
+        inputLabel: 'Race',
+        type: MULTI_SELECT
+    },
+    {
+        name: 'serviceAnimal',
+        inputLabel: 'Service Animal',
+        type: SELECT
+    },
+    {
+        name: 'sexualOrientation',
+        inputLabel: 'Sexual Orientation',
+        type: SELECT
+    },
+    {
+        name: 'transgender',
+        inputLabel: 'Transgender',
+        type: TOGGLE
+    },
+]

@@ -1,4 +1,4 @@
-import AdminDashboardWrapper        from 'shared/Layout/Dashboard/admin/AdminDashboardWrapper'
+import AdminDashboardWrapper          from 'shared/Layout/Dashboard/admin/AdminDashboardWrapper'
 import {adminFormWrapperStyle}        from 'shared/Layout/Dashboard/admin/styles'
 import {placeField, validatePlace}    from 'features/place/admin/fields'
 import React, {useContext, useEffect} from 'react'
@@ -7,12 +7,15 @@ import {searchContext}                from 'shared/Containers/SearchController'
 import DangerZone                     from 'shared/Controls/DangerZone'
 import Form                           from 'shared/Fields/Form'
 import ContentWrapper                 from 'shared/Layout/ContentWrapper'
+import {communitiesServed}            from '../taxonomy/communitiesServed/reducers'
+import {foodOptions}                  from '../taxonomy/foodOptions/reducers'
+import {placeCategory}                from '../taxonomy/placeCategory/reducers'
 
 const Update = () => {
     const dispatch = useDispatch()
     const {_id, token} = useSelector(state => state.user)
     const {slug} = useSelector(state => state.site)
-    const {place} = useSelector(state => state.place)
+    const {place, taxonomy} = useSelector(state => state.place)
     const {name, description, photo, isPublished} = place
     const {placesIndex} = useContext(searchContext)
 
@@ -22,6 +25,12 @@ const Update = () => {
         photo: photo,
         photoFile: '',
         isPublished: isPublished,
+        bathroom: '',
+        businessOwner: '',
+        communitiesServed: '',
+        foodOptions: '',
+        languageSpoken: '',
+        placeCategory: '',
         slug,
         _id,
         token,
@@ -38,6 +47,69 @@ const Update = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
+    const {
+        bathroom,
+        businessOwner,
+        communitiesServed,
+        foodOptions,
+        languageSpoken,
+        placeCategory
+    } = taxonomy
+
+
+
+    useEffect(() => {
+        dispatch({
+            type: 'user/getUser',
+            payload: {
+                slug: slug
+            }
+        })
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
+
+    const options = [
+        {
+            name: 'bathroom',
+            options: bathroom
+        },
+        {
+            name: 'businessOwner',
+            options: businessOwner
+        },
+        {
+            name: 'communitiesServed',
+            options: communitiesServed
+        },
+        {
+            name: 'foodOptions',
+            options: foodOptions
+        },
+        {
+            name: 'languageSpoken',
+            options: languageSpoken
+        },
+        {
+            name: 'placeCategory',
+            options: placeCategory
+        }
+    ]
+
+
+    useEffect(() => {
+        dispatch({type: 'place/listBathroom'})
+        dispatch({type: 'place/listBusinessOwner'})
+        dispatch({type: 'place/listCommunitiesServed'})
+        dispatch({type: 'place/listFoodOptions'})
+        dispatch({type: 'place/listLanguageSpoken'})
+        dispatch({type: 'place/listPlaceCategory'})
+
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
     return (
         <ContentWrapper>
             <AdminDashboardWrapper>
@@ -50,6 +122,7 @@ const Update = () => {
                     buttonText={'Update'}
                     theme={adminFormWrapperStyle}
                     enableReinitialize={true}
+                    options={options}
                 />
                 <DangerZone
                     attemptDestroyAction={'place/attemptDestroyPlace'}

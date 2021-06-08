@@ -27,6 +27,7 @@ export const FILE = "file"
 export const HIDDEN = "hidden"
 export const IMAGE = "image"
 export const MONTH = "month"
+export const MULTI_SELECT = 'multi-select'
 export const NUMBER = "number"
 export const PASSWORD = "password"
 export const RADIO = "radio"

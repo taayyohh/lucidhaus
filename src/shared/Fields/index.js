@@ -5,6 +5,7 @@ import {
     COUNTRY,
     EMAIL,
     IMAGE_UPLOAD,
+    MULTI_SELECT,
     NUMBER,
     PASSWORD,
     REGION,
@@ -13,14 +14,15 @@ import {
     TEL,
     TEXT,
     TOGGLE
-}                    from 'config/variables'
-import React, {memo} from 'react'
+} from 'config/variables'
+import React, {memo}  from 'react'
 import UploadAudio    from 'shared/Fields/UploadAudio'
 import UploadImage    from 'shared/Fields/UploadImage'
 import Address        from './Address'
 import Count          from './Count'
-import Country        from './Country'
-import Region         from './Region'
+import Country     from './Country'
+import MultiSelect from './MultiSelect'
+import Region      from './Region'
 import RichTextEditor from './RichTextEditor'
 import Select         from './Select'
 import SmartInput     from './SmartInput'
@@ -86,6 +88,14 @@ const FieldSwitch = memo(({field, formik, options, autoSubmit}) => {
         case SELECT:
             return <Select
                 {...formik.getFieldProps(field.name)}
+                field={field}
+                options={options}
+                className={formik.touched[field.name] && formik.errors[field.name] ? 'error' : ''}
+                errorMessage={formik.touched[field.name] && formik.errors[field.name] ? formik.errors[field.name] : null}
+            />
+        case MULTI_SELECT:
+            return <MultiSelect
+                formik={formik}
                 field={field}
                 options={options}
                 className={formik.touched[field.name] && formik.errors[field.name] ? 'error' : ''}

@@ -1,9 +1,64 @@
-import {IMAGE_UPLOAD, RICH_TEXT, TEXT, TOGGLE, UPLOAD_PATHS} from 'config/variables'
-import * as Yup                                              from 'yup'
+import {IMAGE_UPLOAD, RICH_TEXT, SELECT, TEXT, TOGGLE, UPLOAD_PATHS} from 'config/variables'
+import * as Yup                                                      from 'yup'
 
 export const placeField = [
     {
         name: 'accessibility',
+    },
+    {
+        name: 'name',
+        inputLabel: 'Name',
+        type: TEXT
+    },
+    {
+        name: 'bathrooms',
+        inputLabel: 'Bathrooms',
+        type: SELECT
+    },
+    {
+        name: 'brickAndMortar',
+        inputLabel: 'Published',
+        type: TOGGLE
+    },
+    {
+        name: 'categories',
+        inputLabel: 'Categories',
+        type: SELECT
+    },
+    {
+        name: 'communitiesServed',
+        inputLabel: 'Communities Served',
+        type: SELECT
+    },
+    {
+        name: 'description',
+        inputLabel: 'Description',
+        type: TEXT
+    },
+    {
+        name: 'foodOptions',
+        inputLabel: 'Food Options',
+        type: SELECT
+    },
+    {
+        name: 'isPublished',
+        inputLabel: 'Published',
+        type: TOGGLE
+    },
+    {
+        name: 'isRestaurant',
+        inputLabel: 'Restaurant',
+        type: TOGGLE
+    },
+    {
+        name: 'languages',
+        inputLabel: 'Language Spoken',
+        type: SELECT
+    },
+    {
+        name: 'owners',
+        inputLabel: 'Owners',
+        type: SELECT
     },
     {
         name: 'photo',
@@ -14,19 +69,14 @@ export const placeField = [
         type: IMAGE_UPLOAD,
     },
     {
-        name: 'name',
-        inputLabel: 'Name',
-        type: TEXT
-    },
-    {
-        name: 'description',
-        inputLabel: 'Post Description',
-        type: RICH_TEXT
-    },
-    {
-        name: 'isPublished',
-        inputLabel: 'Published',
+        name: 'publicTransportation',
+        inputLabel: 'Public Transportation',
         type: TOGGLE
+    },
+    {
+        name: 'website',
+        inputLabel: 'Website',
+        type: TEXT
     }
 ]
 
