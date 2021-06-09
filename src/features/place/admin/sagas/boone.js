@@ -13,8 +13,6 @@ export function* createPlaceFromBoone({payload}) {
     place.set('_id', boonePlace.id)
     place.set('name', boonePlace.name)
 
-    console.log('boone', boonePlace)
-
     const createdPlace = yield call(
         addPlaceFromBoone,
         {
@@ -23,9 +21,7 @@ export function* createPlaceFromBoone({payload}) {
             place: place
         }
     )
-    console.log('createdPlace', createdPlace)
     if (!createdPlace.error) {
-        console.log('CREAATEDDDDD', createdPlace)
         // yield put({type: 'place/getPlaces'})
         // yield put(push('/admin/places/update/' + createdPlace.slug))
 

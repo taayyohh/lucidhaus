@@ -1,14 +1,16 @@
 import {userDashboardMenu} from 'config/menus/dashboard/user'
-import {userField}         from 'features/user/admin/fields'
-import React               from 'react'
-import {useSelector}       from 'react-redux'
-import Form                from 'shared/Fields/Form'
+import {userField}        from 'features/user/admin/fields'
+import React, {useEffect}         from 'react'
+import {useDispatch, useSelector} from 'react-redux'
+import Form                       from 'shared/Fields/Form'
 import ContentWrapper      from 'shared/Layout/ContentWrapper'
 import DashboardInfo       from 'shared/Layout/Dashboard/DashboardInfo'
 import DashboardWrapper    from 'shared/Layout/Dashboard/DashboardWrapper'
 
 const Settings = () => {
-    const {slug, _id, token, description, avatar, email, ethnicHispanicOrigin, handle, nameMiddle, nameFirst, nameLast, tel, role} = useSelector(state => state.user)
+    const dispatch = useDispatch()
+    const {slug, _id, token, user} = useSelector(state => state.user)
+    const {description, avatar, email, ethnicHispanicOrigin, handle, nameMiddle, nameFirst, nameLast, tel, role} = user
 
     const initialValues = {
         nameFirst: nameFirst,
@@ -27,8 +29,19 @@ const Settings = () => {
         token,
     }
 
-    console.log('slug', slug)
+    useEffect(() => {
+        if (!!slug)
+            dispatch({
+                type: 'user/getUser',
+                payload: {
+                    slug: slug,
+                    _id: _id,
+                    token: token
+                }
+            })
 
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     return (
         <ContentWrapper>

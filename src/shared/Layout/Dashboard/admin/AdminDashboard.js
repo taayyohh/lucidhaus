@@ -9,7 +9,7 @@ import DashboardWrapper     from 'shared/Layout/Dashboard/DashboardWrapper'
 
 const AdminDashboard = () => {
     const {nameFirst, tel} = useSelector(state => state.user)
-    const {geo, getLocation, coords} = useContext(mapContext)
+    const {coords} = useContext(mapContext)
     // /geocoding/v5/{endpoint}/{longitude},{latitude}.json
 
     return (

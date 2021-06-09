@@ -1,18 +1,18 @@
 import {takeEvery}                  from '@redux-saga/core/effects'
 import {getPronoun, getPronounList} from 'features/user/admin/taxonomy/pronoun/services'
 import {call, put}                  from 'redux-saga/effects'
-import {createEntity, updateEntity} from 'utils/abstractions'
+import {createEntity, updateEntity} from 'utils/abstractions/crud'
+import {setFormData}                from 'utils/abstractions/setFormData'
 
 export function* createPronoun({payload}) {
     const {_id, token, name, description, subjectiveSingular, objectiveSingular, objectivePossessive} = payload
 
     //add to formdata so api can read
     const pronoun = new FormData()
-    pronoun.set('name', name)
-    pronoun.set('description', description)
-    pronoun.set('subjectiveSingular', subjectiveSingular)
-    pronoun.set('objectiveSingular', objectiveSingular)
-    pronoun.set('objectivePossessive', objectivePossessive)
+    const fields = [{name}, {description}, {subjectiveSingular}, {objectiveSingular}, {objectivePossessive}]
+    for (let field of fields)
+        setFormData(pronoun, field)
+
 
     const createdPronoun = yield call(createEntity, {
         _id: _id,
@@ -21,7 +21,6 @@ export function* createPronoun({payload}) {
         slug: 'pronoun'
     })
     if (!createdPronoun.error) {
-        console.log('success', createdPronoun)
         yield put({type: 'user/listPronoun'})
         // yield put(push('/admin/places/update/' + crea.slug))
 
@@ -62,11 +61,9 @@ export function* updatePronounDetail({payload}) {
 
     //add to formData so api can read
     const pronoun = new FormData()
-    pronoun.set('name', name)
-    pronoun.set('description', description)
-    pronoun.set('subjectiveSingular', subjectiveSingular)
-    pronoun.set('objectiveSingular', objectiveSingular)
-    pronoun.set('objectivePossessive', objectivePossessive)
+    const fields = [{name}, {description}, {subjectiveSingular}, {objectiveSingular}, {objectivePossessive}]
+    for (let field of fields)
+        setFormData(pronoun, field)
 
     try {
         const updated = yield call(updateEntity, {

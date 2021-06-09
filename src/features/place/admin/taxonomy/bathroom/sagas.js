@@ -1,20 +1,17 @@
 import {takeEvery}                    from '@redux-saga/core/effects'
 import {getBathroom, getBathroomList} from 'features/place/admin/taxonomy/bathroom/services'
 import {call, put}                    from 'redux-saga/effects'
-import {createEntity, updateEntity}   from 'utils/abstractions'
+import {createEntity, updateEntity}   from 'utils/abstractions/crud'
+import {setFormData}                  from 'utils/abstractions/setFormData'
 
 export function* createBathroom({payload}) {
     const {_id, token, name, gender, description, multiStall, toilets, urinals} = payload
 
     //add to formdata so api can read
     const bathroom = new FormData()
-    bathroom.set('name', name)
-    bathroom.set('gender', gender)
-    bathroom.set('description', description)
-    bathroom.set('multiStall', multiStall)
-    bathroom.set('toilets', toilets)
-    bathroom.set('urinals', urinals)
-
+    const fields = [{name}, {gender}, {description}, {multiStall}, {toilets}, {urinals}]
+    for (let field of fields)
+        setFormData(bathroom, field)
 
     const createdBathroom = yield call(createEntity, {
         _id: _id,
@@ -23,7 +20,6 @@ export function* createBathroom({payload}) {
         slug: 'bathroom'
     })
     if (!createdBathroom.error) {
-        console.log('success', createdBathroom)
         yield put({type: 'place/listBathroom'})
         // yield put(push('/admin/places/update/' + crea.slug))
 
@@ -64,12 +60,9 @@ export function* updateBathroomDetail({payload}) {
 
     //add to formData so api can read
     const bathroom = new FormData()
-    bathroom.set('name', name)
-    bathroom.set('gender', gender)
-    bathroom.set('description', description)
-    bathroom.set('multiStall', multiStall)
-    bathroom.set('toilets', toilets)
-    bathroom.set('urinals', urinals)
+    const fields = [{name}, {gender}, {description}, {multiStall}, {toilets}, {urinals}]
+    for (let field of fields)
+        setFormData(bathroom, field)
 
     try {
         const updated = yield call(updateEntity, {

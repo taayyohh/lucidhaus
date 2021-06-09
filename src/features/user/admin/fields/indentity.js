@@ -1,6 +1,6 @@
-import {IMAGE_UPLOAD, MULTI_SELECT, NUMBER, SELECT, TEL, TEXT, TOGGLE, UPLOAD_PATHS} from 'config/variables'
+import {MULTI_SELECT, SELECT, TOGGLE} from 'config/variables'
 
-export const identityField = [
+export const identityFields = [
     {
         name: 'adaptiveEquipment',
         inputLabel: 'Adaptive Equipment',

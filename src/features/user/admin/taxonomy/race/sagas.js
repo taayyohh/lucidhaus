@@ -1,15 +1,17 @@
-import {takeEvery}            from '@redux-saga/core/effects'
-import {getRace, getRaceList} from 'features/user/admin/taxonomy/race/services'
-import {call, put}            from 'redux-saga/effects'
-import {createEntity, updateEntity} from 'utils/abstractions'
+import {takeEvery}                  from '@redux-saga/core/effects'
+import {getRace, getRaceList}       from 'features/user/admin/taxonomy/race/services'
+import {call, put}                  from 'redux-saga/effects'
+import {createEntity, updateEntity} from 'utils/abstractions/crud'
+import {setFormData}                from 'utils/abstractions/setFormData'
 
 export function* createRace({payload}) {
     const {_id, token, name, description,} = payload
 
     //add to formdata so api can read
     const race = new FormData()
-    race.set('name', name)
-    race.set('description', description)
+    const fields = [{name}, {description}]
+    for (let field of fields)
+        setFormData(race, field)
 
     const createdRace = yield call(createEntity, {
         _id: _id,
@@ -18,7 +20,6 @@ export function* createRace({payload}) {
         slug: 'race'
     })
     if (!createdRace.error) {
-        console.log('success', createdRace)
         yield put({type: 'user/listRace'})
         // yield put(push('/admin/places/update/' + crea.slug))
 
@@ -58,15 +59,16 @@ export function* updateRaceDetail({payload}) {
     const {slug, _id, token, name, description} = payload
 
     //add to formData so api can read
-    const updatedRace = new FormData()
-    updatedRace.set('name', name)
-    updatedRace.set('description', description)
+    const race = new FormData()
+    const fields = [{name}, {description}]
+    for (let field of fields)
+        setFormData(race, field)
 
     try {
         const updated = yield call(updateEntity, {
             slug: slug,
             parentSlug: 'race',
-            body: updatedRace,
+            body: race,
             _id: _id,
             token: token,
         })

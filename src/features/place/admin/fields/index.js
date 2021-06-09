@@ -1,5 +1,5 @@
-import {IMAGE_UPLOAD, RICH_TEXT, SELECT, TEXT, TOGGLE, UPLOAD_PATHS} from 'config/variables'
-import * as Yup                                                      from 'yup'
+import {IMAGE_UPLOAD, SELECT, TEXT, TOGGLE, UPLOAD_PATHS} from 'config/variables'
+import * as Yup                                           from 'yup'
 
 export const placeField = [
     {

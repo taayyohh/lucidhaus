@@ -139,7 +139,7 @@ export const slice = createSlice({
             state.loading = false
             state.redirectToReferrer = false
         },
-        updateUserSuccess: (state, action) => {
+        updateUserProfileSuccess: (state, action) => {
             state.isAdmin = action.payload.role === 0
             state.avatar = action.payload.avatar
             state.description = action.payload.description

@@ -1,10 +1,10 @@
-import AdminDashboardWrapper                    from 'shared/Layout/Dashboard/admin/AdminDashboardWrapper'
 import React, {useContext, useEffect, useState} from 'react'
 import {useDispatch, useSelector}               from 'react-redux'
+import LinkSwitch                               from 'shared/Basic/LinkSwitch'
 import {searchContext}                          from 'shared/Containers/SearchController'
 import ContentWrapper                           from 'shared/Layout/ContentWrapper'
+import AdminDashboardWrapper                    from 'shared/Layout/Dashboard/admin/AdminDashboardWrapper'
 import DashboardInfo                            from 'shared/Layout/Dashboard/DashboardInfo'
-import LinkSwitch                               from '../../../../shared/Basic/LinkSwitch'
 import List                                     from './List'
 
 const Manage = () => {
@@ -15,7 +15,6 @@ const Manage = () => {
 
     useEffect(() => {
         dispatch({type: 'user/getUsers'})
-
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
@@ -32,19 +31,8 @@ const Manage = () => {
                 )
         }
 
-
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [users])
-
-    const roleKey = (key) => {
-        switch (key) {
-            case 0:
-                return 'Admin'
-            case 1:
-                return 'User'
-
-        }
-    }
-
 
     return (
         <ContentWrapper>

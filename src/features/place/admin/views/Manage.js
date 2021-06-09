@@ -1,10 +1,10 @@
-import AdminDashboardWrapper from 'shared/Layout/Dashboard/admin/AdminDashboardWrapper'
-import List                  from 'features/place/admin/views/List'
+import List                                     from 'features/place/admin/views/List'
 import React, {useContext, useEffect, useState} from 'react'
 import {useDispatch, useSelector}               from 'react-redux'
 import LinkSwitch                               from 'shared/Basic/LinkSwitch'
 import {searchContext}                          from 'shared/Containers/SearchController'
 import ContentWrapper                           from 'shared/Layout/ContentWrapper'
+import AdminDashboardWrapper                    from 'shared/Layout/Dashboard/admin/AdminDashboardWrapper'
 import DashboardInfo                            from 'shared/Layout/Dashboard/DashboardInfo'
 
 const Manage = () => {
@@ -30,6 +30,7 @@ const Manage = () => {
                     })
                 )
 
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [places])
 
     return (

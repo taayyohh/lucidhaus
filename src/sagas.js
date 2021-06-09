@@ -54,8 +54,8 @@ import {
 import {
     watchLoadConfig,
     watchNavigate
-}                                                   from 'features/site/sagas'
-import {watchUpdateProfile, watchUpdateUserProfile} from 'features/user/admin/sagas/sagas'
+}                                                                     from 'features/site/sagas'
+import {watchUpdateProfile, watchUpdateUserIdentity, watchUpdateUser} from 'features/user/admin/sagas'
 import {
     watchConfirmUser,
     watchGetUser,
@@ -64,7 +64,7 @@ import {
     watchSignOut,
     watchSignUp,
     watchUserHistory
-}                                                   from 'features/user/sagas'
+}                                                                     from 'features/user/sagas'
 import {
     watchAuthenticate,
     watchIsAuthenticated
@@ -92,32 +92,29 @@ import {
     watchCreateFoodOptions,
     watchGetFoodOptionsDetail,
     watchGetFoodOptionsList, watchUpdateFoodOptionsDetail
-} from './features/place/admin/taxonomy/foodOptions/sagas'
+}                                                      from './features/place/admin/taxonomy/foodOptions/sagas'
 import {
     watchCreateLanguageSpoken,
     watchGetLanguageSpokenDetail,
     watchGetLanguageSpokenList, watchUpdateLanguageSpokenDetail
-} from './features/place/admin/taxonomy/languageSpoken/sagas'
+}                                                      from './features/place/admin/taxonomy/languageSpoken/sagas'
 import {
     watchCreatePlaceCategory,
     watchGetPlaceCategoryDetail,
     watchGetPlaceCategoryList, watchUpdatePlaceCategoryDetail
-} from './features/place/admin/taxonomy/placeCategory/sagas'
-import {
-    watchAttemptDestroyEntity,
-    watchDestroyEntity
-} from './features/site/admin/sagas'
+}                                                      from './features/place/admin/taxonomy/placeCategory/sagas'
+import {watchAttemptDestroyEntity, watchDestroyEntity} from './features/site/admin/sagas'
 import {
     watchCreateAdaptiveEquipment,
     watchGetAdaptiveEquipmentDetail,
     watchGetAdaptiveEquipmentList,
     watchUpdateAdaptiveEquipmentDetail
-} from './features/user/admin/taxonomy/adaptiveEquipment/sagas'
+}                                                      from './features/user/admin/taxonomy/adaptiveEquipment/sagas'
 import {
     watchCreateBodyModification,
     watchGetBodyModificationDetail,
     watchGetBodyModificationList, watchUpdateBodyModificationDetail
-} from './features/user/admin/taxonomy/bodyModification/sagas'
+}                                                      from './features/user/admin/taxonomy/bodyModification/sagas'
 import {
     watchCreateGender,
     watchGetGenderDetail,
@@ -181,7 +178,8 @@ export default function* rootSaga() {
         //user
         fork(watchUserHistory),
         fork(watchUpdateProfile),
-        fork(watchUpdateUserProfile),
+        fork(watchUpdateUser),
+        fork(watchUpdateUserIdentity),
         fork(watchConfirmUser),
         fork(watchGetUsers),
         fork(watchGetUser),

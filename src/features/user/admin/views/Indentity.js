@@ -1,34 +1,14 @@
-import {identityField}                from 'features/user/admin/fields/indentity'
-import React, {useContext, useEffect} from 'react'
-import {useDispatch, useSelector}     from 'react-redux'
-import {searchContext}                from 'shared/Containers/SearchController'
-import Form                           from 'shared/Fields/Form'
-import {adminFormWrapperStyle}        from 'shared/Layout/Dashboard/admin/styles'
-import {bodyModification}             from '../taxonomy/bodyModification/reducers'
-import {methodOfCommunication}        from '../taxonomy/methodOfCommunication/reducers'
-import {physicalAppearance}           from '../taxonomy/physicalAppearance/reducers'
-import {serviceAnimal}                from '../taxonomy/serviceAnimal/reducers'
-import {sexualOrientation}            from '../taxonomy/sexualOrientation/reducers'
-
-const roleSwitch = ({role}) => {
-    switch (role) {
-        case 0:
-            return 'Super Admin'
-        case 1:
-            return 'Admin'
-        case 2:
-            return 'User'
-        case 3:
-            return 'Business'
-    }
-}
+import {identityFields}   from 'features/user/admin/fields/indentity'
+import React, {useEffect} from 'react'
+import {useDispatch, useSelector} from 'react-redux'
+import Form                       from 'shared/Fields/Form'
+import {adminFormWrapperStyle}    from 'shared/Layout/Dashboard/admin/styles'
 
 const Identity = () => {
     const dispatch = useDispatch()
     const {_id, token, taxonomy} = useSelector(state => state.user)
     const {slug} = useSelector(state => state.site)
-    const {user} = useSelector(state => state.site)
-    const {usersIndex} = useContext(searchContext)
+
     const {
         adaptiveEquipment,
         bodyModification,
@@ -60,23 +40,11 @@ const Identity = () => {
         serviceAnimal: '',
         sexualOrientation: '',
         transgender: '',
+        identity: true,
         slug,
         _id,
         token,
     }
-
-    useEffect(() => {
-        dispatch({
-            type: 'user/getUser',
-            payload: {
-                slug: slug
-            }
-        })
-
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
-
-
     const options = [
         {
             name: 'adaptiveEquipment',
@@ -123,8 +91,6 @@ const Identity = () => {
             options: sexualOrientation
         },
     ]
-
-
     useEffect(() => {
         dispatch({type: 'user/listAdaptiveEquipment'})
         dispatch({type: 'user/listBodyModification'})
@@ -137,8 +103,6 @@ const Identity = () => {
         dispatch({type: 'user/listServiceAnimal'})
         dispatch({type: 'user/listSexualOrientation'})
 
-        console.log('tax', taxonomy)
-
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
@@ -146,9 +110,9 @@ const Identity = () => {
     return (
         <Form
             initialValues={initialValues}
-            fields={identityField}
+            fields={identityFields}
             // validationSchema={validateUser}
-            dispatchAction={'user/updateUser'}
+            dispatchAction={'user/updateUserIdentity'}
             formHeading={'Update Identity'}
             buttonText={'Update'}
             theme={adminFormWrapperStyle}

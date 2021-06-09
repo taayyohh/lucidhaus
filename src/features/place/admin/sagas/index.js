@@ -1,8 +1,9 @@
 import {push}                               from 'connected-react-router'
 import {addPlace, deletePlace, updatePlace} from 'features/place/services'
 import moment                               from 'moment'
-import {call, put, takeLatest}        from 'redux-saga/effects'
-import {getSignedRequest, uploadFile} from 'features/site/services/s3'
+import {call, put, takeLatest}              from 'redux-saga/effects'
+import {getSignedRequest, uploadFile}       from 'features/site/services/s3'
+import {setFormData}                        from '../../../../utils/abstractions/setFormData'
 
 export function* createPlace({payload}) {
     const {_id, token, name, description, photo, photoFile, isPublished} = payload
@@ -17,11 +18,9 @@ export function* createPlace({payload}) {
 
     const s3Payload = yield call(getSignedRequest, photoFile)
     if (!!s3Payload.signedRequest) {
-        const uploadImage = yield call(uploadFile, {file: photoFile, signedRequest: s3Payload.signedRequest})
-        console.log('upload', uploadImage)
+        yield call(uploadFile, {file: photoFile, signedRequest: s3Payload.signedRequest})
 
         const createdPlace = yield call(addPlace, {_id: _id, token: token, place: place})
-        console.log('createdPlace', createdPlace)
         if (!createdPlace.error) {
             yield put({type: 'place/getPlaces'})
             yield put(push('/admin/places/update/' + createdPlace.slug))
@@ -38,22 +37,20 @@ export function* updatePlaceDetail({payload}) {
     const {slug, _id, token, name, description, photo, isPublished, photoFile} = payload
 
     //add to formData so api can read
-    const updatedPlace = new FormData()
-    updatedPlace.set('name', name)
-    updatedPlace.set('description', description)
-    updatedPlace.set('photo', photo)
-    updatedPlace.set('isPublished', isPublished)
+    const place = new FormData()
+    const fields = [name, description, photo, isPublished]
+    for (let field of fields)
+        setFormData(place, field)
 
     if (!!photoFile) {
         const s3Payload = yield call(getSignedRequest, photoFile)
         if (!!s3Payload.signedRequest) {
-            const uploadImage = yield call(uploadFile, {file: photoFile, signedRequest: s3Payload.signedRequest})
-            console.log('upload', uploadImage)
+            yield call(uploadFile, {file: photoFile, signedRequest: s3Payload.signedRequest})
         }
     }
 
     try {
-        const updated = yield call(updatePlace, {slug: slug, _id: _id, token: token, place: updatedPlace})
+        const updated = yield call(updatePlace, {slug: slug, _id: _id, token: token, place: place})
         if (!updated.error) {
             yield put({type: 'place/updatePlaceSuccess', payload: updated})
             yield put({

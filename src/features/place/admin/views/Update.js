@@ -1,5 +1,3 @@
-import AdminDashboardWrapper          from 'shared/Layout/Dashboard/admin/AdminDashboardWrapper'
-import {adminFormWrapperStyle}        from 'shared/Layout/Dashboard/admin/styles'
 import {placeField, validatePlace}    from 'features/place/admin/fields'
 import React, {useContext, useEffect} from 'react'
 import {useDispatch, useSelector}     from 'react-redux'
@@ -7,9 +5,8 @@ import {searchContext}                from 'shared/Containers/SearchController'
 import DangerZone                     from 'shared/Controls/DangerZone'
 import Form                           from 'shared/Fields/Form'
 import ContentWrapper                 from 'shared/Layout/ContentWrapper'
-import {communitiesServed}            from '../taxonomy/communitiesServed/reducers'
-import {foodOptions}                  from '../taxonomy/foodOptions/reducers'
-import {placeCategory}                from '../taxonomy/placeCategory/reducers'
+import AdminDashboardWrapper          from 'shared/Layout/Dashboard/admin/AdminDashboardWrapper'
+import {adminFormWrapperStyle}        from 'shared/Layout/Dashboard/admin/styles'
 
 const Update = () => {
     const dispatch = useDispatch()
@@ -55,7 +52,6 @@ const Update = () => {
         languageSpoken,
         placeCategory
     } = taxonomy
-
 
 
     useEffect(() => {

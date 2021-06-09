@@ -31,3 +31,4 @@ export const createEntity = ({_id, token, body, slug}) =>
         .catch(error => {
             return error
         })
+

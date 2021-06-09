@@ -60,7 +60,6 @@ export const slice = createSlice({
         /* ADMIN */
         //product
         confirmDestroyEntity: (state, action) => {
-            console.log('action', action.payload)
             state.confirmDelete.shouldDelete = true
             state.confirmDelete.slug = action.payload.slug
             state.confirmDelete.type = action.payload.type

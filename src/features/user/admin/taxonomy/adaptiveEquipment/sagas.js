@@ -1,15 +1,17 @@
 import {takeEvery}                                      from '@redux-saga/core/effects'
 import {getAdaptiveEquipment, getAdaptiveEquipmentList} from 'features/user/admin/taxonomy/adaptiveEquipment/services'
 import {call, put}                                      from 'redux-saga/effects'
-import {createEntity, updateEntity}                     from 'utils/abstractions'
+import {createEntity, updateEntity}                     from 'utils/abstractions/crud'
+import {setFormData}                                    from 'utils/abstractions/setFormData'
 
 export function* createAdaptiveEquipment({payload}) {
     const {_id, token, name, description,} = payload
 
     //add to formdata so api can read
     const adaptiveEquipment = new FormData()
-    adaptiveEquipment.set('name', name)
-    adaptiveEquipment.set('description', description)
+    const fields = [{name}, {description}]
+    for (let field of fields)
+        setFormData(adaptiveEquipment, field)
 
     const createdAdaptiveEquipment = yield call(createEntity, {
         _id: _id,
@@ -18,7 +20,6 @@ export function* createAdaptiveEquipment({payload}) {
         slug: 'adaptive-equipment'
     })
     if (!createdAdaptiveEquipment.error) {
-        console.log('success', createdAdaptiveEquipment)
         yield put({type: 'user/listAdaptiveEquipment'})
         // yield put(push('/admin/places/update/' + crea.slug))
 
@@ -58,15 +59,16 @@ export function* updateAdaptiveEquipmentDetail({payload}) {
     const {slug, _id, token, name, description} = payload
 
     //add to formData so api can read
-    const updatedAdaptiveEquipment = new FormData()
-    updatedAdaptiveEquipment.set('name', name)
-    updatedAdaptiveEquipment.set('description', description)
+    const adaptiveEquipment = new FormData()
+    const fields = [{name}, {description}]
+    for (let field of fields)
+        setFormData(adaptiveEquipment, field)
 
     try {
         const updated = yield call(updateEntity, {
             slug: slug,
             parentSlug: 'adaptive-equipment',
-            body: updatedAdaptiveEquipment,
+            body: adaptiveEquipment,
             _id: _id,
             token: token,
         })

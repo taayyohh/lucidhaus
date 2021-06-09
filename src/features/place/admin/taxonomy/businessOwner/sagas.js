@@ -1,25 +1,22 @@
 import {takeEvery}                              from '@redux-saga/core/effects'
-import {push}                                   from 'connected-react-router'
 import {getBusinessOwner, getBusinessOwnerList} from 'features/place/admin/taxonomy/businessOwner/services'
-import {call, put}                              from 'redux-saga/effects'
-import {createEntity, updateEntity}             from 'utils/abstractions'
 import {getSignedRequest, uploadFile}           from 'features/site/services/s3'
+import {call, put}                              from 'redux-saga/effects'
+import {createEntity, updateEntity}             from 'utils/abstractions/crud'
+import {setFormData}                            from 'utils/abstractions/setFormData'
 
 export function* createBusinessOwner({payload}) {
     const {_id, token, avatar, avatarFile, description, email, name, tel} = payload
 
     //add to formdata so api can read
     const businessOwner = new FormData()
-    businessOwner.set('avatar', avatar)
-    businessOwner.set('email', email)
-    businessOwner.set('description', description)
-    businessOwner.set('name', name)
-    businessOwner.set('tel', tel)
-
+    const fields = [{avatar}, {email}, {description}, {name}, {tel}]
+    for (let field of fields)
+        setFormData(businessOwner, field)
 
     const s3Payload = yield call(getSignedRequest, avatarFile)
     if (!!s3Payload.signedRequest) {
-        const uploadImage = yield call(uploadFile, {file: avatarFile, signedRequest: s3Payload.signedRequest})
+        yield call(uploadFile, {file: avatarFile, signedRequest: s3Payload.signedRequest})
 
         const createdBusinessOwner = yield call(createEntity, {
             _id: _id,
@@ -28,7 +25,6 @@ export function* createBusinessOwner({payload}) {
             slug: 'business-owner'
         })
         if (!createdBusinessOwner.error) {
-            console.log('success', createdBusinessOwner)
             yield put({type: 'place/listBusinessOwner'})
             // yield put(push('/admin/places/update/' + createdBusinessOwner.slug))
 
@@ -69,18 +65,15 @@ export function* updateBusinessOwnerDetail({payload}) {
     const {slug, _id, token, name, avatar, avatarFile, email, tel, description} = payload
 
     //add to formData so api can read
-    const updatedBusinessOwner = new FormData()
-    updatedBusinessOwner.set('name', name)
-    updatedBusinessOwner.set('description', description)
-    updatedBusinessOwner.set('avatar', avatar)
-    updatedBusinessOwner.set('email', email)
-    updatedBusinessOwner.set('description', description)
-    updatedBusinessOwner.set('tel', tel)
+    const businessOwner = new FormData()
+    const fields = [{avatar}, {email}, {description}, {name}, {tel}]
+    for (let field of fields)
+        setFormData(businessOwner, field)
 
     if (!!avatarFile) {
         const s3Payload = yield call(getSignedRequest, avatarFile)
         if (!!s3Payload.signedRequest) {
-            const uploadImage = yield call(uploadFile, {file: avatarFile, signedRequest: s3Payload.signedRequest})
+            yield call(uploadFile, {file: avatarFile, signedRequest: s3Payload.signedRequest})
         }
     }
 
@@ -88,7 +81,7 @@ export function* updateBusinessOwnerDetail({payload}) {
         const updated = yield call(updateEntity, {
             slug: slug,
             parentSlug: 'business-owner',
-            body: updatedBusinessOwner,
+            body: businessOwner,
             _id: _id,
             token: token,
         })

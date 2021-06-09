@@ -1,7 +1,7 @@
+import {colorPalette}               from 'config/styles'
 import React, {useEffect, useState} from 'react'
-import {colorPalette}               from '../../../config/styles'
-import {pointer}                    from '../../../utils/themer'
-import Div                          from '../../Basic/Div'
+import Div                          from 'shared/Basic/Div'
+import {pointer}                    from 'utils/themer'
 
 const SelectOption = ({name, field, formik, selected}) => {
     const [isSelected, setIsSelected] = useState(false)
@@ -27,10 +27,11 @@ const SelectOption = ({name, field, formik, selected}) => {
     }
 
     useEffect(() => {
-        if(!isInit) {
-          setSelected(isSelected, name)
+        if (!isInit) {
+            setSelected(isSelected, name)
         }
 
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isSelected])
 
     useEffect(() => {

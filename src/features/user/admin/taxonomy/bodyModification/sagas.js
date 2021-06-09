@@ -1,15 +1,17 @@
 import {takeEvery}                                    from '@redux-saga/core/effects'
 import {getBodyModification, getBodyModificationList} from 'features/user/admin/taxonomy/bodyModification/services'
 import {call, put}                                    from 'redux-saga/effects'
-import {createEntity, updateEntity}                   from 'utils/abstractions'
+import {createEntity, updateEntity}                   from 'utils/abstractions/crud'
+import {setFormData}                                  from 'utils/abstractions/setFormData'
 
 export function* createBodyModification({payload}) {
     const {_id, token, name, description,} = payload
 
     //add to formdata so api can read
     const bodyModification = new FormData()
-    bodyModification.set('name', name)
-    bodyModification.set('description', description)
+    const fields = [{name}, {description}]
+    for (let field of fields)
+        setFormData(bodyModification, field)
 
     const createdBodyModification = yield call(createEntity, {
         _id: _id,
@@ -18,7 +20,6 @@ export function* createBodyModification({payload}) {
         slug: 'body-modification'
     })
     if (!createdBodyModification.error) {
-        console.log('success', createdBodyModification)
         yield put({type: 'user/listBodyModification'})
         // yield put(push('/admin/places/update/' + crea.slug))
 
@@ -58,15 +59,16 @@ export function* updateBodyModificationDetail({payload}) {
     const {slug, _id, token, name, description} = payload
 
     //add to formData so api can read
-    const updatedBodyModification = new FormData()
-    updatedBodyModification.set('name', name)
-    updatedBodyModification.set('description', description)
+    const bodyModification = new FormData()
+    const fields = [{name}, {description}]
+    for (let field of fields)
+        setFormData(bodyModification, field)
 
     try {
         const updated = yield call(updateEntity, {
             slug: slug,
             parentSlug: 'body-modification',
-            body: updatedBodyModification,
+            body: bodyModification,
             _id: _id,
             token: token,
         })

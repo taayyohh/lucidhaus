@@ -54,7 +54,6 @@ export function* updateProductDetail({payload}) {
         const s3Payload = yield call(getSignedRequest, photoFile)
         if (!!s3Payload.signedRequest) {
             const uploadImage = yield call(uploadFile, {file: photoFile, signedRequest: s3Payload.signedRequest})
-            console.log('upload photoFile', uploadImage)
         }
     }
 

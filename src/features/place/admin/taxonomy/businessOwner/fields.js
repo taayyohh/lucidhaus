@@ -1,5 +1,5 @@
-import {IMAGE, IMAGE_UPLOAD, RICH_TEXT, TEL, TEXT, UPLOAD_PATHS} from 'config/variables'
-import * as Yup                                                  from 'yup'
+import {IMAGE_UPLOAD, RICH_TEXT, TEL, TEXT, UPLOAD_PATHS} from 'config/variables'
+import * as Yup                                           from 'yup'
 
 export const businessOwnerField = [
     {

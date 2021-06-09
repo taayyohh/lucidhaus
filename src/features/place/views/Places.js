@@ -1,11 +1,10 @@
-import {placeSearchField} from 'features/place/admin/fields/search'
-import {placeCardStyle}   from 'features/place/views/styles'
+import {placeSearchField}             from 'features/place/admin/fields/search'
+import {placeCardStyle}               from 'features/place/views/styles'
 import React, {useContext, useEffect} from 'react'
 import {useDispatch, useSelector}     from 'react-redux'
 import Div                            from 'shared/Basic/Div'
 import GenericCard                    from 'shared/Cards/GenericCard'
 import {mapContext}                   from 'shared/Containers/MapController'
-import {searchContext}                from 'shared/Containers/SearchController'
 import Form                           from 'shared/Fields/Form'
 import ContentWrapper                 from 'shared/Layout/ContentWrapper'
 import {slugify}                      from 'utils/helpers'
@@ -14,8 +13,7 @@ import {placesWrapperStyle}           from './styles'
 const Places = () => {
     const {boonePlaces, places} = useSelector(state => state.place)
     const dispatch = useDispatch()
-    const {booneIndex, searchClient} = useContext(searchContext)
-    const {geo, getLocation, coords} = useContext(mapContext)
+    const {coords} = useContext(mapContext)
 
     useEffect(() => {
         // if (!isEmpty(coords)) {
@@ -57,8 +55,6 @@ const Places = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [places])
 
-    const Hit = (props) =>
-        <Div>{props}</Div>
 
     return (
         <ContentWrapper>

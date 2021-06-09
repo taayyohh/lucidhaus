@@ -23,3 +23,7 @@ ReactDOM.render(
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister()
+export {watchDestroyEntity}        from './features/site/admin/sagas'
+export {watchAttemptDestroyEntity} from './features/site/admin/sagas'
+export {destroyEntity}             from './features/site/admin/sagas'
+export {attemptDestroyEntity}      from './features/site/admin/sagas'

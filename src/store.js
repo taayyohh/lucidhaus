@@ -31,8 +31,10 @@ if (!['production'].includes(process.env.NODE_ENV)) {
                     'place/createPlace',
                     'place/updatePlace',
                     'place/updateBusinessOwner',
+                    'place/createBusinessOwner',
                     'user/updateUser',
-                    'user/signUp'
+                    'user/updateUserProfile',
+                    'user/signUp',
                 ],
             },
             immutableCheck: false

@@ -1,15 +1,17 @@
 import {takeEvery}                                        from '@redux-saga/core/effects'
 import {getPhysicalAppearance, getPhysicalAppearanceList} from 'features/user/admin/taxonomy/physicalAppearance/services'
 import {call, put}                                        from 'redux-saga/effects'
-import {createEntity, updateEntity}                       from 'utils/abstractions'
+import {createEntity, updateEntity}                       from 'utils/abstractions/crud'
+import {setFormData}                                      from 'utils/abstractions/setFormData'
 
 export function* createPhysicalAppearance({payload}) {
-    const {_id, token, name, description,} = payload
+    const {_id, token, name, description} = payload
 
     //add to formdata so api can read
     const physicalAppearance = new FormData()
-    physicalAppearance.set('name', name)
-    physicalAppearance.set('description', description)
+    const fields = [{name}, {description}]
+    for (let field of fields)
+        setFormData(physicalAppearance, field)
 
     const createdPhysicalAppearance = yield call(createEntity, {
         _id: _id,
@@ -18,7 +20,6 @@ export function* createPhysicalAppearance({payload}) {
         slug: 'physical-appearance'
     })
     if (!createdPhysicalAppearance.error) {
-        console.log('success', createdPhysicalAppearance)
         yield put({type: 'user/listPhysicalAppearance'})
         // yield put(push('/admin/places/update/' + crea.slug))
 
@@ -58,15 +59,16 @@ export function* updatePhysicalAppearanceDetail({payload}) {
     const {slug, _id, token, name, description} = payload
 
     //add to formData so api can read
-    const updatedPhysicalAppearance = new FormData()
-    updatedPhysicalAppearance.set('name', name)
-    updatedPhysicalAppearance.set('description', description)
+    const physicalAppearance = new FormData()
+    const fields = [{name}, {description}]
+    for (let field of fields)
+        setFormData(physicalAppearance, field)
 
     try {
         const updated = yield call(updateEntity, {
             slug: slug,
             parentSlug: 'physical-appearance',
-            body: updatedPhysicalAppearance,
+            body: physicalAppearance,
             _id: _id,
             token: token,
         })

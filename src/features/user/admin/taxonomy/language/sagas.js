@@ -1,15 +1,17 @@
 import {takeEvery}                    from '@redux-saga/core/effects'
 import {getLanguage, getLanguageList} from 'features/user/admin/taxonomy/language/services'
 import {call, put}                    from 'redux-saga/effects'
-import {createEntity, updateEntity}   from 'utils/abstractions'
+import {createEntity, updateEntity}   from 'utils/abstractions/crud'
+import {setFormData}                  from 'utils/abstractions/setFormData'
 
 export function* createLanguage({payload}) {
     const {_id, token, name, description,} = payload
 
     //add to formdata so api can read
     const language = new FormData()
-    language.set('name', name)
-    language.set('description', description)
+    const fields = [{name}, {description}]
+    for (let field of fields)
+        setFormData(language, field)
 
     const createdLanguage = yield call(createEntity, {
         _id: _id,
@@ -18,7 +20,6 @@ export function* createLanguage({payload}) {
         slug: 'language'
     })
     if (!createdLanguage.error) {
-        console.log('success', createdLanguage)
         yield put({type: 'user/listLanguage'})
         // yield put(push('/admin/places/update/' + crea.slug))
 
@@ -58,15 +59,16 @@ export function* updateLanguageDetail({payload}) {
     const {slug, _id, token, name, description} = payload
 
     //add to formData so api can read
-    const updatedLanguage = new FormData()
-    updatedLanguage.set('name', name)
-    updatedLanguage.set('description', description)
+    const language = new FormData()
+    const fields = [{name}, {description}]
+    for (let field of fields)
+        setFormData(language, field)
 
     try {
         const updated = yield call(updateEntity, {
             slug: slug,
             parentSlug: 'language',
-            body: updatedLanguage,
+            body: language,
             _id: _id,
             token: token,
         })

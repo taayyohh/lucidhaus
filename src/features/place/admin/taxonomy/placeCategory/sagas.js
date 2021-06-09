@@ -1,15 +1,17 @@
 import {takeEvery}                              from '@redux-saga/core/effects'
 import {getPlaceCategory, getPlaceCategoryList} from 'features/place/admin/taxonomy/placeCategory/services'
 import {call, put}                              from 'redux-saga/effects'
-import {createEntity, updateEntity}             from 'utils/abstractions'
+import {createEntity, updateEntity}             from 'utils/abstractions/crud'
+import {setFormData}                            from 'utils/abstractions/setFormData'
 
 export function* createPlaceCategory({payload}) {
     const {_id, token, name, description,} = payload
 
     //add to formdata so api can read
     const placeCategory = new FormData()
-    placeCategory.set('name', name)
-    placeCategory.set('description', description)
+    const fields = [{name}, {description}]
+    for (let field of fields)
+        setFormData(placeCategory, field)
 
     const createdPlaceCategory = yield call(createEntity, {
         _id: _id,
@@ -18,7 +20,6 @@ export function* createPlaceCategory({payload}) {
         slug: 'place-category'
     })
     if (!createdPlaceCategory.error) {
-        console.log('success', createdPlaceCategory)
         yield put({type: 'place/listPlaceCategory'})
         // yield put(push('/admin/places/update/' + crea.slug))
 
@@ -58,15 +59,16 @@ export function* updatePlaceCategoryDetail({payload}) {
     const {slug, _id, token, name, description} = payload
 
     //add to formData so api can read
-    const updatedPlaceCategory = new FormData()
-    updatedPlaceCategory.set('name', name)
-    updatedPlaceCategory.set('description', description)
+    const placeCategory = new FormData()
+    const fields = [{name}, {description}]
+    for (let field of fields)
+        setFormData(placeCategory, field)
 
     try {
         const updated = yield call(updateEntity, {
             slug: slug,
             parentSlug: 'adaptive-equipment',
-            body: updatedPlaceCategory,
+            body: placeCategory,
             _id: _id,
             token: token,
         })

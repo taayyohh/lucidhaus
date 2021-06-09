@@ -1,15 +1,17 @@
 import {takeEvery}                                      from '@redux-saga/core/effects'
 import {getCommunitiesServed, getCommunitiesServedList} from 'features/place/admin/taxonomy/communitiesServed/services'
 import {call, put}                                      from 'redux-saga/effects'
-import {createEntity, updateEntity}                     from 'utils/abstractions'
+import {createEntity, updateEntity}                     from 'utils/abstractions/crud'
+import {setFormData}                                    from 'utils/abstractions/setFormData'
 
 export function* createCommunitiesServed({payload}) {
     const {_id, token, name, description,} = payload
 
     //add to formdata so api can read
     const communitiesServed = new FormData()
-    communitiesServed.set('name', name)
-    communitiesServed.set('description', description)
+    const fields = [{name}, {description}]
+    for (let field of fields)
+        setFormData(communitiesServed, field)
 
     const createdCommunitiesServed = yield call(createEntity, {
         _id: _id,
@@ -18,7 +20,6 @@ export function* createCommunitiesServed({payload}) {
         slug: 'communities-served'
     })
     if (!createdCommunitiesServed.error) {
-        console.log('success', createdCommunitiesServed)
         yield put({type: 'place/listCommunitiesServed'})
         // yield put(push('/admin/places/update/' + crea.slug))
 
@@ -58,15 +59,16 @@ export function* updateCommunitiesServedDetail({payload}) {
     const {slug, _id, token, name, description} = payload
 
     //add to formData so api can read
-    const updatedCommunitiesServed = new FormData()
-    updatedCommunitiesServed.set('name', name)
-    updatedCommunitiesServed.set('description', description)
+    const communitiesServed = new FormData()
+    const fields = [{name}, {description}]
+    for (let field of fields)
+        setFormData(communitiesServed, field)
 
     try {
         const updated = yield call(updateEntity, {
             slug: slug,
             parentSlug: 'communities-served',
-            body: updatedCommunitiesServed,
+            body: communitiesServed,
             _id: _id,
             token: token,
         })

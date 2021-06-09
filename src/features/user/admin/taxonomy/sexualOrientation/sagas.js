@@ -1,15 +1,17 @@
 import {takeEvery}                                      from '@redux-saga/core/effects'
 import {getSexualOrientation, getSexualOrientationList} from 'features/user/admin/taxonomy/sexualOrientation/services'
 import {call, put}                                      from 'redux-saga/effects'
-import {createEntity, updateEntity}                     from 'utils/abstractions'
+import {createEntity, updateEntity}                     from 'utils/abstractions/crud'
+import {setFormData}                                    from 'utils/abstractions/setFormData'
 
 export function* createSexualOrientation({payload}) {
     const {_id, token, name, description,} = payload
 
     //add to formdata so api can read
     const sexualOrientation = new FormData()
-    sexualOrientation.set('name', name)
-    sexualOrientation.set('description', description)
+    const fields = [{name}, {description}]
+    for (let field of fields)
+        setFormData(sexualOrientation, field)
 
     const createdSexualOrientation = yield call(createEntity, {
         _id: _id,
@@ -18,7 +20,6 @@ export function* createSexualOrientation({payload}) {
         slug: 'sexual-orientation'
     })
     if (!createdSexualOrientation.error) {
-        console.log('success', createdSexualOrientation)
         yield put({type: 'user/listSexualOrientation'})
         // yield put(push('/admin/places/update/' + crea.slug))
 
@@ -58,15 +59,16 @@ export function* updateSexualOrientationDetail({payload}) {
     const {slug, _id, token, name, description} = payload
 
     //add to formData so api can read
-    const updatedSexualOrientation = new FormData()
-    updatedSexualOrientation.set('name', name)
-    updatedSexualOrientation.set('description', description)
+    const sexualOrientation = new FormData()
+    const fields = [{name}, {description}]
+    for (let field of fields)
+        setFormData(sexualOrientation, field)
 
     try {
         const updated = yield call(updateEntity, {
             slug: slug,
             parentSlug: 'sexual-orientation',
-            body: updatedSexualOrientation,
+            body: sexualOrientation,
             _id: _id,
             token: token,
         })

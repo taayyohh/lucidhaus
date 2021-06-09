@@ -1,15 +1,17 @@
 import {takeEvery}                          from '@redux-saga/core/effects'
 import {getFoodOptions, getFoodOptionsList} from 'features/place/admin/taxonomy/foodOptions/services'
 import {call, put}                          from 'redux-saga/effects'
-import {createEntity, updateEntity}         from 'utils/abstractions'
+import {createEntity, updateEntity}         from 'utils/abstractions/crud'
+import {setFormData}                        from 'utils/abstractions/setFormData'
 
 export function* createFoodOptions({payload}) {
     const {_id, token, name, description,} = payload
 
     //add to formdata so api can read
     const foodOptions = new FormData()
-    foodOptions.set('name', name)
-    foodOptions.set('description', description)
+    const fields = [{name}, {description}]
+    for (let field of fields)
+        setFormData(foodOptions, field)
 
     const createdFoodOptions = yield call(createEntity, {
         _id: _id,
@@ -18,7 +20,6 @@ export function* createFoodOptions({payload}) {
         slug: 'food-options'
     })
     if (!createdFoodOptions.error) {
-        console.log('success', createdFoodOptions)
         yield put({type: 'place/listFoodOptions'})
         // yield put(push('/admin/places/update/' + crea.slug))
 
@@ -58,15 +59,16 @@ export function* updateFoodOptionsDetail({payload}) {
     const {slug, _id, token, name, description} = payload
 
     //add to formData so api can read
-    const updatedFoodOptions = new FormData()
-    updatedFoodOptions.set('name', name)
-    updatedFoodOptions.set('description', description)
+    const foodOptions = new FormData()
+    const fields = [{name}, {description}]
+    for (let field of fields)
+        setFormData(foodOptions, field)
 
     try {
         const updated = yield call(updateEntity, {
             slug: slug,
             parentSlug: 'food-options',
-            body: updatedFoodOptions,
+            body: foodOptions,
             _id: _id,
             token: token,
         })

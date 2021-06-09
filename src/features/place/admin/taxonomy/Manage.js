@@ -1,15 +1,14 @@
-import AdminDashboardWrapper from 'shared/Layout/Dashboard/admin/AdminDashboardWrapper'
 import React, {useEffect}    from 'react'
-import {useDispatch, useSelector} from 'react-redux'
-import Div                        from 'shared/Basic/Div'
-import LinkSwitch                 from 'shared/Basic/LinkSwitch'
-import DeletePrompt               from 'shared/Controls/DeletePrompt'
-import ContentWrapper             from 'shared/Layout/ContentWrapper'
-import DashboardInfo              from 'shared/Layout/Dashboard/DashboardInfo'
+import {useSelector}         from 'react-redux'
+import Div                   from 'shared/Basic/Div'
+import LinkSwitch            from 'shared/Basic/LinkSwitch'
+import DeletePrompt          from 'shared/Controls/DeletePrompt'
+import ContentWrapper        from 'shared/Layout/ContentWrapper'
+import AdminDashboardWrapper from 'shared/Layout/Dashboard/admin/AdminDashboardWrapper'
+import DashboardInfo         from 'shared/Layout/Dashboard/DashboardInfo'
 
 const Manage = () => {
     const {confirmDelete} = useSelector(state => state.site)
-    const dispatch = useDispatch()
     const TAX_PATH = '/admin/place/taxonomy'
 
     useEffect(() => {

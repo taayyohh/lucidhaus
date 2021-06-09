@@ -1,15 +1,17 @@
 import {takeEvery}                                from '@redux-saga/core/effects'
 import {getLanguageSpoken, getLanguageSpokenList} from 'features/place/admin/taxonomy/languageSpoken/services'
 import {call, put}                                from 'redux-saga/effects'
-import {createEntity, updateEntity}               from 'utils/abstractions'
+import {createEntity, updateEntity}               from 'utils/abstractions/crud'
+import {setFormData}                              from 'utils/abstractions/setFormData'
 
 export function* createLanguageSpoken({payload}) {
     const {_id, token, name, description,} = payload
 
     //add to formdata so api can read
     const languageSpoken = new FormData()
-    languageSpoken.set('name', name)
-    languageSpoken.set('description', description)
+    const fields = [{name}, {description}]
+    for (let field of fields)
+        setFormData(languageSpoken, field)
 
     const createdLanguageSpoken = yield call(createEntity, {
         _id: _id,
@@ -18,7 +20,6 @@ export function* createLanguageSpoken({payload}) {
         slug: 'language-spoken'
     })
     if (!createdLanguageSpoken.error) {
-        console.log('success', createdLanguageSpoken)
         yield put({type: 'place/listLanguageSpoken'})
         // yield put(push('/admin/places/update/' + crea.slug))
 
@@ -58,15 +59,16 @@ export function* updateLanguageSpokenDetail({payload}) {
     const {slug, _id, token, name, description} = payload
 
     //add to formData so api can read
-    const updatedLanguageSpoken = new FormData()
-    updatedLanguageSpoken.set('name', name)
-    updatedLanguageSpoken.set('description', description)
+    const languageSpoken = new FormData()
+    const fields = [{name}, {description}]
+    for (let field of fields)
+        setFormData(languageSpoken, field)
 
     try {
         const updated = yield call(updateEntity, {
             slug: slug,
             parentSlug: 'language-spoken',
-            body: updatedLanguageSpoken,
+            body: languageSpoken,
             _id: _id,
             token: token,
         })

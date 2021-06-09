@@ -7,7 +7,7 @@ export const userField = [
         file: 'avatarFile',
         cropWidth: 500,
         cropHeight: 500,
-        s3Path: UPLOAD_PATHS.businessOwner,
+        s3Path: UPLOAD_PATHS.user,
         type: IMAGE_UPLOAD,
     },
     {

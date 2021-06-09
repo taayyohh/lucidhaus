@@ -1,15 +1,17 @@
 import {takeEvery}                                              from '@redux-saga/core/effects'
 import {getMethodOfCommunication, getMethodOfCommunicationList} from 'features/user/admin/taxonomy/methodOfCommunication/services'
 import {call, put}                                              from 'redux-saga/effects'
-import {createEntity, updateEntity}                             from 'utils/abstractions'
+import {createEntity, updateEntity}                             from 'utils/abstractions/crud'
+import {setFormData}                                            from 'utils/abstractions/setFormData'
 
 export function* createMethodOfCommunication({payload}) {
     const {_id, token, name, description,} = payload
 
     //add to formdata so api can read
     const methodOfCommunication = new FormData()
-    methodOfCommunication.set('name', name)
-    methodOfCommunication.set('description', description)
+    const fields = [{name}, {description}]
+    for (let field of fields)
+        setFormData(methodOfCommunication, field)
 
     const createdMethodOfCommunication = yield call(createEntity, {
         _id: _id,
@@ -18,7 +20,6 @@ export function* createMethodOfCommunication({payload}) {
         slug: 'method-of-communication'
     })
     if (!createdMethodOfCommunication.error) {
-        console.log('success', createdMethodOfCommunication)
         yield put({type: 'user/listMethodOfCommunication'})
         // yield put(push('/admin/places/update/' + crea.slug))
 
@@ -58,15 +59,16 @@ export function* updateMethodOfCommunicationDetail({payload}) {
     const {slug, _id, token, name, description} = payload
 
     //add to formData so api can read
-    const updatedMethodOfCommunication = new FormData()
-    updatedMethodOfCommunication.set('name', name)
-    updatedMethodOfCommunication.set('description', description)
+    const methodOfCommunication = new FormData()
+    const fields = [{name}, {description}]
+    for (let field of fields)
+        setFormData(methodOfCommunication, field)
 
     try {
         const updated = yield call(updateEntity, {
             slug: slug,
             parentSlug: 'method-of-communication',
-            body: updatedMethodOfCommunication,
+            body: methodOfCommunication,
             _id: _id,
             token: token,
         })
