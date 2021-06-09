@@ -12,13 +12,17 @@ const MultiSelect = memo(({field, options, className, errorMessage, formik}) => 
         <Div theme={selectFieldStyle} className={className ? className : ''}>
             <Div theme={defaultFieldHeadingStyle}>{field.inputLabel}</Div>
             {optionsArray.length > 0 && optionsArray?.map(o => (
-                <SelectOption
-                    key={o.name}
-                    name={o.name}
-                    selected={selected}
-                    field={field}
-                    formik={formik}
-                />
+                <>
+                    <SelectOption
+                        key={o.name}
+                        optionId={o._id}
+                        name={o.name}
+                        selected={selected}
+                        field={field}
+                        formik={formik}
+                    />
+                </>
+
             ))}
             <Span theme={selectFieldErrorMessageStyle}>{errorMessage}</Span>
         </Div>

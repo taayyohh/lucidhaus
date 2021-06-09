@@ -72,8 +72,8 @@ export function* updateUserIdentity({payload}) {
         deaf,
         gender,
         guideAnimal,
-        primaryLanguage,
-        secondaryLanguage,
+        languagePrimary,
+        languageSecondary,
         methodOfCommunication,
         physicalAppearance,
         pronoun,
@@ -92,8 +92,8 @@ export function* updateUserIdentity({payload}) {
         {deaf},
         {gender},
         {guideAnimal},
-        {primaryLanguage},
-        {secondaryLanguage},
+        {languagePrimary},
+        {languageSecondary},
         {methodOfCommunication},
         {physicalAppearance},
         {pronoun},
@@ -115,7 +115,7 @@ export function* updateUserIdentity({payload}) {
             token: token,
         })
         if (!updated.error) {
-            yield put({type: 'user/updateUserSuccess', payload: updated})
+            yield put({type: 'user/updateUserIdentitySuccess', payload: updated})
             yield put({
                 type: 'site/setNotification',
                 payload: {
@@ -148,14 +148,12 @@ export function* updateProfile({payload}) {
         tel
     } = payload
 
-
     //add to formData so api can read
     const user = new FormData()
     const fields = [{avatar}, {nameFirst}, {nameMiddle}, {nameLast}, {email}, {tel}, {handle}, {ethnicHispanicOrigin}]
     for (let field of fields)
         setFormData(user, field)
 
-    console.log('payload', payload)
 
     if (!!avatarFile) {
         const s3Payload = yield call(getSignedRequest, avatarFile)
@@ -190,8 +188,6 @@ export function* updateProfile({payload}) {
         yield put({type: 'user/updateUserProfileFailure'})
     }
 }
-
-
 
 
 /**

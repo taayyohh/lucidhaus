@@ -6,8 +6,9 @@ import {adminFormWrapperStyle}    from 'shared/Layout/Dashboard/admin/styles'
 
 const Identity = () => {
     const dispatch = useDispatch()
-    const {_id, token, taxonomy} = useSelector(state => state.user)
+    const {_id, token, taxonomy, user} = useSelector(state => state.user)
     const {slug} = useSelector(state => state.site)
+    const {identity} = user
 
     const {
         adaptiveEquipment,
@@ -24,22 +25,22 @@ const Identity = () => {
     // const {description, avatar, email, ethnicHispanicOrigin, nameMiddle, nameFirst, nameLast, tel, role, type} = user
 
     const initialValues = {
-        adaptiveEquipment: '',
-        bodyModification: '',
-        blind: '',
-        deaf: '',
+        adaptiveEquipment: identity?.adaptiveEquipment,
+        bodyModification: identity?.bodyModification,
+        blind: identity?.blind,
+        deaf: identity?.deaf,
         dateOfBirth: '',
-        gender: '',
-        guideAnimal: '',
-        languagePrimary: '',
-        languageSecondary: '',
-        methodOfCommunication: '',
-        physicalAppearance: '',
-        pronoun: '',
-        race: '',
-        serviceAnimal: '',
-        sexualOrientation: '',
-        transgender: '',
+        gender: identity?.gender,
+        guideAnimal: identity?.guideAnimal,
+        languagePrimary: identity?.languagePrimary,
+        languageSecondary: identity?.languageSecondary,
+        methodOfCommunication: identity?.methodOfCommunication,
+        physicalAppearance: identity?.physicalAppearance,
+        pronoun: identity?.pronoun,
+        race: identity?.race,
+        serviceAnimal: identity?.serviceAnimal,
+        sexualOrientation: identity?.sexualOrientation,
+        transgender: identity?.transgender,
         identity: true,
         slug,
         _id,

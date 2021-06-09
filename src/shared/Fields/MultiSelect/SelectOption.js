@@ -3,7 +3,7 @@ import React, {useEffect, useState} from 'react'
 import Div                          from 'shared/Basic/Div'
 import {pointer}                    from 'utils/themer'
 
-const SelectOption = ({name, field, formik, selected}) => {
+const SelectOption = ({optionId, name, field, formik, selected}) => {
     const [isSelected, setIsSelected] = useState(false)
     const [isInit, setIsInit] = useState(true)
     const optionStyle = {
@@ -11,16 +11,16 @@ const SelectOption = ({name, field, formik, selected}) => {
         hover: {textDecoration: 'underline'}
     }
 
-    const setSelected = (isSelected, name) => {
+    const setSelected = (isSelected, optionId) => {
         if (!isSelected) {
-            let index = selected.indexOf(name)
+            let index = selected.indexOf(optionId)
             if (index !== -1) {
                 selected.splice(index, 1);
             }
             selected.filter(item => item)
         } else {
-            if (selected.indexOf(name) === -1)
-                selected.push(name)
+            if (selected.indexOf(optionId) === -1)
+                selected.push(optionId)
         }
 
         return selected
@@ -28,7 +28,7 @@ const SelectOption = ({name, field, formik, selected}) => {
 
     useEffect(() => {
         if (!isInit) {
-            setSelected(isSelected, name)
+            setSelected(isSelected, optionId)
         }
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -36,6 +36,7 @@ const SelectOption = ({name, field, formik, selected}) => {
 
     useEffect(() => {
         setIsInit(false)
+        console.log('VAL', formik.values)
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
@@ -44,7 +45,7 @@ const SelectOption = ({name, field, formik, selected}) => {
         <Div
             onClick={() => {
                 setIsSelected(flag => !flag)
-                formik.setFieldValue(field?.name, setSelected(!isSelected, name))
+                formik.setFieldValue(field?.name, setSelected(!isSelected, optionId))
             }}
             theme={{
                 ...optionStyle,
