@@ -1,4 +1,4 @@
-import {placeField, validatePlace}    from 'features/place/admin/fields'
+import {placeFields, validatePlace}   from 'features/place/admin/fields'
 import React, {useContext, useEffect} from 'react'
 import {useDispatch, useSelector}     from 'react-redux'
 import {searchContext}                from 'shared/Containers/SearchController'
@@ -13,21 +13,59 @@ const Update = () => {
     const {_id, token} = useSelector(state => state.user)
     const {slug} = useSelector(state => state.site)
     const {place, taxonomy} = useSelector(state => state.place)
-    const {name, description, photo, isPublished} = place
+    const {
+        accessibleDoorway,
+        audioAvailable,
+        bathroom,
+        braille,
+        brickAndMortar,
+        categories,
+        communitiesServed,
+        description,
+        foodOptions,
+        isPublished,
+        isRestaurant,
+        languages,
+        largeAdaptiveEquipment,
+        name,
+        onlyAccessibleByStairs,
+        owners,
+        photo,
+        photoFile,
+        publicTransportation,
+        signLanguageAccessible,
+        website,
+        wheelchairElevator,
+        wheelchairParking,
+        wheelchairRamps,
+    } = place
     const {placesIndex} = useContext(searchContext)
 
     const initialValues = {
-        name: name,
+        accessibleDoorway: accessibleDoorway,
+        audioAvailable: audioAvailable,
+        bathroom: bathroom,
+        braille: braille,
+        brickAndMortar: brickAndMortar,
+        categories: categories,
+        communitiesServed: communitiesServed,
         description: description,
+        foodOptions: foodOptions,
+        isPublished: isPublished,
+        isRestaurant: isRestaurant,
+        languages: languages,
+        largeAdaptiveEquipment: largeAdaptiveEquipment,
+        name: name,
+        onlyAccessibleByStairs: onlyAccessibleByStairs,
+        owners: owners,
         photo: photo,
         photoFile: '',
-        isPublished: isPublished,
-        bathroom: '',
-        businessOwner: '',
-        communitiesServed: '',
-        foodOptions: '',
-        languageSpoken: '',
-        placeCategory: '',
+        publicTransportation: publicTransportation,
+        signLanguageAccessible: signLanguageAccessible,
+        website: website,
+        wheelchairElevator: wheelchairElevator,
+        wheelchairParking: wheelchairParking,
+        wheelchairRamps: wheelchairRamps,
         slug,
         _id,
         token,
@@ -44,52 +82,31 @@ const Update = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    const {
-        bathroom,
-        businessOwner,
-        communitiesServed,
-        foodOptions,
-        languageSpoken,
-        placeCategory
-    } = taxonomy
-
-
-    useEffect(() => {
-        dispatch({
-            type: 'user/getUser',
-            payload: {
-                slug: slug
-            }
-        })
-
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
-
 
     const options = [
         {
             name: 'bathroom',
-            options: bathroom
+            options: taxonomy.bathroom
         },
         {
             name: 'businessOwner',
-            options: businessOwner
+            options: taxonomy.businessOwner
         },
         {
             name: 'communitiesServed',
-            options: communitiesServed
+            options: taxonomy.communitiesServed
         },
         {
             name: 'foodOptions',
-            options: foodOptions
+            options: taxonomy.foodOptions
         },
         {
             name: 'languageSpoken',
-            options: languageSpoken
+            options: taxonomy.languageSpoken
         },
         {
             name: 'placeCategory',
-            options: placeCategory
+            options: taxonomy.placeCategory
         }
     ]
 
@@ -111,7 +128,7 @@ const Update = () => {
             <AdminDashboardWrapper>
                 <Form
                     initialValues={initialValues}
-                    fields={placeField}
+                    fields={placeFields}
                     validationSchema={validatePlace}
                     dispatchAction={'place/updatePlace'}
                     formHeading={'Update Place'}

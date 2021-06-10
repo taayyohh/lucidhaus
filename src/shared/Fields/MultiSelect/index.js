@@ -11,7 +11,7 @@ const MultiSelect = memo(({field, options, className, errorMessage, formik, valu
     return (
         <Div theme={selectFieldStyle} className={className ? className : ''}>
             <Div theme={defaultFieldHeadingStyle}>{field.inputLabel}</Div>
-            {optionsArray.length > 0 && optionsArray?.map(o => (
+            {optionsArray?.length > 0 && optionsArray?.map(o => (
                 <>
                     <SelectOption
                         key={o.name}

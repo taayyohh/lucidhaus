@@ -1,33 +1,94 @@
-import {push}                               from 'connected-react-router'
-import {addPlace, deletePlace, updatePlace} from 'features/place/services'
-import moment                               from 'moment'
-import {call, put, takeLatest}              from 'redux-saga/effects'
-import {getSignedRequest, uploadFile}       from 'features/site/services/s3'
-import {setFormData}                        from '../../../../utils/abstractions/setFormData'
+import {push}                         from 'connected-react-router'
+import {deletePlace, updatePlace}     from 'features/place/services'
+import {getSignedRequest, uploadFile} from 'features/site/services/s3'
+import {call, put, takeLatest}        from 'redux-saga/effects'
+import {createEntity}                 from 'utils/abstractions/crud'
+import {setFormData}                  from 'utils/abstractions/setFormData'
 
 export function* createPlace({payload}) {
-    const {_id, token, name, description, photo, photoFile, isPublished} = payload
+    const {
+        _id,
+        token,
+        accessibleDoorway,
+        audioAvailable,
+        bathroom,
+        braille,
+        brickAndMortar,
+        categories,
+        communitiesServed,
+        description,
+        foodOptions,
+        isPublished,
+        isRestaurant,
+        languages,
+        largeAdaptiveEquipment,
+        name,
+        onlyAccessibleByStairs,
+        owners,
+        photo,
+        photoFile,
+        publicTransportation,
+        signLanguageAccessible,
+        website,
+        wheelchairElevator,
+        wheelchairParking,
+        wheelchairRamps,
+    } = payload
 
     //add to formdata so api can read
     const place = new FormData()
-    place.set('_id', moment().format().replace(/\D+/g, ''))
-    place.set('name', name)
-    place.set('description', description)
-    place.set('photo', photo)
-    place.set('isPublished', isPublished)
+    const fields = [
+        {accessibleDoorway},
+        {audioAvailable},
+        {bathroom},
+        {braille},
+        {brickAndMortar},
+        {categories},
+        {communitiesServed},
+        {description},
+        {foodOptions},
+        {isPublished},
+        {isRestaurant},
+        {languages},
+        {largeAdaptiveEquipment},
+        {name},
+        {onlyAccessibleByStairs},
+        {owners},
+        {photo},
+        {publicTransportation},
+        {signLanguageAccessible},
+        {website},
+        {wheelchairElevator},
+        {wheelchairParking},
+        {wheelchairRamps},
+    ]
+    for (let field of fields)
+        setFormData(place, field)
 
     const s3Payload = yield call(getSignedRequest, photoFile)
     if (!!s3Payload.signedRequest) {
         yield call(uploadFile, {file: photoFile, signedRequest: s3Payload.signedRequest})
-
-        const createdPlace = yield call(addPlace, {_id: _id, token: token, place: place})
-        if (!createdPlace.error) {
+        console.log('place', place)
+        console.log('fields', fields)
+        const created = yield call(createEntity, {
+            slug: 'place',
+            body: place,
+            _id: _id,
+            token: token,
+        })
+        if (!created.error) {
+            yield put({
+                type: 'site/setNotification',
+                payload: {
+                    notification: 'New Place Added!',
+                    theme: 'green'
+                }
+            })
             yield put({type: 'place/getPlaces'})
-            yield put(push('/admin/places/update/' + createdPlace.slug))
+            yield put(push('/admin/places/update/' + created.slug))
 
         } else {
             yield put({type: 'place/createPlacesFailure', payload})
-
         }
 
     }

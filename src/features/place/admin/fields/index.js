@@ -1,19 +1,44 @@
-import {IMAGE_UPLOAD, SELECT, TEXT, TOGGLE, UPLOAD_PATHS} from 'config/variables'
-import * as Yup                                           from 'yup'
+import {IMAGE_UPLOAD, MULTI_SELECT, RICH_TEXT, SELECT, TEXT, TOGGLE, UPLOAD_PATHS} from 'config/variables'
+import * as Yup                                                                    from 'yup'
 
-export const placeField = [
-    {
-        name: 'accessibility',
-    },
+export const placeFields = [
     {
         name: 'name',
         inputLabel: 'Name',
         type: TEXT
     },
     {
-        name: 'bathrooms',
+        name: 'description',
+        inputLabel: 'Description',
+        type: RICH_TEXT
+    },
+    {
+        name: 'photo',
+        file: 'photoFile',
+        cropWidth: 500,
+        cropHeight: 500,
+        s3Path: UPLOAD_PATHS.place,
+        type: IMAGE_UPLOAD,
+    },
+    {
+        name: 'accessibleDoorway',
+        inputLabel: 'Accessible Doorway ',
+        type: TEXT
+    },
+    {
+        name: 'audioAvailable',
+        inputLabel: 'Audio Available',
+        type: TOGGLE
+    },
+    {
+        name: 'bathroom',
         inputLabel: 'Bathrooms',
         type: SELECT
+    },
+    {
+        name: 'braille',
+        inputLabel: 'Braille',
+        type: TOGGLE
     },
     {
         name: 'brickAndMortar',
@@ -23,22 +48,17 @@ export const placeField = [
     {
         name: 'categories',
         inputLabel: 'Categories',
-        type: SELECT
+        type: MULTI_SELECT
     },
     {
         name: 'communitiesServed',
         inputLabel: 'Communities Served',
-        type: SELECT
-    },
-    {
-        name: 'description',
-        inputLabel: 'Description',
-        type: TEXT
+        type: MULTI_SELECT
     },
     {
         name: 'foodOptions',
         inputLabel: 'Food Options',
-        type: SELECT
+        type: MULTI_SELECT
     },
     {
         name: 'isPublished',
@@ -53,20 +73,22 @@ export const placeField = [
     {
         name: 'languages',
         inputLabel: 'Language Spoken',
-        type: SELECT
+        type: MULTI_SELECT
     },
     {
-        name: 'owners',
+        name: 'large Adaptive Equipment',
+        inputLabel: 'Large Adaptive Equipment',
+        type: TOGGLE
+    },
+    {
+        name: 'onlyAccessibleByStairs',
+        inputLabel: 'Only Accessible By Stairs',
+        type: TOGGLE
+    },
+    {
+        name: 'businessOwner',
         inputLabel: 'Owners',
         type: SELECT
-    },
-    {
-        name: 'photo',
-        file: 'photoFile',
-        cropWidth: 500,
-        cropHeight: 500,
-        s3Path: UPLOAD_PATHS.place,
-        type: IMAGE_UPLOAD,
     },
     {
         name: 'publicTransportation',
@@ -74,9 +96,34 @@ export const placeField = [
         type: TOGGLE
     },
     {
+        name: 'signLanguageAccessible',
+        inputLabel: 'Sign Language Accessible',
+        type: TOGGLE
+    },
+    {
         name: 'website',
         inputLabel: 'Website',
         type: TEXT
+    },
+    {
+        name: 'wheelchairElevator',
+        inputLabel: 'Wheelchair Accessible Elevator',
+        type: TOGGLE
+    },
+    {
+        name: 'wheelchairParking',
+        inputLabel: 'Wheelchair Accessible Parking',
+        type: TOGGLE
+    },
+    {
+        name: 'wheelchairRamps',
+        inputLabel: 'Wheelchair Accessible Ramps',
+        type: TOGGLE
+    },
+    {
+        name: 'wheelChairRestroom',
+        inputLabel: 'Wheelchair Accessible Restrooms',
+        type: TOGGLE
     }
 ]
 

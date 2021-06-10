@@ -20,13 +20,11 @@ export function* updateUser({payload}) {
         tel
     } = payload
 
-
     //add to formData so api can read
     const user = new FormData()
     const fields = [{avatar}, {nameFirst}, {nameMiddle}, {nameLast}, {email}, {tel}, {handle}, {ethnicHispanicOrigin}]
     for (let field of fields)
         setFormData(user, field)
-
 
     if (!!avatarFile) {
         const s3Payload = yield call(getSignedRequest, avatarFile)
@@ -102,7 +100,6 @@ export function* updateIdentity({payload}) {
         {sexualOrientation},
         {transgender}
     ]
-
     for (let field of fields)
         setFormData(user, field)
 
@@ -153,7 +150,6 @@ export function* updateProfile({payload}) {
     const fields = [{avatar}, {nameFirst}, {nameMiddle}, {nameLast}, {email}, {tel}, {handle}, {ethnicHispanicOrigin}]
     for (let field of fields)
         setFormData(user, field)
-
 
     if (!!avatarFile) {
         const s3Payload = yield call(getSignedRequest, avatarFile)

@@ -42,7 +42,7 @@ const SelectOption = ({optionId, name, field, formik, value, selected}) => {
 
 
     useEffect(() => {
-        if(value?.filter(item => item === optionId).length > 0) {
+        if(!!value && value?.filter(item => item === optionId).length > 0) {
             // selected.push(optionId)
             setIsSelected(true)
             if (selected.indexOf(optionId) === -1)
