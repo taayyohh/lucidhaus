@@ -4,7 +4,7 @@ import Span                                                                     
 import {defaultFieldHeadingStyle, selectFieldErrorMessageStyle, selectFieldStyle} from 'shared/Fields/styles'
 import SelectOption                                                               from './SelectOption'
 
-const MultiSelect = memo(({field, options, className, errorMessage, formik}) => {
+const MultiSelect = memo(({field, options, className, errorMessage, formik, value}) => {
     const optionsArray = options?.filter(options => options.name === field.name)[0]?.options
     const selected = []
 
@@ -20,6 +20,7 @@ const MultiSelect = memo(({field, options, className, errorMessage, formik}) => 
                         selected={selected}
                         field={field}
                         formik={formik}
+                        value={value}
                     />
                 </>
 

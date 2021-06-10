@@ -3,7 +3,7 @@ import React, {useEffect, useState} from 'react'
 import Div                          from 'shared/Basic/Div'
 import {pointer}                    from 'utils/themer'
 
-const SelectOption = ({optionId, name, field, formik, selected}) => {
+const SelectOption = ({optionId, name, field, formik, value, selected}) => {
     const [isSelected, setIsSelected] = useState(false)
     const [isInit, setIsInit] = useState(true)
     const optionStyle = {
@@ -27,6 +27,12 @@ const SelectOption = ({optionId, name, field, formik, selected}) => {
     }
 
     useEffect(() => {
+        setIsInit(false)
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [value])
+
+    useEffect(() => {
         if (!isInit) {
             setSelected(isSelected, optionId)
         }
@@ -34,12 +40,19 @@ const SelectOption = ({optionId, name, field, formik, selected}) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isSelected])
 
+
     useEffect(() => {
-        setIsInit(false)
-        console.log('VAL', formik.values)
+        if(value?.filter(item => item === optionId).length > 0) {
+            // selected.push(optionId)
+            setIsSelected(true)
+            if (selected.indexOf(optionId) === -1)
+                selected.push(optionId)
+
+        }
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, [value])
+
 
     return (
         <Div
