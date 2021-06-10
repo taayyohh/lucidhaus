@@ -7,8 +7,8 @@ import {adminFormWrapperStyle}    from 'shared/Layout/Dashboard/admin/styles'
 const Identity = () => {
     const dispatch = useDispatch()
     const {_id, token, taxonomy, user} = useSelector(state => state.user)
-    const {slug} = useSelector(state => state.site)
-    const {identity} = user
+    const {slug, identity} = user
+   // const {slug} = useSelector(state => state.site)
 
     const {
         adaptiveEquipment,

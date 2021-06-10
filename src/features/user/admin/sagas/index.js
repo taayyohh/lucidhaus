@@ -61,7 +61,7 @@ export function* updateUser({payload}) {
     }
 }
 
-export function* updateUserIdentity({payload}) {
+export function* updateIdentity({payload}) {
     const {
         slug,
         _id,
@@ -208,6 +208,6 @@ export function* watchUpdateUser() {
 }
 
 export function* watchUpdateUserIdentity() {
-    yield takeEvery('user/updateUserIdentity', updateUserIdentity)
+    yield takeEvery('user/updateUserIdentity', updateIdentity)
 }
 

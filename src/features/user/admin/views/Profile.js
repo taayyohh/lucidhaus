@@ -1,13 +1,15 @@
-import {userDashboardMenu} from 'config/menus/dashboard/user'
-import {userField}        from 'features/user/admin/fields'
+import {userDashboardMenu}        from 'config/menus/dashboard/user'
+import {userField}                from 'features/user/admin/fields'
 import React, {useEffect}         from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import Form                       from 'shared/Fields/Form'
-import ContentWrapper      from 'shared/Layout/ContentWrapper'
-import DashboardInfo       from 'shared/Layout/Dashboard/DashboardInfo'
-import DashboardWrapper    from 'shared/Layout/Dashboard/DashboardWrapper'
+import ContentWrapper             from 'shared/Layout/ContentWrapper'
+import DashboardInfo              from 'shared/Layout/Dashboard/DashboardInfo'
+import DashboardWrapper           from 'shared/Layout/Dashboard/DashboardWrapper'
+import AdminDashboardWrapper      from '../../../../shared/Layout/Dashboard/admin/AdminDashboardWrapper'
+import Identity                   from './Indentity'
 
-const Settings = () => {
+const Profile = () => {
     const dispatch = useDispatch()
     const {slug, _id, token, user} = useSelector(state => state.user)
     const {description, avatar, email, ethnicHispanicOrigin, handle, nameMiddle, nameFirst, nameLast, tel, role} = user
@@ -59,9 +61,10 @@ const Settings = () => {
                     buttonText={'Update'}
                     enableReinitialize={true}
                 />
+                <Identity slug={slug} />
             </DashboardWrapper>
         </ContentWrapper>
     )
 }
 
-export default Settings
+export default Profile

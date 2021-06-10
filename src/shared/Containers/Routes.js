@@ -74,7 +74,7 @@ const NotFound = lazy(() => import('features/site/views/NotFound'))
 const SignIn = lazy(() => import('features/site/views/SignIn'))
 const SignUp = lazy(() => import('features/site/views/SignUp'))
 const UserOrders = lazy(() => import('features/user/views/dashboard/Orders'))
-const UserSettings = lazy(() => import('features/user/views/dashboard/Settings'))
+const UserSettings = lazy(() => import('features/user/admin/views/Profile'))
 
 const Routes = () => {
     const {contentAnimation, currentPath} = useContext(TransitionAnimations)
@@ -96,7 +96,7 @@ const Routes = () => {
 
                             <PrivateRoute path="/dashboard" exact component={UserDashboard}/>
                             <PrivateRoute path="/dashboard/orders" exact component={UserOrders}/>
-                            <PrivateRoute path="/dashboard/settings" exact component={UserSettings}/>
+                            <PrivateRoute path="/dashboard/profile" exact component={UserSettings}/>
 
                             <AdminRoute path="/admin" exact component={AdminDashboard}/>
                             <AdminRoute path="/admin/shop" exact component={ManageShop}/>

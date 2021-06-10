@@ -7,9 +7,9 @@ export const userDashboardMenu = [
         title: 'Home'
     },
     {
-        url: '/dashboard/settings',
+        url: '/dashboard/profile',
         icon: userCog,
-        title: 'Settings'
+        title: 'Profile'
     },
     {
         dispatchAction: 'user/signOut',
