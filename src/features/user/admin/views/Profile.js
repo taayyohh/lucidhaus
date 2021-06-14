@@ -6,7 +6,6 @@ import Form                       from 'shared/Fields/Form'
 import ContentWrapper             from 'shared/Layout/ContentWrapper'
 import DashboardInfo              from 'shared/Layout/Dashboard/DashboardInfo'
 import DashboardWrapper           from 'shared/Layout/Dashboard/DashboardWrapper'
-import AdminDashboardWrapper      from '../../../../shared/Layout/Dashboard/admin/AdminDashboardWrapper'
 import Identity                   from './Indentity'
 
 const Profile = () => {
@@ -22,7 +21,7 @@ const Profile = () => {
         avatar: avatar,
         avatarFile: '',
         email: email,
-        handle:  handle,
+        handle: handle,
         tel: tel,
         ethnicHispanicOrigin: ethnicHispanicOrigin,
         role: role,
@@ -61,7 +60,7 @@ const Profile = () => {
                     buttonText={'Update'}
                     enableReinitialize={true}
                 />
-                <Identity slug={slug} />
+                <Identity slug={slug}/>
             </DashboardWrapper>
         </ContentWrapper>
     )

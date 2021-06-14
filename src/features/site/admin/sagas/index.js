@@ -2,22 +2,23 @@
 
 import {push}                        from 'connected-react-router'
 import {call, put, takeLatest}       from 'redux-saga/effects'
-import {deleteBathroom}              from '../../../place/admin/taxonomy/bathroom/services'
-import {deleteBusinessOwner}         from '../../../place/admin/taxonomy/businessOwner/services'
-import {deleteCommunitiesServed}     from '../../../place/admin/taxonomy/communitiesServed/services'
-import {deleteFoodOptions}           from '../../../place/admin/taxonomy/foodOptions/services'
-import {deleteLanguageSpoken}        from '../../../place/admin/taxonomy/languageSpoken/services'
-import {deletePlaceCategory}         from '../../../place/admin/taxonomy/placeCategory/services'
-import {deleteAdaptiveEquipment}     from '../../../user/admin/taxonomy/adaptiveEquipment/services'
-import {deleteBodyModification}      from '../../../user/admin/taxonomy/bodyModification/services'
-import {deleteGender}                from '../../../user/admin/taxonomy/gender/services'
-import {deleteLanguage}              from '../../../user/admin/taxonomy/language/services'
-import {deleteMethodOfCommunication} from '../../../user/admin/taxonomy/methodOfCommunication/services'
-import {deletePhysicalAppearance}    from '../../../user/admin/taxonomy/physicalAppearance/services'
-import {deletePronoun}               from '../../../user/admin/taxonomy/pronoun/services'
-import {deleteRace}                  from '../../../user/admin/taxonomy/race/services'
-import {deleteServiceAnimal}         from '../../../user/admin/taxonomy/serviceAnimal/services'
-import {deleteSexualOrientation}     from '../../../user/admin/taxonomy/sexualOrientation/services'
+import {deleteBathroom}              from 'features/place/admin/taxonomy/bathroom/services'
+import {deleteBusinessOwner}         from 'features/place/admin/taxonomy/businessOwner/services'
+import {deleteCommunitiesServed}     from 'features/place/admin/taxonomy/communitiesServed/services'
+import {deleteFoodOptions}           from 'features/place/admin/taxonomy/foodOptions/services'
+import {deleteLanguageSpoken}        from 'features/place/admin/taxonomy/languageSpoken/services'
+import {deletePlaceCategory}         from 'features/place/admin/taxonomy/placeCategory/services'
+import {deleteAdaptiveEquipment}     from 'features/user/admin/taxonomy/adaptiveEquipment/services'
+import {deleteBodyModification}      from 'features/user/admin/taxonomy/bodyModification/services'
+import {deleteGender}                from 'features/user/admin/taxonomy/gender/services'
+import {deleteLanguage}              from 'features/user/admin/taxonomy/language/services'
+import {deleteMethodOfCommunication} from 'features/user/admin/taxonomy/methodOfCommunication/services'
+import {deletePhysicalAppearance}    from 'features/user/admin/taxonomy/physicalAppearance/services'
+import {deletePronoun}               from 'features/user/admin/taxonomy/pronoun/services'
+import {deleteRace}                  from 'features/user/admin/taxonomy/race/services'
+import {deleteServiceAnimal}         from 'features/user/admin/taxonomy/serviceAnimal/services'
+import {deleteSexualOrientation}     from 'features/user/admin/taxonomy/sexualOrientation/services'
+import {deletePlace}                 from '../../../place/services'
 
 export function* attemptDestroyEntity({payload}) {
     yield put({type: 'site/confirmDestroyEntity', payload: payload})
@@ -58,6 +59,9 @@ export function* destroyEntity({payload}) {
                 return deleteLanguageSpoken
             case 'place-category':
                 return deletePlaceCategory
+            case 'place':
+                return deletePlace
+
             default:
                 return null
         }

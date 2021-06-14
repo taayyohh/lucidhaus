@@ -14,15 +14,15 @@ import {
     TEL,
     TEXT,
     TOGGLE
-} from 'config/variables'
+}                     from 'config/variables'
 import React, {memo}  from 'react'
 import UploadAudio    from 'shared/Fields/UploadAudio'
 import UploadImage    from 'shared/Fields/UploadImage'
 import Address        from './Address'
 import Count          from './Count'
-import Country     from './Country'
-import MultiSelect from './MultiSelect'
-import Region      from './Region'
+import Country        from './Country'
+import MultiSelect    from './MultiSelect'
+import Region         from './Region'
 import RichTextEditor from './RichTextEditor'
 import Select         from './Select'
 import SmartInput     from './SmartInput'

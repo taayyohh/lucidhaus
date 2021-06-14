@@ -25,19 +25,19 @@ const Update = () => {
         foodOptions,
         isPublished,
         isRestaurant,
-        languages,
+        languageSpoken,
         largeAdaptiveEquipment,
         name,
         onlyAccessibleByStairs,
         owners,
         photo,
-        photoFile,
         publicTransportation,
         signLanguageAccessible,
         website,
         wheelchairElevator,
         wheelchairParking,
         wheelchairRamps,
+        type
     } = place
     const {placesIndex} = useContext(searchContext)
 
@@ -53,7 +53,7 @@ const Update = () => {
         foodOptions: foodOptions,
         isPublished: isPublished,
         isRestaurant: isRestaurant,
-        languages: languages,
+        languageSpoken: languageSpoken,
         largeAdaptiveEquipment: largeAdaptiveEquipment,
         name: name,
         onlyAccessibleByStairs: onlyAccessibleByStairs,
@@ -105,7 +105,7 @@ const Update = () => {
             options: taxonomy.languageSpoken
         },
         {
-            name: 'placeCategory',
+            name: 'categories',
             options: taxonomy.placeCategory
         }
     ]
@@ -138,12 +138,12 @@ const Update = () => {
                     options={options}
                 />
                 <DangerZone
-                    attemptDestroyAction={'place/attemptDestroyPlace'}
-                    destroyAction={'place/destroyPlace'}
+                    attemptDestroyAction={'site/attemptDestroyEntity'}
+                    destroyAction={'site/destroyEntity'}
                     slug={slug}
+                    type={type}
                     objectID={place.objectID}
                     index={placesIndex}
-                    type={'place'}
                 />
             </AdminDashboardWrapper>
         </ContentWrapper>

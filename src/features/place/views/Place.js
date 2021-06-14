@@ -64,12 +64,15 @@ const Place = () => {
         const hasNoPlace = hasError(error?.place?.status)
         const hasBoonePlace = !isEmpty(boonePlace)
 
+        console.log('hiiii')
+
 
         if ((hasNoPlace && hasNoBoonePlace) || boonePlaceRemoved) {
             debounce(history.push(`/places`), 500)
 
             //TODO::add 404 error
         } else if (hasNoPlace && hasBoonePlace) {
+            console.log('hiii')
             if (isAuthenticated) {
                 dispatch({
                     type: 'place/createPlaceFromBoone',

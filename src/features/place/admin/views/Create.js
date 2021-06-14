@@ -15,7 +15,7 @@ const Create = () => {
         token: token,
         accessibleDoorway: '',
         audioAvailable: false,
-        bathroom: undefined,
+        bathroom: '',
         braille: false,
         brickAndMortar: false,
         categories: undefined,
@@ -24,11 +24,11 @@ const Create = () => {
         foodOptions: undefined,
         isPublished: false,
         isRestaurant: false,
-        languages: undefined,
+        languageSpoken: undefined,
         largeAdaptiveEquipment: false,
         name: '',
         onlyAccessibleByStairs: false,
-        owners: undefined,
+        owners: '',
         photo: '',
         photoFile: '',
         publicTransportation: false,
@@ -73,7 +73,7 @@ const Create = () => {
             options: languageSpoken
         },
         {
-            name: 'placeCategory',
+            name: 'categories',
             options: placeCategory
         }
     ]

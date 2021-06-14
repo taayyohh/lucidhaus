@@ -10,8 +10,10 @@ export function* createPlaceFromBoone({payload}) {
 
     //add to formdata so api can read
     const place = new FormData()
-    place.set('_id', boonePlace.id)
+    place.set('booneId', boonePlace.id)
     place.set('name', boonePlace.name)
+
+    console.log('boonePlace', boonePlace)
 
     const createdPlace = yield call(
         addPlaceFromBoone,

@@ -71,7 +71,7 @@ export const placeFields = [
         type: TOGGLE
     },
     {
-        name: 'languages',
+        name: 'languageSpoken',
         inputLabel: 'Language Spoken',
         type: MULTI_SELECT
     },

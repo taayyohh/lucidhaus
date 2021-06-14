@@ -1,9 +1,9 @@
 import {push}                         from 'connected-react-router'
 import {deletePlace, updatePlace}     from 'features/place/services'
 import {getSignedRequest, uploadFile} from 'features/site/services/s3'
-import {call, put, takeLatest}        from 'redux-saga/effects'
-import {createEntity}                 from 'utils/abstractions/crud'
-import {setFormData}                  from 'utils/abstractions/setFormData'
+import {call, put, takeLatest}      from 'redux-saga/effects'
+import {createEntity, updateEntity} from 'utils/abstractions/crud'
+import {setFormData}                from 'utils/abstractions/setFormData'
 
 export function* createPlace({payload}) {
     const {
@@ -20,7 +20,7 @@ export function* createPlace({payload}) {
         foodOptions,
         isPublished,
         isRestaurant,
-        languages,
+        languageSpoken,
         largeAdaptiveEquipment,
         name,
         onlyAccessibleByStairs,
@@ -49,7 +49,7 @@ export function* createPlace({payload}) {
         {foodOptions},
         {isPublished},
         {isRestaurant},
-        {languages},
+        {languageSpoken},
         {largeAdaptiveEquipment},
         {name},
         {onlyAccessibleByStairs},
@@ -95,11 +95,59 @@ export function* createPlace({payload}) {
 }
 
 export function* updatePlaceDetail({payload}) {
-    const {slug, _id, token, name, description, photo, isPublished, photoFile} = payload
+    const {slug, _id, token, accessibleDoorway,
+        audioAvailable,
+        bathroom,
+        braille,
+        brickAndMortar,
+        categories,
+        communitiesServed,
+        description,
+        foodOptions,
+        isPublished,
+        isRestaurant,
+        languageSpoken,
+        largeAdaptiveEquipment,
+        name,
+        onlyAccessibleByStairs,
+        owners,
+        photo,
+        photoFile,
+        publicTransportation,
+        signLanguageAccessible,
+        website,
+        wheelchairElevator,
+        wheelchairParking,
+        wheelchairRamps
+    } = payload
 
     //add to formData so api can read
     const place = new FormData()
-    const fields = [name, description, photo, isPublished]
+    const fields = [
+        {accessibleDoorway},
+        {audioAvailable},
+        {bathroom},
+        {braille},
+        {brickAndMortar},
+        {categories},
+        {communitiesServed},
+        {description},
+        {foodOptions},
+        {isPublished},
+        {isRestaurant},
+        {languageSpoken},
+        {largeAdaptiveEquipment},
+        {name},
+        {onlyAccessibleByStairs},
+        {owners},
+        {photo},
+        {publicTransportation},
+        {signLanguageAccessible},
+        {website},
+        {wheelchairElevator},
+        {wheelchairParking},
+        {wheelchairRamps},
+    ]
     for (let field of fields)
         setFormData(place, field)
 
@@ -111,7 +159,14 @@ export function* updatePlaceDetail({payload}) {
     }
 
     try {
-        const updated = yield call(updatePlace, {slug: slug, _id: _id, token: token, place: place})
+        const updated = yield call(updateEntity,
+            {
+                _id: _id,
+                token: token,
+                parentSlug: 'place',
+                slug: slug,
+                body: place
+            })
         if (!updated.error) {
             yield put({type: 'place/updatePlaceSuccess', payload: updated})
             yield put({

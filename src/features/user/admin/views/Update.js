@@ -72,7 +72,9 @@ const Update = () => {
                     theme={adminFormWrapperStyle}
                     enableReinitialize={true}
                 />
-                <Identity/>
+                {user?._id?.length > 0 && (
+                    <Identity/>
+                )}
                 <DangerZone
                     attemptDestroyAction={'site/attemptDestroyEntity'}
                     destroyAction={'site/destroyEntity'}
