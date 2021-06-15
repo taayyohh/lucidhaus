@@ -25,10 +25,6 @@ const SelectOption = ({optionId, name, field, formik, value, selected, setSelect
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    useEffect(() => {
-        console.log('VAL', value)
-
-    }, [value])
 
     useEffect(() => {
         updateSelectedArray(isSelected, optionId)

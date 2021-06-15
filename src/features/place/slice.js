@@ -73,6 +73,9 @@ export const slice = createSlice({
         updatePlaceSuccess: (state, action) => {
             state.place = action.payload
         },
+        destroyPlaceSuccess: (state, action) => {
+            state.places = state.places.filter(item => item.objectID !== action.payload.objectID)
+        },
 
         /*   ADMIN  */
 

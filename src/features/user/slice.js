@@ -166,6 +166,9 @@ export const slice = createSlice({
         getUserSuccess: (state, action) => {
             state.user = action.payload
         },
+        destroyUserSuccess: (state, action) => {
+            state.users = state.users.filter(item => item.objectID !== action.payload.objectID)
+        },
 
 
         /*   ADMIN  */

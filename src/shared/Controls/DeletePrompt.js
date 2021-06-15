@@ -54,6 +54,8 @@ const DeletePrompt = ({destroyAction, type, index, objectID}) => {
                                     <Div theme={deletePromptHeadingStyle}>
                                         Click to <strong>permanently</strong> delete.
                                     </Div>
+                                    {console.log('objectID', objectID)}
+                                    {console.log('index', index)}
                                     <Div
                                         theme={{...deletePromptButtonStyle, ...deletePromptConfirmButtonStyle}}
                                         onClick={() => index.deleteObject(objectID).then(() => {

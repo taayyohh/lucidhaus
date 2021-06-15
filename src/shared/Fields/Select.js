@@ -1,20 +1,27 @@
-import {Field}                                      from 'formik'
-import React                                        from 'react'
-import Div                                          from 'shared/Basic/Div'
-import Span                                         from 'shared/Basic/Span'
-import {selectFieldErrorMessageStyle}               from 'shared/Fields/styles'
-import {defaultFieldHeadingStyle, selectFieldStyle} from './styles'
+import {Field}                        from 'formik'
+import React                          from 'react'
+import Div                            from 'shared/Basic/Div'
+import Span                           from 'shared/Basic/Span'
+import {selectFieldErrorMessageStyle} from 'shared/Fields/styles'
+import {
+    defaultFieldHeadingStyle,
+    selectFieldStyle
+}                                     from './styles'
 
 const Select = ({field, options, className, errorMessage, value}) =>
     <Div theme={selectFieldStyle} className={className ? className : ''}>
         <Div theme={defaultFieldHeadingStyle}>{field.inputLabel}</Div>
+        {console.log('--------')}
+        {console.log('name', field.name)}
+        {console.log('value', value)}
+        {console.log('--------')}
         <Field
             as="select"
             name={field.name}
             value={value || ''}
         >
             <option/>
-            {options && options?.filter(options => options.name === field.name)[0]?.options?.map(p =>
+            {options?.filter(options => options.name === field.name)[0]?.options?.map(p =>
                 <option key={p.name} value={p._id}>
                     {p.name}
                 </option>

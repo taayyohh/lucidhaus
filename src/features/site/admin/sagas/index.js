@@ -71,7 +71,8 @@ export function* destroyEntity({payload}) {
         }
     }
     const destroyed = yield call(deleteSwitch(), payload)
-    // const {objectID} = payload
+    console.log('destroyed', destroyed)
+    const {objectID, type} = payload
 
     if (!destroyed.error) {
         yield put({type: 'site/destroyEntitySuccess'})
@@ -83,6 +84,11 @@ export function* destroyEntity({payload}) {
             }
         })
 
+        if(type === 'user') {
+            yield put({type: 'user/destroyUserSuccess', payload: {objectID}})
+        } else if (type === 'place') {
+            yield put({type: 'place/destroyPlaceSuccess', payload: {objectID}})
+        }
         // yield put({type: 'shop/destroyProductSuccess', payload: {objectID}})
         // yield put({type: 'shop/getShop'})
         yield put(push('/admin/'))
