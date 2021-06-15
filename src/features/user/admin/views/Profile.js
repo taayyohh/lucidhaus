@@ -60,7 +60,9 @@ const Profile = () => {
                     buttonText={'Update'}
                     enableReinitialize={true}
                 />
-                <Identity slug={slug}/>
+                {slug && user?._id?.length > 0 && (
+                    <Identity slug={slug}/>
+                )}
             </DashboardWrapper>
         </ContentWrapper>
     )

@@ -71,7 +71,6 @@ export function* destroyEntity({payload}) {
         }
     }
     const destroyed = yield call(deleteSwitch(), payload)
-    console.log('destroyed', destroyed)
     const {objectID, type} = payload
 
     if (!destroyed.error) {

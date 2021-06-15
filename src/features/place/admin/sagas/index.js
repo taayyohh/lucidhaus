@@ -1,9 +1,9 @@
 import {push}                         from 'connected-react-router'
-import {deletePlace, updatePlace}     from 'features/place/services'
+import {deletePlace}                  from 'features/place/services'
 import {getSignedRequest, uploadFile} from 'features/site/services/s3'
-import {call, put, takeLatest}      from 'redux-saga/effects'
-import {createEntity, updateEntity} from 'utils/abstractions/crud'
-import {setFormData}                from 'utils/abstractions/setFormData'
+import {call, put, takeLatest}        from 'redux-saga/effects'
+import {createEntity, updateEntity}   from 'utils/abstractions/crud'
+import {setFormData}                  from 'utils/abstractions/setFormData'
 
 export function* createPlace({payload}) {
     const {
@@ -70,8 +70,6 @@ export function* createPlace({payload}) {
     const s3Payload = yield call(getSignedRequest, photoFile)
     if (!!s3Payload.signedRequest) {
         yield call(uploadFile, {file: photoFile, signedRequest: s3Payload.signedRequest})
-        console.log('place', place)
-        console.log('fields', fields)
         const created = yield call(createEntity, {
             slug: 'place',
             body: place,
@@ -176,8 +174,6 @@ export function* updatePlaceDetail({payload}) {
                 body: place
             })
 
-        console.log('place', place)
-        console.log('fields', fields)
         if (!updated.error) {
             yield put({type: 'place/updatePlaceSuccess', payload: updated})
             yield put({

@@ -11,10 +11,6 @@ import {
 const Select = ({field, options, className, errorMessage, value}) =>
     <Div theme={selectFieldStyle} className={className ? className : ''}>
         <Div theme={defaultFieldHeadingStyle}>{field.inputLabel}</Div>
-        {console.log('--------')}
-        {console.log('name', field.name)}
-        {console.log('value', value)}
-        {console.log('--------')}
         <Field
             as="select"
             name={field.name}

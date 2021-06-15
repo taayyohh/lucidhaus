@@ -1,11 +1,4 @@
-import AdminCreateButton from 'shared/Layout/Dashboard/admin/AdminCreateButton'
-import {
-    adminPlaceCardStyle,
-    adminPlaceCardWrapperStyle,
-    adminPlacesInnerWrapperStyle,
-    searchWrapperStyle
-}                        from 'shared/Layout/Dashboard/admin/styles'
-import PropTypes         from 'prop-types'
+import PropTypes           from 'prop-types'
 import React, {useContext} from 'react'
 import {
     connectHits,
@@ -15,6 +8,12 @@ import {
 import Div                 from 'shared/Basic/Div'
 import GenericCard         from 'shared/Cards/GenericCard'
 import {searchContext}     from 'shared/Containers/SearchController'
+import {
+    adminPlaceCardStyle,
+    adminPlaceCardWrapperStyle,
+    adminPlacesInnerWrapperStyle,
+    searchWrapperStyle
+}                          from 'shared/Layout/Dashboard/admin/styles'
 
 const List = ({users}) => {
     const {searchClient} = useContext(searchContext)
