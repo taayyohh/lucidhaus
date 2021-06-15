@@ -14,7 +14,7 @@ const Toggle = ({formik, inputLabel, name}) =>
         <MotionDiv
             theme={toggleFieldStyle}
             onClick={() => formik.setFieldValue(name, !formik.values[name])}
-            animate={formik.values[name] ? 'true' : 'false'}
+            animate={formik.values[name] === undefined ? 'initial' : (formik.values[name] ? 'true' : 'false')}
             variants={toggleVariants}
         >
             <MotionDiv

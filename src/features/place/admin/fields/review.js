@@ -1,11 +1,26 @@
-import {IMAGE_UPLOAD, RICH_TEXT, UPLOAD_PATHS} from 'config/variables'
-import * as Yup                                from 'yup'
+import {IMAGE_UPLOAD, RICH_TEXT, TOGGLE, UPLOAD_PATHS} from 'config/variables'
+import * as Yup                                        from 'yup'
 
 export const reviewFields = [
     {
         name: 'review',
         inputLabel: 'Description',
         type: RICH_TEXT
+    },
+    {
+        name: 'safe',
+        inputLabel: 'Did you feel safe?',
+        type: TOGGLE
+    },
+    {
+        name: 'celebrated',
+        inputLabel: 'Did you feel celebrated?',
+        type: TOGGLE
+    },
+    {
+        name: 'welcome',
+        inputLabel: 'Did you feel welcome?',
+        type: TOGGLE
     },
     {
         name: 'photo',
