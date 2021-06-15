@@ -32,6 +32,7 @@ if (!['production'].includes(process.env.NODE_ENV)) {
                     'place/updatePlace',
                     'place/updateBusinessOwner',
                     'place/createBusinessOwner',
+                    'place/addReview',
                     'user/updateUser',
                     'user/updateUserProfile',
                     'user/signUp',

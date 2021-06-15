@@ -1,4 +1,4 @@
-import {home, signOut, userCog} from 'config/icons'
+import {comments, home, signOut, star, userCog} from 'config/icons'
 
 export const userDashboardMenu = [
     {
@@ -10,6 +10,16 @@ export const userDashboardMenu = [
         url: '/dashboard/profile',
         icon: userCog,
         title: 'Profile'
+    },
+    {
+        url: '/dashboard/reviews',
+        icon: comments,
+        title: 'My Reviews'
+    },
+    {
+        url: '/dashboard/places',
+        icon: star,
+        title: 'My Places'
     },
     {
         dispatchAction: 'user/signOut',
