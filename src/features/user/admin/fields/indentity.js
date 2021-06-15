@@ -65,12 +65,12 @@ export const identityFields = [
     {
         name: 'serviceAnimal',
         inputLabel: 'Service Animal',
-        type: SELECT
+        type: MULTI_SELECT
     },
     {
         name: 'sexualOrientation',
         inputLabel: 'Sexual Orientation',
-        type: SELECT
+        type: MULTI_SELECT
     },
     {
         name: 'transgender',

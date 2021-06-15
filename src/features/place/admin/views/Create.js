@@ -18,13 +18,13 @@ const Create = () => {
         bathroom: '',
         braille: false,
         brickAndMortar: false,
-        categories: undefined,
-        communitiesServed: undefined,
+        categories: [],
+        communitiesServed: [],
         description: '',
-        foodOptions: undefined,
+        foodOptions: [],
         isPublished: false,
         isRestaurant: false,
-        languageSpoken: undefined,
+        languageSpoken: [],
         largeAdaptiveEquipment: false,
         name: '',
         onlyAccessibleByStairs: false,
@@ -48,6 +48,9 @@ const Create = () => {
         languageSpoken,
         placeCategory
     } = taxonomy
+
+    console.log('tax', taxonomy)
+
 
 
 
@@ -77,6 +80,9 @@ const Create = () => {
             options: placeCategory
         }
     ]
+
+    console.log('options', options)
+
 
 
     useEffect(() => {

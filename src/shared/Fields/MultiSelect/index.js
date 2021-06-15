@@ -6,7 +6,6 @@ import SelectOption                                                             
 
 const MultiSelect = memo(({field, options, className, errorMessage, formik, value}) => {
     const optionsArray = options?.filter(options => options.name === field.name)[0]?.options
-    //const selected = []
     const [selected, setSelected] = useState([])
 
     return (
