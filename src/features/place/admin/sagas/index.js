@@ -214,6 +214,55 @@ export function* destroyPlaceSuccess() {
     yield put(push('/admin/places'))
 }
 
+export function* addReview({payload}) {
+    const {photo, photoFile, review, slug, user, _id, token} = payload
+    //add to formData so api can read
+    const placeReview = new FormData()
+    const fields = [
+        {photo},
+        {review},
+        {user}
+    ]
+    for (let field of fields)
+        setFormData(placeReview, field)
+
+    if (!!photoFile) {
+        const s3Payload = yield call(getSignedRequest, photoFile)
+        if (!!s3Payload.signedRequest) {
+            yield call(uploadFile, {file: photoFile, signedRequest: s3Payload.signedRequest})
+        }
+    }
+
+    try {
+        const updated = yield call(updateEntity,
+            {
+                _id: _id,
+                token: token,
+                parentSlug: 'place',
+                slug: slug,
+                body: placeReview
+            })
+
+        if (!updated.error) {
+            yield put({type: 'place/updatePlaceSuccess', payload: updated})
+            yield put({
+                type: 'site/setNotification',
+                payload: {
+                    notification: 'Review Added',
+                    theme: 'green'
+                }
+            })
+
+        } else {
+            yield put({type: 'place/updatePlaceFailure', payload: updated})
+        }
+    } catch (error) {
+        yield put({type: 'place/updatePlaceFailure'})
+    }
+
+
+}
+
 /**
  *
  *
@@ -240,4 +289,8 @@ export function* watchDestroyPlaceSuccess() {
 
 export function* watchUpdatePlace() {
     yield takeLatest('place/updatePlace', updatePlaceDetail)
+}
+
+export function* watchAddReview() {
+    yield takeLatest('place/addReview', addReview)
 }

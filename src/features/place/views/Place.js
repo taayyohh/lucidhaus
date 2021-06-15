@@ -1,5 +1,5 @@
-import {placeImageWrapperStyle} from 'features/place/views/styles'
-import {AnimatePresence}        from 'framer-motion'
+import {placeImageWrapperStyle}                                    from 'features/place/views/styles'
+import {AnimatePresence}                                           from 'framer-motion'
 import React, {useEffect}                                          from 'react'
 import {useDispatch, useSelector}                                  from 'react-redux'
 import Div                                                         from 'shared/Basic/Div'
@@ -14,6 +14,8 @@ import Map                                                         from 'shared/
 import {history}                                                   from 'store'
 import {debounce}                                                  from 'utils/helpers'
 import {isEmpty}                                                   from 'utils/themer'
+import Review                                                      from '../admin/views/Review'
+import Reviews                                                     from './Reviews'
 import {placeDescriptionStyle, placeTitleStyle, placeWrapperStyle} from './styles'
 
 const Place = () => {
@@ -21,9 +23,10 @@ const Place = () => {
     const {place, boonePlace, error} = useSelector(state => state.place)
     const {isAuthenticated, _id, token} = useSelector(state => state.user)
 
-    const {name, description, photo} = place
+    const {name, description, reviews, photo} = place
     const {slug} = useSelector(state => state.site)
     const placeId = slug.substr(slug.lastIndexOf('-') + 1)
+    const hasNoReviews = !!reviews ? reviews?.filter(review => review.user[0] === _id).length < 1 : []
 
     const hasError = (response) => {
         switch (parseInt(response)) {
@@ -47,7 +50,7 @@ const Place = () => {
         dispatch({
             type: 'place/getPlace',
             payload: {
-                placeId: placeId
+                slug: slug
             }
         })
     }
@@ -114,8 +117,8 @@ const Place = () => {
                                 {name || boonePlace?.name}
                             </MotionDiv>
                         )}
-                        {(description || boonePlace?.description) && (
-                            <Div>{description || boonePlace?.description}</Div>
+                        {(boonePlace?.description) && (
+                            <Div>{boonePlace?.description}</Div>
                         )}
                         <Div theme={{display: 'flex', flexDirection: 'column'}}>
                             {boonePlace?.contact_info && (
@@ -168,6 +171,15 @@ const Place = () => {
                             children={description}
                             theme={placeDescriptionStyle}
                         />
+                        <Div>
+                            {reviews && (
+                                <Reviews reviews={reviews}/>
+                            )}
+
+                        </Div>
+                        {(isAuthenticated && hasNoReviews) && (
+                            <Review/>
+                        )}
                     </MotionDiv>
                 </ContentWrapper>
             </MotionDiv>

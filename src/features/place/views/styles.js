@@ -71,3 +71,19 @@ export const placeDescriptionStyle = {
 }
 
 export const placeImageStyle = {}
+
+export const reviewsWrapperStyle = {
+    display: flex,
+    flexDirection: 'column',
+    marginBottom: [50, .7, 50]
+}
+
+export const placeReviewStyle = {
+    width: '100%',
+    padding: [20, globals.style.layoutScalingValue, 20],
+    border: `1px solid ${globals.colors.borderColor}`,
+    marginBottom: [20, .7, 20],
+    image: {
+        maxWidth: [150, .7, 150]
+    }
+}
