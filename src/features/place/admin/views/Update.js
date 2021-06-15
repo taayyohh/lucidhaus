@@ -16,7 +16,8 @@ const Update = () => {
     const {
         accessibleDoorway,
         audioAvailable,
-        bathroom,
+        bathrooms,
+        businessOwner,
         braille,
         brickAndMortar,
         categories,
@@ -29,7 +30,6 @@ const Update = () => {
         largeAdaptiveEquipment,
         name,
         onlyAccessibleByStairs,
-        owners,
         photo,
         publicTransportation,
         signLanguageAccessible,
@@ -37,6 +37,7 @@ const Update = () => {
         wheelchairElevator,
         wheelchairParking,
         wheelchairRamps,
+        wheelchairRestroom,
         type
     } = place
     const {placesIndex} = useContext(searchContext)
@@ -44,7 +45,8 @@ const Update = () => {
     const initialValues = {
         accessibleDoorway: accessibleDoorway,
         audioAvailable: audioAvailable,
-        bathroom: bathroom,
+        bathrooms: bathrooms,
+        businessOwner: businessOwner,
         braille: braille,
         brickAndMortar: brickAndMortar,
         categories: categories,
@@ -57,7 +59,6 @@ const Update = () => {
         largeAdaptiveEquipment: largeAdaptiveEquipment,
         name: name,
         onlyAccessibleByStairs: onlyAccessibleByStairs,
-        owners: owners,
         photo: photo,
         photoFile: '',
         publicTransportation: publicTransportation,
@@ -66,6 +67,7 @@ const Update = () => {
         wheelchairElevator: wheelchairElevator,
         wheelchairParking: wheelchairParking,
         wheelchairRamps: wheelchairRamps,
+        wheelchairRestroom: wheelchairRestroom,
         slug,
         _id,
         token,
@@ -85,8 +87,8 @@ const Update = () => {
 
     const options = [
         {
-            name: 'bathroom',
-            options: taxonomy.bathroom
+            name: 'bathrooms',
+            options: taxonomy.bathrooms
         },
         {
             name: 'businessOwner',

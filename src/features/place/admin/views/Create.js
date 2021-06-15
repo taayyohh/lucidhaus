@@ -15,7 +15,8 @@ const Create = () => {
         token: token,
         accessibleDoorway: '',
         audioAvailable: false,
-        bathroom: '',
+        bathrooms: [],
+        businessOwner: [],
         braille: false,
         brickAndMortar: false,
         categories: [],
@@ -28,7 +29,6 @@ const Create = () => {
         largeAdaptiveEquipment: false,
         name: '',
         onlyAccessibleByStairs: false,
-        owners: '',
         photo: '',
         photoFile: '',
         publicTransportation: false,
@@ -41,7 +41,7 @@ const Create = () => {
     }
 
     const {
-        bathroom,
+        bathrooms,
         businessOwner,
         communitiesServed,
         foodOptions,
@@ -49,15 +49,13 @@ const Create = () => {
         placeCategory
     } = taxonomy
 
-    console.log('tax', taxonomy)
-
 
 
 
     const options = [
         {
-            name: 'bathroom',
-            options: bathroom
+            name: 'bathrooms',
+            options: bathrooms
         },
         {
             name: 'businessOwner',
@@ -80,9 +78,6 @@ const Create = () => {
             options: placeCategory
         }
     ]
-
-    console.log('options', options)
-
 
 
     useEffect(() => {

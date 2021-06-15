@@ -31,7 +31,7 @@ export const placeFields = [
         type: TOGGLE
     },
     {
-        name: 'bathroom',
+        name: 'bathrooms',
         inputLabel: 'Bathrooms',
         type: SELECT
     },
@@ -76,7 +76,7 @@ export const placeFields = [
         type: MULTI_SELECT
     },
     {
-        name: 'large Adaptive Equipment',
+        name: 'largeAdaptiveEquipment',
         inputLabel: 'Large Adaptive Equipment',
         type: TOGGLE
     },
@@ -121,7 +121,7 @@ export const placeFields = [
         type: TOGGLE
     },
     {
-        name: 'wheelChairRestroom',
+        name: 'wheelchairRestroom',
         inputLabel: 'Wheelchair Accessible Restrooms',
         type: TOGGLE
     }
@@ -137,8 +137,7 @@ export const placeFields = [
 
 export const validatePlace = Yup.object().shape({
     photo: Yup
-        .string()
-        .required('Required'),
+        .string(),
     name: Yup
         .string()
         .max(50)

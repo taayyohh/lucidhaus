@@ -11,7 +11,7 @@ export function* createPlace({payload}) {
         token,
         accessibleDoorway,
         audioAvailable,
-        bathroom,
+        bathrooms,
         braille,
         brickAndMortar,
         categories,
@@ -24,7 +24,7 @@ export function* createPlace({payload}) {
         largeAdaptiveEquipment,
         name,
         onlyAccessibleByStairs,
-        owners,
+        businessOwner,
         photo,
         photoFile,
         publicTransportation,
@@ -33,6 +33,7 @@ export function* createPlace({payload}) {
         wheelchairElevator,
         wheelchairParking,
         wheelchairRamps,
+        wheelchairRestroom,
     } = payload
 
     //add to formdata so api can read
@@ -40,7 +41,8 @@ export function* createPlace({payload}) {
     const fields = [
         {accessibleDoorway},
         {audioAvailable},
-        {bathroom},
+        {bathrooms},
+        {businessOwner},
         {braille},
         {brickAndMortar},
         {categories},
@@ -53,7 +55,6 @@ export function* createPlace({payload}) {
         {largeAdaptiveEquipment},
         {name},
         {onlyAccessibleByStairs},
-        {owners},
         {photo},
         {publicTransportation},
         {signLanguageAccessible},
@@ -61,6 +62,7 @@ export function* createPlace({payload}) {
         {wheelchairElevator},
         {wheelchairParking},
         {wheelchairRamps},
+        {wheelchairRestroom}
     ]
     for (let field of fields)
         setFormData(place, field)
@@ -95,9 +97,14 @@ export function* createPlace({payload}) {
 }
 
 export function* updatePlaceDetail({payload}) {
-    const {slug, _id, token, accessibleDoorway,
+    const {
+        slug,
+        _id,
+        token,
+        accessibleDoorway,
         audioAvailable,
-        bathroom,
+        bathrooms,
+        businessOwner,
         braille,
         brickAndMortar,
         categories,
@@ -110,7 +117,6 @@ export function* updatePlaceDetail({payload}) {
         largeAdaptiveEquipment,
         name,
         onlyAccessibleByStairs,
-        owners,
         photo,
         photoFile,
         publicTransportation,
@@ -118,7 +124,8 @@ export function* updatePlaceDetail({payload}) {
         website,
         wheelchairElevator,
         wheelchairParking,
-        wheelchairRamps
+        wheelchairRamps,
+        wheelchairRestroom,
     } = payload
 
     //add to formData so api can read
@@ -126,7 +133,8 @@ export function* updatePlaceDetail({payload}) {
     const fields = [
         {accessibleDoorway},
         {audioAvailable},
-        {bathroom},
+        {bathrooms},
+        {businessOwner},
         {braille},
         {brickAndMortar},
         {categories},
@@ -139,7 +147,6 @@ export function* updatePlaceDetail({payload}) {
         {largeAdaptiveEquipment},
         {name},
         {onlyAccessibleByStairs},
-        {owners},
         {photo},
         {publicTransportation},
         {signLanguageAccessible},
@@ -147,6 +154,7 @@ export function* updatePlaceDetail({payload}) {
         {wheelchairElevator},
         {wheelchairParking},
         {wheelchairRamps},
+        {wheelchairRestroom}
     ]
     for (let field of fields)
         setFormData(place, field)
@@ -167,6 +175,9 @@ export function* updatePlaceDetail({payload}) {
                 slug: slug,
                 body: place
             })
+
+        console.log('place', place)
+        console.log('fields', fields)
         if (!updated.error) {
             yield put({type: 'place/updatePlaceSuccess', payload: updated})
             yield put({
