@@ -20,7 +20,7 @@ const Select = ({field, options, className, errorMessage, value}) =>
             name={field.name}
             value={value || ''}
         >
-            <option/>
+            <option value={'000999888777'}/>
             {options?.filter(options => options.name === field.name)[0]?.options?.map(p =>
                 <option key={p.name} value={p._id}>
                     {p.name}

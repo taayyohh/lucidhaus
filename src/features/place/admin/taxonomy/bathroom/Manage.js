@@ -10,7 +10,7 @@ import Create                     from './Create'
 
 const ManageBathrooms = () => {
     const dispatch = useDispatch()
-    const {bathroom} = useSelector(state => state.place.taxonomy)
+    const {bathrooms} = useSelector(state => state.place.taxonomy)
     const {slug} = useSelector(state => state.site)
 
     useEffect(() => {
@@ -28,11 +28,11 @@ const ManageBathrooms = () => {
                 />
                 <BreadCrumb/>
                 <Div theme={{display: 'flex'}}>
-                    {bathroom?.length > 0 && (
+                    {bathrooms?.length > 0 && (
                         <Div>
-                            Total: {bathroom?.length}
+                            Total: {bathrooms?.length}
                             <Div>
-                                {bathroom?.map((item) => (
+                                {bathrooms?.map((item) => (
                                     <LinkSwitch
                                         theme={{display: 'block'}}
                                         url={`${slug}/update/${item.slug}`}
