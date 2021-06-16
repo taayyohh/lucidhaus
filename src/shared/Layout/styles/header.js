@@ -1,7 +1,4 @@
-import {
-    colorPalette,
-    globals
-} from 'config/styles'
+import {colorPalette, globals} from 'config/styles'
 import {
     black,
     block,
@@ -9,9 +6,10 @@ import {
     center,
     column,
     flex,
+    flexEnd,
     flexStart,
     inlineFlex,
-    none,
+    none, normal, pointer,
     relative,
     spaceBetween,
     uppercase,
@@ -28,16 +26,18 @@ export const mobileHeaderMenuToggleStyle = {
 
 export const headerStyle = {
     display: flex,
+    flexDirection: column,
     alignItems: center,
     justifyContent: center,
-    position: 'sticky; position: -webkit-sticky;',
+    position: relative,
+    // position: 'sticky; position: -webkit-sticky;',
     font: globals.fonts.sans,
     textTransform: uppercase,
     borderBottom: `1px solid ${colorPalette.gray}`,
     backgroundColor: white,
     top: 0,
     zIndex: 11,
-    height: [globals.style.headerHeight, .7, globals.style.mobileHeaderHeight],
+    // height: [globals.style.headerHeight, .7, globals.style.mobileHeaderHeight],
     marginBottom: [50, .7, '0'],
     mobile: {
         display: flex,
@@ -63,6 +63,45 @@ export const headerInnerStyle = {
         paddingRight: 25,
         justifyContent: spaceBetween,
         boxSizing: borderBox
+    }
+}
+
+export const headerTopStyle = {
+    display: flex,
+    alignItems: center,
+    justifyContent: flexEnd,
+    width: '100%',
+    height: [90, .7, 90],
+    backgroundColor: colorPalette.ijGray,
+    inner: {
+        marginRight: [78, globals.style.layoutScalingValue, 25],
+        textTransform: none
+    },
+    link: {
+        marginLeft: [38, .7, 38],
+        textDecoration: none,
+        color: colorPalette.forestGreen,
+        hover: {
+            cursor: pointer,
+            color: colorPalette.black
+        }
+    },
+    signUp: {
+        display: inlineFlex,
+        alignItems: center,
+        marginLeft: [38, .7, 38],
+        textDecoration: none,
+        backgroundColor: colorPalette.forestGreen,
+        color: white,
+        paddingLeft: [36, .7, 36],
+        paddingRight: [36, .7, 36],
+        paddingTop: [14, .7, 14],
+        paddingBottom: [14, .7, 14],
+        height: [48, .7, 48],
+        borderRadius: [5, .7, 5],
+        hover: {
+            color: white
+        }
     }
 }
 

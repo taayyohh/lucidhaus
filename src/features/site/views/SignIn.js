@@ -14,7 +14,7 @@ const SignIn = () => {
 
     useEffect(() => {
         if (isAuthenticated)
-            history.push(`/${isAdmin ? 'admin' : 'user'}`)
+            history.push(`/${isAdmin ? 'admin' : 'dashboard'}`)
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])

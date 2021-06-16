@@ -1,21 +1,62 @@
-import logo       from 'assets/logo.svg'
-import PropTypes  from 'prop-types'
-import React      from 'react'
-import Div        from 'shared/Basic/Div'
-import Img        from 'shared/Basic/Img'
-import LinkSwitch from 'shared/Basic/LinkSwitch'
-import HeaderMenu from 'shared/Menus/HeaderMenu'
+import logo                               from 'assets/logo.svg'
+import PropTypes                          from 'prop-types'
+import React                      from 'react'
+import {useDispatch, useSelector} from 'react-redux'
+import Div                        from 'shared/Basic/Div'
+import Img                                from 'shared/Basic/Img'
+import LinkSwitch                         from 'shared/Basic/LinkSwitch'
+import HeaderMenu                         from 'shared/Menus/HeaderMenu'
+import Span                               from 'shared/Basic/Span'
+import {headerMenuAuthStyleListItemStyle} from '../Menus/styles'
 import {
     headerInnerStyle,
     headerLogoLinkStyle,
     headerLogoWrapperStyle,
     headerNowPlayingStyle,
-    headerStyle
-}                 from './styles/header'
+    headerStyle,
+    headerTopStyle
+}                                         from './styles/header'
 
 const Header = ({theme}) => {
+    const {isAuthenticated, isAdmin} = useSelector(state => state.user)
+    const dispatch = useDispatch()
+
     return (
         <Div as="header" theme={{...headerStyle, ...theme}}>
+            <Div theme={headerTopStyle}>
+                <Div theme={headerTopStyle.inner}>
+                    <LinkSwitch
+                        url={'/help'}
+                        theme={headerTopStyle.link}
+                    >
+                        Help
+                    </LinkSwitch>
+                    {(isAuthenticated && (
+                        <Span
+                            theme={headerTopStyle.link}
+                            onClick={() => dispatch({type: 'user/signOut'})}
+                        >
+                            Sign Out
+                        </Span>
+                    )) || (
+                        <LinkSwitch
+                            url={'/signin'}
+                            theme={headerTopStyle.link}
+                        >
+                            Signin
+                        </LinkSwitch>
+                    )}
+                    {!isAuthenticated && (
+                        <LinkSwitch
+                            url={'/signup'}
+                            theme={headerTopStyle.signUp}
+                        >
+                            Sign Up
+                        </LinkSwitch>
+                    )}
+
+                </Div>
+            </Div>
             <Div theme={headerInnerStyle}>
                 <Div theme={headerNowPlayingStyle}>
                     <Div theme={headerLogoWrapperStyle}>

@@ -9,6 +9,10 @@ import {TransitionAnimations}                 from './TransitionController'
 
 const Sitemap = lazy(() => import('./Sitemap'))
 const Home = lazy(() => import('features/site/views/Home'))
+const Map = lazy(() => import('features/site/views/Map'))
+const Help = lazy(() => import('features/site/views/Help'))
+
+
 const AdminDashboard = lazy(() => import('shared/Layout/Dashboard/admin/AdminDashboard'))
 const UserDashboard = lazy(() => import('features/user/views/dashboard'))
 const CreatePlace = lazy(() => import('features/place/admin/views/Create'))
@@ -89,6 +93,10 @@ const Routes = () => {
                     <Suspense fallback={<Fallback/>}>
                         <Switch location={{pathname: currentPath}}>
                             <Route path="/" exact component={Home}/>
+                            <Route path="/map" exact component={Map}/>
+                            <Route path="/help" exact component={Help}/>
+
+
                             <Route path="/signup" exact component={SignUp}/>
                             <Route path="/signin" exact component={SignIn}/>
                             <Route path="/places" exact component={Places}/>
