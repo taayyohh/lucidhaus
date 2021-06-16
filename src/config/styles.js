@@ -19,7 +19,8 @@ export const colorPalette = {
     grayPurple: '#908999',
     borderColor: '#dedede',
     ijGray: '#F2F2F2',
-    forestGreen: '#004722'
+    forestGreen: '#004722',
+    honeyYellow: '#FFB400'
 }
 
 export const globals = {

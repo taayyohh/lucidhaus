@@ -36,3 +36,9 @@ export const homeQuoteStyle = {
     alignItems: center,
     justifyContent: center
 }
+
+export const homeSpacerStyle = {
+    height: [180, .7],
+    width: '100%',
+    backgroundColor: colorPalette.honeyYellow
+}

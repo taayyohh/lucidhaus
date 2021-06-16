@@ -1,8 +1,8 @@
-import React, {useContext}                     from 'react'
-import Div                                     from 'shared/Basic/Div'
-import {mapContext}                            from 'shared/Containers/MapController'
-import ContentWrapper                                          from 'shared/Layout/ContentWrapper'
-import {homeImageStyle, homeImageWrapperStyle, homeQuoteStyle} from './styles'
+import React, {useContext}                                                      from 'react'
+import Div                                                                      from 'shared/Basic/Div'
+import {mapContext}                                                             from 'shared/Containers/MapController'
+import ContentWrapper                                                           from 'shared/Layout/ContentWrapper'
+import {homeImageStyle, homeImageWrapperStyle, homeQuoteStyle, homeSpacerStyle} from './styles'
 
 const Home = () => {
     const {coords} = useContext(mapContext)
@@ -15,6 +15,7 @@ const Home = () => {
             <Div theme={homeQuoteStyle}>
                 Celebrating the places that celebrate <span>You</span>
             </Div>
+            <Div theme={homeSpacerStyle}/>
         </ContentWrapper>
     )
 }
