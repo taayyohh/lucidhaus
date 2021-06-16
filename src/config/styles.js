@@ -20,6 +20,7 @@ export const colorPalette = {
     borderColor: '#dedede',
     ijGray: '#F2F2F2',
     forestGreen: '#004722',
+    seaGreen: '#0e834b',
     honeyYellow: '#FFB400'
 }
 

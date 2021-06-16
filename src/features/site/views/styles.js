@@ -1,5 +1,5 @@
-import {center, flex, pointer, uppercase} from 'utils/themer'
-import {CDN}                              from 'config/variables'
+import {center, flex, inlineFlex, pointer, uppercase, white} from 'utils/themer'
+import {CDN}                                                 from 'config/variables'
 import {colorPalette, globals} from 'config/styles'
 
 export const homeImageWrapperStyle = {
@@ -32,9 +32,14 @@ export const homeQuoteStyle = {
     lineHeight: [110, .7, 60],
     textTransform: uppercase,
     backgroundColor: colorPalette.forestGreen,
-    display: flex,
+    display: inlineFlex,
     alignItems: center,
-    justifyContent: center
+    justifyContent: center,
+    color: white,
+    child: {
+        selector: 'span',
+        color: colorPalette.seaGreen
+    }
 }
 
 export const homeSpacerStyle = {
