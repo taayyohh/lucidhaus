@@ -1,7 +1,6 @@
 import React                 from 'react'
-import Img                   from '../Basic/Img'
-import {contentWrapperStyle} from './styles'
 import Div                   from 'shared/Basic/Div'
+import {contentWrapperStyle} from './styles'
 
 const ContentWrapper = ({children, theme}) =>
     <Div theme={{...contentWrapperStyle, ...theme}}>

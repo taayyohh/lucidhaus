@@ -1,13 +1,12 @@
-import logo                               from 'assets/logo.svg'
-import PropTypes                          from 'prop-types'
+import logo                       from 'assets/logo.svg'
+import PropTypes                  from 'prop-types'
 import React                      from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import Div                        from 'shared/Basic/Div'
-import Img                                from 'shared/Basic/Img'
-import LinkSwitch                         from 'shared/Basic/LinkSwitch'
-import HeaderMenu                         from 'shared/Menus/HeaderMenu'
-import Span                               from 'shared/Basic/Span'
-import {headerMenuAuthStyleListItemStyle} from '../Menus/styles'
+import Img                        from 'shared/Basic/Img'
+import LinkSwitch                 from 'shared/Basic/LinkSwitch'
+import Span                       from 'shared/Basic/Span'
+import HeaderMenu                 from 'shared/Menus/HeaderMenu'
 import {
     headerInnerStyle,
     headerLogoLinkStyle,
@@ -15,10 +14,10 @@ import {
     headerNowPlayingStyle,
     headerStyle,
     headerTopStyle
-}                                         from './styles/header'
+}                                 from './styles/header'
 
 const Header = ({theme}) => {
-    const {isAuthenticated, isAdmin} = useSelector(state => state.user)
+    const {isAuthenticated} = useSelector(state => state.user)
     const dispatch = useDispatch()
 
     return (

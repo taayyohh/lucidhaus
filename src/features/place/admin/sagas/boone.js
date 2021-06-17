@@ -26,10 +26,12 @@ export function* createPlaceFromBoone({payload}) {
     if (!createdPlace.error) {
         // yield put({type: 'place/getPlaces'})
         // yield put(push('/admin/places/update/' + createdPlace.slug))
+        yield put({type: 'place/createPlaceSuccess', payload})
+
 
 
     } else {
-        yield put({type: 'place/createPlacesFailure', payload})
+        yield put({type: 'place/createPlaceFailure', payload})
     }
 
 }

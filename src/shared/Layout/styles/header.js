@@ -9,12 +9,13 @@ import {
     flexEnd,
     flexStart,
     inlineFlex,
-    none, normal, pointer,
+    none,
+    pointer,
     relative,
     spaceBetween,
     uppercase,
     white
-} from 'utils/themer'
+}                              from 'utils/themer'
 
 export const mobileHeaderMenuToggleStyle = {
     mobile: {

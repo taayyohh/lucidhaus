@@ -75,7 +75,6 @@ const Place = () => {
 
             //TODO::add 404 error
         } else if (hasNoPlace && hasBoonePlace) {
-            console.log('hiii')
             if (isAuthenticated) {
                 dispatch({
                     type: 'place/createPlaceFromBoone',

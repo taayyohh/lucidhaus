@@ -45,6 +45,9 @@ export const slice = createSlice({
                 }
             }
         },
+        getPlace: (state, action) => {
+            state.place = []
+        },
         getPlaceSuccess: (state, action) => {
             state.place = action.payload
         },
