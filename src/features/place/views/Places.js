@@ -16,22 +16,21 @@ const Places = () => {
     const dispatch = useDispatch()
     const {coords} = useContext(mapContext)
     const {placesIndex} = useContext(searchContext)
-    const allPlaces = boonePlaces?.data?.concat(algoliaPlaces)
-    const [filteredBoone, setFilteredBoone] = useState(boonePlaces.data)
-
-    console.log('iteeeeem', boonePlaces?.data?.filter(item => item?.[0]?.properties))
-
+    const [allPlaces, setAllPlaces] = useState([])
+    let boonePlacesData = []
 
     useEffect(() => {
-        if (!!filteredBoone)
-            for (const place of algoliaPlaces) {
-                console.log('PLACE', place.booneId)
-              // setFilteredBoone(filteredBoone.filter(item => item.properties.id !== place.booneId))
-                //filteredBoone?.filter(item => item.properties.id !== place.booneId)
-            }
-
+        const algoliaIds = algoliaPlaces.map(p => p.booneId)
+        if(!!boonePlaces?.data) {
+            boonePlacesData = [...boonePlaces?.data]
+            boonePlacesData.forEach(place => {
+                if(algoliaIds.includes(place.properties?.id)) {
+                   boonePlacesData.splice(boonePlaces.data.indexOf(place), 1)
+                }
+            })
+        }
+        setAllPlaces([...boonePlacesData.concat(algoliaPlaces)])
     }, [algoliaPlaces, boonePlaces])
-
 
     useEffect(() => {
         dispatch({
@@ -45,11 +44,9 @@ const Places = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [places])
 
-
     return (
         <ContentWrapper>
             <Div>
-                {console.log('FILTERED', filteredBoone)}
                 <Form
                     theme={placesSearchFormStyle}
                     initialValues={{input: ''}}
@@ -65,31 +62,32 @@ const Places = () => {
                     }}
                 />
 
-                {/*{console.log('coords', coords)}*/}
-                {/*{console.log('boone', boonePlaces.data)}*/}
-                {/*{console.log('algolia', algoliaPlaces)}*/}
-                {/*{console.log('ALL', allPlaces)}*/}
-                {/*{console.log('FIL', filteredBoone)}*/}
-
-
                 <Div theme={placesWrapperStyle}>
-                    {boonePlaces && boonePlaces?.data?.map(
-                        boonePlace => {
-                            const slug = `${slugify(boonePlace.properties.name)}-${slugify(boonePlace.properties.address)}-${boonePlace.properties.id}`
+                    {allPlaces.length > 0 && allPlaces.map((place) => {
+                        if(!!place.properties) {
+                            const slug = `${slugify(place.properties.name)}-${slugify(place.properties.address)}-${place.properties.id}`
 
                             return (
                                 <GenericCard
                                     key={slug}
                                     slug={`places/${slug}`}
-                                    name={boonePlace.properties.name}
-                                    photo={boonePlace.photo}
+                                    name={place.properties.name}
+                                    photo={place.photo}
+                                    theme={placeCardStyle}
+                                />
+                            )
+                        } else {
+                            return (
+                                <GenericCard
+                                    key={place.slug}
+                                    slug={`places/${place.slug}`}
+                                    name={place.name}
+                                    photo={place.photo}
                                     theme={placeCardStyle}
                                 />
                             )
                         }
-                    ) || (
-                        <Div>Oops search again!</Div>
-                    )}
+                    })}
                 </Div>
             </Div>
         </ContentWrapper>
