@@ -68,9 +68,6 @@ const Place = () => {
         const hasNoPlace = hasError(error?.place?.status)
         const hasBoonePlace = !isEmpty(boonePlace)
 
-        console.log('hasNoPlace', hasNoPlace)
-        console.log('hasBoonePlace', hasBoonePlace)
-
         if ((hasNoPlace && hasNoBoonePlace) || boonePlaceRemoved) {
             debounce(history.push(`/places`), 500)
 

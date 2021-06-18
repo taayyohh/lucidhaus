@@ -29,9 +29,6 @@ export function* createPlaceFromBoone({payload}) {
     for (let field of fields)
         setFormData(place, field)
 
-    console.log('boonePlace', boonePlace)
-
-
     const createdPlace = yield call(
         addPlaceFromBoone,
         {
@@ -41,7 +38,6 @@ export function* createPlaceFromBoone({payload}) {
         }
     )
     if (!createdPlace.error) {
-        console.log('created', createdPlace.slug)
         yield put(push(`/places/${createdPlace.slug}`))
 
         // yield put({type: 'place/getPlaces'})
