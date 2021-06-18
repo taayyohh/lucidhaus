@@ -18,6 +18,8 @@ export const placesSearchFormStyle = {
     padding: 0,
     mobile: {
         flexDirection: column,
+        paddingBottom: 30,
+        borderBottom: `1px solid ${globals.colors.borderColor}`
     },
     child: [
         {
@@ -26,7 +28,7 @@ export const placesSearchFormStyle = {
         },
         {
             selector: 'button',
-            marginTop: 0
+            marginTop: [0, .7, 20]
         },
         {
             selector: 'label',

@@ -1,4 +1,4 @@
-import {home, signOut, user} from 'config/icons'
+import {home, user} from 'config/icons'
 
 export const adminDashboardMenu = [
     {

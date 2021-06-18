@@ -1,4 +1,4 @@
-import {API, BOONE_API, BOONE_CLIENT_ID, BOONE_HOST, CORS} from 'config/variables'
+import {API} from 'config/variables'
 
 /**
  * to perform crud on admin
