@@ -1,8 +1,11 @@
 import {BOONE_API, BOONE_CLIENT_ID, BOONE_HOST, CORS} from 'config/variables'
 
 export const getBooneAutoComplete = ({input, longitude, latitude, radius}) => {
+    const fetchString = (!!longitude && !!latitude)
+        ? `${CORS}${BOONE_HOST}${BOONE_API}autocomplete?input=${input}&center=${longitude},${latitude}&radius=${radius}`
+        : `${CORS}${BOONE_HOST}${BOONE_API}autocomplete?input=${input}`
     return (
-        fetch(`${CORS}${BOONE_HOST}${BOONE_API}autocomplete?input=${input}&center=${longitude},${latitude}&radius=${radius}`, {
+        fetch(fetchString, {
             method: 'GET',
             headers: {
                 Accept: 'application/json',
@@ -37,3 +40,4 @@ export const getPlaceFromBoone = ({placeId}) => {
             })
     )
 }
+

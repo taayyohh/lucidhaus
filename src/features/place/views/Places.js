@@ -1,46 +1,36 @@
-import {placeSearchField}             from 'features/place/admin/fields/search'
-import {placeCardStyle}               from 'features/place/views/styles'
-import React, {useContext, useEffect} from 'react'
-import {useDispatch, useSelector}     from 'react-redux'
-import Div                            from 'shared/Basic/Div'
-import GenericCard                    from 'shared/Cards/GenericCard'
-import {mapContext}                   from 'shared/Containers/MapController'
-import Form                           from 'shared/Fields/Form'
-import ContentWrapper                 from 'shared/Layout/ContentWrapper'
-import {slugify}                      from 'utils/helpers'
-import {placesWrapperStyle}           from './styles'
+import {placeSearchField}                      from 'features/place/admin/fields/search'
+import {placeCardStyle, placesSearchFormStyle} from 'features/place/views/styles'
+import React, {useContext, useEffect}          from 'react'
+import {useDispatch, useSelector}              from 'react-redux'
+import Div                                     from 'shared/Basic/Div'
+import GenericCard                             from 'shared/Cards/GenericCard'
+import {mapContext}                            from 'shared/Containers/MapController'
+import {searchContext}                         from 'shared/Containers/SearchController'
+import Form                                    from 'shared/Fields/Form'
+import ContentWrapper                          from 'shared/Layout/ContentWrapper'
+import {slugify}                               from 'utils/helpers'
+import {placesWrapperStyle}                    from './styles'
 
 const Places = () => {
-    const {boonePlaces, places} = useSelector(state => state.place)
+    const {boonePlaces, algoliaPlaces, places} = useSelector(state => state.place)
     const dispatch = useDispatch()
     const {coords} = useContext(mapContext)
+    const {placesIndex} = useContext(searchContext)
+    const allPlaces = boonePlaces?.data?.concat(algoliaPlaces)
+    let filteredBoone = boonePlaces.data
+
+    console.log('iteeeeem', boonePlaces?.data?.filter(item => item.properties))
+
 
     useEffect(() => {
-        // if (!isEmpty(coords)) {
-        //     dispatch({
-        //         type: 'place/getBooneAutoComplete',
-        //         payload: {
-        //             input: 'bakery',
-        //             longitude: coords.lon,
-        //             latitude: coords.lat,
-        //             radius: 10000
-        //         }
-        //     })
-        // }
+        if (!!filteredBoone)
+            for (const place of algoliaPlaces) {
+                console.log('PLACE', place.booneId)
+                filteredBoone = filteredBoone.filter(item => item.properties.id !== place.booneId)
+                //filteredBoone?.filter(item => item.properties.id !== place.booneId)
+            }
 
-
-        // if(!!booneIndex)
-        //     booneIndex.saveObjects(boonePlaces)
-        //         .then(() => setIsIndexed(true))
-        //         .catch(error =>
-        //             dispatch({
-        //                 type: 'site/setNotification',
-        //                 payload: {notification: error}
-        //             })
-        //         )
-
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [coords])
+    }, [algoliaPlaces, boonePlaces])
 
 
     useEffect(() => {
@@ -58,35 +48,46 @@ const Places = () => {
 
     return (
         <ContentWrapper>
-            <Div theme={placesWrapperStyle}>
+            <Div >
                 <Form
+                    theme={placesSearchFormStyle}
                     initialValues={{input: ''}}
                     fields={placeSearchField}
-                    dispatchAction={'place/getBooneAutoComplete'}
+                    dispatchAction={'place/searchAllPlaces'}
                     formHeading={'Search'}
                     buttonText={'Search'}
                     payload={{
                         longitude: coords.lon,
                         latitude: coords.lat,
-                        radius: 10000
+                        radius: 10000,
+                        index: placesIndex
                     }}
                 />
 
-                {boonePlaces && boonePlaces?.data?.map(
-                    boonePlace => {
-                        const slug = `${slugify(boonePlace.properties.name)}-${slugify(boonePlace.properties.address)}-${boonePlace.properties.id}`
+                {/*{console.log('coords', coords)}*/}
+                {/*{console.log('boone', boonePlaces.data)}*/}
+                {/*{console.log('algolia', algoliaPlaces)}*/}
+                {/*{console.log('ALL', allPlaces)}*/}
+                {/*{console.log('FIL', filteredBoone)}*/}
 
-                        return (
-                            <GenericCard
-                                key={slug}
-                                slug={`places/${slug}`}
-                                name={boonePlace.properties.name}
-                                photo={boonePlace.photo}
-                                theme={placeCardStyle}
-                            />
-                        )
-                    }
-                )}
+
+                <Div theme={placesWrapperStyle}>
+                    {boonePlaces && boonePlaces?.data?.map(
+                        boonePlace => {
+                            const slug = `${slugify(boonePlace.properties.name)}-${slugify(boonePlace.properties.address)}-${boonePlace.properties.id}`
+
+                            return (
+                                <GenericCard
+                                    key={slug}
+                                    slug={`places/${slug}`}
+                                    name={boonePlace.properties.name}
+                                    photo={boonePlace.photo}
+                                    theme={placeCardStyle}
+                                />
+                            )
+                        }
+                    )}
+                </Div>
             </Div>
         </ContentWrapper>
     )

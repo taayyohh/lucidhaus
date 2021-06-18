@@ -1,7 +1,20 @@
-import React                                                                    from 'react'
-import Div                                                                      from 'shared/Basic/Div'
-import ContentWrapper                                                           from 'shared/Layout/ContentWrapper'
-import {homeImageStyle, homeImageWrapperStyle, homeQuoteStyle, homeSpacerStyle} from './styles'
+import React          from 'react'
+import Div            from 'shared/Basic/Div'
+import ContentWrapper from 'shared/Layout/ContentWrapper'
+import LinkSwitch     from '../../../shared/Basic/LinkSwitch'
+import S3Img          from '../../../shared/Basic/S3Img'
+import {
+    homeImageStyle,
+    homeImageWrapperStyle,
+    homeQuoteStyle,
+    homeSignupButtonStyle,
+    homeSignupImageStyle,
+    homeSignupImageWrapperStyle,
+    homeSignupQuoteStyle,
+    homeSignupQuoteWrapperStyle,
+    homeSignupWrapperStyle,
+    homeSpacerStyle
+}                     from './styles'
 
 const Home = () => {
 
@@ -14,17 +27,25 @@ const Home = () => {
                 <Div>Celebrating the places that celebrate <span>You</span></Div>
             </Div>
             <Div theme={homeSpacerStyle}/>
-            <Div>
-                <Div>
-                    <Div>
-                        The Inclusive Guide only works with input and feedback from individuals like you!
+            <Div theme={homeSignupWrapperStyle}>
+                <Div theme={homeSignupQuoteWrapperStyle}>
+                    <Div theme={homeSignupQuoteStyle}>
+                        The Inclusive Guide works with input and feedback from individuals like you!
                         Every person that signs up provides valuable insights that we are using to build
-                        and evolve the IG in real time. Don’t miss out, click below to create your account!
+                        and evolve the Guild in real time. Don’t miss out, sign up below to create your account!
                     </Div>
-                    <Div>Sign Up Now</Div>
+                    <LinkSwitch
+                        url={'/signup'}
+                        theme={homeSignupButtonStyle}
+                    >
+                        Sign Up Now!
+                    </LinkSwitch>
                 </Div>
-                <Div>
-
+                <Div theme={homeSignupImageWrapperStyle}>
+                    <S3Img
+                        theme={homeSignupImageStyle}
+                        url={'assets/ij-home-2.jpg'}
+                    />
                 </Div>
             </Div>
         </ContentWrapper>

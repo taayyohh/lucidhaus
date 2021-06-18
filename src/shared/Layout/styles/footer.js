@@ -78,7 +78,7 @@ export const footerIconStyle = {
         marginRight: 15
     },
     hover: {
-        color: colorPalette.purple
+        color: colorPalette.honeyYellow
     }
 }
 
@@ -124,7 +124,7 @@ export const footerSubscribeStyle = {
                     marginTop: 15
                 },
                 hover: {
-                    background: colorPalette.purple,
+                    background: colorPalette.honeyYellow,
                     cursor: pointer
                 }
             }

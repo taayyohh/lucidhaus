@@ -21,6 +21,7 @@ export const colorPalette = {
     ijGray: '#F2F2F2',
     forestGreen: '#004722',
     seaGreen: '#0e834b',
+    paleGreen: '#80A390',
     honeyYellow: '#FFB400'
 }
 
@@ -49,12 +50,12 @@ export const globals = {
     },
     colors: {
         linkColor: colorPalette.red,
-        linkHoverColor: colorPalette.purple,
+        linkHoverColor: colorPalette.honeyYellow,
         inputLabelColor: colorPalette.black,
-        menuPanelCloseButtonBackgroundColor: colorPalette.purple,
+        menuPanelCloseButtonBackgroundColor: colorPalette.honeyYellow,
         transitionOverlayBackground: colorPalette.grayPurple,
         buttonHoverColor: colorPalette.grayPurple,
-        borderHoverColor: colorPalette.purple,
+        borderHoverColor: colorPalette.honeyYellow,
         borderColor: colorPalette.lightGray,
         errorColor: colorPalette.brightRed
     }

@@ -103,7 +103,7 @@ export const shopHeadingStyle = isActive => {
         child: {
             selector: 'a',
             textDecoration: none,
-            color: isActive ? colorPalette.purple : black,
+            color: isActive ? colorPalette.honeyYellow : black,
             hover: {
                 color: globals.colors.linkHoverColor
             }
@@ -136,7 +136,7 @@ export const shopCategoryStyle = isActive => {
         size: [24, .7, 24],
         lineHeight: [40, .7, 40],
         textDecoration: none,
-        color: isActive ? colorPalette.purple : black,
+        color: isActive ? colorPalette.honeyYellow : black,
         hover: {
             color: globals.colors.linkHoverColor,
             cursor: pointer
@@ -152,7 +152,7 @@ export const shopActiveIndicatorStyle = {
     right: [55, globals.style.layoutScalingValue, 10],
     top: '50%',
     marginTop: [-4, .7, -4],
-    background: colorPalette.purple
+    background: colorPalette.honeyYellow
 
 }
 
@@ -328,7 +328,7 @@ export const shopCardStyle = {
     category: {
         marginTop: [20, .7, 20],
         letterSpacing: [1, .7, 1],
-        color: colorPalette.purple
+        color: colorPalette.honeyYellow
     },
     name: {
         // marginRight: auto,

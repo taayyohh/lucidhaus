@@ -11,6 +11,9 @@ const Review = () => {
     const initialValues = {
         review: '',
         photo: '',
+        safe: undefined,
+        celebrated: undefined,
+        welcome: undefined,
         user: _id,
         _id,
         token,

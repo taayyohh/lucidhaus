@@ -1,5 +1,5 @@
-import {colorPalette, globals}               from 'config/styles'
-import {borderBox, center, column, flex, sv} from 'utils/themer'
+import {colorPalette, globals}                          from 'config/styles'
+import {borderBox, center, column, flex, none, row, sv} from 'utils/themer'
 
 export const placesWrapperStyle = {
     display: 'grid',
@@ -9,6 +9,14 @@ export const placesWrapperStyle = {
     mobile: {
         display: flex,
         flexDirection: column
+    }
+}
+
+export const placesSearchFormStyle = {
+    flexDirection: row,
+    border: 0,
+    heading: {
+        display: none
     }
 }
 

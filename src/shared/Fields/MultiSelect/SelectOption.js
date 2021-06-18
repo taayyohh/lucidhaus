@@ -46,7 +46,7 @@ const SelectOption = ({optionId, name, field, formik, value, selected, setSelect
             }}
             theme={{
                 ...optionStyle,
-                color: isSelected ? colorPalette.purple : colorPalette.black
+                color: isSelected ? colorPalette.honeyYellow : colorPalette.black
             }}
         >
             {name}

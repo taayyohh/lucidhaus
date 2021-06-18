@@ -523,7 +523,7 @@ export const countControlStyle = {
     marginLeft: [10, .7, 10],
     hover: {
         cursor: pointer,
-        color: colorPalette.purple
+        color: colorPalette.honeyYellow
     }
 }
 

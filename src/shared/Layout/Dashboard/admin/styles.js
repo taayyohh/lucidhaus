@@ -37,7 +37,7 @@ export const addTrackButtonStyle = {
     border: `1px solid #000`,
     hover: {
         backgroundColor: transparent,
-        border: `1px solid ${colorPalette.purple}`
+        border: `1px solid ${colorPalette.honeyYellow}`
     }
 
 }
@@ -190,7 +190,7 @@ export const adminCreateButtonStyle = {
     padding: [20, .7, 20],
     marginTop: 0,
     hover: {
-        backgroundColor: colorPalette.purple,
+        backgroundColor: colorPalette.honeyYellow,
         color: white
     },
     child: {
@@ -271,10 +271,10 @@ export const adminFormSongWrapperStyle = {
 export const adminTaxonomyStyle = isActive => {
     return {
         size: [18, .7, 18],
-        color: !isActive ? black : colorPalette.purple,
+        color: !isActive ? black : colorPalette.honeyYellow,
         hover: {
             cursor: pointer,
-            color: colorPalette.purple
+            color: colorPalette.honeyYellow
         }
     }
 }
@@ -286,7 +286,7 @@ export const orderStatusFilterStyle = isActive => {
         paddingBottom: [5, .7, 5],
         marginRight: [30, .7, 30],
         size: [16, .7, 17],
-        color: isActive ? colorPalette.purple : black,
+        color: isActive ? colorPalette.honeyYellow : black,
         hover: {
             cursor: pointer
         }
@@ -302,7 +302,7 @@ export const orderStatusActiveIndicatorStyle = {
     left: 0,
     bottom: 0,
     width: '100%',
-    backgroundColor: colorPalette.purple,
+    backgroundColor: colorPalette.honeyYellow,
     height: [3, .7, 3]
 }
 

@@ -43,7 +43,7 @@ export const headerMenuPanelStyle = {
     boxSizing: borderBox,
     zIndex: 22,
     mobile: {
-        top: 80
+        top: 60
     },
     scrollBar: {
         display: none
@@ -117,7 +117,7 @@ export const headerMenuListItemStyle = isActive => {
     return {
         position: relative,
         display: block,
-        color: !isActive ? globals.colors.black : colorPalette.purple,
+        color: !isActive ? globals.colors.black : colorPalette.honeyYellow,
         fontFamily: globals.fonts.sans,
         textDecoration: 'none',
         size: [20, .8, 20],
@@ -129,7 +129,7 @@ export const headerMenuListItemStyle = isActive => {
             marginBottom: 15
         },
         hover: {
-            color: colorPalette.purple,
+            color: colorPalette.honeyYellow,
             mobile: {
                 color: black
             }
@@ -147,7 +147,7 @@ export const headerMenuActiveIndicator = {
     left: 0,
     bottom: 0,
     width: '100%',
-    backgroundColor: colorPalette.purple,
+    backgroundColor: colorPalette.honeyYellow,
     height: [3, .7, 3]
 }
 
@@ -195,10 +195,10 @@ export const dashboardMenuItemStyle = isActive => {
         paddingTop: [20, .7, 20],
         paddingBottom: [20, .7, 20],
         lineHeight: [20, .7, 20],
-        color: !isActive ? black : colorPalette.purple,
+        color: !isActive ? black : colorPalette.honeyYellow,
         textDecoration: none,
         hover: {
-            color: colorPalette.purple,
+            color: colorPalette.honeyYellow,
             cursor: pointer
         },
         child: [
@@ -229,5 +229,5 @@ export const dashboardActiveIndicator = {
     width: [10, .7, 10],
     borderRadius: [5, .7, 5],
     right: [-20, .7, -20],
-    backgroundColor: colorPalette.purple
+    backgroundColor: colorPalette.honeyYellow
 }

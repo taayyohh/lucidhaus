@@ -1,6 +1,6 @@
 import {placeImageWrapperStyle}                                    from 'features/place/views/styles'
 import {AnimatePresence}                                           from 'framer-motion'
-import React, {useEffect}                                          from 'react'
+import React, {useContext, useEffect}                              from 'react'
 import {useDispatch, useSelector}                                  from 'react-redux'
 import Div                                                         from 'shared/Basic/Div'
 import LinkSwitch                                                  from 'shared/Basic/LinkSwitch'
@@ -14,6 +14,7 @@ import Map                                                         from 'shared/
 import {history}                                                   from 'store'
 import {debounce}                                                  from 'utils/helpers'
 import {isEmpty}                                                   from 'utils/themer'
+import {searchContext}                                             from '../../../shared/Containers/SearchController'
 import Review                                                      from '../admin/views/Review'
 import Reviews                                                     from './Reviews'
 import {placeDescriptionStyle, placeTitleStyle, placeWrapperStyle} from './styles'
@@ -82,7 +83,8 @@ const Place = () => {
                         // placeId: placeId,
                         boonePlace: boonePlace,
                         _id: _id,
-                        token: token
+                        token: token,
+                        slug: slug
                     }
                 })
             }

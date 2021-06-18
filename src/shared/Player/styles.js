@@ -73,7 +73,7 @@ export const playerMinimizeIconStyle = isOpen => {
             marginLeft: isOpen ? auto : -6,
         },
         hover: {
-            color: colorPalette.purple,
+            color: colorPalette.honeyYellow,
             cursor: pointer
         }
     }
@@ -142,7 +142,7 @@ export const playerQueueTrackInnerStyle = isActive => {
     if (isActive)
         return {
             ...base,
-            backgroundColor: colorPalette.purple,
+            backgroundColor: colorPalette.honeyYellow,
             child: {
                 selector: 'a',
                 color: white,
@@ -162,7 +162,7 @@ export const playerQueueTitleStyle = {
     textDecoration: none,
     color: black,
     hover: {
-        color: colorPalette.purple
+        color: colorPalette.honeyYellow
     }
 }
 
@@ -171,7 +171,7 @@ export const playerQueuePlaceStyle = {
     whiteSpace: 'nowrap',
     paddingLeft: 20,
     hover: {
-        color: colorPalette.purple
+        color: colorPalette.honeyYellow
     }
 }
 
@@ -183,7 +183,7 @@ export const playerMuteStyle = muted => {
         marginLeft: auto,
         hover: {
             cursor: pointer,
-            color: colorPalette.purple,
+            color: colorPalette.honeyYellow,
         }
     }
 }
@@ -195,7 +195,7 @@ export const playerIconStyle = modifier => {
         color: black,
         hover: {
             cursor: pointer,
-            color: colorPalette.purple,
+            color: colorPalette.honeyYellow,
         }
     }
 

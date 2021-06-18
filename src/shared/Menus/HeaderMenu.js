@@ -19,7 +19,6 @@ const HeaderMenu = () => {
             {!isMobile && (
                 <HeaderMenuItems items={headerMenu}/>
             )}
-            <HeaderMenuControls/>
             {isMobile && (
                 <MenuToggle
                     theme={menuToggleStyle}

@@ -27,7 +27,8 @@ const initialState = {
         foodOptions: [],
         languageSpoken: [],
         placeCategory: [],
-    }
+    },
+    algoliaPlaces: []
 }
 
 export const slice = createSlice({
@@ -78,6 +79,9 @@ export const slice = createSlice({
         },
         destroyPlaceSuccess: (state, action) => {
             state.places = state.places.filter(item => item.objectID !== action.payload.objectID)
+        },
+        getAlgoliaPlacesSuccess: (state, action) => {
+            state.algoliaPlaces = action.payload
         },
 
         /*   ADMIN  */

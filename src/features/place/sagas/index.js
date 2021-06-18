@@ -1,5 +1,5 @@
-import {getPlace, getPlaces}  from 'features/place/services'
-import {call, put, takeEvery} from 'redux-saga/effects'
+import {getAlgoliaPlaces, getPlace, getPlaces} from 'features/place/services'
+import {call, put, takeEvery}                  from 'redux-saga/effects'
 
 /**
  *
@@ -36,6 +36,18 @@ export function* getPlaceDetail({payload}) {
     }
 }
 
+export function* searchAllPlaces({payload}) {
+    yield put({type: 'place/searchAlgoliaPlaceIndex', payload})
+    yield put({type: 'place/getBooneAutoComplete', payload})
+}
+
+export function* searchAlgoliaPlaceIndex({payload}) {
+    const result = yield call(getAlgoliaPlaces, payload)
+    if(result.hits.length > 0) {
+        yield put({type: 'place/getAlgoliaPlacesSuccess', payload: result.hits})
+    }
+}
+
 /**
  *
  *
@@ -50,4 +62,12 @@ export function* watchGetPlaces() {
 
 export function* watchGetPlaceDetail() {
     yield takeEvery('place/getPlace', getPlaceDetail)
+}
+
+export function* watchSearchAllPlaces() {
+    yield takeEvery('place/searchAllPlaces', searchAllPlaces)
+}
+
+export function* watchSearchAlgoliaPlaceIndex() {
+    yield takeEvery('place/searchAlgoliaPlaceIndex', searchAlgoliaPlaceIndex)
 }

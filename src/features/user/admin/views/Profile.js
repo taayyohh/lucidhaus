@@ -47,10 +47,6 @@ const Profile = () => {
     return (
         <ContentWrapper>
             <DashboardWrapper menu={userDashboardMenu}>
-                <DashboardInfo
-                    heading={'Manage Settings'}
-                    description={'Control your settings here.'}
-                />
                 <Form
                     initialValues={initialValues}
                     fields={userField}

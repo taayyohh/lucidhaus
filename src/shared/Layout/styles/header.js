@@ -4,7 +4,7 @@ import {
     block,
     borderBox,
     center,
-    column,
+    column, fixed,
     flex,
     flexEnd,
     flexStart,
@@ -15,7 +15,7 @@ import {
     spaceBetween,
     uppercase,
     white
-}                              from 'utils/themer'
+} from 'utils/themer'
 
 export const mobileHeaderMenuToggleStyle = {
     mobile: {
@@ -72,14 +72,14 @@ export const headerTopStyle = {
     alignItems: center,
     justifyContent: flexEnd,
     width: '100%',
-    height: [90, .7, 90],
+    height: [90, .7, 60],
     backgroundColor: colorPalette.ijGray,
     inner: {
         marginRight: [78, globals.style.layoutScalingValue, 25],
         textTransform: none
     },
     link: {
-        marginLeft: [38, .7, 38],
+        marginLeft: [38, .7, 25],
         textDecoration: none,
         color: colorPalette.forestGreen,
         hover: {
@@ -90,15 +90,15 @@ export const headerTopStyle = {
     signUp: {
         display: inlineFlex,
         alignItems: center,
-        marginLeft: [38, .7, 38],
+        marginLeft: [38, .7, 25],
         textDecoration: none,
         backgroundColor: colorPalette.forestGreen,
         color: white,
-        paddingLeft: [36, .7, 36],
-        paddingRight: [36, .7, 36],
-        paddingTop: [14, .7, 14],
-        paddingBottom: [14, .7, 14],
-        height: [48, .7, 48],
+        paddingLeft: [36, .7, 24],
+        paddingRight: [36, .7, 24],
+        paddingTop: [14, .7, 9],
+        paddingBottom: [14, .7, 9],
+        height: [40, .7, 40],
         borderRadius: [5, .7, 5],
         hover: {
             color: white
@@ -125,7 +125,7 @@ export const headerNowPlayingInfoStyle = {
             color: black,
             textDecoration: none,
             hover: {
-                color: colorPalette.purple
+                color: colorPalette.honeyYellow
             },
             firstChild: {
                 size: [22, .7, 22],
@@ -152,7 +152,7 @@ export const headerLogoLinkStyle = {
 export const cartNumberStyle = {
     width: 20,
     height: 20,
-    background: colorPalette.purple,
+    background: colorPalette.honeyYellow,
     color: '#fff',
     display: inlineFlex,
     alignItems: flexStart,

@@ -4,7 +4,7 @@ export const userDashboardMenu = [
     {
         url: '/dashboard',
         icon: home,
-        title: 'Home'
+        title: 'Dashboard'
     },
     {
         url: '/dashboard/profile',

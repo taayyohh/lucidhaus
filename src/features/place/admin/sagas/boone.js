@@ -12,6 +12,7 @@ export function* createPlaceFromBoone({payload}) {
     const place = new FormData()
     place.set('booneId', boonePlace.id)
     place.set('name', boonePlace.name)
+    place.set('slug', boonePlace.slug)
 
     console.log('boonePlace', boonePlace)
 

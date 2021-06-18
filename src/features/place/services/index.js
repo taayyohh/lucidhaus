@@ -1,4 +1,4 @@
-import {API} from 'config/variables'
+import {API, BOONE_API, BOONE_CLIENT_ID, BOONE_HOST, CORS} from 'config/variables'
 
 /**
  * to perform crud on admin
@@ -93,3 +93,17 @@ export const addPlaceFromBoone = ({_id, token, place}) =>
         .catch(error => {
             return error
         })
+
+
+export const getAlgoliaPlaces = ({input, index}) => {
+    return (
+        index.search(input)
+            .then(response => {
+                return response
+            })
+            .catch(error => {
+                return error
+            })
+    )
+}
+
