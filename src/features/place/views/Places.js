@@ -86,6 +86,8 @@ const Places = () => {
                                 />
                             )
                         }
+                    ) || (
+                        <Div>Oops search again!</Div>
                     )}
                 </Div>
             </Div>

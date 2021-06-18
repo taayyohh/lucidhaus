@@ -1,6 +1,7 @@
+import {push}                  from 'connected-react-router'
 import {addPlaceFromBoone}     from 'features/place/services'
 import {call, put, takeLatest} from 'redux-saga/effects'
-import {setFormData}           from '../../../../utils/abstractions/setFormData'
+import {setFormData}           from 'utils/abstractions/setFormData'
 
 export function* createPlaceFromBoone({payload}) {
     const {
@@ -15,7 +16,6 @@ export function* createPlaceFromBoone({payload}) {
     const fields = [
         {booneId: boonePlace.id},
         {name: boonePlace.name},
-        {slug: boonePlace.slug},
         {address1: boonePlace?.locations?.[0].address1},
         {address2: boonePlace?.locations?.[0].address2},
         {city: boonePlace?.locations?.[0].city},
@@ -24,6 +24,7 @@ export function* createPlaceFromBoone({payload}) {
         {state: boonePlace?.locations?.[0].state},
         {latitude: boonePlace?.locations?.[0].latitude},
         {longitude: boonePlace?.locations?.[0].longitude},
+        {website: boonePlace?.contact_info.website}
     ]
     for (let field of fields)
         setFormData(place, field)
@@ -40,10 +41,12 @@ export function* createPlaceFromBoone({payload}) {
         }
     )
     if (!createdPlace.error) {
-        // yield put({type: 'place/getPlaces'})
-        // yield put(push('/admin/places/update/' + createdPlace.slug))
-        yield put({type: 'place/createPlaceSuccess', payload})
+        console.log('created', createdPlace.slug)
+        yield put(push(`/places/${createdPlace.slug}`))
 
+        // yield put({type: 'place/getPlaces'})
+       // yield put(push(`/` + createdPlace.slug))
+        yield put({type: 'place/createPlaceSuccess', payload})
 
 
     } else {
