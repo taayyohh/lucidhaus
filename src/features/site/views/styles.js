@@ -62,13 +62,13 @@ export const homeSignupImageWrapperStyle = {
     minWidth: [1015, globals.style.layoutScalingValue, '100%'],
     height: [910, globals.style.layoutScalingValue, 350],
     backgroundColor: colorPalette.paleGreen,
-    marginTop: [-235, .7, '0']
+    marginTop: [-235, .7, 50]
 }
 
 export const homeSignupImageStyle = {
-    width: [908, globals.style.layoutScalingValue, '100%'],
-    height: [800, globals.style.layoutScalingValue, 300],
-    paddingTop: [40, .7, 40],
+    width: [908, globals.style.layoutScalingValue, 300],
+    height: [800, globals.style.layoutScalingValue, 264],
+    paddingTop: [40, .7, '0'],
     margin: 'auto',
 }
 
@@ -96,11 +96,11 @@ export const homeSignupQuoteStyle = {
 
 export const homeSignupButtonStyle = {
     width : '100%',
-    height: [80, globals.style.layoutScalingValue, 80],
+    height: [80, globals.style.layoutScalingValue, 50   ],
     marginTop: [30, .7, 30],
-    size: [32, .7, 32],
+    size: [32, .7, 24],
     weight: 700,
-    lineHeight: [38, .7, 38],
+    lineHeight: [38, .7, 22],
     textTransform: uppercase,
     display: flex,
     alignItems: center,

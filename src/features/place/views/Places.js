@@ -1,7 +1,7 @@
 import {placeSearchField}                      from 'features/place/admin/fields/search'
-import {placeCardStyle, placesSearchFormStyle} from 'features/place/views/styles'
-import React, {useContext, useEffect}          from 'react'
-import {useDispatch, useSelector}              from 'react-redux'
+import {placeCardStyle, placesSearchFormStyle}  from 'features/place/views/styles'
+import React, {useContext, useEffect, useState} from 'react'
+import {useDispatch, useSelector}               from 'react-redux'
 import Div                                     from 'shared/Basic/Div'
 import GenericCard                             from 'shared/Cards/GenericCard'
 import {mapContext}                            from 'shared/Containers/MapController'
@@ -17,16 +17,16 @@ const Places = () => {
     const {coords} = useContext(mapContext)
     const {placesIndex} = useContext(searchContext)
     const allPlaces = boonePlaces?.data?.concat(algoliaPlaces)
-    let filteredBoone = boonePlaces.data
+    const [filteredBoone, setFilteredBoone] = useState(boonePlaces.data)
 
-    console.log('iteeeeem', boonePlaces?.data?.filter(item => item.properties))
+    console.log('iteeeeem', boonePlaces?.data?.filter(item => item?.[0]?.properties))
 
 
     useEffect(() => {
         if (!!filteredBoone)
             for (const place of algoliaPlaces) {
                 console.log('PLACE', place.booneId)
-                filteredBoone = filteredBoone.filter(item => item.properties.id !== place.booneId)
+              // setFilteredBoone(filteredBoone.filter(item => item.properties.id !== place.booneId))
                 //filteredBoone?.filter(item => item.properties.id !== place.booneId)
             }
 
@@ -48,7 +48,8 @@ const Places = () => {
 
     return (
         <ContentWrapper>
-            <Div >
+            <Div>
+                {console.log('FILTERED', filteredBoone)}
                 <Form
                     theme={placesSearchFormStyle}
                     initialValues={{input: ''}}
