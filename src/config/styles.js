@@ -9,7 +9,7 @@ export const breakpointUpperLimit = {
 }
 
 export const colorPalette = {
-    hyphaGray: '#fcfcfc',
+    darkGray: '#5d5d5d',
     brightRed: '#d11',
     red: '#8C141E',
     black: '#0A1626',
