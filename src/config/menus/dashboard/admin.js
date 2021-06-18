@@ -17,10 +17,5 @@ export const adminDashboardMenu = [
         active: ['place'],
         icon: user,
         title: 'Manage Places'
-    },
-    {
-        dispatchAction: 'user/signOut',
-        icon: signOut,
-        title: 'Sign Out'
     }
 ]

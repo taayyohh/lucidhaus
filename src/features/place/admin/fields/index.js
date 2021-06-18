@@ -1,5 +1,5 @@
-import {IMAGE_UPLOAD, MULTI_SELECT, RICH_TEXT, SELECT, TEXT, TOGGLE, UPLOAD_PATHS} from 'config/variables'
-import * as Yup                                                                    from 'yup'
+import {IMAGE_UPLOAD, MULTI_SELECT, NUMBER, RICH_TEXT, SELECT, TEXT, TOGGLE, UPLOAD_PATHS} from 'config/variables'
+import * as Yup                                                                            from 'yup'
 
 export const placeFields = [
     {
@@ -29,6 +29,46 @@ export const placeFields = [
         name: 'audioAvailable',
         inputLabel: 'Audio Available',
         type: TOGGLE
+    },
+    {
+        name: 'address1',
+        inputLabel: 'Address ',
+        type: TEXT
+    },
+    {
+        name: 'address2',
+        inputLabel: 'Address 2 ',
+        type: TEXT
+    },
+    {
+        name: 'city',
+        inputLabel: 'City ',
+        type: TEXT
+    },
+    {
+        name: 'zip',
+        inputLabel: 'Zip ',
+        type: TEXT
+    },
+    {
+        name: 'country',
+        inputLabel: 'Country',
+        type: TEXT
+    },
+    {
+        name: 'state',
+        inputLabel: 'State ',
+        type: TEXT
+    },
+    {
+        name: 'longitude',
+        inputLabel: 'Longitude ',
+        type: NUMBER
+    },
+    {
+        name: 'latitude',
+        inputLabel: 'Latitude ',
+        type: NUMBER
     },
     {
         name: 'bathrooms',

@@ -15,9 +15,16 @@ export const placesWrapperStyle = {
 export const placesSearchFormStyle = {
     flexDirection: row,
     border: 0,
-    field: {
-        marginBottom: 0
-    },
+    child: [
+        {
+            selector: 'fieldset',
+            marginBottom: 0
+        },
+        {
+            selector: 'button',
+            marginTop: 0
+        }
+    ],
     heading: {
         display: none
     }

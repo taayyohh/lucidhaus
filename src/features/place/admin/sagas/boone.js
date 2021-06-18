@@ -1,5 +1,6 @@
 import {addPlaceFromBoone}     from 'features/place/services'
 import {call, put, takeLatest} from 'redux-saga/effects'
+import {setFormData}           from '../../../../utils/abstractions/setFormData'
 
 export function* createPlaceFromBoone({payload}) {
     const {
@@ -8,13 +9,27 @@ export function* createPlaceFromBoone({payload}) {
         boonePlace
     } = payload
 
-    //add to formdata so api can read
+    //TODO: at some point take categories from boone place make a call to store categories in guide
+
     const place = new FormData()
-    place.set('booneId', boonePlace.id)
-    place.set('name', boonePlace.name)
-    place.set('slug', boonePlace.slug)
+    const fields = [
+        {booneId: boonePlace.id},
+        {name: boonePlace.name},
+        {slug: boonePlace.slug},
+        {address1: boonePlace?.locations?.[0].address1},
+        {address2: boonePlace?.locations?.[0].address2},
+        {city: boonePlace?.locations?.[0].city},
+        {zip: boonePlace?.locations?.[0].postal_code},
+        {country: boonePlace?.locations?.[0].country},
+        {state: boonePlace?.locations?.[0].state},
+        {latitude: boonePlace?.locations?.[0].latitude},
+        {longitude: boonePlace?.locations?.[0].longitude},
+    ]
+    for (let field of fields)
+        setFormData(place, field)
 
     console.log('boonePlace', boonePlace)
+
 
     const createdPlace = yield call(
         addPlaceFromBoone,

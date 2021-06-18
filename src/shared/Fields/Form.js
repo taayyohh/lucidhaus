@@ -54,6 +54,7 @@ const Form = ({
                                 formik={formik}
                                 field={f}
                                 options={options}
+                                theme={theme}
                                 // autoSubmit
                             />
                         )}

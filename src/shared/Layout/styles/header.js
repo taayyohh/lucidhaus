@@ -75,6 +75,7 @@ export const headerTopStyle = {
     height: [90, .7, 60],
     backgroundColor: colorPalette.ijGray,
     inner: {
+        display: flex,
         marginRight: [78, globals.style.layoutScalingValue, 25],
         textTransform: none
     },

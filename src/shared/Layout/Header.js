@@ -7,6 +7,7 @@ import Img                        from 'shared/Basic/Img'
 import LinkSwitch                 from 'shared/Basic/LinkSwitch'
 import Span                       from 'shared/Basic/Span'
 import HeaderMenu                 from 'shared/Menus/HeaderMenu'
+import HeaderMenuControls         from '../Menus/HeaderMenuControls'
 import {
     headerInnerStyle,
     headerLogoLinkStyle,
@@ -53,7 +54,7 @@ const Header = ({theme}) => {
                             Sign Up
                         </LinkSwitch>
                     )}
-
+                    <HeaderMenuControls/>
                 </Div>
             </Div>
             <Div theme={headerInnerStyle}>
