@@ -57,7 +57,7 @@ export const orderCardStyle = {
 
 export const genericButtonStyle = {
     border: `1px solid #dadce0`,
-    background: '#5e4a6c',
+    background: colorPalette.forestGreen,
     color: white,
     font: globals.fonts.sans,
     borderRadius: [5, .7, 5],
@@ -82,7 +82,7 @@ export const genericButtonStyle = {
     hover: {
         cursor: 'pointer',
         border: `1px solid #dadce0`,
-        background: '#582a77',
+        background: colorPalette.seaGreen,
         color: white,
     }
 }

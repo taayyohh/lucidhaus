@@ -49,8 +49,8 @@ export const globals = {
         }
     },
     colors: {
-        linkColor: colorPalette.red,
-        linkHoverColor: colorPalette.honeyYellow,
+        linkColor: colorPalette.seaGreen,
+        linkHoverColor: colorPalette.paleGreen,
         inputLabelColor: colorPalette.black,
         menuPanelCloseButtonBackgroundColor: colorPalette.honeyYellow,
         transitionOverlayBackground: colorPalette.grayPurple,

@@ -8,7 +8,7 @@ import {
     center,
     column,
     flex,
-    flexStart,
+    flexStart, none,
     pointer,
     spaceBetween,
     uppercase,
@@ -44,6 +44,18 @@ export const footerStyle = {
             alignItems: flexStart,
             flexDirection: column
         }
+    },
+    innerLinksWrapper: {
+        child: {
+            selector: 'a',
+            color: colorPalette.paleGreen,
+            marginLeft: [7, .7, 7],
+            textDecoration: none,
+            hover: {
+                color: colorPalette.seaGreen,
+                textDecoration: 'underline'
+            }
+        }
     }
 }
 
@@ -78,7 +90,7 @@ export const footerIconStyle = {
         marginRight: 15
     },
     hover: {
-        color: colorPalette.honeyYellow
+        color: colorPalette.seaGreen
     }
 }
 

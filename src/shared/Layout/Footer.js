@@ -1,6 +1,6 @@
-import {siteDisplayName, siteInstagramUrl, siteTwitterUrl} from 'config/variables'
-import {instagram, twitter}                                from 'config/icons'
-import moment                                              from 'moment'
+import {instagram, twitter}                                                  from 'config/icons'
+import {siteDisplayName, siteInstagramUrl, siteTwitterUrl}                   from 'config/variables'
+import moment                                                                from 'moment'
 import PropTypes                                                             from 'prop-types'
 import React                                                                 from 'react'
 import Div                                                                   from 'shared/Basic/Div'
@@ -11,8 +11,16 @@ import {footerContactStyle, footerIconStyle, footerSocialStyle, footerStyle} fro
 const Footer = ({theme}) =>
     <Div as="footer" theme={{...footerStyle, ...theme}}>
         <Div theme={footerStyle.inner}>
-            <Div>
-                &copy; {moment().format('YYYY')} {siteDisplayName}
+            <Div theme={footerStyle.innerLinksWrapper}>
+                <span>&copy; {moment().format('YYYY')} {siteDisplayName}</span>
+                <LinkSwitch
+                    url={'/privacy-policy'}
+                    children={'Privacy Policy '}
+                />
+                <LinkSwitch
+                    url={'/terms-of-service'}
+                    children={'Terms of Service'}
+                />
             </Div>
             <Div theme={footerContactStyle}>
                 <Div theme={footerSocialStyle}>
@@ -23,10 +31,8 @@ const Footer = ({theme}) =>
                         <Icon icon={instagram} theme={footerIconStyle}/>
                     </LinkSwitch>
                 </Div>
-                {/*<Mailchimp/>*/}
             </Div>
         </Div>
-
     </Div>
 
 

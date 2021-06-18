@@ -2,7 +2,10 @@ import {globals}  from 'config/styles'
 import {relative} from 'utils/themer'
 
 export const defaultLinkStyle = {
-    color: globals.colors.linkColor
+    color: globals.colors.linkColor,
+    hover: {
+        color: globals.colors.linkHoverColor
+    }
 }
 export const richTextDefaultStyle = {
     size: [18, .9, 18],

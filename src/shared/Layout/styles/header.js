@@ -76,16 +76,17 @@ export const headerTopStyle = {
     backgroundColor: colorPalette.ijGray,
     inner: {
         display: flex,
+        alignItems: center,
         marginRight: [78, globals.style.layoutScalingValue, 25],
         textTransform: none
     },
     link: {
         marginLeft: [38, .7, 25],
         textDecoration: none,
-        color: colorPalette.forestGreen,
+        color: colorPalette.paleGreen,
         hover: {
             cursor: pointer,
-            color: colorPalette.black
+            color: colorPalette.seaGreen
         }
     },
     signUp: {
@@ -102,7 +103,8 @@ export const headerTopStyle = {
         height: [40, .7, 40],
         borderRadius: [5, .7, 5],
         hover: {
-            color: white
+            color: white,
+            backgroundColor: colorPalette.seaGreen
         }
     }
 }
@@ -173,7 +175,7 @@ export const headerIconStyle = {
     },
     hover: {
         cursor: 'pointer',
-        color: '#8c141e',
+        color: colorPalette.seaGreen,
         transition: 'color 500ms ease'
     }
 }

@@ -91,7 +91,11 @@ export const homeSignupQuoteWrapperStyle = {
 export const homeSignupQuoteStyle = {
     size: [48, globals.style.layoutScalingValue, 24],
     lineHeight: [55, globals.style.layoutScalingValue, 30],
-    paddingLeft: 0
+    paddingLeft: 0,
+    child: {
+        selector: '> div',
+        marginTop: [15, .7, 15]
+    }
 }
 
 export const homeSignupButtonStyle = {

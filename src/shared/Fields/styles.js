@@ -167,8 +167,8 @@ export const defaultLegendStyle = {
 
 export const defaultFieldErrorStyle = {
     position: absolute,
-    right: 0,
-    top: [-30, .7, -30],
+    right: [5, .7, 5],
+    top: [0, .7, 0],
     textTransform: uppercase,
     size: [18, .7, 18],
     color: globals.colors.errorColor

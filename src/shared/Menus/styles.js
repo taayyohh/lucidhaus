@@ -129,7 +129,7 @@ export const headerMenuListItemStyle = isActive => {
             marginBottom: 15
         },
         hover: {
-            color: colorPalette.honeyYellow,
+            color: colorPalette.seaGreen,
             mobile: {
                 color: black
             }

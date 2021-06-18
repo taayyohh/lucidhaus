@@ -1,8 +1,9 @@
 import React          from 'react'
+import {useSelector}  from 'react-redux'
 import Div            from 'shared/Basic/Div'
+import LinkSwitch     from 'shared/Basic/LinkSwitch'
+import S3Img          from 'shared/Basic/S3Img'
 import ContentWrapper from 'shared/Layout/ContentWrapper'
-import LinkSwitch     from '../../../shared/Basic/LinkSwitch'
-import S3Img          from '../../../shared/Basic/S3Img'
 import {
     homeImageStyle,
     homeImageWrapperStyle,
@@ -17,6 +18,7 @@ import {
 }                     from './styles'
 
 const Home = () => {
+    const {isAuthenticated, isAdmin} = useSelector(state => state.user)
 
     return (
         <ContentWrapper theme={{width: '100%', margin: 0}}>
@@ -30,16 +32,22 @@ const Home = () => {
             <Div theme={homeSignupWrapperStyle}>
                 <Div theme={homeSignupQuoteWrapperStyle}>
                     <Div theme={homeSignupQuoteStyle}>
-                        The Inclusive Guide works with input and feedback from individuals like you!
-                        Every person that signs up provides valuable insights that we are using to build
-                        and evolve the Guild in real time. Don’t miss out, sign up below to create your account!
+                        Join us on the <em>Inclusive Guide</em> to review and share the places that
+                        foster welcoming spaces and celebrate all identities!
+                        Your input provides valuable insights to help us
+                        build and evolve the Guide in real time.
+                        {!isAuthenticated && !isAdmin && (
+                            <Div>Click below to join us today!</Div>
+                        )}
                     </Div>
-                    <LinkSwitch
-                        url={'/signup'}
-                        theme={homeSignupButtonStyle}
-                    >
-                        Sign Up Now!
-                    </LinkSwitch>
+                    {!isAuthenticated && !isAdmin && (
+                        <LinkSwitch
+                            url={'/signup'}
+                            theme={homeSignupButtonStyle}
+                        >
+                            Create Account
+                        </LinkSwitch>
+                    )}
                 </Div>
                 <Div theme={homeSignupImageWrapperStyle}>
                     <S3Img
