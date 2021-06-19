@@ -1,5 +1,5 @@
-import {colorPalette, globals}                          from 'config/styles'
-import {borderBox, center, column, flex, none, row, sv} from 'utils/themer'
+import {colorPalette, globals}                                 from 'config/styles'
+import {borderBox, center, column, flex, none, row, sv, white} from 'utils/themer'
 
 export const placesWrapperStyle = {
     display: 'grid',
@@ -12,10 +12,36 @@ export const placesWrapperStyle = {
     }
 }
 
+export const placesHeadingStyle = {
+    background: colorPalette.forestGreen,
+    color: white,
+    display: flex,
+    alignItems: center,
+    justifyContent: center,
+    height: 180,
+    size: 58,
+    lineHeight: 70
+}
+
+export const placeContentWrapperStyle = {
+    marginBottom: [40, .7, 20],
+    marginTop: [-50, .7, '0']
+}
+
+export const placeDetailStyle = {
+    maxWidth: [800, globals.style.layoutScalingValue, '100%'],
+    margin: '0 auto',
+    font: globals.fonts.serif,
+    size: [18, .7, 18],
+    marginTop: [20, .7, 20]
+}
+
 export const placesSearchFormStyle = {
     flexDirection: row,
     border: 0,
     padding: 0,
+    maxWidth: [800, globals.style.layoutScalingValue, '100%'],
+    marginTop: [30, .7, 30],
     mobile: {
         flexDirection: column,
         paddingBottom: 30,
@@ -24,11 +50,17 @@ export const placesSearchFormStyle = {
     child: [
         {
             selector: 'fieldset',
-            marginBottom: 0
+            marginBottom: 0,
+            maxWidth: [650, globals.style.layoutScalingValue, '100%'],
+        },
+        {
+            selector: 'input',
         },
         {
             selector: 'button',
-            marginTop: [0, .7, 20]
+            marginTop: [0, .7, 20],
+            height: [52, .7, 52],
+            width: [150, .7, 150]
         },
         {
             selector: 'label',

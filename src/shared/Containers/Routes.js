@@ -11,6 +11,9 @@ const Sitemap = lazy(() => import('./Sitemap'))
 const Home = lazy(() => import('features/site/views/Home'))
 const Map = lazy(() => import('features/site/views/Map'))
 const Help = lazy(() => import('features/site/views/Help'))
+const Privacy = lazy(() => import('features/site/views/Privacy'))
+const Terms = lazy(() => import('features/site/views/Terms'))
+
 
 
 const AdminDashboard = lazy(() => import('shared/Layout/Dashboard/admin/AdminDashboard'))
@@ -95,6 +98,8 @@ const Routes = () => {
                             <Route path="/" exact component={Home}/>
                             <Route path="/map" exact component={Map}/>
                             <Route path="/help" exact component={Help}/>
+                            <Route path="/privacy-policy" exact component={Privacy}/>
+                            <Route path="/terms-of-service" exact component={Terms}/>
 
 
                             <Route path="/signup" exact component={SignUp}/>

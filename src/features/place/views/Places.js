@@ -1,15 +1,21 @@
-import {placeSearchField}                      from 'features/place/admin/fields/search'
-import {placeCardStyle, placesSearchFormStyle}  from 'features/place/views/styles'
-import React, {useContext, useEffect, useState} from 'react'
+import {placeSearchField}                                          from 'features/place/admin/fields/search'
+import {
+    placeCardStyle,
+    placeContentWrapperStyle, placeDetailStyle,
+    placesHeadingStyle,
+    placesSearchFormStyle
+} from 'features/place/views/styles'
+import React, {useContext, useEffect, useState}                    from 'react'
 import {useDispatch, useSelector}               from 'react-redux'
-import Div                                     from 'shared/Basic/Div'
-import GenericCard                             from 'shared/Cards/GenericCard'
-import {mapContext}                            from 'shared/Containers/MapController'
-import {searchContext}                         from 'shared/Containers/SearchController'
-import Form                                    from 'shared/Fields/Form'
-import ContentWrapper                          from 'shared/Layout/ContentWrapper'
-import {slugify}                               from 'utils/helpers'
-import {placesWrapperStyle}                    from './styles'
+import Div                                      from 'shared/Basic/Div'
+import GenericCard                              from 'shared/Cards/GenericCard'
+import {mapContext}                             from 'shared/Containers/MapController'
+import {searchContext}                          from 'shared/Containers/SearchController'
+import Form                                     from 'shared/Fields/Form'
+import ContentWrapper                           from 'shared/Layout/ContentWrapper'
+import {slugify}                                from 'utils/helpers'
+import {globals}                                from '../../../config/styles'
+import {placesWrapperStyle}                     from './styles'
 
 const Places = () => {
     const {boonePlaces, algoliaPlaces, places} = useSelector(state => state.place)
@@ -45,8 +51,20 @@ const Places = () => {
     }, [places])
 
     return (
-        <ContentWrapper>
+        <ContentWrapper theme={placeContentWrapperStyle}>
             <Div>
+                <Div>
+                    <Div theme={placesHeadingStyle}>Search Places</Div>
+                    <Div theme={placeDetailStyle}>
+                        By reviewing businesses, you help other members of your
+                        community know where you felt safe, welcomed, and celebrated!
+                        It’s a win/win way to celebrate the businesses that celebrate
+                        you as well as to provide local resources to your friends and neighbors.
+                    </Div>
+                    <Div theme={placeDetailStyle}>
+                        Use the Search field below to discover a new business or review one you’ve recently visited.
+                    </Div>
+                </Div>
                 <Form
                     theme={placesSearchFormStyle}
                     initialValues={{input: ''}}
