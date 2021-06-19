@@ -15,12 +15,12 @@ import Reviews                     from './Reviews'
 import {
     placeDescriptionStyle,
     placeTitleStyle,
-    placeWrapperLeftStyle,
-    placeWrapperRightStyle,
+    placeWrapperTopStyle,
+    placeWrapperBottomStyle,
     placeWrapperStyle,
     reviewHeadingStyle,
-    reviewsHeadingWrapperStyle
-}                                  from './styles'
+    reviewsHeadingWrapperStyle, placeAddressStyle
+} from './styles'
 
 const Place = () => {
     const dispatch = useDispatch()
@@ -125,15 +125,25 @@ const Place = () => {
             <MotionDiv initial={nOpacity} animate={fadeIn} exit={fadeOut}>
                 <ContentWrapper>
                     <MotionDiv theme={placeWrapperStyle}>
-                        <Div theme={placeWrapperLeftStyle}>
+                        <Div theme={placeWrapperTopStyle}>
                             <Div>
                                 {name && (
                                     <MotionDiv theme={placeTitleStyle}>
                                         {name}
                                     </MotionDiv>
                                 )}
-                                <Div>
-                                    {!!place.address1 && place.address1} {(!!place.address2 && place.address2 !== 'undefined') ? place.address2 : ''}, {!!place.city && place.city} {place.state} {place.country}
+                                <Div theme={placeAddressStyle}>
+                                    {!!address1 && address1}
+                                    {!!address1 ? ', ' : ''}
+                                    {(!!address2 && address2 !== 'undefined') ? address2 : ''}
+                                    {(!!address2 && address2 !== 'undefined')? ', ' : ''}
+                                    {!!city && city}
+                                    {!!city ? ', ' : ''}
+                                    {!!state && state}
+                                    {' '}
+                                    {!!zip && zip}
+                                    {' '}
+                                    {/*{!!country && country}*/}
                                 </Div>
                                 {(description) && (
                                     <RichText
@@ -148,7 +158,7 @@ const Place = () => {
                                 theme={{height: 500, width: 500}}
                             />
                         </Div>
-                        <Div theme={placeWrapperRightStyle}>
+                        <Div theme={placeWrapperBottomStyle}>
                             {reviews?.length > 0 && (
                                 <Div theme={reviewsHeadingWrapperStyle}>
                                     <Div theme={reviewHeadingStyle}>Reviews</Div>

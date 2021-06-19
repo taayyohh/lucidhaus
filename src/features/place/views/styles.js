@@ -1,5 +1,5 @@
-import {colorPalette, globals}                                 from 'config/styles'
-import {borderBox, center, column, flex, none, row, sv, white} from 'utils/themer'
+import {colorPalette, globals}                                           from 'config/styles'
+import {absolute, borderBox, center, column, flex, none, row, sv, white} from 'utils/themer'
 
 export const placesWrapperStyle = {
     display: 'grid',
@@ -115,7 +115,7 @@ export const placeWrapperStyle = {
     margin: '0 auto'
 }
 
-export const placeWrapperLeftStyle = {
+export const placeWrapperTopStyle = {
     display: 'grid',
     gridTemplateColumns: '1fr 1fr',
     gridGap: sv(100),
@@ -125,10 +125,21 @@ export const placeWrapperLeftStyle = {
     }
 }
 
-export const placeWrapperRightStyle = {
+export const placeWrapperBottomStyle = {
     display: 'grid',
     gridTemplateColumns: '1fr 1fr',
     gridGap: sv(100),
+    marginTop: [100, .7, 50],
+    before: {
+        position: absolute,
+        content: "''",
+        left: '50%',
+        marginLeft: [-200, .7, -200],
+        width: [400, .7, 400],
+        height: '1px',
+        background: globals.colors.borderColor,
+        margin: '0 auto'
+    },
     mobile: {
         display: 'flex',
         flexDirection: column
@@ -145,9 +156,16 @@ export const placeTitleStyle = {
     font: globals.fonts.fancy,
     textAlign: center,
     size: [34, .7, 28],
+    paddingTop: [20, .7, 20],
+    paddingBottom: [20, .7, 20],
     margin: 0,
     marginBottom: [30, .7, 20],
     borderRadius: `${sv(10)} ${sv(10)} 0 0`
+}
+
+export const placeAddressStyle = {
+    font: globals.fonts.serif,
+    size: [24, .7, 24]
 }
 
 export const placeDescriptionStyle = {
