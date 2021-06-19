@@ -34,7 +34,8 @@ export const placeDetailStyle = {
     maxWidth: [800, globals.style.layoutScalingValue, '100%'],
     margin: '0 auto',
     font: globals.fonts.serif,
-    size: [18, .7, 18],
+    size: [20, .7, 20],
+    lineHeight: [28, .7, 28],
     marginTop: [20, .7, 20]
 }
 
@@ -76,6 +77,10 @@ export const placesSearchFormStyle = {
 
 export const placeCardStyle = {
     backgroundColor: white,
+    textAlign: center,
+    hover: {
+        color: colorPalette.paleGreen
+    },
     textWrapper: {
         paddingLeft: [50, globals.style.layoutScalingValue, 20],
         paddingRight: [50, globals.style.layoutScalingValue, 20]
@@ -83,6 +88,12 @@ export const placeCardStyle = {
     name: {
         size: [32, .7, 28],
         lineHeight: [24, .7, 32],
+        width: '100%',
+        textAlign: center
+    },
+    address: {
+        size: [22, .7, 22],
+        lineHeight: [20, .7, 20],
         width: '100%',
         textAlign: center
     },
