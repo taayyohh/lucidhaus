@@ -176,8 +176,13 @@ export const reviewFormWrapperStyle = {
     marginTop: 50,
 }
 
+export const reviewLeaveWrapperStyle = {
+    marginTop: [65, .7, 65]
+}
+
 export const reviewFormHeadingStyle = {
     size: [30, .7, 24],
+    marginBottom: [20, .7, 20],
     letterSpacing: [1, .7, 1],
     font: globals.fonts.fancy
 }

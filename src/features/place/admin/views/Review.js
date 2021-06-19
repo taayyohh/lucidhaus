@@ -8,8 +8,8 @@ import {
     reviewFormHeadingStyle,
     reviewFormStyle,
     reviewFormWrapperStyle,
-    reviewHelperTextStyle
-}                                     from '../../views/styles'
+    reviewHelperTextStyle, reviewLeaveWrapperStyle
+} from '../../views/styles'
 
 const Review = () => {
     const {_id, token} = useSelector(state => state.user)
@@ -30,8 +30,8 @@ const Review = () => {
 
     return (
         <Div theme={reviewFormWrapperStyle}>
-            <Div>
-                <H2 theme={reviewFormHeadingStyle}>Review Place</H2>
+            <Div theme={reviewLeaveWrapperStyle}>
+                <H2 theme={reviewFormHeadingStyle}>Leave a Review</H2>
                 <Div theme={reviewHelperTextStyle}>
                     As you visit businesses, take a few moments to review them here. We aren't only looking for ratings from
                     people who experience discrimination; we need allies as well! Ratings from allies are necessary for
@@ -45,7 +45,7 @@ const Review = () => {
                 fields={reviewFields}
                 validationSchema={validateReview}
                 dispatchAction={'place/addReview'}
-                buttonText={'Review'}
+                buttonText={'Submit'}
                 theme={reviewFormStyle}
                 enableReinitialize={true}
             />
