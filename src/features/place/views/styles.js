@@ -111,14 +111,20 @@ export const placeCardStyle = {
 export const placeWrapperStyle = {
     display: flex,
     flexDirection: column,
-    width: [1200, globals.style.layoutScalingValue, '100%'],
+    width: [1450, globals.style.layoutScalingValue, '100%'],
     margin: '0 auto'
 }
 
-export const placeWrapperTopStyle = {
+export const placeWrapperLeftStyle = {
     display: 'grid',
     gridTemplateColumns: '1fr 1fr',
     gridGap: sv(100),
+}
+
+export const placeWrapperRightStyle = {
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr',
+    gridGap: sv(100)
 }
 
 export const placeImageWrapperStyle = {
@@ -153,7 +159,31 @@ export const reviewsHeadingWrapperStyle = {
     marginTop: [100, .7, 50]
 }
 
+export const reviewHelperTextStyle = {
+    font: globals.fonts.serif,
+    size: [18, .7, 18]
+}
+
+export const reviewFormStyle = {
+    width: '100%',
+    padding: 0,
+    border: 0,
+    marginTop: [50, .7, 50]
+}
+
+export const reviewFormWrapperStyle = {
+    maxWidth: [600, globals.style.layoutScalingValue, '100%'],
+    marginTop: 50,
+}
+
+export const reviewFormHeadingStyle = {
+    size: [30, .7, 24],
+    letterSpacing: [1, .7, 1],
+    font: globals.fonts.fancy
+}
+
 export const reviewHeadingStyle = {
+    font: globals.fonts.fancy,
     size: [32, .7, 28],
     backgroundColor: colorPalette.seaFoamGreen,
     paddingLeft: [20, .7, 20],
@@ -165,7 +195,8 @@ export const reviewHeadingStyle = {
 export const placeReviewStyle = {
     width: '100%',
     padding: [20, globals.style.layoutScalingValue, 20],
-    border: `1px solid ${globals.colors.borderColor}`,
+    borderBottom: `1px solid ${globals.colors.borderColor}`,
+    boxShadow: '1px 3px 5px 0px #e2e2e2',
     marginBottom: [20, .7, 20],
     image: {
         maxWidth: [150, .7, 150]

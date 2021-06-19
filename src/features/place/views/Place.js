@@ -1,24 +1,26 @@
-import Review                                                      from 'features/place/admin/views/Review'
-import {AnimatePresence}                                           from 'framer-motion'
-import React, {useEffect}                                          from 'react'
-import {useDispatch, useSelector}                                  from 'react-redux'
-import Div                                                         from 'shared/Basic/Div'
-import MotionDiv                                                   from 'shared/Basic/MotionDiv'
-import RichText                                                    from 'shared/Basic/RichText'
-import ContentWrapper                                              from 'shared/Layout/ContentWrapper'
-import {fadeIn, fadeOut, nOpacity}                                 from 'shared/Layout/styles/animations'
-import Map                                                         from 'shared/Map'
-import {history}                                                   from 'store'
-import {debounce}                                                  from 'utils/helpers'
-import {isEmpty}                                                   from 'utils/themer'
-import Reviews                                                                                 from './Reviews'
+import Review                      from 'features/place/admin/views/Review'
+import {AnimatePresence}           from 'framer-motion'
+import React, {useEffect}          from 'react'
+import {useDispatch, useSelector}  from 'react-redux'
+import Div                         from 'shared/Basic/Div'
+import MotionDiv                   from 'shared/Basic/MotionDiv'
+import RichText                    from 'shared/Basic/RichText'
+import ContentWrapper              from 'shared/Layout/ContentWrapper'
+import {fadeIn, fadeOut, nOpacity} from 'shared/Layout/styles/animations'
+import Map                         from 'shared/Map'
+import {history}                   from 'store'
+import {debounce}                  from 'utils/helpers'
+import {isEmpty}                   from 'utils/themer'
+import Reviews                     from './Reviews'
 import {
     placeDescriptionStyle,
     placeTitleStyle,
-    placeWrapperStyle, placeWrapperTopStyle,
+    placeWrapperLeftStyle,
+    placeWrapperRightStyle,
+    placeWrapperStyle,
     reviewHeadingStyle,
     reviewsHeadingWrapperStyle
-} from './styles'
+}                                  from './styles'
 
 const Place = () => {
     const dispatch = useDispatch()
@@ -123,7 +125,7 @@ const Place = () => {
             <MotionDiv initial={nOpacity} animate={fadeIn} exit={fadeOut}>
                 <ContentWrapper>
                     <MotionDiv theme={placeWrapperStyle}>
-                        <Div theme={placeWrapperTopStyle}>
+                        <Div theme={placeWrapperLeftStyle}>
                             <Div>
                                 {name && (
                                     <MotionDiv theme={placeTitleStyle}>
@@ -146,20 +148,17 @@ const Place = () => {
                                 theme={{height: 500, width: 500}}
                             />
                         </Div>
-
-
-
-                        <Div>
+                        <Div theme={placeWrapperRightStyle}>
                             {reviews?.length > 0 && (
                                 <Div theme={reviewsHeadingWrapperStyle}>
                                     <Div theme={reviewHeadingStyle}>Reviews</Div>
                                     <Reviews reviews={reviews}/>
                                 </Div>
                             )}
+                            {(isAuthenticated && hasNoReviews) && (
+                                <Review/>
+                            )}
                         </Div>
-                        {(isAuthenticated && hasNoReviews) && (
-                            <Review/>
-                        )}
                     </MotionDiv>
                 </ContentWrapper>
             </MotionDiv>
