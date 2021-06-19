@@ -233,3 +233,7 @@ export const placeReviewStyle = {
         maxWidth: [150, .7, 150]
     }
 }
+
+export const placeReviewDescriptionStyle = {
+    marginTop: [30, .7, 30]
+}

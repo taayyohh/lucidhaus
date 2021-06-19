@@ -282,6 +282,7 @@ export const imageDropZonePreviewWrapperStyle = {
     border: `1px solid ${colorPalette.gray}`,
     boxSizing: borderBox,
     padding: [20, globals.style.layoutScalingValue, 20],
+    marginTop: [50, .7, 50],
     mobile: {
         height: 300
     }
@@ -296,6 +297,7 @@ export const imageDropZoneStyle = {
     position: relative,
     display: block,
     minHeight: [500, globals.style.layoutScalingValue, 100],
+    marginTop: [50, .7, 50],
     // width: [500, globals.style.layoutScalingValue, '100%'],
     width: '50%',
     background: '#fff',

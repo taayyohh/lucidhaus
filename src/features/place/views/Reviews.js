@@ -1,8 +1,8 @@
 import React                                   from 'react'
 import Div                                     from 'shared/Basic/Div'
 import RichText                                from 'shared/Basic/RichText'
-import S3Img                                   from 'shared/Basic/S3Img'
-import {placeReviewStyle, reviewsWrapperStyle} from './styles'
+import S3Img                                                                from 'shared/Basic/S3Img'
+import {placeReviewDescriptionStyle, placeReviewStyle, reviewsWrapperStyle} from './styles'
 
 const Reviews = ({reviews}) => {
     return (
@@ -12,7 +12,9 @@ const Reviews = ({reviews}) => {
                     {review.photo && (
                         <S3Img url={review.photo} theme={placeReviewStyle.image}/>
                     )}
-                    <RichText>{review.review}</RichText>
+                    {console.log('user', review.user[0])}
+                    <RichText theme={placeReviewDescriptionStyle}>{review.review}</RichText>
+                    {/*<Div>{moment()}</Div>*/}
                 </Div>
             ))}
         </Div>

@@ -118,7 +118,7 @@ const UploadImage = memo(({
                         <Div {...getRootProps()} theme={imageDropZoneStyle}>
                             <Span theme={uploadErrorMessageStyle}>{errorMessage}</Span>
                             <input {...getInputProps()} />
-                            <p>Drag and Drop or click to select files</p>
+                            <p>Drag and Drop or click upload an image</p>
                         </Div>
                     )}
                 </Dropzone>
