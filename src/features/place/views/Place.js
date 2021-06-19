@@ -133,15 +133,15 @@ const Place = () => {
                                     </MotionDiv>
                                 )}
                                 <Div theme={placeAddressStyle}>
-                                    {!!address1 && address1 || boonePlace.locations[0].address1}
+                                    {(!!address1 && address1) || (!isEmpty(boonePlace) && boonePlace.locations?.[0].address1)}
                                     {(!!address1 ? ', ' : '')}
                                     {(!!address2 && address2 !== 'undefined') ? address2 : ''}
                                     {(!!address2 && address2 !== 'undefined')? ', ' : ''}
-                                    {(!!city && city) || boonePlace.locations[0].city}
+                                    {(!!city && city) || (!isEmpty(boonePlace) && boonePlace.locations[0].city)}
                                     {(!!city ? ', ' : '')}
-                                    {(!!state && state) || boonePlace.locations[0].state}
+                                    {(!!state && state) || (!isEmpty(boonePlace) && boonePlace.locations[0].state)}
                                     {' '}
-                                    {(!!zip && zip) || boonePlace.locations[0].postal_code}
+                                    {(!!zip && zip) || (!isEmpty(boonePlace) && boonePlace.locations[0].postal_code)}
                                     {' '}
                                     {/*{!!country && country}*/}
                                 </Div>
@@ -153,8 +153,8 @@ const Place = () => {
                                 )}
                             </Div>
                             <Map
-                                lon={longitude || boonePlace.locations[0].longitude}
-                                lat={latitude || boonePlace.locations[0].latitude}
+                                lon={longitude || (!isEmpty(boonePlace) && boonePlace.locations[0].longitude)}
+                                lat={latitude || (!isEmpty(boonePlace) && boonePlace.locations[0].latitude)}
                                 theme={{height: 500, width: 500}}
                             />
                         </Div>
