@@ -15,7 +15,7 @@ import Reviews                                                                  
 import {
     placeDescriptionStyle,
     placeTitleStyle,
-    placeWrapperStyle,
+    placeWrapperStyle, placeWrapperTopStyle,
     reviewHeadingStyle,
     reviewsHeadingWrapperStyle
 } from './styles'
@@ -123,7 +123,7 @@ const Place = () => {
             <MotionDiv initial={nOpacity} animate={fadeIn} exit={fadeOut}>
                 <ContentWrapper>
                     <MotionDiv theme={placeWrapperStyle}>
-                        <Div theme={{display: 'flex'}}>
+                        <Div theme={placeWrapperTopStyle}>
                             <Div>
                                 {name && (
                                     <MotionDiv theme={placeTitleStyle}>
@@ -150,7 +150,7 @@ const Place = () => {
 
 
                         <Div>
-                            {reviews && (
+                            {reviews?.length > 0 && (
                                 <Div theme={reviewsHeadingWrapperStyle}>
                                     <Div theme={reviewHeadingStyle}>Reviews</Div>
                                     <Reviews reviews={reviews}/>

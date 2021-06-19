@@ -115,6 +115,12 @@ export const placeWrapperStyle = {
     margin: '0 auto'
 }
 
+export const placeWrapperTopStyle = {
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr',
+    gridGap: sv(100),
+}
+
 export const placeImageWrapperStyle = {
     width: [500, globals.style.layoutScalingValue, '100%'],
     margin: '0 auto'
@@ -124,9 +130,10 @@ export const placeTitleStyle = {
     backgroundColor: colorPalette.seaFoamGreen,
     font: globals.fonts.fancy,
     textAlign: center,
-    size: [42, .7, 36],
+    size: [34, .7, 28],
     margin: 0,
-    marginBottom: [30, .7, 20]
+    marginBottom: [30, .7, 20],
+    borderRadius: `${sv(10)} ${sv(10)} 0 0`
 }
 
 export const placeDescriptionStyle = {

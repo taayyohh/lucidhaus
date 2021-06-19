@@ -39,6 +39,7 @@ export function* createPlaceFromBoone({payload}) {
     )
     if (!createdPlace.error) {
         yield put(push(`/places/${createdPlace.slug}`))
+        yield put({type: 'place/getPlace', payload: {slug: createdPlace.slug}})
 
         // yield put({type: 'place/getPlaces'})
        // yield put(push(`/` + createdPlace.slug))

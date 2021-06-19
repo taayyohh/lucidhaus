@@ -14,11 +14,11 @@ const Footer = ({theme}) =>
             <Div theme={footerStyle.innerLinksWrapper}>
                 <span>&copy; {moment().format('YYYY')} {siteDisplayName}</span>
                 <LinkSwitch
-                    url={'/privacy-policy'}
+                    url={'https://inclusive-guide.s3.us-east-2.amazonaws.com/assets/Inclusive+Journeys+Privacy+Policy+-+4824-7519-7925+5.pdf'}
                     children={'Privacy Policy '}
                 />
                 <LinkSwitch
-                    url={'/terms-of-service'}
+                    url={'https://inclusive-guide.s3.us-east-2.amazonaws.com/assets/Inclusive+Journeys+Website+Terms+of+Service+-+4817-1972-0421+4.pdf'}
                     children={'Terms of Service'}
                 />
             </Div>
