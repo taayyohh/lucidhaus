@@ -21,6 +21,7 @@ export const colorPalette = {
     ijGray: '#F2F2F2',
     forestGreen: '#004722',
     seaGreen: '#0e834b',
+    seaFoamGreen: '#B7DAC9',
     paleGreen: '#80A390',
     honeyYellow: '#FFB400'
 }

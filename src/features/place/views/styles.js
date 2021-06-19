@@ -36,7 +36,7 @@ export const placeDetailStyle = {
     font: globals.fonts.serif,
     size: [20, .7, 20],
     lineHeight: [28, .7, 28],
-    marginTop: [20, .7, 20]
+    marginTop: [40, .7, 30]
 }
 
 export const placesSearchFormStyle = {
@@ -111,7 +111,7 @@ export const placeCardStyle = {
 export const placeWrapperStyle = {
     display: flex,
     flexDirection: column,
-    width: [800, globals.style.layoutScalingValue, '100%'],
+    width: [1200, globals.style.layoutScalingValue, '100%'],
     margin: '0 auto'
 }
 
@@ -121,6 +121,7 @@ export const placeImageWrapperStyle = {
 }
 
 export const placeTitleStyle = {
+    backgroundColor: colorPalette.seaFoamGreen,
     font: globals.fonts.fancy,
     textAlign: center,
     size: [42, .7, 36],
@@ -129,19 +130,8 @@ export const placeTitleStyle = {
 }
 
 export const placeDescriptionStyle = {
-    marginTop: [60, .7, 30],
-    paddingTop: [50, .7, 30],
     boxSizing: borderBox,
-    paddingLeft: [30, globals.style.layoutScalingValue, '0'],
     paddingRight: [30, globals.style.layoutScalingValue, '0'],
-    borderTop: `1px solid ${colorPalette.gray}`,
-    child: [
-        {
-            selector: 'p:first-child',
-            size: [26, .7, 26],
-            lineHeight: [34, .7, 34]
-        }
-    ]
 }
 
 export const placeImageStyle = {}
@@ -150,6 +140,19 @@ export const reviewsWrapperStyle = {
     display: flex,
     flexDirection: 'column',
     marginBottom: [50, .7, 50]
+}
+
+export const reviewsHeadingWrapperStyle = {
+    marginTop: [100, .7, 50]
+}
+
+export const reviewHeadingStyle = {
+    size: [32, .7, 28],
+    backgroundColor: colorPalette.seaFoamGreen,
+    paddingLeft: [20, .7, 20],
+    paddingTop:  [20, .7, 20],
+    paddingBottom:  [20, .7, 20],
+    borderRadius: `${sv(10)} ${sv(10)} 0 0`
 }
 
 export const placeReviewStyle = {

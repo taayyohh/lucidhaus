@@ -1,21 +1,28 @@
-import {placeSearchField}                                          from 'features/place/admin/fields/search'
+import {placeSearchField}   from 'features/place/admin/fields/search'
 import {
     placeCardStyle,
-    placeContentWrapperStyle, placeDetailStyle,
+    placeContentWrapperStyle,
+    placeDetailStyle,
     placesHeadingStyle,
     placesSearchFormStyle
-} from 'features/place/views/styles'
-import React, {useContext, useEffect, useState}                    from 'react'
-import {useDispatch, useSelector}               from 'react-redux'
-import Div                                      from 'shared/Basic/Div'
-import GenericCard                              from 'shared/Cards/GenericCard'
-import {mapContext}                             from 'shared/Containers/MapController'
-import {searchContext}                          from 'shared/Containers/SearchController'
-import Form                                     from 'shared/Fields/Form'
-import ContentWrapper                           from 'shared/Layout/ContentWrapper'
-import {slugify}                                from 'utils/helpers'
-import {globals}                                from '../../../config/styles'
-import {placesWrapperStyle}                     from './styles'
+}                           from 'features/place/views/styles'
+import React, {
+    useContext,
+    useEffect,
+    useState
+}                           from 'react'
+import {
+    useDispatch,
+    useSelector
+}                           from 'react-redux'
+import Div                  from 'shared/Basic/Div'
+import GenericCard          from 'shared/Cards/GenericCard'
+import {mapContext}         from 'shared/Containers/MapController'
+import {searchContext}      from 'shared/Containers/SearchController'
+import Form                 from 'shared/Fields/Form'
+import ContentWrapper       from 'shared/Layout/ContentWrapper'
+import {slugify}            from 'utils/helpers'
+import {placesWrapperStyle} from './styles'
 
 const Places = () => {
     const {boonePlaces, algoliaPlaces, places} = useSelector(state => state.place)
@@ -27,11 +34,11 @@ const Places = () => {
 
     useEffect(() => {
         const algoliaIds = algoliaPlaces.map(p => p.booneId)
-        if(!!boonePlaces?.data) {
+        if (!!boonePlaces?.data) {
             boonePlacesData = [...boonePlaces?.data]
             boonePlacesData.forEach(place => {
-                if(algoliaIds.includes(place.properties?.id)) {
-                   boonePlacesData.splice(boonePlaces.data.indexOf(place), 1)
+                if (algoliaIds.includes(place.properties?.id)) {
+                    boonePlacesData.splice(boonePlaces.data.indexOf(place), 1)
                 }
             })
         }
@@ -82,9 +89,8 @@ const Places = () => {
 
                 <Div theme={placesWrapperStyle}>
                     {allPlaces.length > 0 && allPlaces.map((place) => {
-                        if(!!place.properties) {
+                        if (!!place.properties) {
                             const slug = `${slugify(place.properties.name)}-${slugify(place.properties.address)}-${place.properties.id}`
-                            {console.log('prop', place.properties)}
 
                             return (
                                 <GenericCard
@@ -92,14 +98,12 @@ const Places = () => {
                                     slug={`places/${slug}`}
                                     name={place.properties.name}
                                     address={place.properties.address}
-                                    // photo={place.photo}
                                     theme={placeCardStyle}
                                 />
                             )
                         } else {
-                            {console.log('prop', place)}
                             const address = () => {
-                                if(!!place.address1 && !!place.city && !!place.state && !!place.country) {
+                                if (!!place.address1 && !!place.city && !!place.state && !!place.country) {
                                     return `${!!place.address1 && place.address1} ${(!!place.address2 && place.address2 !== 'undefined') ? place.address2 : ''}, ${!!place.city && place.city} ${place.state} ${place.country}`
                                 }
                             }
@@ -110,7 +114,6 @@ const Places = () => {
                                     slug={`places/${place.slug}`}
                                     name={place.name}
                                     address={address()}
-                                    // photo={place.photo}
                                     theme={placeCardStyle}
                                 />
                             )
