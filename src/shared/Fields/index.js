@@ -84,6 +84,7 @@ const FieldSwitch = memo(({field, formik, options, autoSubmit}) => {
                 name={field.name}
                 formik={formik}
                 inputLabel={field.inputLabel}
+                inputLabelHelper={field.inputLabelHelper}
             />
         case SELECT:
             return <Select

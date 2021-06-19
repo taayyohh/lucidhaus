@@ -1,5 +1,5 @@
-import {PASSWORD, TEL, TEXT}         from 'config/variables'
-import {passwordRegExp, phoneRegExp} from 'utils/helpers'
+import {CHECKBOX, PASSWORD, TEL, TEXT, TOGGLE} from 'config/variables'
+import {passwordRegExp, phoneRegExp}           from 'utils/helpers'
 import * as Yup                      from 'yup'
 import "yup-phone"
 
@@ -23,6 +23,12 @@ export const signUpFields = [
         name: 'passwordConfirm',
         inputLabel: 'Confirm Password',
         type: PASSWORD
+    },
+    {
+        name: 'acceptTerms',
+        inputLabel: 'Accept Terms of Service',
+        inputLabelHelper: 'https://inclusive-guide.s3.us-east-2.amazonaws.com/assets/Inclusive+Journeys+Website+Terms+of+Service+-+4817-1972-0421+4.pdf',
+        type: TOGGLE
     }
 ]
 
@@ -56,6 +62,9 @@ export const validateSignup = Yup.object().shape({
             passwordRegExp,
             'Must include at least 8 Characters, One Uppercase, One Number'
         ),
+    acceptTerms: Yup.boolean()
+        .oneOf([true], 'Must Accept Terms and Conditions'),
+
     passwordConfirm: Yup
         .string()
         .oneOf([Yup.ref('password')], 'passwords do not match')

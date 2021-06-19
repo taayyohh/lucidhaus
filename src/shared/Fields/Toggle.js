@@ -1,6 +1,7 @@
 import React            from 'react'
 import Div              from 'shared/Basic/Div'
 import MotionDiv        from 'shared/Basic/MotionDiv'
+import LinkSwitch       from '../Basic/LinkSwitch'
 import {toggleVariants} from './animations'
 import {
     defaultFieldHeadingStyle,
@@ -8,9 +9,14 @@ import {
     toggleFieldStyle
 }                       from './styles'
 
-const Toggle = ({formik, inputLabel, name}) =>
+const Toggle = ({formik, inputLabel, inputLabelHelper, name}) =>
     <>
-        <Div theme={defaultFieldHeadingStyle}>{inputLabel}</Div>
+        {(inputLabelHelper && (
+            <LinkSwitch url={inputLabelHelper} theme={defaultFieldHeadingStyle}>{inputLabel}</LinkSwitch>
+        )) || (
+            <Div theme={defaultFieldHeadingStyle}>{inputLabel}</Div>
+        )}
+
         <MotionDiv
             theme={toggleFieldStyle}
             onClick={() => formik.setFieldValue(name, !formik.values[name])}
