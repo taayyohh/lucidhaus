@@ -100,7 +100,7 @@ const Places = () => {
                             {console.log('prop', place)}
                             const address = () => {
                                 if(!!place.address1 && !!place.city && !!place.state && !!place.country) {
-                                    return `${!!place.address1 && place.address1} ${!!place.address2 && place.address2}, ${!!place.city && place.city} ${place.state} ${place.country}`
+                                    return `${!!place.address1 && place.address1} ${(!!place.address2 && place.address2 !== 'undefined') ? place.address2 : ''}, ${!!place.city && place.city} ${place.state} ${place.country}`
                                 }
                             }
 
