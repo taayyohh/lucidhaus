@@ -119,12 +119,20 @@ export const placeWrapperLeftStyle = {
     display: 'grid',
     gridTemplateColumns: '1fr 1fr',
     gridGap: sv(100),
+    mobile: {
+        display: 'flex',
+        flexDirection: column
+    }
 }
 
 export const placeWrapperRightStyle = {
     display: 'grid',
     gridTemplateColumns: '1fr 1fr',
-    gridGap: sv(100)
+    gridGap: sv(100),
+    mobile: {
+        display: 'flex',
+        flexDirection: column
+    }
 }
 
 export const placeImageWrapperStyle = {
