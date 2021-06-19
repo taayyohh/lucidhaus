@@ -175,13 +175,21 @@ export const headerMenuAuthStyleListItemStyle = {
 export const dashboardMenuStyle = {
     minHeight: '750px',
     mobile: {
-        minHeight: auto
+        minHeight: auto,
+        zIndex: 5,
+        background: '#fff'
     }
 }
 export const dashboardMenuInnerStyle = {
     width: [300, globals.style.layoutScalingValue, '100%'],
     position: 'fixed',
-    borderRight: '1px solid #dadce0'
+    borderRight: '1px solid #dadce0',
+    mobile: {
+        background: '#fff',
+        position: absolute,
+        top: 100,
+        left: 0
+    }
 
 }
 export const dashboardMenuItemStyle = isActive => {
