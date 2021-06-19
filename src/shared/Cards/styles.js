@@ -113,6 +113,12 @@ export const genericCardNameStyle = {
     color: black
 }
 
+export const genericCardAddressStyle = {
+    size: [28, .7, 28],
+    lineHeight: [32, .7, 32],
+    weight: 300,
+}
+
 export const genericCardPriceStyle = {
     font: globals.fonts.sans,
     size: [28, .7, 28],

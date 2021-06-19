@@ -6,12 +6,13 @@ import MotionDiv                   from 'shared/Basic/MotionDiv'
 import RichText                    from 'shared/Basic/RichText'
 import Span                        from 'shared/Basic/Span'
 import {
+    genericCardAddressStyle,
     genericCardPlaceNameStyle,
     genericCardPlaceWrapperStyle,
     genericCardPriceStyle,
     genericCardProductCategoryStyle,
     genericCardQuantityStyle
-}                                  from 'shared/Cards/styles'
+} from 'shared/Cards/styles'
 import {fadeIn, fadeOut, nOpacity} from 'shared/Layout/styles/animations'
 import {excerpt, getNameById}      from 'utils/helpers'
 import {
@@ -26,6 +27,7 @@ import {
 const S3Img = lazy(() => import('shared/Basic/S3Img'))
 
 const GenericCard = ({
+    address,
                          photo,
                          name,
                          slug,
@@ -80,6 +82,12 @@ const GenericCard = ({
                         <MotionDiv
                             theme={{...genericCardNameStyle, ...theme.name}}
                             children={name}
+                        />
+                    )}
+                    {address && (
+                        <MotionDiv
+                            theme={{...genericCardAddressStyle, ...theme.address}}
+                            children={address}
                         />
                     )}
 

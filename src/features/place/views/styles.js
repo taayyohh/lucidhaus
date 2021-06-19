@@ -3,9 +3,11 @@ import {borderBox, center, column, flex, none, row, sv, white} from 'utils/theme
 
 export const placesWrapperStyle = {
     display: 'grid',
-    gridTemplateColumns: '1fr 1fr 1fr',
+    gridTemplateColumns: '1fr 1fr',
     gridGap: sv(50, globals.style.layoutScalingValue),
     margin: '0 auto',
+    marginTop: [100, .7, 100],
+    maxWidth: [1200, globals.style.layoutScalingValue, '100%'],
     mobile: {
         display: flex,
         flexDirection: column
@@ -73,13 +75,14 @@ export const placesSearchFormStyle = {
 }
 
 export const placeCardStyle = {
+    backgroundColor: white,
     textWrapper: {
         paddingLeft: [50, globals.style.layoutScalingValue, 20],
         paddingRight: [50, globals.style.layoutScalingValue, 20]
     },
     name: {
-        size: [42, .7, 28],
-        lineHeight: [32, .7, 32],
+        size: [32, .7, 28],
+        lineHeight: [24, .7, 32],
         width: '100%',
         textAlign: center
     },

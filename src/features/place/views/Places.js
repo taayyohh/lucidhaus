@@ -84,23 +84,33 @@ const Places = () => {
                     {allPlaces.length > 0 && allPlaces.map((place) => {
                         if(!!place.properties) {
                             const slug = `${slugify(place.properties.name)}-${slugify(place.properties.address)}-${place.properties.id}`
+                            {console.log('prop', place.properties)}
 
                             return (
                                 <GenericCard
                                     key={slug}
                                     slug={`places/${slug}`}
                                     name={place.properties.name}
-                                    photo={place.photo}
+                                    address={place.properties.address}
+                                    // photo={place.photo}
                                     theme={placeCardStyle}
                                 />
                             )
                         } else {
+                            {console.log('prop', place)}
+                            const address = () => {
+                                if(!!place.address1 && !!place.city && !!place.state && !!place.country) {
+                                    return `${place.address1} ${!!place.address2 && place.address2}, ${place.city} ${place.state} ${place.country}`
+                                }
+                            }
+
                             return (
                                 <GenericCard
                                     key={place.slug}
                                     slug={`places/${place.slug}`}
                                     name={place.name}
-                                    photo={place.photo}
+                                    address={address()}
+                                    // photo={place.photo}
                                     theme={placeCardStyle}
                                 />
                             )
