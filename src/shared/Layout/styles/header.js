@@ -4,7 +4,7 @@ import {
     block,
     borderBox,
     center,
-    column, fixed,
+    column,
     flex,
     flexEnd,
     flexStart,
@@ -15,7 +15,7 @@ import {
     spaceBetween,
     uppercase,
     white
-} from 'utils/themer'
+}                              from 'utils/themer'
 
 export const mobileHeaderMenuToggleStyle = {
     mobile: {
@@ -62,6 +62,8 @@ export const headerInnerStyle = {
     mobile: {
         paddingLeft: 25,
         paddingRight: 25,
+        paddingTop: 10,
+        paddingBottom: 10,
         justifyContent: spaceBetween,
         boxSizing: borderBox
     }
@@ -72,7 +74,7 @@ export const headerTopStyle = {
     alignItems: center,
     justifyContent: flexEnd,
     width: '100%',
-    height: [90, .7, 60],
+    height: [90, .7, 50],
     backgroundColor: colorPalette.ijGray,
     inner: {
         display: flex,
@@ -138,8 +140,8 @@ export const headerNowPlayingInfoStyle = {
 }
 
 export const headerLogoWrapperStyle = {
-    width: [250, .7, 60],
-    height: [56, .7, 60],
+    width: [250, .7, 160],
+    height: [56, .7, 36],
     marginRight: [40, .7, 40]
 }
 

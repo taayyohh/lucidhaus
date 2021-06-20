@@ -1,43 +1,14 @@
 import {headerMenu}     from 'config/menus/header'
 import React            from 'react'
-import {
-    useDispatch,
-    useSelector
-}                       from 'react-redux'
-import {adminMenuStyle} from 'shared/Layout/Dashboard/admin/styles'
 import Div              from 'shared/Basic/Div'
-import LinkSwitch       from 'shared/Basic/LinkSwitch'
-import Span             from 'shared/Basic/Span'
+import {adminMenuStyle} from 'shared/Layout/Dashboard/admin/styles'
 import HeaderMenuItems  from './HeaderMenuItems'
-import {headerMenuAuthStyleListItemStyle} from './styles'
 
-const MobileHeaderMenu = () => {
-    const dispatch = useDispatch()
-    const {isAuthenticated, isAdmin} = useSelector(state => state.user)
-
-    return (
-        <Div theme={adminMenuStyle}>
-            <Div theme={adminMenuStyle.list}>
-                <HeaderMenuItems items={headerMenu}/>
-                {isAuthenticated && (
-                    <Span
-                        theme={headerMenuAuthStyleListItemStyle}
-                        onClick={() => dispatch({type: 'user/signOut'})}
-                    >
-                        Sign Out
-                    </Span>
-                )}
-                {isAuthenticated && !isAdmin && (
-                    <LinkSwitch
-                        url="/dashboard"
-                        theme={headerMenuAuthStyleListItemStyle}>
-                        Profile
-                    </LinkSwitch>
-                )}
-            </Div>
+const MobileHeaderMenu = () =>
+    <Div theme={adminMenuStyle}>
+        <Div theme={adminMenuStyle.list}>
+            <HeaderMenuItems items={headerMenu}/>
         </Div>
-    )
-}
-
+    </Div>
 
 export default MobileHeaderMenu

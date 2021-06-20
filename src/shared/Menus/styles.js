@@ -1,7 +1,4 @@
-import {
-    colorPalette,
-    globals
-} from 'config/styles'
+import {colorPalette, globals} from 'config/styles'
 import {
     absolute,
     auto,
@@ -19,7 +16,7 @@ import {
     relative,
     row,
     white
-} from 'utils/themer'
+}                              from 'utils/themer'
 
 export const headerMenuPanelWrapperStyle = {
     position: absolute,
@@ -43,7 +40,8 @@ export const headerMenuPanelStyle = {
     boxSizing: borderBox,
     zIndex: 22,
     mobile: {
-        top: 60
+        top: 50,
+        left: 0
     },
     scrollBar: {
         display: none
@@ -180,6 +178,36 @@ export const dashboardMenuStyle = {
         background: '#fff'
     }
 }
+
+export const dashboardUserMenuToggleStyle = {
+    zIndex: 3,
+    position: absolute,
+    left: 0,
+    top: 14,
+    mobile: {
+        left: 0,
+        width: '100%',
+        background: '#f2f2f2',
+        top: 0,
+        paddingLeft: 37,
+        paddingTop: 5,
+        borderBottom: `1px solid #d9dce0`,
+    }
+}
+
+export const dashboardMenuMobileStyle = {
+    overflow: 'hidden',
+    position: absolute,
+    left: 0,
+    top: 0,
+    width: '100%',
+    backgroundColor: white,
+    zIndex: 1,
+    mobile: {
+        top: 35
+    }
+}
+
 export const dashboardMenuInnerStyle = {
     width: [300, globals.style.layoutScalingValue, '100%'],
     position: 'fixed',

@@ -1,19 +1,17 @@
-import {
-    colorPalette,
-    globals
-} from 'config/styles'
+import {colorPalette, globals} from 'config/styles'
 import {
     black,
     borderBox,
     center,
     column,
     flex,
-    flexStart, none,
+    flexStart,
+    none,
     pointer,
     spaceBetween,
     uppercase,
     white
-} from 'utils/themer'
+}                              from 'utils/themer'
 
 export const footerStyle = {
     size: [18, .7, 18],
@@ -46,15 +44,28 @@ export const footerStyle = {
         }
     },
     innerLinksWrapper: {
+        display: flex,
+        mobile: {
+            flexDirection: column
+        },
         child: {
             selector: 'a',
             color: colorPalette.paleGreen,
             marginLeft: [7, .7, 7],
             textDecoration: none,
+            mobile: {
+                marginLeft: 0,
+                marginRight: 12
+            },
             hover: {
                 color: colorPalette.seaGreen,
                 textDecoration: 'underline'
             }
+        }
+    },
+    linksWrapper: {
+        mobile: {
+            display: flex
         }
     }
 }
