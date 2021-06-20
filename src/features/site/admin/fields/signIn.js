@@ -42,8 +42,8 @@ export const signInFields = [
 export const validateSignin = Yup.object().shape({
     tel: Yup.string()
         .matches(phoneRegExp, 'Phone number is not valid')
-        .required('Required'),
+        .required('*'),
     password: Yup
         .string()
-        .required('Required')
+        .required('*')
 })

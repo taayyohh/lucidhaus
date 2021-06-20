@@ -20,10 +20,5 @@ export const userDashboardMenu = [
         url: '/dashboard/places',
         icon: star,
         title: 'My Places'
-    },
-    {
-        dispatchAction: 'user/signOut',
-        icon: signOut,
-        title: 'Sign Out'
     }
 ]

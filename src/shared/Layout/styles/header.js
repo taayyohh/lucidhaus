@@ -138,8 +138,8 @@ export const headerNowPlayingInfoStyle = {
 }
 
 export const headerLogoWrapperStyle = {
-    width: [80, .7, 60],
-    height: [80, .7, 60],
+    width: [250, .7, 60],
+    height: [56, .7, 60],
     marginRight: [40, .7, 40]
 }
 

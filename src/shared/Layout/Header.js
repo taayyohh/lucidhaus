@@ -1,4 +1,4 @@
-import logo                       from 'assets/logo.svg'
+import logo                       from 'assets/logo.png'
 import PropTypes                  from 'prop-types'
 import React                      from 'react'
 import {useDispatch, useSelector} from 'react-redux'
