@@ -1,6 +1,6 @@
-import {PASSWORD, TEL, TEXT, TOGGLE} from 'config/variables'
-import {passwordRegExp, phoneRegExp} from 'utils/helpers'
-import * as Yup                      from 'yup'
+import {EMAIL, PASSWORD, TEL, TEXT, TOGGLE} from 'config/variables'
+import {passwordRegExp, phoneRegExp}        from 'utils/helpers'
+import * as Yup                             from 'yup'
 import "yup-phone"
 
 export const signUpFields = [
@@ -13,6 +13,11 @@ export const signUpFields = [
         name: 'tel',
         inputLabel: 'Telephone',
         type: TEL
+    },
+    {
+        name: 'email',
+        inputLabel: 'Email',
+        type: EMAIL
     },
     {
         name: 'password',
@@ -51,13 +56,16 @@ export const validateSignup = Yup.object().shape({
     nameFirst: Yup
         .string()
         .max(50)
-        .required('Required'),
+        .required('*'),
     tel: Yup.string()
-        .matches(phoneRegExp, 'Phone number is not valid')
-        .required('Required'),
+        .matches(phoneRegExp, 'invalid phone')
+        .required('*'),
+    email: Yup.string()
+        .email('invalid email')
+        .required('*'),
     password: Yup
         .string()
-        .required('Please Enter your password')
+        .required('*')
         .matches(
             passwordRegExp,
             'Must include at least 8 Characters, One Uppercase, One Number'
@@ -68,5 +76,5 @@ export const validateSignup = Yup.object().shape({
     passwordConfirm: Yup
         .string()
         .oneOf([Yup.ref('password')], 'passwords do not match')
-        .required('Password confirm is required')
+        .required('*')
 })

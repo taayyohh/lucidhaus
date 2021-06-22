@@ -6,7 +6,14 @@ import Form                                                   from 'shared/Field
 import ContentWrapper                                         from 'shared/Layout/ContentWrapper'
 
 const SignUp = () => {
-    const signUpInitialValues = {nameFirst: '', tel: '', password: '', passwordConfirm: '', acceptTerms: false}
+    const signUpInitialValues = {
+        nameFirst: '',
+        tel: '',
+        email: '',
+        password: '',
+        passwordConfirm: '',
+        acceptTerms: false
+    }
     const {confirmationRequest} = useSelector(state => state.user)
     const confirmationCodeInitialValues = {verificationCode: '', ...confirmationRequest}
 

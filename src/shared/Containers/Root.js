@@ -4,6 +4,7 @@ import {useDispatch, useSelector} from 'react-redux'
 import PlayerController           from 'shared/Containers/PlayerController'
 import Overlay                    from 'shared/Layout/Overlay'
 import PageFrame                  from 'shared/Layout/PageFrame'
+import Div                        from '../Basic/Div'
 import LayoutSwitch               from './LayoutSwitch'
 import MapController              from './MapController'
 import MenuPanelController        from './MenuPanelController'
@@ -21,7 +22,7 @@ const Root = () => {
     }, [])
 
     return (
-        <>
+        <Div>
             {isInitialized ?
                 <LayoutSwitch>
                     <PlayerController>
@@ -39,7 +40,7 @@ const Root = () => {
                     </PlayerController>
                 </LayoutSwitch> : <Overlay/>
             }
-        </>
+        </Div>
     )
 }
 

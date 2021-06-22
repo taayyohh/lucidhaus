@@ -38,6 +38,7 @@ export function* signOut() {
 
 export function* signUp({payload}) {
     //TODO: if no users exists in database make first user a superAdmin
+    console.log('payload', payload)
 
     const verificationToken = yield call(sendTwilioVerification, payload)
     if (verificationToken === 'pending') {

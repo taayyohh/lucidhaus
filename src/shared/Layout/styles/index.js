@@ -234,7 +234,7 @@ export const notificationWrapperStyle = theme => {
         paddingBottom: [5, globals.style.layoutScalingValue, 5],
         paddingLeft: [5, globals.style.layoutScalingValue, 5],
         paddingRight: [5, globals.style.layoutScalingValue, 5],
-        top: [globals.style.headerHeight, .7, globals.style.mobileHeaderHeight],
+        top: [0, .7, globals.style.mobileHeaderHeight],
         left: 0,
         width: '100vw',
         textAlign: center,

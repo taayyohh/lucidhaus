@@ -93,7 +93,8 @@ export const adminPlacesInnerWrapperStyle = {
     gridTemplateColumns: '1fr 1fr 1fr 1fr 1fr',
     gridGap: sv(30),
     mobile: {
-        display: flex
+        display: flex,
+        flexDirection: column
     }
 }
 export const adminPlaceCardWrapperStyle = {}
