@@ -420,7 +420,8 @@ export const toggleBallStyle = {
     height: [25, globals.style.layoutScalingValue, 25],
     width: [25, globals.style.layoutScalingValue, 25],
     borderRadius: [20, globals.style.layoutScalingValue, 20],
-    background: white
+    background: white,
+    opacity: `1 !important`
 }
 
 

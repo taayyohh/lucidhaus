@@ -4,7 +4,6 @@ import React, {useEffect}         from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import Form                       from 'shared/Fields/Form'
 import ContentWrapper             from 'shared/Layout/ContentWrapper'
-import DashboardInfo              from 'shared/Layout/Dashboard/DashboardInfo'
 import DashboardWrapper           from 'shared/Layout/Dashboard/DashboardWrapper'
 import Identity                   from './Indentity'
 

@@ -1,19 +1,17 @@
-import React, {useState}                                                       from 'react'
-import {useSelector}                                                           from 'react-redux'
-import Div                                                                     from 'shared/Basic/Div'
-import DashboardMenuItem                                                       from 'shared/Menus/DashboardMenuItem'
-import {ellipsisV}                                                             from '../../config/icons'
-import {colorPalette}                                                          from '../../config/styles'
-import {mobileFlag}      from '../../features/site/slice'
-import {absolute, white} from '../../utils/themer'
-import Icon              from '../Basic/Icon'
-import MotionDiv from '../Basic/MotionDiv'
+import {ellipsisV}       from 'config/icons'
+import {mobileFlag}      from 'features/site/slice'
+import React, {useState} from 'react'
+import {useSelector}     from 'react-redux'
+import Div               from 'shared/Basic/Div'
+import Icon              from 'shared/Basic/Icon'
+import MotionDiv         from 'shared/Basic/MotionDiv'
+import DashboardMenuItem from 'shared/Menus/DashboardMenuItem'
 import {
     dashboardMenuInnerStyle,
     dashboardMenuMobileStyle,
     dashboardMenuStyle,
     dashboardUserMenuToggleStyle
-}                from './styles'
+}                        from './styles'
 
 const DashboardMenu = ({menu}) => {
     const isMobile = useSelector(mobileFlag)

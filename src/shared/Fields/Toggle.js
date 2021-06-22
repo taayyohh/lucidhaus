@@ -26,6 +26,7 @@ const Toggle = ({formik, inputLabel, inputLabelHelper, name}) =>
             <MotionDiv
                 layoutId={'toggleBall'}
                 theme={toggleBallStyle}
+                initial={{visibility: 'visible', opacity: 1}}
                 transition={{
                     type: 'spring',
                     stiffness: 700,

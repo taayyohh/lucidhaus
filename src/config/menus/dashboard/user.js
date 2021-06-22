@@ -1,4 +1,4 @@
-import {comments, home, signOut, star, userCog} from 'config/icons'
+import {comments, home, star, userCog} from 'config/icons'
 
 export const userDashboardMenu = [
     {

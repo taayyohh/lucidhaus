@@ -1,5 +1,5 @@
-import {CHECKBOX, PASSWORD, TEL, TEXT, TOGGLE} from 'config/variables'
-import {passwordRegExp, phoneRegExp}           from 'utils/helpers'
+import {PASSWORD, TEL, TEXT, TOGGLE} from 'config/variables'
+import {passwordRegExp, phoneRegExp} from 'utils/helpers'
 import * as Yup                      from 'yup'
 import "yup-phone"
 

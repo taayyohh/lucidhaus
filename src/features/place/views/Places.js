@@ -30,10 +30,10 @@ const Places = () => {
     const {coords} = useContext(mapContext)
     const {placesIndex} = useContext(searchContext)
     const [allPlaces, setAllPlaces] = useState([])
-    let boonePlacesData = []
 
     useEffect(() => {
         const algoliaIds = algoliaPlaces.map(p => p.booneId)
+        let boonePlacesData = []
         if (!!boonePlaces?.data) {
             boonePlacesData = [...boonePlaces?.data]
             boonePlacesData.forEach(place => {

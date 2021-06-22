@@ -1,8 +1,8 @@
 import {push}                                     from 'connected-react-router'
 import {addProduct, deleteProduct, updateProduct} from 'features/shop/services/product/product'
-import {call, put, takeLatest}        from 'redux-saga/effects'
-import {getSignedRequest, uploadFile} from 'features/site/services/s3'
-import {updateItem}                   from 'utils/cartHelpers'
+import {getSignedRequest, uploadFile}             from 'features/site/services/s3'
+import {call, put, takeLatest}                    from 'redux-saga/effects'
+import {updateItem}                               from 'utils/cartHelpers'
 
 export function* createProduct({payload}) {
     const {_id, token, name, description, photo, photoFile, quantity, price, isPublished, category} = payload
@@ -53,7 +53,7 @@ export function* updateProductDetail({payload}) {
     if (!!photoFile) {
         const s3Payload = yield call(getSignedRequest, photoFile)
         if (!!s3Payload.signedRequest) {
-            const uploadImage = yield call(uploadFile, {file: photoFile, signedRequest: s3Payload.signedRequest})
+            yield call(uploadFile, {file: photoFile, signedRequest: s3Payload.signedRequest})
         }
     }
 

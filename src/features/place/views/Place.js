@@ -13,14 +13,15 @@ import {debounce}                  from 'utils/helpers'
 import {isEmpty}                   from 'utils/themer'
 import Reviews                     from './Reviews'
 import {
+    placeAddressStyle,
     placeDescriptionStyle,
     placeTitleStyle,
-    placeWrapperTopStyle,
     placeWrapperBottomStyle,
     placeWrapperStyle,
+    placeWrapperTopStyle,
     reviewHeadingStyle,
-    reviewsHeadingWrapperStyle, placeAddressStyle
-} from './styles'
+    reviewsHeadingWrapperStyle
+}                                  from './styles'
 
 const Place = () => {
     const dispatch = useDispatch()
@@ -37,7 +38,6 @@ const Place = () => {
         address1,
         address2,
         city,
-        country,
         state,
         zip
     } = place
@@ -136,7 +136,7 @@ const Place = () => {
                                     {(!!address1 && address1) || (!isEmpty(boonePlace) && boonePlace.locations?.[0].address1)}
                                     {(!!address1 ? ', ' : '')}
                                     {(!!address2 && address2 !== 'undefined') ? address2 : ''}
-                                    {(!!address2 && address2 !== 'undefined')? ', ' : ''}
+                                    {(!!address2 && address2 !== 'undefined') ? ', ' : ''}
                                     {(!!city && city) || (!isEmpty(boonePlace) && boonePlace.locations[0].city)}
                                     {(!!city ? ', ' : '')}
                                     {(!!state && state) || (!isEmpty(boonePlace) && boonePlace.locations[0].state)}
