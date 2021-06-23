@@ -17,7 +17,7 @@ const Event = () => {
     const {event} = useSelector(state => state.event)
     const {slug} = useSelector(state => state.site)
     const {name, flyer, description, attendees} = event
-    const maxAttendees = 60
+    const maxAttendees = 100
 
     useEffect(() => {
         dispatch({type: 'event/getEvent', payload: {slug: slug}})

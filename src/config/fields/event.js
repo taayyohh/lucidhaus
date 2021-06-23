@@ -10,8 +10,8 @@ export const eventFields = [
     {
         name: 'flyer',
         file: 'flyerFile',
-        cropWidth: 1294,
-        cropHeight: 2000,
+        cropWidth: 800,
+        cropHeight: 800,
         s3Path: UPLOAD_PATHS.event,
         type: IMAGE_UPLOAD,
         aspect: null
