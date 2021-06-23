@@ -22,7 +22,7 @@ const CreateRsvp = () => {
             fields={rsvpFields}
             validationSchema={validateRsvp}
             dispatchAction={'admin/addRsvpToEvent'}
-            formHeading={`${60 - event.attendees?.length} RSVPs left`}
+            formHeading={`${100 - event.attendees?.length} RSVPs left`}
             theme={rsvpsFormStyle}
             buttonText={'I wanna come'}
         />
