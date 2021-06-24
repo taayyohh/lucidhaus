@@ -4,7 +4,7 @@ import {
     COUNT,
     COUNTRY,
     EMAIL,
-    IMAGE_UPLOAD,
+    IMAGE_UPLOAD, LIKERT,
     MULTI_SELECT,
     NUMBER,
     PASSWORD,
@@ -21,6 +21,7 @@ import UploadImage    from 'shared/Fields/UploadImage'
 import Address        from './Address'
 import Count          from './Count'
 import Country        from './Country'
+import Likert         from './Likert'
 import MultiSelect    from './MultiSelect'
 import Region         from './Region'
 import RichTextEditor from './RichTextEditor'
@@ -100,6 +101,16 @@ const FieldSwitch = memo(({field, formik, options, autoSubmit}) => {
                 formik={formik}
                 field={field}
                 options={options}
+                className={formik.touched[field.name] && formik.errors[field.name] ? 'error' : ''}
+                errorMessage={formik.touched[field.name] && formik.errors[field.name] ? formik.errors[field.name] : null}
+            />
+        case LIKERT:
+            return <Likert
+                {...formik.getFieldProps(field.name)}
+                formik={formik}
+                field={field}
+                options={options}
+                helperText={field.helperText}
                 className={formik.touched[field.name] && formik.errors[field.name] ? 'error' : ''}
                 errorMessage={formik.touched[field.name] && formik.errors[field.name] ? formik.errors[field.name] : null}
             />

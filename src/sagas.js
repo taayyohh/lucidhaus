@@ -58,14 +58,14 @@ import {
 }                                                                     from 'features/site/sagas'
 import {watchUpdateProfile, watchUpdateUserIdentity, watchUpdateUser} from 'features/user/admin/sagas'
 import {
-    watchConfirmUser,
+    watchConfirmUser, watchCreateVerificationToken,
     watchGetUser,
     watchGetUsers,
     watchSignIn,
     watchSignOut,
-    watchSignUp,
+    watchSignUp, watchSignUpSignInSuccess,
     watchUserHistory
-}                                                                     from 'features/user/sagas'
+} from 'features/user/sagas'
 import {
     watchAuthenticate,
     watchIsAuthenticated
@@ -175,6 +175,7 @@ export default function* rootSaga() {
         fork(watchSignIn),
         fork(watchSignOut),
         fork(watchSignUp),
+        fork(watchSignUpSignInSuccess),
 
         //user
         fork(watchUserHistory),
@@ -184,6 +185,7 @@ export default function* rootSaga() {
         fork(watchConfirmUser),
         fork(watchGetUsers),
         fork(watchGetUser),
+        fork(watchCreateVerificationToken),
 
         //user -- taxonomy
         fork(watchCreateAdaptiveEquipment),

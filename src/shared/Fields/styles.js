@@ -183,6 +183,12 @@ export const defaultFieldHeadingStyle = {
     }
 }
 
+export const defaultHelperTextStyle = {
+    font: globals.fonts.serif,
+    size: [16, .7, 16],
+    marginBottom: [30, .7, 30]
+}
+
 
 /** Rich Text **/
 

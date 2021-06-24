@@ -4,6 +4,9 @@ import {getPurchaseHistory, getUser, getUsers}             from 'features/user/s
 import {takeEvery}                                         from 'redux-saga/dist/redux-saga-effects-npm-proxy.esm'
 import {call, put}                                         from 'redux-saga/effects'
 import {confirmTwilioVerification, sendTwilioVerification} from 'features/site/services/twilio'
+import cryptoRandomString                                  from 'crypto-random-string'
+import {createEntity}                                      from '../../../utils/abstractions/crud'
+import {setFormData}                                       from '../../../utils/abstractions/setFormData'
 
 export function* signIn({payload}) {
     try {
@@ -12,6 +15,10 @@ export function* signIn({payload}) {
             yield put({type: 'user/signInSuccess', payload: user})
             yield put({type: 'user/authenticate', payload: user})
             yield put(push(user?.user?.role === 0 ? '/admin' : '/dashboard'))
+
+            if(payload.signUp) {
+                yield put({type: 'user/signUpSignInSuccess', payload: user})
+            }
         } else {
             yield put({
                 type: 'site/setNotification',
@@ -26,6 +33,19 @@ export function* signIn({payload}) {
     }
 }
 
+export function* signUpSignInSuccess({payload}) {
+    const {token, user} = payload
+    yield put({
+        type: 'user/createVerificationToken',
+        payload: {
+            user: user._id,
+            verificationToken: cryptoRandomString({length: 128}),
+            token: token,
+            _id: user._id
+        }
+    })
+}
+
 export function* signOut() {
     const payload = yield call(signout)
     if (!payload.error) {
@@ -37,9 +57,6 @@ export function* signOut() {
 }
 
 export function* signUp({payload}) {
-    //TODO: if no users exists in database make first user a superAdmin
-    console.log('payload', payload)
-
     const verificationToken = yield call(sendTwilioVerification, payload)
     if (verificationToken === 'pending') {
         yield put({
@@ -67,7 +84,14 @@ export function* confirmUser({payload}) {
                         theme: 'green'
                     }
                 })
-                yield put(push('/signin/'))
+                yield put({
+                    type: 'user/signIn',
+                    payload: {
+                        tel: payload.tel,
+                        password: payload.password,
+                        signUp: true
+                    }
+                })
             } else {
                 yield put({
                     type: 'site/setNotification',
@@ -130,6 +154,32 @@ export function* getUserDetail({payload}) {
     }
 }
 
+export function* createVerificationToken({payload}) {
+    const {_id, token, verificationToken} = payload
+
+    //add to formdata so api can read
+    const vToken = new FormData()
+    const fields = [{verificationToken}, {user: _id}]
+    for (let field of fields)
+        setFormData(vToken, field)
+
+    const createdVerificationToken = yield call(createEntity, {
+        _id: _id,
+        token: token,
+        body: vToken,
+        slug: 'verification-token'
+    })
+    if (!createdVerificationToken.error) {
+        yield put({type: 'user/createVerificationTokenSuccess'})
+        // yield put(push('/admin/places/update/' + crea.slug))
+
+    } else {
+        yield put({type: 'place/createVerificationTokenFailure', payload})
+
+    }
+}
+
+
 /**
  *
  *
@@ -140,6 +190,10 @@ export function* getUserDetail({payload}) {
 
 export function* watchSignIn() {
     yield takeEvery('user/signIn', signIn)
+}
+
+export function* watchSignUpSignInSuccess() {
+    yield takeEvery('user/signUpSignInSuccess', signUpSignInSuccess)
 }
 
 export function* watchSignOut() {
@@ -165,5 +219,10 @@ export function* watchGetUsers() {
 export function* watchGetUser() {
     yield takeEvery('user/getUser', getUserDetail)
 }
+
+export function* watchCreateVerificationToken() {
+    yield takeEvery('user/createVerificationToken', createVerificationToken)
+}
+
 
 

@@ -104,3 +104,7 @@ export const deleteUser = ({_id, token, slug}) =>
         .catch(error => {
             return error
         })
+
+
+export const verifyEmail = ({_id, token, verificationToken}) =>
+    null

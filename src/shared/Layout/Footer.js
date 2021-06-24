@@ -22,6 +22,10 @@ const Footer = ({theme}) =>
                         url={'https://inclusive-guide.s3.us-east-2.amazonaws.com/assets/Inclusive+Journeys+Website+Terms+of+Service+-+4817-1972-0421+4.pdf'}
                         children={'Terms of Service'}
                     />
+                    <LinkSwitch
+                        url={'https://docs.google.com/forms/d/1jVOQmYLDvdTEiGICDmZY9wmSmKirNo1oYNZxO-UjylE/edit?ts=60c78b0f'}
+                        children={'Leave us Feedback!'}
+                    />
                 </Div>
             </Div>
             <Div theme={footerContactStyle}>

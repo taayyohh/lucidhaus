@@ -27,7 +27,6 @@ export const FILE = "file"
 export const HIDDEN = "hidden"
 export const IMAGE = "image"
 export const MONTH = "month"
-export const MULTI_SELECT = 'multi-select'
 export const NUMBER = "number"
 export const PASSWORD = "password"
 export const RADIO = "radio"
@@ -51,6 +50,8 @@ export const IMAGE_UPLOAD = 'imageUpload'
 export const AUDIO_UPLOAD = 'audioUpload'
 export const RICH_TEXT = 'richText'
 export const TOGGLE = 'toggle'
+export const MULTI_SELECT = 'multi-select'
+export const LIKERT = 'likert'
 export const SONGS = 'songs'
 
 export const ACCEPTABLE_EXTENSIONS = [
