@@ -35,15 +35,18 @@ export function* signIn({payload}) {
 
 export function* signUpSignInSuccess({payload}) {
     const {token, user} = payload
+    console.log('user', user)
     yield put({
         type: 'user/createVerificationToken',
         payload: {
+            email: user.email,
             user: user._id,
             verificationToken: cryptoRandomString({length: 128}),
             token: token,
             _id: user._id
         }
     })
+
 }
 
 export function* signOut() {
