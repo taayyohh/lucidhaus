@@ -1,5 +1,5 @@
-import {colorPalette, globals}                                           from 'config/styles'
-import {absolute, borderBox, center, column, flex, none, row, sv, white} from 'utils/themer'
+import {colorPalette, globals}                                                     from 'config/styles'
+import {absolute, borderBox, center, column, flex, none, relative, row, sv, white} from 'utils/themer'
 
 export const placesWrapperStyle = {
     display: 'grid',
@@ -152,6 +152,7 @@ export const placeImageWrapperStyle = {
 }
 
 export const placeTitleStyle = {
+    position: relative,
     backgroundColor: colorPalette.seaFoamGreen,
     font: globals.fonts.fancy,
     textAlign: center,

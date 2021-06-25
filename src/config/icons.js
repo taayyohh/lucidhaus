@@ -1,6 +1,7 @@
 import {faInstagram, faTwitter} from '@fortawesome/free-brands-svg-icons'
 import {
     faBackward,
+    faBookmark,
     faCaretDown,
     faCaretUp,
     faCogs,
@@ -42,6 +43,7 @@ import {
 }                               from '@fortawesome/free-solid-svg-icons'
 
 export const
+    bookmark = faBookmark,
     cogs = faCogs,
     caretDown = faCaretDown,
     comments = faComments,

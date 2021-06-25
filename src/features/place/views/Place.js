@@ -1,8 +1,11 @@
+import {bookmark}                  from 'config/icons'
+import {colorPalette}              from 'config/styles'
 import Review                      from 'features/place/admin/views/Review'
 import {AnimatePresence}           from 'framer-motion'
 import React, {useEffect}          from 'react'
 import {useDispatch, useSelector}  from 'react-redux'
 import Div                         from 'shared/Basic/Div'
+import Icon                        from 'shared/Basic/Icon'
 import MotionDiv                   from 'shared/Basic/MotionDiv'
 import RichText                    from 'shared/Basic/RichText'
 import ContentWrapper              from 'shared/Layout/ContentWrapper'
@@ -10,7 +13,7 @@ import {fadeIn, fadeOut, nOpacity} from 'shared/Layout/styles/animations'
 import Map                         from 'shared/Map'
 import {history}                   from 'store'
 import {debounce}                  from 'utils/helpers'
-import {isEmpty}                   from 'utils/themer'
+import {absolute, isEmpty}         from 'utils/themer'
 import Reviews                     from './Reviews'
 import {
     placeAddressStyle,
@@ -120,6 +123,15 @@ const Place = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [place])
 
+    const Bookmark = () => {
+        return (
+            <Div theme={{position: absolute, right: 20, top: 0}}>
+                <Icon icon={bookmark}
+                      theme={{color: '#fff', hover: {color: colorPalette.honeyYellow, cursor: 'pointer'}}}/>
+            </Div>
+        )
+    }
+
     return (
         <AnimatePresence>
             <MotionDiv initial={nOpacity} animate={fadeIn} exit={fadeOut}>
@@ -130,6 +142,8 @@ const Place = () => {
                                 {(boonePlace.name || name) && (
                                     <MotionDiv theme={placeTitleStyle}>
                                         {boonePlace.name || name}
+                                        <Bookmark/>
+
                                     </MotionDiv>
                                 )}
                                 <Div theme={placeAddressStyle}>

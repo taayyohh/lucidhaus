@@ -17,6 +17,7 @@ const initialState = {
     tel: '',
     slug: '',
     isAuthenticated: false,
+    isVerified: false,
     isAdmin: false,
     error: false,
     loading: false,
@@ -168,6 +169,9 @@ export const slice = createSlice({
         },
         destroyUserSuccess: (state, action) => {
             state.users = state.users.filter(item => item.objectID !== action.payload.objectID)
+        },
+        emailVerificationSuccess: (state, action) => {
+            state.isVerified = true
         },
 
 

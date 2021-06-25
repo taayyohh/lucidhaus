@@ -1,7 +1,7 @@
 import {push}                                              from 'connected-react-router'
-import {signin, signout, signup}                           from 'features/site/services'
-import {getPurchaseHistory, getUser, getUsers}             from 'features/user/services'
-import {takeEvery}                                         from 'redux-saga/dist/redux-saga-effects-npm-proxy.esm'
+import {signin, signout, signup}                                from 'features/site/services'
+import {getPurchaseHistory, getUser, getUsers, verifyUserEmail} from 'features/user/services'
+import {takeEvery}                                              from 'redux-saga/dist/redux-saga-effects-npm-proxy.esm'
 import {call, put}                                         from 'redux-saga/effects'
 import {confirmTwilioVerification, sendTwilioVerification} from 'features/site/services/twilio'
 import cryptoRandomString                                  from 'crypto-random-string'
@@ -35,7 +35,6 @@ export function* signIn({payload}) {
 
 export function* signUpSignInSuccess({payload}) {
     const {token, user} = payload
-    console.log('user', user)
     yield put({
         type: 'user/createVerificationToken',
         payload: {
@@ -46,7 +45,6 @@ export function* signUpSignInSuccess({payload}) {
             _id: user._id
         }
     })
-
 }
 
 export function* signOut() {
@@ -182,6 +180,38 @@ export function* createVerificationToken({payload}) {
     }
 }
 
+export function* verifyUser({payload}) {
+    const {_id, token, verificationToken} = payload
+    const vToken = new FormData()
+    const fields = [{verificationToken}, {user: _id}]
+    for (let field of fields)
+        setFormData(vToken, field)
+
+    const confirmedUser = yield call(verifyUserEmail, {_id, token, verificationToken})
+    if(confirmedUser.emailVerified) {
+        yield put({type: 'user/userEmailVerificationSuccess'})
+        yield put({
+            type: 'site/setNotification',
+            payload: {
+                notification: 'Email Verified!',
+                theme: 'green'
+            }
+        })
+        yield put(push('/dashboard'))
+
+    } else {
+        yield put({type: 'user/userEmailVerificationFailure', payload: confirmedUser})
+        yield put({
+            type: 'site/setNotification',
+            payload: {
+                notification: 'Invalid Verification Link',
+                theme: 'red'
+            }
+        })
+        yield put(push('/dashboard'))
+    }
+}
+
 
 /**
  *
@@ -226,6 +256,11 @@ export function* watchGetUser() {
 export function* watchCreateVerificationToken() {
     yield takeEvery('user/createVerificationToken', createVerificationToken)
 }
+
+export function* watchVerifyUser() {
+    yield takeEvery('user/verifyUser', verifyUser)
+}
+
 
 
 

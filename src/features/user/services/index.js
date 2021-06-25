@@ -106,5 +106,18 @@ export const deleteUser = ({_id, token, slug}) =>
         })
 
 
-export const verifyEmail = ({_id, token, verificationToken}) =>
-    null
+export const verifyUserEmail = ({_id, token, verificationToken}) =>
+    fetch(`${API}/verification-token/verify/${verificationToken}`, {
+        method: 'GET',
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+        },
+    })
+        .then(response => {
+            return response.json()
+        })
+        .catch(error => {
+            return error
+        })

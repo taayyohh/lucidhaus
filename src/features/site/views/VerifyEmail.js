@@ -1,18 +1,44 @@
-import React, {useEffect} from 'react'
-import {useSelector}      from 'react-redux'
-import Div           from 'shared/Basic/Div'
+import React, {useEffect}         from 'react'
+import {useDispatch, useSelector} from 'react-redux'
+import Div                        from 'shared/Basic/Div'
+import {history}                  from 'store'
 
 const VerifyEmail = () => {
     const {slug} = useSelector(state => state.site)
+    const {_id, token, emailVerified} = useSelector(state => state.user)
+    const dispatch = useDispatch()
+
 
     useEffect(() => {
-        console.log('slug', slug)
+        dispatch({
+            type: 'user/verifyUser',
+            payload: {
+                verificationToken: slug,
+                _id: _id,
+                token: token
+            }
+        })
 
     }, [slug])
 
+    useEffect(() => {
+        if (emailVerified) {
+            history.push('/dashboard')
+            dispatch({
+                type: 'site/setNotification',
+                payload: {
+                    notification: 'email verified!'
+                }
+            })
+        }
+
+    }, [emailVerified])
+
 
     return (
-        <Div>hi</Div>
+        <Div>
+
+        </Div>
     )
 }
 
