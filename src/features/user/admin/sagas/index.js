@@ -186,20 +186,33 @@ export function* updateProfile({payload}) {
 }
 
 export function* manageBookmark({payload}) {
-    const {_id, token, placeId} = payload
+    const {_id, token, slug, placeId} = payload
     const bookmark = new FormData()
     const fields = [{placeId}]
     for (let field of fields)
         setFormData(bookmark, field)
 
     try {
-        yield call(updateEntity, {
+        const updated = yield call(updateEntity, {
             slug: 'place',
             parentSlug: 'bookmark',
             body: bookmark,
             _id: _id,
             token: token,
         })
+
+        if(!updated.error) {
+            const user = yield put({
+                type: 'user/getUser',
+                payload: {
+                    slug: slug,
+                    _id: _id,
+                    token: token
+                }
+            })
+        }
+
+
 
     } catch (error) {
 

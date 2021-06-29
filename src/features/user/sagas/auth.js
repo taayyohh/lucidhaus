@@ -10,7 +10,6 @@ export function* authenticateUser({payload}) {
 export function* isAuth() {
     const authUser = yield call(isAuthenticated)
     if (authUser.token) {
-        console.log('auth', authUser)
         yield put({type: 'user/isAuthenticatedSuccess', payload: authUser})
         yield put({type: 'site/initializeSuccess'})
     } else {
@@ -19,7 +18,7 @@ export function* isAuth() {
     }
 }
 
-export function* authenticateUserSuccess({payload}) {
+export function* isAuthenticatedSuccess({payload}) {
     yield put({
         type: 'user/getUser',
         payload: {
@@ -44,7 +43,11 @@ export function* watchAuthenticate() {
 }
 
 export function* watchAuthenticateSuccess() {
-    yield takeEvery('user/isAuthenticatedSuccess', authenticateUserSuccess)
+    yield takeEvery('user/isAuthenticatedSuccess', isAuthenticatedSuccess)
+}
+
+export function* watchAuthenticateUserSuccess() {
+    yield takeEvery('user/authenticateSuccess', isAuthenticatedSuccess)
 }
 
 export function* watchIsAuthenticated() {

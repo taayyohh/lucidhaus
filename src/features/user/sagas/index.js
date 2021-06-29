@@ -212,6 +212,16 @@ export function* verifyUser({payload}) {
     }
 }
 
+export function* getUserSuccess({payload}) {
+    console.log('payload', payload)
+    if (payload?.bookmarks?.length > 0) {
+        for (const bookmark of payload.bookmarks) {
+            // if (bookmarks.filter(place => place._id === bookmark).length === 0)
+            yield put({type: 'user/getBookmark', payload: {bookmark}})
+        }
+    }
+}
+
 
 /**
  *
@@ -247,6 +257,10 @@ export function* watchConfirmUser() {
 
 export function* watchGetUsers() {
     yield takeEvery('user/getUsers', getUsersListing)
+}
+
+export function* watchGetUserSuccess() {
+    yield takeEvery('user/getUserSuccess', getUserSuccess)
 }
 
 export function* watchGetUser() {

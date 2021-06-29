@@ -19,15 +19,9 @@ const Places = () => {
             }
         }
 
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [user.bookmarks, dispatch])
 
-    // useEffect(() => {
-    //     for (const bookmark of user.bookmarks) {
-    //         dispatch({type: 'user/getBookmark', payload: {bookmark}})
-    //     }
-    //
-    //     // eslint-disable-next-line react-hooks/exhaustive-deps
-    // }, [])
 
     return (
         <ContentWrapper>
@@ -36,7 +30,6 @@ const Places = () => {
                     heading={'Your Saved Places'}
                     description={"Here are the places you've saved."}
                 />
-                My Places
                 {bookmarks && bookmarks.map((place) => {
                     const address = () => {
                         if (!!place.address1 && !!place.city && !!place.state && !!place.country) {
