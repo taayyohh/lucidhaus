@@ -12,6 +12,7 @@ import {sexualOrientation}     from './admin/taxonomy/sexualOrientation/reducers
 
 const initialState = {
     _id: '',
+    bookmarks: [],
     token: '',
     nameFirst: '',
     tel: '',
@@ -172,6 +173,11 @@ export const slice = createSlice({
         },
         emailVerificationSuccess: (state, action) => {
             state.isVerified = true
+        },
+        getBookmarkSuccess: (state, action) => {
+            state.bookmarks = state.bookmarks.indexOf(action.payload.place) === -1
+                ? [...state.bookmarks, action.payload.place]
+                : state.bookmarks
         },
 
 

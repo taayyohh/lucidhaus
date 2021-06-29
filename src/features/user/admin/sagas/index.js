@@ -202,9 +202,6 @@ export function* manageBookmark({payload}) {
             token: token,
         })
 
-        console.log('updated', updated)
-
-
     } catch (error) {
 
     }
@@ -216,8 +213,7 @@ export function* getBookmark({payload}) {
         entityId: bookmark,
         path: 'place'
     })
-    console.log('place', place)
-
+    yield put({type: 'user/getBookmarkSuccess', payload: {place: place}})
 
 }
 

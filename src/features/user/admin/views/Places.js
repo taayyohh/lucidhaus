@@ -1,23 +1,28 @@
-import {userDashboardMenu} from 'config/menus/dashboard/user'
+import {userDashboardMenu}        from 'config/menus/dashboard/user'
 import React, {useEffect}         from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import ContentWrapper             from 'shared/Layout/ContentWrapper'
-import DashboardInfo       from 'shared/Layout/Dashboard/DashboardInfo'
-import DashboardWrapper    from 'shared/Layout/Dashboard/DashboardWrapper'
+import DashboardInfo              from 'shared/Layout/Dashboard/DashboardInfo'
+import DashboardWrapper           from 'shared/Layout/Dashboard/DashboardWrapper'
+import GenericCard                from '../../../../shared/Cards/GenericCard'
+import {placeCardStyle}           from '../../../place/views/styles'
 
 const Places = () => {
     const dispatch = useDispatch()
-    const {_id, token, user} = useSelector(state => state.user)
-    console.log('BOOK', user.bookmarks)
+    const {_id, token, user, bookmarks} = useSelector(state => state.user)
 
     useEffect(() => {
-        if(user?.bookmarks?.length > 0) {
+        if (user?.bookmarks?.length > 0) {
             for (const bookmark of user.bookmarks) {
                 dispatch({type: 'user/getBookmark', payload: {bookmark}})
             }
         }
 
     }, [user.bookmarks])
+
+    useEffect(() => {
+
+    })
 
     return (
         <ContentWrapper>
@@ -27,6 +32,23 @@ const Places = () => {
                     description={"Here are the places you've saved."}
                 />
                 My Places
+                {bookmarks && bookmarks.map((place) => {
+                    const address = () => {
+                        if (!!place.address1 && !!place.city && !!place.state && !!place.country) {
+                            return `${!!place.address1 && place.address1} ${(!!place.address2 && place.address2 !== 'undefined') ? place.address2 : ''}, ${!!place.city && place.city} ${place.state} ${place.country}`
+                        }
+                    }
+
+                    return (
+                        <GenericCard
+                            key={place.slug}
+                            slug={`/places/${place.slug}`}
+                            name={place.name}
+                            address={address()}
+                            theme={placeCardStyle}
+                        />
+                    )
+                })}
             </DashboardWrapper>
         </ContentWrapper>
     )
