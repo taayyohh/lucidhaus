@@ -14,15 +14,20 @@ const Places = () => {
     useEffect(() => {
         if (user?.bookmarks?.length > 0) {
             for (const bookmark of user.bookmarks) {
-                dispatch({type: 'user/getBookmark', payload: {bookmark}})
+                if (bookmarks.filter(place => place._id === bookmark).length === 0)
+                    dispatch({type: 'user/getBookmark', payload: {bookmark}})
             }
         }
 
     }, [user.bookmarks, dispatch])
 
-    useEffect(() => {
-
-    })
+    // useEffect(() => {
+    //     for (const bookmark of user.bookmarks) {
+    //         dispatch({type: 'user/getBookmark', payload: {bookmark}})
+    //     }
+    //
+    //     // eslint-disable-next-line react-hooks/exhaustive-deps
+    // }, [])
 
     return (
         <ContentWrapper>
