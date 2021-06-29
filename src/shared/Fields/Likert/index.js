@@ -8,8 +8,11 @@ import {
     defaultHelperTextStyle,
     selectFieldErrorMessageStyle,
     selectFieldStyle
-}                                                     from 'shared/Fields/styles'
-import {likertOptionStyle, likertOptionsWrapperStyle} from './styles'
+}                                         from 'shared/Fields/styles'
+import {
+    likertOptionStyle,
+    likertOptionsWrapperStyle
+}                                         from './styles'
 
 const Likert = memo(({field, helperText, className, errorMessage, formik, value}) => {
     const optionsArray = ['Strongly Disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly Agree']
@@ -18,12 +21,14 @@ const Likert = memo(({field, helperText, className, errorMessage, formik, value}
     useEffect(() => {
         formik.setFieldValue(field?.name, selected)
 
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [selected])
 
     useEffect(() => {
         if (!!value)
             setSelected(value)
 
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (

@@ -1,5 +1,5 @@
-import {IMAGE_UPLOAD, LIKERT, RICH_TEXT, TOGGLE, UPLOAD_PATHS} from 'config/variables'
-import * as Yup                                                from 'yup'
+import {IMAGE_UPLOAD, LIKERT, RICH_TEXT, UPLOAD_PATHS} from 'config/variables'
+import * as Yup                                        from 'yup'
 
 export const reviewFields = [
     {

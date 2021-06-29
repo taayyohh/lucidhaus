@@ -1,9 +1,8 @@
 import {getSignedRequest, uploadFile} from 'features/site/services/s3'
-import {bookmarkPlace, updateUserJwt} from 'features/user/services'
-import {call, put, takeEvery}        from 'redux-saga/effects'
-import {getEntityById, updateEntity} from 'utils/abstractions/crud'
-import {setFormData}                 from 'utils/abstractions/setFormData'
-import {getPlace}                     from '../../../place/services'
+import {updateUserJwt}                from 'features/user/services'
+import {call, put, takeEvery}         from 'redux-saga/effects'
+import {getEntityById, updateEntity}  from 'utils/abstractions/crud'
+import {setFormData}                  from 'utils/abstractions/setFormData'
 
 export function* updateUser({payload}) {
     const {
@@ -187,14 +186,14 @@ export function* updateProfile({payload}) {
 }
 
 export function* manageBookmark({payload}) {
-    const {_id, token, placeId, slug} = payload
+    const {_id, token, placeId} = payload
     const bookmark = new FormData()
     const fields = [{placeId}]
     for (let field of fields)
         setFormData(bookmark, field)
 
     try {
-        const updated = yield call(updateEntity, {
+        yield call(updateEntity, {
             slug: 'place',
             parentSlug: 'bookmark',
             body: bookmark,
@@ -208,7 +207,7 @@ export function* manageBookmark({payload}) {
 }
 
 export function* getBookmark({payload}) {
-    const {_id, token, bookmark} = payload
+    const {bookmark} = payload
     const place = yield call(getEntityById, {
         entityId: bookmark,
         path: 'place'

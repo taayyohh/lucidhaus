@@ -19,7 +19,7 @@ const VerifyEmail = () => {
             }
         })
 
-    }, [slug])
+    }, [slug, _id, token, dispatch])
 
     useEffect(() => {
         if (emailVerified) {
@@ -32,7 +32,7 @@ const VerifyEmail = () => {
             })
         }
 
-    }, [emailVerified])
+    }, [emailVerified, dispatch])
 
 
     return (
