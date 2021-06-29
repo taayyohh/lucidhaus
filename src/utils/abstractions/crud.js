@@ -32,3 +32,15 @@ export const createEntity = ({_id, token, body, slug}) =>
             return error
         })
 
+
+export const getEntityById = ({entityId, path}) =>
+    fetch(`${API}/${path}/id/${entityId}`, {
+        method: 'GET'
+    })
+        .then(response => {
+            return response.json()
+        })
+        .catch(error => {
+            return error
+        })
+

@@ -5,12 +5,14 @@ import {
     watchDestroyPlace,
     watchDestroyPlaceSuccess,
     watchUpdatePlace
-} from 'features/place/admin/sagas'
+}                                  from 'features/place/admin/sagas'
 import {watchCreatePlaceFromBoone} from 'features/place/admin/sagas/boone'
 import {
     watchGetPlaceDetail,
-    watchGetPlaces, watchSearchAlgoliaPlaceIndex, watchSearchAllPlaces
-} from 'features/place/sagas'
+    watchGetPlaces,
+    watchSearchAlgoliaPlaceIndex,
+    watchSearchAllPlaces
+}                                  from 'features/place/sagas'
 import {
     watchGetBooneAutoComplete,
     watchGetBoonePlace
@@ -55,107 +57,134 @@ import {
 import {
     watchLoadConfig,
     watchNavigate
-}                                                                     from 'features/site/sagas'
-import {watchUpdateProfile, watchUpdateUserIdentity, watchUpdateUser} from 'features/user/admin/sagas'
+}                                  from 'features/site/sagas'
 import {
-    watchConfirmUser, watchCreateVerificationToken,
+    watchGetBookmark,
+    watchManageBookmark,
+    watchUpdateProfile,
+    watchUpdateUser,
+    watchUpdateUserIdentity
+} from 'features/user/admin/sagas'
+import {
+    watchConfirmUser,
+    watchCreateVerificationToken,
     watchGetUser,
     watchGetUsers,
     watchSignIn,
     watchSignOut,
-    watchSignUp, watchSignUpSignInSuccess,
-    watchUserHistory, watchVerifyUser
-} from 'features/user/sagas'
+    watchSignUp,
+    watchSignUpSignInSuccess,
+    watchUserHistory,
+    watchVerifyUser
+}                                  from 'features/user/sagas'
 import {
-    watchAuthenticate,
+    watchAuthenticate, watchAuthenticateSuccess,
     watchIsAuthenticated
-}                                 from 'features/user/sagas/auth'
+} from 'features/user/sagas/auth'
 import {
     all,
     fork
-} from 'redux-saga/effects'
+}                                  from 'redux-saga/effects'
 import {
     watchCreateBathroom,
     watchGetBathroomDetail,
     watchGetBathroomList,
     watchUpdateBathroomDetail
-} from './features/place/admin/taxonomy/bathroom/sagas'
+}                                  from './features/place/admin/taxonomy/bathroom/sagas'
 import {
     watchCreateBusinessOwner,
     watchGetBusinessOwnerDetail,
-    watchGetBusinessOwnerList, watchUpdateBusinessOwnerDetail
-} from './features/place/admin/taxonomy/businessOwner/sagas'
+    watchGetBusinessOwnerList,
+    watchUpdateBusinessOwnerDetail
+}                                  from './features/place/admin/taxonomy/businessOwner/sagas'
 import {
-    watchCreateCommunitiesServed, watchGetCommunitiesServedDetail,
-    watchGetCommunitiesServedList, watchUpdateCommunitiesServedDetail
-} from './features/place/admin/taxonomy/communitiesServed/sagas'
+    watchCreateCommunitiesServed,
+    watchGetCommunitiesServedDetail,
+    watchGetCommunitiesServedList,
+    watchUpdateCommunitiesServedDetail
+}                                  from './features/place/admin/taxonomy/communitiesServed/sagas'
 import {
     watchCreateFoodOptions,
     watchGetFoodOptionsDetail,
-    watchGetFoodOptionsList, watchUpdateFoodOptionsDetail
-}                                                      from './features/place/admin/taxonomy/foodOptions/sagas'
+    watchGetFoodOptionsList,
+    watchUpdateFoodOptionsDetail
+}                                  from './features/place/admin/taxonomy/foodOptions/sagas'
 import {
     watchCreateLanguageSpoken,
     watchGetLanguageSpokenDetail,
-    watchGetLanguageSpokenList, watchUpdateLanguageSpokenDetail
-}                                                      from './features/place/admin/taxonomy/languageSpoken/sagas'
+    watchGetLanguageSpokenList,
+    watchUpdateLanguageSpokenDetail
+}                                  from './features/place/admin/taxonomy/languageSpoken/sagas'
 import {
     watchCreatePlaceCategory,
     watchGetPlaceCategoryDetail,
-    watchGetPlaceCategoryList, watchUpdatePlaceCategoryDetail
-}                                                      from './features/place/admin/taxonomy/placeCategory/sagas'
-import {watchAttemptDestroyEntity, watchDestroyEntity} from './features/site/admin/sagas'
+    watchGetPlaceCategoryList,
+    watchUpdatePlaceCategoryDetail
+}                                  from './features/place/admin/taxonomy/placeCategory/sagas'
+import {
+    watchAttemptDestroyEntity,
+    watchDestroyEntity
+}                                  from './features/site/admin/sagas'
 import {
     watchCreateAdaptiveEquipment,
     watchGetAdaptiveEquipmentDetail,
     watchGetAdaptiveEquipmentList,
     watchUpdateAdaptiveEquipmentDetail
-}                                                      from './features/user/admin/taxonomy/adaptiveEquipment/sagas'
+}                                  from './features/user/admin/taxonomy/adaptiveEquipment/sagas'
 import {
     watchCreateBodyModification,
     watchGetBodyModificationDetail,
-    watchGetBodyModificationList, watchUpdateBodyModificationDetail
-}                                                      from './features/user/admin/taxonomy/bodyModification/sagas'
+    watchGetBodyModificationList,
+    watchUpdateBodyModificationDetail
+}                                  from './features/user/admin/taxonomy/bodyModification/sagas'
 import {
     watchCreateGender,
     watchGetGenderDetail,
     watchGetGenderList,
     watchUpdateGenderDetail
-} from './features/user/admin/taxonomy/gender/sagas'
+}                                  from './features/user/admin/taxonomy/gender/sagas'
 import {
-    watchCreateLanguage, watchGetLanguageDetail,
+    watchCreateLanguage,
+    watchGetLanguageDetail,
     watchGetLanguageList,
     watchUpdateLanguageDetail
-} from './features/user/admin/taxonomy/language/sagas'
+}                                  from './features/user/admin/taxonomy/language/sagas'
 import {
-    watchCreateMethodOfCommunication, watchGetMethodOfCommunicationDetail,
-    watchGetMethodOfCommunicationList, watchUpdateMethodOfCommunicationDetail
-} from './features/user/admin/taxonomy/methodOfCommunication/sagas'
+    watchCreateMethodOfCommunication,
+    watchGetMethodOfCommunicationDetail,
+    watchGetMethodOfCommunicationList,
+    watchUpdateMethodOfCommunicationDetail
+}                                  from './features/user/admin/taxonomy/methodOfCommunication/sagas'
 import {
-    watchCreatePhysicalAppearance, watchGetPhysicalAppearanceDetail,
-    watchGetPhysicalAppearanceList, watchUpdatePhysicalAppearanceDetail
-} from './features/user/admin/taxonomy/physicalAppearance/sagas'
+    watchCreatePhysicalAppearance,
+    watchGetPhysicalAppearanceDetail,
+    watchGetPhysicalAppearanceList,
+    watchUpdatePhysicalAppearanceDetail
+}                                  from './features/user/admin/taxonomy/physicalAppearance/sagas'
 import {
     watchCreatePronoun,
     watchGetPronounDetail,
     watchGetPronounList,
     watchUpdatePronounDetail
-} from './features/user/admin/taxonomy/pronoun/sagas'
+}                                  from './features/user/admin/taxonomy/pronoun/sagas'
 import {
     watchCreateRace,
     watchGetRaceDetail,
     watchGetRaceList,
     watchUpdateRaceDetail
-} from './features/user/admin/taxonomy/race/sagas'
+}                                  from './features/user/admin/taxonomy/race/sagas'
 import {
-    watchCreateServiceAnimal, watchGetServiceAnimalDetail,
+    watchCreateServiceAnimal,
+    watchGetServiceAnimalDetail,
     watchGetServiceAnimalList,
     watchUpdateServiceAnimalDetail
-} from './features/user/admin/taxonomy/serviceAnimal/sagas'
+}                                  from './features/user/admin/taxonomy/serviceAnimal/sagas'
 import {
-    watchCreateSexualOrientation, watchGetSexualOrientationDetail,
-    watchGetSexualOrientationList, watchUpdateSexualOrientationDetail
-} from './features/user/admin/taxonomy/sexualOrientation/sagas'
+    watchCreateSexualOrientation,
+    watchGetSexualOrientationDetail,
+    watchGetSexualOrientationList,
+    watchUpdateSexualOrientationDetail
+}                                  from './features/user/admin/taxonomy/sexualOrientation/sagas'
 
 
 //TODO: determine best method of combining rootSaga
@@ -170,6 +199,7 @@ export default function* rootSaga() {
         //auth
         fork(watchAuthenticate),
         fork(watchIsAuthenticated),
+        fork(watchAuthenticateSuccess),
 
         //sign in
         fork(watchSignIn),
@@ -187,6 +217,8 @@ export default function* rootSaga() {
         fork(watchGetUser),
         fork(watchCreateVerificationToken),
         fork(watchVerifyUser),
+        fork(watchManageBookmark),
+        fork(watchGetBookmark),
 
         //user -- taxonomy
         fork(watchCreateAdaptiveEquipment),

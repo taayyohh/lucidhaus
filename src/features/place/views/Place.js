@@ -30,6 +30,7 @@ const Place = () => {
     const dispatch = useDispatch()
     const {place, boonePlace, error} = useSelector(state => state.place)
     const {isAuthenticated, _id, token} = useSelector(state => state.user)
+    const userSlug = useSelector(state => state.user.slug)
 
     const {
         name,
@@ -125,7 +126,18 @@ const Place = () => {
 
     const Bookmark = () => {
         return (
-            <Div theme={{position: absolute, right: 20, top: 0}}>
+            <Div
+                theme={{position: absolute, right: 20, top: 0}}
+                onClick={() => dispatch({
+                    type: 'user/manageBookmark',
+                    payload: {
+                        placeId: place._id,
+                        _id: _id,
+                        token: token,
+                        slug: userSlug
+                    }
+                })}
+            >
                 <Icon icon={bookmark}
                       theme={{color: '#fff', hover: {color: colorPalette.honeyYellow, cursor: 'pointer'}}}/>
             </Div>

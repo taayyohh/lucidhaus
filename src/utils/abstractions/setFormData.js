@@ -1,8 +1,8 @@
 export const setFormData = (form, field) => {
-    if(!!field) {
+    if (!!field) {
         const key = Object.keys(field)[0]?.replace(/"/g, "")
-        if(Array.isArray(field[key])) {
-            if(field[key].length === 0) {
+        if (Array.isArray(field[key])) {
+            if (field[key].length === 0) {
                 return form.set(key, '000999888777') //temporary solution for saving null values that need an ObjectId in mongoose
             }
         }

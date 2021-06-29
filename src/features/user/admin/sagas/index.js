@@ -1,8 +1,9 @@
 import {getSignedRequest, uploadFile} from 'features/site/services/s3'
-import {updateUserJwt}                from 'features/user/services'
-import {call, put, takeEvery}         from 'redux-saga/effects'
-import {updateEntity}                 from 'utils/abstractions/crud'
-import {setFormData}                  from 'utils/abstractions/setFormData'
+import {bookmarkPlace, updateUserJwt} from 'features/user/services'
+import {call, put, takeEvery}        from 'redux-saga/effects'
+import {getEntityById, updateEntity} from 'utils/abstractions/crud'
+import {setFormData}                 from 'utils/abstractions/setFormData'
+import {getPlace}                     from '../../../place/services'
 
 export function* updateUser({payload}) {
     const {
@@ -185,6 +186,41 @@ export function* updateProfile({payload}) {
     }
 }
 
+export function* manageBookmark({payload}) {
+    const {_id, token, placeId, slug} = payload
+    const bookmark = new FormData()
+    const fields = [{placeId}]
+    for (let field of fields)
+        setFormData(bookmark, field)
+
+    try {
+        const updated = yield call(updateEntity, {
+            slug: 'place',
+            parentSlug: 'bookmark',
+            body: bookmark,
+            _id: _id,
+            token: token,
+        })
+
+        console.log('updated', updated)
+
+
+    } catch (error) {
+
+    }
+}
+
+export function* getBookmark({payload}) {
+    const {_id, token, bookmark} = payload
+    const place = yield call(getEntityById, {
+        entityId: bookmark,
+        path: 'place'
+    })
+    console.log('place', place)
+
+
+}
+
 
 /**
  *
@@ -206,4 +242,14 @@ export function* watchUpdateUser() {
 export function* watchUpdateUserIdentity() {
     yield takeEvery('user/updateUserIdentity', updateIdentity)
 }
+
+export function* watchManageBookmark() {
+    yield takeEvery('user/manageBookmark', manageBookmark)
+}
+
+export function* watchGetBookmark() {
+    yield takeEvery('user/getBookmark', getBookmark)
+
+}
+
 

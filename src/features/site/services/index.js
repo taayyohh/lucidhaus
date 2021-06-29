@@ -68,6 +68,7 @@ export const authenticate = (data) => {
 }
 
 export const isAuthenticated = () => {
+
     if (typeof window === 'undefined') {
         return false
     }

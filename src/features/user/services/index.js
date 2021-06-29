@@ -60,7 +60,7 @@ export const getPurchaseHistory = ({_id, token}) =>
             return error
         })
 
-export const update = ({_id, token, user}) =>
+export const update = ({_id, token, user}) => {
     fetch(`${API}/user/${_id}`, {
         method: "PUT",
         headers: {
@@ -76,6 +76,9 @@ export const update = ({_id, token, user}) =>
         .catch(error => {
             return error
         })
+
+}
+
 
 export const updateUserJwt = (user) => {
     if (typeof window !== 'undefined') {
@@ -121,3 +124,21 @@ export const verifyUserEmail = ({_id, token, verificationToken}) =>
         .catch(error => {
             return error
         })
+
+export const bookmarkPlace = ({slug, _id, token, body}) =>
+    fetch(`${API}/bookmark/place/${slug}`, {
+        method: 'PUT',
+        headers: {
+            Accept: 'application/json',
+            Authorization: `Bearer ${token}`
+        },
+        body: body
+    })
+        .then(response => {
+            return response.json()
+        })
+        .catch(error => {
+            return error
+        })
+
+

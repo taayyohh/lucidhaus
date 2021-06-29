@@ -1,12 +1,12 @@
-import {push}                                              from 'connected-react-router'
+import {push}                                                   from 'connected-react-router'
+import cryptoRandomString                                       from 'crypto-random-string'
 import {signin, signout, signup}                                from 'features/site/services'
+import {confirmTwilioVerification, sendTwilioVerification}      from 'features/site/services/twilio'
 import {getPurchaseHistory, getUser, getUsers, verifyUserEmail} from 'features/user/services'
 import {takeEvery}                                              from 'redux-saga/dist/redux-saga-effects-npm-proxy.esm'
-import {call, put}                                         from 'redux-saga/effects'
-import {confirmTwilioVerification, sendTwilioVerification} from 'features/site/services/twilio'
-import cryptoRandomString                                  from 'crypto-random-string'
-import {createEntity}                                      from '../../../utils/abstractions/crud'
-import {setFormData}                                       from '../../../utils/abstractions/setFormData'
+import {call, put}                                              from 'redux-saga/effects'
+import {createEntity}                                           from '../../../utils/abstractions/crud'
+import {setFormData}                                            from '../../../utils/abstractions/setFormData'
 
 export function* signIn({payload}) {
     try {
@@ -16,7 +16,7 @@ export function* signIn({payload}) {
             yield put({type: 'user/authenticate', payload: user})
             yield put(push(user?.user?.role === 0 ? '/admin' : '/dashboard'))
 
-            if(payload.signUp) {
+            if (payload.signUp) {
                 yield put({type: 'user/signUpSignInSuccess', payload: user})
             }
         } else {
@@ -188,7 +188,7 @@ export function* verifyUser({payload}) {
         setFormData(vToken, field)
 
     const confirmedUser = yield call(verifyUserEmail, {_id, token, verificationToken})
-    if(confirmedUser.emailVerified) {
+    if (confirmedUser.emailVerified) {
         yield put({type: 'user/userEmailVerificationSuccess'})
         yield put({
             type: 'site/setNotification',
@@ -260,7 +260,6 @@ export function* watchCreateVerificationToken() {
 export function* watchVerifyUser() {
     yield takeEvery('user/verifyUser', verifyUser)
 }
-
 
 
 
