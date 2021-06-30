@@ -125,14 +125,14 @@ export const verifyUserEmail = ({_id, token, verificationToken}) =>
             return error
         })
 
-export const bookmarkPlace = ({slug, _id, token, body}) =>
-    fetch(`${API}/bookmark/place/${slug}`, {
-        method: 'PUT',
+export const getReviewsByUser = ({_id, token}) =>
+    fetch(`${API}/reviews/by/user/${_id}`, {
+        method: 'GET',
         headers: {
-            Accept: 'application/json',
+            Accept: "application/json",
+            "Content-Type": "application/json",
             Authorization: `Bearer ${token}`
         },
-        body: body
     })
         .then(response => {
             return response.json()
@@ -140,5 +140,4 @@ export const bookmarkPlace = ({slug, _id, token, body}) =>
         .catch(error => {
             return error
         })
-
 

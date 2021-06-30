@@ -23,6 +23,7 @@ const Footer = ({theme}) =>
                         children={'Terms of Service'}
                     />
                     <LinkSwitch
+                        theme={footerStyle.feedback}
                         url={'https://docs.google.com/forms/d/1jVOQmYLDvdTEiGICDmZY9wmSmKirNo1oYNZxO-UjylE/edit?ts=60c78b0f'}
                         children={'Leave us Feedback!'}
                     />

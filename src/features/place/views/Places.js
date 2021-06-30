@@ -25,7 +25,7 @@ import {slugify}            from 'utils/helpers'
 import {placesWrapperStyle} from './styles'
 
 const Places = () => {
-    const {boonePlaces, algoliaPlaces, places} = useSelector(state => state.place)
+    const {boonePlaces, algoliaPlaces, places, noResults} = useSelector(state => state.place)
     const dispatch = useDispatch()
     const {coords} = useContext(mapContext)
     const {placesIndex} = useContext(searchContext)
@@ -119,6 +119,11 @@ const Places = () => {
                             )
                         }
                     })}
+                    {noResults.boone && noResults.algolia && (
+                        <Div>
+                            Oops! Looks like there are no results for this search, please try searching again!
+                        </Div>
+                    )}
                 </Div>
             </Div>
         </ContentWrapper>

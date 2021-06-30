@@ -5,13 +5,13 @@ import {
     center,
     column,
     flex,
-    flexStart,
+    flexStart, inlineFlex,
     none,
     pointer,
     spaceBetween,
     uppercase,
     white
-}                              from 'utils/themer'
+} from 'utils/themer'
 
 export const footerStyle = {
     size: [18, .7, 18],
@@ -45,6 +45,7 @@ export const footerStyle = {
     },
     innerLinksWrapper: {
         display: flex,
+        alignItems: center,
         mobile: {
             flexDirection: column
         },
@@ -66,6 +67,23 @@ export const footerStyle = {
     linksWrapper: {
         mobile: {
             display: flex
+        }
+    },
+    feedback: {
+        display: inlineFlex,
+        alignItems: center,
+        color: `${black} !important`,
+        justifyContent: center,
+        background: '#FFB400',
+        paddingLeft: [15, .7, 15],
+        paddingRight: [15, .7, 15],
+        paddingTop: [10, .7, 10],
+        paddingBottom: [10, .7, 10],
+        borderRadius: [5, .7, 5],
+        hover: {
+            backgroundColor: colorPalette.paleGreen,
+            color: `${white} !important`,
+            textDecoration: 'none !important'
         }
     }
 }

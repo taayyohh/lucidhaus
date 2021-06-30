@@ -1,6 +1,6 @@
-import {getSignedRequest, uploadFile} from 'features/site/services/s3'
-import {updateUserJwt}                from 'features/user/services'
-import {call, put, takeEvery}         from 'redux-saga/effects'
+import {getSignedRequest, uploadFile}    from 'features/site/services/s3'
+import {getReviewsByUser, updateUserJwt} from 'features/user/services'
+import {call, put, takeEvery}            from 'redux-saga/effects'
 import {getEntityById, updateEntity}  from 'utils/abstractions/crud'
 import {setFormData}                  from 'utils/abstractions/setFormData'
 
@@ -229,6 +229,17 @@ export function* getBookmark({payload}) {
 
 }
 
+export function* getUserReviews({payload}) {
+    const {_id, token} = payload
+    const reviews = yield call(getReviewsByUser, {
+        _id,
+        token
+    })
+    if(!reviews.error) {
+        yield put({type: 'user/getUserReviewsSuccess', payload: {reviews: reviews}})
+    }
+}
+
 
 /**
  *
@@ -257,7 +268,10 @@ export function* watchManageBookmark() {
 
 export function* watchGetBookmark() {
     yield takeEvery('user/getBookmark', getBookmark)
+}
 
+export function* watchGetUserReviews() {
+    yield takeEvery('user/getUserReviews', getUserReviews)
 }
 
 

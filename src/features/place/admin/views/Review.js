@@ -14,6 +14,7 @@ import {
 const Review = () => {
     const {_id, token} = useSelector(state => state.user)
     const {slug} = useSelector(state => state.site)
+    const {place} = useSelector(state => state.place)
 
     const initialValues = {
         review: '',
@@ -22,9 +23,10 @@ const Review = () => {
         celebrated: undefined,
         welcome: undefined,
         user: _id,
+        placeId: place._id,
         _id,
         token,
-        slug
+        slug,
     }
 
 

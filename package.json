@@ -17,6 +17,7 @@
     "braintree-web-drop-in-react": "^1.1.1",
     "connected-react-router": "^6.8.0",
     "crypto-random-string": "^4.0.0",
+    "dayjs": "^1.10.5",
     "dotenv": "^8.2.0",
     "formik": "^2.1.7",
     "framer-motion": "^2.4.3-beta.2",

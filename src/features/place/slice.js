@@ -9,6 +9,7 @@ import {placeCategory}     from './admin/taxonomy/placeCategory/reducers'
 const initialState = {
     place: [],
     places: [],
+    reviews: [],
     error: {
         places: {},
         boonePlaces: {},
@@ -20,6 +21,10 @@ const initialState = {
     },
     boonePlaces: {},
     boonePlace: {},
+    noResults: {
+        boone: false,
+        algolia: false
+    },
     taxonomy: {
         bathroom: [],
         businessOwner: [],
@@ -63,6 +68,11 @@ export const slice = createSlice({
         },
         getBooneAutoCompleteSuccess: (state, action) => {
             state.boonePlaces = action.payload
+            state.noResults.boone = false
+        },
+        getBooneAutoCompleteFailure: (state,action) => {
+            state.noResults.boone = true
+            state.boonePlaces = {}
         },
         getBoonePlaceSuccess: (state, action) => {
             state.boonePlace = action.payload.data
@@ -82,6 +92,14 @@ export const slice = createSlice({
         },
         getAlgoliaPlacesSuccess: (state, action) => {
             state.algoliaPlaces = action.payload
+            state.noResults.algolia = false
+        },
+        getAlgoliaPlacesFailure: (state, action) => {
+            state.noResults.algolia = true
+            state.algoliaPlaces = []
+        },
+        getReviewSuccess: (state, action) => {
+            state.reviews = [...state.reviews, action.payload]
         },
 
         /*   ADMIN  */

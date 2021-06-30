@@ -1,5 +1,6 @@
 import {getAlgoliaPlaces, getPlace, getPlaces} from 'features/place/services'
 import {call, put, takeEvery}                  from 'redux-saga/effects'
+import {getEntityById}                         from '../../../utils/abstractions/crud'
 
 /**
  *
@@ -45,6 +46,19 @@ export function* searchAlgoliaPlaceIndex({payload}) {
     const result = yield call(getAlgoliaPlaces, payload)
     if(result.hits.length > 0) {
         yield put({type: 'place/getAlgoliaPlacesSuccess', payload: result.hits})
+    } else {
+        yield put({type: 'place/getAlgoliaPlacesFailure', payload: result.hits})
+
+    }
+}
+
+export function* getReview({payload}) {
+    const review = yield call(getEntityById, {
+        entityId: payload.review,
+        path: 'review'
+    })
+    if(!review.error) {
+        yield put({type: 'place/getReviewSuccess', payload: review})
     }
 }
 
@@ -70,4 +84,8 @@ export function* watchSearchAllPlaces() {
 
 export function* watchSearchAlgoliaPlaceIndex() {
     yield takeEvery('place/searchAlgoliaPlaceIndex', searchAlgoliaPlaceIndex)
+}
+
+export function* watchGetReviews() {
+    yield takeEvery('place/getReview', getReview)
 }
