@@ -34,7 +34,7 @@ export const createEntity = ({_id, token, body, slug}) =>
 
 
 export const getEntityById = ({entityId, path}) =>
-    fetch(`${API}/${path}/id/${entityId}`, {
+    fetch(`${API}/${path}/by/id/${entityId}`, {
         method: 'GET'
     })
         .then(response => {
