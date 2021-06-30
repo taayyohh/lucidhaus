@@ -61,10 +61,13 @@ import {
     watchNavigate
 }                                  from 'features/site/sagas'
 import {
+    watchConfirmResetToken,
     watchGetBookmark,
     watchGetUserReviews,
     watchManageBookmark,
+    watchRecoverPassword,
     watchResendVerificationLink,
+    watchResetPassword,
     watchUpdateProfile,
     watchUpdateUser,
     watchUpdateUserIdentity
@@ -228,6 +231,9 @@ export default function* rootSaga() {
         fork(watchGetBookmark),
         fork(watchGetUserReviews),
         fork(watchResendVerificationLink),
+        fork(watchRecoverPassword),
+        fork(watchConfirmResetToken),
+        fork(watchResetPassword),
 
         //user -- taxonomy
         fork(watchCreateAdaptiveEquipment),

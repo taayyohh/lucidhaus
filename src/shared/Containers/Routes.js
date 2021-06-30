@@ -13,6 +13,8 @@ const Map = lazy(() => import('features/site/views/Map'))
 const Help = lazy(() => import('features/site/views/Help'))
 const Privacy = lazy(() => import('features/site/views/Privacy'))
 const Terms = lazy(() => import('features/site/views/Terms'))
+const Recover = lazy(() => import('features/site/views/Recover'))
+const Reset = lazy(() => import('features/site/views/Reset'))
 
 
 
@@ -102,6 +104,9 @@ const Routes = () => {
                             <Route path="/privacy-policy" exact component={Privacy}/>
                             <Route path="/terms-of-service" exact component={Terms}/>
                             <Route path="/verify/:slug" exact component={VerifyEmail}/>
+                            <Route path="/recover" exact component={Recover}/>
+                            <Route path="/reset/:slug" exact component={Reset}/>
+
 
 
                             <Route path="/signup" exact component={SignUp}/>

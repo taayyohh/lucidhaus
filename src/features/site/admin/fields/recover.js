@@ -14,20 +14,15 @@
  * cropWidth, cropWidth: set the height and width of cropper tool
  **/
 
-import {PASSWORD, TEL} from 'config/variables'
-import * as Yup        from 'yup'
+import {EMAIL, PASSWORD, TEL} from 'config/variables'
+import * as Yup               from 'yup'
 import {phoneRegExp}   from '../../../../utils/helpers'
 
-export const signInFields = [
+export const recoverFields = [
     {
-        name: 'tel',
-        inputLabel: 'Telephone',
-        type: TEL
-    },
-    {
-        name: 'password',
-        inputLabel: 'Password',
-        type: PASSWORD
+        name: 'email',
+        inputLabel: 'Email',
+        type: EMAIL
     }
 ]
 
@@ -40,11 +35,8 @@ export const signInFields = [
  *
  */
 
-export const validateSignin = Yup.object().shape({
-    tel: Yup.string()
-        .matches(phoneRegExp, 'Phone number is not valid')
+export const validateRecover = Yup.object().shape({
+    email: Yup.string()
+        .email('invalid email')
         .required('*'),
-    password: Yup
-        .string()
-        .required('*')
 })

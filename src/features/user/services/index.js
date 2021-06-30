@@ -158,3 +158,40 @@ export const resendVerification = ({_id, token})  => {
         })
 }
 
+export const sendRecoverPassword = ({body})  => {
+    fetch(`${API}/auth/recover/`, {
+        method: "POST",
+        body: body
+    })
+        .then(response => {
+            return response.json()
+        })
+        .catch(error => {
+            return error
+        })
+}
+
+export const confirmUserResetToken = ({slug})  => {
+    fetch(`${API}/auth/reset/${slug}`, {
+        method: "GET",
+    })
+        .then(response => {
+            return response.json()
+        })
+        .catch(error => {
+            return error
+        })
+}
+
+export const resetUserPassword = ({body, slug})  => {
+    fetch(`${API}/auth/reset/${slug}`, {
+        method: "POST",
+        body: body
+    })
+        .then(response => {
+            return response.json()
+        })
+        .catch(error => {
+            return error
+        })
+}

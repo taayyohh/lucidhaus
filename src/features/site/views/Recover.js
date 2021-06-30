@@ -1,20 +1,17 @@
-import {signInFields, validateSignin}            from 'features/site/admin/fields/signIn'
 import {signInFormStyle, signInFormWrapperStyle} from 'features/user/views/styles'
 import React, {useEffect}                        from 'react'
 import {useSelector}                             from 'react-redux'
 import Div                                       from 'shared/Basic/Div'
 import Form                                      from 'shared/Fields/Form'
 import ContentWrapper                            from 'shared/Layout/ContentWrapper'
-import {history}                                 from 'store'
-import LinkSwitch                                from '../../../shared/Basic/LinkSwitch'
+import {recoverFields, validateRecover}          from '../admin/fields/recover'
 
-const SignIn = () => {
+const Recover = () => {
     const {isAuthenticated, isAdmin} = useSelector(state => state.user)
-    const initialValues = {tel: '', password: ''}
+    const initialValues = {email: ''}
 
     useEffect(() => {
-        if (isAuthenticated)
-            history.push(`/${isAdmin ? 'admin' : 'dashboard'}`)
+
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
@@ -24,22 +21,16 @@ const SignIn = () => {
             <Div theme={signInFormWrapperStyle}>
                 <Form
                     initialValues={initialValues}
-                    fields={signInFields}
-                    validationSchema={validateSignin}
-                    dispatchAction={'user/signIn'}
-                    formHeading={'Sign In'}
-                    buttonText={'Sign in'}
+                    fields={recoverFields}
+                    validationSchema={validateRecover}
+                    dispatchAction={'user/recoverPassword'}
+                    formHeading={'Recover Password'}
+                    buttonText={'Recover'}
                     theme={signInFormStyle}
                 />
-                <LinkSwitch
-                    url={'/recover'}
-                    theme={{display: 'flex', marginTop: 10}}
-                >
-                    Forgot Password?
-                </LinkSwitch>
             </Div>
         </ContentWrapper>
     )
 }
 
-export default SignIn
+export default Recover

@@ -1,6 +1,12 @@
-import {getSignedRequest, uploadFile}                        from 'features/site/services/s3'
-import {getReviewsByUser, resendVerification, updateUserJwt} from 'features/user/services'
-import {call, put, takeEvery}                                from 'redux-saga/effects'
+import {getSignedRequest, uploadFile}                                             from 'features/site/services/s3'
+import {
+    confirmUserResetToken,
+    getReviewsByUser,
+    resendVerification, resetUserPassword,
+    sendRecoverPassword,
+    updateUserJwt
+} from 'features/user/services'
+import {call, put, takeEvery}                                                     from 'redux-saga/effects'
 import {getEntityById, updateEntity}                         from 'utils/abstractions/crud'
 import {setFormData}                                         from 'utils/abstractions/setFormData'
 
@@ -254,6 +260,42 @@ export function* resendVerificationLink({payload}) {
 
 }
 
+export function* recoverPassword({payload}) {
+    const {email} = payload
+    //add to formdata so api can read
+    const body = new FormData()
+    const fields = [{email}]
+    for (let field of fields)
+        setFormData(body, field)
+
+    const recover = yield call(sendRecoverPassword, {body})
+}
+
+export function* confirmResetToken({payload}) {
+    const {slug} = payload
+
+    const body = new FormData()
+    const fields = [{slug}]
+    for (let field of fields)
+        setFormData(body, field)
+
+    const reset = yield call(confirmUserResetToken, {slug})
+    console.log('reset', reset)
+}
+
+export function* resetPassword({payload}) {
+    const{slug, password} = payload
+
+    const body = new FormData()
+    const fields = [{password}]
+    for (let field of fields)
+        setFormData(body, field)
+
+    const reset = yield call(resetUserPassword, {slug, body})
+    console.log('reset', reset)
+
+}
+
 
 /**
  *
@@ -292,4 +334,15 @@ export function* watchResendVerificationLink() {
     yield takeEvery('user/resendVerificationLink', resendVerificationLink)
 }
 
+export function* watchRecoverPassword() {
+    yield takeEvery('user/recoverPassword', recoverPassword)
+}
+
+export function* watchConfirmResetToken() {
+    yield takeEvery('user/confirmResetToken', confirmResetToken)
+}
+
+export function* watchResetPassword() {
+    yield takeEvery('user/resetPassword', resetPassword)
+}
 

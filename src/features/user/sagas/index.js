@@ -191,7 +191,6 @@ export function* verifyUser({payload}) {
         setFormData(vToken, field)
 
     const confirmedUser = yield call(verifyUserEmail, {_id, token, verificationToken})
-    console.log('Confirmed User', confirmedUser)
     if (!confirmedUser.error) {
         yield put({type: 'user/userEmailVerificationSuccess'})
         yield put({
