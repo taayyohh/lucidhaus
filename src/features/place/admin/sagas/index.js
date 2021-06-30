@@ -247,7 +247,7 @@ export function* destroyPlaceSuccess() {
 }
 
 export function* addReview({payload}) {
-    const {celebrated, photo, photoFile, review, slug, safe, welcome, user, _id, placeId, token} = payload
+    const {celebrated, photo, photoFile, placeName, placeSlug, review, slug, safe, welcome, user, _id, placeId, token} = payload
     //add to formData so api can read
     const placeReview = new FormData()
     const fields = [
@@ -257,7 +257,9 @@ export function* addReview({payload}) {
         {safe},
         {welcome},
         {user},
-        {place: placeId}
+        {place: placeId},
+        {placeName},
+        {placeSlug}
     ]
     for (let field of fields)
         setFormData(placeReview, field)

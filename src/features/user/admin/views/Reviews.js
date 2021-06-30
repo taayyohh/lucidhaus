@@ -1,11 +1,10 @@
 import {userDashboardMenu}        from 'config/menus/dashboard/user'
-import dayjs                      from 'dayjs'
 import React, {useEffect}         from 'react'
 import {useDispatch, useSelector} from 'react-redux'
-import Div                        from 'shared/Basic/Div'
 import ContentWrapper             from 'shared/Layout/ContentWrapper'
 import DashboardInfo              from 'shared/Layout/Dashboard/DashboardInfo'
 import DashboardWrapper           from 'shared/Layout/Dashboard/DashboardWrapper'
+import Review                     from './Review'
 
 const Reviews = () => {
     const dispatch = useDispatch()
@@ -26,14 +25,10 @@ const Reviews = () => {
                     description={"Here are the reviews you've left."}
                 />
                 {reviews && reviews.map((review) => (
-                    <Div key={review.id}>
-                        <Div>{review.review}</Div>
-                        <Div>{review.safe}</Div>
-                        <Div>{review.celebrated}</Div>
-                        <Div>{review.welcome}</Div>
-                        <Div>{dayjs(review.updated).format('MM/DD/YYYY')}</Div>
-                        <Div>Place Id: {review.place}</Div>
-                    </Div>
+                    <Review
+                        key={review._id}
+                        review={review}
+                    />
                 ))}
 
                 {/*<Div theme={reviewsWrapperStyle}>*/}

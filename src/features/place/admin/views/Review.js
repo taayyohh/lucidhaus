@@ -24,11 +24,12 @@ const Review = () => {
         welcome: undefined,
         user: _id,
         placeId: place._id,
+        placeName: place.name,
+        placeSlug: place.slug,
         _id,
         token,
         slug,
     }
-
 
     return (
         <Div theme={reviewFormWrapperStyle}>

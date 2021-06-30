@@ -8,6 +8,7 @@ import {
 }                                  from 'features/place/admin/sagas'
 import {watchCreatePlaceFromBoone} from 'features/place/admin/sagas/boone'
 import {
+    watchGetUserReviewedPlaces,
     watchGetPlaceDetail,
     watchGetPlaces, watchGetReviews,
     watchSearchAlgoliaPlaceIndex,
@@ -289,6 +290,7 @@ export default function* rootSaga() {
         fork(watchSearchAlgoliaPlaceIndex),
         fork(watchAddReview),
         fork(watchGetReviews),
+        fork(watchGetUserReviewedPlaces),
 
         //taxonomy
         fork(watchCreateBathroom),

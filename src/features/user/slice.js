@@ -183,6 +183,9 @@ export const slice = createSlice({
         getUserReviewsSuccess: (state, action) => {
             state.reviews = action.payload.reviews
         },
+        getUserReviewedPlaceSuccess: (state, action) => {
+
+        },
 
 
         /*   ADMIN  */

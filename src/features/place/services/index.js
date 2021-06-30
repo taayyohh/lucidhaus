@@ -62,6 +62,17 @@ export const getPlace = ({slug}) =>
             return error
         })
 
+export const getPlaceById = ({_id}) =>
+    fetch(`${API}/place/by/id/${_id}`, {
+        method: 'GET'
+    })
+        .then(response => {
+            return response.json()
+        })
+        .catch(error => {
+            return error
+        })
+
 export const updatePlace = ({slug, _id, token, place}) =>
     fetch(`${API}/place/${slug}/${_id}`, {
         method: 'PUT',
