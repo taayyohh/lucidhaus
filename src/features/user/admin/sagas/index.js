@@ -1,8 +1,8 @@
-import {getSignedRequest, uploadFile}    from 'features/site/services/s3'
-import {getReviewsByUser, updateUserJwt} from 'features/user/services'
-import {call, put, takeEvery}            from 'redux-saga/effects'
-import {getEntityById, updateEntity}  from 'utils/abstractions/crud'
-import {setFormData}                  from 'utils/abstractions/setFormData'
+import {getSignedRequest, uploadFile}                        from 'features/site/services/s3'
+import {getReviewsByUser, resendVerification, updateUserJwt} from 'features/user/services'
+import {call, put, takeEvery}                                from 'redux-saga/effects'
+import {getEntityById, updateEntity}                         from 'utils/abstractions/crud'
+import {setFormData}                                         from 'utils/abstractions/setFormData'
 
 export function* updateUser({payload}) {
     const {
@@ -201,7 +201,7 @@ export function* manageBookmark({payload}) {
             token: token,
         })
 
-        if(!updated.error) {
+        if (!updated.error) {
             const user = yield put({
                 type: 'user/getUser',
                 payload: {
@@ -211,7 +211,6 @@ export function* manageBookmark({payload}) {
                 }
             })
         }
-
 
 
     } catch (error) {
@@ -235,9 +234,24 @@ export function* getUserReviews({payload}) {
         _id,
         token
     })
-    if(!reviews.error) {
+    if (!reviews.error) {
         yield put({type: 'user/getUserReviewsSuccess', payload: {reviews: reviews}})
     }
+}
+
+export function* resendVerificationLink({payload}) {
+    const {verificationLink, email, _id, token} = payload
+
+    const resend = yield call(resendVerification, {_id, token})
+    //TODO: make this dependent on successful send verified from server
+    yield put({
+        type: 'site/setNotification',
+        payload: {
+            notification: 'Email resent',
+            theme: 'green'
+        }
+    })
+
 }
 
 
@@ -272,6 +286,10 @@ export function* watchGetBookmark() {
 
 export function* watchGetUserReviews() {
     yield takeEvery('user/getUserReviews', getUserReviews)
+}
+
+export function* watchResendVerificationLink() {
+    yield takeEvery('user/resendVerificationLink', resendVerificationLink)
 }
 
 

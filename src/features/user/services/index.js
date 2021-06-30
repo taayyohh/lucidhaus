@@ -141,3 +141,20 @@ export const getReviewsByUser = ({_id, token}) =>
             return error
         })
 
+export const resendVerification = ({_id, token})  => {
+    fetch(`${API}/resend-verification-token/${_id}`, {
+        method: "PUT",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+        }
+    })
+        .then(response => {
+            return response.json()
+        })
+        .catch(error => {
+            return error
+        })
+}
+

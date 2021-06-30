@@ -237,7 +237,7 @@ export const formatPhone = (value) => value
 
 
 export const phoneRegExp = /^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/
-export const passwordRegExp = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/
+export const passwordRegExp = /[^ ]{8,36}/
 
 
 /**

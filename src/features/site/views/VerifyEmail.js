@@ -19,17 +19,20 @@ const VerifyEmail = () => {
             }
         })
 
-    }, [slug, _id, token, dispatch])
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     useEffect(() => {
         if (emailVerified) {
-            history.push('/dashboard')
             dispatch({
                 type: 'site/setNotification',
                 payload: {
                     notification: 'email verified!'
                 }
             })
+            setTimeout(() => (
+                history.push('/dashboard')
+            ), 500)
         }
 
     }, [emailVerified, dispatch])

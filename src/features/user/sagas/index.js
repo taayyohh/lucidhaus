@@ -5,8 +5,8 @@ import {confirmTwilioVerification, sendTwilioVerification}      from 'features/s
 import {getPurchaseHistory, getUser, getUsers, verifyUserEmail} from 'features/user/services'
 import {takeEvery}                                              from 'redux-saga/dist/redux-saga-effects-npm-proxy.esm'
 import {call, put}                                              from 'redux-saga/effects'
-import {createEntity}                                           from '../../../utils/abstractions/crud'
-import {setFormData}                                            from '../../../utils/abstractions/setFormData'
+import {createEntity}                                           from 'utils/abstractions/crud'
+import {setFormData}                                            from 'utils/abstractions/setFormData'
 
 export function* signIn({payload}) {
     try {
@@ -35,12 +35,15 @@ export function* signIn({payload}) {
 
 export function* signUpSignInSuccess({payload}) {
     const {token, user} = payload
+    const verificationToken = cryptoRandomString({length: 128})
+
     yield put({
         type: 'user/createVerificationToken',
         payload: {
             email: user.email,
             user: user._id,
-            verificationToken: cryptoRandomString({length: 128}),
+            slug: user.slug,
+            verificationToken: verificationToken,
             token: token,
             _id: user._id
         }
@@ -156,7 +159,7 @@ export function* getUserDetail({payload}) {
 }
 
 export function* createVerificationToken({payload}) {
-    const {_id, token, verificationToken} = payload
+    const {_id, token, slug, verificationToken} = payload
 
     //add to formdata so api can read
     const vToken = new FormData()
@@ -188,7 +191,8 @@ export function* verifyUser({payload}) {
         setFormData(vToken, field)
 
     const confirmedUser = yield call(verifyUserEmail, {_id, token, verificationToken})
-    if (confirmedUser.emailVerified) {
+    console.log('Confirmed User', confirmedUser)
+    if (!confirmedUser.error) {
         yield put({type: 'user/userEmailVerificationSuccess'})
         yield put({
             type: 'site/setNotification',
@@ -198,7 +202,6 @@ export function* verifyUser({payload}) {
             }
         })
         yield put(push('/dashboard'))
-
     } else {
         yield put({type: 'user/userEmailVerificationFailure', payload: confirmedUser})
         yield put({

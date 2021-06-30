@@ -8,12 +8,13 @@ import {
 }                                  from 'features/place/admin/sagas'
 import {watchCreatePlaceFromBoone} from 'features/place/admin/sagas/boone'
 import {
-    watchGetUserReviewedPlaces,
     watchGetPlaceDetail,
-    watchGetPlaces, watchGetReviews,
+    watchGetPlaces,
+    watchGetReviews,
+    watchGetUserReviewedPlaces,
     watchSearchAlgoliaPlaceIndex,
     watchSearchAllPlaces
-} from 'features/place/sagas'
+}                                  from 'features/place/sagas'
 import {
     watchGetBooneAutoComplete,
     watchGetBoonePlace
@@ -60,12 +61,14 @@ import {
     watchNavigate
 }                                  from 'features/site/sagas'
 import {
-    watchGetBookmark, watchGetUserReviews,
+    watchGetBookmark,
+    watchGetUserReviews,
     watchManageBookmark,
+    watchResendVerificationLink,
     watchUpdateProfile,
     watchUpdateUser,
     watchUpdateUserIdentity
-} from 'features/user/admin/sagas'
+}                                  from 'features/user/admin/sagas'
 import {
     watchConfirmUser,
     watchCreateVerificationToken,
@@ -224,6 +227,7 @@ export default function* rootSaga() {
         fork(watchManageBookmark),
         fork(watchGetBookmark),
         fork(watchGetUserReviews),
+        fork(watchResendVerificationLink),
 
         //user -- taxonomy
         fork(watchCreateAdaptiveEquipment),
