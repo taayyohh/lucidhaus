@@ -1,5 +1,6 @@
-import {put, takeEvery, takeLatest} from 'redux-saga/effects'
-import {getCart}                    from 'utils/cartHelpers'
+import {call, put, takeEvery, takeLatest} from 'redux-saga/effects'
+import {getCart}                          from 'utils/cartHelpers'
+import {getEntityById}                    from '../../../utils/abstractions/crud'
 
 export function* loadConfig() {
     yield put({type: 'user/isAuthenticated'})
@@ -23,8 +24,21 @@ export function* navigate({payload}) {
     })
 }
 
-export function* watchNavigate() {
-    yield takeLatest('@@router/LOCATION_CHANGE', navigate)
+export function* getEntity({payload}) {
+    console.log('payload', payload)
+    const entity = yield call(getEntityById, {
+        entityId: payload.entityId,
+        path: payload.path
+    })
+    if(!entity.error) {
+        yield put({
+            type: `${payload.feature}/getEntitySuccess`,
+            payload: {
+                entity,
+            }
+        })
+    }
+
 }
 
 /**
@@ -35,6 +49,14 @@ export function* watchNavigate() {
  *
  */
 
+export function* watchNavigate() {
+    yield takeLatest('@@router/LOCATION_CHANGE', navigate)
+}
+
 export function* watchLoadConfig() {
     yield takeEvery('site/loadConfig', loadConfig)
+}
+
+export function* watchGetEntityById() {
+    yield takeEvery('site/getEntityById', getEntity)
 }

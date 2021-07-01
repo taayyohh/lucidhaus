@@ -57,9 +57,10 @@ import {
     watchGetProductCategory
 }                                  from 'features/shop/sagas/product/category'
 import {
+    watchGetEntityById,
     watchLoadConfig,
     watchNavigate
-}                                  from 'features/site/sagas'
+} from 'features/site/sagas'
 import {
     watchConfirmResetToken,
     watchGetBookmark,
@@ -202,6 +203,7 @@ export default function* rootSaga() {
         //site
         fork(watchNavigate),
         fork(watchLoadConfig),
+        fork(watchGetEntityById),
         fork(watchAttemptDestroyEntity),
         fork(watchDestroyEntity),
 

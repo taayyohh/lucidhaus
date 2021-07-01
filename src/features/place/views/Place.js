@@ -1,6 +1,6 @@
 import Review                      from 'features/place/admin/views/Review'
-import {AnimatePresence}           from 'framer-motion'
-import React, {useEffect}          from 'react'
+import {AnimatePresence}            from 'framer-motion'
+import React, {useEffect, useState} from 'react'
 import {useDispatch, useSelector}  from 'react-redux'
 import Div                         from 'shared/Basic/Div'
 import MotionDiv                   from 'shared/Basic/MotionDiv'
@@ -12,6 +12,7 @@ import {history}                   from 'store'
 import {debounce}                  from 'utils/helpers'
 import {isEmpty}                   from 'utils/themer'
 import LinkSwitch                  from '../../../shared/Basic/LinkSwitch'
+import {language}                  from '../../user/admin/taxonomy/language/reducers'
 import Bookmark                    from './Bookmark'
 import Reviews                     from './Reviews'
 import {
@@ -65,7 +66,7 @@ const Place = () => {
     } = place
     const {slug} = useSelector(state => state.site)
     const placeId = slug.substr(slug.lastIndexOf('-') + 1)
-    const hasNoReviews = !!reviews.length > 0 ? reviews?.filter(review => review?.user === _id).length < 1 : []
+    const [hasNoReviews, setHasNoReviews] = useState(true)
 
     const hasError = (response) => {
         switch (parseInt(response)) {
@@ -78,7 +79,9 @@ const Place = () => {
         }
     }
 
-    const init = () => {
+
+
+    useEffect(() => {
         dispatch({
             type: 'place/getBoonePlace',
             payload: {
@@ -92,10 +95,6 @@ const Place = () => {
                 slug: slug
             }
         })
-    }
-
-    useEffect(() => {
-        init()
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
@@ -108,8 +107,8 @@ const Place = () => {
 
         if ((hasNoPlace && hasNoBoonePlace) || boonePlaceRemoved) {
             debounce(history.push(`/places`), 500)
+            //TODO::add 404 error, create a collection in db with ids of booneplaces that no longer exist
 
-            //TODO::add 404 error
         } else if (hasNoPlace && hasBoonePlace) {
             if (isAuthenticated) {
                 dispatch({
@@ -126,6 +125,71 @@ const Place = () => {
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [error])
+
+    //TODO: fix this
+    useEffect(() => {
+        setHasNoReviews(!reviews || reviews?.filter(review => review?.user === _id).length === 0)
+
+    }, [reviews])
+
+    useEffect(() => {
+        bathrooms?.forEach(_id => {
+            dispatch({
+                type: 'site/getEntityById',
+                payload: {
+                    entityId: _id,
+                    path: 'bathroom',
+                    feature: 'place'
+                }
+            })
+        })
+        categories?.forEach(_id => {
+            dispatch({
+                type: 'site/getEntityById',
+                payload: {
+                    entityId: _id,
+                    path: 'place-category',
+                    feature: 'place'
+                }
+            })
+        })
+        communitiesServed?.forEach(_id => {
+            dispatch({
+                type: 'site/getEntityById',
+                payload: {
+                    entityId: _id,
+                    path: 'communities-served',
+                    feature: 'place'
+                }
+            })
+        })
+        foodOptions?.forEach(_id => {
+            dispatch({
+                type: 'site/getEntityById',
+                payload: {
+                    entityId: _id,
+                    path: 'food-options',
+                    feature: 'place'
+                }
+            })
+        })
+        languageSpoken?.forEach(_id => {
+            dispatch({
+                type: 'site/getEntityById',
+                payload: {
+                    entityId: _id,
+                    path: 'language-spoken',
+                    feature: 'place'
+                }
+            })
+        })
+        console.log('bathrooms', bathrooms)
+        console.log('categories', categories)
+        console.log('communitiesServed', communitiesServed)
+        console.log('foodOptions', foodOptions)
+        console.log('languageSpoken', languageSpoken)
+
+    }, [bathrooms, categories, communitiesServed, foodOptions, languageSpoken])
 
     useEffect(() => {
         dispatch({
@@ -175,33 +239,33 @@ const Place = () => {
                                     </Div>
                                     <Div>
                                         <Div>Audio Available: {audioAvailable ? 'true' : 'false'}</Div>
-                                        <Div>Bathrooms: {bathrooms && bathrooms.map((bathroom) => (
-                                            <Div>{bathroom}</Div>
+                                        <Div>Bathrooms: {bathrooms && bathrooms.map((bathroom, i) => (
+                                            <Div key={i}>{bathroom}</Div>
                                         ))}
                                         </Div>
                                         <Div>Braille: {braille? 'true' : 'false'}</Div>
                                         <Div>Brick & Mortar Establishment: {brickAndMortar ? 'true' : 'false'}</Div>
                                         <Div>
-                                            {businessOwner && businessOwner.map((owner) => (
-                                                <Div>{owner.name}</Div>
+                                            {businessOwner && businessOwner.map((owner, i) => (
+                                                <Div key={i}>{owner.name}</Div>
                                             ))}
                                         </Div>
                                         <Div>
                                             Categories:
-                                            {categories && categories.map((category) => (
-                                                <Div>{category}</Div>
+                                            {categories && categories.map((category,i) => (
+                                                <Div key={i}>{category}</Div>
                                             ))}
                                         </Div>
                                         <Div>
                                             Communities Served:
-                                            {communitiesServed && communitiesServed.map((community) => (
-                                                <Div>{community}</Div>
+                                            {communitiesServed && communitiesServed.map((community, i) => (
+                                                <Div key={i}>{community}</Div>
                                             ))}
                                         </Div>
                                         <Div>
                                             Food Options:
-                                            {foodOptions && foodOptions.map((food) => (
-                                                <Div>{food}</Div>
+                                            {foodOptions && foodOptions.map((food, i) => (
+                                                <Div key={i}>{food}</Div>
                                             ))}
                                         </Div>
                                         {isRestaurant && (
@@ -209,8 +273,8 @@ const Place = () => {
                                         )}
                                         <Div>
                                             Languages Spoken in this space:
-                                            {languageSpoken && languageSpoken.map((language) => (
-                                                <Div>{language}</Div>
+                                            {languageSpoken && languageSpoken.map((language, i) => (
+                                                <Div key={i}>{language}</Div>
                                             ))}
                                         </Div>
                                         {largeAdaptiveEquipment && (
