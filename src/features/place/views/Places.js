@@ -32,21 +32,19 @@ const Places = () => {
     const [allPlaces, setAllPlaces] = useState([])
 
     useEffect(() => {
-        if (!!algoliaPlaces && !!boonePlaces.data) {
-            setAllPlaces( [...algoliaPlaces, ...boonePlaces?.data].reduce(function (accumulator = [], currentValue) {
-                if (!!currentValue.booneId) {
-                    accumulator.push(currentValue)
-                } else if (accumulator.filter(place => !!place.booneId && (place.booneId === currentValue?.properties?.id)).length === 0) {
-                    accumulator.push(currentValue)
-                }
+        setAllPlaces(!boonePlaces?.data ? [...algoliaPlaces] : [...algoliaPlaces, ...boonePlaces?.data].reduce(function (accumulator = [], currentValue) {
+            if (currentValue.type === 'place') {
+                accumulator.push(currentValue)
+            } else if (accumulator.filter(place => !!place.booneId && (place.booneId === currentValue?.properties?.id)).length === 0) {
+                accumulator.push(currentValue)
+            }
 
-                return accumulator
+            return accumulator
 
-            }, []))
-        }
+        }, []))
+
 
     }, [algoliaPlaces, boonePlaces])
-
 
 
     useEffect(() => {
