@@ -32,18 +32,22 @@ const Places = () => {
     const [allPlaces, setAllPlaces] = useState([])
 
     useEffect(() => {
-        const algoliaIds = algoliaPlaces.map(p => p.booneId)
-        let boonePlacesData = []
-        if (!!boonePlaces?.data) {
-            boonePlacesData = [...boonePlaces?.data]
-            boonePlacesData.forEach(place => {
-                if (algoliaIds.includes(place.properties?.id)) {
-                    boonePlacesData.splice(boonePlaces.data.indexOf(place), 1)
+        if (!!algoliaPlaces && !!boonePlaces.data) {
+            setAllPlaces( [...algoliaPlaces, ...boonePlaces?.data].reduce(function (accumulator = [], currentValue) {
+                if (!!currentValue.booneId) {
+                    accumulator.push(currentValue)
+                } else if (accumulator.filter(place => !!place.booneId && (place.booneId === currentValue?.properties?.id)).length === 0) {
+                    accumulator.push(currentValue)
                 }
-            })
+
+                return accumulator
+
+            }, []))
         }
-        setAllPlaces([...boonePlacesData.concat(algoliaPlaces)])
+
     }, [algoliaPlaces, boonePlaces])
+
+
 
     useEffect(() => {
         dispatch({
@@ -86,8 +90,8 @@ const Places = () => {
                         index: placesIndex
                     }}
                 />
-
                 <Div theme={placesWrapperStyle}>
+                    {console.log('ALL', allPlaces)}
                     {allPlaces.length > 0 && allPlaces.map((place) => {
                         if (!!place.properties) {
                             const slug = `${slugify(place.properties.name)}-${slugify(place.properties.address)}-${place.properties.id}`
