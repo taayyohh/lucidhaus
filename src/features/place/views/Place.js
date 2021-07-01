@@ -28,7 +28,7 @@ import {
 const Place = () => {
     const dispatch = useDispatch()
     const {place, boonePlace, error, reviews} = useSelector(state => state.place)
-    const {isAuthenticated, _id, token} = useSelector(state => state.user)
+    const {isAuthenticated, isVerified, _id, token} = useSelector(state => state.user)
     const userSlug = useSelector(state => state.user.slug)
 
     const {
@@ -276,7 +276,7 @@ const Place = () => {
                                     <Reviews reviewIds={place.reviews}/>
                                 </Div>
                             )}
-                            {(isAuthenticated && hasNoReviews) && (
+                            {(isAuthenticated && isVerified && hasNoReviews) && (
                                 <Review/>
                             )}
                         </Div>

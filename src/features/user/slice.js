@@ -168,6 +168,7 @@ export const slice = createSlice({
         },
         getUserSuccess: (state, action) => {
             state.user = action.payload
+            state.isVerified = action.payload.emailVerified
         },
         destroyUserSuccess: (state, action) => {
             state.users = state.users.filter(item => item.objectID !== action.payload.objectID)
