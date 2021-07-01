@@ -91,7 +91,6 @@ const Places = () => {
                     }}
                 />
                 <Div theme={placesWrapperStyle}>
-                    {console.log('ALL', allPlaces)}
                     {allPlaces.length > 0 && allPlaces.map((place) => {
                         if (!!place.properties) {
                             const slug = `${slugify(place.properties.name)}-${slugify(place.properties.address)}-${place.properties.id}`
