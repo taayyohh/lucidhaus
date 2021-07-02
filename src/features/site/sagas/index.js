@@ -1,6 +1,7 @@
 import {call, put, takeEvery, takeLatest} from 'redux-saga/effects'
 import {getCart}                          from 'utils/cartHelpers'
 import {getEntityById}                    from '../../../utils/abstractions/crud'
+import {deleteAdaptiveEquipment}          from '../../user/admin/taxonomy/adaptiveEquipment/services'
 
 export function* loadConfig() {
     yield put({type: 'user/isAuthenticated'})
@@ -25,16 +26,34 @@ export function* navigate({payload}) {
 }
 
 export function* getEntity({payload}) {
-    console.log('payload', payload)
+    const featureSwitch = () => {
+        switch (payload.path) {
+            case 'bathroom':
+                return 'Bathroom'
+            case 'business-owner':
+                return 'BusinessOwner'
+            case 'place-category':
+                return 'PlaceCategory'
+            case 'communities-served':
+                return 'CommunitiesServed'
+            case 'food-options':
+                return 'FoodOptions'
+            case 'language-spoken':
+                return 'LanguageSpoken'
+            default:
+                return ''
+
+        }
+    }
     const entity = yield call(getEntityById, {
         entityId: payload.entityId,
         path: payload.path
     })
     if(!entity.error) {
         yield put({
-            type: `${payload.feature}/getEntitySuccess`,
+            type: `${payload.feature}/get${featureSwitch()}EntitySuccess`,
             payload: {
-                entity,
+                entity
             }
         })
     }

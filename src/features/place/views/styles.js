@@ -169,6 +169,12 @@ export const placeAddressStyle = {
     size: [24, .7, 24]
 }
 
+export const placeTaxonomyStyle = {
+    borderBottom: `1px solid ${globals.colors.borderColor}`,
+    paddingBottom: [30, .7, 30],
+    marginBottom: [30, .7, 30],
+}
+
 export const placeDescriptionStyle = {
     boxSizing: borderBox,
     paddingRight: [30, globals.style.layoutScalingValue, '0'],
@@ -219,8 +225,8 @@ export const reviewHeadingStyle = {
     size: [32, .7, 28],
     backgroundColor: colorPalette.seaFoamGreen,
     paddingLeft: [20, .7, 20],
-    paddingTop:  [20, .7, 20],
-    paddingBottom:  [20, .7, 20],
+    paddingTop: [20, .7, 20],
+    paddingBottom: [20, .7, 20],
     borderRadius: `${sv(10)} ${sv(10)} 0 0`
 }
 

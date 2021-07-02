@@ -215,7 +215,6 @@ export function* verifyUser({payload}) {
 }
 
 export function* getUserSuccess({payload}) {
-    console.log('payload', payload)
     if (payload?.bookmarks?.length > 0) {
         for (const bookmark of payload.bookmarks) {
             // if (bookmarks.filter(place => place._id === bookmark).length === 0)

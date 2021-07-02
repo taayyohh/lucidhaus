@@ -1,34 +1,45 @@
-import Review                      from 'features/place/admin/views/Review'
+import Review                       from 'features/place/admin/views/Review'
 import {AnimatePresence}            from 'framer-motion'
 import React, {useEffect, useState} from 'react'
-import {useDispatch, useSelector}  from 'react-redux'
-import Div                         from 'shared/Basic/Div'
-import MotionDiv                   from 'shared/Basic/MotionDiv'
-import RichText                    from 'shared/Basic/RichText'
-import ContentWrapper              from 'shared/Layout/ContentWrapper'
-import {fadeIn, fadeOut, nOpacity} from 'shared/Layout/styles/animations'
-import Map                         from 'shared/Map'
-import {history}                   from 'store'
-import {debounce}                  from 'utils/helpers'
-import {isEmpty}                   from 'utils/themer'
-import LinkSwitch                  from '../../../shared/Basic/LinkSwitch'
-import {language}                  from '../../user/admin/taxonomy/language/reducers'
-import Bookmark                    from './Bookmark'
-import Reviews                     from './Reviews'
+import {useDispatch, useSelector}   from 'react-redux'
+import Div                          from 'shared/Basic/Div'
+import LinkSwitch                   from 'shared/Basic/LinkSwitch'
+import MotionDiv                    from 'shared/Basic/MotionDiv'
+import RichText                     from 'shared/Basic/RichText'
+import ContentWrapper               from 'shared/Layout/ContentWrapper'
+import {fadeIn, fadeOut, nOpacity}  from 'shared/Layout/styles/animations'
+import Map                          from 'shared/Map'
+import {history}                    from 'store'
+import {debounce}                   from 'utils/helpers'
+import {isEmpty}                    from 'utils/themer'
+import Bookmark                     from './Bookmark'
+import Reviews                      from './Reviews'
 import {
     placeAddressStyle,
     placeDescriptionStyle,
+    placeTaxonomyStyle,
     placeTitleStyle,
     placeWrapperBottomStyle,
     placeWrapperStyle,
     placeWrapperTopStyle,
     reviewHeadingStyle,
     reviewsHeadingWrapperStyle
-}                                  from './styles'
+}                                   from './styles'
 
 const Place = () => {
     const dispatch = useDispatch()
-    const {place, boonePlace, error, reviews} = useSelector(state => state.place)
+    const {
+        place,
+        boonePlace,
+        error,
+        reviews,
+        bathrooms,
+        businessOwner,
+        placeCategory,
+        communitiesServed,
+        foodOptions,
+        languageSpoken
+    } = useSelector(state => state.place)
     const {isAuthenticated, isVerified, _id, token} = useSelector(state => state.user)
     const userSlug = useSelector(state => state.user.slug)
 
@@ -36,18 +47,12 @@ const Place = () => {
         address1,
         address2,
         audioAvailable,
-        bathrooms,
         braille,
         brickAndMortar,
-        businessOwner,
-        categories,
         city,
-        communitiesServed,
         country,
         description,
-        foodOptions,
         isRestaurant,
-        languageSpoken,
         largeAdaptiveEquipment,
         longitude,
         latitude,
@@ -62,7 +67,7 @@ const Place = () => {
         wheelchairParking,
         wheelchairRamps,
         wheelchairRestroom,
-        zip
+        zip,
     } = place
     const {slug} = useSelector(state => state.site)
     const placeId = slug.substr(slug.lastIndexOf('-') + 1)
@@ -78,7 +83,6 @@ const Place = () => {
                 return false
         }
     }
-
 
 
     useEffect(() => {
@@ -133,7 +137,7 @@ const Place = () => {
     }, [reviews])
 
     useEffect(() => {
-        bathrooms?.forEach(_id => {
+        place.bathrooms?.forEach(_id => {
             dispatch({
                 type: 'site/getEntityById',
                 payload: {
@@ -143,7 +147,17 @@ const Place = () => {
                 }
             })
         })
-        categories?.forEach(_id => {
+        place.businessOwner?.forEach(_id => {
+            dispatch({
+                type: 'site/getEntityById',
+                payload: {
+                    entityId: _id,
+                    path: 'business-owner',
+                    feature: 'place'
+                }
+            })
+        })
+        place.categories?.forEach(_id => {
             dispatch({
                 type: 'site/getEntityById',
                 payload: {
@@ -153,7 +167,7 @@ const Place = () => {
                 }
             })
         })
-        communitiesServed?.forEach(_id => {
+        place.communitiesServed?.forEach(_id => {
             dispatch({
                 type: 'site/getEntityById',
                 payload: {
@@ -163,7 +177,7 @@ const Place = () => {
                 }
             })
         })
-        foodOptions?.forEach(_id => {
+        place.foodOptions?.forEach(_id => {
             dispatch({
                 type: 'site/getEntityById',
                 payload: {
@@ -173,7 +187,7 @@ const Place = () => {
                 }
             })
         })
-        languageSpoken?.forEach(_id => {
+        place.languageSpoken?.forEach(_id => {
             dispatch({
                 type: 'site/getEntityById',
                 payload: {
@@ -183,13 +197,8 @@ const Place = () => {
                 }
             })
         })
-        console.log('bathrooms', bathrooms)
-        console.log('categories', categories)
-        console.log('communitiesServed', communitiesServed)
-        console.log('foodOptions', foodOptions)
-        console.log('languageSpoken', languageSpoken)
 
-    }, [bathrooms, categories, communitiesServed, foodOptions, languageSpoken])
+    }, [place.bathrooms, place.businessOwner, place.categories, place.communitiesServed, place.foodOptions, place.languageSpoken])
 
     useEffect(() => {
         dispatch({
@@ -237,81 +246,110 @@ const Place = () => {
                                         {' '}
                                         {/*{!!country && country}*/}
                                     </Div>
+                                    {website && (
+                                        <Div theme={placeTaxonomyStyle}>
+                                            <LinkSwitch url={website} children={website}/>
+                                        </Div>
+                                    )}
+                                    {(description) && (
+                                        <RichText
+                                            children={description}
+                                            theme={placeDescriptionStyle}
+                                        />
+                                    )}
                                     <Div>
-                                        <Div>Audio Available: {audioAvailable ? 'true' : 'false'}</Div>
-                                        <Div>Bathrooms: {bathrooms && bathrooms.map((bathroom, i) => (
-                                            <Div key={i}>{bathroom}</Div>
+                                        <Div theme={placeTaxonomyStyle}>
+                                            Audio Available:
+                                            {audioAvailable ? 'true' : 'false'}
+                                        </Div>
+                                        <Div theme={placeTaxonomyStyle}>
+                                            Bathrooms: {bathrooms && bathrooms.map((bathroom, i) => (
+                                            <Div key={i}>{bathroom.name}</Div>
                                         ))}
                                         </Div>
-                                        <Div>Braille: {braille? 'true' : 'false'}</Div>
-                                        <Div>Brick & Mortar Establishment: {brickAndMortar ? 'true' : 'false'}</Div>
-                                        <Div>
+                                        <Div theme={placeTaxonomyStyle}>
+                                            Braille:
+                                            {braille ? 'true' : 'false'}
+                                        </Div>
+                                        <Div theme={placeTaxonomyStyle}>
+                                            Brick & Mortar Establishment:
+                                            {brickAndMortar ? 'true' : 'false'}
+                                        </Div>
+                                        <Div theme={placeTaxonomyStyle}>
                                             {businessOwner && businessOwner.map((owner, i) => (
                                                 <Div key={i}>{owner.name}</Div>
                                             ))}
                                         </Div>
-                                        <Div>
+                                        <Div theme={placeTaxonomyStyle}>
                                             Categories:
-                                            {categories && categories.map((category,i) => (
-                                                <Div key={i}>{category}</Div>
+                                            {placeCategory && placeCategory.map((category, i) => (
+                                                <Div key={i}>{category.name}</Div>
                                             ))}
                                         </Div>
-                                        <Div>
+                                        <Div theme={placeTaxonomyStyle}>
                                             Communities Served:
                                             {communitiesServed && communitiesServed.map((community, i) => (
-                                                <Div key={i}>{community}</Div>
+                                                <Div key={i}>{community.name}</Div>
                                             ))}
                                         </Div>
-                                        <Div>
+                                        <Div theme={placeTaxonomyStyle}>
                                             Food Options:
                                             {foodOptions && foodOptions.map((food, i) => (
-                                                <Div key={i}>{food}</Div>
+                                                <Div key={i}>{food.name}</Div>
                                             ))}
                                         </Div>
                                         {isRestaurant && (
-                                            <Div>This is a restaurant</Div>
+                                            <Div theme={placeTaxonomyStyle}>This is a restaurant</Div>
                                         )}
-                                        <Div>
+                                        <Div theme={placeTaxonomyStyle}>
                                             Languages Spoken in this space:
                                             {languageSpoken && languageSpoken.map((language, i) => (
-                                                <Div key={i}>{language}</Div>
+                                                <Div key={i}>{language.name}</Div>
                                             ))}
                                         </Div>
                                         {largeAdaptiveEquipment && (
-                                            <Div>Adaptive Equipment: This space can accommodate large adaptive equipment!</Div>
+                                            <Div theme={placeTaxonomyStyle}>
+                                                Adaptive Equipment:
+                                                This space can accommodate large adaptive
+                                                equipment!
+                                            </Div>
                                         )}
                                         {onlyAccessibleByStairs && (
-                                            <Div>Stairs: This space is only accessible by stairs</Div>
+                                            <Div theme={placeTaxonomyStyle}>
+                                                Stairs: This space is only accessible by stairs
+                                            </Div>
                                         )}
                                         {publicTransportation && (
-                                            <Div>Public Transportation: This space is accessible by public transportation</Div>
+                                            <Div theme={placeTaxonomyStyle}>
+                                                Public Transportation: This space is accessible by public
+                                                transportation
+                                            </Div>
                                         )}
                                         {signLanguageAccessible && (
-                                            <Div>Sign Language: This space is sign language accessible</Div>
-                                        )}
-                                        {website && (
-                                            <LinkSwitch url={website} children={website} />
+                                            <Div theme={placeTaxonomyStyle}>
+                                                Sign Language: This space is sign language accessible
+                                            </Div>
                                         )}
                                         {wheelchairElevator && (
-                                            <Div>
+                                            <Div theme={placeTaxonomyStyle}>
                                                 <Div>Wheelchair Elevator:</Div>
                                                 <Div>A wheel chair elevator is accessible</Div>
                                             </Div>
                                         )}
                                         {wheelchairParking && (
-                                            <Div>
+                                            <Div theme={placeTaxonomyStyle}>
                                                 <Div>Wheelchair Parking:</Div>
                                                 <Div>A wheel parking space is available</Div>
                                             </Div>
                                         )}
                                         {wheelchairRamps && (
-                                            <Div>
+                                            <Div theme={placeTaxonomyStyle}>
                                                 <Div>Wheelchair Ramps:</Div>
                                                 <Div>A wheel ramp is available</Div>
                                             </Div>
                                         )}
                                         {wheelchairRestroom && (
-                                            <Div>
+                                            <Div theme={placeTaxonomyStyle}>
                                                 <Div>Wheelchair Restroom:</Div>
                                                 <Div>A wheel parking restroom is available</Div>
                                             </Div>
@@ -320,12 +358,7 @@ const Place = () => {
 
                                 </Div>
 
-                                {(description) && (
-                                    <RichText
-                                        children={description}
-                                        theme={placeDescriptionStyle}
-                                    />
-                                )}
+
                             </Div>
                             <Map
                                 lon={longitude || (!isEmpty(boonePlace) && boonePlace.locations[0].longitude)}

@@ -7,6 +7,12 @@ import {languageSpoken}    from './admin/taxonomy/languageSpoken/reducers'
 import {placeCategory}     from './admin/taxonomy/placeCategory/reducers'
 
 const initialState = {
+    bathroom: [],
+    businessOwner: [],
+    communitiesServed: [],
+    foodOptions: [],
+    languageSpoken: [],
+    placeCategory: [],
     place: [],
     places: [],
     reviews: [],
@@ -101,6 +107,27 @@ export const slice = createSlice({
         getReviewSuccess: (state, action) => {
             state.reviews = [...state.reviews, action.payload]
         },
+        getBathroomSuccess: (state, action) => {
+            console.log('HIIIIII')
+            state.bathroom = [...state.bathroom, ...action.payload.entity]
+        },
+        getBusinessOwnerEntitySuccess: (state, action) => {
+            state.businessOwner = [...state.businessOwner, action.payload.entity]
+        },
+        getPlaceCategoryEntitySuccess: (state, action) => {
+            state.placeCategory = [...state.placeCategory, action.payload.entity]
+        },
+        getCommunitiesServedEntitySuccess: (state, action) => {
+            state.communitiesServed = [...state.communitiesServed, action.payload.entity]
+        },
+        getFoodOptionsEntitySuccess: (state, action) => {
+            state.foodOptions = [...state.foodOptions, action.payload.entity]
+        },
+        getLanguageSpokenEntitySuccess: (state, action) => {
+            console.log('AAAA', action.payload)
+            state.languageSpoken = [...state.languageSpoken, action.payload.entity]
+        },
+
 
 
         /*   ADMIN  */

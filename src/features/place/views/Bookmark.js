@@ -1,10 +1,10 @@
-import {bookmark}     from 'config/icons'
+import {bookmark}                   from 'config/icons'
 import {colorPalette}               from 'config/styles'
 import React, {useEffect, useState} from 'react'
 import {useDispatch, useSelector}   from 'react-redux'
-import Div                        from 'shared/Basic/Div'
-import Icon           from 'shared/Basic/Icon'
-import {absolute}     from 'utils/themer'
+import Div                          from 'shared/Basic/Div'
+import Icon                         from 'shared/Basic/Icon'
+import {absolute}                   from 'utils/themer'
 
 const Bookmark = ({place, userSlug, _id, token}) => {
     const dispatch = useDispatch()
@@ -15,7 +15,6 @@ const Bookmark = ({place, userSlug, _id, token}) => {
         setUserBookmark(user.bookmarks.includes(place._id))
 
     }, [user.bookmarks])
-
 
 
     return (
@@ -31,7 +30,6 @@ const Bookmark = ({place, userSlug, _id, token}) => {
                 }
             })}
         >
-            {console.log('BOOO', isBookmark)}
             <Icon
                 icon={bookmark}
                 theme={{

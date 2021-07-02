@@ -20,9 +20,7 @@ const UserDashboard = () => {
         slug
     } = useSelector(state => state.user)
     const dispatch = useDispatch()
-
-    console.log('email verified', emailVerified)
-
+    
     useEffect(() => {
         dispatch({
             type: 'user/getUser',
