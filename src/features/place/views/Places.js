@@ -89,15 +89,17 @@ const Places = () => {
                 />
                 <Div theme={placesWrapperStyle}>
                     {allPlaces.length > 0 && allPlaces.map((place) => {
-                        if (!!place.properties) {
-                            const slug = `${slugify(place.properties.name)}-${slugify(place.properties.address)}-${place.properties.id}`
+                        if (!!place.uuid) {
+                            const slug = `${slugify(place.name)}-${
+                                place?.locations[0].length > 0 ?
+                                    slugify(place?.locations[0]?.address1) : ''}-${place.id}`
 
                             return (
                                 <GenericCard
                                     key={slug}
-                                    slug={`places/${slug}`}
-                                    name={place.properties.name}
-                                    address={place.properties.address}
+                                    slug={`/places/${place.id}`}
+                                    name={place.name}
+                                    address={place.locations[0].address1}
                                     theme={placeCardStyle}
                                 />
                             )
@@ -111,7 +113,7 @@ const Places = () => {
                             return (
                                 <GenericCard
                                     key={place.slug}
-                                    slug={`places/${place.slug}`}
+                                    slug={`/places/${place.slug}`}
                                     name={place.name}
                                     address={address()}
                                     theme={placeCardStyle}

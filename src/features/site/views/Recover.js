@@ -7,8 +7,9 @@ import ContentWrapper                            from 'shared/Layout/ContentWrap
 import {recoverFields, validateRecover}          from '../admin/fields/recover'
 
 const Recover = () => {
+    const {_id, token} = useSelector(state => state.user)
     const {isAuthenticated, isAdmin} = useSelector(state => state.user)
-    const initialValues = {email: ''}
+    const initialValues = {email: '', _id, token}
 
     useEffect(() => {
 

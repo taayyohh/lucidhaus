@@ -9,10 +9,10 @@ import {absolute}                   from 'utils/themer'
 const Bookmark = ({place, userSlug, _id, token}) => {
     const dispatch = useDispatch()
     const {user} = useSelector(state => state.user)
-    const [isBookmark, setUserBookmark] = useState(user.bookmarks.includes(place._id))
+    const [isBookmark, setUserBookmark] = useState(user?.bookmarks?.includes(place._id))
 
     useEffect(() => {
-        setUserBookmark(user.bookmarks.includes(place._id))
+        setUserBookmark(user?.bookmarks?.includes(place._id))
 
     }, [user.bookmarks])
 

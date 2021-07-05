@@ -261,14 +261,24 @@ export function* resendVerificationLink({payload}) {
 }
 
 export function* recoverPassword({payload}) {
-    const {email} = payload
+    const {email, token} = payload
     //add to formdata so api can read
     const body = new FormData()
     const fields = [{email}]
     for (let field of fields)
         setFormData(body, field)
 
-    const recover = yield call(sendRecoverPassword, {body})
+    try {
+        const recover = yield call(sendRecoverPassword, {body, token})
+        if(!recover?.error) {
+            console.log('recover', recover)
+
+        }
+    } catch {
+
+    }
+
+
 }
 
 export function* confirmResetToken({payload}) {
@@ -283,7 +293,7 @@ export function* confirmResetToken({payload}) {
     console.log('reset', reset)
 }
 
-export function* resetPassword({payload}) {
+export function* resetPassword({payload, token}) {
     const{slug, password} = payload
 
     const body = new FormData()
@@ -291,7 +301,7 @@ export function* resetPassword({payload}) {
     for (let field of fields)
         setFormData(body, field)
 
-    const reset = yield call(resetUserPassword, {slug, body})
+    const reset = yield call(resetUserPassword, {slug, body, token})
     console.log('reset', reset)
 
 }

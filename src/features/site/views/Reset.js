@@ -9,8 +9,9 @@ import {resetFields, validateReset}              from '../admin/fields/reset'
 const Reset = () => {
     const dispatch = useDispatch()
     const {isAuthenticated, isAdmin} = useSelector(state => state.user)
+    const {_id, token} = useSelector(state => state.user)
     const {slug} = useSelector(state => state.site)
-    const initialValues = {password: '', passwordConfirm: '', slug}
+    const initialValues = {password: '', passwordConfirm: '', slug, token}
 
 
 
@@ -18,7 +19,7 @@ const Reset = () => {
         dispatch({
             type: 'user/confirmResetToken',
             payload: {
-                slug
+                slug,
             }
         })
         //TODO: prevent view if invalid

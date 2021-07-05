@@ -158,7 +158,7 @@ export const resendVerification = ({_id, token})  => {
         })
 }
 
-export const sendRecoverPassword = ({body})  => {
+export const sendRecoverPassword = ({body, token})  => {
     fetch(`${API}/auth/recover/`, {
         method: "POST",
         body: body
