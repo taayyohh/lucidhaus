@@ -1,18 +1,21 @@
-import React            from 'react'
-import Div              from 'shared/Basic/Div'
-import MotionDiv        from 'shared/Basic/MotionDiv'
-import LinkSwitch       from '../Basic/LinkSwitch'
-import {toggleVariants} from './animations'
-import {
-    defaultFieldHeadingStyle,
-    toggleBallStyle,
-    toggleFieldStyle
-}                       from './styles'
+import React                                                                                 from 'react'
+import Div                                                                                   from 'shared/Basic/Div'
+import MotionDiv
+                                                                                             from 'shared/Basic/MotionDiv'
+import LinkSwitch                                                                            from '../Basic/LinkSwitch'
+import Span                                                                                  from '../Basic/Span'
+import {toggleVariants}                                                                      from './animations'
+import {defaultFieldErrorStyle, defaultFieldHeadingStyle, toggleBallStyle, toggleFieldStyle} from './styles'
 
-const Toggle = ({formik, inputLabel, inputLabelHelper, name}) =>
+const Toggle = ({formik, inputLabel, errorMessage, inputLabelHelper, name}) =>
     <>
         {(inputLabelHelper && (
-            <LinkSwitch url={inputLabelHelper} theme={defaultFieldHeadingStyle}>{inputLabel}</LinkSwitch>
+            <Div theme={{position: 'relative', paddingTop: 20, paddingBottom: 0}}>
+                <LinkSwitch url={inputLabelHelper} theme={defaultFieldHeadingStyle}>
+                    {inputLabel}
+                </LinkSwitch>
+                <Span theme={{...defaultFieldErrorStyle, left: 0}}>{errorMessage}</Span>
+            </Div>
         )) || (
             <Div theme={defaultFieldHeadingStyle}>{inputLabel}</Div>
         )}

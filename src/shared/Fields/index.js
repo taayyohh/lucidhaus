@@ -86,6 +86,7 @@ const FieldSwitch = memo(({field, formik, options, autoSubmit}) => {
                 formik={formik}
                 inputLabel={field.inputLabel}
                 inputLabelHelper={field.inputLabelHelper}
+                errorMessage={formik.errors[field.name] ? formik.errors[field.name] : null}
             />
         case SELECT:
             return <Select

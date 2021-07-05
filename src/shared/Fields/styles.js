@@ -1,7 +1,4 @@
-import {
-    colorPalette,
-    globals
-} from 'config/styles'
+import {colorPalette, globals} from 'config/styles'
 import {
     absolute,
     auto,
@@ -23,7 +20,7 @@ import {
     transparent,
     uppercase,
     white
-} from 'utils/themer'
+}                              from 'utils/themer'
 
 /** Default **/
 

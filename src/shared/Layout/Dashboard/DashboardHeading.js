@@ -4,4 +4,5 @@ import {dashboardHeadingStyle} from 'shared/Layout/Dashboard/styles'
 
 const DashboardHeading = ({children}) =>
     <H2 theme={dashboardHeadingStyle}>{children}</H2>
+
 export default DashboardHeading

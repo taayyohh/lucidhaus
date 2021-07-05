@@ -224,12 +224,14 @@ const Place = () => {
                                 {(boonePlace.name || name) && (
                                     <MotionDiv theme={placeTitleStyle}>
                                         {boonePlace.name || name}
-                                        <Bookmark
-                                            place={place}
-                                            _id={_id}
-                                            token={token}
-                                            userSlug={userSlug}
-                                        />
+                                        {isVerified && (
+                                            <Bookmark
+                                                place={place}
+                                                _id={_id}
+                                                token={token}
+                                                userSlug={userSlug}
+                                            />
+                                        )}
                                     </MotionDiv>
                                 )}
                                 <Div>

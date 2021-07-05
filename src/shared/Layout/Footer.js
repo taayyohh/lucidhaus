@@ -6,13 +6,14 @@ import React                                                                 fro
 import Div                                                                   from 'shared/Basic/Div'
 import Icon                                                                  from 'shared/Basic/Icon'
 import LinkSwitch                                                            from 'shared/Basic/LinkSwitch'
+import Span                                                                  from 'shared/Basic/Span'
 import {footerContactStyle, footerIconStyle, footerSocialStyle, footerStyle} from './styles/footer'
 
 const Footer = ({theme}) =>
     <Div as="footer" theme={{...footerStyle, ...theme}}>
         <Div theme={footerStyle.inner}>
             <Div theme={footerStyle.innerLinksWrapper}>
-                <span>&copy; {moment().format('YYYY')} {siteDisplayName}</span>
+                <Span theme={footerStyle.copy}>&copy; {moment().format('YYYY')} {siteDisplayName}</Span>
                 <Div theme={footerStyle.linksWrapper}>
                     <LinkSwitch
                         url={'https://inclusive-guide.s3.us-east-2.amazonaws.com/assets/Inclusive+Journeys+Privacy+Policy+-+4824-7519-7925+5.pdf'}

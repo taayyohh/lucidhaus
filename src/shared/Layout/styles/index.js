@@ -244,6 +244,7 @@ export const notificationWrapperStyle = theme => {
         opacity: 0,
         zIndex: 11,
         mobile: {
+            top: 0,
             left: 0,
             marginLeft: 0
         }

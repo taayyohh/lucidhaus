@@ -1,4 +1,4 @@
-import {comments, home, star, userCog} from 'config/icons'
+import {bookmark, comments, home, userCog} from 'config/icons'
 
 export const userDashboardMenu = [
     {
@@ -18,7 +18,7 @@ export const userDashboardMenu = [
     },
     {
         url: '/dashboard/places',
-        icon: star,
+        icon: bookmark,
         title: 'My Places'
     }
 ]

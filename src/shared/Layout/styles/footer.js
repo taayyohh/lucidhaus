@@ -5,13 +5,14 @@ import {
     center,
     column,
     flex,
-    flexStart, inlineFlex,
+    flexStart,
+    inlineFlex,
     none,
     pointer,
     spaceBetween,
     uppercase,
     white
-} from 'utils/themer'
+}                              from 'utils/themer'
 
 export const footerStyle = {
     size: [18, .7, 18],
@@ -31,6 +32,11 @@ export const footerStyle = {
         paddingBottom: 150,
         flexDirection: column
     },
+    copy: {
+        mobile: {
+            marginBottom: 5
+        }
+    },
     inner: {
         display: flex,
         justifyContent: spaceBetween,
@@ -47,16 +53,18 @@ export const footerStyle = {
         display: flex,
         alignItems: center,
         mobile: {
-            flexDirection: column
+            flexDirection: column,
+            alignItems: flexStart
         },
         child: {
             selector: 'a',
             color: colorPalette.paleGreen,
-            marginLeft: [7, .7, 7],
+            marginLeft: [7, .7, '0'],
             textDecoration: none,
             mobile: {
                 marginLeft: 0,
-                marginRight: 12
+                marginRight: 12,
+                marginBottom: 5
             },
             hover: {
                 color: colorPalette.seaGreen,
@@ -66,7 +74,8 @@ export const footerStyle = {
     },
     linksWrapper: {
         mobile: {
-            display: flex
+            display: flex,
+            flexDirection: column
         }
     },
     feedback: {
@@ -80,6 +89,9 @@ export const footerStyle = {
         paddingTop: [10, .7, 10],
         paddingBottom: [10, .7, 10],
         borderRadius: [5, .7, 5],
+        mobile: {
+            marginBottom: 5
+        },
         hover: {
             backgroundColor: colorPalette.paleGreen,
             color: `${white} !important`,
@@ -96,12 +108,6 @@ export const footerContactStyle = {
         width: '100%',
         alignItems: flexStart
     }
-}
-
-export const footerBuiltByStyle = {
-    size: [14, .7, 14],
-    textTransform: 'lowercase',
-    marginLeft: [10, .7, 10]
 }
 
 export const footerSocialStyle = {

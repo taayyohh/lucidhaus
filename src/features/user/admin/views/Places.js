@@ -2,6 +2,7 @@ import {userDashboardMenu}        from 'config/menus/dashboard/user'
 import {placeCardStyle}           from 'features/place/views/styles'
 import React, {useEffect}         from 'react'
 import {useDispatch, useSelector} from 'react-redux'
+import Div                        from 'shared/Basic/Div'
 import GenericCard                from 'shared/Cards/GenericCard'
 import ContentWrapper             from 'shared/Layout/ContentWrapper'
 import DashboardInfo              from 'shared/Layout/Dashboard/DashboardInfo'
@@ -9,7 +10,7 @@ import DashboardWrapper           from 'shared/Layout/Dashboard/DashboardWrapper
 
 const Places = () => {
     const dispatch = useDispatch()
-    const {user, bookmarks} = useSelector(state => state.user)
+    const {user, bookmarks, isVerified} = useSelector(state => state.user)
 
     useEffect(() => {
         if (user?.bookmarks?.length > 0) {
@@ -30,6 +31,10 @@ const Places = () => {
                     heading={'Your Saved Places'}
                     description={"Here are the places you've saved."}
                 />
+                {!isVerified && (
+                    <Div>In order to save a place, make sure you verify your email!</Div>
+                )}
+
                 {bookmarks && bookmarks.map((place) => {
                     const address = () => {
                         if (!!place.address1 && !!place.city && !!place.state && !!place.country) {
