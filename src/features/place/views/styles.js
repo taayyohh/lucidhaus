@@ -134,16 +134,24 @@ export const placeWrapperBottomStyle = {
         position: absolute,
         content: "''",
         left: '50%',
-        marginLeft: [-200, .7, -200],
-        width: [400, .7, 400],
+        marginLeft: [-200, .7, '25px'],
+        width: [400, .7, 'calc(100% - 50px)'],
         height: '1px',
         background: globals.colors.borderColor,
-        margin: '0 auto'
+        margin: '0 auto',
+        mobile: {
+            left: 0
+        }
     },
     mobile: {
         display: 'flex',
         flexDirection: column
     }
+}
+
+export const placeMapStyle = {
+    height: 500,
+    width: [500, globals.style.layoutScalingValue, '100%']
 }
 
 export const placeImageWrapperStyle = {

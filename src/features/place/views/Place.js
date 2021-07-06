@@ -16,7 +16,7 @@ import Bookmark                     from './Bookmark'
 import Reviews                      from './Reviews'
 import {
     placeAddressStyle,
-    placeDescriptionStyle,
+    placeDescriptionStyle, placeMapStyle,
     placeTaxonomyStyle,
     placeTitleStyle,
     placeWrapperBottomStyle,
@@ -24,7 +24,7 @@ import {
     placeWrapperTopStyle,
     reviewHeadingStyle,
     reviewsHeadingWrapperStyle
-}                                   from './styles'
+} from './styles'
 
 const Place = () => {
     const dispatch = useDispatch()
@@ -365,7 +365,7 @@ const Place = () => {
                             <Map
                                 lon={longitude || (!isEmpty(boonePlace) && boonePlace.locations[0].longitude)}
                                 lat={latitude || (!isEmpty(boonePlace) && boonePlace.locations[0].latitude)}
-                                theme={{height: 500, width: 500}}
+                                theme={placeMapStyle}
                             />
                         </Div>
                         <Div theme={placeWrapperBottomStyle}>

@@ -35,7 +35,7 @@ const Reviews = () => {
                         review={review}
                     />
                 ))}
-                
+
             </DashboardWrapper>
         </ContentWrapper>
     )
