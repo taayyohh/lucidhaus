@@ -1,15 +1,16 @@
 import {bookmark}                 from 'config/icons'
-import {userDashboardMenu}        from 'config/menus/dashboard/user'
-import {colorPalette, globals}    from 'config/styles'
-import React, {useEffect}         from 'react'
-import {useDispatch, useSelector} from 'react-redux'
-import Div                        from 'shared/Basic/Div'
-import Icon                       from 'shared/Basic/Icon'
-import ContentWrapper             from 'shared/Layout/ContentWrapper'
-import DashboardInfo              from 'shared/Layout/Dashboard/DashboardInfo'
-import DashboardWrapper           from 'shared/Layout/Dashboard/DashboardWrapper'
-import {white}                    from 'utils/themer'
-import LinkSwitch                 from '../../../../shared/Basic/LinkSwitch'
+import {userDashboardMenu}             from 'config/menus/dashboard/user'
+import {colorPalette, globals}         from 'config/styles'
+import React, {useEffect}              from 'react'
+import {useDispatch, useSelector}      from 'react-redux'
+import Div                             from 'shared/Basic/Div'
+import Icon                            from 'shared/Basic/Icon'
+import ContentWrapper                  from 'shared/Layout/ContentWrapper'
+import DashboardInfo                   from 'shared/Layout/Dashboard/DashboardInfo'
+import DashboardWrapper                from 'shared/Layout/Dashboard/DashboardWrapper'
+import {white}                         from 'utils/themer'
+import LinkSwitch                      from '../../../../shared/Basic/LinkSwitch'
+import {userDashboardInfoWrapperStyle} from './styles'
 
 const UserDashboard = () => {
     const {
@@ -77,7 +78,7 @@ const UserDashboard = () => {
                         </Div>
                     )}
                 </Div>
-                <Div theme={{font: globals.fonts.serif}}>
+                <Div theme={userDashboardInfoWrapperStyle}>
                     <Div>
                         <strong>Who we are</strong> — Inclusive Guide is an online community that lists safe and
                         welcoming spaces for people who experience discrimination. Individuals can rate businesses and
@@ -113,7 +114,6 @@ const UserDashboard = () => {
                         </Div>
                     </Div>
                     <Div>
-
                         <Div>Save your favorite places!</Div>
                         <Div>
                             <Icon icon={bookmark}/>
