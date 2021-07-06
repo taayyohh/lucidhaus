@@ -188,7 +188,7 @@ export const placeWrapperBottomStyle = {
     },
     mobile: {
         display: 'flex',
-        flexDirection: column
+        flexDirection: 'column-reverse'
     }
 }
 
