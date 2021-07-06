@@ -19,6 +19,7 @@ import {
     placeDescriptionStyle,
     placeMapStyle,
     placeTaxonomyStyle,
+    placeTaxonomyWrapperStyle,
     placeTitleStyle,
     placeWrapperBottomStyle,
     placeWrapperStyle,
@@ -250,7 +251,7 @@ const Place = () => {
                                         {' '}
                                         {/*{!!country && country}*/}
                                     </Div>
-                                    {website && (
+                                    {website && website !== 'undefined' && (
                                         <Div theme={placeTaxonomyStyle}>
                                             <LinkSwitch url={website} children={website}/>
                                         </Div>
@@ -261,102 +262,143 @@ const Place = () => {
                                             theme={placeDescriptionStyle}
                                         />
                                     )}
-                                    <Div>
-                                        <Div theme={placeTaxonomyStyle}>
-                                            <Div theme={placeTaxonomyStyle.title}>Audio Available:</Div>
-                                            {audioAvailable ? 'true' : 'false'}
-                                        </Div>
-                                        <Div theme={placeTaxonomyStyle}>
-                                            Bathrooms: {bathrooms && bathrooms.map((bathroom, i) => (
-                                            <Div key={i}>
-                                                {bathroom.name}
+                                    <Div theme={placeTaxonomyWrapperStyle}>
+                                        {audioAvailable && (
+                                            <Div theme={placeTaxonomyStyle}>
+                                                <Div theme={placeTaxonomyStyle.title}>Audio Available:</Div>
+                                                {audioAvailable ? 'True' : 'false'}
                                             </Div>
-                                        ))}
-                                        </Div>
-                                        <Div theme={placeTaxonomyStyle}>
-                                            Braille:
-                                            {braille ? 'true' : 'false'}
-                                        </Div>
-                                        <Div theme={placeTaxonomyStyle}>
-                                            Brick & Mortar Establishment:
-                                            {brickAndMortar ? 'true' : 'false'}
-                                        </Div>
-                                        <Div theme={placeTaxonomyStyle}>
-                                            {businessOwner && businessOwner.map((owner, i) => (
-                                                <Div key={i}>{owner.name}</Div>
-                                            ))}
-                                        </Div>
-                                        <Div theme={placeTaxonomyStyle}>
-                                            Categories:
-                                            {placeCategory && placeCategory.map((category, i) => (
-                                                <Div key={i}>{category.name}</Div>
-                                            ))}
-                                        </Div>
-                                        <Div theme={placeTaxonomyStyle}>
-                                            Communities Served:
-                                            {communitiesServed && communitiesServed.map((community, i) => (
-                                                <Div key={i}>{community.name}</Div>
-                                            ))}
-                                        </Div>
-                                        <Div theme={placeTaxonomyStyle}>
-                                            Food Options:
-                                            {foodOptions && foodOptions.map((food, i) => (
-                                                <Div key={i}>{food.name}</Div>
-                                            ))}
-                                        </Div>
+                                        )}
+                                        {bathrooms.length > 0 && (
+                                            <Div theme={placeTaxonomyStyle}>
+                                                <Div theme={placeTaxonomyStyle.title}>Bathrooms:</Div>
+                                                {bathrooms && bathrooms.map((bathroom, i) => (
+                                                    <Div key={i}>
+                                                        {bathroom.name}
+                                                    </Div>
+                                                ))}
+                                            </Div>
+                                        )}
+                                        {braille && (
+                                            <Div theme={placeTaxonomyStyle}>
+                                                <Div theme={placeTaxonomyStyle.title}> Braille:</Div>
+                                                {braille ? 'true' : 'false'}
+                                            </Div>
+                                        )}
+                                        {brickAndMortar && (
+                                            <Div theme={placeTaxonomyStyle}>
+                                                <Div theme={placeTaxonomyStyle.title}>
+                                                    Brick & Mortar Establishment:
+                                                </Div>
+                                                {brickAndMortar ? 'true' : 'false'}
+                                            </Div>
+                                        )}
+                                        {businessOwner.length > 0 && (
+                                            <Div theme={placeTaxonomyStyle}>
+                                                <Div theme={placeTaxonomyStyle.title}>
+                                                    Business Owner:
+                                                </Div>
+                                                {businessOwner && businessOwner.map((owner, i) => (
+                                                    <Div key={i}>{owner.name}</Div>
+                                                ))}
+                                            </Div>
+                                        )}
+                                        {placeCategory.length > 0 && (
+                                            <Div theme={placeTaxonomyStyle}>
+                                                <Div theme={placeTaxonomyStyle.title}>
+                                                    Categories:
+                                                </Div>
+                                                {placeCategory && placeCategory.map((category, i) => (
+                                                    <Div key={i}>{category.name}</Div>
+                                                ))}
+                                            </Div>
+                                        )}
+                                        {communitiesServed.length > 0 && (
+                                            <Div theme={placeTaxonomyStyle}>
+                                                <Div theme={placeTaxonomyStyle.title}>
+                                                    Communities Served:
+                                                </Div>
+                                                {communitiesServed && communitiesServed.map((community, i) => (
+                                                    <Div key={i}>{community.name}</Div>
+                                                ))}
+                                            </Div>
+                                        )}
+                                        {foodOptions.length > 0 && (
+                                            <Div theme={placeTaxonomyStyle}>
+                                                <Div theme={placeTaxonomyStyle.title}>
+                                                    Food Options:
+                                                </Div>
+                                                {foodOptions && foodOptions.map((food, i) => (
+                                                    <Div key={i}>{food.name}</Div>
+                                                ))}
+                                            </Div>
+                                        )}
+
+
                                         {isRestaurant && (
                                             <Div theme={placeTaxonomyStyle}>This is a restaurant</Div>
                                         )}
-                                        <Div theme={placeTaxonomyStyle}>
-                                            Languages Spoken in this space:
-                                            {languageSpoken && languageSpoken.map((language, i) => (
-                                                <Div key={i}>{language.name}</Div>
-                                            ))}
-                                        </Div>
+                                        {languageSpoken.length > 0 && (
+                                            <Div theme={placeTaxonomyStyle}>
+                                                <Div theme={placeTaxonomyStyle.title}>
+                                                    Languages Spoken in this space:
+                                                </Div>
+                                                {languageSpoken && languageSpoken.map((language, i) => (
+                                                    <Div key={i}>{language.name}</Div>
+                                                ))}
+                                            </Div>
+                                        )}
                                         {largeAdaptiveEquipment && (
                                             <Div theme={placeTaxonomyStyle}>
-                                                Adaptive Equipment:
+                                                <Div theme={placeTaxonomyStyle.title}>
+                                                    Adaptive Equipment:
+                                                </Div>
                                                 This space can accommodate large adaptive
                                                 equipment!
                                             </Div>
                                         )}
                                         {onlyAccessibleByStairs && (
                                             <Div theme={placeTaxonomyStyle}>
-                                                Stairs: This space is only accessible by stairs
+                                                <Div theme={placeTaxonomyStyle.title}>Stairs:</Div>
+                                                This space is only accessible by stairs
                                             </Div>
                                         )}
                                         {publicTransportation && (
                                             <Div theme={placeTaxonomyStyle}>
-                                                Public Transportation: This space is accessible by public
+                                                <Div theme={placeTaxonomyStyle.title}>Public Transportation:</Div>
+                                                This space is accessible by public
                                                 transportation
                                             </Div>
                                         )}
                                         {signLanguageAccessible && (
                                             <Div theme={placeTaxonomyStyle}>
-                                                Sign Language: This space is sign language accessible
+                                                <Div theme={placeTaxonomyStyle.title}>
+                                                    Sign Language:
+                                                </Div>
+                                                This space is sign language accessible
                                             </Div>
                                         )}
                                         {wheelchairElevator && (
                                             <Div theme={placeTaxonomyStyle}>
-                                                <Div>Wheelchair Elevator:</Div>
+                                                <Div theme={placeTaxonomyStyle.title}>Wheelchair Elevator:</Div>
                                                 <Div>A wheel chair elevator is accessible</Div>
                                             </Div>
                                         )}
                                         {wheelchairParking && (
                                             <Div theme={placeTaxonomyStyle}>
-                                                <Div>Wheelchair Parking:</Div>
+                                                <Div theme={placeTaxonomyStyle.title}>Wheelchair Parking:</Div>
                                                 <Div>A wheel parking space is available</Div>
                                             </Div>
                                         )}
                                         {wheelchairRamps && (
                                             <Div theme={placeTaxonomyStyle}>
-                                                <Div>Wheelchair Ramps:</Div>
+                                                <Div theme={placeTaxonomyStyle.title}>Wheelchair Ramps:</Div>
                                                 <Div>A wheel ramp is available</Div>
                                             </Div>
                                         )}
                                         {wheelchairRestroom && (
                                             <Div theme={placeTaxonomyStyle}>
-                                                <Div>Wheelchair Restroom:</Div>
+                                                <Div theme={placeTaxonomyStyle.title}>Wheelchair Restroom:</Div>
                                                 <Div>A wheel parking restroom is available</Div>
                                             </Div>
                                         )}

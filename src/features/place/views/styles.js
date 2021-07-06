@@ -1,5 +1,19 @@
-import {colorPalette, globals}                                                                      from 'config/styles'
-import {absolute, auto, borderBox, center, column, flex, flexStart, none, relative, row, sv, white} from 'utils/themer'
+import {colorPalette, globals} from 'config/styles'
+import {
+    absolute,
+    auto,
+    borderBox,
+    center,
+    column,
+    flex,
+    flexStart,
+    grid,
+    none,
+    relative,
+    row,
+    sv,
+    white
+}                              from 'utils/themer'
 
 export const placesWrapperStyle = {
     display: 'grid',
@@ -207,14 +221,25 @@ export const placeAddressStyle = {
 }
 
 export const placeTaxonomyStyle = {
-    borderBottom: `1px solid ${globals.colors.borderColor}`,
+    border: `1px solid ${colorPalette.seaFoamGreen}`,
+    borderRadius: [7, .7, 7],
     padding: [30, .7, 30],
     marginBottom: [30, .7, 30],
-    boxShadow: '0px 3px 6px 0px #e6e6e6',
+   // boxShadow: '0px 3px 6px 0px #e6e6e6',
     title: {
         color: colorPalette.forestGreen,
         size: [22, .7, 22],
         letterSpacing: [0.5, .7, 0.5],
+    }
+}
+
+export const placeTaxonomyWrapperStyle = {
+    display: grid,
+    gridTemplateColumns: '1fr 1fr 1fr',
+    gridGap: sv(20),
+    mobile: {
+        display: flex,
+        flexDirection: column
     }
 }
 
