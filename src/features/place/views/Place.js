@@ -261,12 +261,14 @@ const Place = () => {
                                     )}
                                     <Div>
                                         <Div theme={placeTaxonomyStyle}>
-                                            Audio Available:
+                                            <Div theme={placeTaxonomyStyle.title}>Audio Available:</Div>
                                             {audioAvailable ? 'true' : 'false'}
                                         </Div>
                                         <Div theme={placeTaxonomyStyle}>
                                             Bathrooms: {bathrooms && bathrooms.map((bathroom, i) => (
-                                            <Div key={i}>{bathroom.name}</Div>
+                                            <Div key={i}>
+                                                {bathroom.name}
+                                            </Div>
                                         ))}
                                         </Div>
                                         <Div theme={placeTaxonomyStyle}>

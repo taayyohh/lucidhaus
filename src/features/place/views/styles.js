@@ -1,5 +1,19 @@
-import {colorPalette, globals}                                                     from 'config/styles'
-import {absolute, borderBox, center, column, flex, none, relative, row, sv, white} from 'utils/themer'
+import {colorPalette, globals}                                                                      from 'config/styles'
+import {
+    absolute,
+    auto,
+    borderBox,
+    center,
+    column,
+    flex,
+    flexStart,
+    none,
+    relative,
+    row,
+    sv,
+    uppercase,
+    white
+} from 'utils/themer'
 
 export const placesWrapperStyle = {
     display: 'grid',
@@ -19,15 +33,21 @@ export const placesHeadingStyle = {
     color: white,
     display: flex,
     alignItems: center,
-    justifyContent: center,
+    justifyContent: 'space-around',
     height: 180,
     size: 58,
-    lineHeight: 70
+    lineHeight: 70,
+    mobile: {
+        flexDirection: column,
+        height: auto,
+        padding: 30,
+        alignItems: flexStart
+    }
 }
 
 export const placeContentWrapperStyle = {
     marginBottom: [40, .7, 20],
-    marginTop: [-50, .7, '0']
+    marginTop: [-50, .7, '0'],
 }
 
 export const placeDetailStyle = {
@@ -36,34 +56,49 @@ export const placeDetailStyle = {
     font: globals.fonts.serif,
     size: [20, .7, 20],
     lineHeight: [28, .7, 28],
-    marginTop: [40, .7, 30]
+    marginTop: [40, .7, 30],
+    mobile: {
+        paddingLeft: 25,
+        paddingRight: 25
+    }
 }
 
 export const placesSearchFormStyle = {
     flexDirection: row,
     border: 0,
     padding: 0,
-    maxWidth: [800, globals.style.layoutScalingValue, '100%'],
-    marginTop: [30, .7, 30],
+    width: [800, globals.style.layoutScalingValue, '100%'],
+    margin: '0',
     mobile: {
-        flexDirection: column,
-        paddingBottom: 30,
-        borderBottom: `1px solid ${globals.colors.borderColor}`
+        flexDirection: column
     },
     child: [
         {
             selector: 'fieldset',
+            height: [52, .7, 52],
             marginBottom: 0,
             maxWidth: [650, globals.style.layoutScalingValue, '100%'],
         },
         {
             selector: 'input',
+            position: absolute,
+            top: 0
         },
         {
             selector: 'button',
+            display: flex,
+            alignItems: center,
+            justifyContent: center,
             marginTop: [0, .7, 20],
             height: [52, .7, 52],
-            width: [150, .7, 150]
+            width: [150, .7, 150],
+            backgroundColor: colorPalette.honeyYellow,
+          //  color: colorPalette.forestGreen,
+            borderColor: colorPalette.honeyYellow,
+            hover: {
+                backgroundColor: colorPalette.darkHoneyYellow,
+                borderColor: colorPalette.darkHoneyYellow
+            }
         },
         {
             selector: 'label',
@@ -179,8 +214,14 @@ export const placeAddressStyle = {
 
 export const placeTaxonomyStyle = {
     borderBottom: `1px solid ${globals.colors.borderColor}`,
-    paddingBottom: [30, .7, 30],
+    padding: [30, .7, 30],
     marginBottom: [30, .7, 30],
+    boxShadow: '0px 3px 6px 0px #e6e6e6',
+    title: {
+        color: colorPalette.forestGreen,
+        size: [22, .7, 22],
+        letterSpacing: [0.5, .7, 0.5],
+    }
 }
 
 export const placeDescriptionStyle = {

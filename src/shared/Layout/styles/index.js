@@ -124,6 +124,14 @@ export const pageFrameStyle = {
                 }
             }
 
+        if(slug === 'places')
+            return {
+                ...base,
+                mobile: {
+                    padding: 0
+                }
+            }
+
         return {
             ...base
         }

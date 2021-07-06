@@ -62,7 +62,25 @@ const Places = () => {
         <ContentWrapper theme={placeContentWrapperStyle}>
             <Div>
                 <Div>
-                    <Div theme={placesHeadingStyle}>Search Places</Div>
+                    <Div theme={placesHeadingStyle}>
+                        <Div>
+                            Search Places
+                        </Div>
+                        <Form
+                            theme={placesSearchFormStyle}
+                            initialValues={{input: ''}}
+                            fields={placeSearchField}
+                            dispatchAction={'place/searchAllPlaces'}
+                            formHeading={'Search'}
+                            buttonText={'Search'}
+                            payload={{
+                                longitude: coords.lon,
+                                latitude: coords.lat,
+                                radius: 10000,
+                                index: placesIndex
+                            }}
+                        />
+                    </Div>
                     <Div theme={placeDetailStyle}>
                         By reviewing businesses, you help other members of your
                         community know where you felt safe, welcomed, and celebrated!
@@ -73,20 +91,7 @@ const Places = () => {
                         Use the Search field below to discover a new business or review one you’ve recently visited.
                     </Div>
                 </Div>
-                <Form
-                    theme={placesSearchFormStyle}
-                    initialValues={{input: ''}}
-                    fields={placeSearchField}
-                    dispatchAction={'place/searchAllPlaces'}
-                    formHeading={'Search'}
-                    buttonText={'Search'}
-                    payload={{
-                        longitude: coords.lon,
-                        latitude: coords.lat,
-                        radius: 10000,
-                        index: placesIndex
-                    }}
-                />
+
                 <Div theme={placesWrapperStyle}>
                     {allPlaces.length > 0 && allPlaces.map((place) => {
                         if (!!place.uuid) {

@@ -23,7 +23,8 @@ export const colorPalette = {
     seaGreen: '#0e834b',
     seaFoamGreen: '#B7DAC9',
     paleGreen: '#80A390',
-    honeyYellow: '#FFB400'
+    honeyYellow: '#FFB400',
+    darkHoneyYellow: '#8f6502'
 }
 
 export const globals = {
