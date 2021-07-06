@@ -19,11 +19,8 @@ export const signUpFormStyle = {
     maxWidth: [700, .7, '100%'],
     margin: '0 auto',
     padding: 70,
-    inner: {
-        child: {
-            selector: '> fieldset',
-            marginBottom: [20, .7, 20]
-        }
+    fieldset: {
+        marginBottom: [15, .7, 15]
     }
 }
 
