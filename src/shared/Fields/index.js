@@ -29,7 +29,7 @@ import Select         from './Select'
 import SmartInput     from './SmartInput'
 import Toggle         from './Toggle'
 
-const FieldSwitch = memo(({field, formik, options, autoSubmit}) => {
+const FieldSwitch = memo(({field, formik, options, theme, autoSubmit}) => {
     switch (field.type) {
         case TEXT:
         case PASSWORD:
@@ -45,6 +45,7 @@ const FieldSwitch = memo(({field, formik, options, autoSubmit}) => {
                 id={field.name}
                 inputLabel={field.inputLabel}
                 type={field.type}
+                theme={theme}
                 //autoSubmit
             />
         case RICH_TEXT:

@@ -72,6 +72,14 @@ export const placesSearchFormStyle = {
     mobile: {
         flexDirection: column
     },
+    field: {
+      inputLabelFocused: {
+          transform: `translate(-6%, 14%) scale(${globals.style.inputLabelShrinkRatio})`
+      }
+    },
+    inputLabelFocused: {
+        transform: `translate(-6%, 14%) scale(${globals.style.inputLabelShrinkRatio})`
+    },
     child: [
         {
             selector: 'fieldset',

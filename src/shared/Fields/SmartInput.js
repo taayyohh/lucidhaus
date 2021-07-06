@@ -75,7 +75,7 @@ const SmartInput = ({
             <InputLabel
                 theme={
                     isInputLabelFocused
-                        ? {...defaultFocusedInputLabelStyle, ...theme.inputLabel}
+                        ? {...defaultFocusedInputLabelStyle, ...theme.inputLabelFocused}
                         : {...theme.inputLabel}
                 }
                 ref={inputLabelRef}

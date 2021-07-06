@@ -87,9 +87,6 @@ const Places = () => {
                         It’s a win/win way to celebrate the businesses that celebrate
                         you as well as to provide local resources to your friends and neighbors.
                     </Div>
-                    <Div theme={placeDetailStyle}>
-                        Use the Search field below to discover a new business or review one you’ve recently visited.
-                    </Div>
                 </Div>
 
                 <Div theme={placesWrapperStyle}>
