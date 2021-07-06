@@ -20,13 +20,13 @@ import {
     placeMapStyle,
     placeTaxonomyStyle,
     placeTaxonomyWrapperStyle,
-    placeTitleStyle,
+    placeTitleStyle, placeWebsiteStyle,
     placeWrapperBottomStyle,
     placeWrapperStyle,
     placeWrapperTopStyle,
     reviewHeadingStyle,
     reviewsHeadingWrapperStyle
-}                                   from './styles'
+} from './styles'
 
 const Place = () => {
     const dispatch = useDispatch()
@@ -252,9 +252,11 @@ const Place = () => {
                                         {/*{!!country && country}*/}
                                     </Div>
                                     {website && website !== 'undefined' && (
-                                        <Div theme={placeTaxonomyStyle}>
-                                            <LinkSwitch url={website} children={website}/>
-                                        </Div>
+                                        <LinkSwitch
+                                            url={website}
+                                            children={website}
+                                            theme={placeWebsiteStyle}
+                                        />
                                     )}
                                     {(description) && (
                                         <RichText

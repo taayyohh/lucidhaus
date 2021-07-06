@@ -220,6 +220,10 @@ export const placeAddressStyle = {
     size: [24, .7, 24]
 }
 
+export const placeWebsiteStyle = {
+    font: globals.fonts.serif
+}
+
 export const placeTaxonomyStyle = {
     border: `1px solid ${colorPalette.seaFoamGreen}`,
     borderRadius: [7, .7, 7],
