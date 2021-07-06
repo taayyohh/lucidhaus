@@ -14,9 +14,8 @@
  * cropWidth, cropWidth: set the height and width of cropper tool
  **/
 
-import {EMAIL, PASSWORD, TEL} from 'config/variables'
-import * as Yup               from 'yup'
-import {phoneRegExp}   from '../../../../utils/helpers'
+import {EMAIL}  from 'config/variables'
+import * as Yup from 'yup'
 
 export const recoverFields = [
     {
@@ -25,7 +24,6 @@ export const recoverFields = [
         type: EMAIL
     }
 ]
-
 
 
 /**

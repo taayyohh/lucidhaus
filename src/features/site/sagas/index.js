@@ -1,7 +1,6 @@
 import {call, put, takeEvery, takeLatest} from 'redux-saga/effects'
+import {getEntityById}                    from 'utils/abstractions/crud'
 import {getCart}                          from 'utils/cartHelpers'
-import {getEntityById}                    from '../../../utils/abstractions/crud'
-import {deleteAdaptiveEquipment}          from '../../user/admin/taxonomy/adaptiveEquipment/services'
 
 export function* loadConfig() {
     yield put({type: 'user/isAuthenticated'})
@@ -49,7 +48,7 @@ export function* getEntity({payload}) {
         entityId: payload.entityId,
         path: payload.path
     })
-    if(!entity.error) {
+    if (!entity.error) {
         yield put({
             type: `${payload.feature}/get${featureSwitch()}EntitySuccess`,
             payload: {

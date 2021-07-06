@@ -1,14 +1,15 @@
-import {getSignedRequest, uploadFile}                                             from 'features/site/services/s3'
+import {getSignedRequest, uploadFile} from 'features/site/services/s3'
 import {
     confirmUserResetToken,
     getReviewsByUser,
-    resendVerification, resetUserPassword,
+    resendVerification,
+    resetUserPassword,
     sendRecoverPassword,
     updateUserJwt
-} from 'features/user/services'
-import {call, put, takeEvery}                                                     from 'redux-saga/effects'
-import {getEntityById, updateEntity}                         from 'utils/abstractions/crud'
-import {setFormData}                                         from 'utils/abstractions/setFormData'
+}                                     from 'features/user/services'
+import {call, put, takeEvery}         from 'redux-saga/effects'
+import {getEntityById, updateEntity}  from 'utils/abstractions/crud'
+import {setFormData}                  from 'utils/abstractions/setFormData'
 
 export function* updateUser({payload}) {
     const {
@@ -208,7 +209,7 @@ export function* manageBookmark({payload}) {
         })
 
         if (!updated.error) {
-            const user = yield put({
+            yield put({
                 type: 'user/getUser',
                 payload: {
                     slug: slug,
@@ -246,9 +247,9 @@ export function* getUserReviews({payload}) {
 }
 
 export function* resendVerificationLink({payload}) {
-    const {verificationLink, email, _id, token} = payload
+    const {_id, token} = payload
 
-    const resend = yield call(resendVerification, {_id, token})
+    yield call(resendVerification, {_id, token})
     //TODO: make this dependent on successful send verified from server
     yield put({
         type: 'site/setNotification',
@@ -270,7 +271,7 @@ export function* recoverPassword({payload}) {
 
     try {
         const recover = yield call(sendRecoverPassword, {body, token})
-        if(!recover?.error) {
+        if (!recover?.error) {
             console.log('recover', recover)
 
         }
@@ -294,7 +295,7 @@ export function* confirmResetToken({payload}) {
 }
 
 export function* resetPassword({payload, token}) {
-    const{slug, password} = payload
+    const {slug, password} = payload
 
     const body = new FormData()
     const fields = [{password}]

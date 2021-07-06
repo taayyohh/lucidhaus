@@ -1,19 +1,5 @@
 import {colorPalette, globals}                                                                      from 'config/styles'
-import {
-    absolute,
-    auto,
-    borderBox,
-    center,
-    column,
-    flex,
-    flexStart,
-    none,
-    relative,
-    row,
-    sv,
-    uppercase,
-    white
-} from 'utils/themer'
+import {absolute, auto, borderBox, center, column, flex, flexStart, none, relative, row, sv, white} from 'utils/themer'
 
 export const placesWrapperStyle = {
     display: 'grid',
@@ -73,9 +59,9 @@ export const placesSearchFormStyle = {
         flexDirection: column
     },
     field: {
-      inputLabelFocused: {
-          transform: `translate(-6%, 14%) scale(${globals.style.inputLabelShrinkRatio})`
-      }
+        inputLabelFocused: {
+            transform: `translate(-6%, 14%) scale(${globals.style.inputLabelShrinkRatio})`
+        }
     },
     inputLabelFocused: {
         transform: `translate(-6%, 14%) scale(${globals.style.inputLabelShrinkRatio})`
@@ -101,7 +87,7 @@ export const placesSearchFormStyle = {
             height: [52, .7, 52],
             width: [150, .7, 150],
             backgroundColor: colorPalette.honeyYellow,
-          //  color: colorPalette.forestGreen,
+            //  color: colorPalette.forestGreen,
             borderColor: colorPalette.honeyYellow,
             hover: {
                 backgroundColor: colorPalette.darkHoneyYellow,

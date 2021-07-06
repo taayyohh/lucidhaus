@@ -16,7 +16,8 @@ import Bookmark                     from './Bookmark'
 import Reviews                      from './Reviews'
 import {
     placeAddressStyle,
-    placeDescriptionStyle, placeMapStyle,
+    placeDescriptionStyle,
+    placeMapStyle,
     placeTaxonomyStyle,
     placeTitleStyle,
     placeWrapperBottomStyle,
@@ -24,7 +25,7 @@ import {
     placeWrapperTopStyle,
     reviewHeadingStyle,
     reviewsHeadingWrapperStyle
-} from './styles'
+}                                   from './styles'
 
 const Place = () => {
     const dispatch = useDispatch()
@@ -50,7 +51,6 @@ const Place = () => {
         braille,
         brickAndMortar,
         city,
-        country,
         description,
         isRestaurant,
         largeAdaptiveEquipment,
@@ -134,7 +134,8 @@ const Place = () => {
     useEffect(() => {
         setHasNoReviews(!reviews || reviews?.filter(review => review?.user === _id).length === 0)
 
-    }, [reviews])
+
+    }, [_id, reviews])
 
     useEffect(() => {
         place.bathrooms?.forEach(_id => {
@@ -198,7 +199,8 @@ const Place = () => {
             })
         })
 
-    }, [place.bathrooms, place.businessOwner, place.categories, place.communitiesServed, place.foodOptions, place.languageSpoken])
+
+    }, [dispatch, place.bathrooms, place.businessOwner, place.categories, place.communitiesServed, place.foodOptions, place.languageSpoken])
 
     useEffect(() => {
         dispatch({

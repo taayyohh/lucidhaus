@@ -1,14 +1,13 @@
+import {recoverFields, validateRecover}          from 'features/site/admin/fields/recover'
 import {signInFormStyle, signInFormWrapperStyle} from 'features/user/views/styles'
 import React, {useEffect}                        from 'react'
 import {useSelector}                             from 'react-redux'
 import Div                                       from 'shared/Basic/Div'
 import Form                                      from 'shared/Fields/Form'
 import ContentWrapper                            from 'shared/Layout/ContentWrapper'
-import {recoverFields, validateRecover}          from '../admin/fields/recover'
 
 const Recover = () => {
     const {_id, token} = useSelector(state => state.user)
-    const {isAuthenticated, isAdmin} = useSelector(state => state.user)
     const initialValues = {email: '', _id, token}
 
     useEffect(() => {

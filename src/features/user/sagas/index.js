@@ -159,7 +159,7 @@ export function* getUserDetail({payload}) {
 }
 
 export function* createVerificationToken({payload}) {
-    const {_id, token, slug, verificationToken} = payload
+    const {_id, token, verificationToken} = payload
 
     //add to formdata so api can read
     const vToken = new FormData()

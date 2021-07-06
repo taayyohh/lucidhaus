@@ -14,6 +14,7 @@ const Bookmark = ({place, userSlug, _id, token}) => {
     useEffect(() => {
         setUserBookmark(user?.bookmarks?.includes(place._id))
 
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [user.bookmarks])
 
 

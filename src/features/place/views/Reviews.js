@@ -12,10 +12,11 @@ const Reviews = ({reviewIds}) => {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        for(const review of reviewIds) {
+        for (const review of reviewIds) {
             dispatch({type: 'place/getReview', payload: {_id, token, review}})
         }
 
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [reviewIds])
 
 
