@@ -4,7 +4,7 @@ import * as Yup from 'yup'
 export const placeSearchField = [
     {
         name: 'input',
-        inputLabel: 'Search by Keyword',
+        inputLabel: 'Search for a place',
         type: TEXT
     }
 ]

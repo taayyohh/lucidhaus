@@ -62,6 +62,7 @@ export const slice = createSlice({
         },
         getPlaceSuccess: (state, action) => {
             state.place = action.payload
+            state.reviews = []
         },
         getPlaceFailure: (state, action) => {
             state.error.place = action.payload

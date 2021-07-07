@@ -1,26 +1,28 @@
 import Review                       from 'features/place/admin/views/Review'
 import {AnimatePresence}            from 'framer-motion'
 import React, {useEffect, useState} from 'react'
-import {useDispatch, useSelector}   from 'react-redux'
-import Div                          from 'shared/Basic/Div'
-import LinkSwitch                   from 'shared/Basic/LinkSwitch'
-import MotionDiv                    from 'shared/Basic/MotionDiv'
-import RichText                     from 'shared/Basic/RichText'
-import ContentWrapper               from 'shared/Layout/ContentWrapper'
-import {fadeIn, fadeOut, nOpacity}  from 'shared/Layout/styles/animations'
-import Map                          from 'shared/Map'
-import {history}                    from 'store'
-import {debounce}                   from 'utils/helpers'
-import {isEmpty}                    from 'utils/themer'
-import Bookmark                     from './Bookmark'
-import Reviews                      from './Reviews'
+import {useDispatch, useSelector}  from 'react-redux'
+import Div                         from 'shared/Basic/Div'
+import LinkSwitch                  from 'shared/Basic/LinkSwitch'
+import MotionDiv                   from 'shared/Basic/MotionDiv'
+import RichText                    from 'shared/Basic/RichText'
+import ContentWrapper              from 'shared/Layout/ContentWrapper'
+import {fadeIn, fadeOut, nOpacity} from 'shared/Layout/styles/animations'
+import Map                         from 'shared/Map'
+import {history}                   from 'store'
+import {debounce}                  from 'utils/helpers'
+import {isEmpty}                   from 'utils/themer'
+import S3Img                       from '../../../shared/Basic/S3Img'
+import Bookmark                    from './Bookmark'
+import Reviews                     from './Reviews'
 import {
     placeAddressStyle,
     placeDescriptionStyle,
-    placeMapStyle,
+    placeMapStyle, placePhotoStyle,
     placeTaxonomyStyle,
     placeTaxonomyWrapperStyle,
-    placeTitleStyle, placeWebsiteStyle,
+    placeTitleStyle,
+    placeWebsiteStyle,
     placeWrapperBottomStyle,
     placeWrapperStyle,
     placeWrapperTopStyle,
@@ -222,11 +224,34 @@ const Place = () => {
             <MotionDiv initial={nOpacity} animate={fadeIn} exit={fadeOut}>
                 <ContentWrapper>
                     <MotionDiv theme={placeWrapperStyle}>
-                        <Div theme={placeWrapperTopStyle}>
+                        <Div>
                             <Div>
                                 {(boonePlace.name || name) && (
                                     <MotionDiv theme={placeTitleStyle}>
-                                        {boonePlace.name || name}
+                                        <Div>{boonePlace.name || name}</Div>
+                                        <Div theme={placeAddressStyle}>
+                                            {(!!address1 && address1) || (!isEmpty(boonePlace) && boonePlace.locations?.[0].address1)}
+                                            {(!!address1 ? ', ' : '')}
+                                            {(!!address2 && address2 !== 'undefined') ? address2 : ''}
+                                            {(!!address2 && address2 !== 'undefined') ? ', ' : ''}
+                                            {(!!city && city) || (!isEmpty(boonePlace) && boonePlace.locations[0].city)}
+                                            {(!!city ? ', ' : '')}
+                                            {(!!state && state) || (!isEmpty(boonePlace) && boonePlace.locations[0].state)}
+                                            {' '}
+                                            {(!!zip && zip) || (!isEmpty(boonePlace) && boonePlace.locations[0].postal_code)}
+                                            {' '}
+                                            {/*{!!country && country}*/}
+                                        </Div>
+                                        <Div>
+                                            {website && website !== 'undefined' && (
+                                                <LinkSwitch
+                                                    url={website}
+                                                    children={website}
+                                                    theme={placeWebsiteStyle}
+                                                />
+                                            )}
+                                        </Div>
+
                                         {isVerified && (
                                             <Bookmark
                                                 place={place}
@@ -237,27 +262,26 @@ const Place = () => {
                                         )}
                                     </MotionDiv>
                                 )}
-                                <Div>
-                                    <Div theme={placeAddressStyle}>
-                                        {(!!address1 && address1) || (!isEmpty(boonePlace) && boonePlace.locations?.[0].address1)}
-                                        {(!!address1 ? ', ' : '')}
-                                        {(!!address2 && address2 !== 'undefined') ? address2 : ''}
-                                        {(!!address2 && address2 !== 'undefined') ? ', ' : ''}
-                                        {(!!city && city) || (!isEmpty(boonePlace) && boonePlace.locations[0].city)}
-                                        {(!!city ? ', ' : '')}
-                                        {(!!state && state) || (!isEmpty(boonePlace) && boonePlace.locations[0].state)}
-                                        {' '}
-                                        {(!!zip && zip) || (!isEmpty(boonePlace) && boonePlace.locations[0].postal_code)}
-                                        {' '}
-                                        {/*{!!country && country}*/}
-                                    </Div>
-                                    {website && website !== 'undefined' && (
-                                        <LinkSwitch
-                                            url={website}
-                                            children={website}
-                                            theme={placeWebsiteStyle}
-                                        />
-                                    )}
+                                <S3Img
+                                    url={photo}
+                                    theme={placePhotoStyle}
+                                    // theme={{borderRadius: 300}}
+                                />
+                            </Div>
+
+
+                            <Div theme={{display: 'flex'}}>
+                                <Map
+                                    lon={longitude || (!isEmpty(boonePlace) && boonePlace.locations[0].longitude)}
+                                    lat={latitude || (!isEmpty(boonePlace) && boonePlace.locations[0].latitude)}
+                                    theme={placeMapStyle}
+                                />
+                            </Div>
+
+                            <Div>
+                                <Div theme={placeWrapperTopStyle}>
+
+
                                     {(description) && (
                                         <RichText
                                             children={description}
@@ -410,11 +434,6 @@ const Place = () => {
 
 
                             </Div>
-                            <Map
-                                lon={longitude || (!isEmpty(boonePlace) && boonePlace.locations[0].longitude)}
-                                lat={latitude || (!isEmpty(boonePlace) && boonePlace.locations[0].latitude)}
-                                theme={placeMapStyle}
-                            />
                         </Div>
                         <Div theme={placeWrapperBottomStyle}>
                             {place.reviews?.length > 0 && (

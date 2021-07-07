@@ -47,7 +47,7 @@ export const placesHeadingStyle = {
 
 export const placeContentWrapperStyle = {
     marginBottom: [40, .7, 20],
-    marginTop: [-50, .7, '0'],
+    //marginTop: [-50, .7, '0'],
 }
 
 export const placeDetailStyle = {
@@ -73,46 +73,37 @@ export const placesSearchFormStyle = {
         flexDirection: column
     },
     field: {
-        inputLabelFocused: {
-            transform: `translate(-6%, 14%) scale(${globals.style.inputLabelShrinkRatio})`
-        }
+        position: absolute,
+        top: 0
+    },
+    fieldset: {
+        height: [52, .7, 52],
+        marginBottom: 0,
+        maxWidth: [650, globals.style.layoutScalingValue, '100%'],
     },
     inputLabelFocused: {
         transform: `translate(-6%, 14%) scale(${globals.style.inputLabelShrinkRatio})`
     },
-    child: [
-        {
-            selector: 'fieldset',
-            height: [52, .7, 52],
-            marginBottom: 0,
-            maxWidth: [650, globals.style.layoutScalingValue, '100%'],
+    button: {
+        display: flex,
+        alignItems: center,
+        justifyContent: center,
+        marginTop: [0, .7, 20],
+        height: [52, .7, 52],
+        width: [150, globals.style.layoutScalingValue, 150],
+        backgroundColor: colorPalette.honeyYellow,
+        borderColor: colorPalette.honeyYellow,
+        mobile: {
+            alignSelf: flexStart
         },
-        {
-            selector: 'input',
-            position: absolute,
-            top: 0
-        },
-        {
-            selector: 'button',
-            display: flex,
-            alignItems: center,
-            justifyContent: center,
-            marginTop: [0, .7, 20],
-            height: [52, .7, 52],
-            width: [150, .7, 150],
-            backgroundColor: colorPalette.honeyYellow,
-            //  color: colorPalette.forestGreen,
-            borderColor: colorPalette.honeyYellow,
-            hover: {
-                backgroundColor: colorPalette.darkHoneyYellow,
-                borderColor: colorPalette.darkHoneyYellow
-            }
-        },
-        {
-            selector: 'label',
-            color: colorPalette.darkGray
+        hover: {
+            backgroundColor: colorPalette.darkHoneyYellow,
+            borderColor: colorPalette.darkHoneyYellow
         }
-    ],
+    },
+    inputLabel: {
+        color: colorPalette.darkGray
+    },
     heading: {
         display: none
     }
@@ -197,16 +188,23 @@ export const placeMapStyle = {
     width: [500, globals.style.layoutScalingValue, '100%']
 }
 
+export const placePhotoStyle = {
+    borderRadius: 1000,
+    height: 500,
+    width: [500, globals.style.layoutScalingValue, '100%']
+}
+
 export const placeImageWrapperStyle = {
     width: [500, globals.style.layoutScalingValue, '100%'],
     margin: '0 auto'
 }
 
 export const placeTitleStyle = {
+    display: flex,
+    flexDirection: column,
     position: relative,
     backgroundColor: colorPalette.seaFoamGreen,
     font: globals.fonts.fancy,
-    textAlign: center,
     size: [34, .7, 28],
     paddingTop: [20, .7, 20],
     paddingBottom: [20, .7, 20],
@@ -217,11 +215,12 @@ export const placeTitleStyle = {
 
 export const placeAddressStyle = {
     font: globals.fonts.serif,
-    size: [24, .7, 24]
+    size: [20, .7, 20]
 }
 
 export const placeWebsiteStyle = {
-    font: globals.fonts.serif
+    font: globals.fonts.serif,
+    size: [20, .7, 20]
 }
 
 export const placeTaxonomyStyle = {
@@ -229,7 +228,7 @@ export const placeTaxonomyStyle = {
     borderRadius: [7, .7, 7],
     padding: [30, .7, 30],
     marginBottom: [30, .7, 30],
-   // boxShadow: '0px 3px 6px 0px #e6e6e6',
+    // boxShadow: '0px 3px 6px 0px #e6e6e6',
     title: {
         color: colorPalette.forestGreen,
         size: [22, .7, 22],
@@ -315,4 +314,16 @@ export const placeReviewStyle = {
 
 export const placeReviewDescriptionStyle = {
     marginTop: [30, .7, 30]
+}
+
+export const bookmarkIconStyle = isBookmark => {
+    return {
+        size: [50, .7, 30],
+        color: isBookmark ? colorPalette.honeyYellow : '#fff',
+        hover: {
+            color: colorPalette.honeyYellow,
+            cursor: 'pointer'
+        }
+    }
+
 }

@@ -7,7 +7,7 @@ import Img                        from 'shared/Basic/Img'
 import LinkSwitch                 from 'shared/Basic/LinkSwitch'
 import Span                       from 'shared/Basic/Span'
 import HeaderMenu                 from 'shared/Menus/HeaderMenu'
-import HeaderMenuControls         from '../Menus/HeaderMenuControls'
+import HeaderMenuControls         from 'shared/Menus/HeaderMenuControls'
 import {
     headerInnerStyle,
     headerLogoLinkStyle,

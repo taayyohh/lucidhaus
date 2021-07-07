@@ -427,6 +427,10 @@ export const toggleBallStyle = {
     opacity: `1 !important`
 }
 
+export const toggleErrorStyle = {
+    left: 0,
+    size: [14, .7, 14]
+}
 
 /** Country **/
 

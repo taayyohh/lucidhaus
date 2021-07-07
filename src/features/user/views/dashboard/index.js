@@ -1,15 +1,15 @@
-import {bookmark}                 from 'config/icons'
+import {bookmark}                      from 'config/icons'
 import {userDashboardMenu}             from 'config/menus/dashboard/user'
-import {colorPalette, globals}         from 'config/styles'
+import {colorPalette}                  from 'config/styles'
 import React, {useEffect}              from 'react'
 import {useDispatch, useSelector}      from 'react-redux'
 import Div                             from 'shared/Basic/Div'
 import Icon                            from 'shared/Basic/Icon'
+import LinkSwitch                      from 'shared/Basic/LinkSwitch'
 import ContentWrapper                  from 'shared/Layout/ContentWrapper'
 import DashboardInfo                   from 'shared/Layout/Dashboard/DashboardInfo'
 import DashboardWrapper                from 'shared/Layout/Dashboard/DashboardWrapper'
 import {white}                         from 'utils/themer'
-import LinkSwitch                      from '../../../../shared/Basic/LinkSwitch'
 import {userDashboardInfoWrapperStyle} from './styles'
 
 const UserDashboard = () => {
@@ -117,7 +117,8 @@ const UserDashboard = () => {
                         <Div>Save your favorite places!</Div>
                         <Div>
                             <Icon icon={bookmark}/>
-                            - To save your favorite places simply click on this bookmark icon and the place will be saved in your
+                            - To save your favorite places simply click on this bookmark icon and the place will be
+                            saved in your
                             <LinkSwitch url={'/dashboard/places'}>My Places</LinkSwitch>!
                         </Div>
                     </Div>

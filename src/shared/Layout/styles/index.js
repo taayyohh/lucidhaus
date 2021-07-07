@@ -117,7 +117,8 @@ export const pageFrameStyle = {
             return {
                 ...base,
                 gridColumn: '1 / 7',
-                marginTop: [-50, .7, 50],
+                marginTop: 0,
+               // marginTop: [-50, .7, 50],
                 mobile: {
                     padding: 0,
                     marginTop: 0

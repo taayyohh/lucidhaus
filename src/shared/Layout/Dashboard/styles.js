@@ -10,6 +10,7 @@ export const dashboardStyle = {
     display: 'grid',
     gridTemplateColumns: '1fr 4fr',
     gridGap: sv(50, globals.style.layoutScalingValue),
+    marginTop: 50,
     mobile: {
         display: flex,
         flexDirection: column

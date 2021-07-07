@@ -26,7 +26,7 @@ export const toggleVariants = {
     },
     false: {
         justifyContent: flexStart,
-        backgroundColor: '#885757',
+        backgroundColor: globals.colors.borderColor,
         transition: {
             type: 'spring',
             stiffness: 700,

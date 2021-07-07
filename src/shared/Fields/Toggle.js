@@ -5,7 +5,13 @@ import MotionDiv
 import LinkSwitch                                                                            from '../Basic/LinkSwitch'
 import Span                                                                                  from '../Basic/Span'
 import {toggleVariants}                                                                      from './animations'
-import {defaultFieldErrorStyle, defaultFieldHeadingStyle, toggleBallStyle, toggleFieldStyle} from './styles'
+import {
+    defaultFieldErrorStyle,
+    defaultFieldHeadingStyle,
+    toggleBallStyle,
+    toggleErrorStyle,
+    toggleFieldStyle
+} from './styles'
 
 const Toggle = ({formik, inputLabel, errorMessage, inputLabelHelper, name}) =>
     <>
@@ -14,7 +20,7 @@ const Toggle = ({formik, inputLabel, errorMessage, inputLabelHelper, name}) =>
                 <LinkSwitch url={inputLabelHelper} theme={defaultFieldHeadingStyle}>
                     {inputLabel}
                 </LinkSwitch>
-                <Span theme={{...defaultFieldErrorStyle, left: 0}}>{errorMessage}</Span>
+                <Span theme={{...defaultFieldErrorStyle, ...toggleErrorStyle}}>{errorMessage}</Span>
             </Div>
         )) || (
             <Div theme={defaultFieldHeadingStyle}>{inputLabel}</Div>

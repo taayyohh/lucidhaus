@@ -1,3 +1,4 @@
+import {searchLocation}     from 'config/icons'
 import {placeSearchField}   from 'features/place/admin/fields/search'
 import {
     placeCardStyle,
@@ -16,6 +17,7 @@ import {
     useSelector
 }                           from 'react-redux'
 import Div                  from 'shared/Basic/Div'
+import Icon                 from 'shared/Basic/Icon'
 import GenericCard          from 'shared/Cards/GenericCard'
 import {mapContext}         from 'shared/Containers/MapController'
 import {searchContext}      from 'shared/Containers/SearchController'
@@ -32,8 +34,6 @@ const Places = () => {
     const [allPlaces, setAllPlaces] = useState([])
 
     useEffect(() => {
-        console.log('booo', boonePlaces.data)
-        console.log('acc', algoliaPlaces)
         setAllPlaces(!boonePlaces?.data ? [...algoliaPlaces] : [...algoliaPlaces, ...boonePlaces?.data].reduce(function (accumulator = [], currentValue) {
             if (currentValue.type === 'place') {
                 accumulator.push(currentValue)
@@ -125,12 +125,22 @@ const Places = () => {
                             )
                         }
                     })}
-                    {noResults.boone && noResults.algolia && (
-                        <Div>
-                            Oops! Looks like there are no results for this search, please try searching again!
-                        </Div>
-                    )}
                 </Div>
+                {noResults.boone && noResults.algolia && (
+                    <Div theme={{
+                        width: 300,
+                        margin: '0 auto',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        size: 32
+                    }}>
+                        <Icon
+                            icon={searchLocation}
+                            theme={{size: 60, margin: '0 auto'}}
+                        />
+                        Oops! Looks like there are no results for this search, please try searching again!
+                    </Div>
+                )}
             </Div>
         </ContentWrapper>
     )

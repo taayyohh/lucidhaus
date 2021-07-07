@@ -7,6 +7,7 @@ import {takeEvery}                                              from 'redux-saga
 import {call, put}                                              from 'redux-saga/effects'
 import {createEntity}                                           from 'utils/abstractions/crud'
 import {setFormData}                                            from 'utils/abstractions/setFormData'
+import {formatPhone}                                            from '../../../utils/helpers'
 
 export function* signIn({payload}) {
     try {
@@ -75,9 +76,17 @@ export function* signUp({payload}) {
 
 export function* confirmUser({payload}) {
     const confirmedUser = yield call(confirmTwilioVerification, payload)
+    const { acceptTerms, email, nameFirst, password, tel, verificationCode,} = payload
 
     if (confirmedUser === 'approved') {
-        const user = yield call(signup, payload)
+        const user = yield call(signup, {
+            acceptTerms,
+            email,
+            nameFirst,
+            password,
+            tel: formatPhone(tel),
+            verificationCode,
+        })
         try {
             if (!user.error) {
                 yield put({type: 'user/signUpSuccess', payload: user})
@@ -91,8 +100,8 @@ export function* confirmUser({payload}) {
                 yield put({
                     type: 'user/signIn',
                     payload: {
-                        tel: payload.tel,
-                        password: payload.password,
+                        tel: formatPhone(tel),
+                        password: password,
                         signUp: true
                     }
                 })

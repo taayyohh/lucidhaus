@@ -21,6 +21,13 @@ export function* createPlaceCategory({payload}) {
     })
     if (!createdPlaceCategory.error) {
         yield put({type: 'place/listPlaceCategory'})
+        yield put({
+            type: 'site/setNotification',
+            payload: {
+                notification: 'Added New Place Category',
+                theme: 'green'
+            }
+        })
         // yield put(push('/admin/places/update/' + crea.slug))
 
     } else {

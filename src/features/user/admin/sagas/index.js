@@ -275,10 +275,9 @@ export function* recoverPassword({payload}) {
             console.log('recover', recover)
 
         }
-    } catch {
-
+    } catch (error) {
+        yield put({type: 'place/recoverPasswordFailure'})
     }
-
 
 }
 

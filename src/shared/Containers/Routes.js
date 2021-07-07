@@ -17,7 +17,6 @@ const Recover = lazy(() => import('features/site/views/Recover'))
 const Reset = lazy(() => import('features/site/views/Reset'))
 
 
-
 const AdminDashboard = lazy(() => import('shared/Layout/Dashboard/admin/AdminDashboard'))
 const UserDashboard = lazy(() => import('features/user/views/dashboard'))
 const CreatePlace = lazy(() => import('features/place/admin/views/Create'))
@@ -32,15 +31,15 @@ const ManageUserTaxonomy = lazy(() => import('features/user/admin/taxonomy/Manag
 const ManagePlaceCategory = lazy(() => import('features/place/admin/taxonomy/placeCategory/Manage'))
 const ManageBathrooms = lazy(() => import('features/place/admin/taxonomy/bathroom/Manage'))
 const ManageBusinessOwner = lazy(() => import('features/place/admin/taxonomy/businessOwner/Manage'))
-const ManageCommunitiesServed  = lazy(() => import('features/place/admin/taxonomy/communitiesServed/Manage'))
-const ManageFoodOptions  = lazy(() => import('features/place/admin/taxonomy/foodOptions/Manage'))
+const ManageCommunitiesServed = lazy(() => import('features/place/admin/taxonomy/communitiesServed/Manage'))
+const ManageFoodOptions = lazy(() => import('features/place/admin/taxonomy/foodOptions/Manage'))
 const ManageLanguagesSpoken = lazy(() => import('features/place/admin/taxonomy/languageSpoken/Manage'))
 
 const UpdatePlaceCategory = lazy(() => import('features/place/admin/taxonomy/placeCategory/Update'))
 const UpdateBathrooms = lazy(() => import('features/place/admin/taxonomy/bathroom/Update'))
 const UpdateBusinessOwner = lazy(() => import('features/place/admin/taxonomy/businessOwner/Update'))
-const UpdateCommunitiesServed  = lazy(() => import('features/place/admin/taxonomy/communitiesServed/Update'))
-const UpdateFoodOptions  = lazy(() => import('features/place/admin/taxonomy/foodOptions/Update'))
+const UpdateCommunitiesServed = lazy(() => import('features/place/admin/taxonomy/communitiesServed/Update'))
+const UpdateFoodOptions = lazy(() => import('features/place/admin/taxonomy/foodOptions/Update'))
 const UpdateLanguagesSpoken = lazy(() => import('features/place/admin/taxonomy/languageSpoken/Update'))
 
 
@@ -108,7 +107,6 @@ const Routes = () => {
                             <Route path="/reset/:slug" exact component={Reset}/>
 
 
-
                             <Route path="/signup" exact component={SignUp}/>
                             <Route path="/signin" exact component={SignIn}/>
                             <Route path="/places" exact component={Places}/>
@@ -127,7 +125,8 @@ const Routes = () => {
                             <AdminRoute path="/admin" exact component={AdminDashboard}/>
                             <AdminRoute path="/admin/shop" exact component={ManageShop}/>
                             <AdminRoute path="/admin/product-category" exact component={ManageProductTaxonomy}/>
-                            <AdminRoute path="/admin/product-category/update/:slug" exact component={UpdateProductCategory}/>
+                            <AdminRoute path="/admin/product-category/update/:slug" exact
+                                        component={UpdateProductCategory}/>
                             <AdminRoute path="/admin/create/product-category" exact component={CreateProductCategory}/>
 
                             <AdminRoute path="/admin/places" exact component={ManagePlaces}/>
@@ -135,18 +134,28 @@ const Routes = () => {
                             <AdminRoute path="/admin/place/taxonomy" exact component={ManagePlaceTaxonomy}/>
 
                             <AdminRoute path="/admin/place/taxonomy/bathroom" exact component={ManageBathrooms}/>
-                            <AdminRoute path="/admin/place/taxonomy/business-owner" exact component={ManageBusinessOwner}/>
-                            <AdminRoute path="/admin/place/taxonomy/communities-served" exact component={ManageCommunitiesServed}/>
+                            <AdminRoute path="/admin/place/taxonomy/business-owner" exact
+                                        component={ManageBusinessOwner}/>
+                            <AdminRoute path="/admin/place/taxonomy/communities-served" exact
+                                        component={ManageCommunitiesServed}/>
                             <AdminRoute path="/admin/place/taxonomy/food-options" exact component={ManageFoodOptions}/>
-                            <AdminRoute path="/admin/place/taxonomy/language-spoken" exact component={ManageLanguagesSpoken}/>
-                            <AdminRoute path="/admin/place/taxonomy/place-category" exact component={ManagePlaceCategory}/>
+                            <AdminRoute path="/admin/place/taxonomy/language-spoken" exact
+                                        component={ManageLanguagesSpoken}/>
+                            <AdminRoute path="/admin/place/taxonomy/place-category" exact
+                                        component={ManagePlaceCategory}/>
 
-                            <AdminRoute path="/admin/place/taxonomy/bathroom/update/:slug" exact component={UpdateBathrooms}/>
-                            <AdminRoute path="/admin/place/taxonomy/business-owner/update/:slug" exact component={UpdateBusinessOwner}/>
-                            <AdminRoute path="/admin/place/taxonomy/communities-served/update/:slug" exact component={UpdateCommunitiesServed}/>
-                            <AdminRoute path="/admin/place/taxonomy/food-options/update/:slug" exact component={UpdateFoodOptions}/>
-                            <AdminRoute path="/admin/place/taxonomy/language-spoken/update/:slug" exact component={UpdateLanguagesSpoken}/>
-                            <AdminRoute path="/admin/place/taxonomy/place-category/update/:slug" exact component={UpdatePlaceCategory}/>
+                            <AdminRoute path="/admin/place/taxonomy/bathroom/update/:slug" exact
+                                        component={UpdateBathrooms}/>
+                            <AdminRoute path="/admin/place/taxonomy/business-owner/update/:slug" exact
+                                        component={UpdateBusinessOwner}/>
+                            <AdminRoute path="/admin/place/taxonomy/communities-served/update/:slug" exact
+                                        component={UpdateCommunitiesServed}/>
+                            <AdminRoute path="/admin/place/taxonomy/food-options/update/:slug" exact
+                                        component={UpdateFoodOptions}/>
+                            <AdminRoute path="/admin/place/taxonomy/language-spoken/update/:slug" exact
+                                        component={UpdateLanguagesSpoken}/>
+                            <AdminRoute path="/admin/place/taxonomy/place-category/update/:slug" exact
+                                        component={UpdatePlaceCategory}/>
 
 
                             <AdminRoute path="/admin/create/place" exact component={CreatePlace}/>
@@ -155,27 +164,42 @@ const Routes = () => {
                             <AdminRoute path="/admin/users/update/:slug" exact component={UpdateUser}/>
                             <AdminRoute path="/admin/users/taxonomy" exact component={ManageUserTaxonomy}/>
 
-                            <AdminRoute path="/admin/users/taxonomy/adaptive-equipment" exact component={ManageAdaptiveEquipment}/>
-                            <AdminRoute path="/admin/users/taxonomy/body-modification" exact component={ManageBodyModification}/>
+                            <AdminRoute path="/admin/users/taxonomy/adaptive-equipment" exact
+                                        component={ManageAdaptiveEquipment}/>
+                            <AdminRoute path="/admin/users/taxonomy/body-modification" exact
+                                        component={ManageBodyModification}/>
                             <AdminRoute path="/admin/users/taxonomy/gender" exact component={ManageGender}/>
                             <AdminRoute path="/admin/users/taxonomy/language" exact component={ManageUserLanguage}/>
-                            <AdminRoute path="/admin/users/taxonomy/method-of-communication" exact component={ManageMethodsOfCommunication}/>
-                            <AdminRoute path="/admin/users/taxonomy/physical-appearance" exact component={ManagePhysicalAppearance}/>
+                            <AdminRoute path="/admin/users/taxonomy/method-of-communication" exact
+                                        component={ManageMethodsOfCommunication}/>
+                            <AdminRoute path="/admin/users/taxonomy/physical-appearance" exact
+                                        component={ManagePhysicalAppearance}/>
                             <AdminRoute path="/admin/users/taxonomy/pronoun" exact component={ManagePronouns}/>
                             <AdminRoute path="/admin/users/taxonomy/race" exact component={ManageRace}/>
-                            <AdminRoute path="/admin/users/taxonomy/service-animal" exact component={ManageServiceAnimals}/>
-                            <AdminRoute path="/admin/users/taxonomy/sexual-orientation" exact component={ManageSexualOrientation}/>
+                            <AdminRoute path="/admin/users/taxonomy/service-animal" exact
+                                        component={ManageServiceAnimals}/>
+                            <AdminRoute path="/admin/users/taxonomy/sexual-orientation" exact
+                                        component={ManageSexualOrientation}/>
 
-                            <AdminRoute path="/admin/users/taxonomy/adaptive-equipment/update/:slug" exact component={UpdateAdaptiveEquipment}/>
-                            <AdminRoute path="/admin/users/taxonomy/body-modification/update/:slug" exact component={UpdateBodyModification}/>
-                            <AdminRoute path="/admin/users/taxonomy/gender/update/:slug" exact component={UpdateGender}/>
-                            <AdminRoute path="/admin/users/taxonomy/language/update/:slug" exact component={UpdateUserLanguage}/>
-                            <AdminRoute path="/admin/users/taxonomy/method-of-communication/update/:slug" exact component={UpdateMethodsOfCommunication}/>
-                            <AdminRoute path="/admin/users/taxonomy/physical-appearance/update/:slug" exact component={UpdatePhysicalAppearance}/>
-                            <AdminRoute path="/admin/users/taxonomy/pronoun/update/:slug" exact component={UpdatePronouns}/>
+                            <AdminRoute path="/admin/users/taxonomy/adaptive-equipment/update/:slug" exact
+                                        component={UpdateAdaptiveEquipment}/>
+                            <AdminRoute path="/admin/users/taxonomy/body-modification/update/:slug" exact
+                                        component={UpdateBodyModification}/>
+                            <AdminRoute path="/admin/users/taxonomy/gender/update/:slug" exact
+                                        component={UpdateGender}/>
+                            <AdminRoute path="/admin/users/taxonomy/language/update/:slug" exact
+                                        component={UpdateUserLanguage}/>
+                            <AdminRoute path="/admin/users/taxonomy/method-of-communication/update/:slug" exact
+                                        component={UpdateMethodsOfCommunication}/>
+                            <AdminRoute path="/admin/users/taxonomy/physical-appearance/update/:slug" exact
+                                        component={UpdatePhysicalAppearance}/>
+                            <AdminRoute path="/admin/users/taxonomy/pronoun/update/:slug" exact
+                                        component={UpdatePronouns}/>
                             <AdminRoute path="/admin/users/taxonomy/race/update/:slug" exact component={UpdateRace}/>
-                            <AdminRoute path="/admin/users/taxonomy/service-animal/update/:slug" exact component={UpdateServiceAnimals}/>
-                            <AdminRoute path="/admin/users/taxonomy/sexual-orientation/update/:slug" exact component={UpdateSexualOrientation}/>
+                            <AdminRoute path="/admin/users/taxonomy/service-animal/update/:slug" exact
+                                        component={UpdateServiceAnimals}/>
+                            <AdminRoute path="/admin/users/taxonomy/sexual-orientation/update/:slug" exact
+                                        component={UpdateSexualOrientation}/>
 
 
                             <AdminRoute path="/admin/create/user" exact component={CreateUser}/>

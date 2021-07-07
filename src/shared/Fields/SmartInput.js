@@ -63,6 +63,14 @@ const SmartInput = ({
         }
     }
 
+    useEffect(() => {
+        if(type === TEL) {
+            setTel(formatPhone(value))
+        }
+
+
+    }, [value, type])
+
     return (
         <Fieldset theme={theme} className={className}>
             <Legend
