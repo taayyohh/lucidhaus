@@ -231,9 +231,11 @@ export const debounce = (func, wait) => {
 
 
 export const formatPhone = (value) => value
-    .match(/\d*/g).join('')
-    .match(/(\d{0,3})(\d{0,3})(\d{0,4})/).slice(1).join('-')
-    .replace(/-*$/g, '')
+    ?.match(/\d*/g).join('')
+    ?.match(/(\d{0,3})(\d{0,3})(\d{0,4})/)
+    ?.slice(1)
+    ?.join('-')
+    ?.replace(/-*$/g, '')
 
 
 export const phoneRegExp = /^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/
