@@ -3,8 +3,8 @@ import React, {useEffect, useState} from 'react'
 import {useDispatch, useSelector}   from 'react-redux'
 import Div                          from 'shared/Basic/Div'
 import Icon                         from 'shared/Basic/Icon'
-import {absolute}                   from 'utils/themer'
-import {bookmarkIconStyle}          from './styles'
+import {absolute}                         from 'utils/themer'
+import {bookmarkIconStyle, bookmarkStyle} from './styles'
 
 const Bookmark = ({place, userSlug, _id, token}) => {
     const dispatch = useDispatch()
@@ -20,7 +20,7 @@ const Bookmark = ({place, userSlug, _id, token}) => {
 
     return (
         <Div
-            theme={{position: absolute, right: 20, top: 0}}
+            theme={bookmarkStyle}
             onClick={() => dispatch({
                 type: 'user/manageBookmark',
                 payload: {

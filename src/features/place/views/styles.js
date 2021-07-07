@@ -209,7 +209,7 @@ export const placeTitleStyle = {
     size: [34, .7, 28],
     paddingTop: [20, .7, 20],
     paddingBottom: [20, .7, 20],
-    borderRadius: [50, .7, 50],
+    borderRadius: [50, .7, '0'],
     margin: 0,
     marginBottom: [30, .7, 20],
    // borderRadius: `${sv(10)} ${sv(10)} 0 0`
@@ -239,6 +239,7 @@ export const placeTaxonomyStyle = {
 }
 
 export const placeTaxonomyWrapperStyle = {
+    marginTop: [50, .7, 50],
     display: grid,
     gridTemplateColumns: '1fr 1fr 1fr',
     gridGap: sv(20),
@@ -251,6 +252,12 @@ export const placeTaxonomyWrapperStyle = {
 export const placeDescriptionStyle = {
     boxSizing: borderBox,
     paddingRight: [30, globals.style.layoutScalingValue, '0'],
+}
+
+export const placeDescriptionWrapperStyle = {
+    marginTop: [30, .7, 20],
+    marginBottom: [40, .7, 20],
+    textAlign: 'center'
 }
 
 export const placeImageStyle = {}
@@ -327,5 +334,10 @@ export const bookmarkIconStyle = isBookmark => {
             cursor: 'pointer'
         }
     }
+}
 
+export const bookmarkStyle = {
+    position: absolute,
+    right: [80, .7, 5],
+    top: 0
 }

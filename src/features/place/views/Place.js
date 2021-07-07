@@ -17,7 +17,7 @@ import Bookmark                    from './Bookmark'
 import Reviews                     from './Reviews'
 import {
     placeAddressStyle,
-    placeDescriptionStyle,
+    placeDescriptionStyle, placeDescriptionWrapperStyle,
     placeMapStyle, placePhotoStyle,
     placeTaxonomyStyle,
     placeTaxonomyWrapperStyle,
@@ -263,6 +263,14 @@ const Place = () => {
                                     </MotionDiv>
                                 )}
                             </Div>
+                            <Div theme={placeDescriptionWrapperStyle}>
+                                {(description) && (
+                                    <RichText
+                                        children={description}
+                                        theme={placeDescriptionStyle}
+                                    />
+                                )}
+                            </Div>
 
 
                             <Div theme={{display: 'flex', justifyContent: 'space-around'}}>
@@ -282,12 +290,7 @@ const Place = () => {
                                 <Div theme={placeWrapperTopStyle}>
 
 
-                                    {(description) && (
-                                        <RichText
-                                            children={description}
-                                            theme={placeDescriptionStyle}
-                                        />
-                                    )}
+
                                     <Div theme={placeTaxonomyWrapperStyle}>
                                         {audioAvailable && (
                                             <Div theme={placeTaxonomyStyle}>
