@@ -9,8 +9,8 @@ import LinkSwitch                      from 'shared/Basic/LinkSwitch'
 import ContentWrapper                  from 'shared/Layout/ContentWrapper'
 import DashboardInfo                   from 'shared/Layout/Dashboard/DashboardInfo'
 import DashboardWrapper                from 'shared/Layout/Dashboard/DashboardWrapper'
-import {white}                         from 'utils/themer'
-import {userDashboardInfoWrapperStyle} from './styles'
+import {white}                                                                                   from 'utils/themer'
+import {userDashboardBookmarkStyle, userDashboardInfoWrapperStyle, userDashboardRTEHeadingStyle} from './styles'
 
 const UserDashboard = () => {
     const {
@@ -98,6 +98,7 @@ const UserDashboard = () => {
 
                     <Div>
                         <Div>
+                            <Div theme={userDashboardRTEHeadingStyle}>Leave a Review!</Div>
                             <Div>
                                 <strong>SAFE</strong> - This is both your physical and emotional safety. Feeling safe
                                 includes feeling like you can be your full authentic self and can communicate openly
@@ -114,11 +115,10 @@ const UserDashboard = () => {
                         </Div>
                     </Div>
                     <Div>
-                        <Div>Save your favorite places!</Div>
+                        <Div theme={userDashboardRTEHeadingStyle}>Save your favorite places!</Div>
                         <Div>
-                            <Icon icon={bookmark}/>
-                            - To save your favorite places simply click on this bookmark icon and the place will be
-                            saved in your
+                            To save your favorite places simply click on this bookmark icon ( <Icon icon={bookmark} theme={userDashboardBookmarkStyle}/> ) and the place will be
+                            saved in your{' '}
                             <LinkSwitch url={'/dashboard/places'}>My Places</LinkSwitch>!
                         </Div>
                     </Div>

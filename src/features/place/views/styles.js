@@ -189,7 +189,7 @@ export const placeMapStyle = {
 }
 
 export const placePhotoStyle = {
-    borderRadius: 1000,
+  //  borderRadius: 1000,
     height: 500,
     width: [500, globals.style.layoutScalingValue, '100%']
 }
@@ -203,14 +203,16 @@ export const placeTitleStyle = {
     display: flex,
     flexDirection: column,
     position: relative,
+    textAlign: center,
     backgroundColor: colorPalette.seaFoamGreen,
     font: globals.fonts.fancy,
     size: [34, .7, 28],
     paddingTop: [20, .7, 20],
     paddingBottom: [20, .7, 20],
+    borderRadius: [50, .7, 50],
     margin: 0,
     marginBottom: [30, .7, 20],
-    borderRadius: `${sv(10)} ${sv(10)} 0 0`
+   // borderRadius: `${sv(10)} ${sv(10)} 0 0`
 }
 
 export const placeAddressStyle = {

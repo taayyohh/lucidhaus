@@ -262,15 +262,15 @@ const Place = () => {
                                         )}
                                     </MotionDiv>
                                 )}
+                            </Div>
+
+
+                            <Div theme={{display: 'flex', justifyContent: 'space-around'}}>
                                 <S3Img
                                     url={photo}
                                     theme={placePhotoStyle}
                                     // theme={{borderRadius: 300}}
                                 />
-                            </Div>
-
-
-                            <Div theme={{display: 'flex'}}>
                                 <Map
                                     lon={longitude || (!isEmpty(boonePlace) && boonePlace.locations[0].longitude)}
                                     lat={latitude || (!isEmpty(boonePlace) && boonePlace.locations[0].latitude)}
