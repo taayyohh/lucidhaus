@@ -21,6 +21,13 @@ export function* createRace({payload}) {
     })
     if (!createdRace.error) {
         yield put({type: 'user/listRace'})
+        yield put({
+            type: 'site/setNotification',
+            payload: {
+                notification: 'New Race Taxonomy Type Added',
+                theme: 'green'
+            }
+        })
         // yield put(push('/admin/places/update/' + crea.slug))
 
     } else {

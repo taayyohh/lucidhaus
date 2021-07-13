@@ -105,6 +105,7 @@ const FieldSwitch = memo(({field, formik, options, theme, autoSubmit}) => {
                 options={options}
                 className={formik.touched[field.name] && formik.errors[field.name] ? 'error' : ''}
                 errorMessage={formik.touched[field.name] && formik.errors[field.name] ? formik.errors[field.name] : null}
+                theme={theme}
             />
         case LIKERT:
             return <Likert

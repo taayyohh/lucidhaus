@@ -3,7 +3,7 @@ import React, {useEffect, useState} from 'react'
 import Div                          from 'shared/Basic/Div'
 import {optionStyle}                from './styles'
 
-const SelectOption = ({optionId, name, field, formik, value, selected, setSelected}) => {
+const SelectOption = ({optionId, name, field, formik, value, selected, setSelected, theme}) => {
     const [isSelected, setIsSelected] = useState(false)
     const updateSelectedArray = (isSelected, optionId) => {
         if (isSelected) {
@@ -46,6 +46,7 @@ const SelectOption = ({optionId, name, field, formik, value, selected, setSelect
             }}
             theme={{
                 ...optionStyle,
+                ...theme,
                 color: isSelected ? colorPalette.honeyYellow : colorPalette.black
             }}
         >

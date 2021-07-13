@@ -1,14 +1,19 @@
-import {bookmark}                      from 'config/icons'
-import {userDashboardMenu}             from 'config/menus/dashboard/user'
-import {colorPalette}                  from 'config/styles'
-import React, {useEffect}              from 'react'
-import {useDispatch, useSelector}      from 'react-redux'
-import Div                             from 'shared/Basic/Div'
-import Icon                            from 'shared/Basic/Icon'
-import LinkSwitch                      from 'shared/Basic/LinkSwitch'
-import ContentWrapper                  from 'shared/Layout/ContentWrapper'
-import DashboardInfo                   from 'shared/Layout/Dashboard/DashboardInfo'
-import DashboardWrapper                from 'shared/Layout/Dashboard/DashboardWrapper'
+import {bookmark}                                                                                from 'config/icons'
+import {userDashboardMenu}                                                                       from 'config/menus/dashboard/user'
+import {colorPalette}                                                                            from 'config/styles'
+import React, {useEffect}                                                                        from 'react'
+import {useDispatch, useSelector}                                                                from 'react-redux'
+import Div                                                                                       from 'shared/Basic/Div'
+import Icon
+                                                                                                 from 'shared/Basic/Icon'
+import LinkSwitch
+                                                                                                 from 'shared/Basic/LinkSwitch'
+import ContentWrapper
+                                                                                                 from 'shared/Layout/ContentWrapper'
+import DashboardInfo
+                                                                                                 from 'shared/Layout/Dashboard/DashboardInfo'
+import DashboardWrapper
+                                                                                                 from 'shared/Layout/Dashboard/DashboardWrapper'
 import {white}                                                                                   from 'utils/themer'
 import {userDashboardBookmarkStyle, userDashboardInfoWrapperStyle, userDashboardRTEHeadingStyle} from './styles'
 
@@ -117,7 +122,9 @@ const UserDashboard = () => {
                     <Div>
                         <Div theme={userDashboardRTEHeadingStyle}>Save your favorite places!</Div>
                         <Div>
-                            To save your favorite places simply click on this bookmark icon ( <Icon icon={bookmark} theme={userDashboardBookmarkStyle}/> ) and the place will be
+                            To save your favorite places simply click on this bookmark icon ( <Icon icon={bookmark}
+                                                                                                    theme={userDashboardBookmarkStyle}/> )
+                            and the place will be
                             saved in your{' '}
                             <LinkSwitch url={'/dashboard/places'}>My Places</LinkSwitch>!
                         </Div>

@@ -6,6 +6,7 @@ import Form                       from 'shared/Fields/Form'
 import ContentWrapper             from 'shared/Layout/ContentWrapper'
 import DashboardWrapper           from 'shared/Layout/Dashboard/DashboardWrapper'
 import Identity                   from './Indentity'
+import {userProfileFormStyle}     from './styles'
 
 const Profile = () => {
     const dispatch = useDispatch()
@@ -54,6 +55,7 @@ const Profile = () => {
                     formHeading={'Update Profile'}
                     buttonText={'Update'}
                     enableReinitialize={true}
+                    theme={userProfileFormStyle}
                 />
                 {slug && user?._id?.length > 0 && (
                     <Identity slug={slug}/>
