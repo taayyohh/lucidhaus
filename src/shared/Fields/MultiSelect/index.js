@@ -1,10 +1,11 @@
 import {
     multiSelectInnerWrapperStyle,
-    multiSelectOptionListWrapperStyle, multiSelectOptionStyle,
+    multiSelectOptionListWrapperStyle,
+    multiSelectOptionStyle,
     multiSelectOptionWrapperStyle,
     multiSelectSearchFieldStyle,
     multiSelectWrapperStyle
-} from 'features/user/admin/views/styles'
+}                                                               from 'features/user/admin/views/styles'
 import React, {memo, useEffect, useState}                       from 'react'
 import Div                                                      from 'shared/Basic/Div'
 import Span                                                     from 'shared/Basic/Span'
@@ -41,11 +42,6 @@ const MultiSelect = memo(({className, errorMessage, field, formik, options, them
                     onChange={(event) => setFilteredInput(event.target.value)}
                     theme={{...multiSelectSearchFieldStyle}}
                 />
-                {/*<SmartInput*/}
-                {/*    inputLabel={'Type to filter option'}*/}
-                {/*    onChange={(event) => setFilteredInput(event.target.value)}*/}
-                {/*/>*/}
-
                 <Div theme={{...multiSelectOptionListWrapperStyle, ...theme.multiSelect}}>
                     {filteredArray?.length > 0 && filteredArray?.map(o => (
                         <Div theme={{...multiSelectOptionWrapperStyle}}>

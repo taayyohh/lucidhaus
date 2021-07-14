@@ -1,20 +1,20 @@
-import React                                                                                 from 'react'
-import Div                                                                                   from 'shared/Basic/Div'
-import MotionDiv
-                                                                                             from 'shared/Basic/MotionDiv'
-import LinkSwitch                                                                            from '../Basic/LinkSwitch'
-import Span                                                                                  from '../Basic/Span'
-import {toggleVariants}                                                                      from './animations'
+import React            from 'react'
+import Div              from 'shared/Basic/Div'
+import MotionDiv        from 'shared/Basic/MotionDiv'
+import LinkSwitch       from '../Basic/LinkSwitch'
+import Span             from '../Basic/Span'
+import {toggleVariants} from './animations'
 import {
     defaultFieldErrorStyle,
     defaultFieldHeadingStyle,
     toggleBallStyle,
     toggleErrorStyle,
-    toggleFieldStyle
-} from './styles'
+    toggleFieldStyle,
+    toggleWrapperStyle
+}                       from './styles'
 
 const Toggle = ({formik, inputLabel, errorMessage, inputLabelHelper, name}) =>
-    <>
+    <Div theme={toggleWrapperStyle}>
         {(inputLabelHelper && (
             <Div theme={{position: 'relative', paddingTop: 20, paddingBottom: 0}}>
                 <LinkSwitch url={inputLabelHelper} theme={defaultFieldHeadingStyle}>
@@ -43,6 +43,6 @@ const Toggle = ({formik, inputLabel, errorMessage, inputLabelHelper, name}) =>
                 }}
             />
         </MotionDiv>
-    </>
+    </Div>
 
 export default Toggle

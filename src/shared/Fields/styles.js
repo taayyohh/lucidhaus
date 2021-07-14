@@ -419,6 +419,10 @@ export const toggleFieldStyle = {
     }
 }
 
+export const toggleWrapperStyle = {
+    marginBottom: [50, .7, 50]
+}
+
 export const toggleBallStyle = {
     height: [25, globals.style.layoutScalingValue, 25],
     width: [25, globals.style.layoutScalingValue, 25],
@@ -545,7 +549,7 @@ export const countControlNumberStyle = {
 export const selectFieldStyle = {
     position: relative,
     width: '100%',
-    marginBottom: [20, .7, 20],
+    marginBottom: [50, .7, 50],
     class: {
         name: 'error',
         child: {

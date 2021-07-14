@@ -59,7 +59,7 @@ export const identityFields = [
     },
     {
         name: 'race',
-        inputLabel: 'Race',
+        inputLabel: 'Ethnicity',
         type: MULTI_SELECT
     },
     {

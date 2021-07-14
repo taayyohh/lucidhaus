@@ -10,9 +10,8 @@ export const userProfileFormStyle = {
 export const multiSelectOptionListWrapperStyle = {
     display: flex,
     flexWrap: wrap,
-    gridTemplateColumns: '1fr 1fr 1fr 1fr 1fr 1fr',
     minHeight: [200, .7, 200],
-    paddingTop: [50, .7, 50],
+    paddingTop: [20, .7, 20],
     option: {}
 }
 
@@ -40,7 +39,9 @@ export const multiSelectSearchFieldStyle = {
     }
 }
 
-export const multiSelectWrapperStyle = {}
+export const multiSelectWrapperStyle = {
+    marginBottom : [50, .7, 50]
+}
 
 export const multiSelectInnerWrapperStyle = {
     border: `1px solid ${globals.colors.borderColor}`,

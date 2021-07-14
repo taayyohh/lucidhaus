@@ -1,4 +1,4 @@
-import {userField}                    from 'features/user/admin/fields'
+import {userFields}                   from 'features/user/admin/fields'
 import React, {useContext, useEffect} from 'react'
 import {useDispatch, useSelector}     from 'react-redux'
 import {searchContext}                from 'shared/Containers/SearchController'
@@ -49,7 +49,7 @@ const Update = () => {
             <AdminDashboardWrapper>
                 <Form
                     initialValues={initialValues}
-                    fields={userField}
+                    fields={userFields}
                     // validationSchema={validateUser}
                     dispatchAction={'user/createUser'}
                     formHeading={'Update User'}

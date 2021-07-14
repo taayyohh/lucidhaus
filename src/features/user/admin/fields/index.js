@@ -1,6 +1,6 @@
 import {IMAGE_UPLOAD, NUMBER, TEL, TEXT, TOGGLE, UPLOAD_PATHS} from 'config/variables'
 
-export const userField = [
+export const userFields = [
     {
         name: 'avatar',
         inputLabel: 'Avatar',
@@ -44,10 +44,5 @@ export const userField = [
         name: 'role',
         inputLabel: 'Account Type',
         type: NUMBER
-    },
-    {
-        name: 'ethnicHispanicOrigin',
-        inputLabel: 'Ethnic Hispanic Origin',
-        type: TOGGLE
-    },
+    }
 ]
