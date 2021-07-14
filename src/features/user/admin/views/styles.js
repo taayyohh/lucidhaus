@@ -1,5 +1,5 @@
-import {globals}                           from 'config/styles'
-import {flex, flexStart, grid, none, wrap} from 'utils/themer'
+import {globals}                     from 'config/styles'
+import {flex, flexStart, none, wrap} from 'utils/themer'
 
 export const userProfileFormStyle = {
     multiSelect: {
@@ -11,6 +11,11 @@ export const multiSelectOptionListWrapperStyle = {
     display: flex,
     flexWrap: wrap,
     minHeight: [200, .7, 200],
+    maxHeight: [300, .7, 300],
+    overflow: 'scroll',
+    scrollBar: {
+        display: none
+    },
     paddingTop: [20, .7, 20],
     option: {}
 }
@@ -40,7 +45,7 @@ export const multiSelectSearchFieldStyle = {
 }
 
 export const multiSelectWrapperStyle = {
-    marginBottom : [50, .7, 50]
+    marginBottom: [50, .7, 50]
 }
 
 export const multiSelectInnerWrapperStyle = {

@@ -2,7 +2,6 @@ import {colorPalette}                     from 'config/styles'
 import React, {memo, useEffect, useState} from 'react'
 import Div                                from 'shared/Basic/Div'
 import Span                               from 'shared/Basic/Span'
-import {optionStyle}                      from 'shared/Fields/MultiSelect/styles'
 import {
     defaultFieldHeadingStyle,
     defaultHelperTextStyle,

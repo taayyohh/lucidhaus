@@ -26,10 +26,11 @@ const MultiSelect = memo(({className, errorMessage, field, formik, options, them
             return accumulator
         }, []))
 
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [filterInput])
 
     useEffect(() => {
-        setFilteredArray(optionsArray)
+        setFilteredArray([...optionsArray].sort((a, b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0)))
 
     }, [optionsArray])
 
@@ -44,11 +45,10 @@ const MultiSelect = memo(({className, errorMessage, field, formik, options, them
                 />
                 <Div theme={{...multiSelectOptionListWrapperStyle, ...theme.multiSelect}}>
                     {filteredArray?.length > 0 && filteredArray?.map(o => (
-                        <Div theme={{...multiSelectOptionWrapperStyle}}>
+                        <Div key={o.name} theme={{...multiSelectOptionWrapperStyle}}>
                             <SelectOption
                                 field={field}
                                 formik={formik}
-                                key={o.name}
                                 name={o.name}
                                 optionId={o._id}
                                 selected={selected}

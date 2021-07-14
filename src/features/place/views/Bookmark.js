@@ -1,9 +1,8 @@
-import {bookmark}                   from 'config/icons'
-import React, {useEffect, useState} from 'react'
-import {useDispatch, useSelector}   from 'react-redux'
-import Div                          from 'shared/Basic/Div'
-import Icon                         from 'shared/Basic/Icon'
-import {absolute}                         from 'utils/themer'
+import {bookmark}                         from 'config/icons'
+import React, {useEffect, useState}       from 'react'
+import {useDispatch, useSelector}         from 'react-redux'
+import Div                                from 'shared/Basic/Div'
+import Icon                               from 'shared/Basic/Icon'
 import {bookmarkIconStyle, bookmarkStyle} from './styles'
 
 const Bookmark = ({place, userSlug, _id, token}) => {

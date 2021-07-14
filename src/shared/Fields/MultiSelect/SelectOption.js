@@ -1,4 +1,3 @@
-import {colorPalette}               from 'config/styles'
 import React, {useEffect, useState} from 'react'
 import Div                          from 'shared/Basic/Div'
 import {optionStyle}                from './styles'
