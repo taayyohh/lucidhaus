@@ -45,9 +45,8 @@ const SelectOption = ({optionId, name, field, formik, value, selected, setSelect
                 setIsSelected(flag => !flag)
             }}
             theme={{
-                ...optionStyle,
                 ...theme,
-                color: isSelected ? colorPalette.honeyYellow : colorPalette.black
+                ...optionStyle(isSelected)
             }}
         >
             {name}

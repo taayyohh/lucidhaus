@@ -3,8 +3,9 @@ import {
     AUDIO_UPLOAD,
     COUNT,
     COUNTRY,
-    EMAIL,
-    IMAGE_UPLOAD, LIKERT,
+    EMAIL, FILTER,
+    IMAGE_UPLOAD,
+    LIKERT,
     MULTI_SELECT,
     NUMBER,
     PASSWORD,
@@ -14,7 +15,7 @@ import {
     TEL,
     TEXT,
     TOGGLE
-}                     from 'config/variables'
+} from 'config/variables'
 import React, {memo}  from 'react'
 import UploadAudio    from 'shared/Fields/UploadAudio'
 import UploadImage    from 'shared/Fields/UploadImage'
@@ -36,6 +37,7 @@ const FieldSwitch = memo(({field, formik, options, theme, autoSubmit}) => {
         case EMAIL:
         case NUMBER:
         case TEL:
+        case FILTER:
             return <SmartInput
                 {...formik.getFieldProps(field.name)}
                 className={formik.touched[field.name] && formik.errors[field.name] ? 'error' : ''}
@@ -46,7 +48,7 @@ const FieldSwitch = memo(({field, formik, options, theme, autoSubmit}) => {
                 inputLabel={field.inputLabel}
                 type={field.type}
                 theme={theme}
-                //autoSubmit
+                autoSubmit={autoSubmit}
             />
         case RICH_TEXT:
             return <RichTextEditor

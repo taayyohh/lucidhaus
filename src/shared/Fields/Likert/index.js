@@ -41,7 +41,6 @@ const Likert = memo(({field, helperText, className, errorMessage, formik, value}
                         key={o}
                         onClick={() => setSelected(o)}
                         theme={{
-                            ...optionStyle,
                             ...likertOptionStyle,
                             color: selected === o ? colorPalette.honeyYellow : colorPalette.black
                         }}

@@ -1,7 +1,8 @@
-import {TEL}     from 'config/variables'
-import {globals} from 'config/styles'
+import {globals}                                               from 'config/styles'
+import {FILTER, TEL}                                           from 'config/variables'
 import PropTypes                                               from 'prop-types'
 import React, {useEffect, useRef, useState}                    from 'react'
+import {useDispatch}                                           from 'react-redux'
 import Fieldset                                                from 'shared/Basic/Fieldset'
 import Input                                                   from 'shared/Basic/Input'
 import InputLabel                                              from 'shared/Basic/InputLabel'
@@ -12,7 +13,7 @@ import useMeasure                                              from 'utils/useMe
 import {defaultFieldErrorStyle, defaultFocusedInputLabelStyle} from './styles'
 
 const SmartInput = ({
-                        autoSubmit = false,
+                        autoSubmit,
                         className,
                         disabled,
                         errorMessage,
@@ -24,6 +25,7 @@ const SmartInput = ({
                         type,
                         value
                     }) => {
+    const dispatch = useDispatch()
     const legendRef = useRef()
     const inputLabelRef = useRef()
     const inputLabelWidth = useMeasure(inputLabelRef).width * globals.style.inputLabelShrinkRatio
@@ -31,6 +33,7 @@ const SmartInput = ({
     const [hasValue, setHasValue] = useState(false)
     const [legendWidth, setLegendWidth] = useState(0)
     const [tel, setTel] = useState(undefined)
+    const [filter, setFilter] = useState(undefined)
 
     useEffect(() => {
         const valueExists = Number.isInteger(value) || value?.length > 0
@@ -64,7 +67,7 @@ const SmartInput = ({
     }
 
     useEffect(() => {
-        if(type === TEL) {
+        if (type === TEL) {
             setTel(formatPhone(value))
         }
 

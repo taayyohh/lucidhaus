@@ -53,6 +53,7 @@ export const TOGGLE = 'toggle'
 export const MULTI_SELECT = 'multi-select'
 export const LIKERT = 'likert'
 export const SONGS = 'songs'
+export const FILTER = 'filter'
 
 export const ACCEPTABLE_EXTENSIONS = [
     '.png',

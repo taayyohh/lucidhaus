@@ -10,6 +10,7 @@ import {defaultFormStyle} from './styles'
 
 const Form = ({
                   autoSubmit = false,
+                    hideButton = false,
                   buttonText,
                   children,
                   dispatchAction,
@@ -55,11 +56,11 @@ const Form = ({
                                 field={f}
                                 options={options}
                                 theme={theme}
-                                // autoSubmit
+                                autoSubmit={autoSubmit}
                             />
                         )}
                     </Div>
-                    {!autoSubmit && (
+                    {!autoSubmit && !hideButton && (
                         <SubmitButton
                             theme={{...theme.button}}
                             children={buttonText}
