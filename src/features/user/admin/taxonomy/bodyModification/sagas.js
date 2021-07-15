@@ -21,6 +21,13 @@ export function* createBodyModification({payload}) {
     })
     if (!createdBodyModification.error) {
         yield put({type: 'user/listBodyModification'})
+        yield put({
+            type: 'site/setNotification',
+            payload: {
+                notification: 'Item Added!',
+                theme: 'green'
+            }
+        })
         // yield put(push('/admin/places/update/' + crea.slug))
 
     } else {

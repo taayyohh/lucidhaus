@@ -21,6 +21,13 @@ export function* createServiceAnimal({payload}) {
     })
     if (!createdServiceAnimal.error) {
         yield put({type: 'user/listServiceAnimal'})
+        yield put({
+            type: 'site/setNotification',
+            payload: {
+                notification: 'Item Added!',
+                theme: 'green'
+            }
+        })
         // yield put(push('/admin/places/update/' + crea.slug))
 
     } else {
@@ -77,7 +84,7 @@ export function* updateServiceAnimalDetail({payload}) {
             yield put({
                 type: 'site/setNotification',
                 payload: {
-                    notification: 'Updated ServiceAnimal',
+                    notification: 'Updated Service Animal',
                     theme: 'green'
                 }
             })

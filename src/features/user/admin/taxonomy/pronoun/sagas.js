@@ -22,6 +22,13 @@ export function* createPronoun({payload}) {
     })
     if (!createdPronoun.error) {
         yield put({type: 'user/listPronoun'})
+        yield put({
+            type: 'site/setNotification',
+            payload: {
+                notification: 'Item Added!',
+                theme: 'green'
+            }
+        })
         // yield put(push('/admin/places/update/' + crea.slug))
 
     } else {

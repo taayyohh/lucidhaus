@@ -1,4 +1,4 @@
-import {IMAGE_UPLOAD, NUMBER, TEL, TEXT, UPLOAD_PATHS} from 'config/variables'
+import {DATE, IMAGE_UPLOAD, NUMBER, TEL, TEXT, UPLOAD_PATHS} from 'config/variables'
 
 export const userFields = [
     {
@@ -34,6 +34,11 @@ export const userFields = [
         name: 'email',
         inputLabel: 'Email',
         type: TEXT
+    },
+    {
+        name: 'dateOfBirth',
+        inputLabel: 'Birthday',
+        type: DATE
     },
     {
         name: 'handle',

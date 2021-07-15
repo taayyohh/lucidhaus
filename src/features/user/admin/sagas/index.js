@@ -21,6 +21,7 @@ export function* updateUser({payload}) {
         nameLast,
         avatar,
         avatarFile,
+        dateOfBirth,
         email,
         handle,
         ethnicHispanicOrigin,
@@ -29,7 +30,7 @@ export function* updateUser({payload}) {
 
     //add to formData so api can read
     const user = new FormData()
-    const fields = [{avatar}, {nameFirst}, {nameMiddle}, {nameLast}, {email}, {tel}, {handle}, {ethnicHispanicOrigin}]
+    const fields = [{avatar}, {nameFirst}, {nameMiddle}, {nameLast}, {dateOfBirth}, {email}, {tel}, {handle}, {ethnicHispanicOrigin}]
     for (let field of fields)
         setFormData(user, field)
 
@@ -146,6 +147,7 @@ export function* updateProfile({payload}) {
         nameLast,
         avatar,
         avatarFile,
+        dateOfBirth,
         email,
         handle,
         ethnicHispanicOrigin,
@@ -154,7 +156,7 @@ export function* updateProfile({payload}) {
 
     //add to formData so api can read
     const user = new FormData()
-    const fields = [{avatar}, {nameFirst}, {nameMiddle}, {nameLast}, {email}, {tel}, {handle}, {ethnicHispanicOrigin}]
+    const fields = [{avatar}, {nameFirst}, {nameMiddle}, {nameLast}, {dateOfBirth}, {email}, {tel}, {handle}, {ethnicHispanicOrigin}]
     for (let field of fields)
         setFormData(user, field)
 

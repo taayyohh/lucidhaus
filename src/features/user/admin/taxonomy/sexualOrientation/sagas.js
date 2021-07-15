@@ -21,6 +21,13 @@ export function* createSexualOrientation({payload}) {
     })
     if (!createdSexualOrientation.error) {
         yield put({type: 'user/listSexualOrientation'})
+        yield put({
+            type: 'site/setNotification',
+            payload: {
+                notification: 'Item Added!',
+                theme: 'green'
+            }
+        })
         // yield put(push('/admin/places/update/' + crea.slug))
 
     } else {

@@ -2,7 +2,7 @@ import {
     ADDRESS,
     AUDIO_UPLOAD,
     COUNT,
-    COUNTRY,
+    COUNTRY, DATE,
     EMAIL, FILTER,
     IMAGE_UPLOAD,
     LIKERT,
@@ -38,6 +38,7 @@ const FieldSwitch = memo(({field, formik, options, theme, autoSubmit}) => {
         case NUMBER:
         case TEL:
         case FILTER:
+        case DATE:
             return <SmartInput
                 {...formik.getFieldProps(field.name)}
                 className={formik.touched[field.name] && formik.errors[field.name] ? 'error' : ''}

@@ -21,6 +21,13 @@ export function* createPhysicalAppearance({payload}) {
     })
     if (!createdPhysicalAppearance.error) {
         yield put({type: 'user/listPhysicalAppearance'})
+        yield put({
+            type: 'site/setNotification',
+            payload: {
+                notification: 'Item Added!',
+                theme: 'green'
+            }
+        })
         // yield put(push('/admin/places/update/' + crea.slug))
 
     } else {

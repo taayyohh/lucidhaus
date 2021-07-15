@@ -21,6 +21,13 @@ export function* createGender({payload}) {
     })
     if (!createdGender.error) {
         yield put({type: 'user/listGender'})
+        yield put({
+            type: 'site/setNotification',
+            payload: {
+                notification: 'Item Added!',
+                theme: 'green'
+            }
+        })
         // yield put(push('/admin/places/update/' + crea.slug))
 
     } else {

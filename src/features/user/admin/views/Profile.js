@@ -11,7 +11,7 @@ import {userProfileFormStyle}     from './styles'
 const Profile = () => {
     const dispatch = useDispatch()
     const {slug, _id, token, user} = useSelector(state => state.user)
-    const {description, avatar, email, ethnicHispanicOrigin, handle, nameMiddle, nameFirst, nameLast, tel, role} = user
+    const {description, avatar, email, dateOfBirth, ethnicHispanicOrigin, handle, nameMiddle, nameFirst, nameLast, tel, role} = user
 
     const initialValues = {
         nameFirst: nameFirst,
@@ -21,6 +21,7 @@ const Profile = () => {
         avatar: avatar,
         avatarFile: '',
         email: email,
+        dateOfBirth: dateOfBirth,
         handle: handle,
         tel: tel,
         ethnicHispanicOrigin: ethnicHispanicOrigin,
