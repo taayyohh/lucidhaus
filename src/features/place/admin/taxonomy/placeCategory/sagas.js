@@ -74,7 +74,7 @@ export function* updatePlaceCategoryDetail({payload}) {
     try {
         const updated = yield call(updateEntity, {
             slug: slug,
-            parentSlug: 'adaptive-equipment',
+            parentSlug: 'place-category',
             body: placeCategory,
             _id: _id,
             token: token,
