@@ -71,6 +71,9 @@ export function* updatePlaceCategoryDetail({payload}) {
     for (let field of fields)
         setFormData(placeCategory, field)
 
+
+   
+
     try {
         const updated = yield call(updateEntity, {
             slug: slug,

@@ -1,24 +1,26 @@
 import Review                       from 'features/place/admin/views/Review'
 import {AnimatePresence}            from 'framer-motion'
 import React, {useEffect, useState} from 'react'
-import {useDispatch, useSelector}  from 'react-redux'
-import Div                         from 'shared/Basic/Div'
-import LinkSwitch                  from 'shared/Basic/LinkSwitch'
-import MotionDiv                   from 'shared/Basic/MotionDiv'
-import RichText                    from 'shared/Basic/RichText'
-import ContentWrapper              from 'shared/Layout/ContentWrapper'
-import {fadeIn, fadeOut, nOpacity} from 'shared/Layout/styles/animations'
-import Map                         from 'shared/Map'
-import {history}                   from 'store'
-import {debounce}                  from 'utils/helpers'
-import {isEmpty}                   from 'utils/themer'
-import S3Img                       from '../../../shared/Basic/S3Img'
-import Bookmark                    from './Bookmark'
-import Reviews                     from './Reviews'
+import {useDispatch, useSelector}   from 'react-redux'
+import Div                          from 'shared/Basic/Div'
+import LinkSwitch                   from 'shared/Basic/LinkSwitch'
+import MotionDiv                    from 'shared/Basic/MotionDiv'
+import RichText                     from 'shared/Basic/RichText'
+import S3Img                        from 'shared/Basic/S3Img'
+import ContentWrapper               from 'shared/Layout/ContentWrapper'
+import {fadeIn, fadeOut, nOpacity}  from 'shared/Layout/styles/animations'
+import Map                          from 'shared/Map'
+import {history}                    from 'store'
+import {debounce}                   from 'utils/helpers'
+import {isEmpty}                    from 'utils/themer'
+import Bookmark                     from './Bookmark'
+import Reviews                      from './Reviews'
 import {
     placeAddressStyle,
-    placeDescriptionStyle, placeDescriptionWrapperStyle,
-    placeMapStyle, placePhotoStyle,
+    placeDescriptionStyle,
+    placeDescriptionWrapperStyle,
+    placeMapStyle,
+    placePhotoStyle,
     placeTaxonomyStyle,
     placeTaxonomyWrapperStyle,
     placeTitleStyle,
@@ -28,7 +30,7 @@ import {
     placeWrapperTopStyle,
     reviewHeadingStyle,
     reviewsHeadingWrapperStyle
-} from './styles'
+}                                   from './styles'
 
 const Place = () => {
     const dispatch = useDispatch()
@@ -288,7 +290,6 @@ const Place = () => {
 
                             <Div>
                                 <Div theme={placeWrapperTopStyle}>
-
 
 
                                     <Div theme={placeTaxonomyWrapperStyle}>

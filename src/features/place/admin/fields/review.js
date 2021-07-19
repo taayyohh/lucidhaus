@@ -51,6 +51,6 @@ export const validateReview = Yup.object().shape({
     photo: Yup
         .string(),
     review: Yup
-        .string().max(280)
+        .string().max(5000)
         .required('Required'),
 })
