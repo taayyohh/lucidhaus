@@ -128,6 +128,14 @@ export function* updateIdentity({payload}) {
                     theme: 'green'
                 }
             })
+            // yield put({
+            //     type: 'user/getUser',
+            //     payload: {
+            //         slug: slug,
+            //         _id: _id,
+            //         token: token
+            //     }
+            // })
 
         } else {
             yield put({type: 'user/updateUserFailure', payload: updated})
