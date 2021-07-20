@@ -32,11 +32,11 @@ const SelectOption = ({optionId, name, field, formik, value, selected, setSelect
     }, [isSelected])
 
 
-    useEffect(() => {
-        formik.setFieldValue(field?.name, selected)
-
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [selected])
+    // useEffect(() => {
+    //     formik.setFieldValue(field?.name, selected)
+    //
+    //     // eslint-disable-next-line react-hooks/exhaustive-deps
+    // }, [selected])
 
     return (
         <Div

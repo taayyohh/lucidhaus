@@ -94,6 +94,13 @@ const Places = () => {
                 <Div theme={placesWrapperStyle}>
                     {allPlaces.length > 0 && allPlaces.map((place) => {
                         if (!!place.uuid) {
+                            const address1 = !!place?.locations[0]?.address1 ? `${place?.locations[0]?.address1}` : ''
+                            const city = !!place.locations[0].city ? `, ${place.locations[0].city}` : ''
+                            const country = !!place.locations[0].country ? place.locations[0].country : ''
+                            const state = !!place.locations[0].state ? `, ${place.locations[0].state}` : ''
+                            const zip = !!place.locations[0].postal_code ? `, ${place.locations[0].postal_code}` : ''
+                            const composedAddress = `${address1}${city}${state}${zip}`
+
                             const slug = `${slugify(place.name)}-${
                                 place?.locations[0].length > 0 ?
                                     slugify(place?.locations[0]?.address1) : ''}-${place.id}`
@@ -103,11 +110,19 @@ const Places = () => {
                                     key={slug}
                                     slug={`/places/${place.id}`}
                                     name={place.name}
-                                    address={place.locations[0].address1}
+                                    address={composedAddress}
                                     theme={placeCardStyle}
                                 />
                             )
                         } else {
+                            const address1 = !!place?.address1 ? `${place?.address1}` : ''
+                            const address2 = !!place?.address2 ? place?.address2 : ''
+                            const city = !!place.city ? `, ${place.city}` : ''
+                            const country = !!place.country ? place.country : ''
+                            const state = !!place.state ? `, ${place.state}` : ''
+                            const zip = !!place.postal_code ? place.postal_code : ''
+                            const composedAddress = `${address1}${city}${state}${zip}`
+
                             const address = () => {
                                 if (!!place.address1 && !!place.city && !!place.state && !!place.country) {
                                     return `${!!place.address1 && place.address1} ${(!!place.address2 && place.address2 !== 'undefined') ? place.address2 : ''}, ${!!place.city && place.city} ${place.state} ${place.country}`
@@ -119,7 +134,7 @@ const Places = () => {
                                     key={place.slug}
                                     slug={`/places/${place.slug}`}
                                     name={place.name}
-                                    address={address()}
+                                    address={composedAddress}
                                     theme={placeCardStyle}
                                 />
                             )

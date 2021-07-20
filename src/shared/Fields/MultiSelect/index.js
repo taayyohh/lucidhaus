@@ -34,6 +34,12 @@ const MultiSelect = memo(({className, errorMessage, field, formik, options, them
 
     }, [optionsArray])
 
+    useEffect(() => {
+        formik.setFieldValue(field?.name, selected)
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [selected])
+
     return (
         <Div theme={{...multiSelectWrapperStyle}} className={className ? className : ''}>
             <Div theme={{...defaultFieldHeadingStyle, ...theme.heading}}>{field.inputLabel}</Div>

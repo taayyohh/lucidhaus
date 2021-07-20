@@ -325,6 +325,13 @@ export const placeReviewDescriptionStyle = {
     marginTop: [30, .7, 30]
 }
 
+export const placeReviewLikertStyle = {
+    display: 'flex',
+    flexDirection: 'column',
+    font: globals.fonts.serif,
+    marginBottom: [25, .7, 25]
+}
+
 export const bookmarkIconStyle = isBookmark => {
     return {
         size: [50, .7, 30],
