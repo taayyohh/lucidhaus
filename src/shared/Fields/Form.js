@@ -1,6 +1,6 @@
 import {Formik}           from 'formik'
 import PropTypes          from 'prop-types'
-import React              from 'react'
+import React, {useEffect} from 'react'
 import {useDispatch}      from 'react-redux'
 import Div                from 'shared/Basic/Div'
 import H3                 from 'shared/Basic/H3'
@@ -10,7 +10,7 @@ import {defaultFormStyle} from './styles'
 
 const Form = ({
                   autoSubmit = false,
-                    hideButton = false,
+                  hideButton = false,
                   buttonText,
                   children,
                   dispatchAction,
@@ -24,6 +24,11 @@ const Form = ({
                   validationSchema
               }) => {
     const dispatch = useDispatch()
+
+    useEffect(() => {
+        console.log('init', initialValues)
+
+    }, [initialValues])
 
     return (
         <Formik
@@ -48,6 +53,7 @@ const Form = ({
                         }}
                         children={formHeading}
                     />
+                    {/*{console.log('form', formik.values)}*/}
                     <Div theme={{...defaultFormStyle.inner, ...theme.inner}}>
                         {fields.map((f, i) =>
                             <FieldSwitch

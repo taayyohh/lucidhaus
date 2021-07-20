@@ -240,7 +240,7 @@ const Place = () => {
                                             {(!!city ? ', ' : '')}
                                             {(!!state && state) || (!isEmpty(boonePlace) && boonePlace.locations[0].state)}
                                             {' '}
-                                            {(!!zip && zip) || (!isEmpty(boonePlace) && boonePlace.locations[0].postal_code)}
+                                            {(!!zip && zip !== 'null' && zip) || (!isEmpty(boonePlace) && !!boonePlace.locations ? boonePlace.locations[0].postal_code : '')}
                                             {' '}
                                             {/*{!!country && country}*/}
                                         </Div>
