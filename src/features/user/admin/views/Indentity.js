@@ -113,23 +113,17 @@ const Identity = () => {
     }, [identity])
 
     return (
-        <>
-            {!!identity && (
-                <Form
-                    initialValues={initialValues}
-                    fields={identityFields}
-                    // validationSchema={validateUser}
-                    dispatchAction={'user/updateUserIdentity'}
-                    formHeading={'Update Identity'}
-                    buttonText={'Update'}
-                    theme={adminFormWrapperStyle}
-                    enableReinitialize={true}
-                    options={options}
-                />
-            )}
-        </>
-
-
+        <Form
+            initialValues={initialValues}
+            fields={identityFields}
+            // validationSchema={validateUser}
+            dispatchAction={'user/updateUserIdentity'}
+            formHeading={'Update Identity'}
+            buttonText={'Update'}
+            theme={adminFormWrapperStyle}
+            enableReinitialize={true}
+            options={options}
+        />
     )
 }
 
