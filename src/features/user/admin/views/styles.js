@@ -53,3 +53,8 @@ export const multiSelectInnerWrapperStyle = {
     padding: [40, globals.style.layoutScalingValue, 40],
     borderRadius: [10, .7, 10]
 }
+
+export const multiSelectHelperTextStyle = {
+    size: [22, .7, 22],
+    marginLeft: [5, .7, 5]
+}

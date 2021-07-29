@@ -49,7 +49,7 @@ export const identityFields = [
     },
     {
         name: 'physicalAppearance',
-        inputLabel: 'Physical Appearance',
+        inputLabel: 'Is there anything about your physical body that may contribute to how people treat you? ',
         type: MULTI_SELECT
     },
     {
