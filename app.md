@@ -138,3 +138,6 @@ The generator functions handle all side-effects from the app.
 **5. sagas.js** - This file combines all Redux Saga watchers listening for all dispatched actions from the app.
 <br />
 **5. store.js** - This file combines all Redux Slices into a single Store, which represents the state of the application.
+
+## Additional Notes
+A Functioning E-commerce solution defined as the feature "Shop", utilizing **Braintree**'s API is built into this codebase, but is not actively being developed.

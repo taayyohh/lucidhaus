@@ -37,7 +37,7 @@ const Update = () => {
         avatar: avatar,
         avatarFile: '',
         email: email,
-        dateOfBirth: dateOfBirth,
+        dateOfBirth: dateOfBirth.split('T')[0],
         handle: handle,
         tel: tel,
         ethnicHispanicOrigin: ethnicHispanicOrigin,
@@ -46,6 +46,8 @@ const Update = () => {
         _id,
         token,
     }
+
+    console.log('DATE', dateOfBirth)
 
     useEffect(() => {
         if (!!slug)
