@@ -46,10 +46,21 @@ used, however, those listed below are critical to the app.
 
 
 ## Structure (app)
-**build** <br />
-**node_modules**<br />
-**public**<br />
-**src**<br />
+**build** -
+This directory includes the build version of the app that is served when used in production.
+<br />
+---
+**node_modules** -
+This directory includes all installed node modules as defined in the package.json file.
+<br />
+---
+**public** -
+This directory includes files publicly accessible without javascript. Including
+**manifest.json** used to make this app a PWA (Progressive Web App). The apps **sitemap** and **robots.txt** along with favicon files.
+---
+**src** - Described in detail below.
+
+<br />
 
 ## Structure (src)
 **assets: (/src/assets)**<br />
@@ -60,12 +71,20 @@ No other files should be saved here.
 This directory contains application scoped variables, style definitions, menu configuration and icons.
 ---
 **features**<br />
+This directory contains the API calls, Redux Slice, Redux Sagas, React Views and all CMS(admin) code for each feature of the app. Described in detail below.
 
 ---
 **shared**<br />
+This directory contains React components that are not specific to a particular feature but are shared throughout 
+the entire application. Contains Route definitions.
+<br />
+
 
 ---
 **utils**<br />
+This directory contains separate .js files for useful global functions that are reused throughout the app.
+The **abstractions** folder includes abstractions of repeated operations (i.e setting form data in a Redux Saga,
+the CRUD api service calls)
 
 ---
 
@@ -113,4 +132,9 @@ The generator functions handle all side-effects from the app.
 <br />
 **5d.7 Update.js** -the form that manages (updates/deletes) the entity defined by the parent directory.
 <br />
-## Overview
+<br />
+**6. index.js** - This file is the entry point into the app. Wraps the application in the Redux Store and connects all defined Routes.
+<br />
+**5. sagas.js** - This file combines all Redux Saga watchers listening for all dispatched actions from the app.
+<br />
+**5. store.js** - This file combines all Redux Slices into a single Store, which represents the state of the application.
