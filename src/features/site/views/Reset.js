@@ -17,7 +17,7 @@ const Reset = () => {
         dispatch({
             type: 'user/confirmResetToken',
             payload: {
-                slug,
+                token: slug,
             }
         })
         //TODO: prevent view if invalid

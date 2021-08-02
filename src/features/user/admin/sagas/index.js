@@ -309,8 +309,19 @@ export function* confirmResetToken({payload}) {
     for (let field of fields)
         setFormData(body, field)
 
-    const reset = yield call(confirmUserResetToken, {slug})
-    console.log('reset', reset)
+    const reset = yield call(confirmUserResetToken, {payload})
+
+    if(!reset.error) {
+        //TODO: confirm link is valid front end response?
+    } else {
+        yield put({
+            type: 'site/setNotification',
+            payload: {
+                notification: reset.error,
+                theme: 'red'
+            }
+        })
+    }
 }
 
 export function* resetPassword({payload, token}) {
@@ -322,7 +333,7 @@ export function* resetPassword({payload, token}) {
         setFormData(body, field)
 
     const reset = yield call(resetUserPassword, {slug, body, token})
-    console.log('reset', reset)
+    console.log('reset password', reset)
 
 }
 

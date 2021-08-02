@@ -141,7 +141,7 @@ export const getReviewsByUser = ({_id, token}) =>
             return error
         })
 
-export const resendVerification = ({_id, token})  => {
+export const resendVerification = ({_id, token}) => {
     fetch(`${API}/resend-verification-token/${_id}`, {
         method: "PUT",
         headers: {
@@ -186,9 +186,14 @@ export const sendRecoverPassword = ({payload}) =>
         return err
     })
 
-export const confirmUserResetToken = ({slug})  => {
-    fetch(`${API}/auth/reset/${slug}`, {
-        method: "GET",
+export const confirmUserResetToken = ({payload}) =>
+    fetch(`${API}/auth/reset/verify/${payload.token}`, {
+        method: "POST",
+        headers: {
+            Accept: 'application/json',
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
     })
         .then(response => {
             return response.json()
@@ -196,9 +201,9 @@ export const confirmUserResetToken = ({slug})  => {
         .catch(error => {
             return error
         })
-}
 
-export const resetUserPassword = ({body, slug})  => {
+
+export const resetUserPassword = ({body, slug}) => {
     fetch(`${API}/auth/reset/${slug}`, {
         method: "POST",
         body: body
