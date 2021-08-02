@@ -1,7 +1,7 @@
 export const headerMenu = [
     {
         url: '/places',
-        title: 'Places',
+        title: 'Search Places',
         active: ['places'],
     }
 ]
