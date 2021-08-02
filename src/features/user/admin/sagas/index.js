@@ -274,8 +274,16 @@ export function* resendVerificationLink({payload}) {
 export function* recoverPassword({payload}) {
     try {
         const recover = yield call(sendRecoverPassword, {payload})
-        console.log('recover', recover)
+
         if (!recover?.error) {
+            yield put({type: 'place/recoverPasswordSuccess'})
+            yield put({
+                type: 'site/setNotification',
+                payload: {
+                    notification: recover.message,
+                    theme: 'green'
+                }
+            })
 
         } else {
             yield put({type: 'place/recoverPasswordFailure'})
