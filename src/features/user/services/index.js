@@ -158,18 +158,33 @@ export const resendVerification = ({_id, token})  => {
         })
 }
 
-export const sendRecoverPassword = ({body, token})  => {
-    fetch(`${API}/auth/recover/`, {
+// export const sendRecoverPassword = ({body, token})  => {
+//     fetch(`${API}/auth/recover/`, {
+//         method: "POST",
+//         body: body
+//     })
+//         .then(response => {
+//             return response.json()
+//         })
+//         .catch(error => {
+//             return error
+//         })
+// }
+
+
+export const sendRecoverPassword = ({payload}) =>
+    fetch(`${API}/auth/recover`, {
         method: "POST",
-        body: body
+        headers: {
+            Accept: 'application/json',
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
+    }).then(response => {
+        return response.json()
+    }).catch(err => {
+        return err
     })
-        .then(response => {
-            return response.json()
-        })
-        .catch(error => {
-            return error
-        })
-}
 
 export const confirmUserResetToken = ({slug})  => {
     fetch(`${API}/auth/reset/${slug}`, {

@@ -11,6 +11,7 @@ import {formatPhone}                                            from '../../../u
 
 export function* signIn({payload}) {
     try {
+        console.log('PAYLOAFD', payload)
         const user = yield call(signin, payload)
         if (!user.error) {
             yield put({type: 'user/signInSuccess', payload: user})

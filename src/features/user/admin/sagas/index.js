@@ -272,18 +272,16 @@ export function* resendVerificationLink({payload}) {
 }
 
 export function* recoverPassword({payload}) {
-    const {email, token} = payload
-    //add to formdata so api can read
-    const body = new FormData()
-    const fields = [{email}]
-    for (let field of fields)
-        setFormData(body, field)
-
     try {
-        const recover = yield call(sendRecoverPassword, {body, token})
+        const recover = yield call(sendRecoverPassword, {payload})
         if (!recover?.error) {
-            console.log('recover', recover)
-
+            yield put({
+                type: 'site/setNotification',
+                payload: {
+                    notification: recover.message,
+                    theme: 'red'
+                }
+            })
         }
     } catch (error) {
         yield put({type: 'place/recoverPasswordFailure'})
