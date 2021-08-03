@@ -272,18 +272,28 @@ export function* resendVerificationLink({payload}) {
 }
 
 export function* recoverPassword({payload}) {
-    const {email, token} = payload
-    //add to formdata so api can read
-    const body = new FormData()
-    const fields = [{email}]
-    for (let field of fields)
-        setFormData(body, field)
-
     try {
-        const recover = yield call(sendRecoverPassword, {body, token})
-        if (!recover?.error) {
-            console.log('recover', recover)
+        const recover = yield call(sendRecoverPassword, {payload})
 
+        if (!recover?.error) {
+            yield put({type: 'place/recoverPasswordSuccess'})
+            yield put({
+                type: 'site/setNotification',
+                payload: {
+                    notification: recover.message,
+                    theme: 'green'
+                }
+            })
+
+        } else {
+            yield put({type: 'place/recoverPasswordFailure'})
+            yield put({
+                type: 'site/setNotification',
+                payload: {
+                    notification: recover.error,
+                    theme: 'red'
+                }
+            })
         }
     } catch (error) {
         yield put({type: 'place/recoverPasswordFailure'})
@@ -299,8 +309,19 @@ export function* confirmResetToken({payload}) {
     for (let field of fields)
         setFormData(body, field)
 
-    const reset = yield call(confirmUserResetToken, {slug})
-    console.log('reset', reset)
+    const reset = yield call(confirmUserResetToken, {payload})
+
+    if(!reset.error) {
+        //TODO: confirm link is valid front end response?
+    } else {
+        yield put({
+            type: 'site/setNotification',
+            payload: {
+                notification: reset.error,
+                theme: 'red'
+            }
+        })
+    }
 }
 
 export function* resetPassword({payload, token}) {
@@ -312,7 +333,7 @@ export function* resetPassword({payload, token}) {
         setFormData(body, field)
 
     const reset = yield call(resetUserPassword, {slug, body, token})
-    console.log('reset', reset)
+    console.log('reset password', reset)
 
 }
 

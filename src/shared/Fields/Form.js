@@ -26,7 +26,6 @@ const Form = ({
     const dispatch = useDispatch()
 
     useEffect(() => {
-        console.log('init', initialValues)
 
     }, [initialValues])
 
