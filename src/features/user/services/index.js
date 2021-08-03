@@ -203,10 +203,14 @@ export const confirmUserResetToken = ({payload}) =>
         })
 
 
-export const resetUserPassword = ({body, slug}) => {
-    fetch(`${API}/auth/reset/${slug}`, {
+export const resetUserPassword = ({payload}) => {
+    fetch(`${API}/auth/reset/${payload.slug}`, {
         method: "POST",
-        body: body
+        headers: {
+            Accept: 'application/json',
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
     })
         .then(response => {
             return response.json()

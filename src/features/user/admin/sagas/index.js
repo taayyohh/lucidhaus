@@ -1,3 +1,4 @@
+import {push}                         from 'connected-react-router'
 import {getSignedRequest, uploadFile} from 'features/site/services/s3'
 import {
     confirmUserResetToken,
@@ -302,13 +303,6 @@ export function* recoverPassword({payload}) {
 }
 
 export function* confirmResetToken({payload}) {
-    const {slug} = payload
-
-    const body = new FormData()
-    const fields = [{slug}]
-    for (let field of fields)
-        setFormData(body, field)
-
     const reset = yield call(confirmUserResetToken, {payload})
 
     if(!reset.error) {
@@ -321,18 +315,13 @@ export function* confirmResetToken({payload}) {
                 theme: 'red'
             }
         })
+        yield push(yield put(push('/signin')))
+
     }
 }
 
 export function* resetPassword({payload, token}) {
-    const {slug, password} = payload
-
-    const body = new FormData()
-    const fields = [{password}]
-    for (let field of fields)
-        setFormData(body, field)
-
-    const reset = yield call(resetUserPassword, {slug, body, token})
+    const reset = yield call(resetUserPassword, {payload, token})
     console.log('reset password', reset)
 
 }

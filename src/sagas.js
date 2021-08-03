@@ -77,14 +77,14 @@ import {
     watchConfirmUser,
     watchCreateVerificationToken,
     watchGetUser,
-    watchGetUsers,
+    watchGetUsers, watchGetUserSuccess,
     watchSignIn,
     watchSignOut,
     watchSignUp,
     watchSignUpSignInSuccess,
     watchUserHistory,
     watchVerifyUser
-}                                  from 'features/user/sagas'
+} from 'features/user/sagas'
 import {
     watchAuthenticate,
     watchAuthenticateSuccess,
@@ -226,6 +226,7 @@ export default function* rootSaga() {
         fork(watchUpdateUserIdentity),
         fork(watchConfirmUser),
         fork(watchGetUsers),
+        fork(watchGetUserSuccess),
         fork(watchGetUser),
         fork(watchCreateVerificationToken),
         fork(watchVerifyUser),
