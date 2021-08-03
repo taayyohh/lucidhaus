@@ -203,7 +203,7 @@ export const confirmUserResetToken = ({payload}) =>
         })
 
 
-export const resetUserPassword = ({payload}) => {
+export const resetUserPassword = ({payload}) =>
     fetch(`${API}/auth/reset/${payload.slug}`, {
         method: "POST",
         headers: {
@@ -218,4 +218,4 @@ export const resetUserPassword = ({payload}) => {
         .catch(error => {
             return error
         })
-}
+
