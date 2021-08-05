@@ -122,12 +122,7 @@ const Places = () => {
                             const state = !!place.state ? `, ${place.state}` : ''
                             const zip = !!place.postal_code ? place.postal_code : ''
                             const composedAddress = `${address1}${city}${state}${zip}`
-
-                            const address = () => {
-                                if (!!place.address1 && !!place.city && !!place.state && !!place.country) {
-                                    return `${!!place.address1 && place.address1} ${(!!place.address2 && place.address2 !== 'undefined') ? place.address2 : ''}, ${!!place.city && place.city} ${place.state} ${place.country}`
-                                }
-                            }
+                            
 
                             return (
                                 <GenericCard

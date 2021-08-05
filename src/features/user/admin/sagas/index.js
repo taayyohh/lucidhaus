@@ -305,7 +305,7 @@ export function* recoverPassword({payload}) {
 export function* confirmResetToken({payload}) {
     const reset = yield call(confirmUserResetToken, {payload})
 
-    if(!reset.error) {
+    if (!reset.error) {
         //TODO: confirm link is valid front end response?
     } else {
         yield put({
@@ -320,10 +320,20 @@ export function* confirmResetToken({payload}) {
     }
 }
 
-export function* resetPassword({payload, token}) {
-    const reset = yield call(resetUserPassword, {payload, token})
-    console.log('reset password', reset)
-
+export function* resetPassword({payload}) {
+    const reset = yield call(resetUserPassword, {payload})
+    if (!reset.error) {
+        yield put({
+            type: 'site/setNotification',
+            payload: {
+                notification: reset.message,
+                theme: 'green'
+            }
+        })
+        yield push(yield put(push('/signin')))
+    } else {
+        //TODO: error handle
+    }
 }
 
 

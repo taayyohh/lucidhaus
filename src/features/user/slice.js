@@ -176,8 +176,11 @@ export const slice = createSlice({
         emailVerificationSuccess: (state, action) => {
             state.isVerified = true
         },
+        getBookmark: (state, action) => {
+            state.bookmarks = []
+        },
         getBookmarkSuccess: (state, action) => {
-            state.bookmarks = state.bookmarks.indexOf(action.payload.place) === -1
+            state.bookmarks = state.bookmarks.filter(item => item._id === action.payload.place._id).length < 1
                 ? [...state.bookmarks, action.payload.place]
                 : state.bookmarks
         },
