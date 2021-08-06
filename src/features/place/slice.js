@@ -59,6 +59,12 @@ export const slice = createSlice({
         },
         getPlace: (state, action) => {
             state.place = []
+            state.bathrooms = []
+            state.businessOwner = []
+            state.communitiesServed = []
+            state.foodOptions = []
+            state.languageSpoken = []
+            state.placeCategory = []
         },
         getPlaceSuccess: (state, action) => {
             state.place = action.payload
@@ -77,7 +83,7 @@ export const slice = createSlice({
             state.boonePlaces = action.payload
             state.noResults.boone = false
         },
-        getBooneAutoCompleteFailure: (state,action) => {
+        getBooneAutoCompleteFailure: (state, action) => {
             state.noResults.boone = true
             state.boonePlaces = {}
         },
@@ -126,7 +132,6 @@ export const slice = createSlice({
         getLanguageSpokenEntitySuccess: (state, action) => {
             state.languageSpoken = [...state.languageSpoken, action.payload.entity]
         },
-
 
 
         /*   ADMIN  */
