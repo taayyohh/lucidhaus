@@ -36,9 +36,6 @@ const MultiSelect = memo(({className, errorMessage, field, formik, options, them
     }, [optionsArray])
 
     useEffect(() => {
-        console.log('fieldName', field?.name)
-        console.log('selected', selected)
-
         formik.setFieldValue(field?.name, selected)
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -73,7 +70,6 @@ const MultiSelect = memo(({className, errorMessage, field, formik, options, them
                 </Div>
                 <Span theme={selectFieldErrorMessageStyle}>{errorMessage}</Span>
             </Div>
-
         </Div>
     )
 })
