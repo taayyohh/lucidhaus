@@ -59,6 +59,12 @@ export const slice = createSlice({
         },
         getPlace: (state, action) => {
             state.place = []
+            state.bathrooms = []
+            state.businessOwner = []
+            state.communitiesServed = []
+            state.foodOptions = []
+            state.languageSpoken = []
+            state.placeCategory = []
         },
         getPlaceSuccess: (state, action) => {
             state.place = action.payload
@@ -77,7 +83,7 @@ export const slice = createSlice({
             state.boonePlaces = action.payload
             state.noResults.boone = false
         },
-        getBooneAutoCompleteFailure: (state,action) => {
+        getBooneAutoCompleteFailure: (state, action) => {
             state.noResults.boone = true
             state.boonePlaces = {}
         },
@@ -109,24 +115,34 @@ export const slice = createSlice({
             state.reviews = [...state.reviews, action.payload]
         },
         getBathroomEntitySuccess: (state, action) => {
-            state.bathrooms = [...state.bathrooms, action.payload.entity]
+            state.bathrooms = state.bathrooms.filter(item => item._id === action.payload.entity._id).length < 1
+                ? [...state.bathrooms, action.payload.entity]
+                : state.bathrooms
         },
         getBusinessOwnerEntitySuccess: (state, action) => {
-            state.businessOwner = [...state.businessOwner, action.payload.entity]
+            state.businessOwner = state.businessOwner.filter(item => item._id === action.payload.entity._id).length < 1
+                ? [...state.businessOwner, action.payload.entity]
+                : state.businessOwner
         },
         getPlaceCategoryEntitySuccess: (state, action) => {
-            state.placeCategory = [...state.placeCategory, action.payload.entity]
-        },
+            state.placeCategory = state.placeCategory.filter(item => item._id === action.payload.entity._id).length < 1
+                ? [...state.placeCategory, action.payload.entity]
+                : state.placeCategory        },
         getCommunitiesServedEntitySuccess: (state, action) => {
-            state.communitiesServed = [...state.communitiesServed, action.payload.entity]
+            state.communitiesServed = state.communitiesServed.filter(item => item._id === action.payload.entity._id).length < 1
+                ? [...state.communitiesServed, action.payload.entity]
+                : state.communitiesServed
         },
         getFoodOptionsEntitySuccess: (state, action) => {
-            state.foodOptions = [...state.foodOptions, action.payload.entity]
+            state.foodOptions = state.foodOptions.filter(item => item._id === action.payload.entity._id).length < 1
+                ? [...state.foodOptions, action.payload.entity]
+                : state.foodOptions
         },
         getLanguageSpokenEntitySuccess: (state, action) => {
-            state.languageSpoken = [...state.languageSpoken, action.payload.entity]
+            state.languageSpoken = state.languageSpoken.filter(item => item._id === action.payload.entity._id).length < 1
+                ? [...state.languageSpoken, action.payload.entity]
+                : state.languageSpoken
         },
-
 
 
         /*   ADMIN  */
