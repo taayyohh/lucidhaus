@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import Div                          from 'shared/Basic/Div'
 import {optionStyle}                from './styles'
 
-const SelectOption = ({optionId, name, field, formik, value, selected, setSelected, theme}) => {
+const SelectOption = ({optionId, name, field, formik, initialOptions, value, selected, setSelected, theme}) => {
     const [isSelected, setIsSelected] = useState(false)
     const updateSelectedArray = (isSelected, optionId) => {
         if (isSelected) {
@@ -15,14 +15,14 @@ const SelectOption = ({optionId, name, field, formik, value, selected, setSelect
     }
 
     useEffect(() => {
-        if (!!value && value?.length > 0) {
+        if (!!initialOptions && initialOptions?.length > 0) {
             setTimeout(() => {
-                setIsSelected(value.filter(item => item === optionId)?.length === 1)
+                setIsSelected(initialOptions.filter(item => item === optionId)?.length === 1)
             }, 1000)
         }
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, [initialOptions])
 
 
     useEffect(() => {
@@ -31,12 +31,6 @@ const SelectOption = ({optionId, name, field, formik, value, selected, setSelect
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isSelected])
 
-
-    // useEffect(() => {
-    //     formik.setFieldValue(field?.name, selected)
-    //
-    //     // eslint-disable-next-line react-hooks/exhaustive-deps
-    // }, [selected])
 
     return (
         <Div

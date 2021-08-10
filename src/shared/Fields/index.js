@@ -103,6 +103,7 @@ const FieldSwitch = memo(({field, formik, options, theme, autoSubmit}) => {
         case MULTI_SELECT:
             return <MultiSelect
                 {...formik.getFieldProps(field.name)}
+                name={field.name}
                 formik={formik}
                 field={field}
                 options={options}

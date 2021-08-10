@@ -13,11 +13,12 @@ import Span                                                     from 'shared/Bas
 import {defaultFieldHeadingStyle, selectFieldErrorMessageStyle} from 'shared/Fields/styles'
 import SelectOption                                             from './SelectOption'
 
-const MultiSelect = memo(({className, errorMessage, field, formik, options, theme, value}) => {
+const MultiSelect = memo(({className, name, errorMessage, field, formik, options, theme, value}) => {
     const optionsArray = options?.filter(options => options.name === field.name)[0]?.options
     const [selected, setSelected] = useState([])
     const [filterInput, setFilteredInput] = useState('')
     const [filteredArray, setFilteredArray] = useState(optionsArray)
+    const [initialOptions, setInitialOptions] = useState([])
 
     useEffect(() => {
         setFilteredArray(optionsArray.reduce(function (accumulator = [], currentValue) {
@@ -42,7 +43,11 @@ const MultiSelect = memo(({className, errorMessage, field, formik, options, them
     }, [selected])
 
     useEffect(() => {
-        console.log('formil', formik)
+        if (!!formik.values[name]) {
+            setInitialOptions(formik.values[name])
+        }
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (
@@ -66,7 +71,7 @@ const MultiSelect = memo(({className, errorMessage, field, formik, options, them
                                 optionId={o._id}
                                 selected={selected}
                                 setSelected={setSelected}
-                                value={value}
+                                initialOptions={initialOptions}
                                 theme={{...multiSelectOptionStyle, ...theme.option}}
                             />
                         </Div>
