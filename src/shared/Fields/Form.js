@@ -52,7 +52,6 @@ const Form = ({
                         }}
                         children={formHeading}
                     />
-                    {/*{console.log('form', formik.values)}*/}
                     <Div theme={{...defaultFormStyle.inner, ...theme.inner}}>
                         {fields.map((f, i) =>
                             <FieldSwitch
