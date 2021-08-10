@@ -108,22 +108,27 @@ const Identity = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    useEffect(() => {
-        console.log('identity', identity)
-    }, [identity])
+    // useEffect(() => {
+    //
+    // }, [identity])
 
     return (
-        <Form
-            initialValues={initialValues}
-            fields={identityFields}
-            // validationSchema={validateUser}
-            dispatchAction={'user/updateUserIdentity'}
-            formHeading={'Update Identity'}
-            buttonText={'Update'}
-            theme={adminFormWrapperStyle}
-            enableReinitialize={true}
-            options={options}
-        />
+        <>
+            {initialValues && (
+                <Form
+                    initialValues={initialValues}
+                    fields={identityFields}
+                    // validationSchema={validateUser}
+                    dispatchAction={'user/updateUserIdentity'}
+                    formHeading={'Update Identity'}
+                    buttonText={'Update'}
+                    theme={adminFormWrapperStyle}
+                    enableReinitialize={true}
+                    options={options}
+                />
+            )}
+        </>
+
     )
 }
 

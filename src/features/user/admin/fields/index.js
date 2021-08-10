@@ -48,6 +48,7 @@ export const userFields = [
     {
         name: 'role',
         inputLabel: 'Account Type',
-        type: NUMBER
+        type: NUMBER,
+        disabled: true
     }
 ]
