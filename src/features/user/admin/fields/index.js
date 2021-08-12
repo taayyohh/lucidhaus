@@ -40,15 +40,15 @@ export const userFields = [
         inputLabel: 'Birthday',
         type: DATE
     },
-    {
-        name: 'handle',
-        inputLabel: 'Handle',
-        type: TEXT
-    },
-    {
-        name: 'role',
-        inputLabel: 'Account Type',
-        type: NUMBER,
-        disabled: true
-    }
+    // {
+    //     name: 'handle',
+    //     inputLabel: 'Handle',
+    //     type: TEXT
+    // },
+    // {
+    //     name: 'role',
+    //     inputLabel: 'Account Type',
+    //     type: NUMBER,
+    //     disabled: true
+    // }
 ]
