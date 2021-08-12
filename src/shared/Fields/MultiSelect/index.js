@@ -15,10 +15,8 @@ import SelectOption                                             from './SelectOp
 
 const MultiSelect = memo(({className, name, errorMessage, field, formik, options, theme, value}) => {
     const optionsArray = options?.filter(options => options.name === field.name)[0]?.options
-    const [selected, setSelected] = useState([])
     const [filterInput, setFilteredInput] = useState('')
     const [filteredArray, setFilteredArray] = useState(optionsArray)
-    const [initialOptions, setInitialOptions] = useState([])
 
     useEffect(() => {
         setFilteredArray(optionsArray.reduce(function (accumulator = [], currentValue) {
@@ -36,19 +34,6 @@ const MultiSelect = memo(({className, name, errorMessage, field, formik, options
 
     }, [optionsArray])
 
-    useEffect(() => {
-        formik.setFieldValue(field?.name, selected)
-
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [selected])
-
-    useEffect(() => {
-        if (!!formik.values[name]) {
-            setInitialOptions(formik.values[name])
-        }
-
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
 
     return (
         <Div theme={{...multiSelectWrapperStyle}} className={className ? className : ''}>
@@ -69,9 +54,6 @@ const MultiSelect = memo(({className, name, errorMessage, field, formik, options
                                 formik={formik}
                                 name={o.name}
                                 optionId={o._id}
-                                selected={selected}
-                                setSelected={setSelected}
-                                initialOptions={initialOptions}
                                 theme={{...multiSelectOptionStyle, ...theme.option}}
                             />
                         </Div>
