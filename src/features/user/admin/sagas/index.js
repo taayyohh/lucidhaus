@@ -113,8 +113,6 @@ export function* updateIdentity({payload}) {
         setFormData(user, field)
 
 
-    console.log('payload', payload)
-
     try {
         const updated = yield call(updateEntity, {
             slug: slug,
@@ -167,7 +165,6 @@ export function* updateProfile({payload}) {
     } = payload
 
     //add to formData so api can read
-    console.log('payload', payload)
     const user = new FormData()
     const fields = [{avatar}, {nameFirst}, {nameMiddle}, {nameLast}, {dateOfBirth}, {email}, {tel}, {handle}, {ethnicHispanicOrigin}]
     for (let field of fields)
