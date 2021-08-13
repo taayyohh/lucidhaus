@@ -1,7 +1,9 @@
-import {push}                  from 'connected-react-router'
-import {addPlaceFromBoone}     from 'features/place/services'
-import {call, put, takeLatest} from 'redux-saga/effects'
-import {setFormData}           from 'utils/abstractions/setFormData'
+import {push}                              from 'connected-react-router'
+import {addPlaceFromBoone}                 from 'features/place/services'
+import {call, put, putResolve, takeLatest} from 'redux-saga/effects'
+import {setFormData}                       from 'utils/abstractions/setFormData'
+import {createEntity}                      from '../../../../utils/abstractions/crud'
+import {slugify}                           from '../../../../utils/helpers'
 
 export function* createPlaceFromBoone({payload}) {
     const {
@@ -12,17 +14,23 @@ export function* createPlaceFromBoone({payload}) {
 
     //TODO: at some point take categories from boone place make a call to store categories in guide
 
-    console.log('boonePlace', boonePlace)
-
+    const booneCategories = []
     for (const category of boonePlace.categories) {
-        yield put({
-            type: 'place/createPlaceCategory',
-            payload: {
-                name: category.name,
-                description: category.name,
-                _id,
-                token
-        }})
+        const placeCategory = new FormData()
+        const fields = [{name: category.name}, {description: category.name}]
+        for (let field of fields)
+            setFormData(placeCategory, field)
+
+        const createdPlaceCategory = yield call(createEntity, {
+            _id: _id,
+            token: token,
+            body: placeCategory,
+            slug: 'place-category'
+        })
+
+        if (!createdPlaceCategory.error) {
+            booneCategories.push(createdPlaceCategory.id)
+        }
     }
 
     const place = new FormData()
@@ -32,6 +40,7 @@ export function* createPlaceFromBoone({payload}) {
         {address1: boonePlace?.locations?.[0].address1},
         {address2: boonePlace?.locations?.[0].address2},
         {city: boonePlace?.locations?.[0].city},
+        {categories: booneCategories},
         {zip: boonePlace?.locations?.[0].postal_code},
         {country: boonePlace?.locations?.[0].country},
         {state: boonePlace?.locations?.[0].state},
