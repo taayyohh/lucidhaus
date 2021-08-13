@@ -33,7 +33,11 @@ const SmartInput = ({
     const [tel, setTel] = useState(undefined)
 
     useEffect(() => {
-        const valueExists = Number.isInteger(value) || value?.length > 0
+        const valueExists =
+            typeof value === 'number'
+            || Number.isInteger(value)
+            || value?.length > 0
+        
         setHasValue(valueExists)
         setIsInputLabelFocused(valueExists)
         setLegendWidth(value?.length < 1 ? 0 : inputLabelWidth)
