@@ -13,9 +13,8 @@ import Span                                                     from 'shared/Bas
 import {defaultFieldHeadingStyle, selectFieldErrorMessageStyle} from 'shared/Fields/styles'
 import SelectOption                                             from './SelectOption'
 
-const MultiSelect = memo(({className, errorMessage, field, formik, options, theme, value}) => {
+const MultiSelect = memo(({className, name, errorMessage, field, formik, options, theme, value}) => {
     const optionsArray = options?.filter(options => options.name === field.name)[0]?.options
-    const [selected, setSelected] = useState([])
     const [filterInput, setFilteredInput] = useState('')
     const [filteredArray, setFilteredArray] = useState(optionsArray)
 
@@ -35,14 +34,6 @@ const MultiSelect = memo(({className, errorMessage, field, formik, options, them
 
     }, [optionsArray])
 
-    useEffect(() => {
-        console.log('fieldName', field?.name)
-        console.log('selected', selected)
-
-        formik.setFieldValue(field?.name, selected)
-
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [selected])
 
     return (
         <Div theme={{...multiSelectWrapperStyle}} className={className ? className : ''}>
@@ -63,9 +54,6 @@ const MultiSelect = memo(({className, errorMessage, field, formik, options, them
                                 formik={formik}
                                 name={o.name}
                                 optionId={o._id}
-                                selected={selected}
-                                setSelected={setSelected}
-                                value={value}
                                 theme={{...multiSelectOptionStyle, ...theme.option}}
                             />
                         </Div>
@@ -73,7 +61,6 @@ const MultiSelect = memo(({className, errorMessage, field, formik, options, them
                 </Div>
                 <Span theme={selectFieldErrorMessageStyle}>{errorMessage}</Span>
             </Div>
-
         </Div>
     )
 })

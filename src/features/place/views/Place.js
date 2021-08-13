@@ -248,7 +248,7 @@ const Place = () => {
                                             {website && website !== 'undefined' && (
                                                 <LinkSwitch
                                                     url={website}
-                                                    children={website}
+                                                    children={'Website'}
                                                     theme={placeWebsiteStyle}
                                                 />
                                             )}

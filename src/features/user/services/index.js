@@ -141,7 +141,7 @@ export const getReviewsByUser = ({_id, token}) =>
             return error
         })
 
-export const resendVerification = ({_id, token})  => {
+export const resendVerification = ({_id, token}) => {
     fetch(`${API}/resend-verification-token/${_id}`, {
         method: "PUT",
         headers: {
@@ -158,35 +158,42 @@ export const resendVerification = ({_id, token})  => {
         })
 }
 
-export const sendRecoverPassword = ({body, token})  => {
-    fetch(`${API}/auth/recover/`, {
-        method: "POST",
-        body: body
-    })
-        .then(response => {
-            return response.json()
-        })
-        .catch(error => {
-            return error
-        })
-}
+// export const sendRecoverPassword = ({body, token})  => {
+//     fetch(`${API}/auth/recover/`, {
+//         method: "POST",
+//         body: body
+//     })
+//         .then(response => {
+//             return response.json()
+//         })
+//         .catch(error => {
+//             return error
+//         })
+// }
 
-export const confirmUserResetToken = ({slug})  => {
-    fetch(`${API}/auth/reset/${slug}`, {
-        method: "GET",
-    })
-        .then(response => {
-            return response.json()
-        })
-        .catch(error => {
-            return error
-        })
-}
 
-export const resetUserPassword = ({body, slug})  => {
-    fetch(`${API}/auth/reset/${slug}`, {
+export const sendRecoverPassword = ({payload}) =>
+    fetch(`${API}/auth/recover`, {
         method: "POST",
-        body: body
+        headers: {
+            Accept: 'application/json',
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
+    }).then(response => {
+        return response.json()
+    }).catch(err => {
+        return err
+    })
+
+export const confirmUserResetToken = ({payload}) =>
+    fetch(`${API}/auth/reset/verify/${payload.token}`, {
+        method: "POST",
+        headers: {
+            Accept: 'application/json',
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
     })
         .then(response => {
             return response.json()
@@ -194,4 +201,21 @@ export const resetUserPassword = ({body, slug})  => {
         .catch(error => {
             return error
         })
-}
+
+
+export const resetUserPassword = ({payload}) =>
+    fetch(`${API}/auth/reset/${payload.slug}`, {
+        method: "POST",
+        headers: {
+            Accept: 'application/json',
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
+    })
+        .then(response => {
+            return response.json()
+        })
+        .catch(error => {
+            return error
+        })
+

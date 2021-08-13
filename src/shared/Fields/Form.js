@@ -26,7 +26,6 @@ const Form = ({
     const dispatch = useDispatch()
 
     useEffect(() => {
-        console.log('init', initialValues)
 
     }, [initialValues])
 
@@ -53,7 +52,7 @@ const Form = ({
                         }}
                         children={formHeading}
                     />
-                    {/*{console.log('form', formik.values)}*/}
+                    {console.log('formik', formik)}
                     <Div theme={{...defaultFormStyle.inner, ...theme.inner}}>
                         {fields.map((f, i) =>
                             <FieldSwitch

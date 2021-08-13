@@ -33,21 +33,23 @@ export const userFields = [
     {
         name: 'email',
         inputLabel: 'Email',
-        type: TEXT
+        type: TEXT,
+        disabled: true
     },
     {
         name: 'dateOfBirth',
         inputLabel: 'Birthday',
         type: DATE
     },
-    {
-        name: 'handle',
-        inputLabel: 'Handle',
-        type: TEXT
-    },
-    {
-        name: 'role',
-        inputLabel: 'Account Type',
-        type: NUMBER
-    }
+    // {
+    //     name: 'handle',
+    //     inputLabel: 'Handle',
+    //     type: TEXT
+    // },
+    // {
+    //     name: 'role',
+    //     inputLabel: 'Account Type',
+    //     type: NUMBER,
+    //     disabled: true
+    // }
 ]

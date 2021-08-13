@@ -1,5 +1,5 @@
 import {globals}                                               from 'config/styles'
-import {TEL}                                                   from 'config/variables'
+import {DATE, TEL}                                             from 'config/variables'
 import PropTypes                                               from 'prop-types'
 import React, {useEffect, useRef, useState}                    from 'react'
 import Fieldset                                                from 'shared/Basic/Fieldset'
@@ -33,7 +33,11 @@ const SmartInput = ({
     const [tel, setTel] = useState(undefined)
 
     useEffect(() => {
-        const valueExists = Number.isInteger(value) || value?.length > 0
+        const valueExists =
+            typeof value === 'number'
+            || type === DATE
+            || value?.length > 0
+
         setHasValue(valueExists)
         setIsInputLabelFocused(valueExists)
         setLegendWidth(value?.length < 1 ? 0 : inputLabelWidth)

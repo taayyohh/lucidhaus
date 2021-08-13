@@ -1,3 +1,4 @@
+import {push}                         from 'connected-react-router'
 import {getSignedRequest, uploadFile} from 'features/site/services/s3'
 import {
     confirmUserResetToken,
@@ -110,6 +111,7 @@ export function* updateIdentity({payload}) {
     ]
     for (let field of fields)
         setFormData(user, field)
+
 
     try {
         const updated = yield call(updateEntity, {
@@ -272,18 +274,28 @@ export function* resendVerificationLink({payload}) {
 }
 
 export function* recoverPassword({payload}) {
-    const {email, token} = payload
-    //add to formdata so api can read
-    const body = new FormData()
-    const fields = [{email}]
-    for (let field of fields)
-        setFormData(body, field)
-
     try {
-        const recover = yield call(sendRecoverPassword, {body, token})
-        if (!recover?.error) {
-            console.log('recover', recover)
+        const recover = yield call(sendRecoverPassword, {payload})
 
+        if (!recover?.error) {
+            yield put({type: 'place/recoverPasswordSuccess'})
+            yield put({
+                type: 'site/setNotification',
+                payload: {
+                    notification: recover.message,
+                    theme: 'green'
+                }
+            })
+
+        } else {
+            yield put({type: 'place/recoverPasswordFailure'})
+            yield put({
+                type: 'site/setNotification',
+                payload: {
+                    notification: recover.error,
+                    theme: 'red'
+                }
+            })
         }
     } catch (error) {
         yield put({type: 'place/recoverPasswordFailure'})
@@ -292,28 +304,37 @@ export function* recoverPassword({payload}) {
 }
 
 export function* confirmResetToken({payload}) {
-    const {slug} = payload
+    const reset = yield call(confirmUserResetToken, {payload})
 
-    const body = new FormData()
-    const fields = [{slug}]
-    for (let field of fields)
-        setFormData(body, field)
+    if (!reset.error) {
+        //TODO: confirm link is valid front end response?
+    } else {
+        yield put({
+            type: 'site/setNotification',
+            payload: {
+                notification: reset.error,
+                theme: 'red'
+            }
+        })
+        yield push(yield put(push('/signin')))
 
-    const reset = yield call(confirmUserResetToken, {slug})
-    console.log('reset', reset)
+    }
 }
 
-export function* resetPassword({payload, token}) {
-    const {slug, password} = payload
-
-    const body = new FormData()
-    const fields = [{password}]
-    for (let field of fields)
-        setFormData(body, field)
-
-    const reset = yield call(resetUserPassword, {slug, body, token})
-    console.log('reset', reset)
-
+export function* resetPassword({payload}) {
+    const reset = yield call(resetUserPassword, {payload})
+    if (!reset.error) {
+        yield put({
+            type: 'site/setNotification',
+            payload: {
+                notification: reset.message,
+                theme: 'green'
+            }
+        })
+        yield push(yield put(push('/signin')))
+    } else {
+        //TODO: error handle
+    }
 }
 
 

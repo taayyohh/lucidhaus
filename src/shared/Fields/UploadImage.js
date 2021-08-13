@@ -96,8 +96,11 @@ const UploadImage = memo(({
     }
 
     useEffect(() => {
-        formik.setFieldValue(file, croppedImage ? croppedImage : '')
-        formik.setFieldValue(id, sanitizedName ? sanitizedName : '')
+        if(!!croppedImage)
+            formik.setFieldValue(file, croppedImage ? croppedImage : '')
+
+        if(!!sanitizedName)
+            formik.setFieldValue(id, sanitizedName ? sanitizedName : '')
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [croppedImage, sanitizedName])

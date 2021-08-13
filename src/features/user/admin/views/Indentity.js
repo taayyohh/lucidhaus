@@ -25,21 +25,21 @@ const Identity = () => {
     // const {description, avatar, email, ethnicHispanicOrigin, nameMiddle, nameFirst, nameLast, tel, role, type} = user
 
     const initialValues = {
-        adaptiveEquipment: identity?.adaptiveEquipment,
-        bodyModification: identity?.bodyModification,
+        adaptiveEquipment: identity?.adaptiveEquipment || [],
+        bodyModification: identity?.bodyModification || [],
         blind: identity?.blind,
         deaf: identity?.deaf,
         dateOfBirth: '',
-        gender: identity?.gender,
+        gender: identity?.gender || [],
         guideAnimal: identity?.guideAnimal,
-        languagePrimary: identity?.languagePrimary,
-        languageSecondary: identity?.languageSecondary,
-        methodOfCommunication: identity?.methodOfCommunication,
-        physicalAppearance: identity?.physicalAppearance,
-        pronoun: identity?.pronoun,
-        race: identity?.race,
-        serviceAnimal: identity?.serviceAnimal,
-        sexualOrientation: identity?.sexualOrientation,
+        languagePrimary: identity?.languagePrimary || [],
+        languageSecondary: identity?.languageSecondary || [],
+        methodOfCommunication: identity?.methodOfCommunication || [],
+        physicalAppearance: identity?.physicalAppearance || [],
+        pronoun: identity?.pronoun || [],
+        race: identity?.race || [],
+        serviceAnimal: identity?.serviceAnimal || [],
+        sexualOrientation: identity?.sexualOrientation || [],
         transgender: identity?.transgender,
         identity: true,
         slug,
@@ -108,22 +108,27 @@ const Identity = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    useEffect(() => {
-        console.log('identity', identity)
-    }, [identity])
+    // useEffect(() => {
+    //
+    // }, [identity])
 
     return (
-        <Form
-            initialValues={initialValues}
-            fields={identityFields}
-            // validationSchema={validateUser}
-            dispatchAction={'user/updateUserIdentity'}
-            formHeading={'Update Identity'}
-            buttonText={'Update'}
-            theme={adminFormWrapperStyle}
-            enableReinitialize={true}
-            options={options}
-        />
+        <>
+            {initialValues && (
+                <Form
+                    initialValues={initialValues}
+                    fields={identityFields}
+                    // validationSchema={validateUser}
+                    dispatchAction={'user/updateUserIdentity'}
+                    formHeading={'Update Identity'}
+                    buttonText={'Update'}
+                    theme={adminFormWrapperStyle}
+                    enableReinitialize={true}
+                    options={options}
+                />
+            )}
+        </>
+
     )
 }
 
