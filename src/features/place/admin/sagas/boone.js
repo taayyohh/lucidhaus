@@ -12,6 +12,19 @@ export function* createPlaceFromBoone({payload}) {
 
     //TODO: at some point take categories from boone place make a call to store categories in guide
 
+    console.log('boonePlace', boonePlace)
+
+    for (const category of boonePlace.categories) {
+        yield put({
+            type: 'place/createPlaceCategory',
+            payload: {
+                name: category.name,
+                description: category.name,
+                _id,
+                token
+        }})
+    }
+
     const place = new FormData()
     const fields = [
         {booneId: boonePlace.id},
