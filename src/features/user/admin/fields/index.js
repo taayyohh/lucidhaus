@@ -33,7 +33,8 @@ export const userFields = [
     {
         name: 'email',
         inputLabel: 'Email',
-        type: TEXT
+        type: TEXT,
+        disabled: true
     },
     {
         name: 'dateOfBirth',

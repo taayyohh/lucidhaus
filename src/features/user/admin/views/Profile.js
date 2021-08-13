@@ -62,6 +62,16 @@ const Profile = () => {
     return (
         <ContentWrapper>
             <DashboardWrapper menu={userDashboardMenu}>
+                <Div theme={{
+                    weight: 300,
+                    fontStyle: 'italic',
+                    font: globals.fonts.serif,
+                    marginTop: [30, .7, 30],
+                    marginBottom: 15,
+                    size: [18, .7, 18]
+                }}>
+                    <strong>Disclaimer</strong>: Updating your email is not possible at the moment. We are working on this feature!
+                </Div>
                 <Form
                     initialValues={initialValues}
                     fields={userFields}
