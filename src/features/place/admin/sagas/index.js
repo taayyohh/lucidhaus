@@ -337,12 +337,11 @@ export function* updateReview({payload}) {
             })
 
         if (!updated.error) {
-            yield put({type: 'place/updatePlaceSuccess', payload: updated})
-            yield put({type: 'place/getPlace', payload: {slug: slug}})
+            yield put({type: 'place/updateReviewSuccess', payload: updated})
             yield put({
                 type: 'site/setNotification',
                 payload: {
-                    notification: 'Review Added',
+                    notification: 'Review Updated',
                     theme: 'green'
                 }
             })
