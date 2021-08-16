@@ -1,9 +1,11 @@
+import {colorPalette}     from 'config/styles'
 import dayjs              from 'dayjs'
 import React              from 'react'
 import Div                from 'shared/Basic/Div'
 import LinkSwitch         from 'shared/Basic/LinkSwitch'
 import RichText           from 'shared/Basic/RichText'
 import {genericCardStyle} from 'shared/Cards/styles'
+import {flexStart}        from 'utils/themer'
 
 const Review = ({review, url}) => {
     return (
@@ -14,7 +16,21 @@ const Review = ({review, url}) => {
             <Div>Welcome: {review.welcome}</Div>
             <Div>{dayjs(review.updated).format('MM/DD/YYYY')}</Div>
             <LinkSwitch url={`/places/${review.placeSlug}`}>{review.placeName}</LinkSwitch>
-            <LinkSwitch url={url} children={'Edit'} />
+            <LinkSwitch
+                url={url} children={'Edit'}
+                theme={{
+                    alignSelf: flexStart,
+                    padding: '10px 20px',
+                    background: colorPalette.forestGreen,
+                    borderRadius: '5px',
+                    textDecoration: 'none',
+                    color: '#fff',
+                    hover: {
+                        background: colorPalette.darkHoneyYellow,
+                        color: '#fff'
+                    }
+                }}
+            />
         </Div>
     )
 }
