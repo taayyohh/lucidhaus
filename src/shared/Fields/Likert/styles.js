@@ -1,4 +1,4 @@
-import {column, flex} from 'utils/themer'
+import {column, flex, pointer} from 'utils/themer'
 
 export const likertOptionsWrapperStyle = {
     display: flex,
@@ -9,5 +9,8 @@ export const likertOptionsWrapperStyle = {
 }
 
 export const likertOptionStyle = {
-    marginRight: [20, .7, '0']
+    marginRight: [20, .7, '0'],
+    hover: {
+        cursor: pointer
+    }
 }

@@ -19,10 +19,10 @@ const AdminDashboard = () => {
                     heading={`Hey, ${nameFirst}`}
                     description={`${tel}`}
                 />
-                <Div theme={{display: 'flex', flexDirection: 'column'}}>
-                    <Div>Long: {coords?.lon}</Div>
-                    <Div>Lat: {coords?.lat}</Div>
-                </Div>
+                {/*<Div theme={{display: 'flex', flexDirection: 'column'}}>*/}
+                {/*    <Div>Long: {coords?.lon}</Div>*/}
+                {/*    <Div>Lat: {coords?.lat}</Div>*/}
+                {/*</Div>*/}
             </DashboardWrapper>
         </ContentWrapper>
     )

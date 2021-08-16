@@ -3,11 +3,6 @@ import * as Yup                                        from 'yup'
 
 export const reviewFields = [
     {
-        name: 'review',
-        inputLabel: 'Leave a Review',
-        type: RICH_TEXT
-    },
-    {
         name: 'safe',
         inputLabel: 'Did you feel safe?',
         helperText: 'This is both your physical and emotional safety. ' +
@@ -28,6 +23,11 @@ export const reviewFields = [
         helperText: 'Do you see yourself represented in the space, the advertising, the products? ' +
             'Did you leave feeling better than when you came in? ',
         type: LIKERT
+    },
+    {
+        name: 'review',
+        inputLabel: 'Leave a Review',
+        type: RICH_TEXT
     },
     {
         name: 'photo',

@@ -187,6 +187,11 @@ export const slice = createSlice({
         getUserReviewsSuccess: (state, action) => {
             state.reviews = action.payload.reviews
         },
+        // getUserReviewsSuccess: (state, action) => {
+        //     state.reviews = state.reviews.filter(item => item._id === action.payload.reviews._id).length < 1
+        //         ? [...state.reviews, action.payload.reviews]
+        //         : state.reviews
+        // },
         getUserReviewedPlaceSuccess: (state, action) => {
 
         },

@@ -4,8 +4,8 @@ import {
     watchCreatePlace,
     watchDestroyPlace,
     watchDestroyPlaceSuccess,
-    watchUpdatePlace
-}                                  from 'features/place/admin/sagas'
+    watchUpdatePlace, watchUpdateReview
+} from 'features/place/admin/sagas'
 import {watchCreatePlaceFromBoone} from 'features/place/admin/sagas/boone'
 import {
     watchGetPlaceDetail,
@@ -302,6 +302,7 @@ export default function* rootSaga() {
         fork(watchSearchAllPlaces),
         fork(watchSearchAlgoliaPlaceIndex),
         fork(watchAddReview),
+        fork(watchUpdateReview),
         fork(watchGetReviews),
         fork(watchGetUserReviewedPlaces),
 
