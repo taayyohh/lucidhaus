@@ -1,20 +1,21 @@
-import Review                       from 'features/place/admin/views/Review'
-import {AnimatePresence}            from 'framer-motion'
-import React, {useEffect, useState} from 'react'
-import {useDispatch, useSelector}   from 'react-redux'
-import Div                          from 'shared/Basic/Div'
-import LinkSwitch                   from 'shared/Basic/LinkSwitch'
-import MotionDiv                    from 'shared/Basic/MotionDiv'
-import RichText                     from 'shared/Basic/RichText'
-import S3Img                        from 'shared/Basic/S3Img'
-import ContentWrapper               from 'shared/Layout/ContentWrapper'
-import {fadeIn, fadeOut, nOpacity}  from 'shared/Layout/styles/animations'
-import Map                          from 'shared/Map'
-import {history}                    from 'store'
-import {debounce}                   from 'utils/helpers'
-import {isEmpty}                    from 'utils/themer'
-import Bookmark                     from './Bookmark'
-import Reviews                      from './Reviews'
+import Review                                   from 'features/place/admin/views/Review'
+import {AnimatePresence}                        from 'framer-motion'
+import React, {useContext, useEffect, useState} from 'react'
+import {useDispatch, useSelector}               from 'react-redux'
+import Div                                      from 'shared/Basic/Div'
+import LinkSwitch                               from 'shared/Basic/LinkSwitch'
+import MotionDiv                                from 'shared/Basic/MotionDiv'
+import RichText                                 from 'shared/Basic/RichText'
+import S3Img                                    from 'shared/Basic/S3Img'
+import {searchContext}                          from 'shared/Containers/SearchController'
+import ContentWrapper                           from 'shared/Layout/ContentWrapper'
+import {fadeIn, fadeOut, nOpacity}              from 'shared/Layout/styles/animations'
+import Map                                      from 'shared/Map'
+import {history}                                from 'store'
+import {debounce}                               from 'utils/helpers'
+import {isEmpty}                                from 'utils/themer'
+import Bookmark                                 from './Bookmark'
+import Reviews                                  from './Reviews'
 import {
     placeAddressStyle,
     placeDescriptionStyle,
@@ -30,13 +31,15 @@ import {
     placeWrapperTopStyle,
     reviewHeadingStyle,
     reviewsHeadingWrapperStyle
-}                                   from './styles'
+}                                               from './styles'
 
 const Place = () => {
     const dispatch = useDispatch()
+    const {placesIndex} = useContext(searchContext)
     const {
         place,
         boonePlace,
+        createdFromBoone,
         error,
         reviews,
         bathrooms,
@@ -89,7 +92,6 @@ const Place = () => {
         }
     }
 
-
     useEffect(() => {
         dispatch({
             type: 'place/getBoonePlace',
@@ -138,7 +140,6 @@ const Place = () => {
     //TODO: fix this
     useEffect(() => {
         setHasNoReviews(!reviews || reviews?.filter(review => review?.user === _id).length === 0)
-
 
     }, [_id, reviews])
 
@@ -220,6 +221,26 @@ const Place = () => {
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [place])
+
+    useEffect(() => {
+        if(createdFromBoone.length > 0) {
+            placesIndex.saveObjects(createdFromBoone)
+                .then(() => {
+                    dispatch({
+                        type: 'place/createPlaceFromBooneIndexSuccess'
+                    })
+                })
+                .catch(error =>
+                    dispatch({
+                        type: 'site/setNotification',
+                        payload: {notification: error}
+                    })
+                )
+            console.log('BOONE', createdFromBoone)
+        }
+
+
+    }, [createdFromBoone])
 
     return (
         <AnimatePresence>

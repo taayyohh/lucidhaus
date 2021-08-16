@@ -39,7 +39,8 @@ const initialState = {
         languageSpoken: [],
         placeCategory: [],
     },
-    algoliaPlaces: []
+    algoliaPlaces: [],
+    createdFromBoone: []
 }
 
 export const slice = createSlice({
@@ -93,6 +94,12 @@ export const slice = createSlice({
         },
         getBoonePlaceFailure: (state, action) => {
             state.error.boonePlace = action.payload
+        },
+        createPlaceFromBooneSuccess: (state, action) => {
+            state.createdFromBoone = [...state.createdFromBoone, action.payload.createdPlace]
+        },
+        createPlaceFromBooneIndexSuccess: (state) => {
+            state.createdFromBoone = []
         },
         updatePlaceFailure: (state, action) => {
             state.error.place = action.payload
