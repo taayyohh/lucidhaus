@@ -12,8 +12,6 @@ export function* createPlaceFromBoone({payload}) {
         boonePlace
     } = payload
 
-    //TODO: at some point take categories from boone place make a call to store categories in guide
-
     const booneCategories = []
     for (const category of boonePlace.categories) {
         const placeCategory = new FormData()
@@ -63,12 +61,13 @@ export function* createPlaceFromBoone({payload}) {
         yield put(push(`/places/${createdPlace.slug}`))
         yield put({type: 'place/getPlace', payload: {slug: createdPlace.slug}})
 
+
         // yield put({type: 'place/getPlaces'})
        // yield put(push(`/` + createdPlace.slug))
-        yield put({type: 'place/createPlaceSuccess', payload})
+        yield put({type: 'place/createPlaceFromBooneSuccess', payload: {createdPlace}})
 
     } else {
-        yield put({type: 'place/createPlaceFailure', payload})
+        yield put({type: 'place/createPlaceFromBooneFailure', payload: {createdPlace}})
     }
 
 }
