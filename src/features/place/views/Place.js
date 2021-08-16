@@ -236,7 +236,6 @@ const Place = () => {
                         payload: {notification: error}
                     })
                 )
-            console.log('BOONE', createdFromBoone)
         }
 
 
