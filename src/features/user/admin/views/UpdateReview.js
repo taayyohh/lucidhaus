@@ -1,24 +1,23 @@
+import {userDashboardMenu}                                               from 'config/menus/dashboard/user'
+import {colorPalette}                                                    from 'config/styles'
 import {reviewFields, validateReview}                                    from 'features/place/admin/fields/review'
 import {reviewFormHeadingStyle, reviewFormStyle, reviewFormWrapperStyle} from 'features/place/views/styles'
-import React, {useEffect}                                                from 'react'
+import React, {useEffect, useState}                                      from 'react'
 import {useDispatch, useSelector}                                        from 'react-redux'
 import Div                                                               from 'shared/Basic/Div'
 import H2                                                                from 'shared/Basic/H2'
+import Span                                                              from 'shared/Basic/Span'
 import Form                                                              from 'shared/Fields/Form'
-import {userDashboardMenu}                                               from '../../../../config/menus/dashboard/user'
-import {colorPalette}                                                    from '../../../../config/styles'
-import Span                                                              from '../../../../shared/Basic/Span'
-import ContentWrapper                                                    from '../../../../shared/Layout/ContentWrapper'
-import DashboardInfo
-                                                                         from '../../../../shared/Layout/Dashboard/DashboardInfo'
-import DashboardWrapper
-                                                                         from '../../../../shared/Layout/Dashboard/DashboardWrapper'
+import ContentWrapper                                                    from 'shared/Layout/ContentWrapper'
+import DashboardInfo                                                     from 'shared/Layout/Dashboard/DashboardInfo'
+import DashboardWrapper                                                  from 'shared/Layout/Dashboard/DashboardWrapper'
 
 const UpdateReview = () => {
     const dispatch = useDispatch()
     const {_id, token} = useSelector(state => state.user)
     const {slug} = useSelector(state => state.site)
     const {reviews} = useSelector(state => state.place)
+    const [currentReview, setCurrentReview] = useState({})
 
     useEffect(() => {
         if (!!slug)
@@ -33,20 +32,25 @@ const UpdateReview = () => {
 
     }, [slug])
 
+    useEffect(() => {
+        setCurrentReview(reviews[reviews.length - 1])
+
+    }, [reviews])
+
     const initialValues = {
-        review: reviews[0]?.review,
-        photo: reviews[0]?.photo,
-        safe: reviews[0]?.safe,
-        celebrated: reviews[0]?.celebrated,
-        welcome: reviews[0]?.welcome,
+        review: currentReview?.review,
+        photo: currentReview?.photo,
+        safe: currentReview?.safe,
+        celebrated: currentReview?.celebrated,
+        welcome: currentReview?.welcome,
         user: _id,
-        placeId: reviews[0]?._id,
-        placeName: reviews[0]?.placeName,
-        placeSlug: reviews[0]?.placeSlug,
-        id: reviews[0]?.id,
+        placeId: currentReview?._id,
+        placeName: currentReview?.placeName,
+        placeSlug: currentReview?.placeSlug,
+        id: currentReview?.id,
         _id,
         token,
-        slug: reviews[0]?.placeSlug,
+        slug: currentReview?.placeSlug,
     }
 
     return (
@@ -57,7 +61,8 @@ const UpdateReview = () => {
                     description={"Here are the reviews you've left."}
                 />
                 <Div theme={reviewFormWrapperStyle}>
-                    <H2 theme={reviewFormHeadingStyle}>Update Your of Review: <Span theme={{color: colorPalette.seaGreen}}>{reviews[0]?.placeName}</Span></H2>
+                    <H2 theme={reviewFormHeadingStyle}>Update Your of Review: <Span
+                        theme={{color: colorPalette.seaGreen}}>{currentReview?.placeName}</Span></H2>
                     <Form
                         initialValues={initialValues}
                         fields={reviewFields}
