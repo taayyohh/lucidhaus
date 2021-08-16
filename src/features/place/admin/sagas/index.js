@@ -298,9 +298,63 @@ export function* addReview({payload}) {
     } catch (error) {
         yield put({type: 'place/updatePlaceFailure'})
     }
-
-
 }
+
+export function* updateReview({payload}) {
+    const {celebrated, photo, photoFile, placeName, placeSlug, review, slug, safe, welcome, user, _id, id, placeId, token} = payload
+    //add to formData so api can read
+    const placeReview = new FormData()
+    const fields = [
+        {id},
+        {celebrated},
+        {photo},
+        {review},
+        {safe},
+        {welcome},
+        {user},
+        {place: placeId},
+        {placeName},
+        {placeSlug}
+    ]
+    for (let field of fields)
+        setFormData(placeReview, field)
+
+    if (!!photoFile) {
+        const s3Payload = yield call(getSignedRequest, photoFile)
+        if (!!s3Payload.signedRequest) {
+            yield call(uploadFile, {file: photoFile, signedRequest: s3Payload.signedRequest})
+        }
+    }
+
+    try {
+        const updated = yield call(updateEntity,
+            {
+                _id: _id,
+                token: token,
+                parentSlug: 'reviews',
+                slug: id,
+                body: placeReview
+            })
+
+        if (!updated.error) {
+            yield put({type: 'place/updatePlaceSuccess', payload: updated})
+            yield put({type: 'place/getPlace', payload: {slug: slug}})
+            yield put({
+                type: 'site/setNotification',
+                payload: {
+                    notification: 'Review Added',
+                    theme: 'green'
+                }
+            })
+
+        } else {
+            yield put({type: 'place/updatePlaceFailure', payload: updated})
+        }
+    } catch (error) {
+        yield put({type: 'place/updatePlaceFailure'})
+    }
+}
+
 
 /**
  *
@@ -332,4 +386,8 @@ export function* watchUpdatePlace() {
 
 export function* watchAddReview() {
     yield takeLatest('place/addReview', addReview)
+}
+
+export function* watchUpdateReview() {
+    yield takeLatest('place/updateReview', updateReview)
 }

@@ -32,6 +32,7 @@ const Reviews = () => {
                     <Review
                         key={review._id}
                         review={review}
+                        url={`/dashboard/reviews/update/${review._id}`}
                     />
                 ))}
 

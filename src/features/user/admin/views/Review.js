@@ -5,7 +5,7 @@ import LinkSwitch         from 'shared/Basic/LinkSwitch'
 import RichText           from 'shared/Basic/RichText'
 import {genericCardStyle} from 'shared/Cards/styles'
 
-const Review = ({review}) => {
+const Review = ({review, url}) => {
     return (
         <Div theme={{...genericCardStyle, marginBottom: 50}}>
             <RichText>{review.review}</RichText>
@@ -14,6 +14,7 @@ const Review = ({review}) => {
             <Div>Welcome: {review.welcome}</Div>
             <Div>{dayjs(review.updated).format('MM/DD/YYYY')}</Div>
             <LinkSwitch url={`/places/${review.placeSlug}`}>{review.placeName}</LinkSwitch>
+            <LinkSwitch url={url} children={'Edit'} />
         </Div>
     )
 }

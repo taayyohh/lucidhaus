@@ -15,20 +15,6 @@ import {
 
 const Likert = memo(({field, helperText, className, errorMessage, formik, value}) => {
     const optionsArray = ['Strongly Disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly Agree']
-    const [selected, setSelected] = useState('')
-
-    useEffect(() => {
-        formik.setFieldValue(field?.name, selected)
-
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [selected])
-
-    useEffect(() => {
-        if (!!value)
-            setSelected(value)
-
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
 
     return (
         <Div theme={selectFieldStyle} className={className ? className : ''}>
@@ -38,10 +24,10 @@ const Likert = memo(({field, helperText, className, errorMessage, formik, value}
                 {optionsArray?.length > 0 && optionsArray?.map(o => (
                     <Div
                         key={o}
-                        onClick={() => setSelected(o)}
+                        onClick={() => formik.setFieldValue(field?.name, o)}
                         theme={{
                             ...likertOptionStyle,
-                            color: selected === o ? colorPalette.honeyYellow : colorPalette.black
+                            color: value === o ? colorPalette.honeyYellow : colorPalette.black
                         }}
                     >
                         {o}

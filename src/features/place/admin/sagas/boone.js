@@ -1,9 +1,8 @@
-import {push}                              from 'connected-react-router'
-import {addPlaceFromBoone}                 from 'features/place/services'
-import {call, put, putResolve, takeLatest} from 'redux-saga/effects'
-import {setFormData}                       from 'utils/abstractions/setFormData'
-import {createEntity}                      from '../../../../utils/abstractions/crud'
-import {slugify}                           from '../../../../utils/helpers'
+import {push}                  from 'connected-react-router'
+import {addPlaceFromBoone}     from 'features/place/services'
+import {call, put, takeLatest} from 'redux-saga/effects'
+import {createEntity}          from 'utils/abstractions/crud'
+import {setFormData}           from 'utils/abstractions/setFormData'
 
 export function* createPlaceFromBoone({payload}) {
     const {
@@ -63,7 +62,7 @@ export function* createPlaceFromBoone({payload}) {
 
 
         // yield put({type: 'place/getPlaces'})
-       // yield put(push(`/` + createdPlace.slug))
+        // yield put(push(`/` + createdPlace.slug))
         yield put({type: 'place/createPlaceFromBooneSuccess', payload: {createdPlace}})
 
     } else {
