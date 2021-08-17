@@ -301,7 +301,7 @@ export function* addReview({payload}) {
 }
 
 export function* updateReview({payload}) {
-    const {celebrated, photo, photoFile, placeName, placeSlug, review, slug, safe, welcome, user, _id, id, placeId, token} = payload
+    const {celebrated, photo, photoFile, placeName, placeSlug, review, safe, welcome, user, _id, id, placeId, token} = payload
     //add to formData so api can read
     const placeReview = new FormData()
     const fields = [

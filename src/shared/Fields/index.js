@@ -2,8 +2,10 @@ import {
     ADDRESS,
     AUDIO_UPLOAD,
     COUNT,
-    COUNTRY, DATE,
-    EMAIL, FILTER,
+    COUNTRY,
+    DATE,
+    EMAIL,
+    FILTER,
     IMAGE_UPLOAD,
     LIKERT,
     MULTI_SELECT,
@@ -15,7 +17,7 @@ import {
     TEL,
     TEXT,
     TOGGLE
-} from 'config/variables'
+}                     from 'config/variables'
 import React, {memo}  from 'react'
 import UploadAudio    from 'shared/Fields/UploadAudio'
 import UploadImage    from 'shared/Fields/UploadImage'

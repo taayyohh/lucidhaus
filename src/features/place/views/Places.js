@@ -96,7 +96,6 @@ const Places = () => {
                         if (!!place.uuid) {
                             const address1 = !!place?.locations[0]?.address1 ? `${place?.locations[0]?.address1}` : ''
                             const city = !!place.locations[0].city ? `, ${place.locations[0].city}` : ''
-                            const country = !!place.locations[0].country ? place.locations[0].country : ''
                             const state = !!place.locations[0].state ? `, ${place.locations[0].state}` : ''
                             const zip = !!place.locations[0].postal_code ? `, ${place.locations[0].postal_code}` : ''
                             const composedAddress = `${address1}${city}${state}${zip}`
@@ -116,13 +115,12 @@ const Places = () => {
                             )
                         } else {
                             const address1 = !!place?.address1 ? `${place?.address1}` : ''
-                            const address2 = !!place?.address2 ? place?.address2 : ''
+                            // const address2 = !!place?.address2 ? place?.address2 : ''
                             const city = !!place.city ? `, ${place.city}` : ''
-                            const country = !!place.country ? place.country : ''
                             const state = !!place.state ? `, ${place.state}` : ''
                             const zip = !!place.postal_code ? place.postal_code : ''
                             const composedAddress = `${address1}${city}${state}${zip}`
-                            
+
 
                             return (
                                 <GenericCard

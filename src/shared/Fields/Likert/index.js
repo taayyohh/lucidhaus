@@ -1,17 +1,17 @@
-import {colorPalette}                     from 'config/styles'
-import React, {memo, useEffect, useState} from 'react'
-import Div                                from 'shared/Basic/Div'
-import Span                               from 'shared/Basic/Span'
+import {colorPalette} from 'config/styles'
+import React, {memo}  from 'react'
+import Div            from 'shared/Basic/Div'
+import Span           from 'shared/Basic/Span'
 import {
     defaultFieldHeadingStyle,
     defaultHelperTextStyle,
     selectFieldErrorMessageStyle,
     selectFieldStyle
-}                                         from 'shared/Fields/styles'
+}                     from 'shared/Fields/styles'
 import {
     likertOptionStyle,
     likertOptionsWrapperStyle
-}                                         from './styles'
+}                     from './styles'
 
 const Likert = memo(({field, helperText, className, errorMessage, formik, value}) => {
     const optionsArray = ['Strongly Disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly Agree']
