@@ -60,7 +60,6 @@ const Place = () => {
         brickAndMortar,
         city,
         description,
-        isRestaurant,
         largeAdaptiveEquipment,
         longitude,
         latitude,
@@ -223,7 +222,7 @@ const Place = () => {
     }, [place])
 
     useEffect(() => {
-        if(createdFromBoone.length > 0) {
+        if (createdFromBoone.length > 0) {
             placesIndex.saveObjects(createdFromBoone)
                 .then(() => {
                     dispatch({
@@ -238,7 +237,7 @@ const Place = () => {
                 )
         }
 
-
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [createdFromBoone])
 
     return (
@@ -384,10 +383,6 @@ const Place = () => {
                                             </Div>
                                         )}
 
-
-                                        {isRestaurant && (
-                                            <Div theme={placeTaxonomyStyle}>This is a restaurant</Div>
-                                        )}
                                         {languageSpoken.length > 0 && (
                                             <Div theme={placeTaxonomyStyle}>
                                                 <Div theme={placeTaxonomyStyle.title}>

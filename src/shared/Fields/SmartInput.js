@@ -42,7 +42,7 @@ const SmartInput = ({
         setIsInputLabelFocused(valueExists)
         setLegendWidth(value?.length < 1 ? 0 : inputLabelWidth)
 
-    }, [setHasValue, setIsInputLabelFocused, inputLabelWidth, value])
+    }, [setHasValue, setIsInputLabelFocused, inputLabelWidth, value, type])
 
     const handleBlur = () => {
         if (!hasValue) {

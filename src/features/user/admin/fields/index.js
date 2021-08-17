@@ -1,4 +1,4 @@
-import {DATE, IMAGE_UPLOAD, NUMBER, TEL, TEXT, UPLOAD_PATHS} from 'config/variables'
+import {DATE, IMAGE_UPLOAD, TEL, TEXT, UPLOAD_PATHS} from 'config/variables'
 
 export const userFields = [
     {

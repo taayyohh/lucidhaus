@@ -7,11 +7,11 @@ import {useDispatch, useSelector}                                        from 'r
 import Div                                                               from 'shared/Basic/Div'
 import H2                                                                from 'shared/Basic/H2'
 import Span                                                              from 'shared/Basic/Span'
+import DangerZone                                                        from 'shared/Controls/DangerZone'
 import Form                                                              from 'shared/Fields/Form'
 import ContentWrapper                                                    from 'shared/Layout/ContentWrapper'
 import DashboardInfo                                                     from 'shared/Layout/Dashboard/DashboardInfo'
 import DashboardWrapper                                                  from 'shared/Layout/Dashboard/DashboardWrapper'
-import DangerZone                                                        from '../../../../shared/Controls/DangerZone'
 
 const UpdateReview = () => {
     const dispatch = useDispatch()
@@ -31,11 +31,13 @@ const UpdateReview = () => {
                 }
             })
 
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [slug])
 
     useEffect(() => {
         setCurrentReview(reviews[reviews.length - 1])
 
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [reviews])
 
     const initialValues = {

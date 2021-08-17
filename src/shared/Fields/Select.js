@@ -14,7 +14,7 @@ const Select = ({field, options, className, errorMessage, value}) =>
         <Field
             as="select"
             name={field.name}
-            value={value || ''}
+            value={value[0] || ''}
         >
             <option value={'000999888777'}/>
             {options?.filter(options => options.name === field.name)[0]?.options?.map(p =>
