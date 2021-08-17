@@ -11,6 +11,7 @@ import Form                                                              from 's
 import ContentWrapper                                                    from 'shared/Layout/ContentWrapper'
 import DashboardInfo                                                     from 'shared/Layout/Dashboard/DashboardInfo'
 import DashboardWrapper                                                  from 'shared/Layout/Dashboard/DashboardWrapper'
+import DangerZone                                                        from '../../../../shared/Controls/DangerZone'
 
 const UpdateReview = () => {
     const dispatch = useDispatch()
@@ -71,6 +72,12 @@ const UpdateReview = () => {
                         buttonText={'Update Review'}
                         theme={reviewFormStyle}
                         enableReinitialize={true}
+                    />
+                    <DangerZone
+                        attemptDestroyAction={'site/attemptDestroyEntity'}
+                        destroyAction={'site/destroyEntity'}
+                        slug={slug}
+                        type={'review'}
                     />
                 </Div>
             </DashboardWrapper>

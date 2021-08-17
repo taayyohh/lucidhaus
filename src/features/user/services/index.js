@@ -219,3 +219,18 @@ export const resetUserPassword = ({payload}) =>
             return error
         })
 
+export const deleteReview = ({_id, token, slug}) =>
+    fetch(`${API}/reviews/${slug}/${_id}`, {
+        method: 'DELETE',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`
+        }
+    })
+        .then(response => {
+            return response.json()
+        })
+        .catch(error => {
+            return error
+        })

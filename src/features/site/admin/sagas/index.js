@@ -18,8 +18,8 @@ import {deletePronoun}               from 'features/user/admin/taxonomy/pronoun/
 import {deleteRace}                  from 'features/user/admin/taxonomy/race/services'
 import {deleteServiceAnimal}         from 'features/user/admin/taxonomy/serviceAnimal/services'
 import {deleteSexualOrientation}     from 'features/user/admin/taxonomy/sexualOrientation/services'
-import {deletePlace}                 from 'features/place/services'
-import {deleteUser}                 from 'features/user/services'
+import {deletePlace}              from 'features/place/services'
+import {deleteReview, deleteUser} from 'features/user/services'
 
 
 export function* attemptDestroyEntity({payload}) {
@@ -65,6 +65,8 @@ export function* destroyEntity({payload}) {
                 return deletePlace
             case 'user':
                 return deleteUser
+            case 'review':
+                return deleteReview
 
             default:
                 return null
