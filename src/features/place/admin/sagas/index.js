@@ -1,6 +1,6 @@
-import {push}                         from 'connected-react-router'
-import {deletePlace}                  from 'features/place/services'
-import {getSignedRequest, uploadFile} from 'features/site/services/s3'
+import {push}                                     from 'connected-react-router'
+import {deletePlace, getPendingPlaces, getPlaces} from 'features/place/services'
+import {getSignedRequest, uploadFile}             from 'features/site/services/s3'
 import {call, put, takeLatest}        from 'redux-saga/effects'
 import {createEntity, updateEntity}   from 'utils/abstractions/crud'
 import {setFormData}                  from 'utils/abstractions/setFormData'
@@ -133,6 +133,7 @@ export function* updatePlaceDetail({payload}) {
         communitiesServed,
         description,
         foodOptions,
+        isPendingSubmission,
         isPublished,
         isRestaurant,
         languageSpoken,
@@ -171,6 +172,7 @@ export function* updatePlaceDetail({payload}) {
         {communitiesServed},
         {description},
         {foodOptions},
+        {isPendingSubmission},
         {isPublished},
         {isRestaurant},
         {languageSpoken},
@@ -354,6 +356,19 @@ export function* updateReview({payload}) {
     }
 }
 
+export function* pendingPlaces() {
+    console.log('peendinngg')
+    const payload = yield call(getPendingPlaces)
+    console.log('payload', payload)
+
+    if(!payload.error) {
+        yield put({
+            type: 'place/getPendingPlacesSuccess',
+            payload: payload
+        })
+    }
+
+}
 
 /**
  *
@@ -389,4 +404,8 @@ export function* watchAddReview() {
 
 export function* watchUpdateReview() {
     yield takeLatest('place/updateReview', updateReview)
+}
+
+export function* watchGetPendingPlaces() {
+    yield takeLatest('place/getPendingPlaces', pendingPlaces)
 }

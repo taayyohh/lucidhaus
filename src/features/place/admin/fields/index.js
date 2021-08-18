@@ -106,6 +106,11 @@ export const placeFields = [
         type: TOGGLE
     },
     {
+        name: 'isPendingSubmission',
+        inputLabel: 'Pending Submission',
+        type: TOGGLE
+    },
+    {
         name: 'isRestaurant',
         inputLabel: 'Restaurant',
         type: TOGGLE

@@ -19,7 +19,7 @@ const MultiSelect = memo(({className, name, errorMessage, field, formik, options
     const [filteredArray, setFilteredArray] = useState(optionsArray)
 
     useEffect(() => {
-        setFilteredArray(optionsArray.reduce(function (accumulator = [], currentValue) {
+        setFilteredArray(optionsArray?.reduce(function (accumulator = [], currentValue) {
             if (currentValue.name.toLowerCase().includes(filterInput.toLowerCase()))
                 accumulator.push(currentValue)
 
@@ -30,7 +30,8 @@ const MultiSelect = memo(({className, name, errorMessage, field, formik, options
     }, [filterInput])
 
     useEffect(() => {
-        setFilteredArray([...optionsArray].sort((a, b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0)))
+        if (!!optionsArray)
+            setFilteredArray([...optionsArray].sort((a, b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0)))
 
     }, [optionsArray])
 

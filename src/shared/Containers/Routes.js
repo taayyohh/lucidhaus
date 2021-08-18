@@ -53,6 +53,8 @@ const ManagePronouns = lazy(() => import('features/user/admin/taxonomy/pronoun/M
 const ManageRace = lazy(() => import('features/user/admin/taxonomy/race/Manage'))
 const ManageServiceAnimals = lazy(() => import('features/user/admin/taxonomy/serviceAnimal/Manage'))
 const ManageSexualOrientation = lazy(() => import('features/user/admin/taxonomy/sexualOrientation/Manage'))
+const ManagePendingPlaces = lazy(() => import('features/place/admin/views/ManagePendingPlaces'))
+
 
 const UpdateAdaptiveEquipment = lazy(() => import('features/user/admin/taxonomy/adaptiveEquipment/Update'))
 const UpdateBodyModification = lazy(() => import('features/user/admin/taxonomy/bodyModification/Update'))
@@ -86,6 +88,7 @@ const UserSettings = lazy(() => import('features/user/admin/views/Profile'))
 const UserReviews = lazy(() => import('features/user/admin/views/Reviews'))
 const UpdateUserReviews = lazy(() => import('features/user/admin/views/UpdateReview'))
 const UserPlaces = lazy(() => import('features/user/admin/views/Places'))
+const SubmitPlace = lazy(() => import('features/user/admin/views/Submit'))
 const VerifyEmail = lazy(() => import('features/site/views/VerifyEmail'))
 
 
@@ -122,6 +125,8 @@ const Routes = () => {
                             <PrivateRoute path="/dashboard/reviews" exact component={UserReviews}/>
                             <PrivateRoute path="/dashboard/reviews/update/:slug" exact component={UpdateUserReviews}/>
                             <PrivateRoute path="/dashboard/places" exact component={UserPlaces}/>
+                            <PrivateRoute path="/dashboard/submit" exact component={SubmitPlace}/>
+
 
 
                             <AdminRoute path="/admin" exact component={AdminDashboard}/>
@@ -132,6 +137,8 @@ const Routes = () => {
 
                             <AdminRoute path="/admin/places" exact component={ManagePlaces}/>
                             <AdminRoute path="/admin/places/update/:slug" exact component={UpdatePlace}/>
+                            <AdminRoute path="/admin/places/pending" exact component={ManagePendingPlaces}/>
+
                             <AdminRoute path="/admin/place/taxonomy" exact component={ManagePlaceTaxonomy}/>
 
                             <AdminRoute path="/admin/place/taxonomy/bathroom" exact component={ManageBathrooms}/>

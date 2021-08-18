@@ -25,6 +25,7 @@ const initialState = {
     loading: false,
     redirectToReferrer: false,
     purchaseHistory: [],
+    pendingPlaces: [],
     confirmationRequest: undefined,
     users: [],
     user: {
@@ -194,6 +195,11 @@ export const slice = createSlice({
         // },
         getUserReviewedPlaceSuccess: (state, action) => {
 
+        },
+        getPendingPlaceEntitySuccess: (state, action) => {
+            state.pendingPlaces =   state.pendingPlaces.filter(item => item._id === action.payload.entity._id).length < 1
+                ? [...state.pendingPlaces, action.payload.entity]
+                : state.pendingPlaces
         },
 
 

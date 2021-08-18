@@ -35,6 +35,17 @@ export const getPlaces = () =>
             return error
         })
 
+export const getPendingPlaces = () =>
+    fetch(`${API}/pending-places?limit=undefined`, {
+        method: 'GET'
+    })
+        .then(response => {
+            return response.json()
+        })
+        .catch(error => {
+            return error
+        })
+
 export const deletePlace = ({_id, token, slug}) =>
     fetch(`${API}/place/${slug}/${_id}`, {
         method: 'DELETE',

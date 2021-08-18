@@ -221,6 +221,7 @@ const Place = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [place])
 
+    /* ---- Index Newly Added Boone Place in Algolia Search Index */
     useEffect(() => {
         if (createdFromBoone.length > 0) {
             placesIndex.saveObjects(createdFromBoone)

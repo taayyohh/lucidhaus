@@ -3,8 +3,9 @@ import {
     watchAttemptDestroyPlace,
     watchCreatePlace,
     watchDestroyPlace,
-    watchDestroyPlaceSuccess,
-    watchUpdatePlace, watchUpdateReview
+    watchDestroyPlaceSuccess, watchGetPendingPlaces,
+    watchUpdatePlace,
+    watchUpdateReview
 } from 'features/place/admin/sagas'
 import {watchCreatePlaceFromBoone} from 'features/place/admin/sagas/boone'
 import {
@@ -60,7 +61,7 @@ import {
     watchGetEntityById,
     watchLoadConfig,
     watchNavigate
-} from 'features/site/sagas'
+}                                  from 'features/site/sagas'
 import {
     watchConfirmResetToken,
     watchGetBookmark,
@@ -77,14 +78,15 @@ import {
     watchConfirmUser,
     watchCreateVerificationToken,
     watchGetUser,
-    watchGetUsers, watchGetUserSuccess,
+    watchGetUsers,
+    watchGetUserSuccess,
     watchSignIn,
     watchSignOut,
     watchSignUp,
     watchSignUpSignInSuccess,
     watchUserHistory,
     watchVerifyUser
-} from 'features/user/sagas'
+}                                  from 'features/user/sagas'
 import {
     watchAuthenticate,
     watchAuthenticateSuccess,
@@ -135,6 +137,10 @@ import {
     watchAttemptDestroyEntity,
     watchDestroyEntity
 }                                  from './features/site/admin/sagas'
+import {
+    watchSubmitPlace,
+    watchSubmitPlaceSuccess
+}                                  from './features/user/admin/sagas/submit'
 import {
     watchCreateAdaptiveEquipment,
     watchGetAdaptiveEquipmentDetail,
@@ -292,6 +298,8 @@ export default function* rootSaga() {
 
         // place
         fork(watchCreatePlace),
+        fork(watchSubmitPlace),
+        fork(watchSubmitPlaceSuccess),
         fork(watchUpdatePlace),
         fork(watchAttemptDestroyPlace),
         fork(watchDestroyPlace),
@@ -305,6 +313,7 @@ export default function* rootSaga() {
         fork(watchUpdateReview),
         fork(watchGetReviews),
         fork(watchGetUserReviewedPlaces),
+        fork(watchGetPendingPlaces),
 
         //taxonomy
         fork(watchCreateBathroom),

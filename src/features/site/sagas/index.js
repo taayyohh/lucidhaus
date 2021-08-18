@@ -39,15 +39,19 @@ export function* getEntity({payload}) {
                 return 'FoodOptions'
             case 'language-spoken':
                 return 'LanguageSpoken'
+            case 'pending-place':
+                return 'PendingPlace'
             default:
                 return ''
 
         }
     }
+
     const entity = yield call(getEntityById, {
         entityId: payload.entityId,
-        path: payload.path
+        path: payload.path === 'pending-place' ? 'place' : payload.path
     })
+
     if (!entity.error) {
         yield put({
             type: `${payload.feature}/get${featureSwitch()}EntitySuccess`,
