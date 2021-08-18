@@ -13,6 +13,7 @@ const initialState = {
     foodOptions: [],
     languageSpoken: [],
     placeCategory: [],
+    pendingPlaces: [],
     place: [],
     places: [],
     reviews: [],
@@ -117,6 +118,9 @@ export const slice = createSlice({
         getAlgoliaPlacesFailure: (state, action) => {
             state.noResults.algolia = true
             state.algoliaPlaces = []
+        },
+        getPendingPlacesSuccess: (state, action) => {
+            state.pendingPlaces = action.payload
         },
         getReviewSuccess: (state, action) => {
             state.reviews = state.reviews.filter(item => item._id === action.payload._id).length < 1

@@ -35,11 +35,12 @@ const Places = () => {
 
     useEffect(() => {
         setAllPlaces(!boonePlaces?.data ? [...algoliaPlaces] : [...algoliaPlaces, ...boonePlaces?.data].reduce(function (accumulator = [], currentValue) {
-            if (currentValue.type === 'place') {
-                accumulator.push(currentValue)
-            } else if (accumulator.filter(place => !!place.booneId && (place.booneId === currentValue?.id)).length === 0) {
-                accumulator.push(currentValue)
-            }
+            if(!currentValue.isPendingSubmission)
+                if (currentValue.type === 'place') {
+                    accumulator.push(currentValue)
+                } else if (accumulator.filter(place => !!place.booneId && (place.booneId === currentValue?.id)).length === 0) {
+                    accumulator.push(currentValue)
+                }
 
             return accumulator
         }, []))

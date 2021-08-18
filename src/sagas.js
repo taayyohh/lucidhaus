@@ -3,10 +3,10 @@ import {
     watchAttemptDestroyPlace,
     watchCreatePlace,
     watchDestroyPlace,
-    watchDestroyPlaceSuccess,
+    watchDestroyPlaceSuccess, watchGetPendingPlaces,
     watchUpdatePlace,
     watchUpdateReview
-}                                  from 'features/place/admin/sagas'
+} from 'features/place/admin/sagas'
 import {watchCreatePlaceFromBoone} from 'features/place/admin/sagas/boone'
 import {
     watchGetPlaceDetail,
@@ -313,6 +313,7 @@ export default function* rootSaga() {
         fork(watchUpdateReview),
         fork(watchGetReviews),
         fork(watchGetUserReviewedPlaces),
+        fork(watchGetPendingPlaces),
 
         //taxonomy
         fork(watchCreateBathroom),
