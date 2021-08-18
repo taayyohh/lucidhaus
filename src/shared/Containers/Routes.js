@@ -86,6 +86,7 @@ const UserSettings = lazy(() => import('features/user/admin/views/Profile'))
 const UserReviews = lazy(() => import('features/user/admin/views/Reviews'))
 const UpdateUserReviews = lazy(() => import('features/user/admin/views/UpdateReview'))
 const UserPlaces = lazy(() => import('features/user/admin/views/Places'))
+const SubmitPlace = lazy(() => import('features/user/admin/views/Submit'))
 const VerifyEmail = lazy(() => import('features/site/views/VerifyEmail'))
 
 
@@ -122,6 +123,8 @@ const Routes = () => {
                             <PrivateRoute path="/dashboard/reviews" exact component={UserReviews}/>
                             <PrivateRoute path="/dashboard/reviews/update/:slug" exact component={UpdateUserReviews}/>
                             <PrivateRoute path="/dashboard/places" exact component={UserPlaces}/>
+                            <PrivateRoute path="/dashboard/submit" exact component={SubmitPlace}/>
+
 
 
                             <AdminRoute path="/admin" exact component={AdminDashboard}/>
