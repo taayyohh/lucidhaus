@@ -119,7 +119,9 @@ export const slice = createSlice({
             state.algoliaPlaces = []
         },
         getReviewSuccess: (state, action) => {
-            state.reviews = [...state.reviews, action.payload]
+            state.reviews = state.reviews.filter(item => item._id === action.payload._id).length < 1
+                ? [...state.reviews, action.payload]
+                : state.reviews
         },
         getBathroomEntitySuccess: (state, action) => {
             state.bathrooms = state.bathrooms.filter(item => item._id === action.payload.entity._id).length < 1

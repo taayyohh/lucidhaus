@@ -1,5 +1,5 @@
-import {IMAGE_UPLOAD, MULTI_SELECT, NUMBER, RICH_TEXT, SELECT, TEXT, TOGGLE, UPLOAD_PATHS} from 'config/variables'
-import * as Yup                                                                            from 'yup'
+import {MULTI_SELECT, TEXT} from 'config/variables'
+import * as Yup             from 'yup'
 
 export const submitPlaceFields = [
     {

@@ -47,22 +47,34 @@ export function* submitPlace({payload}) {
     })
     if (!submission.error) {
         yield put({
+            type: 'user/submitPlaceSuccess',
+            payload: {
+                submissionId: submission._id
+            }
+        })
+        yield put({
             type: 'site/setNotification',
             payload: {
                 notification: 'Successful Submission!',
                 theme: 'green'
             }
         })
-        yield put({type: 'place/getPlaces'})
 
     } else {
         yield put({type: 'place/submitPlaceFailure', payload})
     }
-
-
 }
+
+export function* submitPlaceSuccess({payload}) {
+    yield console.log('payload', payload.submissionId)
+}
+
 
 
 export function* watchSubmitPlace() {
     yield takeLatest('user/submitPlace', submitPlace)
+}
+
+export function* watchSubmitPlaceSuccess() {
+    yield takeLatest('user/submitPlaceSuccess', submitPlaceSuccess)
 }

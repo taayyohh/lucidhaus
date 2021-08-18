@@ -1,6 +1,5 @@
 import {API} from "config/variables";
 
-
 export const read = (userId, token) =>
     fetch(`${API}/user/${userId}`, {
         method: 'GET',
@@ -16,6 +15,36 @@ export const read = (userId, token) =>
         .catch(error => {
             return error
         })
+
+export const update = ({_id, token, user}) => {
+    fetch(`${API}/user/${_id}`, {
+        method: "PUT",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify(user)
+    })
+        .then(response => {
+            return response.json()
+        })
+        .catch(error => {
+            return error
+        })
+}
+
+export const updateUserJwt = (user) => {
+    if (typeof window !== 'undefined') {
+        if (localStorage.getItem('jwt')) {
+            let auth = JSON.parse(localStorage.getItem('jwt'))
+
+            auth.user = user
+
+            localStorage.setItem('jwt', JSON.stringify(auth))
+        }
+    }
+}
 
 export const getUsers = () =>
     fetch(`${API}/users?limit=undefined`, {
@@ -60,38 +89,6 @@ export const getPurchaseHistory = ({_id, token}) =>
             return error
         })
 
-export const update = ({_id, token, user}) => {
-    fetch(`${API}/user/${_id}`, {
-        method: "PUT",
-        headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`
-        },
-        body: JSON.stringify(user)
-    })
-        .then(response => {
-            return response.json()
-        })
-        .catch(error => {
-            return error
-        })
-
-}
-
-
-export const updateUserJwt = (user) => {
-    if (typeof window !== 'undefined') {
-        if (localStorage.getItem('jwt')) {
-            let auth = JSON.parse(localStorage.getItem('jwt'))
-
-            auth.user = user
-
-            localStorage.setItem('jwt', JSON.stringify(auth))
-        }
-    }
-}
-
 export const deleteUser = ({_id, token, slug}) =>
     fetch(`${API}/user/${slug}/${_id}`, {
         method: 'DELETE',
@@ -107,7 +104,6 @@ export const deleteUser = ({_id, token, slug}) =>
         .catch(error => {
             return error
         })
-
 
 export const verifyUserEmail = ({_id, token, verificationToken}) =>
     fetch(`${API}/verification-token/verify/${verificationToken}`, {
@@ -125,23 +121,7 @@ export const verifyUserEmail = ({_id, token, verificationToken}) =>
             return error
         })
 
-export const getReviewsByUser = ({_id, token}) =>
-    fetch(`${API}/reviews/by/user/${_id}`, {
-        method: 'GET',
-        headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`
-        },
-    })
-        .then(response => {
-            return response.json()
-        })
-        .catch(error => {
-            return error
-        })
-
-export const resendVerification = ({_id, token}) => {
+export const resendVerification = ({_id, token}) =>
     fetch(`${API}/resend-verification-token/${_id}`, {
         method: "PUT",
         headers: {
@@ -156,20 +136,6 @@ export const resendVerification = ({_id, token}) => {
         .catch(error => {
             return error
         })
-}
-
-// export const sendRecoverPassword = ({body, token})  => {
-//     fetch(`${API}/auth/recover/`, {
-//         method: "POST",
-//         body: body
-//     })
-//         .then(response => {
-//             return response.json()
-//         })
-//         .catch(error => {
-//             return error
-//         })
-// }
 
 
 export const sendRecoverPassword = ({payload}) =>
@@ -202,7 +168,6 @@ export const confirmUserResetToken = ({payload}) =>
             return error
         })
 
-
 export const resetUserPassword = ({payload}) =>
     fetch(`${API}/auth/reset/${payload.slug}`, {
         method: "POST",
@@ -211,6 +176,22 @@ export const resetUserPassword = ({payload}) =>
             "Content-Type": "application/json"
         },
         body: JSON.stringify(payload)
+    })
+        .then(response => {
+            return response.json()
+        })
+        .catch(error => {
+            return error
+        })
+
+export const getReviewsByUser = ({_id, token}) =>
+    fetch(`${API}/reviews/by/user/${_id}`, {
+        method: 'GET',
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+        },
     })
         .then(response => {
             return response.json()
