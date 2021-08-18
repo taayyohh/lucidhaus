@@ -11,7 +11,7 @@ import DashboardWrapper                         from 'shared/Layout/Dashboard/Da
 const Submit = () => {
     const dispatch = useDispatch()
     const {taxonomy} = useSelector(state => state.place)
-    const {_id, token} = useSelector(state => state.user)
+    const {_id, token, user, pendingPlaces} = useSelector(state => state.user)
 
 
     const initialValues = {
@@ -49,16 +49,29 @@ const Submit = () => {
 
 
     useEffect(() => {
-        dispatch({type: 'place/listBathroom'})
-        dispatch({type: 'place/listBusinessOwner'})
         dispatch({type: 'place/listCommunitiesServed'})
-        dispatch({type: 'place/listFoodOptions'})
-        dispatch({type: 'place/listLanguageSpoken'})
         dispatch({type: 'place/listPlaceCategory'})
 
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
+
+    useEffect(() => {
+        user?.pendingPlaceSubmissions?.forEach(_id => {
+            dispatch({
+                type: 'site/getEntityById',
+                payload: {
+                    entityId: _id,
+                    path: 'pending-place',
+                    feature: 'user',
+                }
+            })
+        })
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [user])
+
+
     return (
         <ContentWrapper>
             <DashboardWrapper menu={userDashboardMenu}>
@@ -74,6 +87,15 @@ const Submit = () => {
                         options={options}
                         enableReinitialize={true}
                     />
+                </Div>
+                <Div>
+                    Pending Submissions
+                    {pendingPlaces && pendingPlaces.map((place) =>
+                        <Div key={place._id}>
+                            <Div>{place.name}</Div>
+                            <Div>{place.isPendingSubmission ? 'Pending' : 'Submitted'}</Div>
+                        </Div>
+                    )}
                 </Div>
             </DashboardWrapper>
         </ContentWrapper>

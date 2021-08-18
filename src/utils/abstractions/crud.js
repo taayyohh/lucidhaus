@@ -48,8 +48,6 @@ export const submitEntity = ({_id, token, body, slug}) =>
             return error
         })
 
-
-
 export const getEntityById = ({entityId, path}) =>
     fetch(`${API}/${path}/by/id/${entityId}`, {
         method: 'GET'

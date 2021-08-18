@@ -215,3 +215,22 @@ export const deleteReview = ({_id, token, slug}) =>
         .catch(error => {
             return error
         })
+
+export const addPlaceSubmissionToUserHistory = ({_id, token, place}) =>
+    fetch(`${API}/submission/place/${_id}`, {
+        method: "PUT",
+        headers: {
+            Accept: 'application/json',
+            Authorization: `Bearer ${token}`
+        },
+        body: place
+    })
+        .then(response => {
+            return response.json()
+        })
+        .catch(error => {
+            return error
+        })
+
+
+
