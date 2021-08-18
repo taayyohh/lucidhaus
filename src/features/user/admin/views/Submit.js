@@ -26,7 +26,8 @@ const Submit = () => {
         categories: [],
         communitiesServed: [],
         name: '',
-        website: ''
+        website: '',
+        isPendingSubmission: true,
     }
 
     const {

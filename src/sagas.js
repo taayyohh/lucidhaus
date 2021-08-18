@@ -124,29 +124,30 @@ import {
     watchGetLanguageSpokenDetail,
     watchGetLanguageSpokenList,
     watchUpdateLanguageSpokenDetail
-}                                  from './features/place/admin/taxonomy/languageSpoken/sagas'
+}                         from './features/place/admin/taxonomy/languageSpoken/sagas'
 import {
     watchCreatePlaceCategory,
     watchGetPlaceCategoryDetail,
     watchGetPlaceCategoryList,
     watchUpdatePlaceCategoryDetail
-}                                  from './features/place/admin/taxonomy/placeCategory/sagas'
+}                         from './features/place/admin/taxonomy/placeCategory/sagas'
 import {
     watchAttemptDestroyEntity,
     watchDestroyEntity
-}                                  from './features/site/admin/sagas'
+}                         from './features/site/admin/sagas'
+import {watchSubmitPlace} from './features/user/admin/sagas/submit'
 import {
     watchCreateAdaptiveEquipment,
     watchGetAdaptiveEquipmentDetail,
     watchGetAdaptiveEquipmentList,
     watchUpdateAdaptiveEquipmentDetail
-}                                  from './features/user/admin/taxonomy/adaptiveEquipment/sagas'
+}                         from './features/user/admin/taxonomy/adaptiveEquipment/sagas'
 import {
     watchCreateBodyModification,
     watchGetBodyModificationDetail,
     watchGetBodyModificationList,
     watchUpdateBodyModificationDetail
-}                                  from './features/user/admin/taxonomy/bodyModification/sagas'
+}                         from './features/user/admin/taxonomy/bodyModification/sagas'
 import {
     watchCreateGender,
     watchGetGenderDetail,
@@ -292,6 +293,7 @@ export default function* rootSaga() {
 
         // place
         fork(watchCreatePlace),
+        fork(watchSubmitPlace),
         fork(watchUpdatePlace),
         fork(watchAttemptDestroyPlace),
         fork(watchDestroyPlace),
