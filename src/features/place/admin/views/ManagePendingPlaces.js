@@ -9,9 +9,9 @@ import DashboardInfo                            from 'shared/Layout/Dashboard/Da
 
 const Manage = () => {
     const {places, pendingPlaces} = useSelector(state => state.place)
-    const {placesIndex} = useContext(searchContext)
+    // const {placesIndex} = useContext(searchContext)
     const dispatch = useDispatch()
-    const [isIndexed, setIsIndexed] = useState(false)
+    // const [isIndexed, setIsIndexed] = useState(false)
 
     useEffect(() => {
         dispatch({type: 'place/getPendingPlaces'})

@@ -296,11 +296,13 @@ const Place = () => {
 
 
                             <Div theme={{display: 'flex', justifyContent: 'space-around'}}>
-                                <S3Img
-                                    url={photo}
-                                    theme={placePhotoStyle}
-                                    // theme={{borderRadius: 300}}
-                                />
+                                {!!photo && photo !== 'undefined' && (
+                                    <S3Img
+                                        url={photo}
+                                        theme={placePhotoStyle}
+                                        // theme={{borderRadius: 300}}
+                                    />
+                                )}
                                 <Map
                                     lon={longitude || (!isEmpty(boonePlace) && boonePlace.locations[0].longitude)}
                                     lat={latitude || (!isEmpty(boonePlace) && boonePlace.locations[0].latitude)}
