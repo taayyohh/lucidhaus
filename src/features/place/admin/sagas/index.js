@@ -1,9 +1,9 @@
-import {push}                                     from 'connected-react-router'
-import {deletePlace, getPendingPlaces, getPlaces} from 'features/place/services'
-import {getSignedRequest, uploadFile}             from 'features/site/services/s3'
-import {call, put, takeLatest}        from 'redux-saga/effects'
-import {createEntity, updateEntity}   from 'utils/abstractions/crud'
-import {setFormData}                  from 'utils/abstractions/setFormData'
+import {push} from 'connected-react-router'
+import {deletePlace, getPendingPlaces} from 'features/place/services'
+import {getSignedRequest, uploadFile} from 'features/site/services/s3'
+import {call, put, takeLatest} from 'redux-saga/effects'
+import {createEntity, updateEntity} from 'utils/abstractions/crud'
+import {setFormData} from 'utils/abstractions/setFormData'
 
 export function* createPlace({payload}) {
     const {
@@ -249,7 +249,21 @@ export function* destroyPlaceSuccess() {
 }
 
 export function* addReview({payload}) {
-    const {celebrated, photo, photoFile, placeName, placeSlug, review, slug, safe, welcome, user, _id, placeId, token} = payload
+    const {
+        celebrated,
+        photo,
+        photoFile,
+        placeName,
+        placeSlug,
+        review,
+        slug,
+        safe,
+        welcome,
+        user,
+        _id,
+        placeId,
+        token
+    } = payload
     //add to formData so api can read
     const placeReview = new FormData()
     const fields = [
@@ -285,7 +299,7 @@ export function* addReview({payload}) {
 
         if (!updated.error) {
             yield put({type: 'place/updatePlaceSuccess', payload: updated})
-           yield put({type: 'place/getPlace', payload: {slug: slug}})
+            yield put({type: 'place/getPlace', payload: {slug: slug}})
             yield put({
                 type: 'site/setNotification',
                 payload: {
@@ -303,7 +317,21 @@ export function* addReview({payload}) {
 }
 
 export function* updateReview({payload}) {
-    const {celebrated, photo, photoFile, placeName, placeSlug, review, safe, welcome, user, _id, id, placeId, token} = payload
+    const {
+        celebrated,
+        photo,
+        photoFile,
+        placeName,
+        placeSlug,
+        review,
+        safe,
+        welcome,
+        user,
+        _id,
+        id,
+        placeId,
+        token
+    } = payload
     //add to formData so api can read
     const placeReview = new FormData()
     const fields = [
@@ -359,7 +387,7 @@ export function* updateReview({payload}) {
 export function* pendingPlaces() {
     const payload = yield call(getPendingPlaces)
 
-    if(!payload.error) {
+    if (!payload.error) {
         yield put({
             type: 'place/getPendingPlacesSuccess',
             payload: payload

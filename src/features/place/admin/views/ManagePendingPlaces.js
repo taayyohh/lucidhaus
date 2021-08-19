@@ -1,11 +1,10 @@
-import React, {useContext, useEffect, useState} from 'react'
-import {useDispatch, useSelector}               from 'react-redux'
-import Div                                      from 'shared/Basic/Div'
-import LinkSwitch                               from 'shared/Basic/LinkSwitch'
-import {searchContext}                          from 'shared/Containers/SearchController'
-import ContentWrapper                           from 'shared/Layout/ContentWrapper'
-import AdminDashboardWrapper                    from 'shared/Layout/Dashboard/admin/AdminDashboardWrapper'
-import DashboardInfo                            from 'shared/Layout/Dashboard/DashboardInfo'
+import React, {useEffect}         from 'react'
+import {useDispatch, useSelector} from 'react-redux'
+import Div                        from 'shared/Basic/Div'
+import LinkSwitch                 from 'shared/Basic/LinkSwitch'
+import ContentWrapper             from 'shared/Layout/ContentWrapper'
+import AdminDashboardWrapper      from 'shared/Layout/Dashboard/admin/AdminDashboardWrapper'
+import DashboardInfo              from 'shared/Layout/Dashboard/DashboardInfo'
 
 const Manage = () => {
     const {places, pendingPlaces} = useSelector(state => state.place)
