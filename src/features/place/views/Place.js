@@ -49,7 +49,7 @@ const Place = () => {
         foodOptions,
         languageSpoken
     } = useSelector(state => state.place)
-    const {isAuthenticated, isVerified, _id, token} = useSelector(state => state.user)
+    const {isAuthenticated, isVerified, _id, token, user} = useSelector(state => state.user)
     const userSlug = useSelector(state => state.user.slug)
 
     const {
@@ -240,6 +240,10 @@ const Place = () => {
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [createdFromBoone])
+
+    useEffect(() => {
+        console.log('flaaagged', user.flaggedReviews)
+    }, [user])
 
     return (
         <AnimatePresence>

@@ -2,7 +2,14 @@ import {push}                                                   from 'connected-
 import cryptoRandomString                                       from 'crypto-random-string'
 import {signin, signout, signup}                                from 'features/site/services'
 import {confirmTwilioVerification, sendTwilioVerification}      from 'features/site/services/twilio'
-import {getPurchaseHistory, getUser, getUsers, verifyUserEmail} from 'features/user/services'
+import {
+    addFlaggedReview,
+    addPlaceSubmissionToUserHistory,
+    getPurchaseHistory,
+    getUser,
+    getUsers,
+    verifyUserEmail
+} from 'features/user/services'
 import {takeEvery}                                              from 'redux-saga/dist/redux-saga-effects-npm-proxy.esm'
 import {call, put}                                              from 'redux-saga/effects'
 import {createEntity}                                           from 'utils/abstractions/crud'
@@ -232,6 +239,69 @@ export function* getUserSuccess({payload}) {
     }
 }
 
+export function* flagReview({payload}) {
+    const {reviewId, token, _id} = payload
+
+    const review = new FormData()
+    const fields = [
+        {reviewId}
+    ]
+
+    for (let field of fields)
+        setFormData(review, field)
+
+
+    const flagged = yield call(addFlaggedReview, {
+        _id,
+        token,
+        review
+    })
+
+    if (!flagged.error) {
+        console.log('flagged', flagged)
+        // yield put({
+        //     type: 'user/getUser',
+        //     payload: {
+        //         slug: slug,
+        //         _id: _id,
+        //         token: token
+        //     }
+        // })
+    }
+}
+
+export function* submitPlaceSuccess({payload}) {
+    const {_id, token, submissionId} = payload
+
+    const place = new FormData()
+    const fields = [
+        {submissionId}
+    ]
+
+    for (let field of fields)
+        setFormData(place, field)
+
+
+    const submission = yield call(addPlaceSubmissionToUserHistory, {
+        _id,
+        token,
+        place
+    })
+
+    if (!submission.error) {
+        // console.log('submission', submission)
+        // yield put({
+        //     type: 'user/getUser',
+        //     payload: {
+        //         slug: slug,
+        //         _id: _id,
+        //         token: token
+        //     }
+        // })
+    }
+}
+
+
 
 /**
  *
@@ -283,6 +353,10 @@ export function* watchCreateVerificationToken() {
 
 export function* watchVerifyUser() {
     yield takeEvery('user/verifyUser', verifyUser)
+}
+
+export function* watchFlagReview() {
+    yield takeEvery('user/flagReview', flagReview)
 }
 
 

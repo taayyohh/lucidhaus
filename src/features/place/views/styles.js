@@ -8,12 +8,12 @@ import {
     flex,
     flexStart,
     grid,
-    none,
+    none, pointer,
     relative,
     row,
     sv,
     white
-}                              from 'utils/themer'
+} from 'utils/themer'
 
 export const placesWrapperStyle = {
     display: 'grid',
@@ -311,11 +311,13 @@ export const reviewHeadingStyle = {
 }
 
 export const placeReviewStyle = {
+    position: relative,
     width: '100%',
     padding: [20, globals.style.layoutScalingValue, 20],
     borderBottom: `1px solid ${globals.colors.borderColor}`,
     boxShadow: '1px 3px 5px 0px #e2e2e2',
     marginBottom: [20, .7, 20],
+    paddingBottom: [50, .7, 50],
     image: {
         maxWidth: [150, .7, 150]
     }
@@ -330,6 +332,26 @@ export const placeReviewLikertStyle = {
     flexDirection: 'column',
     font: globals.fonts.serif,
     marginBottom: [25, .7, 25]
+}
+
+export const placeReviewBlurStyle = {
+    position: absolute,
+    top: 0,
+    left: 0,
+    height: '100%',
+    width: '100%',
+   // background: '#000'
+}
+
+export const placeReviewReportIconStyle = {
+    marginTop: 20,
+    position: absolute,
+    bottom: [20, .7, 20],
+    zIndex: 3,
+    hover: {
+        color: colorPalette.red,
+        cursor: pointer
+    }
 }
 
 export const bookmarkIconStyle = isBookmark => {

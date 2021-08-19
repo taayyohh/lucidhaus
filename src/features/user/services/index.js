@@ -233,4 +233,21 @@ export const addPlaceSubmissionToUserHistory = ({_id, token, place}) =>
         })
 
 
+export const addFlaggedReview = ({_id, token, review}) =>
+    fetch(`${API}/user/flag/review/${_id}`, {
+        method: "PUT",
+        headers: {
+            Accept: 'application/json',
+            Authorization: `Bearer ${token}`
+        },
+        body: review
+    })
+        .then(response => {
+            return response.json()
+        })
+        .catch(error => {
+            return error
+        })
+
+
 

@@ -357,9 +357,7 @@ export function* updateReview({payload}) {
 }
 
 export function* pendingPlaces() {
-    console.log('peendinngg')
     const payload = yield call(getPendingPlaces)
-    console.log('payload', payload)
 
     if(!payload.error) {
         yield put({

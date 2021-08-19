@@ -1,13 +1,19 @@
+import {exclamationTriangle}        from 'config/icons'
 import dayjs                        from 'dayjs'
 import React, {useEffect, useState} from 'react'
 import {useDispatch, useSelector}   from 'react-redux'
-import Div
-                                                                                                    from 'shared/Basic/Div'
-import RichText
-                                                                                                    from 'shared/Basic/RichText'
-import S3Img
-                                                                                                    from 'shared/Basic/S3Img'
-import {placeReviewDescriptionStyle, placeReviewLikertStyle, placeReviewStyle, reviewsWrapperStyle} from './styles'
+import Div                          from 'shared/Basic/Div'
+import Icon                         from 'shared/Basic/Icon'
+import RichText                     from 'shared/Basic/RichText'
+import S3Img                        from 'shared/Basic/S3Img'
+import {
+    placeReviewBlurStyle,
+    placeReviewDescriptionStyle,
+    placeReviewLikertStyle,
+    placeReviewReportIconStyle,
+    placeReviewStyle,
+    reviewsWrapperStyle
+}                                   from './styles'
 
 const Reviews = ({reviewIds}) => {
     const {_id, token} = useSelector(state => state.user)
@@ -24,7 +30,7 @@ const Reviews = ({reviewIds}) => {
     }, [reviewIds])
 
     useEffect(() => {
-        if(!!reviews)
+        if (!!reviews)
             setFilteredArray([...reviews].sort((a, b) => (b.updated > a.updated) ? 1 : ((a.updated > b.updated) ? -1 : 0)))
 
     }, [reviews])
@@ -44,6 +50,19 @@ const Reviews = ({reviewIds}) => {
                         <Div><strong>Welcome:</strong> {review.welcome}</Div>
                     </Div>
                     <Div>{dayjs(review.updated).format('MM/DD/YYYY')}</Div>
+                    <Icon
+                        theme={placeReviewReportIconStyle}
+                        icon={exclamationTriangle}
+                        onClick={() => dispatch({
+                            type: 'user/flagReview',
+                            payload: {
+                                reviewId: review._id,
+                                _id,
+                                token
+                            }
+                        })}
+                    />
+                    <Div theme={placeReviewBlurStyle}/>
                 </Div>
             ))}
         </Div>
