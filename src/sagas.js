@@ -76,7 +76,7 @@ import {
 }                                  from 'features/user/admin/sagas'
 import {
     watchConfirmUser,
-    watchCreateVerificationToken,
+    watchCreateVerificationToken, watchFlagReview,
     watchGetUser,
     watchGetUsers,
     watchGetUserSuccess,
@@ -86,7 +86,7 @@ import {
     watchSignUpSignInSuccess,
     watchUserHistory,
     watchVerifyUser
-}                                  from 'features/user/sagas'
+} from 'features/user/sagas'
 import {
     watchAuthenticate,
     watchAuthenticateSuccess,
@@ -243,6 +243,7 @@ export default function* rootSaga() {
         fork(watchRecoverPassword),
         fork(watchConfirmResetToken),
         fork(watchResetPassword),
+        fork(watchFlagReview),
 
         //user -- taxonomy
         fork(watchCreateAdaptiveEquipment),

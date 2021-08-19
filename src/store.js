@@ -36,6 +36,7 @@ if (!['production'].includes(process.env.NODE_ENV)) {
                     'place/searchAllPlaces',
                     'place/getBooneAutoComplete',
                     'place/searchAlgoliaPlaceIndex',
+                    'place/updateReview',
                     'user/updateUser',
                     'user/updateUserProfile',
                     'user/signUp',
