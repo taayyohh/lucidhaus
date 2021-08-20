@@ -327,6 +327,8 @@ export function* updateReview({payload}) {
         review,
         safe,
         welcome,
+        isFlagged,
+        flaggedBy,
         user,
         _id,
         id,
@@ -342,6 +344,8 @@ export function* updateReview({payload}) {
         {review},
         {safe},
         {welcome},
+        {isFlagged},
+        {flaggedBy},
         {user},
         {place: placeId},
         {placeName},
@@ -349,6 +353,8 @@ export function* updateReview({payload}) {
     ]
     for (let field of fields)
         setFormData(placeReview, field)
+
+    console.log('fields', fields)
 
     if (!!photoFile) {
         const s3Payload = yield call(getSignedRequest, photoFile)
@@ -376,6 +382,9 @@ export function* updateReview({payload}) {
                     theme: 'green'
                 }
             })
+
+            //TODO: temp solution refresh reviews
+          //  yield put({type: 'place/getFlaggedReviews'})
 
         } else {
             yield put({type: 'place/updatePlaceFailure', payload: updated})

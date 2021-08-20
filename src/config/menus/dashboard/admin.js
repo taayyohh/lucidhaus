@@ -30,6 +30,7 @@ export const adminDashboardMenu = [
     },
     {
         url: '/admin/flagged/reviews',
+        active: ['flagged', 'reviews'],
         icon: exclamationTriangle,
         title: 'Flagged Reviews'
     }

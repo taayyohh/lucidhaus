@@ -25,8 +25,6 @@ const Manage = () => {
                 />
 
                 <Div theme={{display: 'flex', flexDirection: 'column'}}>
-
-
                     {flaggedReviews && flaggedReviews.map((review) => (
                         <Review
                             key={review._id}

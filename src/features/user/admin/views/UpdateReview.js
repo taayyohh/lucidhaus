@@ -1,6 +1,6 @@
 import {userDashboardMenu}                                               from 'config/menus/dashboard/user'
 import {colorPalette}                                                    from 'config/styles'
-import {reviewFields, validateReview}                                    from 'features/place/admin/fields/review'
+import {reviewAdminFields, reviewFields, validateReview}                 from 'features/place/admin/fields/review'
 import {reviewFormHeadingStyle, reviewFormStyle, reviewFormWrapperStyle} from 'features/place/views/styles'
 import React, {useEffect, useState}                                      from 'react'
 import {useDispatch, useSelector}                                        from 'react-redux'
@@ -12,10 +12,11 @@ import Form                                                              from 's
 import ContentWrapper                                                    from 'shared/Layout/ContentWrapper'
 import DashboardInfo                                                     from 'shared/Layout/Dashboard/DashboardInfo'
 import DashboardWrapper                                                  from 'shared/Layout/Dashboard/DashboardWrapper'
+import {adminDashboardMenu}                                              from '../../../../config/menus/dashboard/admin'
 
 const UpdateReview = () => {
     const dispatch = useDispatch()
-    const {_id, token} = useSelector(state => state.user)
+    const {_id, token, isAdmin} = useSelector(state => state.user)
     const {slug} = useSelector(state => state.site)
     const {reviews} = useSelector(state => state.place)
     const [currentReview, setCurrentReview] = useState({})
@@ -50,6 +51,8 @@ const UpdateReview = () => {
         placeId: currentReview?._id,
         placeName: currentReview?.placeName,
         placeSlug: currentReview?.placeSlug,
+        isFlagged: currentReview?.isFlagged,
+        flaggedBy: currentReview?.flaggedBy,
         id: currentReview?.id,
         _id,
         token,
@@ -58,7 +61,7 @@ const UpdateReview = () => {
 
     return (
         <ContentWrapper>
-            <DashboardWrapper menu={userDashboardMenu}>
+            <DashboardWrapper menu={isAdmin ? adminDashboardMenu : userDashboardMenu}>
                 <DashboardInfo
                     heading={'Your Reviews'}
                     description={"Here are the reviews you've left."}
@@ -68,7 +71,7 @@ const UpdateReview = () => {
                         theme={{color: colorPalette.seaGreen}}>{currentReview?.placeName}</Span></H2>
                     <Form
                         initialValues={initialValues}
-                        fields={reviewFields}
+                        fields={isAdmin ? reviewAdminFields : reviewFields}
                         validationSchema={validateReview}
                         dispatchAction={'place/updateReview'}
                         buttonText={'Update Review'}

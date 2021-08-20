@@ -27,6 +27,8 @@ const ManagePlaces = lazy(() => import('features/place/admin/views/Manage'))
 const ManagePlaceTaxonomy = lazy(() => import('features/place/admin/taxonomy/Manage'))
 const ManageProductTaxonomy = lazy(() => import('features/shop/admin/product/taxonomy/Manage'))
 const ManageUserTaxonomy = lazy(() => import('features/user/admin/taxonomy/Manage'))
+const AdminUpdateReview = lazy(() => import('features/user/admin/views/UpdateReview'))
+
 
 const ManagePlaceCategory = lazy(() => import('features/place/admin/taxonomy/placeCategory/Manage'))
 const ManageBathrooms = lazy(() => import('features/place/admin/taxonomy/bathroom/Manage'))
@@ -140,6 +142,7 @@ const Routes = () => {
                             <AdminRoute path="/admin/places/update/:slug" exact component={UpdatePlace}/>
                             <AdminRoute path="/admin/places/pending" exact component={ManagePendingPlaces}/>
                             <AdminRoute path="/admin/flagged/reviews" exact component={ManageFlaggedReviews}/>
+                            <AdminRoute path="/admin/flagged/reviews/update/:slug" exact component={AdminUpdateReview}/>
 
 
                             <AdminRoute path="/admin/place/taxonomy" exact component={ManagePlaceTaxonomy}/>

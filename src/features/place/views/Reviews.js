@@ -7,6 +7,7 @@ import Icon                         from 'shared/Basic/Icon'
 import RichText                     from 'shared/Basic/RichText'
 import S3Img                        from 'shared/Basic/S3Img'
 import {
+    placeFlaggedTextStyle,
     placeReviewBlurStyle,
     placeReviewDescriptionStyle,
     placeReviewLikertStyle,
@@ -42,7 +43,10 @@ const Reviews = ({reviewIds, userFlaggedReviews, placeSlug}) => {
                     const isFlagged = userFlaggedReviews.filter(item => item === review.id).length > 0
 
                     return (
-                        <Div key={review.updated} theme={placeReviewStyle}>
+                        <Div
+                            key={review.updated}
+                            theme={placeReviewStyle}
+                        >
                             {review.photo && (
                                 <S3Img url={review.photo} theme={placeReviewStyle.image}/>
                             )}
@@ -53,23 +57,30 @@ const Reviews = ({reviewIds, userFlaggedReviews, placeSlug}) => {
                                 <Div><strong>Welcome:</strong> {review.welcome}</Div>
                             </Div>
                             {isFlagged && (
-                                <Div>I AM FLAGGGEEDDDD</Div>
+                                <>
+                                    <Div theme={placeFlaggedTextStyle}>
+                                        You have flagged this Review. It has been submitted to our admins for review.
+                                    </Div>
+                                    <Div theme={placeReviewBlurStyle}/>
+
+                                </>
                             )}
                             <Div>{dayjs(review.updated).format('MM/DD/YYYY')}</Div>
-                            <Icon
-                                theme={placeReviewReportIconStyle}
-                                icon={exclamationTriangle}
-                                onClick={() => dispatch({
-                                    type: 'user/flagReview',
-                                    payload: {
-                                        reviewId: review._id,
-                                        placeSlug,
-                                        _id,
-                                        token
-                                    }
-                                })}
-                            />
-                            <Div theme={placeReviewBlurStyle}/>
+                            {!isFlagged && (
+                                <Icon
+                                    theme={placeReviewReportIconStyle}
+                                    icon={exclamationTriangle}
+                                    onClick={() => dispatch({
+                                        type: 'user/flagReview',
+                                        payload: {
+                                            reviewId: review._id,
+                                            placeSlug,
+                                            _id,
+                                            token
+                                        }
+                                    })}
+                                />
+                            )}
                         </Div>
                     )
                 }
