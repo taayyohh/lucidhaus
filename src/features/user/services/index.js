@@ -233,8 +233,8 @@ export const addPlaceSubmissionToUserHistory = ({_id, token, place}) =>
         })
 
 
-export const addFlaggedReview = ({_id, token, review}) =>
-    fetch(`${API}/user/flag/review/${_id}`, {
+export const addFlaggedReview = ({_id, token, reviewId, review}) =>
+    fetch(`${API}/user/flag/${reviewId}/${_id}`, {
         method: "PUT",
         headers: {
             Accept: 'application/json',

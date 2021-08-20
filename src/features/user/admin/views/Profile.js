@@ -13,19 +13,6 @@ import {userProfileFormStyle}     from './styles'
 const Profile = () => {
     const dispatch = useDispatch()
     const {slug, _id, token, user} = useSelector(state => state.user)
-    const {
-        description,
-        avatar,
-        email,
-        dateOfBirth,
-        ethnicHispanicOrigin,
-        handle,
-        nameMiddle,
-        nameFirst,
-        nameLast,
-        tel,
-        role
-    } = user
 
     const initialValues = {
         nameFirst: user.nameFirst,
@@ -70,7 +57,8 @@ const Profile = () => {
                     marginBottom: 15,
                     size: [18, .7, 18]
                 }}>
-                    <strong>Disclaimer</strong>: Updating your email is not possible at the moment. We are working on this feature!
+                    <strong>Disclaimer</strong>: Updating your email is not possible at the moment. We are working on
+                    this feature!
                 </Div>
                 <Form
                     initialValues={initialValues}

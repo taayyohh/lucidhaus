@@ -1,9 +1,10 @@
-import {push} from 'connected-react-router'
+import {push}                          from 'connected-react-router'
 import {deletePlace, getPendingPlaces} from 'features/place/services'
-import {getSignedRequest, uploadFile} from 'features/site/services/s3'
-import {call, put, takeLatest} from 'redux-saga/effects'
-import {createEntity, updateEntity} from 'utils/abstractions/crud'
-import {setFormData} from 'utils/abstractions/setFormData'
+import {getSignedRequest, uploadFile}  from 'features/site/services/s3'
+import {call, put, takeLatest}         from 'redux-saga/effects'
+import {createEntity, updateEntity}    from 'utils/abstractions/crud'
+import {setFormData}                   from 'utils/abstractions/setFormData'
+import {getFlaggedReviews}             from '../../services/reviews'
 
 export function* createPlace({payload}) {
     const {
@@ -326,6 +327,8 @@ export function* updateReview({payload}) {
         review,
         safe,
         welcome,
+        isFlagged,
+        flaggedBy,
         user,
         _id,
         id,
@@ -341,6 +344,8 @@ export function* updateReview({payload}) {
         {review},
         {safe},
         {welcome},
+        {isFlagged},
+        {flaggedBy},
         {user},
         {place: placeId},
         {placeName},
@@ -348,6 +353,8 @@ export function* updateReview({payload}) {
     ]
     for (let field of fields)
         setFormData(placeReview, field)
+
+    console.log('fields', fields)
 
     if (!!photoFile) {
         const s3Payload = yield call(getSignedRequest, photoFile)
@@ -376,6 +383,9 @@ export function* updateReview({payload}) {
                 }
             })
 
+            //TODO: temp solution refresh reviews
+          //  yield put({type: 'place/getFlaggedReviews'})
+
         } else {
             yield put({type: 'place/updatePlaceFailure', payload: updated})
         }
@@ -393,8 +403,19 @@ export function* pendingPlaces() {
             payload: payload
         })
     }
-
 }
+
+export function* flaggedReviews() {
+    const payload = yield call(getFlaggedReviews)
+
+    if (!payload.error) {
+        yield put({
+            type: 'place/getFlaggedReviewsSuccess',
+            payload: payload
+        })
+    }
+}
+
 
 /**
  *
@@ -430,6 +451,10 @@ export function* watchAddReview() {
 
 export function* watchUpdateReview() {
     yield takeLatest('place/updateReview', updateReview)
+}
+
+export function* watchFlaggedReviews() {
+    yield takeLatest('place/getFlaggedReviews', flaggedReviews)
 }
 
 export function* watchGetPendingPlaces() {

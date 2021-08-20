@@ -3,7 +3,7 @@ import {
     watchAttemptDestroyPlace,
     watchCreatePlace,
     watchDestroyPlace,
-    watchDestroyPlaceSuccess, watchGetPendingPlaces,
+    watchDestroyPlaceSuccess, watchFlaggedReviews, watchGetPendingPlaces,
     watchUpdatePlace,
     watchUpdateReview
 } from 'features/place/admin/sagas'
@@ -315,6 +315,7 @@ export default function* rootSaga() {
         fork(watchGetReviews),
         fork(watchGetUserReviewedPlaces),
         fork(watchGetPendingPlaces),
+        fork(watchFlaggedReviews),
 
         //taxonomy
         fork(watchCreateBathroom),
