@@ -49,7 +49,7 @@ const Place = () => {
         foodOptions,
         languageSpoken
     } = useSelector(state => state.place)
-    const {isAuthenticated, isVerified, _id, token, user} = useSelector(state => state.user)
+    const {isAuthenticated, isVerified, _id, token} = useSelector(state => state.user)
     const userSlug = useSelector(state => state.user.slug)
 
     const {
@@ -246,12 +246,13 @@ const Place = () => {
     useEffect(() => {
         const flaggedReviews = reviews.filter(review => review.flaggedBy.length > 0)
 
-        for(const flagged of flaggedReviews) {
-            if(flagged.flaggedBy.includes(_id)) {
+        for (const flagged of flaggedReviews) {
+            if (flagged.flaggedBy.includes(_id)) {
                 setUserFlaggedReviews([...userFlaggedReviews, flagged.id])
             }
         }
 
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [reviews])
 
     return (
