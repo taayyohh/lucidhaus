@@ -258,7 +258,7 @@ export function* flagReview({payload}) {
     })
 
     if (!flagged.error) {
-        console.log('flagged', flagged)
+    //    console.log('flagged', flagged)
         // yield put({
         //     type: 'user/getUser',
         //     payload: {

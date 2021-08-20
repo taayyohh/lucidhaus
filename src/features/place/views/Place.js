@@ -242,7 +242,7 @@ const Place = () => {
     }, [createdFromBoone])
 
     useEffect(() => {
-        console.log('flaaagged', user.flaggedReviews)
+
     }, [user])
 
     return (

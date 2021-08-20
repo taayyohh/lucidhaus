@@ -16,6 +16,8 @@ const initialState = {
     reviews: [],
     token: '',
     nameFirst: '',
+    nameMiddle: '',
+    nameLast: '',
     tel: '',
     slug: '',
     isAuthenticated: false,
