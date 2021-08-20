@@ -1,9 +1,10 @@
-import {push} from 'connected-react-router'
+import {push}                          from 'connected-react-router'
 import {deletePlace, getPendingPlaces} from 'features/place/services'
-import {getSignedRequest, uploadFile} from 'features/site/services/s3'
-import {call, put, takeLatest} from 'redux-saga/effects'
-import {createEntity, updateEntity} from 'utils/abstractions/crud'
-import {setFormData} from 'utils/abstractions/setFormData'
+import {getSignedRequest, uploadFile}  from 'features/site/services/s3'
+import {call, put, takeLatest}         from 'redux-saga/effects'
+import {createEntity, updateEntity}    from 'utils/abstractions/crud'
+import {setFormData}                   from 'utils/abstractions/setFormData'
+import {getFlaggedReviews}             from '../../services/reviews'
 
 export function* createPlace({payload}) {
     const {
@@ -393,8 +394,19 @@ export function* pendingPlaces() {
             payload: payload
         })
     }
-
 }
+
+export function* flaggedReviews() {
+    const payload = yield call(getFlaggedReviews)
+
+    if (!payload.error) {
+        yield put({
+            type: 'place/getFlaggedReviewsSuccess',
+            payload: payload
+        })
+    }
+}
+
 
 /**
  *
@@ -430,6 +442,10 @@ export function* watchAddReview() {
 
 export function* watchUpdateReview() {
     yield takeLatest('place/updateReview', updateReview)
+}
+
+export function* watchFlaggedReviews() {
+    yield takeLatest('place/getFlaggedReviews', flaggedReviews)
 }
 
 export function* watchGetPendingPlaces() {

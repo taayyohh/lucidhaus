@@ -54,6 +54,7 @@ const ManageRace = lazy(() => import('features/user/admin/taxonomy/race/Manage')
 const ManageServiceAnimals = lazy(() => import('features/user/admin/taxonomy/serviceAnimal/Manage'))
 const ManageSexualOrientation = lazy(() => import('features/user/admin/taxonomy/sexualOrientation/Manage'))
 const ManagePendingPlaces = lazy(() => import('features/place/admin/views/ManagePendingPlaces'))
+const ManageFlaggedReviews= lazy(() => import('features/place/admin/views/ManageFlaggedReviews'))
 
 
 const UpdateAdaptiveEquipment = lazy(() => import('features/user/admin/taxonomy/adaptiveEquipment/Update'))
@@ -138,6 +139,8 @@ const Routes = () => {
                             <AdminRoute path="/admin/places" exact component={ManagePlaces}/>
                             <AdminRoute path="/admin/places/update/:slug" exact component={UpdatePlace}/>
                             <AdminRoute path="/admin/places/pending" exact component={ManagePendingPlaces}/>
+                            <AdminRoute path="/admin/flagged/reviews" exact component={ManageFlaggedReviews}/>
+
 
                             <AdminRoute path="/admin/place/taxonomy" exact component={ManagePlaceTaxonomy}/>
 

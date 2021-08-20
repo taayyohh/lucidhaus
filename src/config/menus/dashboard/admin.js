@@ -1,4 +1,4 @@
-import {building, home, user, userCog} from 'config/icons'
+import {building, exclamationTriangle, home, user, userCog} from 'config/icons'
 
 export const adminDashboardMenu = [
     {
@@ -27,5 +27,10 @@ export const adminDashboardMenu = [
         url: '/admin/places/pending',
         icon: building,
         title: 'Pending Place Submissions'
+    },
+    {
+        url: '/admin/flagged/reviews',
+        icon: exclamationTriangle,
+        title: 'Flagged Reviews'
     }
 ]

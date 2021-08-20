@@ -15,7 +15,7 @@ import {
     reviewsWrapperStyle
 }                                   from './styles'
 
-const Reviews = ({reviewIds}) => {
+const Reviews = ({reviewIds, userFlaggedReviews, placeSlug}) => {
     const {_id, token} = useSelector(state => state.user)
     const {reviews} = useSelector(state => state.place)
     const [filteredArray, setFilteredArray] = useState()
@@ -38,33 +38,42 @@ const Reviews = ({reviewIds}) => {
 
     return (
         <Div theme={reviewsWrapperStyle}>
-            {filteredArray && filteredArray.map((review) => (
-                <Div key={review.updated} theme={placeReviewStyle}>
-                    {review.photo && (
-                        <S3Img url={review.photo} theme={placeReviewStyle.image}/>
-                    )}
-                    <RichText theme={placeReviewDescriptionStyle}>{review.review}</RichText>
-                    <Div theme={placeReviewLikertStyle}>
-                        <Div><strong>Safe:</strong> {review.safe}</Div>
-                        <Div><strong>Celebrated:</strong> {review.celebrated}</Div>
-                        <Div><strong>Welcome:</strong> {review.welcome}</Div>
-                    </Div>
-                    <Div>{dayjs(review.updated).format('MM/DD/YYYY')}</Div>
-                    <Icon
-                        theme={placeReviewReportIconStyle}
-                        icon={exclamationTriangle}
-                        onClick={() => dispatch({
-                            type: 'user/flagReview',
-                            payload: {
-                                reviewId: review._id,
-                                _id,
-                                token
-                            }
-                        })}
-                    />
-                    <Div theme={placeReviewBlurStyle}/>
-                </Div>
-            ))}
+            {filteredArray && filteredArray.map((review) => {
+                    const isFlagged = userFlaggedReviews.filter(item => item === review.id).length > 0
+
+                    return (
+                        <Div key={review.updated} theme={placeReviewStyle}>
+                            {review.photo && (
+                                <S3Img url={review.photo} theme={placeReviewStyle.image}/>
+                            )}
+                            <RichText theme={placeReviewDescriptionStyle}>{review.review}</RichText>
+                            <Div theme={placeReviewLikertStyle}>
+                                <Div><strong>Safe:</strong> {review.safe}</Div>
+                                <Div><strong>Celebrated:</strong> {review.celebrated}</Div>
+                                <Div><strong>Welcome:</strong> {review.welcome}</Div>
+                            </Div>
+                            {isFlagged && (
+                                <Div>I AM FLAGGGEEDDDD</Div>
+                            )}
+                            <Div>{dayjs(review.updated).format('MM/DD/YYYY')}</Div>
+                            <Icon
+                                theme={placeReviewReportIconStyle}
+                                icon={exclamationTriangle}
+                                onClick={() => dispatch({
+                                    type: 'user/flagReview',
+                                    payload: {
+                                        reviewId: review._id,
+                                        placeSlug,
+                                        _id,
+                                        token
+                                    }
+                                })}
+                            />
+                            <Div theme={placeReviewBlurStyle}/>
+                        </Div>
+                    )
+                }
+            )}
         </Div>
     )
 }
