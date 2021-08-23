@@ -354,8 +354,6 @@ export function* updateReview({payload}) {
     for (let field of fields)
         setFormData(placeReview, field)
 
-    console.log('fields', fields)
-
     if (!!photoFile) {
         const s3Payload = yield call(getSignedRequest, photoFile)
         if (!!s3Payload.signedRequest) {
