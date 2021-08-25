@@ -8,12 +8,13 @@ import {
     flex,
     flexStart,
     grid,
-    none, pointer,
+    none,
+    pointer,
     relative,
     row,
     sv,
     white
-} from 'utils/themer'
+}                              from 'utils/themer'
 
 export const placesWrapperStyle = {
     display: 'grid',
@@ -189,7 +190,7 @@ export const placeMapStyle = {
 }
 
 export const placePhotoStyle = {
-  //  borderRadius: 1000,
+    //  borderRadius: 1000,
     height: 500,
     width: [500, globals.style.layoutScalingValue, '100%']
 }
@@ -212,7 +213,7 @@ export const placeTitleStyle = {
     borderRadius: [50, .7, '0'],
     margin: 0,
     marginBottom: [30, .7, 20],
-   // borderRadius: `${sv(10)} ${sv(10)} 0 0`
+    // borderRadius: `${sv(10)} ${sv(10)} 0 0`
 }
 
 export const placeAddressStyle = {
@@ -311,6 +312,9 @@ export const reviewHeadingStyle = {
 }
 
 export const placeReviewStyle = {
+    display: flex,
+    flexDirection: column,
+    background: 'none',
     position: relative,
     width: '100%',
     padding: [20, globals.style.layoutScalingValue, 20],
@@ -334,13 +338,20 @@ export const placeReviewLikertStyle = {
     marginBottom: [25, .7, 25]
 }
 
+export const placeFlaggedTextStyle = {
+    color: '#fff',
+    size: [32, .7, 22],
+    padding: [20, .7, 20],
+    zIndex: 1
+}
+
 export const placeReviewBlurStyle = {
     position: absolute,
     top: 0,
     left: 0,
     height: '100%',
     width: '100%',
-   // background: '#000'
+    background: '#000'
 }
 
 export const placeReviewReportIconStyle = {

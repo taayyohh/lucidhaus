@@ -49,7 +49,7 @@ const Place = () => {
         foodOptions,
         languageSpoken
     } = useSelector(state => state.place)
-    const {isAuthenticated, isVerified, _id, token, user} = useSelector(state => state.user)
+    const {isAuthenticated, isVerified, _id, token} = useSelector(state => state.user)
     const userSlug = useSelector(state => state.user.slug)
 
     const {
@@ -241,9 +241,19 @@ const Place = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [createdFromBoone])
 
-    useEffect(() => {
 
-    }, [user])
+    const [userFlaggedReviews, setUserFlaggedReviews] = useState([])
+    useEffect(() => {
+        const flaggedReviews = reviews.filter(review => review.flaggedBy.length > 0)
+
+        for (const flagged of flaggedReviews) {
+            if (flagged.flaggedBy.includes(_id)) {
+                setUserFlaggedReviews([...userFlaggedReviews, flagged.id])
+            }
+        }
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [reviews])
 
     return (
         <AnimatePresence>
@@ -465,7 +475,11 @@ const Place = () => {
                             {place.reviews?.length > 0 && (
                                 <Div theme={reviewsHeadingWrapperStyle}>
                                     <Div theme={reviewHeadingStyle}>Reviews</Div>
-                                    <Reviews reviewIds={place.reviews}/>
+                                    <Reviews
+                                        reviewIds={place.reviews}
+                                        userFlaggedReviews={userFlaggedReviews}
+                                        placeSlug={slug}
+                                    />
                                 </Div>
                             )}
                             {(isAuthenticated && isVerified && hasNoReviews) && (

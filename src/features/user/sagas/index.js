@@ -240,7 +240,7 @@ export function* getUserSuccess({payload}) {
 }
 
 export function* flagReview({payload}) {
-    const {reviewId, token, _id} = payload
+    const {reviewId, placeSlug, token, _id} = payload
 
     const review = new FormData()
     const fields = [
@@ -251,14 +251,22 @@ export function* flagReview({payload}) {
         setFormData(review, field)
 
 
-    const flagged = yield call(addFlaggedReview, {
+    const user = yield call(addFlaggedReview, {
         _id,
         token,
+        reviewId,
         review
     })
 
-    if (!flagged.error) {
-    //    console.log('flagged', flagged)
+    if (!user.error) {
+        yield put({
+            type: 'user/flagReviewSuccess',
+        })
+        //TODO: make this call more specific so the entire place doesn't need to be reloaded
+        yield put({type: 'place/getPlace', payload: {slug: placeSlug}})
+
+
+        //    console.log('flagged', flagged)
         // yield put({
         //     type: 'user/getUser',
         //     payload: {

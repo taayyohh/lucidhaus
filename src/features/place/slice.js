@@ -17,6 +17,7 @@ const initialState = {
     place: [],
     places: [],
     reviews: [],
+    flaggedReviews: [],
     error: {
         places: {},
         boonePlaces: {},
@@ -155,6 +156,12 @@ export const slice = createSlice({
             state.languageSpoken = state.languageSpoken.filter(item => item._id === action.payload.entity._id).length < 1
                 ? [...state.languageSpoken, action.payload.entity]
                 : state.languageSpoken
+        },
+        getFlaggedReviewsSuccess: (state, action) => {
+            state.flaggedReviews = [...action.payload]
+            // state.flaggedReviews = state.flaggedReviews.filter(item => item._id === action.payload._id).length < 1
+            //     ? [...state.flaggedReviews, action.payload.e]
+            //     : state.flaggedReviews
         },
 
 

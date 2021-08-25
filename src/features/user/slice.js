@@ -13,6 +13,7 @@ import {sexualOrientation}     from './admin/taxonomy/sexualOrientation/reducers
 const initialState = {
     _id: '',
     bookmarks: [],
+    flaggedReviews: [],
     reviews: [],
     token: '',
     nameFirst: '',
@@ -110,6 +111,7 @@ export const slice = createSlice({
             state.slug = action.payload.user.slug
             state.tel = action.payload.user.tel
             state.type = action.payload.user.type
+           // state.flaggedReviews = [...action.payload.user.flaggedReviews]
         },
         isAuthenticatedFailure: state => {
             state.isAuthenticated = false
@@ -199,9 +201,12 @@ export const slice = createSlice({
 
         },
         getPendingPlaceEntitySuccess: (state, action) => {
-            state.pendingPlaces =   state.pendingPlaces.filter(item => item._id === action.payload.entity._id).length < 1
+            state.pendingPlaces = state.pendingPlaces.filter(item => item._id === action.payload.entity._id).length < 1
                 ? [...state.pendingPlaces, action.payload.entity]
                 : state.pendingPlaces
+        },
+        flagReviewSuccess: (state, action) => {
+
         },
 
 
