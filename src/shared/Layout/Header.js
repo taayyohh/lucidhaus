@@ -25,12 +25,6 @@ const Header = ({theme}) => {
         <Div as="header" theme={{...headerStyle, ...theme}}>
             <Div theme={headerTopStyle}>
                 <Div theme={headerTopStyle.inner}>
-                    <LinkSwitch
-                        url={'/help'}
-                        theme={headerTopStyle.link}
-                    >
-                        Help
-                    </LinkSwitch>
                     {(isAuthenticated && (
                         <Span
                             theme={headerTopStyle.link}
