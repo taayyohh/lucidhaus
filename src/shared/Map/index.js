@@ -14,6 +14,7 @@ const Map = ({lon, lat, zoom = 14, theme}) => {
                 center: [lon, lat], // starting position [lng, lat]
                 zoom: zoom // starting zoom
             })
+;
 
             new mapboxgl.Marker()
                 .setLngLat([lon, lat])

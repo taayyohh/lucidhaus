@@ -25,9 +25,6 @@ const Form = ({
               }) => {
     const dispatch = useDispatch()
 
-    useEffect(() => {
-
-    }, [initialValues])
 
     return (
         <Formik

@@ -1,5 +1,6 @@
 import {globals}                                               from 'config/styles'
 import {DATE, TEL}                                             from 'config/variables'
+import mapboxgl                                                from 'mapbox-gl'
 import PropTypes                                               from 'prop-types'
 import React, {useEffect, useRef, useState}                    from 'react'
 import Fieldset                                                from 'shared/Basic/Fieldset'
@@ -10,6 +11,11 @@ import Span                                                    from 'shared/Basi
 import {formatPhone}                                           from 'utils/helpers'
 import useMeasure                                              from 'utils/useMeasure'
 import {defaultFieldErrorStyle, defaultFocusedInputLabelStyle} from './styles'
+import {MAPBOX_PUBLIC}    from 'config/variables'
+
+
+const mapboxGeo = require('@mapbox/mapbox-sdk/services/geocoding');
+const geocodingClient = mapboxGeo({ accessToken: MAPBOX_PUBLIC });
 
 const SmartInput = ({
                         autoSubmit,
@@ -53,6 +59,31 @@ const SmartInput = ({
         if (autoSubmit) {
             formik.submitForm()
         }
+
+        const address = formik.values.address1
+        const city = formik.values.city
+        const state = formik.values.state
+
+
+        if (address.length > 0 && city.length > 0 && state.length > 0) {
+            console.log('address', address)
+            console.log('city', city)
+            console.log('state', state)
+
+
+            geocodingClient.forwardGeocode({
+                query: `${address} ${city} ${state}`,
+                mode: 'mapbox.places-permanent',
+                limit: 2
+            })
+                .send()
+                .then(response => {
+                    const match = response.body;
+                    console.log('match', match)
+                })
+        }
+
+
     }
     const handleFocus = () => {
         setIsInputLabelFocused(true)
