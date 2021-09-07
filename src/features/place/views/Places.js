@@ -1,50 +1,37 @@
-import {searchLocation}     from 'config/icons'
-import {placeSearchField}   from 'features/place/admin/fields/search'
-import {
-    placeCardStyle,
-    placeContentWrapperStyle,
-    placeDetailStyle,
-    placesHeadingStyle,
-    placesSearchFormStyle
-}                           from 'features/place/views/styles'
-import React, {
-    useContext,
-    useEffect,
-    useState
-}                           from 'react'
-import {
-    useDispatch,
-    useSelector
-}                           from 'react-redux'
-import Div                  from 'shared/Basic/Div'
-import Icon                 from 'shared/Basic/Icon'
-import GenericCard          from 'shared/Cards/GenericCard'
-import {mapContext}         from 'shared/Containers/MapController'
-import {searchContext}      from 'shared/Containers/SearchController'
-import Form                 from 'shared/Fields/Form'
-import ContentWrapper       from 'shared/Layout/ContentWrapper'
-import {slugify}            from 'utils/helpers'
-import {placesWrapperStyle} from './styles'
+import {placeCardStyle, placeContentWrapperStyle, placeDetailStyle} from 'features/place/views/styles'
+import React, {useEffect, useState}                                 from 'react'
+import {useDispatch, useSelector}                                   from 'react-redux'
+import Div                                                          from 'shared/Basic/Div'
+import GenericCard                                                  from 'shared/Cards/GenericCard'
+import ContentWrapper                                               from 'shared/Layout/ContentWrapper'
+import {slugify}                                                    from 'utils/helpers'
+import NoResults                                                    from './NoResults'
+import Search                                                       from './Search'
+import {placesWrapperStyle}                                         from './styles'
 
 const Places = () => {
     const {boonePlaces, algoliaPlaces, places, noResults} = useSelector(state => state.place)
     const dispatch = useDispatch()
-    const {coords} = useContext(mapContext)
-    const {placesIndex} = useContext(searchContext)
     const [allPlaces, setAllPlaces] = useState([])
 
     useEffect(() => {
-        setAllPlaces(!boonePlaces?.data ? [...algoliaPlaces] : [...algoliaPlaces, ...boonePlaces?.data].reduce(function (accumulator = [], currentValue) {
-            if(!currentValue.isPendingSubmission)
-                if (currentValue.type === 'place') {
-                    accumulator.push(currentValue)
-                } else if (accumulator.filter(place => !!place.booneId && (place.booneId === currentValue?.id)).length === 0) {
-                    accumulator.push(currentValue)
-                }
+        setAllPlaces(
+            !boonePlaces?.data
+                ? [...algoliaPlaces]
+                : [...algoliaPlaces, ...boonePlaces?.data]
+                    .reduce(function (accumulator = [], currentValue) {
+                        if (!currentValue.isPendingSubmission)
+                            if (currentValue.type === 'place') {
+                                accumulator.push(currentValue)
+                            } else if (accumulator.filter(place =>
+                                !!place.booneId
+                                && (place.booneId === currentValue?.id)).length === 0) {
+                                accumulator.push(currentValue)
+                            }
 
-            return accumulator
-        }, []))
-
+                        return accumulator
+                    }, [])
+        )
 
     }, [algoliaPlaces, boonePlaces])
 
@@ -65,25 +52,7 @@ const Places = () => {
         <ContentWrapper theme={placeContentWrapperStyle}>
             <Div>
                 <Div>
-                    <Div theme={placesHeadingStyle}>
-                        <Div>
-                            Search Places
-                        </Div>
-                        <Form
-                            theme={placesSearchFormStyle}
-                            initialValues={{input: ''}}
-                            fields={placeSearchField}
-                            dispatchAction={'place/searchAllPlaces'}
-                            formHeading={'Search'}
-                            buttonText={'Search'}
-                            payload={{
-                                longitude: coords.lon,
-                                latitude: coords.lat,
-                                radius: 10000,
-                                index: placesIndex
-                            }}
-                        />
-                    </Div>
+                    <Search/>
                     <Div theme={placeDetailStyle}>
                         By reviewing businesses, you help other members of your
                         community know where you felt safe, welcomed, and celebrated!
@@ -94,7 +63,9 @@ const Places = () => {
 
                 <Div theme={placesWrapperStyle}>
                     {allPlaces.length > 0 && allPlaces.map((place) => {
-                        if (!!place.uuid) {
+                        if (!!place.uuid) { // if place does not exist in Inclusive Guide database
+
+
                             const address1 = !!place?.locations[0]?.address1 ? `${place?.locations[0]?.address1}` : ''
                             const city = !!place.locations[0].city ? `, ${place.locations[0].city}` : ''
                             const state = !!place.locations[0].state ? `, ${place.locations[0].state}` : ''
@@ -129,26 +100,14 @@ const Places = () => {
                                     slug={`/places/${place.slug}`}
                                     name={place.name}
                                     address={composedAddress}
-                                    theme={placeCardStyle}
+                                    theme={{...placeCardStyle, background: '#afe'}}
                                 />
                             )
                         }
                     })}
                 </Div>
                 {noResults.boone && noResults.algolia && (
-                    <Div theme={{
-                        width: 300,
-                        margin: '0 auto',
-                        display: 'flex',
-                        flexDirection: 'column',
-                        size: 32
-                    }}>
-                        <Icon
-                            icon={searchLocation}
-                            theme={{size: 60, margin: '0 auto'}}
-                        />
-                        Oops! Looks like there are no results for this search, please try searching again!
-                    </Div>
+                    <NoResults/>
                 )}
             </Div>
         </ContentWrapper>

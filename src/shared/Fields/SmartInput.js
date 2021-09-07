@@ -65,7 +65,7 @@ const SmartInput = ({
         const state = formik.values.state
 
 
-        if (address.length > 0 && city.length > 0 && state.length > 0) {
+        if (address?.length > 0 && city?.length > 0 && state?.length > 0) {
             console.log('address', address)
             console.log('city', city)
             console.log('state', state)

@@ -118,6 +118,7 @@ const Routes = () => {
                             <Route path="/signin" exact component={SignIn}/>
                             <Route path="/places" exact component={Places}/>
                             <Route path="/places/:slug" exact component={Place}/>
+                            <Route path="/places/search/:slug" exact component={Places}/>
                             <Route path="/shop" exact component={Shop}/>
                             <Route path="/shop/:slug" exact component={Product}/>
                             <Route path="/shop/category/:slug" exact component={FilteredProduct}/>

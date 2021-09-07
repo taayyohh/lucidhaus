@@ -1,6 +1,8 @@
+import {push}                                                from 'connected-react-router'
 import {getAlgoliaPlaces, getPlace, getPlaceById, getPlaces} from 'features/place/services'
 import {call, put, takeEvery}                                from 'redux-saga/effects'
 import {getEntityById}                                       from 'utils/abstractions/crud'
+import {slugify}                                             from '../../../utils/helpers'
 
 /**
  *
@@ -54,6 +56,11 @@ export function* getUserReviewedPlace({payload}) {
 export function* searchAllPlaces({payload}) {
     yield put({type: 'place/searchAlgoliaPlaceIndex', payload})
     yield put({type: 'place/getBooneAutoComplete', payload})
+    yield put(push('/places/search' + `/${slugify(payload.input)}`))
+    console.log('pay', payload)
+
+
+
 }
 
 export function* searchAlgoliaPlaceIndex({payload}) {
