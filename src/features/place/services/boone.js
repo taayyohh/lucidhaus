@@ -43,3 +43,23 @@ export const getPlaceFromBoone = ({placeId}) => {
     )
 }
 
+export const getPlaceFromBooneByCategory = ({placeId}) => {
+    return (
+        fetch(`${CORS}${BOONE_HOST}${BOONE_API}canonical_places/${placeId}`, {
+            method: 'GET',
+            headers: {
+                Accept: 'application/json',
+                "Content-Type": "application/json",
+                'RT-ORG-APP-CLIENT-ID': BOONE_CLIENT_ID
+            },
+        })
+            .then(response => {
+                return response.json()
+            })
+            .catch(error => {
+                return error
+            })
+    )
+}
+
+

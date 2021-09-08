@@ -3,14 +3,15 @@ import React, {useEffect, useState}                                 from 'react'
 import {useDispatch, useSelector}                                   from 'react-redux'
 import Div                                                          from 'shared/Basic/Div'
 import GenericCard                                                  from 'shared/Cards/GenericCard'
-import ContentWrapper                                               from 'shared/Layout/ContentWrapper'
-import {slugify}                                                    from 'utils/helpers'
-import NoResults                                                    from './NoResults'
+import ContentWrapper       from 'shared/Layout/ContentWrapper'
+import {slugify, unslugify} from 'utils/helpers'
+import NoResults            from './NoResults'
 import Search                                                       from './Search'
 import {placesWrapperStyle}                                         from './styles'
 
 const Places = () => {
     const {boonePlaces, algoliaPlaces, places, noResults} = useSelector(state => state.place)
+    const {slug} = useSelector(state => state.site)
     const dispatch = useDispatch()
     const [allPlaces, setAllPlaces] = useState([])
 
@@ -53,6 +54,9 @@ const Places = () => {
             <Div>
                 <Div>
                     <Search/>
+                    <Div>
+                        Search results for: {slug ? unslugify(slug) : ''}
+                    </Div>
                     <Div theme={placeDetailStyle}>
                         By reviewing businesses, you help other members of your
                         community know where you felt safe, welcomed, and celebrated!
@@ -100,7 +104,7 @@ const Places = () => {
                                     slug={`/places/${place.slug}`}
                                     name={place.name}
                                     address={composedAddress}
-                                    theme={{...placeCardStyle, background: '#afe'}}
+                                    theme={{...placeCardStyle}}
                                 />
                             )
                         }

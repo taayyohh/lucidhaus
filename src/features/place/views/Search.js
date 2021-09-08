@@ -12,7 +12,7 @@ const Search = () => {
     const {coords} = useContext(mapContext)
     const {placesIndex} = useContext(searchContext)
     const {slug} = useSelector(state => state.site)
-    
+
     useEffect(() => {
         dispatch({
             type: 'place/searchAllPlaces',

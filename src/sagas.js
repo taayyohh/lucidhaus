@@ -3,12 +3,15 @@ import {
     watchAttemptDestroyPlace,
     watchCreatePlace,
     watchDestroyPlace,
-    watchDestroyPlaceSuccess, watchFlaggedReviews, watchGetPendingPlaces,
+    watchDestroyPlaceSuccess,
+    watchFlaggedReviews,
+    watchGetPendingPlaces,
     watchUpdatePlace,
     watchUpdateReview
-} from 'features/place/admin/sagas'
+}                                  from 'features/place/admin/sagas'
 import {watchCreatePlaceFromBoone} from 'features/place/admin/sagas/boone'
 import {
+    watchGetPlaceCategoryByNameOrDescription,
     watchGetPlaceDetail,
     watchGetPlaces,
     watchGetReviews,
@@ -76,7 +79,8 @@ import {
 }                                  from 'features/user/admin/sagas'
 import {
     watchConfirmUser,
-    watchCreateVerificationToken, watchFlagReview,
+    watchCreateVerificationToken,
+    watchFlagReview,
     watchGetUser,
     watchGetUsers,
     watchGetUserSuccess,
@@ -86,7 +90,7 @@ import {
     watchSignUpSignInSuccess,
     watchUserHistory,
     watchVerifyUser
-} from 'features/user/sagas'
+}                                  from 'features/user/sagas'
 import {
     watchAuthenticate,
     watchAuthenticateSuccess,
@@ -309,6 +313,7 @@ export default function* rootSaga() {
         fork(watchGetPlaceDetail),
         fork(watchCreatePlaceFromBoone),
         fork(watchSearchAllPlaces),
+        fork(watchGetPlaceCategoryByNameOrDescription),
         fork(watchSearchAlgoliaPlaceIndex),
         fork(watchAddReview),
         fork(watchUpdateReview),

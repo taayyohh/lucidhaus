@@ -1,8 +1,8 @@
-import {push}                                                from 'connected-react-router'
-import {getAlgoliaPlaces, getPlace, getPlaceById, getPlaces} from 'features/place/services'
-import {call, put, takeEvery}                                from 'redux-saga/effects'
+import {push}                                                                    from 'connected-react-router'
+import {getAlgoliaPlaces, getPlace, getPlaceById, getPlaceCategories, getPlaces} from 'features/place/services'
+import {call, put, takeEvery}                                                    from 'redux-saga/effects'
 import {getEntityById}                                       from 'utils/abstractions/crud'
-import {slugify}                                             from '../../../utils/helpers'
+import {slugify}                                             from 'utils/helpers'
 
 /**
  *
@@ -56,20 +56,29 @@ export function* getUserReviewedPlace({payload}) {
 export function* searchAllPlaces({payload}) {
     yield put({type: 'place/searchAlgoliaPlaceIndex', payload})
     yield put({type: 'place/getBooneAutoComplete', payload})
+    yield put({type: 'place/getPlaceCategoryByNameOrDescription', payload: payload.input})
+
     yield put(push('/places/search' + `/${slugify(payload.input)}`))
-    console.log('pay', payload)
+}
 
+export function* getPlaceCategoryByNameOrDescription({payload}) {
+    // yield put({type: 'place/getPlaceCategoryByNameOrDescription', payload: payload.input}
 
-
+    const categories = yield call(getPlaceCategories, {payload})
 }
 
 export function* searchAlgoliaPlaceIndex({payload}) {
     const result = yield call(getAlgoliaPlaces, payload)
     if (result.hits.length > 0) {
-        yield put({type: 'place/getAlgoliaPlacesSuccess', payload: result.hits})
+        yield put({
+            type: 'place/getAlgoliaPlacesSuccess',
+            payload: result.hits
+        })
     } else {
-        yield put({type: 'place/getAlgoliaPlacesFailure', payload: result.hits})
-
+        yield put({
+            type: 'place/getAlgoliaPlacesFailure',
+            payload: result.hits
+        })
     }
 }
 
@@ -113,4 +122,8 @@ export function* watchGetReviews() {
 
 export function* watchGetUserReviewedPlaces() {
     yield takeEvery('place/getUserReviewedPlaces', getUserReviewedPlace)
+}
+
+export function* watchGetPlaceCategoryByNameOrDescription() {
+    yield takeEvery('place/getPlaceCategoryByNameOrDescription', getPlaceCategoryByNameOrDescription)
 }
