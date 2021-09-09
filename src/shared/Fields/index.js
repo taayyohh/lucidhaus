@@ -13,8 +13,8 @@ import {
     TOGGLE,
     IMAGE_UPLOAD,
     AUDIO_UPLOAD,
-    SONGS
-}                     from 'config'
+    SONGS, DATE
+} from 'config'
 import React, {memo} from 'react'
 import CreateSong  from 'features/admin/album/song/CreateSong'
 import UploadAudio from 'shared/Fields/UploadAudio'
@@ -35,6 +35,7 @@ const FieldSwitch = memo(({field, formik, options, autoSubmit}) => {
         case EMAIL:
         case NUMBER:
         case TEL:
+        case DATE:
             return <SmartInput
                 {...formik.getFieldProps(field.name)}
                 id={field.name}

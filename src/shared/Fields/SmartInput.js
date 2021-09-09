@@ -11,6 +11,7 @@ import InputLabel from 'shared/Basic/InputLabel'
 import Legend     from 'shared/Basic/Legend'
 import Span       from 'shared/Basic/Span'
 import useMeasure from 'utils/useMeasure'
+import {DATE}     from 'config'
 import {
     defaultFieldErrorStyle,
     defaultFocusedInputLabelStyle
@@ -24,13 +25,19 @@ const SmartInput = ({inputLabel, type, disabled, theme, id, className, errorMess
     const [hasValue, setHasValue] = useState(false)
     const [legendWidth, setLegendWidth] = useState(0)
 
+
     useEffect(() => {
-        const valueExists = Number.isInteger(value) || value?.length > 0
+        const valueExists =
+            typeof value === 'number'
+            || type === DATE
+            || value?.length > 0
+
         setHasValue(valueExists)
         setIsInputLabelFocused(valueExists)
         setLegendWidth(value?.length < 1 ? 0 : inputLabelWidth)
 
-    }, [setHasValue, setIsInputLabelFocused, inputLabelWidth, value])
+    }, [setHasValue, setIsInputLabelFocused, inputLabelWidth, value, type])
+
 
 
     const handleBlur = () => {

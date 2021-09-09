@@ -17,6 +17,7 @@ const Create = () => {
         flyer: '',
         flyerFile: '',
         description: '',
+        dateOfEvent: '',
         rsvps: [],
         isPublished: false
     }

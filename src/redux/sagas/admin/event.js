@@ -4,12 +4,13 @@ import {addEvent, deleteEvent, updateEvent} from 'services/apiEvent'
 import {getSignedRequest, uploadFile}       from 'services/apiS3'
 
 export function* createEvent({payload}) {
-    const {_id, token, name, description, rsvps, flyer, flyerFile, isPublished} = payload
+    const {_id, token, name, description, dateOfEvent, rsvps, flyer, flyerFile, isPublished} = payload
 
     //add to formdata so api can read
     const event = new FormData()
     event.set('name', name)
     event.set('description', description)
+    event.set('dateOfEvent', dateOfEvent)
     event.set('flyer', flyer)
     event.set('rsvps', rsvps)
     event.set('isPublished', isPublished)
@@ -33,12 +34,13 @@ export function* createEvent({payload}) {
 }
 
 export function* updateEventDetail({payload}) {
-    const {slug, _id, token, name, description, rsvps, flyer, flyerFile, isPublished} = payload
+    const {slug, _id, token, name, dateOfEvent, description, rsvps, flyer, flyerFile, isPublished} = payload
 
     //add to formData so api can read
     const updatedEvent = new FormData()
     updatedEvent.set('name', name)
     updatedEvent.set('description', description)
+    updatedEvent.set('dateOfEvent', dateOfEvent)
     updatedEvent.set('flyer', flyer)
     updatedEvent.set('rsvps', rsvps)
     updatedEvent.set('isPublished', isPublished)

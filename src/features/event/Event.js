@@ -16,7 +16,7 @@ const Event = () => {
     const dispatch = useDispatch()
     const {event} = useSelector(state => state.event)
     const {slug} = useSelector(state => state.site)
-    const {name, flyer, description, attendees} = event
+    const {name, flyer, description, dateOfEvent, attendees} = event
     const maxAttendees = 150
 
     useEffect(() => {
@@ -38,7 +38,7 @@ const Event = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [event])
 
-    const party = new Date('09/25/2021');
+    const party = new Date(dateOfEvent);
     const now = Date.now();
 
     return (

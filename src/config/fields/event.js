@@ -1,5 +1,5 @@
-import {IMAGE_UPLOAD, RICH_TEXT, TEXT, TOGGLE, UPLOAD_PATHS} from 'config'
-import * as Yup                                              from 'yup'
+import {DATE, IMAGE_UPLOAD, RICH_TEXT, TEXT, TOGGLE, UPLOAD_PATHS} from 'config'
+import * as Yup                                                    from 'yup'
 
 export const eventFields = [
     {
@@ -20,6 +20,11 @@ export const eventFields = [
         name: 'description',
         inputLabel: 'Description',
         type: RICH_TEXT
+    },
+    {
+        name: 'dateOfEvent',
+        inputLabel: 'Date',
+        type: DATE
     },
     {
         name: 'isPublished',

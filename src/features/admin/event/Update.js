@@ -22,7 +22,7 @@ const Update = () => {
     const {_id, token} = useSelector(state => state.user)
     const {slug} = useSelector(state => state.site)
     const {event} = useSelector(state => state.event)
-    const {name, flyer, description, rsvps, isPublished} = event
+    const {name, flyer, description, dateOfEvent, rsvps, isPublished} = event
     const {eventsIndex} = useContext(searchContext)
 
     const initialValues = {
@@ -30,6 +30,7 @@ const Update = () => {
         flyer: flyer,
         flyerFile: '',
         description: description,
+        dateOfEvent: dateOfEvent?.split('T')[0],
         rsvps: rsvps,
         isPublished: isPublished,
         slug,
