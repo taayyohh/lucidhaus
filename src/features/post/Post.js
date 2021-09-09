@@ -64,7 +64,6 @@ const Post = () => {
                                 theme={genericCardImageStyle}
                             />
                         </Div>
-                        {console.log('video', video)}
                         <RichText
                             children={description}
                             theme={postDescriptionStyle}

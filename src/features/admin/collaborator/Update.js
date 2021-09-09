@@ -49,7 +49,6 @@ const Update = () => {
     return (
         <ContentWrapper>
             <AdminDashboardWrapper>
-                {console.log('albun', albumCollaborator)}
                 <Form
                     initialValues={initialValues}
                     fields={collaboratorFields}

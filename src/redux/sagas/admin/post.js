@@ -30,11 +30,9 @@ export function* createPost({payload}) {
 
     const s3Payload = yield call(getSignedRequest, photoFile)
     if (!!s3Payload.signedRequest) {
-        const uploadImage = yield call(uploadFile, {file: photoFile, signedRequest: s3Payload.signedRequest})
-        console.log('upload', uploadImage)
+        yield call(uploadFile, {file: photoFile, signedRequest: s3Payload.signedRequest})
 
         const createdPost = yield call(addPost, {_id, token: token, post: post})
-        console.log('createdPost', createdPost)
         if (!createdPost.error) {
             yield put({type: 'post/getPosts'})
             yield put(push('/admin/posts/update/' + createdPost.slug))
@@ -64,8 +62,7 @@ export function* updatePostDetail({payload}) {
     if (!!photoFile) {
         const s3Payload = yield call(getSignedRequest, photoFile)
         if (!!s3Payload.signedRequest) {
-            const uploadImage = yield call(uploadFile, {file: photoFile, signedRequest: s3Payload.signedRequest})
-            console.log('upload', uploadImage)
+            yield call(uploadFile, {file: photoFile, signedRequest: s3Payload.signedRequest})
         }
     }
 

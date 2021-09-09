@@ -26,11 +26,9 @@ export function* createArtist({payload}) {
 
     const s3Payload = yield call(getSignedRequest, photoFile)
     if (!!s3Payload.signedRequest) {
-        const uploadImage = yield call(uploadFile, {file: photoFile, signedRequest: s3Payload.signedRequest})
-        console.log('upload', uploadImage)
+        yield call(uploadFile, {file: photoFile, signedRequest: s3Payload.signedRequest})
 
         const createdArtist = yield call(addArtist, {_id: _id, token: token, artist: artist})
-        console.log('createdArtist', createdArtist)
         if (!createdArtist.error) {
             yield put({type: 'artist/getArtists'})
             yield put(push('/admin/artists/update/' + createdArtist.slug))
@@ -57,7 +55,6 @@ export function* updateArtistDetail({payload}) {
         const s3Payload = yield call(getSignedRequest, photoFile)
         if (!!s3Payload.signedRequest) {
             const uploadImage = yield call(uploadFile, {file: photoFile, signedRequest: s3Payload.signedRequest})
-            console.log('upload', uploadImage)
         }
     }
 

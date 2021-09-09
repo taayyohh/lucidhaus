@@ -17,8 +17,7 @@ export function* createEvent({payload}) {
 
     const s3Payload = yield call(getSignedRequest, flyerFile)
     if (!!s3Payload.signedRequest) {
-        const uploadImage = yield call(uploadFile, {file: flyerFile, signedRequest: s3Payload.signedRequest})
-        console.log('upload', uploadImage)
+        yield call(uploadFile, {file: flyerFile, signedRequest: s3Payload.signedRequest})
 
         const createdEvent = yield call(addEvent, {_id: _id, token: token, event: event})
         if (!createdEvent.error) {
@@ -48,8 +47,7 @@ export function* updateEventDetail({payload}) {
     if (!!flyerFile) {
         const s3Payload = yield call(getSignedRequest, flyerFile)
         if (!!s3Payload.signedRequest) {
-            const uploadImage = yield call(uploadFile, {file: flyerFile, signedRequest: s3Payload.signedRequest})
-            console.log('upload', uploadImage)
+            yield call(uploadFile, {file: flyerFile, signedRequest: s3Payload.signedRequest})
         }
     }
 

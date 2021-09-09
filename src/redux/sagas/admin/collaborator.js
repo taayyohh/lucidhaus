@@ -26,8 +26,7 @@ export function* createCollaborator({payload}) {
 
     const s3Payload = yield call(getSignedRequest, photoFile)
     if (!!s3Payload.signedRequest) {
-        const uploadImage = yield call(uploadFile, {file: photoFile, signedRequest: s3Payload.signedRequest})
-        console.log('upload', uploadImage)
+        yield call(uploadFile, {file: photoFile, signedRequest: s3Payload.signedRequest})
 
         const createdCollaborator = yield call(addCollaborator, {_id: _id, token: token, collaborator: collaborator})
         if (!createdCollaborator.error) {
@@ -55,8 +54,7 @@ export function* updateCollaboratorDetail({payload}) {
     if (!!photoFile) {
         const s3Payload = yield call(getSignedRequest, photoFile)
         if (!!s3Payload.signedRequest) {
-            const uploadImage = yield call(uploadFile, {file: photoFile, signedRequest: s3Payload.signedRequest})
-            console.log('upload', uploadImage)
+            yield call(uploadFile, {file: photoFile, signedRequest: s3Payload.signedRequest})
         }
     }
 

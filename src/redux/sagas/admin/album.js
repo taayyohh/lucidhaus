@@ -31,11 +31,9 @@ export function* createAlbum({payload}) {
 
     const s3Payload = yield call(getSignedRequest, coverArtFile)
     if (!!s3Payload.signedRequest) {
-        const uploadImage = yield call(uploadFile, {file: coverArtFile, signedRequest: s3Payload.signedRequest})
-        console.log('upload', uploadImage)
+        yield call(uploadFile, {file: coverArtFile, signedRequest: s3Payload.signedRequest})
 
         const createdAlbum = yield call(addAlbum, {_id, token, album})
-        console.log('createdAlbum', createdAlbum)
         if (!createdAlbum.error) {
             yield put({type: 'album/getAlbums'})
             yield put(push('/admin/music/update/' + createdAlbum.slug))
@@ -67,8 +65,7 @@ export function* updateAlbumDetail({payload}) {
     if (!!coverArtFile) {
         const s3Payload = yield call(getSignedRequest, coverArtFile)
         if (!!s3Payload.signedRequest) {
-            const uploadImage = yield call(uploadFile, {file: coverArtFile, signedRequest: s3Payload.signedRequest})
-            console.log('upload', uploadImage)
+            yield call(uploadFile, {file: coverArtFile, signedRequest: s3Payload.signedRequest})
         }
     }
 
@@ -134,8 +131,7 @@ export function* addSongToAlbum({payload}) {
     if (!!audioFile) {
         const s3Payload = yield call(getSignedRequest, audioFile)
         if (!!s3Payload.signedRequest) {
-            const uploadedAudio = yield call(uploadFile, {file: audioFile, signedRequest: s3Payload.signedRequest})
-            console.log('uploaded audio', uploadedAudio)
+             yield call(uploadFile, {file: audioFile, signedRequest: s3Payload.signedRequest})
             //TODO: upload success and failure
         }
     }
