@@ -31,7 +31,7 @@ const Events = () => {
     return (
         <ContentWrapper>
             <Div theme={eventsWrapperStyle}>
-                {events && events.map(
+                {events && events.slice(0).reverse().map(
                     event => event.isPublished && (
                         <GenericCard
                             key={event.slug}
