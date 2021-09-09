@@ -38,6 +38,9 @@ const Event = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [event])
 
+    const party = new Date('09/25/2021');
+    const now = Date.now();
+
     return (
         <AnimatePresence>
             <MotionDiv initial={nOpacity} animate={fadeIn} exit={fadeOut}>
@@ -56,14 +59,22 @@ const Event = () => {
                             )}
                         </Div>
                         <Div theme={eventInfoStyle}>
-                            {(attendees?.length < maxAttendees && (
-                                <CreateRsvp maxAttendees={maxAttendees}/>
-                            ))|| (
+
+                            {((party > now) && (
+                                <>
+                                    {(attendees?.length < maxAttendees && (
+                                        <CreateRsvp maxAttendees={maxAttendees}/>
+                                    ))|| (
+                                        <Div theme={{size: [46, .7, 18], maxWidth: 300}}>
+                                            The RSVP list is full, but the event is free and open to the public so please come by!
+                                        </Div>
+                                    )}
+                                </>
+                            )) || (
                                 <Div theme={{size: [46, .7, 18], maxWidth: 300}}>
-                                    The RSVP list is full, but the event is free and open to the public so please come by!
+                                    {`thankyou for a lovely event <3`}
                                 </Div>
                             )}
-
 
                         </Div>
                     </MotionDiv>
