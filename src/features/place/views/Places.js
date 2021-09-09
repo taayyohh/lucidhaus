@@ -3,9 +3,9 @@ import React, {useEffect, useState}                                 from 'react'
 import {useDispatch, useSelector}                                   from 'react-redux'
 import Div                                                          from 'shared/Basic/Div'
 import GenericCard                                                  from 'shared/Cards/GenericCard'
-import ContentWrapper       from 'shared/Layout/ContentWrapper'
-import {slugify, unslugify} from 'utils/helpers'
-import NoResults            from './NoResults'
+import ContentWrapper                                               from 'shared/Layout/ContentWrapper'
+import {slugify, unslugify}                                         from 'utils/helpers'
+import NoResults                                                    from './NoResults'
 import Search                                                       from './Search'
 import {placesWrapperStyle}                                         from './styles'
 
@@ -54,9 +54,11 @@ const Places = () => {
             <Div>
                 <Div>
                     <Search/>
-                    <Div>
-                        Search results for: {slug ? unslugify(slug) : ''}
-                    </Div>
+                    {(slug !== 'places' && (
+                        <Div>
+                            Search results for: {slug ? unslugify(slug) : ''}
+                        </Div>
+                    ))}
                     <Div theme={placeDetailStyle}>
                         By reviewing businesses, you help other members of your
                         community know where you felt safe, welcomed, and celebrated!

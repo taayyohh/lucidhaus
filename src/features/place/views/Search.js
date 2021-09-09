@@ -14,16 +14,17 @@ const Search = () => {
     const {slug} = useSelector(state => state.site)
 
     useEffect(() => {
-        dispatch({
-            type: 'place/searchAllPlaces',
-            payload: {
-                longitude: coords.lon,
-                latitude: coords.lat,
-                radius: 10000,
-                index: placesIndex,
-                input: slug
-            }
-        })
+        if(slug !== 'places')
+            dispatch({
+                type: 'place/searchAllPlaces',
+                payload: {
+                    longitude: coords.lon,
+                    latitude: coords.lat,
+                    radius: 10000,
+                    index: placesIndex,
+                    input: slug
+                }
+            })
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
