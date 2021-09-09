@@ -4,7 +4,7 @@ import {useSelector}              from 'react-redux'
 import Form                       from 'shared/Fields/Form'
 import {rsvpsFormStyle}           from 'shared/Fields/styles'
 
-const CreateRsvp = () => {
+const CreateRsvp = ({maxAttendees}) => {
     const {_id, token} = useSelector(state => state.user)
     const {slug} = useSelector(state => state.site)
     const {event} = useSelector(state => state.event)
@@ -22,7 +22,7 @@ const CreateRsvp = () => {
             fields={rsvpFields}
             validationSchema={validateRsvp}
             dispatchAction={'admin/addRsvpToEvent'}
-            formHeading={`${100 - event.attendees?.length} RSVPs left`}
+            formHeading={`${maxAttendees - event.attendees?.length} RSVPs left`}
             theme={rsvpsFormStyle}
             buttonText={'I wanna come'}
         />
