@@ -1,6 +1,5 @@
 import {globals}                                               from 'config/styles'
-import {DATE, TEL}                                             from 'config/variables'
-import mapboxgl                                                from 'mapbox-gl'
+import {DATE, MAPBOX_PUBLIC, TEL}                              from 'config/variables'
 import PropTypes                                               from 'prop-types'
 import React, {useEffect, useRef, useState}                    from 'react'
 import Fieldset                                                from 'shared/Basic/Fieldset'
@@ -11,11 +10,10 @@ import Span                                                    from 'shared/Basi
 import {formatPhone}                                           from 'utils/helpers'
 import useMeasure                                              from 'utils/useMeasure'
 import {defaultFieldErrorStyle, defaultFocusedInputLabelStyle} from './styles'
-import {MAPBOX_PUBLIC}    from 'config/variables'
 
 
 const mapboxGeo = require('@mapbox/mapbox-sdk/services/geocoding');
-const geocodingClient = mapboxGeo({ accessToken: MAPBOX_PUBLIC });
+const geocodingClient = mapboxGeo({accessToken: MAPBOX_PUBLIC});
 
 const SmartInput = ({
                         autoSubmit,

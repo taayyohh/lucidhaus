@@ -11,10 +11,10 @@ const Search = ({theme}) => {
     const dispatch = useDispatch()
     const {coords} = useContext(mapContext)
     const {placesIndex} = useContext(searchContext)
-    const {slug} = useSelector(state => state.site)
+    const {slug, url} = useSelector(state => state.site)
 
     useEffect(() => {
-        if(slug !== 'places')
+        if(url.includes('search'))
             dispatch({
                 type: 'place/searchAllPlaces',
                 payload: {
