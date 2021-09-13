@@ -13,7 +13,8 @@ import Search           from './Search'
 import {pageFrameStyle} from './styles'
 
 const PageFrame = () => {
-    const {slug} = useSelector(state => state.site)
+    const {slug, url} = useSelector(state => state.site)
+    const isAdmin = url.includes('admin') || url.includes('dashboard')
 
     return (
         <Div theme={pageFrameStyle}>
@@ -21,7 +22,9 @@ const PageFrame = () => {
             <DocumentHead/>
             <Div id="header-left-margin" theme={pageFrameStyle.hlm}/>
             <Header theme={pageFrameStyle.header}/>
-            <Search theme={pageFrameStyle.search}/>
+            {!isAdmin && (
+                <Search theme={pageFrameStyle.search}/>
+            )}
             <Div id="header-right-margin" theme={pageFrameStyle.hrm}/>
             <Div id="left-margin" theme={pageFrameStyle.lm}/>
             <Main theme={pageFrameStyle.main(slug)}/>
