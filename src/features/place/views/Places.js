@@ -5,9 +5,9 @@ import Div                                                          from 'shared
 import GenericCard                                                  from 'shared/Cards/GenericCard'
 import ContentWrapper                                               from 'shared/Layout/ContentWrapper'
 import {slugify, unslugify}                                         from 'utils/helpers'
-import NoResults                                                    from './NoResults'
-import Search                                                       from './Search'
-import {placesWrapperStyle}                                         from './styles'
+import NoResults            from './NoResults'
+import Search               from '../../../shared/Layout/Search'
+import {placesWrapperStyle} from './styles'
 
 const Places = () => {
     const {boonePlaces, algoliaPlaces, places, noResults} = useSelector(state => state.place)
@@ -53,7 +53,7 @@ const Places = () => {
         <ContentWrapper theme={placeContentWrapperStyle}>
             <Div>
                 <Div>
-                    <Search/>
+
                     {(slug !== 'places' && (
                         <Div>
                             Search results for: {slug ? unslugify(slug) : ''}

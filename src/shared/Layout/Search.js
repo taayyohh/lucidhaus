@@ -5,9 +5,9 @@ import Div                                         from 'shared/Basic/Div'
 import {mapContext}                                from 'shared/Containers/MapController'
 import {searchContext}                             from 'shared/Containers/SearchController'
 import Form                                        from 'shared/Fields/Form'
-import {placesHeadingStyle, placesSearchFormStyle} from './styles'
+import {placesHeadingStyle, placesSearchFormStyle} from '../../features/place/views/styles'
 
-const Search = () => {
+const Search = ({theme}) => {
     const dispatch = useDispatch()
     const {coords} = useContext(mapContext)
     const {placesIndex} = useContext(searchContext)
@@ -30,7 +30,7 @@ const Search = () => {
     }, [])
 
     return (
-        <Div theme={placesHeadingStyle}>
+        <Div theme={{...placesHeadingStyle, ...theme}}>
             <Div>
                 Search Places
             </Div>

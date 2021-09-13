@@ -15,7 +15,7 @@ import {
     white
 } from 'utils/themer'
 
-const contentRow = 2
+const contentRow = 3
 
 
 export const pageFrameStyle = {
@@ -41,6 +41,12 @@ export const pageFrameStyle = {
         gridColumnSpan: 6,
         msGridRow: 1,
         gridRow: 1,
+    },
+    search: {
+        gridColumn: '1 / 7',
+        gridColumnSpan: 6,
+        msGridRow: 2,
+        gridRow: 2,
     },
     hlm: {
         msGridRow: 1,
