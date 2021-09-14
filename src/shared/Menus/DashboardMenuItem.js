@@ -19,11 +19,6 @@ const DashboardMenuItem = ({item}) => {
     const {url} = useSelector(state => state.site)
     const itemUrl = item?.url?.split('/').filter(u => u.length !== 0)
     const isActive = ({url, itemUrl}) => {
-        console.log('url', url)
-        console.log('itemUrl', itemUrl)
-        console.log('item', item)
-        console.log('------')
-
         if (!!itemUrl)
             switch (url.length) {
                 case 1:
@@ -33,7 +28,7 @@ const DashboardMenuItem = ({item}) => {
                 case 3:
                     return itemUrl[2] === url[2]
                 case 4:
-                    return itemUrl[1] === url[1]
+                    return itemUrl[1] === url[1] && itemUrl.length === 2
                 default:
                     return false
             }
