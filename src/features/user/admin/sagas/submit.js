@@ -89,6 +89,7 @@ export function* submitPlaceSuccess({payload}) {
     })
 
     if (!submission.error) {
+        //TODO: clear form
        // console.log('submission', submission)
         // yield put({
         //     type: 'user/getUser',

@@ -15,6 +15,7 @@ import {pageFrameStyle} from './styles'
 const PageFrame = () => {
     const {slug, url} = useSelector(state => state.site)
     const isAdmin = url.includes('admin') || url.includes('dashboard')
+    const isSign = url.includes('signup') || url.includes('signin')
 
     return (
         <Div theme={pageFrameStyle}>
@@ -22,7 +23,7 @@ const PageFrame = () => {
             <DocumentHead/>
             <Div id="header-left-margin" theme={pageFrameStyle.hlm}/>
             <Header theme={pageFrameStyle.header}/>
-            {!isAdmin && (
+            {(!isAdmin && !isSign) && (
                 <Search theme={pageFrameStyle.search}/>
             )}
             <Div id="header-right-margin" theme={pageFrameStyle.hrm}/>
