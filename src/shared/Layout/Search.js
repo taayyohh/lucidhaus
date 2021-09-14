@@ -1,11 +1,11 @@
 import {placeSearchField}                          from 'features/place/admin/fields/search'
+import {placesHeadingStyle, placesSearchFormStyle} from 'features/place/views/styles'
 import React, {useContext, useEffect}              from 'react'
 import {useDispatch, useSelector}                  from 'react-redux'
 import Div                                         from 'shared/Basic/Div'
 import {mapContext}                                from 'shared/Containers/MapController'
 import {searchContext}                             from 'shared/Containers/SearchController'
 import Form                                        from 'shared/Fields/Form'
-import {placesHeadingStyle, placesSearchFormStyle} from '../../features/place/views/styles'
 
 const Search = ({theme}) => {
     const dispatch = useDispatch()
@@ -14,7 +14,7 @@ const Search = ({theme}) => {
     const {slug, url} = useSelector(state => state.site)
 
     useEffect(() => {
-        if(url.includes('search'))
+        if (url.includes('search'))
             dispatch({
                 type: 'place/searchAllPlaces',
                 payload: {

@@ -26,6 +26,7 @@ const Submit = () => {
         categories: [],
         communitiesServed: [],
         name: '',
+        submittedBy: _id,
         website: '',
         isPendingSubmission: true,
     }
@@ -51,7 +52,6 @@ const Submit = () => {
     useEffect(() => {
         dispatch({type: 'place/listCommunitiesServed'})
         dispatch({type: 'place/listPlaceCategory'})
-
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])

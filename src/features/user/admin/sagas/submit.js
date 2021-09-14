@@ -17,6 +17,7 @@ export function* submitPlace({payload}) {
         communitiesServed,
         isPendingSubmission,
         name,
+        submittedBy,
         website,
     } = payload
 
@@ -33,6 +34,7 @@ export function* submitPlace({payload}) {
         {communitiesServed},
         {isPendingSubmission},
         {name},
+        {submittedBy},
         {website},
     ]
 
