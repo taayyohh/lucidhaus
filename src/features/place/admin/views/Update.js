@@ -7,6 +7,7 @@ import Form                           from 'shared/Fields/Form'
 import ContentWrapper                 from 'shared/Layout/ContentWrapper'
 import AdminDashboardWrapper          from 'shared/Layout/Dashboard/admin/AdminDashboardWrapper'
 import {adminFormWrapperStyle}        from 'shared/Layout/Dashboard/admin/styles'
+import {pendingFields}                from '../fields/pending'
 
 const Update = () => {
     const dispatch = useDispatch()
@@ -42,6 +43,7 @@ const Update = () => {
         photo,
         publicTransportation,
         signLanguageAccessible,
+        submittedBy,
         website,
         wheelchairElevator,
         wheelchairParking,
@@ -81,6 +83,7 @@ const Update = () => {
         photoFile: '',
         publicTransportation: publicTransportation,
         signLanguageAccessible: signLanguageAccessible,
+        submittedBy: submittedBy,
         website: website,
         wheelchairElevator: wheelchairElevator,
         wheelchairParking: wheelchairParking,
@@ -148,7 +151,7 @@ const Update = () => {
             <AdminDashboardWrapper>
                 <Form
                     initialValues={initialValues}
-                    fields={placeFields}
+                    fields={isPendingSubmission ? pendingFields : placeFields}
                     validationSchema={validatePlace}
                     dispatchAction={'place/updatePlace'}
                     formHeading={'Update Place'}

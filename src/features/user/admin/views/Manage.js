@@ -38,7 +38,7 @@ const Manage = () => {
         <ContentWrapper>
             <AdminDashboardWrapper>
                 <DashboardInfo
-                    heading={'Manage Users'}
+                    heading={`Manage Users - ${users.length} Total`}
                     description={'Type & Enter to search. Click to edit.'}
                 />
                 <LinkSwitch url={'/admin/users/taxonomy'} children={'Taxonomy'}/>

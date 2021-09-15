@@ -42,7 +42,13 @@ const initialState = {
         placeCategory: [],
     },
     algoliaPlaces: [],
-    createdFromBoone: []
+    createdFromBoone: [],
+    // introducing new organization of state -- use current object for info about currently loaded place
+    current: {
+        submittedBy: {
+
+        }
+    }
 }
 
 export const slice = createSlice({
@@ -162,6 +168,9 @@ export const slice = createSlice({
             // state.flaggedReviews = state.flaggedReviews.filter(item => item._id === action.payload._id).length < 1
             //     ? [...state.flaggedReviews, action.payload.e]
             //     : state.flaggedReviews
+        },
+        getSubmittedByUserSuccess: (state, action) => {
+            state.current.submittedBy = action.payload
         },
 
 

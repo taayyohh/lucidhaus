@@ -1,7 +1,7 @@
 import {IMAGE_UPLOAD, MULTI_SELECT, NUMBER, RICH_TEXT, SELECT, TEXT, TOGGLE, UPLOAD_PATHS, USER} from 'config/variables'
 import * as Yup                                                                                  from 'yup'
 
-export const placeFields = [
+export const pendingFields = [
     {
         name: 'name',
         inputLabel: 'Name',
@@ -164,7 +164,17 @@ export const placeFields = [
         name: 'wheelchairRestroom',
         inputLabel: 'Wheelchair Accessible Restrooms',
         type: TOGGLE
-    }
+    },
+    {
+        name: 'isPendingSubmission',
+        inputLabel: 'Pending Submission',
+        type: TOGGLE
+    },
+    {
+        name: 'submittedBy',
+        inputLabel: 'Submitted By',
+        type: USER
+    },
 ]
 
 

@@ -6,7 +6,7 @@ import {
     addFlaggedReview,
     addPlaceSubmissionToUserHistory,
     getPurchaseHistory,
-    getUser,
+    getUser, getUserById,
     getUsers,
     verifyUserEmail
 } from 'features/user/services'
@@ -173,6 +173,20 @@ export function* getUserDetail({payload}) {
         yield put({type: 'user/getUserFailure', error})
     }
 }
+
+export function* getSubmittedByUser({payload}) {
+    try {
+        const user = yield call(getUserById, payload)
+        if (!user.error) {
+            yield put({type: 'place/getSubmittedByUserSuccess', payload: user})
+        } else {
+            yield put({type: 'place/getSubmittedByUserFailure', payload: user})
+        }
+    } catch (error) {
+        yield put({type: 'place/getSubmittedByUserFailure', error})
+    }
+}
+
 
 export function* createVerificationToken({payload}) {
     const {_id, token, verificationToken} = payload
@@ -353,6 +367,10 @@ export function* watchGetUserSuccess() {
 
 export function* watchGetUser() {
     yield takeEvery('user/getUser', getUserDetail)
+}
+
+export function* watchGetSubmittedBy() {
+    yield takeEvery('user/getSubmittedByUser', getSubmittedByUser)
 }
 
 export function* watchCreateVerificationToken() {

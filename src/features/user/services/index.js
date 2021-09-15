@@ -73,6 +73,22 @@ export const getUser = ({slug, _id, token}) =>
             return error
         })
 
+export const getUserById = ({userId, _id, token}) =>
+    fetch(`${API}/user/by/id/${userId}/${_id}`, {
+        method: 'GET',
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+        }
+    })
+        .then(response => {
+            return response.json()
+        })
+        .catch(error => {
+            return error
+        })
+
 export const getPurchaseHistory = ({_id, token}) =>
     fetch(`${API}/orders/by/user/${_id}`, {
         method: 'GET',
