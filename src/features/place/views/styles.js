@@ -95,7 +95,7 @@ export const placesSearchFormStyle = {
     fieldset: {
         height: [52, .7, 52],
         marginBottom: 0,
-        maxWidth: [650, globals.style.layoutScalingValue, '100%'],
+        maxWidth: [750, globals.style.layoutScalingValue, '100%'],
     },
     inputLabelFocused: {
         transform: `translate(-6%, 14%) scale(${globals.style.inputLabelShrinkRatio})`

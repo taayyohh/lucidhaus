@@ -57,6 +57,18 @@ export const homeSearchWrapperStyle = {
 export const homeSearchStyle = {
     padding: 30,
     borderRadius: 10,
+    form: {
+        fieldset:{
+            height: [52, .7, 52],
+            marginBottom: 0,
+            maxWidth: [500, globals.style.layoutScalingValue, '100%'],
+        },
+        field: {
+            position: absolute,
+            left: 0,
+            top: 0
+        },
+    },
     mobile: {
         height: auto
     }

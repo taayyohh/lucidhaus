@@ -32,7 +32,7 @@ const Search = ({theme}) => {
     return (
         <Div theme={{...placeSearchFormWrapperStyle, ...theme}}>
             <Form
-                theme={placesSearchFormStyle}
+                theme={{...placesSearchFormStyle, ...theme.form}}
                 initialValues={{input: ''}}
                 fields={placeSearchField}
                 dispatchAction={'place/searchAllPlaces'}
