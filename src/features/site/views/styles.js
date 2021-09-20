@@ -14,6 +14,7 @@ import {
     uppercase,
     white
 }                              from 'utils/themer'
+import {placesSearchFormStyle} from '../../place/views/styles'
 
 export const homeImageWrapperStyle = {
     display: flex,
@@ -57,6 +58,7 @@ export const homeSearchWrapperStyle = {
 export const homeSearchStyle = {
     padding: 30,
     borderRadius: 10,
+    backgroundColor: colorPalette.forestGreen,
     form: {
         fieldset:{
             height: [52, .7, 52],
@@ -68,6 +70,9 @@ export const homeSearchStyle = {
             left: 0,
             top: 0
         },
+        button: {
+            ...placesSearchFormStyle.button,
+        }
     },
     mobile: {
         height: auto

@@ -15,7 +15,7 @@ import {pageFrameStyle} from './styles'
 const PageFrame = () => {
     const {slug, url} = useSelector(state => state.site)
     const isAdmin = url.includes('admin') || url.includes('dashboard')
-    const isSign = url.includes('signup') || url.includes('signin')
+    const isSign = url.includes('signup') || url.includes('signin') || url.includes('recover')
     const isHome = url.length === 0
 
     return (
