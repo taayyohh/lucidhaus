@@ -1,23 +1,35 @@
 import {chevronDown}                                                                                     from 'config/icons'
-import React, {useState}                                                                                 from 'react'
-import {useDispatch}                                                                                     from 'react-redux'
-import Div                                                                                               from 'shared/Basic/Div'
-import Icon                                                                                              from 'shared/Basic/Icon'
-import MotionDiv                                                                                         from 'shared/Basic/MotionDiv'
+import React, {useState}          from 'react'
+import {useDispatch, useSelector} from 'react-redux'
+import Div
+                                  from 'shared/Basic/Div'
+import Icon
+                                                                                                         from 'shared/Basic/Icon'
+import MotionDiv
+                                                                                                         from 'shared/Basic/MotionDiv'
 import {headerIconStyle}                                                                                 from 'shared/Layout/styles/header'
-import Span                                                                                              from '../Basic/Span'
+import {adminDashboardMenu}                                                                              from '../../config/menus/dashboard/admin'
+import {userDashboardMenu}                                                                               from '../../config/menus/dashboard/user'
+import {globals}                                                                                         from '../../config/styles'
+import Span
+                                                                                                         from '../Basic/Span'
+import HeaderDashboardMenu
+                                                                                                         from './HeaderDashboardMenu'
 import {headerAccountMenuButtonStyle, headerAccountMenuDropdownWrapperStyle, headerAccountMenuLinkStyle} from './styles'
 
 const HeaderMenuUserDropdown = ({nameFirst}) => {
+    const {isAdmin} = useSelector(state => state.user)
     const [isOpen, setIsOpen] = useState()
     const dispatch = useDispatch()
 
     const variants = {
         initial: {
-            height: 0
+            height: 0,
+            border: 'none'
         },
         open: {
-            height: 'auto'
+            height: 'auto',
+            border: `1px solid ${globals.colors.borderColor}`
         }
     }
 
@@ -38,11 +50,11 @@ const HeaderMenuUserDropdown = ({nameFirst}) => {
                 theme={headerAccountMenuDropdownWrapperStyle}
             >
                 <Div theme={{display: 'flex', padding: '20px', flexDirection: 'column', width: '100%'}}>
-                    <Div>Hi</Div>
-                    <Div>HEllo</Div>
-                    <Div>Hii</Div>
-                     <Span
-                        theme={headerAccountMenuLinkStyle}
+                    <HeaderDashboardMenu
+                        menu={isAdmin ? adminDashboardMenu : userDashboardMenu}
+                    />
+                    <Span
+                        theme={{...headerAccountMenuLinkStyle, ...headerAccountMenuLinkStyle.signOut}}
                         onClick={() => dispatch({type: 'user/signOut'})}
                     >
                         Sign Out

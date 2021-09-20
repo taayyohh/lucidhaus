@@ -284,11 +284,28 @@ export const headerAccountMenuDropdownWrapperStyle = {
     overflow: 'hidden',
     borderRadius: [5, .7, 5],
     height: 0,
+    left: 0,
+    top: [30, .7, 30],
+    textDecoration: none,
     hover: {
         cursor: pointer
     }
 }
 
 export const headerAccountMenuLinkStyle = {
-
+    textDecoration: none,
+    marginBottom: [4, .7, 4],
+    color: globals.colors.textColor,
+    signOut: {
+        color: colorPalette.red,
+        hover: {
+            color: colorPalette.red
+        }
+    },
+    hover: {
+        color: colorPalette.forestGreen,
+        textDecoration: 'underline'
+    }
 }
+
+export const headerDashboardMenuLinkStyle = {}

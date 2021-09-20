@@ -207,6 +207,7 @@ export const cartNumberStyle = {
 }
 
 export const headerIconStyle = {
+    alignSelf: center,
     size: [15, .7, 15],
     color: black,
     marginLeft: [5, .7, 5],

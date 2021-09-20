@@ -31,9 +31,6 @@ const Search = ({theme}) => {
 
     return (
         <Div theme={{...placesHeadingStyle, ...theme}}>
-            <Div>
-                Search Places
-            </Div>
             <Form
                 theme={placesSearchFormStyle}
                 initialValues={{input: ''}}
