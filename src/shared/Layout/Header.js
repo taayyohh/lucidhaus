@@ -5,9 +5,7 @@ import {useDispatch, useSelector} from 'react-redux'
 import Div                        from 'shared/Basic/Div'
 import Img                        from 'shared/Basic/Img'
 import LinkSwitch                 from 'shared/Basic/LinkSwitch'
-import Span                       from 'shared/Basic/Span'
 import HeaderMenu                 from 'shared/Menus/HeaderMenu'
-import HeaderMenuControls         from 'shared/Menus/HeaderMenuControls'
 import {
     headerInnerStyle,
     headerLogoLinkStyle,
@@ -18,9 +16,6 @@ import {
 }                                 from './styles/header'
 
 const Header = ({theme}) => {
-    const {isAuthenticated} = useSelector(state => state.user)
-    const dispatch = useDispatch()
-
     return (
         <Div as="header" theme={{...headerStyle, ...theme}}>
             <Div theme={headerTopStyle}>
@@ -31,30 +26,6 @@ const Header = ({theme}) => {
                     >
                         Help
                     </LinkSwitch>
-                    {(isAuthenticated && (
-                        <Span
-                            theme={headerTopStyle.link}
-                            onClick={() => dispatch({type: 'user/signOut'})}
-                        >
-                            Sign Out
-                        </Span>
-                    )) || (
-                        <LinkSwitch
-                            url={'/signin'}
-                            theme={headerTopStyle.link}
-                        >
-                            Signin
-                        </LinkSwitch>
-                    )}
-                    {!isAuthenticated && (
-                        <LinkSwitch
-                            url={'/signup'}
-                            theme={headerTopStyle.signUp}
-                        >
-                            Sign Up
-                        </LinkSwitch>
-                    )}
-                    <HeaderMenuControls/>
                 </Div>
             </Div>
             <Div theme={headerInnerStyle}>

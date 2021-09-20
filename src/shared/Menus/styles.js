@@ -267,3 +267,28 @@ export const dashboardActiveIndicator = {
     right: [-20, .7, -20],
     backgroundColor: colorPalette.honeyYellow
 }
+
+export const headerAccountMenuButtonStyle = {
+    textTransform: 'none',
+    size: [14, .7, 14],
+    weight: 500,
+    hover: {
+        cursor: pointer
+    }
+}
+
+export const headerAccountMenuDropdownWrapperStyle = {
+    position: absolute,
+    width: '100%',
+    background: '#fff',
+    overflow: 'hidden',
+    borderRadius: [5, .7, 5],
+    height: 0,
+    hover: {
+        cursor: pointer
+    }
+}
+
+export const headerAccountMenuLinkStyle = {
+
+}

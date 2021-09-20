@@ -29,9 +29,9 @@ export const colorPalette = {
 
 export const globals = {
     fonts: {
-        fancy: '\'Shrikhand\', cursive',
-        sans: '\'Teko\', sans-serif',
-        serif: "'EB Garamond', serif"
+        fancy: '\'Be Vietnam Pro\', sans-serif',
+        sans: '\'Be Vietnam Pro\', sans-serif',
+        serif: "'Be Vietnam Pro', sans-serif"
     },
     style: {
         layoutScalingValue: .45,
@@ -51,6 +51,7 @@ export const globals = {
         }
     },
     colors: {
+        textColor: colorPalette.black,
         linkColor: colorPalette.seaGreen,
         linkHoverColor: colorPalette.paleGreen,
         inputLabelColor: colorPalette.black,

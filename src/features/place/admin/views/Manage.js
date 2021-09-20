@@ -43,7 +43,7 @@ const Manage = () => {
                 <LinkSwitch url={'/admin/place/taxonomy'} children={'Taxonomy'}/>
 
                 {isIndexed && (
-                    <List places={places}/>
+                    <List />
                 )}
             </AdminDashboardWrapper>
         </ContentWrapper>
