@@ -1,12 +1,29 @@
-import {colorPalette, globals}                                                     from 'config/styles'
-import {CDN}                                                                             from 'config/variables'
-import {center, column, flex, inlineFlex, none, pointer, relative, sv, uppercase, white} from 'utils/themer'
+import {colorPalette, globals} from 'config/styles'
+import {CDN}                   from 'config/variables'
+import {
+    absolute,
+    auto,
+    center,
+    column,
+    flex,
+    flexStart,
+    none,
+    pointer,
+    relative,
+    sv,
+    uppercase,
+    white
+}                              from 'utils/themer'
 
 export const homeImageWrapperStyle = {
+    display: flex,
+    alignItems: center,
+    justifyContent: center,
     height: '100vh',
     width: '100vw',
+    background: '#000',
     mobile: {
-        height: '35vh'
+        height: '50vh'
     }
 }
 
@@ -19,10 +36,45 @@ export const homeImageStyle = {
     display: flex,
     alignItems: center,
     justifyContent: center,
-    backgroundImage: `url(${CDN}assets/ij-home+2)`
+    backgroundImage: `url(${CDN}assets/ij-home+2)`,
+    opacity: .4
+}
+
+export const homeSearchWrapperStyle = {
+    display: flex,
+    flexDirection: column,
+    position: absolute,
+    marginTop: [-250, .7, -25],
+    padding: [40, .7, 40],
+    borderRadius: [10, .7, 10],
+    maxWidth: [800, globals.style.layoutScalingValue, '100%'],
+    textAlign: 'center',
+    mobile: {
+        width: '100%'
+    }
+}
+
+export const homeSearchStyle = {
+    padding: 30,
+    borderRadius: 10,
+    mobile: {
+        height: auto
+    }
+}
+
+export const homeHeadlineStyle = {
+    weight: 800,
+    marginBottom: 20,
+    lineHeight: [80, .7, 38],
+    size: [62, .7, 26],
+    color: '#fff',
+    mobile: {
+        marginBottom: 15
+    }
 }
 
 export const homeQuoteStyle = {
+    display: none,
     position: relative,
     zIndex: 1,
     width: [1107, globals.style.layoutScalingValue, '100%'],
@@ -31,11 +83,11 @@ export const homeQuoteStyle = {
     borderRadius: `${sv(10)} ${sv(10)} ${sv(10)} 0`,
     borderRadiusLeft: 0,
     paddingLeft: [90, globals.style.layoutScalingValue, 25],
-    size: [96, globals.style.layoutScalingValue, 54],
-    lineHeight: [110, globals.style.layoutScalingValue, 60],
+    size: [54, globals.style.layoutScalingValue, 32],
+    lineHeight: [110, globals.style.layoutScalingValue, 45],
     textTransform: uppercase,
     backgroundColor: colorPalette.forestGreen,
-    display: inlineFlex,
+    // display: inlineFlex,
     alignItems: center,
     justifyContent: center,
     color: white,
@@ -81,16 +133,23 @@ export const homeSignupWrapperStyle = {
 }
 
 export const homeSignupQuoteWrapperStyle = {
-    width: [670, globals.style.layoutScalingValue, '100%'],
-    paddingTop: [70, globals.style.layoutScalingValue],
-    paddingLeft: [108, globals.style.layoutScalingValue],
-    paddingRight: [108, globals.style.layoutScalingValue],
+    width: [1200, globals.style.layoutScalingValue, '100%'],
+    background: white,
+    paddingLeft: [108, globals.style.layoutScalingValue, '0'],
+    paddingRight: [108, globals.style.layoutScalingValue, '0'],
+    paddingTop: [50, globals.style.layoutScalingValue, 50],
+    paddingBottom: [50, globals.style.layoutScalingValue, 50],
+    marginTop: [80, .7, '0'],
+    borderRadius: [10, .7, 10],
+    border: `1px solid ${globals.colors.borderColor}`,
     margin: '0 auto'
 }
 
 export const homeSignupQuoteStyle = {
-    size: [48, globals.style.layoutScalingValue, 24],
-    lineHeight: [55, globals.style.layoutScalingValue, 30],
+    size: [19, globals.style.layoutScalingValue, 19],
+    width: '70%',
+    margin: '0 auto',
+    // lineHeight: [55, globals.style.layoutScalingValue, 30],
     paddingLeft: 0,
     child: {
         selector: '> div',
@@ -99,10 +158,11 @@ export const homeSignupQuoteStyle = {
 }
 
 export const homeSignupButtonStyle = {
-    width : '100%',
-    height: [80, globals.style.layoutScalingValue, 50   ],
+    alignSelf: flexStart,
+    width: '100%',
+    height: [80, globals.style.layoutScalingValue, 50],
     marginTop: [30, .7, 30],
-    size: [32, .7, 24],
+    size: [20, .7, 20],
     weight: 700,
     lineHeight: [38, .7, 22],
     textTransform: uppercase,

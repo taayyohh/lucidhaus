@@ -69,7 +69,6 @@ export const genericButtonStyle = {
     letterSpacing: [1, .7, 1],
     cursor: pointer,
     marginTop: 20,
-    textTransform: uppercase,
     size: [16, .7, 16],
     transition: 'background-color 150ms ease, border-color 150ms ease, color 150ms ease',
     mobile: {

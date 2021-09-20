@@ -40,7 +40,7 @@ export const headerMenuPanelStyle = {
     boxSizing: borderBox,
     zIndex: 22,
     mobile: {
-        top: 50,
+        top: 86,
         left: 0
     },
     scrollBar: {

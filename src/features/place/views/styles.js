@@ -64,14 +64,29 @@ export const placeDetailStyle = {
     }
 }
 
+export const placeSearchFormWrapperStyle = {
+    background: colorPalette.forestGreen,
+    color: white,
+    display: flex,
+    alignItems: center,
+    justifyContent: 'space-around',
+    height: [100, .7, 'auto'],
+    size: 58,
+    lineHeight: 70,
+    mobile: {
+        padding: '30px'
+    }
+}
+
 export const placesSearchFormStyle = {
     flexDirection: row,
     border: 0,
     padding: 0,
-    width: [800, globals.style.layoutScalingValue, '100%'],
+    width: [900, globals.style.layoutScalingValue, '100%'],
     margin: '0',
+    weight: 400,
     mobile: {
-        flexDirection: column
+        flexDirection: column,
     },
     field: {
         position: absolute,
@@ -91,7 +106,9 @@ export const placesSearchFormStyle = {
         justifyContent: center,
         marginTop: [0, .7, 20],
         height: [52, .7, 52],
-        width: [150, globals.style.layoutScalingValue, 150],
+        minWidth: [130, globals.style.layoutScalingValue, 130],
+        width: auto,
+        //width: [150, globals.style.layoutScalingValue, 150],
         backgroundColor: colorPalette.honeyYellow,
         borderColor: colorPalette.honeyYellow,
         mobile: {

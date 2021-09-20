@@ -35,7 +35,7 @@ export const globals = {
     },
     style: {
         layoutScalingValue: .45,
-        inputLabelShrinkRatio: .9,
+        inputLabelShrinkRatio: .75,
         siteInnerWidth: 1570,
         contentWidth: 1320,
         headerHeight: 100,
@@ -54,7 +54,7 @@ export const globals = {
         textColor: colorPalette.black,
         linkColor: colorPalette.seaGreen,
         linkHoverColor: colorPalette.paleGreen,
-        inputLabelColor: colorPalette.black,
+        inputLabelColor: colorPalette.darkGray,
         menuPanelCloseButtonBackgroundColor: colorPalette.honeyYellow,
         transitionOverlayBackground: colorPalette.grayPurple,
         buttonHoverColor: colorPalette.grayPurple,

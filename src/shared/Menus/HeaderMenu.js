@@ -14,10 +14,10 @@ const HeaderMenu = () => {
 
     return (
         <Div theme={headerMenuStyle}>
-            {/*{!isMobile && (*/}
-            {/*    <HeaderMenuItems items={headerMenu}/>*/}
-            {/*)}*/}
-            <HeaderMenuControls/>
+            {!isMobile && (
+                <HeaderMenuControls/>
+            )}
+
 
             {isMobile && (
                 <MenuToggle

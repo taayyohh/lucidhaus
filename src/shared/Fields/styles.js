@@ -43,8 +43,9 @@ export const defaultFormStyle = {
         margin: 0,
         fontFamily: globals.fonts.sans,
         alignSelf: flexStart,
-        size: [60, .7, 38],
-        weight: 300,
+        size: [30, .7, 30],
+        letterSpacing: [-1.75, .7, -0.5],
+        weight: 800,
         marginBottom: 20,
         empty: {
             display: none
@@ -96,7 +97,7 @@ export const defaultInputStyle = {
     font: globals.fonts.sans,
     size: [16, .7, 16],
     lineHeight: [16, .7, 16],
-    fontWeight: 300,
+    fontWeight: 400,
     textOverflow: 'ellipsis',
     backgroundColor: transparent,
     color: globals.colors.black,
@@ -111,6 +112,7 @@ export const defaultInputStyle = {
     placeholder: {
         color: transparent,
         textTransform: none,
+        weight: 500
     },
     focus: {
         outline: 'none'
@@ -140,12 +142,12 @@ export const defaultInputLabelStyle = {
     transform: 'translate(0px, 100%) scale(1)',
     zIndex: 1,
     border: 0,
-    weight: 300,
+    weight: 500,
     transition: 'color 300ms cubic-bezier(0.0, 0, 0.3, 1) 0ms, ' +
         'transform 300ms cubic-bezier(0.0, 0, 0.3, 1) 0ms',
     transformOrigin: 'top left',
     pointerEvents: none,
-    size: [16, .7, 16],
+    size: [14, .7, 14],
     lineHeight: [16, .7, 16]
 }
 
