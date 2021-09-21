@@ -3,8 +3,8 @@ import {
     borderBox,
     column,
     flex,
-    sv
-}                from 'utils/themer'
+    sv, white
+} from 'utils/themer'
 
 export const dashboardStyle = {
     display: 'grid',
@@ -32,8 +32,8 @@ export const dashboardContentInnerStyle = {
 
 }
 export const dashboardHeadingStyle = {
-    size: [42, .7, 42],
-    weight: 400
+    size: [32, .7, 32],
+    weight: 800
 }
 export const dashboardDescriptionStyle = {
     font: globals.fonts.serif,

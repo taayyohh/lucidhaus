@@ -8,6 +8,7 @@ import ContentWrapper                 from 'shared/Layout/ContentWrapper'
 import AdminDashboardWrapper          from 'shared/Layout/Dashboard/admin/AdminDashboardWrapper'
 import {adminFormWrapperStyle}        from 'shared/Layout/Dashboard/admin/styles'
 import Identity                       from './Indentity'
+import {userContentWrapperStyle}      from './styles'
 
 const Update = () => {
     const dispatch = useDispatch()
@@ -62,7 +63,7 @@ const Update = () => {
     }, [])
 
     return (
-        <ContentWrapper>
+        <ContentWrapper theme={userContentWrapperStyle}>
             <AdminDashboardWrapper>
                 <Form
                     initialValues={initialValues}
