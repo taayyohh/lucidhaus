@@ -1,18 +1,19 @@
-import {userDashboardMenu} from 'config/menus/dashboard/user'
-import {placeCardStyle}    from 'features/place/views/styles'
-import React               from 'react'
-import {useSelector}       from 'react-redux'
-import Div                 from 'shared/Basic/Div'
-import GenericCard         from 'shared/Cards/GenericCard'
-import ContentWrapper      from 'shared/Layout/ContentWrapper'
-import DashboardInfo       from 'shared/Layout/Dashboard/DashboardInfo'
-import DashboardWrapper    from 'shared/Layout/Dashboard/DashboardWrapper'
+import {userDashboardMenu}       from 'config/menus/dashboard/user'
+import {placeCardStyle}          from 'features/place/views/styles'
+import React                     from 'react'
+import {useSelector}             from 'react-redux'
+import Div                       from 'shared/Basic/Div'
+import GenericCard               from 'shared/Cards/GenericCard'
+import ContentWrapper            from 'shared/Layout/ContentWrapper'
+import DashboardInfo             from 'shared/Layout/Dashboard/DashboardInfo'
+import DashboardWrapper          from 'shared/Layout/Dashboard/DashboardWrapper'
+import {userContentWrapperStyle} from './styles'
 
 const Places = () => {
     const {bookmarks, isVerified} = useSelector(state => state.user)
 
     return (
-        <ContentWrapper>
+        <ContentWrapper theme={userContentWrapperStyle}>
             <DashboardWrapper menu={userDashboardMenu}>
                 <DashboardInfo
                     heading={'Your Saved Places'}

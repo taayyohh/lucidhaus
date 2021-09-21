@@ -6,6 +6,7 @@ import ContentWrapper                           from 'shared/Layout/ContentWrapp
 import AdminDashboardWrapper                    from 'shared/Layout/Dashboard/admin/AdminDashboardWrapper'
 import DashboardInfo                            from 'shared/Layout/Dashboard/DashboardInfo'
 import List                                     from './List'
+import {userContentWrapperStyle}                from './styles'
 
 const Manage = () => {
     const {users} = useSelector(state => state.user)
@@ -35,7 +36,7 @@ const Manage = () => {
     }, [users])
 
     return (
-        <ContentWrapper>
+        <ContentWrapper theme={userContentWrapperStyle}>
             <AdminDashboardWrapper>
                 <DashboardInfo
                     heading={`Manage Users - ${users.length} Total`}

@@ -15,6 +15,7 @@ import DashboardInfo
 import DashboardWrapper
                                                                                                  from 'shared/Layout/Dashboard/DashboardWrapper'
 import {white}                                                                                   from 'utils/themer'
+import {userContentWrapperStyle}                                                                 from '../../admin/views/styles'
 import {userDashboardBookmarkStyle, userDashboardInfoWrapperStyle, userDashboardRTEHeadingStyle} from './styles'
 
 const UserDashboard = () => {
@@ -43,7 +44,7 @@ const UserDashboard = () => {
     }, [])
 
     return (
-        <ContentWrapper>
+        <ContentWrapper theme={userContentWrapperStyle}>
             <DashboardWrapper menu={userDashboardMenu}>
                 <DashboardInfo
                     heading={`Hey, ${nameFirst}`}

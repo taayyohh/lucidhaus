@@ -1,14 +1,15 @@
-import {userDashboardMenu}        from 'config/menus/dashboard/user'
-import {globals}                  from 'config/styles'
-import {userFields}               from 'features/user/admin/fields'
-import React, {useEffect}         from 'react'
-import {useDispatch, useSelector} from 'react-redux'
-import Div                        from 'shared/Basic/Div'
-import Form                       from 'shared/Fields/Form'
-import ContentWrapper             from 'shared/Layout/ContentWrapper'
-import DashboardWrapper           from 'shared/Layout/Dashboard/DashboardWrapper'
-import Identity                   from './Indentity'
-import {userProfileFormStyle}     from './styles'
+import {userDashboardMenu}          from 'config/menus/dashboard/user'
+import {globals}                    from 'config/styles'
+import {userFields}                 from 'features/user/admin/fields'
+import React, {useEffect}           from 'react'
+import {useDispatch, useSelector}   from 'react-redux'
+import Div                          from 'shared/Basic/Div'
+import Form                         from 'shared/Fields/Form'
+import ContentWrapper               from 'shared/Layout/ContentWrapper'
+import DashboardWrapper             from 'shared/Layout/Dashboard/DashboardWrapper'
+import {profileContentWrapperStyle} from 'shared/Menus/styles'
+import Identity                                        from './Indentity'
+import {userContentWrapperStyle, userProfileFormStyle} from './styles'
 
 const Profile = () => {
     const dispatch = useDispatch()
@@ -47,7 +48,7 @@ const Profile = () => {
     }, [])
 
     return (
-        <ContentWrapper>
+        <ContentWrapper theme={userContentWrapperStyle}>
             <DashboardWrapper menu={userDashboardMenu}>
                 <Div theme={{
                     weight: 300,

@@ -179,22 +179,6 @@ export const dashboardMenuStyle = {
     }
 }
 
-export const dashboardUserMenuToggleStyle = {
-    zIndex: 3,
-    position: absolute,
-    left: 0,
-    top: 14,
-    mobile: {
-        left: 0,
-        width: '100%',
-        background: '#f2f2f2',
-        top: 0,
-        paddingLeft: 37,
-        paddingTop: 5,
-        borderBottom: `1px solid #d9dce0`,
-    }
-}
-
 export const dashboardMenuMobileStyle = {
     overflow: 'hidden',
     position: absolute,
@@ -209,9 +193,8 @@ export const dashboardMenuMobileStyle = {
 }
 
 export const dashboardMenuInnerStyle = {
-    width: [300, globals.style.layoutScalingValue, '100%'],
+    width: [200, globals.style.layoutScalingValue, '100%'],
     position: 'fixed',
-    borderRight: '1px solid #dadce0',
     mobile: {
         background: '#fff',
         position: absolute,
@@ -224,12 +207,10 @@ export const dashboardMenuItemStyle = isActive => {
     return {
         display: flex,
         alignItems: center,
-        borderBottom: '1px solid #dadce0',
         boxSizing: borderBox,
         paddingLeft: [10, globals.style.layoutScalingValue, 10],
         paddingRight: [10, globals.style.layoutScalingValue, 10],
-        paddingTop: [20, .7, 20],
-        paddingBottom: [20, .7, 20],
+        paddingBottom: [10, .7, 10],
         lineHeight: [20, .7, 20],
         color: !isActive ? black : colorPalette.honeyYellow,
         textDecoration: none,
@@ -248,8 +229,9 @@ export const dashboardMenuItemStyle = isActive => {
 }
 
 export const dashboardItemTitleStyle = {
-    size: [18, .7, 18],
-    lineHeight: [18, .7, 18]
+    textTransform: none,
+    size: [15, .7, 15],
+    weight: 500
 }
 
 export const dashboardIconWrapperStyle = {
@@ -316,3 +298,4 @@ export const headerDashboardMenuLinkStyle = {}
 export const searchMenuSearchStyle = {
     background: none
 }
+

@@ -44,11 +44,6 @@ const DashboardMenuItem = ({item}) => {
                     : null
             }
         >
-            {item.icon && (
-                <Div theme={dashboardIconWrapperStyle}>
-                    <Icon icon={item.icon}/>
-                </Div>
-            )}
             <Div theme={dashboardItemTitleStyle}>
                 {item.title}
             </Div>

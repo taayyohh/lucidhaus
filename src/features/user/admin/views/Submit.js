@@ -7,6 +7,7 @@ import Form                                     from 'shared/Fields/Form'
 import ContentWrapper                           from 'shared/Layout/ContentWrapper'
 import {adminFormWrapperStyle}                  from 'shared/Layout/Dashboard/admin/styles'
 import DashboardWrapper                         from 'shared/Layout/Dashboard/DashboardWrapper'
+import {userContentWrapperStyle}                from './styles'
 
 const Submit = () => {
     const dispatch = useDispatch()
@@ -73,7 +74,7 @@ const Submit = () => {
 
 
     return (
-        <ContentWrapper>
+        <ContentWrapper theme={userContentWrapperStyle}>
             <DashboardWrapper menu={userDashboardMenu}>
                 <Div>
                     <Form

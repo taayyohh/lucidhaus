@@ -5,6 +5,7 @@ import LinkSwitch                 from 'shared/Basic/LinkSwitch'
 import ContentWrapper             from 'shared/Layout/ContentWrapper'
 import AdminDashboardWrapper      from 'shared/Layout/Dashboard/admin/AdminDashboardWrapper'
 import DashboardInfo              from 'shared/Layout/Dashboard/DashboardInfo'
+import {adminContentWrapperStyle} from './styles'
 
 const Manage = () => {
     const {places, pendingPlaces} = useSelector(state => state.place)
@@ -33,7 +34,7 @@ const Manage = () => {
     }, [places])
 
     return (
-        <ContentWrapper>
+        <ContentWrapper theme={adminContentWrapperStyle}>
             <AdminDashboardWrapper>
                 <DashboardInfo
                     heading={'Manage Pending Places'}

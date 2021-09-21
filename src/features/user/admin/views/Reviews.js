@@ -6,6 +6,7 @@ import ContentWrapper             from 'shared/Layout/ContentWrapper'
 import DashboardInfo              from 'shared/Layout/Dashboard/DashboardInfo'
 import DashboardWrapper           from 'shared/Layout/Dashboard/DashboardWrapper'
 import Review                     from './Review'
+import {userContentWrapperStyle}  from './styles'
 
 const Reviews = () => {
     const dispatch = useDispatch()
@@ -18,7 +19,7 @@ const Reviews = () => {
     }, [])
 
     return (
-        <ContentWrapper>
+        <ContentWrapper theme={userContentWrapperStyle}>
             <DashboardWrapper menu={userDashboardMenu}>
                 <DashboardInfo
                     heading={'Your Reviews'}

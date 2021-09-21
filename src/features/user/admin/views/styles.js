@@ -1,5 +1,6 @@
 import {globals}                     from 'config/styles'
 import {flex, flexStart, none, wrap} from 'utils/themer'
+import {profileContentWrapperStyle}  from '../../../../shared/Menus/styles'
 
 export const userProfileFormStyle = {
     multiSelect: {
@@ -57,4 +58,9 @@ export const multiSelectInnerWrapperStyle = {
 export const multiSelectHelperTextStyle = {
     size: [22, .7, 22],
     marginLeft: [5, .7, 5]
+}
+
+
+export const userContentWrapperStyle = {
+    width: [1280, globals.style.layoutScalingValue, '100%']
 }
