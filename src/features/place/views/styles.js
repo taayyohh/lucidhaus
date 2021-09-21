@@ -18,15 +18,21 @@ import {
 
 export const placesWrapperStyle = {
     display: 'grid',
-    gridTemplateColumns: '1fr 1fr',
+    gridTemplateColumns: '1fr 1fr 1fr',
     gridGap: sv(50, globals.style.layoutScalingValue),
     margin: '0 auto',
-    marginTop: [100, .7, 100],
-    maxWidth: [1200, globals.style.layoutScalingValue, '100%'],
+    marginTop: [15, .7, 15],
+    maxWidth: [1280, globals.style.layoutScalingValue, '100%'],
     mobile: {
         display: flex,
         flexDirection: column
     }
+}
+
+export const placeContentWrapperStyle = {
+    maxWidth: [1280, globals.style.layoutScalingValue, '100%'],
+    marginBottom: [40, .7, 20],
+    marginTop: [30, .7, '0'],
 }
 
 export const placesHeadingStyle = {
@@ -46,18 +52,24 @@ export const placesHeadingStyle = {
     }
 }
 
-export const placeContentWrapperStyle = {
-    marginBottom: [40, .7, 20],
-    //marginTop: [-50, .7, '0'],
+export const placeSearchResultsQueryTextStyle = {
+    size: [24, .7, 20],
+    marginBottom: [30, .7, 30],
+    //lineHeight: [42, .7, 22],
+    child: {
+        selector: 'em',
+        size: [19, .7, 19]
+    }
 }
 
 export const placeDetailStyle = {
-    maxWidth: [800, globals.style.layoutScalingValue, '100%'],
+    //maxWidth: [800, globals.style.layoutScalingValue, '100%'],
     margin: '0 auto',
     font: globals.fonts.serif,
-    size: [20, .7, 20],
+    size: [16, .7, 16],
     lineHeight: [28, .7, 28],
     marginTop: [40, .7, 30],
+    marginBottom: [30, .7, 30],
     mobile: {
         paddingLeft: 25,
         paddingRight: 25
@@ -129,25 +141,23 @@ export const placesSearchFormStyle = {
 
 export const placeCardStyle = {
     backgroundColor: white,
-    textAlign: center,
     hover: {
         color: colorPalette.paleGreen
     },
     textWrapper: {
-        paddingLeft: [50, globals.style.layoutScalingValue, 20],
-        paddingRight: [50, globals.style.layoutScalingValue, 20]
+        paddingLeft: [20, globals.style.layoutScalingValue, 20],
+        paddingRight: [20, globals.style.layoutScalingValue, 20]
     },
     name: {
-        size: [32, .7, 28],
+        size: [20, .7, 20],
         lineHeight: [24, .7, 32],
+        weight: 400,
         width: '100%',
-        textAlign: center
     },
     address: {
-        size: [22, .7, 22],
+        size: [16, .7, 16],
         lineHeight: [20, .7, 20],
         width: '100%',
-        textAlign: center
     },
     child: {
         selector: 'img',

@@ -1,5 +1,10 @@
-import {placeCardStyle, placeContentWrapperStyle, placeDetailStyle} from 'features/place/views/styles'
-import React, {useEffect, useState}                                 from 'react'
+import {
+    placeCardStyle,
+    placeContentWrapperStyle,
+    placeDetailStyle,
+    placeSearchResultsQueryTextStyle
+}                                   from 'features/place/views/styles'
+import React, {useEffect, useState} from 'react'
 import {useDispatch, useSelector}                                   from 'react-redux'
 import Div                                                          from 'shared/Basic/Div'
 import GenericCard                                                  from 'shared/Cards/GenericCard'
@@ -52,12 +57,6 @@ const Places = () => {
         <ContentWrapper theme={placeContentWrapperStyle}>
             <Div>
                 <Div>
-
-                    {(slug !== 'places' && (
-                        <Div>
-                            Search results for: {slug ? unslugify(slug) : ''}
-                        </Div>
-                    ))}
                     <Div theme={placeDetailStyle}>
                         By reviewing businesses, you help other members of your
                         community know where you felt safe, welcomed, and celebrated!
@@ -66,6 +65,11 @@ const Places = () => {
                     </Div>
                 </Div>
 
+                {(slug !== 'places' && (
+                    <Div theme={placeSearchResultsQueryTextStyle}>
+                        <em>Search results for</em>: {slug ? unslugify(slug) : ''}
+                    </Div>
+                ))}
                 <Div theme={placesWrapperStyle}>
                     {allPlaces.length > 0 && allPlaces.map((place) => {
                         if (!!place.uuid) { // if place does not exist in Inclusive Guide database
