@@ -28,16 +28,13 @@ const Home = () => {
             <Div theme={homeImageWrapperStyle}>
                 <Div theme={homeImageStyle}/>
                 <Div theme={homeSearchWrapperStyle}>
-                    <Div theme={homeHeadlineStyle}>Celebrating the places that celebrate you</Div>
+                    <Div theme={homeHeadlineStyle}>
+                        Celebrating the places that celebrate you
+                    </Div>
                     <Search
                         theme={homeSearchStyle}
                     />
                 </Div>
-
-
-            </Div>
-            <Div theme={homeQuoteStyle}>
-                <Div>Celebrating the places that celebrate <span>You</span></Div>
             </Div>
             <Div theme={homeSignupWrapperStyle}>
                 <Div theme={homeSignupQuoteWrapperStyle}>

@@ -24,7 +24,7 @@ export const colorPalette = {
     seaFoamGreen: '#B7DAC9',
     paleGreen: '#80A390',
     honeyYellow: '#FFB400',
-    darkHoneyYellow: '#8f6502'
+    darkHoneyYellow: '#cd9010'
 }
 
 export const globals = {

@@ -58,7 +58,7 @@ export const homeSearchWrapperStyle = {
 export const homeSearchStyle = {
     padding: 30,
     borderRadius: 10,
-    backgroundColor: colorPalette.forestGreen,
+    backgroundColor: colorPalette.seaGreen,
     form: {
         fieldset:{
             height: [52, .7, 52],
