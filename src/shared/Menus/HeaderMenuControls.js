@@ -1,5 +1,5 @@
 import {search}                        from 'config/icons'
-import React                           from 'react'
+import React, {useContext}             from 'react'
 import {useSelector}                   from 'react-redux'
 import Div                             from 'shared/Basic/Div'
 import Icon                            from 'shared/Basic/Icon'
@@ -12,11 +12,15 @@ import {
     headerSearchIconStyle,
     headerSearchWrapperStyle
 }                                      from 'shared/Layout/styles/header'
+import {menuPanelContext}              from '../Containers/MenuPanelController'
 import HeaderMenuUserDropdown          from './HeaderMenuUserDropdown'
+import MenuToggle                      from './MenuToggle'
 import {headerMenuControlWrapperStyle} from './styles'
 
 const HeaderMenuControls = () => {
     const {isAuthenticated, isAdmin, nameFirst} = useSelector(state => state.user)
+    const {setPanel, currentPanel} = useContext(menuPanelContext)
+
 
     return (
         <Div theme={headerMenuControlWrapperStyle}>
@@ -51,7 +55,15 @@ const HeaderMenuControls = () => {
                         </LinkSwitch>
                     </Div>
                 )}
-                <Div theme={headerSearchWrapperStyle}>
+                <Div
+                    theme={headerSearchWrapperStyle}
+                    onClick={
+                        () => setPanel(
+                            !currentPanel
+                                ? 'search-menu'
+                                : null
+                        )}
+                >
                     <Icon
                         icon={search}
                         theme={headerSearchIconStyle}

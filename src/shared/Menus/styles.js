@@ -309,3 +309,7 @@ export const headerAccountMenuLinkStyle = {
 }
 
 export const headerDashboardMenuLinkStyle = {}
+
+export const searchMenuSearchStyle = {
+    background: none
+}

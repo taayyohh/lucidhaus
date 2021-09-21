@@ -1,11 +1,11 @@
-import {placeSearchField}                                                       from 'features/place/admin/fields/search'
-import {placeSearchFormWrapperStyle, placesHeadingStyle, placesSearchFormStyle} from 'features/place/views/styles'
-import React, {useContext, useEffect}                                           from 'react'
-import {useDispatch, useSelector}                  from 'react-redux'
-import Div                                         from 'shared/Basic/Div'
-import {mapContext}                                from 'shared/Containers/MapController'
-import {searchContext}                             from 'shared/Containers/SearchController'
-import Form                                        from 'shared/Fields/Form'
+import {placeSearchField}                                   from 'features/place/admin/fields/search'
+import {placeSearchFormWrapperStyle, placesSearchFormStyle} from 'features/place/views/styles'
+import React, {useContext, useEffect}                       from 'react'
+import {useDispatch, useSelector}                           from 'react-redux'
+import Div                                                  from 'shared/Basic/Div'
+import {mapContext}                                         from 'shared/Containers/MapController'
+import {searchContext}                                      from 'shared/Containers/SearchController'
+import Form                                                 from 'shared/Fields/Form'
 
 const Search = ({theme}) => {
     const dispatch = useDispatch()
@@ -47,6 +47,12 @@ const Search = ({theme}) => {
             />
         </Div>
     )
+}
+
+Search.defaultProps = {
+    theme: {
+        form: {}
+    },
 }
 
 export default Search
