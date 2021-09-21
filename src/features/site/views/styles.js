@@ -150,6 +150,8 @@ export const homeSignupWrapperStyle = {
 }
 
 export const homeSignupQuoteWrapperStyle = {
+    display: flex,
+    flexDirection: column,
     width: [1200, globals.style.layoutScalingValue, '100%'],
     background: white,
     paddingLeft: [108, globals.style.layoutScalingValue, '0'],
@@ -163,9 +165,10 @@ export const homeSignupQuoteWrapperStyle = {
 }
 
 export const homeSignupQuoteStyle = {
-    size: [19, globals.style.layoutScalingValue, 19],
+    size: [28, globals.style.layoutScalingValue, 19],
     width: '70%',
     margin: '0 auto',
+    textAlign: center,
     // lineHeight: [55, globals.style.layoutScalingValue, 30],
     paddingLeft: 0,
     child: {
@@ -175,23 +178,25 @@ export const homeSignupQuoteStyle = {
 }
 
 export const homeSignupButtonStyle = {
-    alignSelf: flexStart,
-    width: '100%',
-    height: [80, globals.style.layoutScalingValue, 50],
+    alignSelf: center,
+    width: auto,
     marginTop: [30, .7, 30],
-    size: [20, .7, 20],
-    weight: 700,
-    lineHeight: [38, .7, 22],
-    textTransform: uppercase,
+    size: [16, .7, 16],
+    paddingLeft: [20, globals.style.layoutScalingValue, 20],
+    paddingRight: [20, globals.style.layoutScalingValue, 20],
+    paddingTop: [15, globals.style.layoutScalingValue, 15],
+    paddingBottom: [15, globals.style.layoutScalingValue, 15],
+    backgroundColor: colorPalette.seaGreen,
     display: flex,
     alignItems: center,
     justifyContent: center,
-    border: `1px solid ${colorPalette.forestGreen}`,
-    borderRadius: [10, .7, 10],
+    border: `1px solid ${colorPalette.seaGreen}`,
+    borderRadius: [5, .7, 5],
     textDecoration: none,
-    color: colorPalette.forestGreen,
+    color: white,
     hover: {
         backgroundColor: colorPalette.forestGreen,
+        border: `1px solid ${colorPalette.forestGreen}`,
         color: white
     }
 }
