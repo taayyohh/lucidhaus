@@ -110,6 +110,9 @@ export const smallButtonStyle = {
     paddingBottom: [9, .7, 9],
     borderRadius: [5, .7, 5],
     border: `1px solid ${white}`,
+    mobile: {
+        alignSelf: flexStart
+    },
     hover: {
         color: white,
         backgroundColor: colorPalette.forestGreen,
@@ -118,13 +121,17 @@ export const smallButtonStyle = {
 }
 
 export const headerButtonWrapperStyle = {
-    position: relative
+    position: relative,
+    mobile: {
+        display: flex,
+        flexDirection: column
+    }
 }
 
 export const headerSearchWrapperStyle = {
     position: relative,
     marginLeft: [25, globals.style.layoutScalingValue, 25],
-    paddingLeft: [25, globals.style.layoutScalingValue, 25],
+    paddingLeft: [25, globals.style.layoutScalingValue, '0'],
     before: {
         position: absolute,
         left: 0,
@@ -132,18 +139,35 @@ export const headerSearchWrapperStyle = {
         height: '100%',
         width: '1px',
         backgroundColor: globals.colors.borderColor,
+        mobile: {
+            content: none
+        }
     }
 }
 
 export const headerButtonSignInStyle = {
     ...smallButtonStyle,
     border: `1px solid ${globals.colors.borderColor}`,
+    mobile: {
+        ...smallButtonStyle.mobile,
+        display: flex,
+        justifyContent: center,
+        minWidth: 120,
+        marginBottom: 15
+    }
 }
 
 export const headerButtonSignUpStyle = {
     ...smallButtonStyle,
     backgroundColor: colorPalette.seaGreen,
     color: white,
+    mobile: {
+        ...smallButtonStyle.mobile,
+        display: flex,
+        justifyContent: center,
+        minWidth: 120,
+        marginBottom: 15
+    }
 }
 
 export const headerNowPlayingStyle = {

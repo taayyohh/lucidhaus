@@ -26,6 +26,12 @@ const Header = ({theme}) => {
                     >
                         Help
                     </LinkSwitch>
+                    <LinkSwitch
+                        url={'/for-businesses'}
+                        theme={headerTopStyle.link}
+                    >
+                        For Businesses
+                    </LinkSwitch>
                 </Div>
             </Div>
             <Div theme={headerInnerStyle}>
