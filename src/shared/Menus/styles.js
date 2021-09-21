@@ -294,8 +294,11 @@ export const headerAccountMenuDropdownWrapperStyle = {
 
 export const headerAccountMenuLinkStyle = {
     textDecoration: none,
-    marginBottom: [4, .7, 4],
+    marginBottom: [4, .7, 7],
     color: globals.colors.textColor,
+    mobile: {
+        size: 15
+    },
     signOut: {
         color: colorPalette.red,
         hover: {

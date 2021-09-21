@@ -14,7 +14,6 @@ import {
 }                                      from 'shared/Layout/styles/header'
 import {menuPanelContext}              from '../Containers/MenuPanelController'
 import HeaderMenuUserDropdown          from './HeaderMenuUserDropdown'
-import MenuToggle                      from './MenuToggle'
 import {headerMenuControlWrapperStyle} from './styles'
 
 const HeaderMenuControls = () => {
