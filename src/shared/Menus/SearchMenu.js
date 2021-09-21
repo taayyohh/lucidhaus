@@ -7,6 +7,9 @@ import {searchMenuSearchStyle} from './styles'
 const SearchMenu = () =>
     <Div theme={adminMenuStyle}>
         <Div theme={adminMenuStyle.list}>
+            <Div theme={adminMenuStyle.tagline}>
+                Celebrating the places that celebrate you
+            </Div>
             <Search theme={searchMenuSearchStyle}/>
         </Div>
     </Div>

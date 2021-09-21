@@ -30,10 +30,7 @@ const Home = () => {
                 <Div theme={homeSearchWrapperStyle}>
                     <Div theme={homeHeadlineStyle}>Celebrating the places that celebrate you</Div>
                     <Search
-                        theme={{
-                            ...pageFrameStyle.search,
-                            ...homeSearchStyle
-                        }}
+                        theme={homeSearchStyle}
                     />
                 </Div>
 

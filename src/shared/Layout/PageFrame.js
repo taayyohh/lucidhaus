@@ -6,6 +6,7 @@ import Div              from 'shared/Basic/Div'
 import Notification     from 'shared/Layout/Notification'
 import Overlay          from 'shared/Layout/Overlay'
 import Player           from 'shared/Player'
+import {mobileFlag}     from '../../features/site/slice'
 import Footer           from './Footer'
 import Header           from './Header'
 import Main             from './Main'
@@ -17,6 +18,8 @@ const PageFrame = () => {
     const isAdmin = url.includes('admin') || url.includes('dashboard')
     const isSign = url.includes('signup') || url.includes('signin') || url.includes('recover')
     const isHome = url.length === 0
+    const isMobile = useSelector(mobileFlag)
+
 
     return (
         <Div theme={pageFrameStyle}>
@@ -24,7 +27,7 @@ const PageFrame = () => {
             <DocumentHead/>
             <Div id="header-left-margin" theme={pageFrameStyle.hlm}/>
             <Header theme={pageFrameStyle.header}/>
-            {(!isAdmin && !isSign && !isHome) && (
+            {(!isAdmin && !isSign && !isHome && !isMobile) && (
                 <Search theme={pageFrameStyle.search}/>
             )}
             <Div id="header-right-margin" theme={pageFrameStyle.hrm}/>
