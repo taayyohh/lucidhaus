@@ -49,6 +49,7 @@ export const homeSearchWrapperStyle = {
     padding: [40, .7, 40],
     borderRadius: [10, .7, 10],
     maxWidth: [800, globals.style.layoutScalingValue, '100%'],
+    width: [800, globals.style.layoutScalingValue, '100%'],
     textAlign: 'center',
     mobile: {
         width: '100%'
@@ -83,7 +84,7 @@ export const homeHeadlineStyle = {
     weight: 800,
     marginBottom: 20,
     lineHeight: [80, .7, 38],
-    size: [62, .7, 26],
+    size: [62, globals.style.layoutScalingValue, 26],
     color: '#fff',
     mobile: {
         marginBottom: 15

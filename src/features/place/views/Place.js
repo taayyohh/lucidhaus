@@ -21,6 +21,7 @@ import {
     placeDescriptionStyle,
     placeDescriptionWrapperStyle,
     placeMapStyle,
+    placeMarqueeStyle,
     placePhotoStyle,
     placeTaxonomyStyle,
     placeTaxonomyWrapperStyle,
@@ -258,7 +259,17 @@ const Place = () => {
     return (
         <AnimatePresence>
             <MotionDiv initial={nOpacity} animate={fadeIn} exit={fadeOut}>
-                <ContentWrapper>
+                <ContentWrapper theme={{width: '100%'}}>
+                    <Div theme={placeMarqueeStyle}>
+                        {isVerified && (
+                            <Bookmark
+                                place={place}
+                                _id={_id}
+                                token={token}
+                                userSlug={userSlug}
+                            />
+                        )}
+                    </Div>
                     <MotionDiv theme={placeWrapperStyle}>
                         <Div>
                             <Div>
@@ -288,14 +299,7 @@ const Place = () => {
                                             )}
                                         </Div>
 
-                                        {isVerified && (
-                                            <Bookmark
-                                                place={place}
-                                                _id={_id}
-                                                token={token}
-                                                userSlug={userSlug}
-                                            />
-                                        )}
+
                                     </MotionDiv>
                                 )}
                             </Div>

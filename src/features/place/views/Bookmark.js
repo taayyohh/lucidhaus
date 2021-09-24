@@ -19,7 +19,7 @@ const Bookmark = ({place, userSlug, _id, token}) => {
 
     return (
         <Div
-            theme={bookmarkStyle}
+            theme={bookmarkStyle(isBookmark)}
             onClick={() => dispatch({
                 type: 'user/manageBookmark',
                 payload: {
@@ -30,6 +30,7 @@ const Bookmark = ({place, userSlug, _id, token}) => {
                 }
             })}
         >
+            <span>{!isBookmark ? `Save to My Places` : `Place Saved!`}</span>
             <Icon
                 icon={bookmark}
                 theme={bookmarkIconStyle(isBookmark)}

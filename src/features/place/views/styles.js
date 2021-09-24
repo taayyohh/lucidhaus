@@ -14,7 +14,8 @@ import {
     row,
     sv,
     white
-}                              from 'utils/themer'
+}            from 'utils/themer'
+import {CDN} from '../../../config/variables'
 
 export const placesWrapperStyle = {
     display: 'grid',
@@ -177,6 +178,22 @@ export const placeWrapperStyle = {
     margin: '0 auto'
 }
 
+export const placeMarqueeStyle = {
+    width: '100%',
+    height: [420, .7, 230],
+    backgroundSize: 'cover',
+    backgroundPosition: 'center center',
+    cursor: pointer,
+    display: flex,
+    alignItems: center,
+    justifyContent: center,
+    backgroundImage: `url(${CDN}assets/ij-home+2)`,
+    hover: {
+        cursor: 'default'
+    }
+  //  opacity: .4
+}
+
 export const placeWrapperTopStyle = {
     display: 'grid',
     gridTemplateColumns: '1fr 1fr',
@@ -232,7 +249,6 @@ export const placeTitleStyle = {
     flexDirection: column,
     position: relative,
     textAlign: center,
-    backgroundColor: colorPalette.seaFoamGreen,
     font: globals.fonts.fancy,
     size: [34, .7, 28],
     paddingTop: [20, .7, 20],
@@ -394,17 +410,26 @@ export const placeReviewReportIconStyle = {
 
 export const bookmarkIconStyle = isBookmark => {
     return {
-        size: [50, .7, 30],
-        color: isBookmark ? colorPalette.honeyYellow : '#fff',
-        hover: {
-            color: colorPalette.honeyYellow,
-            cursor: 'pointer'
-        }
+        size: [20, .7, 20],
+        marginLeft: [20, globals.style.layoutScalingValue, 20],
+        color: isBookmark ? colorPalette.honeyYellow : globals.colors.borderColor
     }
 }
 
-export const bookmarkStyle = {
-    position: absolute,
-    right: [80, .7, 5],
-    top: 0
+export const bookmarkStyle = isBookmark => {
+    return {
+        display: flex,
+        alignItems: center,
+        backgroundColor: white,
+        border: `1px solid ${globals.colors.borderColor}`,
+        borderRadius: [5, .7, 5],
+        position: absolute,
+        right: [80, .7, 5],
+        top: [20, .7, 20],
+        size: [14, .7, 14],
+        padding: `${sv(10, .7)} ${sv(40, globals.style.layoutScalingValue)} ${sv(10, .7)} ${sv(40, globals.style.layoutScalingValue)}`,
+        hover: {
+            cursor: pointer,
+        }
+    }
 }
