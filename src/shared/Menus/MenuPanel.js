@@ -8,6 +8,7 @@ import MenuPanelWrapper              from 'shared/Menus/MenuPanelWrapper'
 import MobileHeaderMenu              from 'shared/Menus/MobileHeaderMenu'
 import {headerMenuPanelWrapperStyle} from 'shared/Menus/styles'
 import Player                        from 'shared/Player'
+import LeaveAReview                  from './LeaveAReview'
 import SearchMenu                    from './SearchMenu'
 
 const MenuPanels = () => {
@@ -20,6 +21,8 @@ const MenuPanels = () => {
                 return <MobileHeaderMenu/>
             case 'search-menu':
                 return <SearchMenu/>
+            case 'leave-a-review':
+                return <LeaveAReview/>
             case 'player':
                 return <Player/>
             default:

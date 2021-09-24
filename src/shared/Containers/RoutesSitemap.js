@@ -1,5 +1,5 @@
-import Place           from 'features/place/views/Place'
-import Places          from 'features/place/views/Places'
+import Place  from 'features/place/views/Place'
+import Places from 'features/place/views/Places'
 import FilteredShop    from 'features/shop/views/FilteredShop'
 import Product         from 'features/shop/views/Product'
 import Shop            from 'features/shop/views/Shop'

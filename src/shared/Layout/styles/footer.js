@@ -79,9 +79,9 @@ export const footerStyle = {
     feedback: {
         display: inlineFlex,
         alignItems: center,
-        color: `${black} !important`,
+        color: `${white} !important`,
         justifyContent: center,
-        background: '#FFB400',
+        backgroundColor: colorPalette.seaGreen,
         paddingLeft: [15, .7, 15],
         paddingRight: [15, .7, 15],
         paddingTop: [10, .7, 10],
@@ -91,7 +91,7 @@ export const footerStyle = {
             marginBottom: 5
         },
         hover: {
-            backgroundColor: colorPalette.seaGreen,
+            backgroundColor: colorPalette.forestGreen,
             color: `${white} !important`,
             textDecoration: 'none !important'
         }

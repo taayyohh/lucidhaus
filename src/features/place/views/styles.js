@@ -2,7 +2,6 @@ import {colorPalette, globals} from 'config/styles'
 import {
     absolute,
     auto,
-    borderBox,
     center,
     column,
     flex,
@@ -14,8 +13,8 @@ import {
     row,
     sv,
     white
-}            from 'utils/themer'
-import {CDN} from '../../../config/variables'
+}                              from 'utils/themer'
+import {CDN}                   from '../../../config/variables'
 
 export const placesWrapperStyle = {
     display: 'grid',
@@ -174,7 +173,7 @@ export const placeCardStyle = {
 export const placeWrapperStyle = {
     display: flex,
     flexDirection: column,
-    width: [1450, globals.style.layoutScalingValue, '100%'],
+    width: [900, globals.style.layoutScalingValue, '100%'],
     margin: '0 auto'
 }
 
@@ -248,14 +247,16 @@ export const placeTitleStyle = {
     display: flex,
     flexDirection: column,
     position: relative,
-    textAlign: center,
     font: globals.fonts.fancy,
-    size: [34, .7, 28],
+    //alignSelf: flexStart,
+    size: [48, .7, 28],
     paddingTop: [20, .7, 20],
     paddingBottom: [20, .7, 20],
-    borderRadius: [50, .7, '0'],
+
+    weight: 600,
     margin: 0,
     marginBottom: [30, .7, 20],
+    borderBottom: `1px solid ${globals.colors.borderColor}`
     // borderRadius: `${sv(10)} ${sv(10)} 0 0`
 }
 
@@ -291,17 +292,6 @@ export const placeTaxonomyWrapperStyle = {
         display: flex,
         flexDirection: column
     }
-}
-
-export const placeDescriptionStyle = {
-    boxSizing: borderBox,
-    paddingRight: [30, globals.style.layoutScalingValue, '0'],
-}
-
-export const placeDescriptionWrapperStyle = {
-    marginTop: [30, .7, 20],
-    marginBottom: [40, .7, 20],
-    textAlign: 'center'
 }
 
 export const placeImageStyle = {}
@@ -424,8 +414,8 @@ export const bookmarkStyle = isBookmark => {
         border: `1px solid ${globals.colors.borderColor}`,
         borderRadius: [5, .7, 5],
         position: absolute,
-        right: [80, .7, 5],
-        top: [20, .7, 20],
+        right: [80, .7, 40],
+        top: [20, .7, 40],
         size: [14, .7, 14],
         padding: `${sv(10, .7)} ${sv(40, globals.style.layoutScalingValue)} ${sv(10, .7)} ${sv(40, globals.style.layoutScalingValue)}`,
         hover: {
