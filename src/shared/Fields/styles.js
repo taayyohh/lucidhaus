@@ -174,8 +174,9 @@ export const defaultFieldErrorStyle = {
 }
 
 export const defaultFieldHeadingStyle = {
-    size: [30, .7, 30],
-    weight: 300,
+    size: [24, .7, 24],
+    marginBottom: [10, .7, 10],
+    weight: 400,
     margin: `0 0 ${sv(5)} 0`,
     empty: {
         display: none
@@ -183,9 +184,9 @@ export const defaultFieldHeadingStyle = {
 }
 
 export const defaultHelperTextStyle = {
-    font: globals.fonts.serif,
-    size: [16, .7, 16],
-    marginBottom: [30, .7, 30]
+    size: [15, .7, 15],
+    marginBottom: [30, .7, 30],
+    weight: 400
 }
 
 

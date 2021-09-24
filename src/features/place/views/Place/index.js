@@ -1,41 +1,20 @@
-import Review                      from 'features/place/admin/views/Review'
-import {AnimatePresence}           from 'framer-motion'
+import {AnimatePresence}                        from 'framer-motion'
 import React, {useContext, useEffect, useState} from 'react'
-import {useDispatch, useSelector}  from 'react-redux'
-import Div                         from 'shared/Basic/Div'
-import LinkSwitch                  from 'shared/Basic/LinkSwitch'
-import MotionDiv                   from 'shared/Basic/MotionDiv'
-import RichText                    from 'shared/Basic/RichText'
-import S3Img                       from 'shared/Basic/S3Img'
-import {searchContext}             from 'shared/Containers/SearchController'
-import ContentWrapper              from 'shared/Layout/ContentWrapper'
-import {fadeIn, fadeOut, nOpacity} from 'shared/Layout/styles/animations'
-import Map                         from 'shared/Map'
-import {history}                   from 'store'
-import {debounce}                  from 'utils/helpers'
-import {isEmpty}                   from 'utils/themer'
-import Bookmark                    from '../Bookmark'
-import Reviews                     from '../Reviews'
-import {
-    placeAddressStyle,
-    placeMapStyle,
-    placeMarqueeStyle,
-    placePhotoStyle,
-    placeTaxonomyStyle,
-    placeTaxonomyWrapperStyle,
-    placeTitleStyle,
-    placeWebsiteStyle,
-    placeWrapperBottomStyle,
-    placeWrapperStyle,
-    placeWrapperTopStyle,
-    reviewHeadingStyle,
-    reviewsHeadingWrapperStyle
-}                                                            from '../styles'
-import Description                                           from './Description'
-import LeaveAReview                                          from './LeaveAReview'
-import Rating                                                from './Rating'
-import {placeDescriptionStyle, placeDescriptionWrapperStyle} from './styles'
-import Title                                                 from './Title'
+import {useDispatch, useSelector}               from 'react-redux'
+import Div                                      from 'shared/Basic/Div'
+import MotionDiv                                from 'shared/Basic/MotionDiv'
+import {searchContext}                          from 'shared/Containers/SearchController'
+import ContentWrapper                           from 'shared/Layout/ContentWrapper'
+import {fadeIn, fadeOut, nOpacity}              from 'shared/Layout/styles/animations'
+import {history}                                from 'store'
+import {debounce}                               from 'utils/helpers'
+import {isEmpty}                                from 'utils/themer'
+import Bookmark                                 from '../Bookmark'
+import {placeMarqueeStyle, placeWrapperStyle}   from '../styles'
+import Description                              from './Description'
+import LeaveAReview                             from './LeaveAReview'
+import Rating                                   from './Rating'
+import Title                                    from './Title'
 
 const Place = () => {
     const dispatch = useDispatch()
@@ -279,11 +258,13 @@ const Place = () => {
                             name={name}
                         />
                         <Div theme={{display: 'flex'}}>
-                            <Rating />
-                            <LeaveAReview />
+                            <Rating/>
+                            {(isAuthenticated && isVerified && hasNoReviews) && (
+                                <LeaveAReview/>
+                            )}
                         </Div>
 
-                        <Description description={description} />
+                        <Description description={description}/>
                         <Div>
                             {/*<Div theme={placeAddressStyle}>*/}
                             {/*    {(!!address1 && address1) || (!isEmpty(boonePlace) && boonePlace.locations?.[0].address1)}*/}
@@ -310,9 +291,6 @@ const Place = () => {
 
                         </Div>
                         <Div>
-
-
-
 
 
                             {/*<Div theme={{display: 'flex', justifyContent: 'space-around'}}>*/}

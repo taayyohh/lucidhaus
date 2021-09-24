@@ -103,6 +103,7 @@ const FieldSwitch = memo(({field, formik, options, theme, autoSubmit}) => {
                 helperText={field.helperText}
                 className={formik.touched[field.name] && formik.errors[field.name] ? 'error' : ''}
                 errorMessage={formik.touched[field.name] && formik.errors[field.name] ? formik.errors[field.name] : null}
+                theme={theme}
             />
         case MULTI_SELECT:
             return <MultiSelect

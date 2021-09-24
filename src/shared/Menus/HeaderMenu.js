@@ -1,10 +1,10 @@
+import {search}                                          from 'config/icons'
 import {mobileFlag}                                      from 'features/site/slice'
 import React, {useContext}                               from 'react'
 import {useSelector}                                     from 'react-redux'
 import Div                                               from 'shared/Basic/Div'
 import {menuPanelContext}                                from 'shared/Containers/MenuPanelController'
 import MenuPanels                                        from 'shared/Menus/MenuPanel'
-import {search}                                          from '../../config/icons'
 import Icon                                              from '../Basic/Icon'
 import {headerSearchIconStyle, headerSearchWrapperStyle} from '../Layout/styles/header'
 import HeaderMenuControls                                from './HeaderMenuControls'
@@ -22,7 +22,6 @@ const HeaderMenu = () => {
             )}
             {isMobile && (
                 <>
-
                     <MenuToggle
                         theme={menuToggleStyle}
                         onClick={

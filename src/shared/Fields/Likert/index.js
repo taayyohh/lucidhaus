@@ -21,13 +21,12 @@ const Likert = memo(({field, helperText, className, errorMessage, formik, value}
             <Div theme={defaultFieldHeadingStyle}>{field.inputLabel}</Div>
             <Div theme={defaultHelperTextStyle}>{helperText}</Div>
             <Div theme={likertOptionsWrapperStyle}>
-                {optionsArray?.length > 0 && optionsArray?.map(o => (
+                {optionsArray?.length > 0 && optionsArray?.slice(0)?.reverse().map(o => (
                     <Div
                         key={o}
                         onClick={() => formik.setFieldValue(field?.name, o)}
                         theme={{
-                            ...likertOptionStyle,
-                            color: value === o ? colorPalette.honeyYellow : colorPalette.black
+                            ...likertOptionStyle(value === o)
                         }}
                     >
                         {o}

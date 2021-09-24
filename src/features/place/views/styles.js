@@ -315,16 +315,20 @@ export const reviewFormStyle = {
     width: '100%',
     padding: 0,
     border: 0,
-    marginTop: [50, .7, 50]
+    marginTop: [50, .7, 50],
+    heading: {
+        size: [20, .7, 20]
+    }
 }
 
 export const reviewFormWrapperStyle = {
-    maxWidth: [600, globals.style.layoutScalingValue, '100%'],
-    marginTop: 50,
+    paddingLeft: [70, .7, 50],
+    paddingRight: [70, .7, 50]
+  //  maxWidth: [600, globals.style.layoutScalingValue, '100%'],
 }
 
 export const reviewLeaveWrapperStyle = {
-    marginTop: [65, .7, 65]
+
 }
 
 export const reviewFormHeadingStyle = {
@@ -418,6 +422,7 @@ export const bookmarkStyle = isBookmark => {
         top: [20, .7, 40],
         size: [14, .7, 14],
         padding: `${sv(10, .7)} ${sv(40, globals.style.layoutScalingValue)} ${sv(10, .7)} ${sv(40, globals.style.layoutScalingValue)}`,
+        transition: 'width 250ms ease',
         hover: {
             cursor: pointer,
         }
