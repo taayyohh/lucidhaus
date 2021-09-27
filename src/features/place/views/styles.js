@@ -325,12 +325,11 @@ export const placeTagsStyle = {
 
 export const placeTagsIconStyle = {
     marginRight: [10, .7, 10],
-    marginTop: [2, .7, 2]
+    marginTop: [5, .7, 5]
 }
 
 export const placeTaxonomyStyle = {
     borderRadius: [5, .7, 5],
-    marginBottom: [30, .7, 30],
     paddingLeft: [20, globals.style.layoutScalingValue, 20],
     paddingRight: [20, globals.style.layoutScalingValue, 20],
     paddingTop: [20, globals.style.layoutScalingValue, 20],
