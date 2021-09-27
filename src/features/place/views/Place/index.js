@@ -21,13 +21,14 @@ import {
     placeWrapperStyle,
     reviewHeadingStyle,
     reviewsHeadingWrapperStyle
-}                                               from '../styles'
-import Address                                  from './Address'
-import Description                              from './Description'
-import LeaveAReview                             from './LeaveAReview'
-import Rating                                   from './Rating'
-import Reviews                                  from './Reviews'
-import Title                                    from './Title'
+}                   from '../styles'
+import Address      from './Address'
+import Description  from './Description'
+import LeaveAReview from './LeaveAReview'
+import Rating       from './Rating'
+import Reviews      from './Reviews'
+import Title        from './Title'
+import Website      from './Website'
 
 const Place = () => {
     const dispatch = useDispatch()
@@ -306,40 +307,8 @@ const Place = () => {
                                 state={state}
                                 zip={zip}
                             />
-                            {website && website !== 'undefined' && (
-                                <LinkSwitch
-                                    url={website}
-                                    children={'Website'}
-                                    theme={placeWebsiteStyle}
-                                />
-                            )}
-                        </Div>
 
-
-                        <Div>
-                            {/*<Div theme={placeAddressStyle}>*/}
-                            {/*    {(!!address1 && address1) || (!isEmpty(boonePlace) && boonePlace.locations?.[0].address1)}*/}
-                            {/*    {(!!address1 ? ', ' : '')}*/}
-                            {/*    {(!!address2 && address2 !== 'undefined') ? address2 : ''}*/}
-                            {/*    {(!!address2 && address2 !== 'undefined') ? ', ' : ''}*/}
-                            {/*    {(!!city && city) || (!isEmpty(boonePlace) && boonePlace.locations[0].city)}*/}
-                            {/*    {(!!city ? ', ' : '')}*/}
-                            {/*    {(!!state && state) || (!isEmpty(boonePlace) && boonePlace.locations[0].state)}*/}
-                            {/*    {' '}*/}
-                            {/*    {(!!zip && zip !== 'null' && zip) || (!isEmpty(boonePlace) && !!boonePlace.locations ? boonePlace.locations[0].postal_code : '')}*/}
-                            {/*    {' '}*/}
-                            {/*    /!*{!!country && country}*!/*/}
-                            {/*</Div>*/}
-                            {/*<Div>*/}
-                            {/*    {website && website !== 'undefined' && (*/}
-                            {/*        <LinkSwitch*/}
-                            {/*            url={website}*/}
-                            {/*            children={'Website'}*/}
-                            {/*            theme={placeWebsiteStyle}*/}
-                            {/*        />*/}
-                            {/*    )}*/}
-                            {/*</Div>*/}
-
+                            <Website website={website} />
                         </Div>
                         <Div>
 
@@ -352,17 +321,10 @@ const Place = () => {
                             {/*            // theme={{borderRadius: 300}}*/}
                             {/*        />*/}
                             {/*    )}*/}
-                            {/*    <Map*/}
-                            {/*        lon={longitude || (!isEmpty(boonePlace) && boonePlace.locations[0].longitude)}*/}
-                            {/*        lat={latitude || (!isEmpty(boonePlace) && boonePlace.locations[0].latitude)}*/}
-                            {/*        theme={placeMapStyle}*/}
-                            {/*    />*/}
                             {/*</Div>*/}
 
                             {/*<Div>*/}
                             {/*    <Div theme={placeWrapperTopStyle}>*/}
-
-
                             {/*        <Div theme={placeTaxonomyWrapperStyle}>*/}
                             {/*            {audioAvailable && (*/}
                             {/*                <Div theme={placeTaxonomyStyle}>*/}
@@ -507,13 +469,6 @@ const Place = () => {
                             {/*</Div>*/}
                         </Div>
                     </MotionDiv>
-                    <Div>
-                        <Map
-                            lon={longitude || (!isEmpty(boonePlace) && boonePlace.locations[0].longitude)}
-                            lat={latitude || (!isEmpty(boonePlace) && boonePlace.locations[0].latitude)}
-                            theme={placeMapStyle}
-                        />
-                    </Div>
                 </ContentWrapper>
             </MotionDiv>
         </AnimatePresence>

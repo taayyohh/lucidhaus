@@ -174,7 +174,10 @@ export const placeWrapperStyle = {
     display: flex,
     justifyContent: spaceBetween,
     width: [1200, globals.style.layoutScalingValue, '100%'],
-    margin: '0 auto'
+    margin: '0 auto',
+    mobile: {
+        flexDirection: column
+    }
 }
 
 export const placeInnerWrapperStyle = {
@@ -282,8 +285,17 @@ export const placeAddressStyle = {
 }
 
 export const placeWebsiteStyle = {
+    display: flex,
     size: [16, .7, 16],
-    textDecoration: none
+    textDecoration: none,
+    marginTop: [10, .7, 10],
+    hover: {
+        color: globals.colors.linkHoverColor
+    }
+}
+
+export const placeWebsiteIconStyle = {
+    marginRight: [10, .7, 10]
 }
 
 export const placeTaxonomyStyle = {

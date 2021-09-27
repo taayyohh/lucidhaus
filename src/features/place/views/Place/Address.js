@@ -26,8 +26,6 @@ const Address = ({address1, address2, boonePlace, city, state, zip}) => {
                     {' '}
                     {/*{!!country && country}*/}
                 </Div>
-
-
             </Div>
         </Div>
     )
