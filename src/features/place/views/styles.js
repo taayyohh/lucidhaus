@@ -10,10 +10,10 @@ import {
     none,
     pointer,
     relative,
-    row,
+    row, spaceBetween,
     sv,
     white
-}                              from 'utils/themer'
+} from 'utils/themer'
 import {CDN}                   from '../../../config/variables'
 
 export const placesWrapperStyle = {
@@ -172,9 +172,23 @@ export const placeCardStyle = {
 
 export const placeWrapperStyle = {
     display: flex,
-    flexDirection: column,
-    width: [900, globals.style.layoutScalingValue, '100%'],
+    justifyContent: spaceBetween,
+    width: [1200, globals.style.layoutScalingValue, '100%'],
     margin: '0 auto'
+}
+
+export const placeInnerWrapperStyle = {
+    width: [800, globals.style.layoutScalingValue, '100%'],
+    marginRight: auto,
+    marginTop: [35, .7, 35],
+    mobile: {
+        marginRight: 0
+    }
+}
+
+export const placeInnerRightWrapperStyle = {
+    width: [300, globals.style.layoutScalingValue, '100%'],
+    marginTop: [50, .7, 50]
 }
 
 export const placeMarqueeStyle = {
@@ -228,8 +242,8 @@ export const placeWrapperBottomStyle = {
 }
 
 export const placeMapStyle = {
-    height: 500,
-    width: [500, globals.style.layoutScalingValue, '100%']
+    height: 300,
+    width: [300, globals.style.layoutScalingValue, '100%']
 }
 
 export const placePhotoStyle = {
@@ -250,9 +264,7 @@ export const placeTitleStyle = {
     font: globals.fonts.fancy,
     //alignSelf: flexStart,
     size: [48, .7, 28],
-    paddingTop: [20, .7, 20],
     paddingBottom: [20, .7, 20],
-
     weight: 600,
     margin: 0,
     marginBottom: [30, .7, 20],
@@ -261,13 +273,17 @@ export const placeTitleStyle = {
 }
 
 export const placeAddressStyle = {
-    font: globals.fonts.serif,
-    size: [20, .7, 20]
+    display: flex,
+    size: [16, .7, 16],
+    marginTop: [20, .7, 20],
+    address: {
+        marginLeft: [10, .7, 10]
+    }
 }
 
 export const placeWebsiteStyle = {
-    font: globals.fonts.serif,
-    size: [20, .7, 20]
+    size: [16, .7, 16],
+    textDecoration: none
 }
 
 export const placeTaxonomyStyle = {

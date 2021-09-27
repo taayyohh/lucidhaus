@@ -1,27 +1,33 @@
-import {AnimatePresence}                                                                      from 'framer-motion'
-import React, {useContext, useEffect, useState}                                               from 'react'
-import {useDispatch, useSelector}                                                             from 'react-redux'
-import Div                                                                                    from 'shared/Basic/Div'
-import MotionDiv
-                                                                                              from 'shared/Basic/MotionDiv'
-import {searchContext}                                                                        from 'shared/Containers/SearchController'
-import ContentWrapper
-                                                                                              from 'shared/Layout/ContentWrapper'
+import {AnimatePresence}                        from 'framer-motion'
+import React, {useContext, useEffect, useState} from 'react'
+import {useDispatch, useSelector}               from 'react-redux'
+import Div                                      from 'shared/Basic/Div'
+import MotionDiv                                from 'shared/Basic/MotionDiv'
+import {searchContext}                          from 'shared/Containers/SearchController'
+import ContentWrapper                           from 'shared/Layout/ContentWrapper'
+import {fadeIn, fadeOut, nOpacity}              from 'shared/Layout/styles/animations'
+import {history}                                from 'store'
+import {debounce}                               from 'utils/helpers'
+import {isEmpty}                                from 'utils/themer'
+import LinkSwitch                               from '../../../../shared/Basic/LinkSwitch'
+import Map                                      from '../../../../shared/Map'
+import Bookmark                                 from '../Bookmark'
 import {
-    fadeIn,
-    fadeOut,
-    nOpacity
-}                                                                                             from 'shared/Layout/styles/animations'
-import {history}                                                                              from 'store'
-import {debounce}                                                                             from 'utils/helpers'
-import {isEmpty}                                                                              from 'utils/themer'
-import Bookmark                                                                               from '../Bookmark'
-import {placeMarqueeStyle, placeWrapperStyle, reviewHeadingStyle, reviewsHeadingWrapperStyle} from '../styles'
-import Description                                                                            from './Description'
-import LeaveAReview                                                                           from './LeaveAReview'
-import Rating                                                                                 from './Rating'
-import Reviews                                                                                from './Reviews'
-import Title                                                                                  from './Title'
+    placeInnerRightWrapperStyle,
+    placeInnerWrapperStyle,
+    placeMapStyle,
+    placeMarqueeStyle,
+    placeWebsiteStyle,
+    placeWrapperStyle,
+    reviewHeadingStyle,
+    reviewsHeadingWrapperStyle
+}                                               from '../styles'
+import Address                                  from './Address'
+import Description                              from './Description'
+import LeaveAReview                             from './LeaveAReview'
+import Rating                                   from './Rating'
+import Reviews                                  from './Reviews'
+import Title                                    from './Title'
 
 const Place = () => {
     const dispatch = useDispatch()
@@ -260,18 +266,56 @@ const Place = () => {
                         )}
                     </Div>
                     <MotionDiv theme={placeWrapperStyle}>
-                        <Title
-                            boonePlace={boonePlace}
-                            name={name}
-                        />
-                        <Div theme={{display: 'flex'}}>
-                            <Rating/>
-                            {(isAuthenticated && isVerified && hasNoReviews) && (
-                                <LeaveAReview/>
+
+                        <Div theme={placeInnerWrapperStyle}>
+                            <Title
+                                boonePlace={boonePlace}
+                                name={name}
+                            />
+                            <Div theme={{display: 'flex'}}>
+                                <Rating/>
+                                {(isAuthenticated && isVerified && hasNoReviews) && (
+                                    <LeaveAReview/>
+                                )}
+                            </Div>
+                            <Description description={description}/>
+
+
+                            {place.reviews?.length > 0 && (
+                                <Div theme={reviewsHeadingWrapperStyle}>
+                                    <Div theme={reviewHeadingStyle}>What {place.reviews.length} people are saying</Div>
+                                    <Reviews
+                                        reviewIds={place.reviews}
+                                        userFlaggedReviews={userFlaggedReviews}
+                                        placeSlug={slug}
+                                    />
+                                </Div>
+                            )}
+                        </Div>
+                        <Div theme={placeInnerRightWrapperStyle}>
+                            <Map
+                                lon={longitude || (!isEmpty(boonePlace) && boonePlace.locations[0].longitude)}
+                                lat={latitude || (!isEmpty(boonePlace) && boonePlace.locations[0].latitude)}
+                                theme={placeMapStyle}
+                            />
+                            <Address
+                                address1={address1}
+                                address2={address2}
+                                boonePlace={boonePlace}
+                                city={city}
+                                state={state}
+                                zip={zip}
+                            />
+                            {website && website !== 'undefined' && (
+                                <LinkSwitch
+                                    url={website}
+                                    children={'Website'}
+                                    theme={placeWebsiteStyle}
+                                />
                             )}
                         </Div>
 
-                        <Description description={description}/>
+
                         <Div>
                             {/*<Div theme={placeAddressStyle}>*/}
                             {/*    {(!!address1 && address1) || (!isEmpty(boonePlace) && boonePlace.locations?.[0].address1)}*/}
@@ -462,19 +506,14 @@ const Place = () => {
 
                             {/*</Div>*/}
                         </Div>
-
-
-                        {place.reviews?.length > 0 && (
-                            <Div theme={reviewsHeadingWrapperStyle}>
-                                <Div theme={reviewHeadingStyle}>What {place.reviews.length} people are saying</Div>
-                                <Reviews
-                                    reviewIds={place.reviews}
-                                    userFlaggedReviews={userFlaggedReviews}
-                                    placeSlug={slug}
-                                />
-                            </Div>
-                        )}
                     </MotionDiv>
+                    <Div>
+                        <Map
+                            lon={longitude || (!isEmpty(boonePlace) && boonePlace.locations[0].longitude)}
+                            lat={latitude || (!isEmpty(boonePlace) && boonePlace.locations[0].latitude)}
+                            theme={placeMapStyle}
+                        />
+                    </Div>
                 </ContentWrapper>
             </MotionDiv>
         </AnimatePresence>
