@@ -348,13 +348,11 @@ export const reviewHeadingStyle = {
 
 export const placeReviewStyle = {
     display: flex,
-    flexDirection: column,
     background: 'none',
     position: relative,
     width: '100%',
     padding: [20, globals.style.layoutScalingValue, 20],
     borderBottom: `1px solid ${globals.colors.borderColor}`,
-    boxShadow: '1px 3px 5px 0px #e2e2e2',
     marginBottom: [20, .7, 20],
     paddingBottom: [50, .7, 50],
     image: {
@@ -362,8 +360,37 @@ export const placeReviewStyle = {
     }
 }
 
+export const placeReviewUserAvatarStyle = {
+    height: [100, globals.style.layoutScalingValue, 100],
+    width: [100, globals.style.layoutScalingValue, 100],
+    borderRadius: [50, globals.style.layoutScalingValue, 50],
+    backgroundColor: colorPalette.seaFoamGreen
+}
+
+export const placeReviewUserReviewCountStyle = {
+    size: [16, .7, 16]
+}
+
+export const placeReviewUserNameStyle = {
+    size: [16, .7, 16]
+}
+
+
+export const placeReviewUserInfoStyle = {
+    display: 'flex',
+    flexDirection: 'column',
+    marginRight: [50, .7, 50],
+    width: [120, .7, 100],
+    minWidth: [120, .7, 100]
+}
+
+export const placeReviewedByStyle = {
+    size: [16, .7, 16]
+}
+
 export const placeReviewDescriptionStyle = {
-    marginTop: [30, .7, 30]
+    size: [17, .7, 17],
+    marginTop: [20, .7, 20]
 }
 
 export const placeReviewLikertStyle = {
@@ -398,16 +425,21 @@ export const placeReviewReportWrapperStyle = {
     alignItems: center,
     color: colorPalette.darkGray,
     size: [15, .7, 15],
+    hover: {
+        color: colorPalette.red,
+        cursor: pointer,
+        child: {
+            selector: 'svg',
+            color: colorPalette.red,
+            cursor: pointer
+        }
+    }
 }
 
 export const placeReviewReportIconStyle = {
     marginRight: [12, .7, 12],
     zIndex: 3,
-    color: colorPalette.darkGray,
-    hover: {
-        color: colorPalette.red,
-        cursor: pointer
-    }
+    color: colorPalette.darkGray
 }
 
 export const bookmarkIconStyle = isBookmark => {

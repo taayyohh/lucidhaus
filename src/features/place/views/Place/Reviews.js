@@ -9,13 +9,17 @@ import S3Img                        from 'shared/Basic/S3Img'
 import {
     placeFlaggedTextStyle,
     placeReviewBlurStyle,
-    placeReviewDescriptionStyle,
+    placeReviewDescriptionStyle, placeReviewedByStyle,
     placeReviewLikertStyle,
     placeReviewReportIconStyle,
     placeReviewReportWrapperStyle,
     placeReviewStyle,
+    placeReviewUserAvatarStyle,
+    placeReviewUserInfoStyle,
+    placeReviewUserNameStyle,
+    placeReviewUserReviewCountStyle,
     reviewsWrapperStyle
-}                                   from '../styles'
+} from '../styles'
 
 const Reviews = ({reviewIds, userFlaggedReviews, placeSlug}) => {
     const {_id, token} = useSelector(state => state.user)
@@ -48,33 +52,40 @@ const Reviews = ({reviewIds, userFlaggedReviews, placeSlug}) => {
                             key={review.updated}
                             theme={placeReviewStyle}
                         >
+                            <Div theme={placeReviewUserInfoStyle}>
+                                <Div theme={placeReviewUserAvatarStyle}>avatar</Div>
+                                <Div theme={placeReviewUserNameStyle}>username</Div>
+                                <Div theme={placeReviewUserReviewCountStyle}># of Reviews</Div>
+                            </Div>
                             <Div>
+                                <Div theme={placeReviewedByStyle}>Reviewed on {dayjs(review.updated).format('MMMM DD, YYYY')}</Div>
+                                <RichText theme={placeReviewDescriptionStyle}>{review.review}</RichText>
+                                <Div theme={placeReviewLikertStyle}>
+                                    <Div><strong>Safe:</strong> {review.safe}</Div>
+                                    <Div><strong>Welcome:</strong> {review.welcome}</Div>
+                                    <Div><strong>Celebrated:</strong> {review.celebrated}</Div>
+                                </Div>
+                                {review.photo && (
+                                    <S3Img url={review.photo} theme={placeReviewStyle.image}/>
+                                )}
+                            </Div>
 
-                            </Div>
-                            {review.photo && (
-                                <S3Img url={review.photo} theme={placeReviewStyle.image}/>
-                            )}
-                            <RichText theme={placeReviewDescriptionStyle}>{review.review}</RichText>
-                            <Div theme={placeReviewLikertStyle}>
-                                <Div><strong>Safe:</strong> {review.safe}</Div>
-                                <Div><strong>Celebrated:</strong> {review.celebrated}</Div>
-                                <Div><strong>Welcome:</strong> {review.welcome}</Div>
-                            </Div>
-                            <Div>{dayjs(review.updated).format('MM/DD/YYYY')}</Div>
                             {!isFlagged && (
-                                <Div theme={placeReviewReportWrapperStyle}>
+                                <Div
+                                    theme={placeReviewReportWrapperStyle}
+                                    onClick={() => dispatch({
+                                        type: 'user/flagReview',
+                                        payload: {
+                                            reviewId: review._id,
+                                            placeSlug,
+                                            _id,
+                                            token
+                                        }
+                                    })}
+                                >
                                     <Icon
                                         theme={placeReviewReportIconStyle}
                                         icon={flag}
-                                        onClick={() => dispatch({
-                                            type: 'user/flagReview',
-                                            payload: {
-                                                reviewId: review._id,
-                                                placeSlug,
-                                                _id,
-                                                token
-                                            }
-                                        })}
                                     />
                                     <Div>Report</Div>
                                 </Div>
