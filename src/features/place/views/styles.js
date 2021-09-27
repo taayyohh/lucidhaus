@@ -6,12 +6,12 @@ import {
     column,
     flex,
     flexStart,
-    grid,
+    grid, inlineFlex,
     none,
     pointer,
     relative,
     row, spaceBetween,
-    sv,
+    sv, uppercase,
     white
 } from 'utils/themer'
 import {CDN}                   from '../../../config/variables'
@@ -180,7 +180,7 @@ export const placeWrapperStyle = {
     }
 }
 
-export const placeInnerWrapperStyle = {
+export const placeInnerLeftWrapperStyle = {
     width: [800, globals.style.layoutScalingValue, '100%'],
     marginRight: auto,
     marginTop: [35, .7, 35],
@@ -192,6 +192,20 @@ export const placeInnerWrapperStyle = {
 export const placeInnerRightWrapperStyle = {
     width: [300, globals.style.layoutScalingValue, '100%'],
     marginTop: [50, .7, 50]
+}
+
+export const placeInnerRightInfoStyle = {
+    position: 'sticky',
+    top: [50, .7, 50],
+    background: white,
+    border: `1px solid ${globals.colors.borderColor}`,
+    borderRadius: [10, globals.style.layoutScalingValue, 10],
+    marginTop: [30, .7, 30],
+    paddingLeft: [30, globals.style.layoutScalingValue, 30],
+    paddingRight: [30, globals.style.layoutScalingValue, 30],
+    paddingTop: [30, globals.style.layoutScalingValue, 30],
+    paddingBottom: [30, globals.style.layoutScalingValue, 30],
+
 }
 
 export const placeMarqueeStyle = {
@@ -245,8 +259,8 @@ export const placeWrapperBottomStyle = {
 }
 
 export const placeMapStyle = {
-    height: 300,
-    width: [300, globals.style.layoutScalingValue, '100%']
+    height: [250, globals.style.layoutScalingValue, 250],
+    width:  '100%'
 }
 
 export const placePhotoStyle = {
@@ -295,24 +309,49 @@ export const placeWebsiteStyle = {
 }
 
 export const placeWebsiteIconStyle = {
-    marginRight: [10, .7, 10]
+    marginRight: [10, .7, 10],
+    marginTop: [2, .7, 2]
+}
+
+export const placeTagsStyle = {
+    display: inlineFlex,
+    size: [16, .7, 16],
+    textDecoration: none,
+    marginTop: [10, .7, 10],
+    // hover: {
+    //     color: globals.colors.linkHoverColor
+    // }
+}
+
+export const placeTagsIconStyle = {
+    marginRight: [10, .7, 10],
+    marginTop: [2, .7, 2]
 }
 
 export const placeTaxonomyStyle = {
-    border: `1px solid ${colorPalette.seaFoamGreen}`,
-    borderRadius: [7, .7, 7],
-    padding: [30, .7, 30],
+    borderRadius: [5, .7, 5],
     marginBottom: [30, .7, 30],
+    paddingLeft: [20, globals.style.layoutScalingValue, 20],
+    paddingRight: [20, globals.style.layoutScalingValue, 20],
+    paddingTop: [20, globals.style.layoutScalingValue, 20],
+    paddingBottom: [20, globals.style.layoutScalingValue, 20],
+    border: `1px solid ${globals.colors.borderColor}`,
+    background: white,
     // boxShadow: '0px 3px 6px 0px #e6e6e6',
     title: {
-        color: colorPalette.forestGreen,
-        size: [22, .7, 22],
+        textTransform: uppercase,
         letterSpacing: [0.5, .7, 0.5],
+        marginBottom: [15, .7, 15],
+        size: [13, .7, 13],
+        weight: 600,
+    },
+    name: {
+        size: [15, .7, 15],
+        color: colorPalette.darkGray
     }
 }
 
 export const placeTaxonomyWrapperStyle = {
-    marginTop: [50, .7, 50],
     display: grid,
     gridTemplateColumns: '1fr 1fr 1fr',
     gridGap: sv(20),

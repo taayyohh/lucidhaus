@@ -9,26 +9,28 @@ import {fadeIn, fadeOut, nOpacity}              from 'shared/Layout/styles/anima
 import {history}                                from 'store'
 import {debounce}                               from 'utils/helpers'
 import {isEmpty}                                from 'utils/themer'
-import LinkSwitch                               from '../../../../shared/Basic/LinkSwitch'
 import Map                                      from '../../../../shared/Map'
 import Bookmark                                 from '../Bookmark'
 import {
+    placeInnerLeftWrapperStyle,
+    placeInnerRightInfoStyle,
     placeInnerRightWrapperStyle,
-    placeInnerWrapperStyle,
     placeMapStyle,
     placeMarqueeStyle,
-    placeWebsiteStyle,
+    placeTaxonomyStyle,
+    placeTaxonomyWrapperStyle,
     placeWrapperStyle,
     reviewHeadingStyle,
     reviewsHeadingWrapperStyle
-}                   from '../styles'
-import Address      from './Address'
-import Description  from './Description'
-import LeaveAReview from './LeaveAReview'
-import Rating       from './Rating'
-import Reviews      from './Reviews'
-import Title        from './Title'
-import Website      from './Website'
+}                                               from '../styles'
+import Address                                  from './Address'
+import Description                              from './Description'
+import LeaveAReview                             from './LeaveAReview'
+import Rating                                   from './Rating'
+import Reviews                                  from './Reviews'
+import Tags                                     from './Tags'
+import Title                                    from './Title'
+import Website                                  from './Website'
 
 const Place = () => {
     const dispatch = useDispatch()
@@ -268,7 +270,7 @@ const Place = () => {
                     </Div>
                     <MotionDiv theme={placeWrapperStyle}>
 
-                        <Div theme={placeInnerWrapperStyle}>
+                        <Div theme={placeInnerLeftWrapperStyle}>
                             <Title
                                 boonePlace={boonePlace}
                                 name={name}
@@ -280,6 +282,35 @@ const Place = () => {
                                 )}
                             </Div>
                             <Description description={description}/>
+
+                            <Div theme={placeTaxonomyWrapperStyle}>
+                                {audioAvailable && (
+                                    <Div theme={placeTaxonomyStyle}>
+                                        <Div theme={placeTaxonomyStyle.title}>Audible Signage</Div>
+                                        <Div theme={placeTaxonomyStyle.name}>
+                                            This location is equipped audible signage.
+                                        </Div>
+                                    </Div>
+                                )}
+                                {bathrooms.length > 0 && (
+                                    <Div theme={placeTaxonomyStyle}>
+                                        <Div theme={placeTaxonomyStyle.title}>Bathrooms</Div>
+                                        {bathrooms && bathrooms.map((bathroom, i) => (
+                                            <Div key={i} theme={placeTaxonomyStyle.name}>
+                                                {bathroom.name}
+                                            </Div>
+                                        ))}
+                                    </Div>
+                                )}
+                                {braille && (
+                                    <Div theme={placeTaxonomyStyle}>
+                                        <Div theme={placeTaxonomyStyle.title}> Braille</Div>
+                                        <Div theme={placeTaxonomyStyle.name}>
+                                            This location is equipped braille signage.
+                                        </Div>
+                                    </Div>
+                                )}
+                            </Div>
 
 
                             {place.reviews?.length > 0 && (
@@ -294,21 +325,25 @@ const Place = () => {
                             )}
                         </Div>
                         <Div theme={placeInnerRightWrapperStyle}>
-                            <Map
-                                lon={longitude || (!isEmpty(boonePlace) && boonePlace.locations[0].longitude)}
-                                lat={latitude || (!isEmpty(boonePlace) && boonePlace.locations[0].latitude)}
-                                theme={placeMapStyle}
-                            />
-                            <Address
-                                address1={address1}
-                                address2={address2}
-                                boonePlace={boonePlace}
-                                city={city}
-                                state={state}
-                                zip={zip}
-                            />
+                            <Div theme={placeInnerRightInfoStyle}>
+                                <Map
+                                    lon={longitude || (!isEmpty(boonePlace) && boonePlace.locations[0].longitude)}
+                                    lat={latitude || (!isEmpty(boonePlace) && boonePlace.locations[0].latitude)}
+                                    theme={placeMapStyle}
+                                />
+                                <Address
+                                    address1={address1}
+                                    address2={address2}
+                                    boonePlace={boonePlace}
+                                    city={city}
+                                    state={state}
+                                    zip={zip}
+                                />
 
-                            <Website website={website} />
+                                <Website website={website}/>
+                                <Tags placeCategory={placeCategory}/>
+                            </Div>
+
                         </Div>
                         <Div>
 
@@ -326,56 +361,6 @@ const Place = () => {
                             {/*<Div>*/}
                             {/*    <Div theme={placeWrapperTopStyle}>*/}
                             {/*        <Div theme={placeTaxonomyWrapperStyle}>*/}
-                            {/*            {audioAvailable && (*/}
-                            {/*                <Div theme={placeTaxonomyStyle}>*/}
-                            {/*                    <Div theme={placeTaxonomyStyle.title}>Audio Available:</Div>*/}
-                            {/*                    {audioAvailable ? 'True' : 'false'}*/}
-                            {/*                </Div>*/}
-                            {/*            )}*/}
-                            {/*            {bathrooms.length > 0 && (*/}
-                            {/*                <Div theme={placeTaxonomyStyle}>*/}
-                            {/*                    <Div theme={placeTaxonomyStyle.title}>Bathrooms:</Div>*/}
-                            {/*                    {bathrooms && bathrooms.map((bathroom, i) => (*/}
-                            {/*                        <Div key={i}>*/}
-                            {/*                            {bathroom.name}*/}
-                            {/*                        </Div>*/}
-                            {/*                    ))}*/}
-                            {/*                </Div>*/}
-                            {/*            )}*/}
-                            {/*            {braille && (*/}
-                            {/*                <Div theme={placeTaxonomyStyle}>*/}
-                            {/*                    <Div theme={placeTaxonomyStyle.title}> Braille:</Div>*/}
-                            {/*                    {braille ? 'true' : 'false'}*/}
-                            {/*                </Div>*/}
-                            {/*            )}*/}
-                            {/*            {brickAndMortar && (*/}
-                            {/*                <Div theme={placeTaxonomyStyle}>*/}
-                            {/*                    <Div theme={placeTaxonomyStyle.title}>*/}
-                            {/*                        Brick & Mortar Establishment:*/}
-                            {/*                    </Div>*/}
-                            {/*                    {brickAndMortar ? 'true' : 'false'}*/}
-                            {/*                </Div>*/}
-                            {/*            )}*/}
-                            {/*            {businessOwner.length > 0 && (*/}
-                            {/*                <Div theme={placeTaxonomyStyle}>*/}
-                            {/*                    <Div theme={placeTaxonomyStyle.title}>*/}
-                            {/*                        Business Owner:*/}
-                            {/*                    </Div>*/}
-                            {/*                    {businessOwner && businessOwner.map((owner, i) => (*/}
-                            {/*                        <Div key={i}>{owner.name}</Div>*/}
-                            {/*                    ))}*/}
-                            {/*                </Div>*/}
-                            {/*            )}*/}
-                            {/*            {placeCategory.length > 0 && (*/}
-                            {/*                <Div theme={placeTaxonomyStyle}>*/}
-                            {/*                    <Div theme={placeTaxonomyStyle.title}>*/}
-                            {/*                        Categories:*/}
-                            {/*                    </Div>*/}
-                            {/*                    {placeCategory && placeCategory.map((category, i) => (*/}
-                            {/*                        <Div key={i}>{category.name}</Div>*/}
-                            {/*                    ))}*/}
-                            {/*                </Div>*/}
-                            {/*            )}*/}
                             {/*            {communitiesServed.length > 0 && (*/}
                             {/*                <Div theme={placeTaxonomyStyle}>*/}
                             {/*                    <Div theme={placeTaxonomyStyle.title}>*/}

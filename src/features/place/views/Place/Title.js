@@ -8,7 +8,7 @@ const Title = ({boonePlace, name}) => {
         <Div theme={{display: 'flex', flexDirection: 'column'}}>
             {(boonePlace.name || name) && (
                 <MotionDiv theme={placeTitleStyle}>
-                    {boonePlace.name || name}
+                    {boonePlace?.name || name}
                 </MotionDiv>
             )}
         </Div>
