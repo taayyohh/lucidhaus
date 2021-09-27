@@ -1,4 +1,4 @@
-import {exclamationTriangle}        from 'config/icons'
+import {flag}                       from 'config/icons'
 import dayjs                        from 'dayjs'
 import React, {useEffect, useState} from 'react'
 import {useDispatch, useSelector}   from 'react-redux'
@@ -12,9 +12,10 @@ import {
     placeReviewDescriptionStyle,
     placeReviewLikertStyle,
     placeReviewReportIconStyle,
+    placeReviewReportWrapperStyle,
     placeReviewStyle,
     reviewsWrapperStyle
-}                                   from './styles'
+}                                   from '../styles'
 
 const Reviews = ({reviewIds, userFlaggedReviews, placeSlug}) => {
     const {_id, token} = useSelector(state => state.user)
@@ -47,6 +48,9 @@ const Reviews = ({reviewIds, userFlaggedReviews, placeSlug}) => {
                             key={review.updated}
                             theme={placeReviewStyle}
                         >
+                            <Div>
+
+                            </Div>
                             {review.photo && (
                                 <S3Img url={review.photo} theme={placeReviewStyle.image}/>
                             )}
@@ -56,6 +60,26 @@ const Reviews = ({reviewIds, userFlaggedReviews, placeSlug}) => {
                                 <Div><strong>Celebrated:</strong> {review.celebrated}</Div>
                                 <Div><strong>Welcome:</strong> {review.welcome}</Div>
                             </Div>
+                            <Div>{dayjs(review.updated).format('MM/DD/YYYY')}</Div>
+                            {!isFlagged && (
+                                <Div theme={placeReviewReportWrapperStyle}>
+                                    <Icon
+                                        theme={placeReviewReportIconStyle}
+                                        icon={flag}
+                                        onClick={() => dispatch({
+                                            type: 'user/flagReview',
+                                            payload: {
+                                                reviewId: review._id,
+                                                placeSlug,
+                                                _id,
+                                                token
+                                            }
+                                        })}
+                                    />
+                                    <Div>Report</Div>
+                                </Div>
+
+                            )}
                             {isFlagged && (
                                 <>
                                     <Div theme={placeFlaggedTextStyle}>
@@ -64,22 +88,6 @@ const Reviews = ({reviewIds, userFlaggedReviews, placeSlug}) => {
                                     <Div theme={placeReviewBlurStyle}/>
 
                                 </>
-                            )}
-                            <Div>{dayjs(review.updated).format('MM/DD/YYYY')}</Div>
-                            {!isFlagged && (
-                                <Icon
-                                    theme={placeReviewReportIconStyle}
-                                    icon={exclamationTriangle}
-                                    onClick={() => dispatch({
-                                        type: 'user/flagReview',
-                                        payload: {
-                                            reviewId: review._id,
-                                            placeSlug,
-                                            _id,
-                                            token
-                                        }
-                                    })}
-                                />
                             )}
                         </Div>
                     )

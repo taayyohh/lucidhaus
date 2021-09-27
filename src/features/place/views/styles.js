@@ -335,17 +335,15 @@ export const reviewFormHeadingStyle = {
     size: [30, .7, 24],
     marginBottom: [20, .7, 20],
     letterSpacing: [1, .7, 1],
-    font: globals.fonts.fancy
 }
 
 export const reviewHeadingStyle = {
-    font: globals.fonts.fancy,
-    size: [32, .7, 28],
-    backgroundColor: colorPalette.seaFoamGreen,
-    paddingLeft: [20, .7, 20],
+    size: [22, .7, 22],
     paddingTop: [20, .7, 20],
     paddingBottom: [20, .7, 20],
-    borderRadius: `${sv(10)} ${sv(10)} 0 0`
+    marginBottom: [20, .7, 20],
+    weight: 600,
+    borderBottom: `1px solid ${globals.colors.borderColor}`
 }
 
 export const placeReviewStyle = {
@@ -391,11 +389,21 @@ export const placeReviewBlurStyle = {
     background: '#000'
 }
 
-export const placeReviewReportIconStyle = {
-    marginTop: 20,
+export const placeReviewReportWrapperStyle = {
     position: absolute,
-    bottom: [20, .7, 20],
+    right: [50, globals.style.layoutScalingValue, 25],
+    bottom: [50, globals.style.layoutScalingValue, 25],
+    marginTop: 20,
+    display: flex,
+    alignItems: center,
+    color: colorPalette.darkGray,
+    size: [15, .7, 15],
+}
+
+export const placeReviewReportIconStyle = {
+    marginRight: [12, .7, 12],
     zIndex: 3,
+    color: colorPalette.darkGray,
     hover: {
         color: colorPalette.red,
         cursor: pointer

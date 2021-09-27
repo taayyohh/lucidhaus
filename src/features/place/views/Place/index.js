@@ -1,20 +1,27 @@
-import {AnimatePresence}                        from 'framer-motion'
-import React, {useContext, useEffect, useState} from 'react'
-import {useDispatch, useSelector}               from 'react-redux'
-import Div                                      from 'shared/Basic/Div'
-import MotionDiv                                from 'shared/Basic/MotionDiv'
-import {searchContext}                          from 'shared/Containers/SearchController'
-import ContentWrapper                           from 'shared/Layout/ContentWrapper'
-import {fadeIn, fadeOut, nOpacity}              from 'shared/Layout/styles/animations'
-import {history}                                from 'store'
-import {debounce}                               from 'utils/helpers'
-import {isEmpty}                                from 'utils/themer'
-import Bookmark                                 from '../Bookmark'
-import {placeMarqueeStyle, placeWrapperStyle}   from '../styles'
-import Description                              from './Description'
-import LeaveAReview                             from './LeaveAReview'
-import Rating                                   from './Rating'
-import Title                                    from './Title'
+import {AnimatePresence}                                                                      from 'framer-motion'
+import React, {useContext, useEffect, useState}                                               from 'react'
+import {useDispatch, useSelector}                                                             from 'react-redux'
+import Div                                                                                    from 'shared/Basic/Div'
+import MotionDiv
+                                                                                              from 'shared/Basic/MotionDiv'
+import {searchContext}                                                                        from 'shared/Containers/SearchController'
+import ContentWrapper
+                                                                                              from 'shared/Layout/ContentWrapper'
+import {
+    fadeIn,
+    fadeOut,
+    nOpacity
+}                                                                                             from 'shared/Layout/styles/animations'
+import {history}                                                                              from 'store'
+import {debounce}                                                                             from 'utils/helpers'
+import {isEmpty}                                                                              from 'utils/themer'
+import Bookmark                                                                               from '../Bookmark'
+import {placeMarqueeStyle, placeWrapperStyle, reviewHeadingStyle, reviewsHeadingWrapperStyle} from '../styles'
+import Description                                                                            from './Description'
+import LeaveAReview                                                                           from './LeaveAReview'
+import Rating                                                                                 from './Rating'
+import Reviews                                                                                from './Reviews'
+import Title                                                                                  from './Title'
 
 const Place = () => {
     const dispatch = useDispatch()
@@ -227,10 +234,10 @@ const Place = () => {
 
     const [userFlaggedReviews, setUserFlaggedReviews] = useState([])
     useEffect(() => {
-        const flaggedReviews = reviews.filter(review => review.flaggedBy.length > 0)
+        const flaggedReviews = reviews.filter(review => review?.flaggedBy.length > 0)
 
         for (const flagged of flaggedReviews) {
-            if (flagged.flaggedBy.includes(_id)) {
+            if (flagged?.flaggedBy.includes(_id)) {
                 setUserFlaggedReviews([...userFlaggedReviews, flagged.id])
             }
         }
@@ -455,21 +462,18 @@ const Place = () => {
 
                             {/*</Div>*/}
                         </Div>
-                        {/*<Div theme={placeWrapperBottomStyle}>*/}
-                        {/*    {place.reviews?.length > 0 && (*/}
-                        {/*        <Div theme={reviewsHeadingWrapperStyle}>*/}
-                        {/*            <Div theme={reviewHeadingStyle}>Reviews</Div>*/}
-                        {/*            <Reviews*/}
-                        {/*                reviewIds={place.reviews}*/}
-                        {/*                userFlaggedReviews={userFlaggedReviews}*/}
-                        {/*                placeSlug={slug}*/}
-                        {/*            />*/}
-                        {/*        </Div>*/}
-                        {/*    )}*/}
-                        {/*    {(isAuthenticated && isVerified && hasNoReviews) && (*/}
-                        {/*        <Review/>*/}
-                        {/*    )}*/}
-                        {/*</Div>*/}
+
+
+                        {place.reviews?.length > 0 && (
+                            <Div theme={reviewsHeadingWrapperStyle}>
+                                <Div theme={reviewHeadingStyle}>What {place.reviews.length} people are saying</Div>
+                                <Reviews
+                                    reviewIds={place.reviews}
+                                    userFlaggedReviews={userFlaggedReviews}
+                                    placeSlug={slug}
+                                />
+                            </Div>
+                        )}
                     </MotionDiv>
                 </ContentWrapper>
             </MotionDiv>
