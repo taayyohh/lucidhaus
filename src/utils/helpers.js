@@ -89,6 +89,19 @@ export const isEqual = (a, b) => JSON.stringify(a) === JSON.stringify(b)
 export const isString = a => typeof a === 'string' || a instanceof String
 
 
+
+/**
+ * Determines if two arrays are equal.
+ *
+ */
+export const arrayEquals = (a, b) => {
+    return Array.isArray(a) &&
+        Array.isArray(b) &&
+        a.length === b.length &&
+        a.every((val, index) => val === b[index]);
+}
+
+
 /**
  * Randomizes an array
  *

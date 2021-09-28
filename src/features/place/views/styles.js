@@ -438,6 +438,7 @@ export const placeReviewUserReviewCountStyle = {
 }
 
 export const placeReviewUserNameStyle = {
+    marginTop: [5, .7, 5],
     size: [16, .7, 16]
 }
 

@@ -54,16 +54,15 @@ const Reviews = ({reviewIds, userFlaggedReviews, placeSlug}) => {
                         >
                             <Div theme={placeReviewUserInfoStyle}>
                                 <Div theme={placeReviewUserAvatarStyle}>avatar</Div>
-                                <Div theme={placeReviewUserNameStyle}>username</Div>
-                                <Div theme={placeReviewUserReviewCountStyle}># of Reviews</Div>
+                                <Div theme={placeReviewUserNameStyle}>{review.reviewerName}</Div>
                             </Div>
                             <Div>
                                 <Div theme={placeReviewedByStyle}>Reviewed on {dayjs(review.updated).format('MMMM DD, YYYY')}</Div>
                                 <RichText theme={placeReviewDescriptionStyle}>{review.review}</RichText>
                                 <Div theme={placeReviewLikertStyle}>
-                                    <Div><strong>Safe:</strong> {review.safe}</Div>
-                                    <Div><strong>Welcome:</strong> {review.welcome}</Div>
-                                    <Div><strong>Celebrated:</strong> {review.celebrated}</Div>
+                                    <Div><strong>Safe:</strong> {review.safe[0]}</Div>
+                                    <Div><strong>Welcome:</strong> {review.welcome[0]}</Div>
+                                    <Div><strong>Celebrated:</strong> {review.celebrated[0]}</Div>
                                 </Div>
                                 {review.photo && (
                                     <S3Img url={review.photo} theme={placeReviewStyle.image}/>

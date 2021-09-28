@@ -46,30 +46,28 @@ const List = () => {
 
     const Hits = connectInfiniteHits((renderArgs, isFirstRender) => {
         const {hits, hasMore, refineNext} = renderArgs
-      //  const { container } = widgetParams
+        //  const { container } = widgetParams
         console.log('renderARgs', renderArgs)
         console.log('isFirstRender', isFirstRender)
 
         let lastRenderArgs = renderArgs;
 
-        if(!!sentinel.current) {
+        if (!!sentinel.current) {
 
-                const observer = new IntersectionObserver(entries => {
-                    console.log('entries', entries)
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting && hasMore) {
-                            refineNext()
-                        }
-                    })
+            const observer = new IntersectionObserver(entries => {
+                console.log('entries', entries)
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && hasMore) {
+                        refineNext()
+                    }
                 })
+            })
 
-                console.log('sentinelk', sentinel)
-               observer.observe(sentinel.current)
-
+            console.log('sentinelk', sentinel)
+            observer.observe(sentinel.current)
 
 
         }
-
 
 
         return (
@@ -88,7 +86,7 @@ const List = () => {
                         />
                     </Div>
                 )}
-                <Div ref={sentinel} />
+                <Div ref={sentinel}/>
             </>
         )
     })

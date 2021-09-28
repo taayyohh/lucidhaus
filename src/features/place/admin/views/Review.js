@@ -8,12 +8,11 @@ import {
     reviewFormHeadingStyle,
     reviewFormStyle,
     reviewFormWrapperStyle,
-    reviewHelperTextStyle,
     reviewLeaveWrapperStyle
 }                                     from '../../views/styles'
 
 const Review = () => {
-    const {_id, token} = useSelector(state => state.user)
+    const {_id, token, nameFirst} = useSelector(state => state.user)
     const {slug} = useSelector(state => state.site)
     const {place} = useSelector(state => state.place)
 
@@ -24,6 +23,7 @@ const Review = () => {
         celebrated: undefined,
         welcome: undefined,
         user: _id,
+        reviewerName: nameFirst,
         placeId: place._id,
         placeName: place.name,
         placeSlug: place.slug,
@@ -36,15 +36,7 @@ const Review = () => {
         <Div theme={reviewFormWrapperStyle}>
             <Div theme={reviewLeaveWrapperStyle}>
                 <H2 theme={reviewFormHeadingStyle}>Leave a Review</H2>
-                {/*<Div theme={reviewHelperTextStyle}>*/}
-                {/*    As you visit businesses, take a few moments to review them here. We aren't only looking for ratings*/}
-                {/*    from*/}
-                {/*    people who experience discrimination; we need allies as well! Ratings from allies are necessary for*/}
-                {/*    helping us determine if a business was just having an off-day, providing poor customer service to*/}
-                {/*    everyone, or if there is an identity-based pattern of bias and discrimination.*/}
-                {/*</Div>*/}
             </Div>
-
             <Form
                 initialValues={initialValues}
                 fields={reviewFields}
@@ -55,7 +47,6 @@ const Review = () => {
                 enableReinitialize={true}
             />
         </Div>
-
     )
 }
 

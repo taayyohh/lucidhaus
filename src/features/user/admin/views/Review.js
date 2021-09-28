@@ -11,9 +11,9 @@ const Review = ({review, url}) => {
     return (
         <Div theme={{...genericCardStyle, marginBottom: 50}}>
             <RichText>{review.review}</RichText>
-            <Div>Safe: {review.safe}</Div>
-            <Div>Celebrated: {review.celebrated}</Div>
-            <Div>Welcome: {review.welcome}</Div>
+            <Div>Safe: {review.safe[0]}</Div>
+            <Div>Celebrated: {review.celebrated[0]}</Div>
+            <Div>Welcome: {review.welcome[0]}</Div>
             <Div>{dayjs(review.updated).format('MM/DD/YYYY')}</Div>
             <LinkSwitch url={`/places/${review.placeSlug}`}>{review.placeName}</LinkSwitch>
             <LinkSwitch

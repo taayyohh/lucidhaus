@@ -8,13 +8,14 @@ import {
     selectFieldErrorMessageStyle,
     selectFieldStyle
 }                     from 'shared/Fields/styles'
+import {arrayEquals}  from '../../../utils/helpers'
 import {
     likertOptionStyle,
     likertOptionsWrapperStyle
 }                     from './styles'
 
 const Likert = memo(({field, helperText, className, errorMessage, formik, value}) => {
-    const optionsArray = ['Strongly Disagree', 'Disagree', 'Neutral', 'Agree', 'Strongly Agree']
+    const optionsArray = [['Strongly Disagree', 1], ['Disagree', 2], ['Neutral', 3], ['Agree', 4], ['Strongly Agree', 5]]
 
     return (
         <Div theme={selectFieldStyle} className={className ? className : ''}>
@@ -26,10 +27,10 @@ const Likert = memo(({field, helperText, className, errorMessage, formik, value}
                         key={o}
                         onClick={() => formik.setFieldValue(field?.name, o)}
                         theme={{
-                            ...likertOptionStyle(value === o)
+                            ...likertOptionStyle(value?.length > 1 ? arrayEquals(value,o) : o?.[0] === value?.[0])
                         }}
                     >
-                        {o}
+                        {o[0]}
                     </Div>
                 ))}
             </Div>
