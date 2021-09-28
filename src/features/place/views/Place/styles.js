@@ -1,5 +1,5 @@
-import {colorPalette, globals}     from 'config/styles'
-import {borderBox, pointer, white} from 'utils/themer'
+import {colorPalette, globals}                              from 'config/styles'
+import {borderBox, center, flex, flexStart, pointer, white} from 'utils/themer'
 
 export const placeDescriptionStyle = {
     boxSizing: borderBox,
@@ -12,6 +12,7 @@ export const placeDescriptionWrapperStyle = {
 }
 
 export const LeaveAReviewButtonStyle = {
+    alignSelf: flexStart,
     backgroundColor: colorPalette.darkHoneyYellow,
     paddingLeft: [15, .7, 15],
     paddingRight: [15, .7, 15],
@@ -31,4 +32,30 @@ export const LeaveAReviewButtonStyle = {
         border: `1px solid ${colorPalette.honeyYellow}`,
 
     }
+}
+
+export const scoreCircleStyle = {
+    display: flex,
+    alignItems: center,
+    justifyContent: center,
+    size: [16, .7, 16],
+    height: [45, globals.style.layoutScalingValue, 45],
+    width: [45, globals.style.layoutScalingValue, 45],
+    borderRadius: [25, globals.style.layoutScalingValue, 25],
+    marginLeft: [5, .7, 5],
+    border: `1px solid ${globals.colors.borderColor}`
+}
+
+export const inclusiveScoreStyle = {
+    backgroundColor: colorPalette.forestGreen,
+    borderColor: colorPalette.forestGreen,
+    color: white,
+}
+
+export const scoreWrapperStyle = {
+    display: flex,
+    alignItems: center,
+    marginRight: [15, globals.style.layoutScalingValue, 15],
+    weight: 600,
+    size: [15, .7, 15]
 }

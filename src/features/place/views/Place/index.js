@@ -273,7 +273,7 @@ const Place = () => {
                                 boonePlace={boonePlace}
                                 name={name}
                             />
-                            <Div theme={{display: 'flex'}}>
+                            <Div theme={{display: 'flex', flexDirection: 'column'}}>
                                 <Rating/>
                                 {(isAuthenticated && isVerified && hasNoReviews) && (
                                     <LeaveAReview/>
