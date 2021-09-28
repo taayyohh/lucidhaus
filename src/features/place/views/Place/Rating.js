@@ -16,33 +16,12 @@ const Rating = ({}) => {
         languageSpoken
     } = useSelector(state => state.place)
 
-    const {averageSafe, averageCelebrated, averageWelcome} = place
+    const {averageSafe, averageCelebrated, averageWelcome, inclusiveScore} = place
 
-    // const [totalReviewCount, setTotalReviewCount] = useState(0)
-    // const [totalCelebratedScore, setTotalCelebratedScore] = useState(0)
-    // const [totalSafeScore, setTotalSafeScore] = useState(0)
-    // const [totalWelcomeScore, setTotalWelcomeScore] = useState(0)
-    //
-    // useEffect(() => {
-    //     console.log('reveiws', reviews)
-    //
-    //     for(const review of reviews) {
-    //         setTotalSafeScore(totalSafeScore + review.safe[1])
-    //         setTotalCelebratedScore(totalCelebratedScore + review.celebrated[1])
-    //         setTotalWelcomeScore(totalWelcomeScore + review.welcome[1])
-    //     }
-    //
-    //     setTotalSafeScore(totalSafeScore / reviews.length)
-    //     setTotalCelebratedScore(totalCelebratedScore / reviews.length)
-    //     setTotalWelcomeScore(totalWelcomeScore / reviews.length)
-    //
-    //
-    // }, [reviews])
-    //
 
     return (
         <Div theme={{display: 'flex'}}>
-            <Div>Overall Rating: {Math.round((averageSafe + averageCelebrated + averageWelcome) / 3)}</Div>
+            <Div>Overall Rating: {inclusiveScore}</Div>
             <Div>Safe: {averageSafe}</Div>
             <Div>Celebrated: {averageCelebrated}</Div>
             <Div>Welcome: {averageWelcome}</Div>
