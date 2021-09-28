@@ -6,15 +6,7 @@ import {inclusiveScoreStyle, scoreCircleStyle, scoreWrapperStyle} from './styles
 const Rating = ({}) => {
     const {
         place,
-        boonePlace,
-        createdFromBoone,
-        error,
         reviews,
-        bathrooms,
-        placeCategory,
-        communitiesServed,
-        foodOptions,
-        languageSpoken
     } = useSelector(state => state.place)
 
     const {averageSafe, averageCelebrated, averageWelcome, inclusiveScore} = place
@@ -34,7 +26,8 @@ const Rating = ({}) => {
                     <Div theme={scoreWrapperStyle}>Celebrated: <Div
                         theme={scoreCircleStyle}>{averageCelebrated}</Div></Div>
 
-                    <Div theme={scoreWrapperStyle}>Total Reviews: <Div theme={scoreCircleStyle}>{reviews.length}</Div></Div>
+                    <Div theme={scoreWrapperStyle}>Total Reviews: <Div
+                        theme={scoreCircleStyle}>{reviews.length}</Div></Div>
                 </Div>
             )}
 
