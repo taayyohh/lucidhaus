@@ -44,6 +44,8 @@ const UpdateReview = () => {
 
     const initialValues = {
         review: currentReview?.review,
+        reviewerName: currentReview?.reviewerName,
+        reviewerAvatar: currentReview?.reviewerAvatar,
         photo: currentReview?.photo,
         safe: currentReview?.safe,
         celebrated: currentReview?.celebrated,

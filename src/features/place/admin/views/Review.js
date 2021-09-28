@@ -12,7 +12,7 @@ import {
 }                                     from '../../views/styles'
 
 const Review = () => {
-    const {_id, token, nameFirst} = useSelector(state => state.user)
+    const {_id, token, nameFirst, avatar} = useSelector(state => state.user)
     const {slug} = useSelector(state => state.site)
     const {place} = useSelector(state => state.place)
 
@@ -24,6 +24,7 @@ const Review = () => {
         welcome: undefined,
         user: _id,
         reviewerName: nameFirst,
+        reviewerAvatar: avatar,
         placeId: place._id,
         placeName: place.name,
         placeSlug: place.slug,

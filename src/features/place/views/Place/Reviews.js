@@ -9,7 +9,8 @@ import S3Img                        from 'shared/Basic/S3Img'
 import {
     placeFlaggedTextStyle,
     placeReviewBlurStyle,
-    placeReviewDescriptionStyle, placeReviewedByStyle,
+    placeReviewDescriptionStyle,
+    placeReviewedByStyle,
     placeReviewLikertStyle,
     placeReviewReportIconStyle,
     placeReviewReportWrapperStyle,
@@ -17,9 +18,8 @@ import {
     placeReviewUserAvatarStyle,
     placeReviewUserInfoStyle,
     placeReviewUserNameStyle,
-    placeReviewUserReviewCountStyle,
     reviewsWrapperStyle
-} from '../styles'
+}                                   from '../styles'
 
 const Reviews = ({reviewIds, userFlaggedReviews, placeSlug}) => {
     const {_id, token} = useSelector(state => state.user)
@@ -53,11 +53,12 @@ const Reviews = ({reviewIds, userFlaggedReviews, placeSlug}) => {
                             theme={placeReviewStyle}
                         >
                             <Div theme={placeReviewUserInfoStyle}>
-                                <Div theme={placeReviewUserAvatarStyle}>avatar</Div>
+                                <S3Img url={review.reviewerAvatar} theme={placeReviewUserAvatarStyle}/>
                                 <Div theme={placeReviewUserNameStyle}>{review.reviewerName}</Div>
                             </Div>
                             <Div>
-                                <Div theme={placeReviewedByStyle}>Reviewed on {dayjs(review.updated).format('MMMM DD, YYYY')}</Div>
+                                <Div theme={placeReviewedByStyle}>Reviewed
+                                    on {dayjs(review.updated).format('MMMM DD, YYYY')}</Div>
                                 <RichText theme={placeReviewDescriptionStyle}>{review.review}</RichText>
                                 <Div theme={placeReviewLikertStyle}>
                                     <Div><strong>Safe:</strong> {review.safe[0]}</Div>
