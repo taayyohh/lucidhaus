@@ -1,5 +1,5 @@
-import {MULTI_SELECT, TEXT} from 'config/variables'
-import * as Yup             from 'yup'
+import {MULTI_SELECT, NUMBER, TEXT} from 'config/variables'
+import * as Yup                     from 'yup'
 
 export const submitPlaceFields = [
     {
@@ -41,6 +41,18 @@ export const submitPlaceFields = [
         name: 'state',
         inputLabel: 'State ',
         type: TEXT
+    },
+    {
+        name: 'longitude',
+        inputLabel: 'Longitude ',
+        type: NUMBER,
+        disabled: true
+    },
+    {
+        name: 'latitude',
+        inputLabel: 'Latitude ',
+        type: NUMBER,
+        disabled: true
     },
     {
         name: 'categories',

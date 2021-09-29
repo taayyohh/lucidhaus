@@ -9,6 +9,8 @@ export function* submitPlace({payload}) {
         token,
         address1,
         address2,
+        longitude,
+        latitude,
         city,
         zip,
         country,
@@ -26,6 +28,8 @@ export function* submitPlace({payload}) {
     const fields = [
         {address1},
         {address2},
+        {longitude},
+        {latitude},
         {city},
         {zip},
         {country},

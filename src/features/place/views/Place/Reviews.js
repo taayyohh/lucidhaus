@@ -54,7 +54,9 @@ const Reviews = ({reviewIds, userFlaggedReviews, placeSlug}) => {
                         >
                             <Div theme={placeReviewUserInfoStyle}>
                                 <S3Img url={review.reviewerAvatar} theme={placeReviewUserAvatarStyle}/>
-                                <Div theme={placeReviewUserNameStyle}>{review.reviewerName}</Div>
+                                {review.reviewerName && (
+                                    <Div theme={placeReviewUserNameStyle}>{review.reviewerName}</Div>
+                                )}
                             </Div>
                             <Div>
                                 <Div theme={placeReviewedByStyle}>Reviewed

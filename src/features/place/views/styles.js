@@ -421,6 +421,9 @@ export const placeReviewStyle = {
     borderBottom: `1px solid ${globals.colors.borderColor}`,
     marginBottom: [20, .7, 20],
     paddingBottom: [50, .7, 50],
+    mobile: {
+        flexDirection: column
+    },
     image: {
         maxWidth: [150, .7, 150]
     }

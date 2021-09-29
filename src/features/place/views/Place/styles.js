@@ -1,5 +1,5 @@
-import {colorPalette, globals}                              from 'config/styles'
-import {borderBox, center, flex, flexStart, pointer, white} from 'utils/themer'
+import {colorPalette, globals}                                      from 'config/styles'
+import {borderBox, center, column, flex, flexStart, pointer, white} from 'utils/themer'
 
 export const placeDescriptionStyle = {
     boxSizing: borderBox,
@@ -58,4 +58,12 @@ export const scoreWrapperStyle = {
     marginRight: [15, globals.style.layoutScalingValue, 15],
     weight: 600,
     size: [15, .7, 15]
+}
+
+export const scoreBarStyle = {
+    display: 'flex',
+    marginBottom: [30, .7, 30],
+    mobile: {
+        flexDirection: column
+    }
 }

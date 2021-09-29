@@ -62,13 +62,7 @@ const SmartInput = ({
         const city = formik.values.city
         const state = formik.values.state
 
-
-        if (address?.length > 0 && city?.length > 0 && state?.length > 0) {
-            console.log('address', address)
-            console.log('city', city)
-            console.log('state', state)
-
-
+        if (address?.length > 0 && city?.length > 0 && state?.length > 0 && formik.values.isPendingSubmission) {
             geocodingClient.forwardGeocode({
                 query: `${address} ${city} ${state}`,
                 mode: 'mapbox.places-permanent',
@@ -77,7 +71,10 @@ const SmartInput = ({
                 .send()
                 .then(response => {
                     const match = response.body;
-                    console.log('match', match)
+                    const long = match.features[0].center[0]
+                    const lat = match.features[0].center[1]
+                    formik.setFieldValue('longitude', long)
+                    formik.setFieldValue('latitude', lat)
                 })
         }
 

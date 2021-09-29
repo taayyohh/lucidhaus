@@ -26,6 +26,8 @@ const Submit = () => {
         state: '',
         categories: [],
         communitiesServed: [],
+        longitude: '',
+        latitude: '',
         name: '',
         submittedBy: _id,
         website: '',

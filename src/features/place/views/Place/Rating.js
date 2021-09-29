@@ -1,7 +1,7 @@
 import React                                                      from 'react'
 import {useSelector}                                              from 'react-redux'
-import Div                                                        from 'shared/Basic/Div'
-import {inclusiveScoreStyle, scoreCircleStyle, scoreWrapperStyle} from './styles'
+import Div                                                                       from 'shared/Basic/Div'
+import {inclusiveScoreStyle, scoreBarStyle, scoreCircleStyle, scoreWrapperStyle} from './styles'
 
 const Rating = ({}) => {
     const {
@@ -15,7 +15,7 @@ const Rating = ({}) => {
     return (
         <Div theme={{display: 'flex'}}>
             {inclusiveScore > 0 && (
-                <Div theme={{display: 'flex', marginBottom: [30, .7, 30]}}>
+                <Div theme={scoreBarStyle}>
 
                     <Div theme={scoreWrapperStyle}>
                         Inclusive Score:
