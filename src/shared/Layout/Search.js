@@ -50,9 +50,7 @@ const Search = ({theme}) => {
 }
 
 Search.defaultProps = {
-    theme: {
-        form: {}
-    },
+    theme: {}
 }
 
 export default Search

@@ -91,7 +91,7 @@ export const defaultInputStyle = {
     position: relative,
     height: [50, .7, 50],
     width: '100%',
-    padding: `0 ${sv(25)}`,
+    padding: `0 ${sv(25, globals.style.layoutScalingValue)}`,
     border: none,
     margin: 0,
     font: globals.fonts.sans,

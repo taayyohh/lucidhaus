@@ -1,39 +1,34 @@
-import React            from 'react'
-import {useSelector}    from 'react-redux'
-import Div              from 'shared/Basic/Div'
-import LinkSwitch       from 'shared/Basic/LinkSwitch'
-import S3Img            from 'shared/Basic/S3Img'
-import ContentWrapper   from 'shared/Layout/ContentWrapper'
-import Search           from '../../../shared/Layout/Search'
-import {pageFrameStyle} from '../../../shared/Layout/styles'
+import React          from 'react'
+import {useSelector}  from 'react-redux'
+import Div            from 'shared/Basic/Div'
+import LinkSwitch     from 'shared/Basic/LinkSwitch'
+import ContentWrapper from 'shared/Layout/ContentWrapper'
+import Search         from 'shared/Layout/Search'
 import {
+    homeContentWrapperStyle,
     homeHeadlineStyle,
     homeImageStyle,
     homeImageWrapperStyle,
-    homeQuoteStyle, homeSearchStyle, homeSearchWrapperStyle,
+    homeSearchStyle,
+    homeSearchWrapperStyle,
     homeSignupButtonStyle,
-    homeSignupImageStyle,
-    homeSignupImageWrapperStyle,
     homeSignupQuoteStyle,
     homeSignupQuoteWrapperStyle,
-    homeSignupWrapperStyle,
-    homeSpacerStyle
-} from './styles'
+    homeSignupWrapperStyle
+}                     from './styles'
 
 const Home = () => {
     const {isAuthenticated, isAdmin} = useSelector(state => state.user)
 
     return (
-        <ContentWrapper theme={{width: '100%', margin: 0}}>
+        <ContentWrapper theme={homeContentWrapperStyle}>
             <Div theme={homeImageWrapperStyle}>
                 <Div theme={homeImageStyle}/>
                 <Div theme={homeSearchWrapperStyle}>
                     <Div theme={homeHeadlineStyle}>
                         Celebrating the places that celebrate you
                     </Div>
-                    <Search
-                        theme={homeSearchStyle}
-                    />
+                    <Search theme={homeSearchStyle} />
                 </Div>
             </Div>
             <Div theme={homeSignupWrapperStyle}>

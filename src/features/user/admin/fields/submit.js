@@ -4,7 +4,7 @@ import * as Yup                     from 'yup'
 export const submitPlaceFields = [
     {
         name: 'name',
-        inputLabel: 'Name',
+        inputLabel: 'Place Name',
         type: TEXT
     },
     {

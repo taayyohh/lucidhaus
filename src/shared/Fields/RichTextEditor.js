@@ -17,7 +17,7 @@ const RichTextEditor = ({name, formik, className, errorMessage, label}) => {
             <CKEditor
                 id={name}
                 editor={ClassicEditor}
-                data={formik.values[name]}
+                data={formik.values[name] || null}
                 onChange={(event, editor) => {
                     formik.setFieldValue(name, editor.getData())
                 }}

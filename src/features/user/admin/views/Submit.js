@@ -6,8 +6,8 @@ import Div                                      from 'shared/Basic/Div'
 import Form                                     from 'shared/Fields/Form'
 import ContentWrapper                           from 'shared/Layout/ContentWrapper'
 import {adminFormWrapperStyle}                  from 'shared/Layout/Dashboard/admin/styles'
-import DashboardWrapper                         from 'shared/Layout/Dashboard/DashboardWrapper'
-import {userContentWrapperStyle}                from './styles'
+import DashboardWrapper                                  from 'shared/Layout/Dashboard/DashboardWrapper'
+import {submitFormWrapperStyle, userContentWrapperStyle} from './styles'
 
 const Submit = () => {
     const dispatch = useDispatch()
@@ -86,7 +86,7 @@ const Submit = () => {
                         dispatchAction={'user/submitPlace'}
                         formHeading={'Submit A Place'}
                         buttonText={'Submit'}
-                        theme={adminFormWrapperStyle}
+                        theme={{...adminFormWrapperStyle, ...submitFormWrapperStyle}}
                         options={options}
                         enableReinitialize={true}
                     />

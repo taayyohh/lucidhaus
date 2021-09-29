@@ -1,20 +1,7 @@
-import {colorPalette, globals} from 'config/styles'
-import {CDN}                   from 'config/variables'
-import {
-    absolute,
-    auto,
-    center,
-    column,
-    flex,
-    flexStart,
-    none,
-    pointer,
-    relative,
-    sv,
-    uppercase,
-    white
-}                              from 'utils/themer'
-import {placesSearchFormStyle} from '../../place/views/styles'
+import {colorPalette, globals}                                                               from 'config/styles'
+import {CDN}                                                                                 from 'config/variables'
+import {absolute, auto, center, column, flex, none, pointer, relative, sv, uppercase, white} from 'utils/themer'
+import {placesSearchFormStyle}                                                               from '../../place/views/styles'
 
 export const homeImageWrapperStyle = {
     display: flex,
@@ -61,10 +48,10 @@ export const homeSearchStyle = {
     borderRadius: 10,
     backgroundColor: colorPalette.seaGreen,
     form: {
-        fieldset:{
+        fieldset: {
             height: [52, .7, 52],
             marginBottom: 0,
-            maxWidth: [500, globals.style.layoutScalingValue, '100%'],
+            width: [500, .35, '100%'],
         },
         field: {
             position: absolute,
@@ -200,4 +187,9 @@ export const homeSignupButtonStyle = {
         border: `1px solid ${colorPalette.forestGreen}`,
         color: white
     }
+}
+
+export const homeContentWrapperStyle = {
+    width: '100%',
+    margin: 0
 }
