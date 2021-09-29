@@ -5,7 +5,8 @@ export const placeSearchField = [
     {
         name: 'input',
         inputLabel: 'Where to?',
-        type: TEXT
+        type: TEXT,
+        autoFocus: true
     }
 ]
 

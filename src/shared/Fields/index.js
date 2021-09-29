@@ -80,6 +80,7 @@ const FieldSwitch = memo(({field, formik, options, theme, autoSubmit}) => {
                 type={field.type}
                 theme={theme}
                 autoSubmit={autoSubmit}
+                autoFocus={field.autoFocus}
             />
         case IMAGE_UPLOAD:
             return <UploadImage

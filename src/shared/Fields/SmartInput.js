@@ -16,6 +16,7 @@ const mapboxGeo = require('@mapbox/mapbox-sdk/services/geocoding');
 const geocodingClient = mapboxGeo({accessToken: MAPBOX_PUBLIC});
 
 const SmartInput = ({
+                        autoFocus,
                         autoSubmit,
                         className,
                         disabled,
@@ -129,6 +130,7 @@ const SmartInput = ({
                 value={tel || value || ''}
                 theme={theme.field}
                 disabled={disabled}
+                autoFocus={autoFocus}
             />
             <Span theme={defaultFieldErrorStyle}>{errorMessage}</Span>
         </Fieldset>
