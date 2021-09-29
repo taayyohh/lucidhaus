@@ -13,8 +13,7 @@ const Map = ({lon, lat, zoom = 14, theme}) => {
                 style: 'mapbox://styles/mapbox/streets-v11', // style URL
                 center: [lon, lat], // starting position [lng, lat]
                 zoom: zoom // starting zoom
-            })
-;
+            });
 
             new mapboxgl.Marker()
                 .setLngLat([lon, lat])
