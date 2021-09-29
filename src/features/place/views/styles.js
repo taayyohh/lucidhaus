@@ -1,4 +1,5 @@
 import {colorPalette, globals} from 'config/styles'
+import {CDN}                   from 'config/variables'
 import {
     absolute,
     auto,
@@ -6,15 +7,18 @@ import {
     column,
     flex,
     flexStart,
-    grid, inlineFlex,
+    grid,
+    inlineFlex,
     none,
     pointer,
     relative,
-    row, spaceBetween,
-    sv, uppercase,
-    white
-} from 'utils/themer'
-import {CDN}                   from '../../../config/variables'
+    row,
+    spaceBetween,
+    sv,
+    uppercase,
+    white,
+    wrap
+}                              from 'utils/themer'
 
 export const placesWrapperStyle = {
     display: 'grid',
@@ -220,7 +224,7 @@ export const placeMarqueeStyle = {
     hover: {
         cursor: 'default'
     }
-  //  opacity: .4
+    //  opacity: .4
 }
 
 export const placeWrapperTopStyle = {
@@ -259,7 +263,7 @@ export const placeWrapperBottomStyle = {
 
 export const placeMapStyle = {
     height: [250, globals.style.layoutScalingValue, 250],
-    width:  '100%'
+    width: '100%'
 }
 
 export const placePhotoStyle = {
@@ -327,6 +331,12 @@ export const placeTagsIconStyle = {
     marginTop: [5, .7, 5]
 }
 
+export const placeTagsWrapperStyle = {
+    display: flex,
+    flexWrap: wrap
+}
+
+
 export const placeTaxonomyStyle = {
     borderRadius: [5, .7, 5],
     paddingLeft: [20, globals.style.layoutScalingValue, 20],
@@ -389,12 +399,10 @@ export const reviewFormStyle = {
 export const reviewFormWrapperStyle = {
     paddingLeft: [70, .7, 50],
     paddingRight: [70, .7, 50]
-  //  maxWidth: [600, globals.style.layoutScalingValue, '100%'],
+    //  maxWidth: [600, globals.style.layoutScalingValue, '100%'],
 }
 
-export const reviewLeaveWrapperStyle = {
-
-}
+export const reviewLeaveWrapperStyle = {}
 
 export const reviewFormHeadingStyle = {
     size: [30, .7, 24],

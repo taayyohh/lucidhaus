@@ -96,4 +96,13 @@ export const validateReview = Yup.object().shape({
     review: Yup
         .string().max(5000)
         .required('Required'),
+    safe: Yup
+        .array()
+        .required('Required'),
+    celebrated: Yup
+        .array()
+        .required('Required'),
+    welcome: Yup
+        .array()
+        .required('Required'),
 })
