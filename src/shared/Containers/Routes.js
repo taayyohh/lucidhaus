@@ -87,7 +87,9 @@ const NotFound = lazy(() => import('features/site/views/NotFound'))
 const SignIn = lazy(() => import('features/site/views/SignIn'))
 const SignUp = lazy(() => import('features/site/views/SignUp'))
 const UserOrders = lazy(() => import('features/user/views/dashboard/Orders'))
-const UserSettings = lazy(() => import('features/user/admin/views/Profile'))
+const IdentityProfile = lazy(() => import('features/user/admin/views/Profile'))
+const AccountDetails = lazy(() => import('features/user/admin/views/Account'))
+
 const UserReviews = lazy(() => import('features/user/admin/views/Reviews'))
 const UpdateUserReviews = lazy(() => import('features/user/admin/views/UpdateReview'))
 const UserPlaces = lazy(() => import('features/user/admin/views/Places'))
@@ -125,7 +127,8 @@ const Routes = () => {
 
                             <PrivateRoute path="/dashboard" exact component={UserDashboard}/>
                             <PrivateRoute path="/dashboard/orders" exact component={UserOrders}/>
-                            <PrivateRoute path="/dashboard/profile" exact component={UserSettings}/>
+                            <PrivateRoute path="/dashboard/profile" exact component={IdentityProfile}/>
+                            <PrivateRoute path="/dashboard/account" exact component={AccountDetails}/>
                             <PrivateRoute path="/dashboard/reviews" exact component={UserReviews}/>
                             <PrivateRoute path="/dashboard/reviews/update/:slug" exact component={UpdateUserReviews}/>
                             <PrivateRoute path="/dashboard/places" exact component={UserPlaces}/>

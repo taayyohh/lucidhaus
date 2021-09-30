@@ -1,17 +1,9 @@
-import React, {memo} from 'react'
-import Div           from 'shared/Basic/Div'
-import Span          from 'shared/Basic/Span'
-import {
-    defaultFieldHeadingStyle,
-    defaultHelperTextStyle,
-    selectFieldErrorMessageStyle,
-    selectFieldStyle
-}                    from 'shared/Fields/styles'
-import {arrayEquals} from 'utils/helpers'
-import {
-    likertOptionStyle,
-    likertOptionsWrapperStyle, likertStyle
-} from './styles'
+import React, {memo}                                                                    from 'react'
+import Div                                                                              from 'shared/Basic/Div'
+import Span                                                                             from 'shared/Basic/Span'
+import {defaultFieldHeadingStyle, defaultHelperTextStyle, selectFieldErrorMessageStyle} from 'shared/Fields/styles'
+import {arrayEquals}                                                                    from 'utils/helpers'
+import {likertOptionStyle, likertOptionsWrapperStyle, likertStyle}                      from './styles'
 
 const Likert = memo(({field, helperText, className, errorMessage, formik, value}) => {
     //important structure -- backend dependent on array represented as ['text', Number]

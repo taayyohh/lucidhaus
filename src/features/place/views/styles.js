@@ -409,12 +409,13 @@ export const reviewFormWrapperStyle = {
 export const reviewLeaveWrapperStyle = {}
 
 export const reviewFormHeadingStyle = {
+    display: flex,
+    flexDirection: column,
     size: [24, .7, 18],
     marginBottom: [20, .7, 20],
     child: {
         selector: 'span',
         size: [30, .7, 24],
-        marginLeft: [10, .7, 10],
         color: colorPalette.darkHoneyYellow
 
     }

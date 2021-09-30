@@ -12,7 +12,7 @@ import {
     reviewLeaveWrapperStyle
 }                                     from '../../views/styles'
 
-const Review = () => {
+const   Review = () => {
     const {_id, token, nameFirst, avatar} = useSelector(state => state.user)
     const {slug} = useSelector(state => state.site)
     const {place} = useSelector(state => state.place)
@@ -38,7 +38,7 @@ const Review = () => {
         <Div theme={reviewFormWrapperStyle}>
             <Div theme={reviewLeaveWrapperStyle}>
                 <H2 theme={reviewFormHeadingStyle}>
-                    Leave a Review for
+                    <Div>Leave a Review for</Div>
                     <span>{unslugify(slug)}</span>
                 </H2>
             </Div>

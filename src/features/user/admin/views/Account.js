@@ -10,7 +10,7 @@ import DashboardWrapper                                from 'shared/Layout/Dashb
 import Identity                                        from './Indentity'
 import {userContentWrapperStyle, userProfileFormStyle} from './styles'
 
-const Profile = () => {
+const Account = () => {
     const dispatch = useDispatch()
     const {slug, _id, token, user} = useSelector(state => state.user)
 
@@ -49,26 +49,30 @@ const Profile = () => {
     return (
         <ContentWrapper theme={userContentWrapperStyle}>
             <DashboardWrapper menu={userDashboardMenu}>
-                {slug && user?._id?.length > 0 && (
-                    <>
-                        <Div theme={{
-                            weight: 300,
-                            fontStyle: 'italic',
-                            font: globals.fonts.serif,
-                            marginTop: [30, .7, 30],
-                            marginBottom: 15,
-                            size: [18, .7, 18]
-                        }}>
-                            <strong>Disclaimer</strong>: We understand many of the options below may be non-exhaustive
-                            and incomplete.
-                            We are working together with users like you to work on this!
-                        </Div>
-                        <Identity slug={slug}/>
-                    </>
-                )}
+                <Div theme={{
+                    weight: 300,
+                    fontStyle: 'italic',
+                    font: globals.fonts.serif,
+                    marginTop: [30, .7, 30],
+                    marginBottom: 15,
+                    size: [18, .7, 18]
+                }}>
+                    <strong>Disclaimer</strong>: Updating your email is not possible at the moment. We are working on
+                    this feature!
+                </Div>
+                <Form
+                    initialValues={initialValues}
+                    fields={userFields}
+                    //validationSchema={validateProfile}
+                    dispatchAction={'user/updateUserProfile'}
+                    formHeading={'Update Profile'}
+                    buttonText={'Update'}
+                    enableReinitialize={true}
+                    theme={userProfileFormStyle}
+                />
             </DashboardWrapper>
         </ContentWrapper>
     )
 }
 
-export default Profile
+export default Account

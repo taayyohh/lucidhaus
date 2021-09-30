@@ -1,10 +1,7 @@
-import {colorPalette}     from 'config/styles'
 import dayjs              from 'dayjs'
 import React              from 'react'
 import Div                from 'shared/Basic/Div'
 import LinkSwitch         from 'shared/Basic/LinkSwitch'
-import RichText           from 'shared/Basic/RichText'
-import {flexStart}        from 'utils/themer'
 import {adminReviewStyle} from './styles'
 
 const Review = ({review, url}) => {
