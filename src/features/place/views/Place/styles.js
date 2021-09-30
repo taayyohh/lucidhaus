@@ -41,9 +41,12 @@ export const scoreCircleStyle = {
     size: [16, .7, 16],
     height: [45, globals.style.layoutScalingValue, 45],
     width: [45, globals.style.layoutScalingValue, 45],
+    minWidth: [45, globals.style.layoutScalingValue, 45],
+    minHeight: [45, globals.style.layoutScalingValue, 45],
     borderRadius: [25, globals.style.layoutScalingValue, 25],
     marginLeft: [5, .7, 5],
-    border: `1px solid ${globals.colors.borderColor}`
+    border: `1px solid ${globals.colors.borderColor}`,
+    background: white
 }
 
 export const inclusiveScoreStyle = {

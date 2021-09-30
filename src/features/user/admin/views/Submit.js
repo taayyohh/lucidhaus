@@ -29,7 +29,7 @@ const Submit = () => {
         longitude: '',
         latitude: '',
         name: '',
-        submittedBy: _id,
+        submittedBy: [_id],
         website: '',
         isPendingSubmission: true,
     }

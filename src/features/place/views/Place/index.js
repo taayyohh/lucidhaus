@@ -1,3 +1,4 @@
+import Bookmark                                 from 'features/place/views/Bookmark'
 import {AnimatePresence}                        from 'framer-motion'
 import React, {useContext, useEffect, useState} from 'react'
 import {useDispatch, useSelector}               from 'react-redux'
@@ -10,7 +11,6 @@ import Map                                      from 'shared/Map'
 import {history}                                from 'store'
 import {debounce}                               from 'utils/helpers'
 import {isEmpty}                                from 'utils/themer'
-import Bookmark                                 from '../Bookmark'
 import {
     placeInnerLeftWrapperStyle,
     placeInnerRightInfoStyle,
@@ -140,69 +140,73 @@ const Place = () => {
     }, [_id, reviews])
 
     useEffect(() => {
-        place.bathrooms?.forEach(_id => {
-            dispatch({
-                type: 'site/getEntityById',
-                payload: {
-                    entityId: _id,
-                    path: 'bathroom',
-                    feature: 'place'
-                }
+
+        setTimeout(() => {
+            place?.place?.bathrooms?.forEach(_id => {
+                dispatch({
+                    type: 'site/getEntityById',
+                    payload: {
+                        entityId: _id,
+                        path: 'bathroom',
+                        feature: 'place'
+                    }
+                })
             })
-        })
-        place.businessOwner?.forEach(_id => {
-            dispatch({
-                type: 'site/getEntityById',
-                payload: {
-                    entityId: _id,
-                    path: 'business-owner',
-                    feature: 'place'
-                }
+            place?.place?.businessOwner?.forEach(_id => {
+                dispatch({
+                    type: 'site/getEntityById',
+                    payload: {
+                        entityId: _id,
+                        path: 'business-owner',
+                        feature: 'place'
+                    }
+                })
             })
-        })
-        place.categories?.forEach(_id => {
-            dispatch({
-                type: 'site/getEntityById',
-                payload: {
-                    entityId: _id,
-                    path: 'place-category',
-                    feature: 'place'
-                }
+            place?.place?.categories?.forEach(_id => {
+                dispatch({
+                    type: 'site/getEntityById',
+                    payload: {
+                        entityId: _id,
+                        path: 'place-category',
+                        feature: 'place'
+                    }
+                })
             })
-        })
-        place.communitiesServed?.forEach(_id => {
-            dispatch({
-                type: 'site/getEntityById',
-                payload: {
-                    entityId: _id,
-                    path: 'communities-served',
-                    feature: 'place'
-                }
+            place?.place?.communitiesServed?.forEach(_id => {
+                dispatch({
+                    type: 'site/getEntityById',
+                    payload: {
+                        entityId: _id,
+                        path: 'communities-served',
+                        feature: 'place'
+                    }
+                })
             })
-        })
-        place.foodOptions?.forEach(_id => {
-            dispatch({
-                type: 'site/getEntityById',
-                payload: {
-                    entityId: _id,
-                    path: 'food-options',
-                    feature: 'place'
-                }
+            place?.place?.foodOptions?.forEach(_id => {
+                dispatch({
+                    type: 'site/getEntityById',
+                    payload: {
+                        entityId: _id,
+                        path: 'food-options',
+                        feature: 'place'
+                    }
+                })
             })
-        })
-        place.languageSpoken?.forEach(_id => {
-            dispatch({
-                type: 'site/getEntityById',
-                payload: {
-                    entityId: _id,
-                    path: 'language-spoken',
-                    feature: 'place'
-                }
+            place?.place?.languageSpoken?.forEach(_id => {
+                dispatch({
+                    type: 'site/getEntityById',
+                    payload: {
+                        entityId: _id,
+                        path: 'language-spoken',
+                        feature: 'place'
+                    }
+                })
             })
-        })
+        }, 1000)
 
 
-    }, [dispatch, place.bathrooms, place.businessOwner, place.categories, place.communitiesServed, place.foodOptions, place.languageSpoken])
+
+    }, [place.place])
 
     useEffect(() => {
         dispatch({
@@ -267,7 +271,6 @@ const Place = () => {
                         )}
                     </Div>
                     <MotionDiv theme={placeWrapperStyle}>
-
                         <Div theme={placeInnerLeftWrapperStyle}>
                             <Title
                                 boonePlace={boonePlace}

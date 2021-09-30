@@ -17,7 +17,7 @@ import {userContentWrapperStyle}    from './styles'
 
 const UpdateReview = () => {
     const dispatch = useDispatch()
-    const {_id, token, isAdmin} = useSelector(state => state.user)
+    const {_id, token, isAdmin, nameFirst, avatar} = useSelector(state => state.user)
     const {slug} = useSelector(state => state.site)
     const {reviews} = useSelector(state => state.place)
     const [currentReview, setCurrentReview] = useState({})
@@ -44,8 +44,8 @@ const UpdateReview = () => {
 
     const initialValues = {
         review: currentReview?.review,
-        reviewerName: currentReview?.reviewerName,
-        reviewerAvatar: currentReview?.reviewerAvatar,
+        reviewerName: nameFirst,
+        reviewerAvatar: avatar,
         photo: currentReview?.photo,
         safe: currentReview?.safe,
         celebrated: currentReview?.celebrated,

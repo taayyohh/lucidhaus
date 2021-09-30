@@ -11,6 +11,7 @@ const Sitemap = lazy(() => import('./Sitemap'))
 const Home = lazy(() => import('features/site/views/Home'))
 const Map = lazy(() => import('features/site/views/Map'))
 const Help = lazy(() => import('features/site/views/Help'))
+const ForBusinesses = lazy(() => import('features/site/views/ForBusinesses'))
 const Privacy = lazy(() => import('features/site/views/Privacy'))
 const Terms = lazy(() => import('features/site/views/Terms'))
 const Recover = lazy(() => import('features/site/views/Recover'))
@@ -105,8 +106,8 @@ const Routes = () => {
                     <Suspense fallback={<Fallback/>}>
                         <Switch location={{pathname: currentPath}}>
                             <Route path="/" exact component={Home}/>
-                            <Route path="/map" exact component={Map}/>
                             <Route path="/help" exact component={Help}/>
+                            <Route path="/for-businesses" exact component={ForBusinesses}/>
                             <Route path="/privacy-policy" exact component={Privacy}/>
                             <Route path="/terms-of-service" exact component={Terms}/>
                             <Route path="/verify/:slug" exact component={VerifyEmail}/>

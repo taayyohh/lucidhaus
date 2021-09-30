@@ -57,8 +57,9 @@ export function* searchAllPlaces({payload}) {
     yield put({type: 'place/searchAlgoliaPlaceIndex', payload})
     yield put({type: 'place/getBooneAutoComplete', payload})
     yield put({type: 'place/getPlaceCategoryByNameOrDescription', payload: payload.input})
-
-    yield put(push(`/places/search/${slugify(payload.input)}`))
+    
+    if (payload.input.length > 0)
+        yield put(push(`/places/search/${slugify(payload.input)}`))
 }
 
 export function* getPlaceCategoryByNameOrDescription({payload}) {
