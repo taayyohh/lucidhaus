@@ -43,6 +43,7 @@ const Place = () => {
         reviews,
         bathrooms,
         placeCategory,
+        placeLoaded,
         communitiesServed,
         foodOptions,
         languageSpoken
@@ -140,9 +141,8 @@ const Place = () => {
     }, [_id, reviews])
 
     useEffect(() => {
-
-        setTimeout(() => {
-            place?.place?.bathrooms?.forEach(_id => {
+        if(placeLoaded) {
+            place?.bathrooms?.forEach(_id => {
                 dispatch({
                     type: 'site/getEntityById',
                     payload: {
@@ -152,7 +152,7 @@ const Place = () => {
                     }
                 })
             })
-            place?.place?.businessOwner?.forEach(_id => {
+            place?.businessOwner?.forEach(_id => {
                 dispatch({
                     type: 'site/getEntityById',
                     payload: {
@@ -162,7 +162,7 @@ const Place = () => {
                     }
                 })
             })
-            place?.place?.categories?.forEach(_id => {
+            place?.categories?.forEach(_id => {
                 dispatch({
                     type: 'site/getEntityById',
                     payload: {
@@ -172,7 +172,7 @@ const Place = () => {
                     }
                 })
             })
-            place?.place?.communitiesServed?.forEach(_id => {
+            place?.communitiesServed?.forEach(_id => {
                 dispatch({
                     type: 'site/getEntityById',
                     payload: {
@@ -182,7 +182,7 @@ const Place = () => {
                     }
                 })
             })
-            place?.place?.foodOptions?.forEach(_id => {
+            place?.foodOptions?.forEach(_id => {
                 dispatch({
                     type: 'site/getEntityById',
                     payload: {
@@ -192,7 +192,7 @@ const Place = () => {
                     }
                 })
             })
-            place?.place?.languageSpoken?.forEach(_id => {
+            place?.languageSpoken?.forEach(_id => {
                 dispatch({
                     type: 'site/getEntityById',
                     payload: {
@@ -202,11 +202,11 @@ const Place = () => {
                     }
                 })
             })
-        }, 1000)
 
-
-
-    }, [place.place])
+            dispatch({type: 'place/taxonomyLoaded'})
+        }
+        
+    }, [placeLoaded])
 
     useEffect(() => {
         dispatch({

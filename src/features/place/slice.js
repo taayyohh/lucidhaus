@@ -15,6 +15,7 @@ const initialState = {
     placeCategory: [],
     pendingPlaces: [],
     place: [],
+    placeLoaded: false,
     places: [],
     reviews: [],
     flaggedReviews: [],
@@ -78,6 +79,10 @@ export const slice = createSlice({
         getPlaceSuccess: (state, action) => {
             state.place = action.payload
             state.reviews = []
+            state.placeLoaded = true
+        },
+        taxonomyLoaded: (state) => {
+            state.placeLoaded = false
         },
         getPlaceFailure: (state, action) => {
             state.error.place = action.payload

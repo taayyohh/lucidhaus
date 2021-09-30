@@ -6,6 +6,7 @@ import Div                                                  from 'shared/Basic/D
 import {mapContext}                                         from 'shared/Containers/MapController'
 import {searchContext}                                      from 'shared/Containers/SearchController'
 import Form                                                 from 'shared/Fields/Form'
+import {unslugify}                                          from '../../utils/helpers'
 
 const Search = ({theme}) => {
     const dispatch = useDispatch()
@@ -33,7 +34,7 @@ const Search = ({theme}) => {
         <Div theme={{...placeSearchFormWrapperStyle, ...theme}}>
             <Form
                 theme={{...placesSearchFormStyle, ...theme.form}}
-                initialValues={{input: ''}}
+                initialValues={{input: url.includes('search') ? unslugify(slug) : ''}}
                 fields={placeSearchField}
                 dispatchAction={'place/searchAllPlaces'}
                 formHeading={'Search'}
