@@ -197,6 +197,9 @@ export const richTextStyle = {
     minHeight: 300,
     marginBottom: [50, .7, 50],
     width: '100%',
+    color: globals.colors.textColor,
+    size: [16, .7, 16],
+    weight: 400,
     class: {
         name: 'error',
         child: [

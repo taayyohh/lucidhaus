@@ -391,6 +391,7 @@ export const reviewFormStyle = {
     padding: 0,
     border: 0,
     marginTop: [50, .7, 50],
+    marginBottom: [150, .7, 100],
     heading: {
         size: [20, .7, 20]
     }

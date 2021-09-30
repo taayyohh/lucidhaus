@@ -74,7 +74,7 @@ export const submitFormWrapperStyle = {
 
 export const adminReviewWrapperStyle = {
     display: grid,
-    gridTemplateColumns: '1fr 1fr',
+    gridTemplateColumns: '1fr 1fr 1fr',
     gridGap: sv(30, globals.style.layoutScalingValue),
 }
 
@@ -95,7 +95,7 @@ export const adminReviewStyle = {
         marginBottom: [15, .7, 15]
     },
     hover: {
-        borderColor: colorPalette.honeyYellow,
+        borderColor: colorPalette.darkHoneyYellow,
         color: black
     }
 }
