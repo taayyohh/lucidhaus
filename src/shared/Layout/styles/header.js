@@ -199,9 +199,6 @@ export const headerNowPlayingInfoStyle = {
 }
 
 export const headerLogoWrapperStyle = {
-    //width: [250, .7, 160],
-    // height: 'auto',
-    // height: [56, .7, 36],
     marginRight: [40, .7, 40]
 }
 
@@ -255,5 +252,7 @@ export const headerMenuIconWrapperStyle = {
 }
 
 export const headerSearchIconStyle = {
-    size: [18, globals.style.layoutScalingValue, 18]
+    display: flex,
+    size: [18, .6, 18],
+    //minWidth: [18, globals.style.layoutScalingValue, 18]
 }

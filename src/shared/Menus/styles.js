@@ -28,8 +28,8 @@ export const headerMenuPanelStyle = {
     flexDirection: column,
     font: globals.fonts.sans,
     height: '100vh',
-    width: [940, .5, '100vw'],
-    maxWidth: [940, .5, '100vw'],
+    width: [940, .6, '100vw'],
+    maxWidth: [940, .6, '100vw'],
     top: 0,
     right: 0,
     paddingLeft: [60, globals.style.layoutScalingValue],
@@ -297,5 +297,9 @@ export const headerDashboardMenuLinkStyle = {}
 
 export const searchMenuSearchStyle = {
     background: none
+}
+
+export const leaveAReviewStyle = {
+    marginTop: [100, .7, 100]
 }
 

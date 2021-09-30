@@ -387,7 +387,7 @@ export const reviewHelperTextStyle = {
 }
 
 export const reviewFormStyle = {
-    width: 'calc(100% - 100px)',
+    width: `calc(100% - ${sv(100, globals.style.layoutScalingValue)})`,
     padding: 0,
     border: 0,
     marginTop: [50, .7, 50],
@@ -408,8 +408,15 @@ export const reviewFormWrapperStyle = {
 export const reviewLeaveWrapperStyle = {}
 
 export const reviewFormHeadingStyle = {
-    size: [30, .7, 24],
+    size: [24, .7, 18],
     marginBottom: [20, .7, 20],
+    child: {
+        selector: 'span',
+        size: [30, .7, 24],
+        marginLeft: [10, .7, 10],
+        color: colorPalette.darkHoneyYellow
+
+    }
 }
 
 export const reviewHeadingStyle = {

@@ -4,6 +4,7 @@ import {useSelector}                  from 'react-redux'
 import Div                            from 'shared/Basic/Div'
 import H2                             from 'shared/Basic/H2'
 import Form                           from 'shared/Fields/Form'
+import {unslugify}                    from 'utils/helpers'
 import {
     reviewFormHeadingStyle,
     reviewFormStyle,
@@ -36,7 +37,10 @@ const Review = () => {
     return (
         <Div theme={reviewFormWrapperStyle}>
             <Div theme={reviewLeaveWrapperStyle}>
-                <H2 theme={reviewFormHeadingStyle}>Leave a Review</H2>
+                <H2 theme={reviewFormHeadingStyle}>
+                    Leave a Review for
+                    <span>{unslugify(slug)}</span>
+                </H2>
             </Div>
             <Form
                 initialValues={initialValues}
