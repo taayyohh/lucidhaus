@@ -10,15 +10,15 @@ import {
 import {arrayEquals} from 'utils/helpers'
 import {
     likertOptionStyle,
-    likertOptionsWrapperStyle
-}                    from './styles'
+    likertOptionsWrapperStyle, likertStyle
+} from './styles'
 
 const Likert = memo(({field, helperText, className, errorMessage, formik, value}) => {
     //important structure -- backend dependent on array represented as ['text', Number]
     const optionsArray = [['Strongly Disagree', 1], ['Disagree', 2], ['Neutral', 3], ['Agree', 4], ['Strongly Agree', 5]]
 
     return (
-        <Div theme={selectFieldStyle} className={className ? className : ''}>
+        <Div theme={likertStyle} className={className ? className : ''}>
             <Div theme={defaultFieldHeadingStyle}>{field.inputLabel}</Div>
             <Div theme={defaultHelperTextStyle}>{helperText}</Div>
             <Div theme={likertOptionsWrapperStyle}>

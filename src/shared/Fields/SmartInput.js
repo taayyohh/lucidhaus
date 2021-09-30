@@ -29,6 +29,7 @@ const SmartInput = ({
                         type,
                         value
                     }) => {
+    const inputRef = useRef()
     const legendRef = useRef()
     const inputLabelRef = useRef()
     const inputLabelWidth = useMeasure(inputLabelRef).width * globals.style.inputLabelShrinkRatio
@@ -95,6 +96,15 @@ const SmartInput = ({
     }
 
     useEffect(() => {
+        if (inputRef.current === document.activeElement) {
+            setIsInputLabelFocused(true)
+            setLegendWidth(inputLabelWidth)
+        }
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
+    useEffect(() => {
         if (type === TEL) {
             setTel(formatPhone(value))
         }
@@ -131,6 +141,7 @@ const SmartInput = ({
                 theme={theme.field}
                 disabled={disabled}
                 autoFocus={autoFocus}
+                ref={inputRef}
             />
             <Span theme={defaultFieldErrorStyle}>{errorMessage}</Span>
         </Fieldset>

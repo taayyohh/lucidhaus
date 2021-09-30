@@ -174,7 +174,7 @@ export const defaultFieldErrorStyle = {
 }
 
 export const defaultFieldHeadingStyle = {
-    size: [24, .7, 24],
+    size: [19, .7, 19],
     marginBottom: [10, .7, 10],
     weight: 400,
     margin: `0 0 ${sv(5)} 0`,

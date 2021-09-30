@@ -1,6 +1,17 @@
 import {colorPalette, globals}                   from 'config/styles'
 import {column, flex, flexStart, pointer, white} from 'utils/themer'
 
+export const likertStyle = {
+    paddingLeft: [30, .7, 30],
+    paddingRight: [30, .7, 30],
+    paddingTop: [30, .7, 30],
+    paddingBottom: [30, .7, 30],
+    border: `1px solid ${globals.colors.borderColor}`,
+    borderRadius: [10, .7, 10],
+    marginBottom: [50, .7, 30],
+    background: white
+}
+
 export const likertOptionsWrapperStyle = {
     display: flex,
     flexDirection: column,

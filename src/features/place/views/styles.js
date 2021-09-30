@@ -387,11 +387,13 @@ export const reviewHelperTextStyle = {
 }
 
 export const reviewFormStyle = {
-    width: '100%',
+    width: 'calc(100% - 100px)',
     padding: 0,
     border: 0,
     marginTop: [50, .7, 50],
     marginBottom: [150, .7, 100],
+    marginLeft: auto,
+    marginRight: auto,
     heading: {
         size: [20, .7, 20]
     }
@@ -408,7 +410,6 @@ export const reviewLeaveWrapperStyle = {}
 export const reviewFormHeadingStyle = {
     size: [30, .7, 24],
     marginBottom: [20, .7, 20],
-    letterSpacing: [1, .7, 1],
 }
 
 export const reviewHeadingStyle = {
