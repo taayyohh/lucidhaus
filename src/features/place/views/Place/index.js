@@ -11,6 +11,7 @@ import Map                                      from 'shared/Map'
 import {history}                                from 'store'
 import {debounce}                               from 'utils/helpers'
 import {isEmpty}                                from 'utils/themer'
+import {menuPanelContext}                       from '../../../../shared/Containers/MenuPanelController'
 import {
     placeInnerLeftWrapperStyle,
     placeInnerRightInfoStyle,
@@ -33,9 +34,11 @@ import Title                                    from './Title'
 import Website                                  from './Website'
 
 const Place = () => {
+    const {setPanel, currentPanel} = useContext(menuPanelContext)
     const dispatch = useDispatch()
     const {placesIndex} = useContext(searchContext)
     const {
+        addReviewSuccess,
         place,
         boonePlace,
         createdFromBoone,
@@ -205,8 +208,18 @@ const Place = () => {
 
             dispatch({type: 'place/taxonomyLoaded'})
         }
-        
+
     }, [placeLoaded])
+
+    useEffect(() => {
+        if(addReviewSuccess) {
+            setPanel(null)
+            dispatch({type: 'place/closeReviewPanel'})
+        }
+
+
+
+    }, [addReviewSuccess])
 
     useEffect(() => {
         dispatch({

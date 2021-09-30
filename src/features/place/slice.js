@@ -7,6 +7,7 @@ import {languageSpoken}    from './admin/taxonomy/languageSpoken/reducers'
 import {placeCategory}     from './admin/taxonomy/placeCategory/reducers'
 
 const initialState = {
+    addReviewSuccess: false,
     bathrooms: [],
     businessOwner: [],
     communitiesServed: [],
@@ -56,6 +57,12 @@ export const slice = createSlice({
     name: 'place',
     initialState: initialState,
     reducers: {
+        addReviewSuccess: (state) => {
+            state.addReviewSuccess = true
+        },
+        closeReviewPanel: (state) => {
+            state.addReviewSuccess = false
+        },
         clear: (state, action) => {
             state.error = {
                 places: {},

@@ -304,6 +304,7 @@ export function* addReview({payload}) {
 
         if (!updated.error) {
             yield put({type: 'place/updatePlaceSuccess', payload: updated})
+            yield put({type: 'place/addReviewSuccess'})
             yield put({type: 'place/getPlace', payload: {slug: slug}})
             yield put({
                 type: 'site/setNotification',
@@ -312,7 +313,6 @@ export function* addReview({payload}) {
                     theme: 'green'
                 }
             })
-
         } else {
             yield put({type: 'place/updatePlaceFailure', payload: updated})
         }
