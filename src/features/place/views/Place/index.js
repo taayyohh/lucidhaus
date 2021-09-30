@@ -34,7 +34,7 @@ import Title                                    from './Title'
 import Website                                  from './Website'
 
 const Place = () => {
-    const {setPanel, currentPanel} = useContext(menuPanelContext)
+    const {setPanel} = useContext(menuPanelContext)
     const dispatch = useDispatch()
     const {placesIndex} = useContext(searchContext)
     const {
@@ -141,10 +141,11 @@ const Place = () => {
     useEffect(() => {
         setHasNoReviews(!reviews || reviews?.filter(review => review?.user === _id).length === 0)
 
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [_id, reviews])
 
     useEffect(() => {
-        if(placeLoaded) {
+        if (placeLoaded) {
             place?.bathrooms?.forEach(_id => {
                 dispatch({
                     type: 'site/getEntityById',
@@ -209,16 +210,16 @@ const Place = () => {
             dispatch({type: 'place/taxonomyLoaded'})
         }
 
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [placeLoaded])
 
     useEffect(() => {
-        if(addReviewSuccess) {
+        if (addReviewSuccess) {
             setPanel(null)
             dispatch({type: 'place/closeReviewPanel'})
         }
 
-
-
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [addReviewSuccess])
 
     useEffect(() => {

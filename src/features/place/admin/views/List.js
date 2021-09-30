@@ -47,10 +47,6 @@ const List = () => {
     const Hits = connectInfiniteHits((renderArgs, isFirstRender) => {
         const {hits, hasMore, refineNext} = renderArgs
         //  const { container } = widgetParams
-        console.log('renderARgs', renderArgs)
-        console.log('isFirstRender', isFirstRender)
-
-        let lastRenderArgs = renderArgs;
 
         if (!!sentinel.current) {
 
@@ -62,8 +58,6 @@ const List = () => {
                     }
                 })
             })
-
-            console.log('sentinelk', sentinel)
             observer.observe(sentinel.current)
 
 

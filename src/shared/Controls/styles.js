@@ -1,9 +1,6 @@
-import {
-    colorPalette,
-    globals
-}                         from 'config/styles'
-import {genericCardStyle} from 'shared/Cards/styles'
-import {defaultFormStyle} from 'shared/Fields/styles'
+import {colorPalette, globals} from 'config/styles'
+import {genericCardStyle}      from 'shared/Cards/styles'
+import {defaultFormStyle}      from 'shared/Fields/styles'
 import {
     absolute,
     black,
@@ -17,9 +14,8 @@ import {
     pointer,
     spaceBetween,
     sv,
-    uppercase,
     white
-}                         from 'utils/themer'
+}                              from 'utils/themer'
 
 export const orderCardWrapperStyle = {
     ...genericCardStyle,

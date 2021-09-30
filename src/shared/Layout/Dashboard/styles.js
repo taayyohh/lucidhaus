@@ -1,10 +1,5 @@
-import {globals} from 'config/styles'
-import {
-    borderBox,
-    column,
-    flex,
-    sv, white
-} from 'utils/themer'
+import {globals}                     from 'config/styles'
+import {borderBox, column, flex, sv} from 'utils/themer'
 
 export const dashboardStyle = {
     display: 'grid',

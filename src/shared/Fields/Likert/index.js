@@ -1,20 +1,20 @@
-import {colorPalette} from 'config/styles'
-import React, {memo}  from 'react'
-import Div            from 'shared/Basic/Div'
-import Span           from 'shared/Basic/Span'
+import React, {memo} from 'react'
+import Div           from 'shared/Basic/Div'
+import Span          from 'shared/Basic/Span'
 import {
     defaultFieldHeadingStyle,
     defaultHelperTextStyle,
     selectFieldErrorMessageStyle,
     selectFieldStyle
-}                     from 'shared/Fields/styles'
-import {arrayEquals}  from '../../../utils/helpers'
+}                    from 'shared/Fields/styles'
+import {arrayEquals} from 'utils/helpers'
 import {
     likertOptionStyle,
     likertOptionsWrapperStyle
-}                     from './styles'
+}                    from './styles'
 
 const Likert = memo(({field, helperText, className, errorMessage, formik, value}) => {
+    //important structure -- backend dependent on array represented as ['text', Number]
     const optionsArray = [['Strongly Disagree', 1], ['Disagree', 2], ['Neutral', 3], ['Agree', 4], ['Strongly Agree', 5]]
 
     return (
@@ -27,7 +27,7 @@ const Likert = memo(({field, helperText, className, errorMessage, formik, value}
                         key={o}
                         onClick={() => formik.setFieldValue(field?.name, o)}
                         theme={{
-                            ...likertOptionStyle(value?.length > 1 ? arrayEquals(value,o) : o?.[0] === value?.[0])
+                            ...likertOptionStyle(value?.length > 1 ? arrayEquals(value, o) : o?.[0] === value?.[0])
                         }}
                     >
                         {o[0]}

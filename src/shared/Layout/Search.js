@@ -6,7 +6,7 @@ import Div                                                  from 'shared/Basic/D
 import {mapContext}                                         from 'shared/Containers/MapController'
 import {searchContext}                                      from 'shared/Containers/SearchController'
 import Form                                                 from 'shared/Fields/Form'
-import {unslugify}                                          from '../../utils/helpers'
+import {unslugify}                                          from 'utils/helpers'
 
 const Search = ({theme}) => {
     const dispatch = useDispatch()

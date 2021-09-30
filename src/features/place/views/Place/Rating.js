@@ -1,9 +1,9 @@
-import React                                                      from 'react'
-import {useSelector}                                              from 'react-redux'
+import React                                                                     from 'react'
+import {useSelector}                                                             from 'react-redux'
 import Div                                                                       from 'shared/Basic/Div'
 import {inclusiveScoreStyle, scoreBarStyle, scoreCircleStyle, scoreWrapperStyle} from './styles'
 
-const Rating = ({}) => {
+const Rating = () => {
     const {
         place,
         reviews,

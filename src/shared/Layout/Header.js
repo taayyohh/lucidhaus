@@ -1,11 +1,10 @@
-import logo                       from 'assets/logo.png'
-import PropTypes                  from 'prop-types'
-import React                      from 'react'
-import {useDispatch, useSelector} from 'react-redux'
-import Div                        from 'shared/Basic/Div'
-import Img                        from 'shared/Basic/Img'
-import LinkSwitch                 from 'shared/Basic/LinkSwitch'
-import HeaderMenu                 from 'shared/Menus/HeaderMenu'
+import logo       from 'assets/logo.png'
+import PropTypes  from 'prop-types'
+import React      from 'react'
+import Div        from 'shared/Basic/Div'
+import Img        from 'shared/Basic/Img'
+import LinkSwitch from 'shared/Basic/LinkSwitch'
+import HeaderMenu from 'shared/Menus/HeaderMenu'
 import {
     headerInnerStyle,
     headerLogoLinkStyle,
@@ -13,7 +12,7 @@ import {
     headerNowPlayingStyle,
     headerStyle,
     headerTopStyle
-}                                 from './styles/header'
+}                 from './styles/header'
 
 const Header = ({theme}) => {
     return (

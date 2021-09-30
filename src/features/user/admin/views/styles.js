@@ -1,6 +1,5 @@
-import {globals}                           from 'config/styles'
-import {flex, flexStart, grid, none, wrap} from 'utils/themer'
-import {profileContentWrapperStyle}        from '../../../../shared/Menus/styles'
+import {globals}                     from 'config/styles'
+import {flex, flexStart, none, wrap} from 'utils/themer'
 
 export const userProfileFormStyle = {
     multiSelect: {

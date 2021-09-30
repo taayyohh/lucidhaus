@@ -3,7 +3,7 @@ import Div                       from 'shared/Basic/Div'
 import {menuPanelContext}        from 'shared/Containers/MenuPanelController'
 import {LeaveAReviewButtonStyle} from './styles'
 
-const LeaveAReview = ({}) => {
+const LeaveAReview = () => {
     const {setPanel, currentPanel} = useContext(menuPanelContext)
 
     return (

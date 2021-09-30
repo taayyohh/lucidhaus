@@ -1,5 +1,5 @@
 import {mobileFlag}                                  from 'features/site/slice'
-import React, {useState}                             from 'react'
+import React                                         from 'react'
 import {useSelector}                                 from 'react-redux'
 import Div                                           from 'shared/Basic/Div'
 import DashboardMenuItem                             from 'shared/Menus/DashboardMenuItem'
