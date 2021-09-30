@@ -283,14 +283,13 @@ export const placeTitleStyle = {
     flexDirection: column,
     position: relative,
     font: globals.fonts.fancy,
-    //alignSelf: flexStart,
     size: [48, .7, 28],
+    lineHeight: [54, .7, 32],
     paddingBottom: [20, .7, 20],
     weight: 600,
     margin: 0,
     marginBottom: [30, .7, 20],
     borderBottom: `1px solid ${globals.colors.borderColor}`
-    // borderRadius: `${sv(10)} ${sv(10)} 0 0`
 }
 
 export const placeAddressStyle = {
@@ -395,15 +394,17 @@ export const reviewFormStyle = {
     marginBottom: [150, .7, 100],
     marginLeft: auto,
     marginRight: auto,
+    mobile: {
+        width: '100%'
+    },
     heading: {
         size: [20, .7, 20]
     }
 }
 
 export const reviewFormWrapperStyle = {
-    paddingLeft: [70, .7, 50],
-    paddingRight: [70, .7, 50]
-    //  maxWidth: [600, globals.style.layoutScalingValue, '100%'],
+    paddingLeft: [70, globals.style.layoutScalingValue, '0'],
+    paddingRight: [70, globals.style.layoutScalingValue, '0']
 }
 
 export const reviewLeaveWrapperStyle = {}

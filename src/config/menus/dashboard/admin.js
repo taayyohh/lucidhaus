@@ -19,11 +19,6 @@ export const adminDashboardMenu = [
         title: 'Manage Places'
     },
     {
-        url: '/dashboard/',
-        icon: userCog,
-        title: 'User Dashboard'
-    },
-    {
         url: '/admin/places/pending',
         icon: building,
         title: 'Pending Place Submissions'
@@ -33,5 +28,10 @@ export const adminDashboardMenu = [
         active: ['flagged', 'reviews'],
         icon: exclamationTriangle,
         title: 'Flagged Reviews'
-    }
+    },
+    {
+        url: '/dashboard/',
+        icon: userCog,
+        title: 'User Dashboard'
+    },
 ]

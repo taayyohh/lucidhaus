@@ -67,11 +67,11 @@ const UpdateReview = () => {
         <ContentWrapper theme={userContentWrapperStyle}>
             <DashboardWrapper menu={isAdmin ? adminDashboardMenu : userDashboardMenu}>
                 <DashboardInfo
-                    heading={'Your Reviews'}
+                    heading={'Update Review'}
                     description={"Here are the reviews you've left."}
                 />
                 <Div theme={reviewFormWrapperStyle}>
-                    <H2 theme={reviewFormHeadingStyle}>Update Your of Review: <Span
+                    <H2 theme={reviewFormHeadingStyle}>Update Your Review of: <Span
                         theme={{color: colorPalette.seaGreen}}>
                         <LinkSwitch url={`/places/${currentReview?.placeSlug}`}>
                             {currentReview?.placeName}

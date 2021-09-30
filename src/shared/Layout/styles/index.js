@@ -233,6 +233,15 @@ export const defaultModalStyle = {
     padding: sv(50),
     backgroundColor: white,
     border: `1px solid #000`,
+    mobile: {
+        paddingTop: 100,
+        marginLeft: 0,
+        marginTop: 0,
+        top: 0,
+        left: 0,
+        height: '100vh',
+        width: '100vw'
+    }
 }
 
 export const notificationWrapperStyle = theme => {

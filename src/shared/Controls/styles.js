@@ -83,6 +83,7 @@ export const genericButtonStyle = {
 }
 export const deletePromptButtonStyle = {
     border: `1px solid ${globals.colors.borderColor}`,
+    backgroundColor: globals.colors.borderColor,
     alignSelf: flexStart,
     paddingTop: [20, .7, 20],
     paddingBottom: [20, .7, 20],
@@ -91,7 +92,7 @@ export const deletePromptButtonStyle = {
     display: flex,
     alignItems: center,
     justifyContent: center,
-    size: [28, .7, 28],
+    size: [16, .7, 16],
     color: black,
     textDecoration: none,
     transition: 'background-color 250ms ease, color 250ms ease',
@@ -106,6 +107,8 @@ export const deletePromptButtonStyle = {
 
 export const deletePromptConfirmButtonStyle = {
     borderColor: colorPalette.brightRed,
+    backgroundColor: colorPalette.brightRed,
+    color: white,
     hover: {
         cursor: pointer,
         backgroundColor: colorPalette.brightRed,
@@ -125,7 +128,7 @@ export const deletePromptCloseIconStyle = {
 }
 
 export const deletePromptHeadingStyle = {
-    size: [42, .7, 42],
+    size: [42, .7, 24],
     marginBottom: [20, .7, 20]
 }
 
@@ -138,7 +141,7 @@ export const dangerZoneStyle = {
 
 export const dangerZoneHeadingStyle = {
     size: [30, .7, 30],
-    marginBottom: [20, .7, 20]
+    marginBottom: [20, .7, 5]
 }
 
 export const dangerZoneButtonStyle = {
@@ -148,6 +151,15 @@ export const dangerZoneButtonStyle = {
     alignSelf: center,
     padding: `${sv(10)} ${sv(20)}`,
     letterSpacing: [1, .7, 1],
+    mobile: {
+        width: '100%',
+        backgroundColor: colorPalette.brightRed,
+        color: white,
+        weight: 500,
+        display: flex,
+        alignItems: center,
+        justifyContent: center,
+    },
     hover: {
         color: white,
         backgroundColor: colorPalette.brightRed,
@@ -159,14 +171,18 @@ export const dangerZoneInnerWrapperStyle = {
     display: flex,
     width: '100%',
     justifyContent: spaceBetween,
-    borderBottom: `1px solid ${globals.colors.borderColor}`
+    borderBottom: `1px solid ${globals.colors.borderColor}`,
+    mobile: {
+        flexDirection: column,
+        borderBottom: 0
+    }
 }
 
 export const dangerZoneItemWrapperStyle = {
     display: flex,
     flexDirection: column,
     paddingBottom: [20, .7, 20],
-    paddingTop: [20, .7, 20]
+    paddingTop: [20, .7, 10]
 }
 
 export const dangerZoneItemHeadingStyle = {

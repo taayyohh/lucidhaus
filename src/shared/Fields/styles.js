@@ -30,7 +30,6 @@ export const defaultFormStyle = {
     flexDirection: column,
     width: auto,
     padding: [50, .7, 50],
-    background: colorPalette.hyphaGray,
     border: `1px solid ${colorPalette.gray}`,
     position: relative,
     height: auto,

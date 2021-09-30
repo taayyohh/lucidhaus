@@ -10,14 +10,14 @@ const Review = ({review, url}) => {
             {/*<RichText>{review.review}</RichText>*/}
             <Div theme={adminReviewStyle.top}>
                 <Div theme={adminReviewStyle.name}>{review.placeName}</Div>
-                <Div>{dayjs(review.updated).format('MMMM DD, YYYY')}</Div>
+                <Div theme={adminReviewStyle.date}>{dayjs(review.updated).format('MMMM DD, YYYY')}</Div>
             </Div>
 
 
             {/*LinkSwitch url={`/places/${review.placeSlug}`}*/}
-            <Div><strong>Safe</strong>: {review.safe[0]}</Div>
-            <Div><strong>Celebrated</strong>: {review.celebrated[0]}</Div>
-            <Div><strong>Welcome</strong>: {review.welcome[0]}</Div>
+            {/*<Div><strong>Safe</strong>: {review.safe[0]}</Div>*/}
+            {/*<Div><strong>Celebrated</strong>: {review.celebrated[0]}</Div>*/}
+            {/*<Div><strong>Welcome</strong>: {review.welcome[0]}</Div>*/}
         </LinkSwitch>
     )
 }

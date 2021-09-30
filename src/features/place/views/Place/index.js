@@ -4,6 +4,7 @@ import React, {useContext, useEffect, useState} from 'react'
 import {useDispatch, useSelector}               from 'react-redux'
 import Div                                      from 'shared/Basic/Div'
 import MotionDiv                                from 'shared/Basic/MotionDiv'
+import {menuPanelContext}                       from 'shared/Containers/MenuPanelController'
 import {searchContext}                          from 'shared/Containers/SearchController'
 import ContentWrapper                           from 'shared/Layout/ContentWrapper'
 import {fadeIn, fadeOut, nOpacity}              from 'shared/Layout/styles/animations'
@@ -11,7 +12,6 @@ import Map                                      from 'shared/Map'
 import {history}                                from 'store'
 import {debounce}                               from 'utils/helpers'
 import {isEmpty}                                from 'utils/themer'
-import {menuPanelContext}                       from '../../../../shared/Containers/MenuPanelController'
 import {
     placeInnerLeftWrapperStyle,
     placeInnerRightInfoStyle,
