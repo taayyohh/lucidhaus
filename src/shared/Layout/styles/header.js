@@ -254,5 +254,8 @@ export const headerMenuIconWrapperStyle = {
 export const headerSearchIconStyle = {
     display: flex,
     size: [18, .6, 18],
+    hover: {
+        cursor: pointer
+    }
     //minWidth: [18, globals.style.layoutScalingValue, 18]
 }

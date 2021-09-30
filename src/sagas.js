@@ -324,7 +324,7 @@ export default function* rootSaga() {
         fork(watchGetPendingPlaces),
         fork(watchFlaggedReviews),
 
-        //taxonomy
+        //place taxonomy
         fork(watchCreateBathroom),
         fork(watchGetBathroomList),
         fork(watchGetBathroomDetail),
@@ -385,7 +385,6 @@ export default function* rootSaga() {
         fork(watchRemoveFromCart),
         fork(watchGetBraintreeToken),
         fork(watchGetPaymentNonce),
-
 
         //boone
         fork(watchGetBooneAutoComplete),

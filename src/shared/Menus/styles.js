@@ -11,12 +11,12 @@ import {
     flex,
     hidden,
     inlineFlex,
-    none,
+    none, normal,
     pointer,
     relative,
-    row,
+    row, sv,
     white
-}                              from 'utils/themer'
+} from 'utils/themer'
 
 export const headerMenuPanelWrapperStyle = {
     position: absolute,
@@ -301,5 +301,20 @@ export const searchMenuSearchStyle = {
 
 export const leaveAReviewStyle = {
     marginTop: [100, .7, 100]
+}
+
+export const searchMenuInnerWrapperStyle = {
+    display: flex,
+    flexDirection: column,
+    textTransform: none,
+    width: `calc(100% - ${sv(200, globals.style.layoutScalingValue)})`,
+    margin: '0 auto'
+}
+
+export const searchMenuHeadingStyle = {
+    size: [32, .7, 20],
+    color: colorPalette.forestGreen,
+    weight: 800,
+    width: `calc(100% - ${sv(200, globals.style.layoutScalingValue)})`,
 }
 
