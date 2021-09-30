@@ -48,11 +48,6 @@ export const homeSearchStyle = {
     borderRadius: 10,
     backgroundColor: colorPalette.seaGreen,
     form: {
-        fieldset: {
-            height: [52, .7, 52],
-            marginBottom: 0,
-            width: [500, .35, '100%'],
-        },
         field: {
             position: absolute,
             left: 0,

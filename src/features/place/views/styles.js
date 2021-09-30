@@ -111,7 +111,7 @@ export const placesSearchFormStyle = {
     fieldset: {
         height: [52, .7, 52],
         marginBottom: 0,
-        marginRight: [50, .7, '0'],
+        marginRight: [30, .7, '0'],
         width: auto
     },
     inputLabelFocused: {

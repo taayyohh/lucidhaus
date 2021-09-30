@@ -308,7 +308,10 @@ export const searchMenuInnerWrapperStyle = {
     flexDirection: column,
     textTransform: none,
     width: `calc(100% - ${sv(200, globals.style.layoutScalingValue)})`,
-    margin: '0 auto'
+    margin: '0 auto',
+    mobile: {
+
+    }
 }
 
 export const searchMenuHeadingStyle = {
@@ -316,5 +319,8 @@ export const searchMenuHeadingStyle = {
     color: colorPalette.forestGreen,
     weight: 800,
     width: `calc(100% - ${sv(200, globals.style.layoutScalingValue)})`,
+    mobile: {
+        width: '100%'
+    }
 }
 
