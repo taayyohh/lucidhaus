@@ -1,5 +1,5 @@
-import {globals}                     from 'config/styles'
-import {flex, flexStart, none, wrap} from 'utils/themer'
+import {colorPalette, globals}                        from 'config/styles'
+import {black, flex, flexStart, grid, none, sv, wrap} from 'utils/themer'
 
 export const userProfileFormStyle = {
     multiSelect: {
@@ -69,5 +69,33 @@ export const submitFormWrapperStyle = {
         // display: grid,
         // gridTemplateColumns: '1fr 1fr',
         // maxWidth: '50%'
+    }
+}
+
+export const adminReviewWrapperStyle = {
+    display: grid,
+    gridTemplateColumns: '1fr 1fr',
+    gridGap: sv(30, globals.style.layoutScalingValue),
+}
+
+export const adminReviewStyle = {
+    paddingTop: [30, globals.style.layoutScalingValue, 30],
+    paddingBottom: [30, globals.style.layoutScalingValue, 30],
+    paddingLeft: [30, globals.style.layoutScalingValue, 30],
+    paddingRight: [30, globals.style.layoutScalingValue, 30],
+    border: `1px solid ${globals.colors.borderColor}`,
+    borderRadius: [10, .7, 10],
+    color: globals.colors.textColor,
+    textDecoration: none,
+    transition: 'background-color 250ms ease, border-color 250ms ease',
+    name: {
+        size: [24, .7, 24]
+    },
+    top: {
+        marginBottom: [15, .7, 15]
+    },
+    hover: {
+        borderColor: colorPalette.honeyYellow,
+        color: black
     }
 }

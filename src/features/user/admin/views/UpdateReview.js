@@ -2,18 +2,19 @@ import {userDashboardMenu}                                               from 'c
 import {colorPalette}                                                    from 'config/styles'
 import {reviewAdminFields, reviewFields, validateReview}                 from 'features/place/admin/fields/review'
 import {reviewFormHeadingStyle, reviewFormStyle, reviewFormWrapperStyle} from 'features/place/views/styles'
-import React, {useEffect, useState} from 'react'
-import {useDispatch, useSelector}   from 'react-redux'
-import Div                          from 'shared/Basic/Div'
-import H2                           from 'shared/Basic/H2'
-import Span                         from 'shared/Basic/Span'
-import DangerZone                   from 'shared/Controls/DangerZone'
-import Form                         from 'shared/Fields/Form'
-import ContentWrapper               from 'shared/Layout/ContentWrapper'
-import DashboardInfo                from 'shared/Layout/Dashboard/DashboardInfo'
-import DashboardWrapper             from 'shared/Layout/Dashboard/DashboardWrapper'
-import {adminDashboardMenu}         from '../../../../config/menus/dashboard/admin'
-import {userContentWrapperStyle}    from './styles'
+import React, {useEffect, useState}                                      from 'react'
+import {useDispatch, useSelector}                                        from 'react-redux'
+import Div                                                               from 'shared/Basic/Div'
+import H2                                                                from 'shared/Basic/H2'
+import Span                                                              from 'shared/Basic/Span'
+import DangerZone                                                        from 'shared/Controls/DangerZone'
+import Form                                                              from 'shared/Fields/Form'
+import ContentWrapper                                                    from 'shared/Layout/ContentWrapper'
+import DashboardInfo                                                     from 'shared/Layout/Dashboard/DashboardInfo'
+import DashboardWrapper                                                  from 'shared/Layout/Dashboard/DashboardWrapper'
+import {adminDashboardMenu}                                              from '../../../../config/menus/dashboard/admin'
+import LinkSwitch                                                        from '../../../../shared/Basic/LinkSwitch'
+import {userContentWrapperStyle}                                         from './styles'
 
 const UpdateReview = () => {
     const dispatch = useDispatch()
@@ -71,7 +72,11 @@ const UpdateReview = () => {
                 />
                 <Div theme={reviewFormWrapperStyle}>
                     <H2 theme={reviewFormHeadingStyle}>Update Your of Review: <Span
-                        theme={{color: colorPalette.seaGreen}}>{currentReview?.placeName}</Span></H2>
+                        theme={{color: colorPalette.seaGreen}}>
+                        <LinkSwitch url={`/places/${currentReview?.placeSlug}`}>
+                            {currentReview?.placeName}
+                        </LinkSwitch>
+                    </Span></H2>
                     <Form
                         initialValues={initialValues}
                         fields={isAdmin ? reviewAdminFields : reviewFields}
