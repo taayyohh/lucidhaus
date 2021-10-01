@@ -1,14 +1,23 @@
-import {colorPalette, globals}                                      from 'config/styles'
-import {borderBox, center, column, flex, flexStart, pointer, white} from 'utils/themer'
+import {colorPalette, globals}                                                from 'config/styles'
+import {auto, borderBox, center, column, flex, flexStart, pointer, sv, white} from 'utils/themer'
 
 export const placeDescriptionStyle = {
     boxSizing: borderBox,
     paddingRight: [30, globals.style.layoutScalingValue, '0'],
-    size: [16, .7, 16]
+    size: [16, .7, 16],
+    lineHeight: [32, .7, 32]
 }
 export const placeDescriptionWrapperStyle = {
-    marginTop: [50, .7, 20],
-    marginBottom: [40, .7, 20],
+    marginTop: [20, .7, 20],
+    marginBottom: [60, .7, 50],
+    paddingBottom: [20, .7, 20],
+    width: `calc(100% - ${sv(120, globals.style.layoutScalingValue)})`,
+    marginLeft: auto,
+    marginRight: auto,
+    borderBottom: `1px solid ${globals.colors.borderColor}`,
+    mobile: {
+        width: '100%'
+    }
 }
 
 export const LeaveAReviewButtonStyle = {
