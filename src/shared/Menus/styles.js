@@ -49,7 +49,7 @@ export const headerMenuPanelStyle = {
     },
     heading: {
         font: globals.fonts.sans,
-        size: [72, .5],
+       // size: [72, .5],
         marginTop: 0,
         marginBottom: [45, .7],
         lineHeight: 66,
@@ -270,6 +270,7 @@ export const headerAccountMenuDropdownWrapperStyle = {
     left: 0,
     top: [30, .7, 30],
     textDecoration: none,
+    border: `1px solid ${globals.colors.borderColor}`,
     hover: {
         cursor: pointer
     }
@@ -297,7 +298,11 @@ export const headerAccountMenuLinkStyle = {
 export const headerDashboardMenuLinkStyle = {}
 
 export const searchMenuSearchStyle = {
-    background: none
+    background: none,
+    mobile: {
+        padding: 0,
+        paddingTop: 30
+    }
 }
 
 export const leaveAReviewStyle = {
@@ -310,7 +315,9 @@ export const searchMenuInnerWrapperStyle = {
     textTransform: none,
     width: `calc(100% - ${sv(200, globals.style.layoutScalingValue)})`,
     margin: '0 auto',
-    mobile: {}
+    mobile: {
+        width: '100%'
+    }
 }
 
 export const searchMenuHeadingStyle = {

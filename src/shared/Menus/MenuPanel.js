@@ -9,7 +9,8 @@ import MobileHeaderMenu              from 'shared/Menus/MobileHeaderMenu'
 import {headerMenuPanelWrapperStyle} from 'shared/Menus/styles'
 import Player                        from 'shared/Player'
 import LeaveAReview                  from './LeaveAReview'
-import SearchMenu                    from './SearchMenu'
+import SearchPanel                   from './SearchPanel'
+import SubmitAPlace                  from './SubmitAPlace'
 
 const MenuPanels = () => {
     const {currentPanel, setPanel} = useContext(menuPanelContext)
@@ -20,9 +21,11 @@ const MenuPanels = () => {
             case 'mobile-header-menu-panel':
                 return <MobileHeaderMenu/>
             case 'search-menu':
-                return <SearchMenu/>
+                return <SearchPanel/>
             case 'leave-a-review':
                 return <LeaveAReview/>
+            case 'submit-a-place':
+                return <SubmitAPlace/>
             case 'player':
                 return <Player/>
             default:

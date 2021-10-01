@@ -4,6 +4,7 @@ import {useSelector}                   from 'react-redux'
 import Div                             from 'shared/Basic/Div'
 import Icon                            from 'shared/Basic/Icon'
 import LinkSwitch                      from 'shared/Basic/LinkSwitch'
+import {menuPanelContext}              from 'shared/Containers/MenuPanelController'
 import {
     headerButtonSignInStyle,
     headerButtonSignUpStyle,
@@ -12,14 +13,12 @@ import {
     headerSearchIconStyle,
     headerSearchWrapperStyle
 }                                      from 'shared/Layout/styles/header'
-import {menuPanelContext}              from '../Containers/MenuPanelController'
 import HeaderMenuUserDropdown          from './HeaderMenuUserDropdown'
 import {headerMenuControlWrapperStyle} from './styles'
 
 const HeaderMenuControls = () => {
     const {isAuthenticated, isAdmin, nameFirst} = useSelector(state => state.user)
     const {setPanel, currentPanel} = useContext(menuPanelContext)
-
 
     return (
         <Div theme={headerMenuControlWrapperStyle}>
@@ -37,7 +36,6 @@ const HeaderMenuControls = () => {
                     <HeaderMenuUserDropdown
                         nameFirst={nameFirst}
                     />
-
                 )) || (
                     <Div theme={headerButtonWrapperStyle}>
                         <LinkSwitch

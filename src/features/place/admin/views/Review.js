@@ -1,18 +1,18 @@
 import {reviewFields, validateReview} from 'features/place/admin/fields/review'
+import {
+    reviewFormHeadingStyle,
+    reviewFormStyle,
+    reviewFormWrapperStyle,
+    reviewLeaveWrapperStyle
+}                                     from 'features/place/views/styles'
 import React                          from 'react'
 import {useSelector}                  from 'react-redux'
 import Div                            from 'shared/Basic/Div'
 import H2                             from 'shared/Basic/H2'
 import Form                           from 'shared/Fields/Form'
 import {unslugify}                    from 'utils/helpers'
-import {
-    reviewFormHeadingStyle,
-    reviewFormStyle,
-    reviewFormWrapperStyle,
-    reviewLeaveWrapperStyle
-}                                     from '../../views/styles'
 
-const   Review = () => {
+const Review = () => {
     const {_id, token, nameFirst, avatar} = useSelector(state => state.user)
     const {slug} = useSelector(state => state.site)
     const {place} = useSelector(state => state.place)

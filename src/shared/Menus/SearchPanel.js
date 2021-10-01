@@ -4,7 +4,7 @@ import {adminMenuStyle}        from 'shared/Layout/Dashboard/admin/styles'
 import Search                                                                       from 'shared/Layout/Search'
 import {searchMenuHeadingStyle, searchMenuInnerWrapperStyle, searchMenuSearchStyle} from './styles'
 
-const SearchMenu = () =>
+const SearchPanel = () =>
     <Div theme={adminMenuStyle}>
         <Div theme={searchMenuInnerWrapperStyle}>
             <Div theme={searchMenuHeadingStyle}>
@@ -14,4 +14,4 @@ const SearchMenu = () =>
         </Div>
     </Div>
 
-export default SearchMenu
+export default SearchPanel

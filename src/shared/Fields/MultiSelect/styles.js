@@ -1,18 +1,22 @@
-import {flexStart, pointer}    from 'utils/themer'
-import {colorPalette, globals} from 'config/styles'
+import {flexStart, pointer, white} from 'utils/themer'
+import {colorPalette, globals}     from 'config/styles'
 
 export const optionStyle = isSelected => {
     return {
-        background: isSelected ? colorPalette.honeyYellow : '#e4e4e4',
+        background: isSelected ? colorPalette.darkHoneyYellow : '#e4e4e4',
         alignSelf: flexStart,
         padding: '5px 25px',
         borderRadius: 5,
         marginRight: [10, globals.style.layoutScalingValue, 10],
         marginBottom: [10, globals.style.layoutScalingValue, 10],
-        border: `1px solid ${isSelected ? colorPalette.honeyYellow : globals.colors.borderColor}`,
-        color: isSelected ? '#000' : '#77787b',
+        border: `1px solid ${isSelected ? colorPalette.darkHoneyYellow : globals.colors.borderColor}`,
+        color: isSelected ? '#fff' : '#77787b',
+        size: [14, .7, 14],
+        weight: 500,
         hover: {
-            border: `1px solid #000`,
+            backgroundColor: colorPalette.honeyYellow,
+            color: white,
+            border: `1px solid ${colorPalette.honeyYellow}`,
             cursor: pointer
         }
     }

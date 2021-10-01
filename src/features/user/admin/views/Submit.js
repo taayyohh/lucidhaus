@@ -1,55 +1,17 @@
-import {userDashboardMenu}                      from 'config/menus/dashboard/user'
-import {submitPlaceFields, validateSubmitPlace} from 'features/user/admin/fields/submit'
-import React, {useEffect}                       from 'react'
-import {useDispatch, useSelector}               from 'react-redux'
-import Div                                      from 'shared/Basic/Div'
-import Form                                     from 'shared/Fields/Form'
-import ContentWrapper                           from 'shared/Layout/ContentWrapper'
-import {adminFormWrapperStyle}                  from 'shared/Layout/Dashboard/admin/styles'
+import {userDashboardMenu}            from 'config/menus/dashboard/user'
+import {LeaveAReviewButtonStyle}      from 'features/place/views/Place/styles'
+import React, {useContext, useEffect} from 'react'
+import {useDispatch, useSelector}     from 'react-redux'
+import Div                            from 'shared/Basic/Div'
+import {menuPanelContext}             from 'shared/Containers/MenuPanelController'
+import ContentWrapper                 from 'shared/Layout/ContentWrapper'
 import DashboardWrapper                                  from 'shared/Layout/Dashboard/DashboardWrapper'
-import {submitFormWrapperStyle, userContentWrapperStyle} from './styles'
+import {submitPlaceButtonStyle, userContentWrapperStyle} from './styles'
 
 const Submit = () => {
     const dispatch = useDispatch()
-    const {taxonomy} = useSelector(state => state.place)
-    const {_id, token, user, pendingPlaces} = useSelector(state => state.user)
-
-
-    const initialValues = {
-        _id: _id,
-        token: token,
-        address1: '',
-        address2: '',
-        city: '',
-        zip: '',
-        country: '',
-        state: '',
-        categories: [],
-        communitiesServed: [],
-        longitude: '',
-        latitude: '',
-        name: '',
-        submittedBy: [_id],
-        website: '',
-        isPendingSubmission: true,
-    }
-
-    const {
-        communitiesServed,
-        placeCategory
-    } = taxonomy
-
-
-    const options = [
-        {
-            name: 'communitiesServed',
-            options: communitiesServed
-        },
-        {
-            name: 'categories',
-            options: placeCategory
-        }
-    ]
+    const {user, pendingPlaces} = useSelector(state => state.user)
+    const {setPanel, currentPanel} = useContext(menuPanelContext)
 
 
     useEffect(() => {
@@ -79,19 +41,20 @@ const Submit = () => {
         <ContentWrapper theme={userContentWrapperStyle}>
             <DashboardWrapper menu={userDashboardMenu}>
                 <Div>
-                    <Form
-                        initialValues={initialValues}
-                        fields={submitPlaceFields}
-                        validationSchema={validateSubmitPlace}
-                        dispatchAction={'user/submitPlace'}
-                        formHeading={'Submit A Place'}
-                        buttonText={'Submit'}
-                        theme={{...adminFormWrapperStyle, ...submitFormWrapperStyle}}
-                        options={options}
-                        enableReinitialize={true}
-                    />
-                </Div>
-                <Div>
+                    <Div>
+                        <Div
+                            theme={submitPlaceButtonStyle}
+                            onClick={() => setPanel(
+                                !currentPanel
+                                    ? 'submit-a-place'
+                                    : null
+                            )}
+                        >
+                            Submit A Place
+                        </Div>
+                    </Div>
+
+
                     Pending Submissions
                     {pendingPlaces && pendingPlaces.map((place) =>
                         <Div key={place._id}>

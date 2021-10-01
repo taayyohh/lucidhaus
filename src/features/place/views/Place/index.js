@@ -25,9 +25,9 @@ import {
     reviewsHeadingWrapperStyle
 }                                               from '../styles'
 import Address                                  from './Address'
-import Description                              from './Description'
-import LeaveAReview                             from './LeaveAReview'
-import Rating                                   from './Rating'
+import Description        from './Description'
+import LeaveAReviewButton from './LeaveAReview'
+import Rating             from './Rating'
 import Reviews                                  from './Reviews'
 import Tags                                     from './Tags'
 import Title                                    from './Title'
@@ -293,7 +293,7 @@ const Place = () => {
                             <Div theme={{display: 'flex', flexDirection: 'column'}}>
                                 <Rating/>
                                 {(isAuthenticated && isVerified && hasNoReviews) && (
-                                    <LeaveAReview/>
+                                    <LeaveAReviewButton/>
                                 )}
                             </Div>
                             <Description description={description}/>

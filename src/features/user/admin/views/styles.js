@@ -1,5 +1,5 @@
-import {colorPalette, globals}                                       from 'config/styles'
-import {black, column, flex, flexStart, grid, none, sv, white, wrap} from 'utils/themer'
+import {colorPalette, globals}                                                            from 'config/styles'
+import {black, column, flex, flexStart, grid, inlineFlex, none, pointer, sv, white, wrap} from 'utils/themer'
 
 export const userProfileFormStyle = {
     multiSelect: {
@@ -10,7 +10,6 @@ export const userProfileFormStyle = {
 export const multiSelectOptionListWrapperStyle = {
     display: flex,
     flexWrap: wrap,
-    minHeight: [200, .7, 200],
     maxHeight: [300, .7, 300],
     overflow: 'scroll',
     scrollBar: {
@@ -107,5 +106,28 @@ export const adminReviewStyle = {
     hover: {
         borderColor: black,
         color: black
+    }
+}
+
+export const submitPlaceButtonStyle = {
+    alignSelf: flexStart,
+    backgroundColor: colorPalette.darkHoneyYellow,
+    paddingLeft: [15, .7, 15],
+    paddingRight: [15, .7, 15],
+    paddingTop: [10, .7, 10],
+    paddingBottom: [10, .7, 10],
+    display: inlineFlex,
+    flexDirection: 'column',
+    borderRadius: [5, .7, 5],
+    color: white,
+    size: [15, .7, 15],
+    weight: 600,
+    border: `1px solid ${colorPalette.darkHoneyYellow}`,
+    transition: 'background 200ms ease',
+    hover: {
+        cursor: pointer,
+        backgroundColor: colorPalette.honeyYellow,
+        border: `1px solid ${colorPalette.honeyYellow}`,
+
     }
 }

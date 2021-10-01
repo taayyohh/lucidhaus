@@ -7,7 +7,6 @@ import Div                                             from 'shared/Basic/Div'
 import Form                                            from 'shared/Fields/Form'
 import ContentWrapper                                  from 'shared/Layout/ContentWrapper'
 import DashboardWrapper                                from 'shared/Layout/Dashboard/DashboardWrapper'
-import Identity                                        from './Indentity'
 import {userContentWrapperStyle, userProfileFormStyle} from './styles'
 
 const Account = () => {
