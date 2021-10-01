@@ -10,7 +10,6 @@ import {useSelector}                  from 'react-redux'
 import Div                            from 'shared/Basic/Div'
 import H2                             from 'shared/Basic/H2'
 import Form                           from 'shared/Fields/Form'
-import {unslugify}                    from 'utils/helpers'
 
 const Review = () => {
     const {_id, token, nameFirst, avatar} = useSelector(state => state.user)

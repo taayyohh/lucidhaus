@@ -1,22 +1,22 @@
-import {bookmark}                                                                                from 'config/icons'
-import {userDashboardMenu}                                                                       from 'config/menus/dashboard/user'
-import {colorPalette}                                                                            from 'config/styles'
-import React, {useEffect}                                                                        from 'react'
-import {useDispatch, useSelector}                                                                from 'react-redux'
-import Div                                                                                       from 'shared/Basic/Div'
-import Icon
-                                                                                                 from 'shared/Basic/Icon'
-import LinkSwitch
-                                                                                                 from 'shared/Basic/LinkSwitch'
-import ContentWrapper
-                                                                                                 from 'shared/Layout/ContentWrapper'
-import DashboardInfo
-                                                                                                 from 'shared/Layout/Dashboard/DashboardInfo'
-import DashboardWrapper
-                                                                                                 from 'shared/Layout/Dashboard/DashboardWrapper'
-import {white}                                                                                   from 'utils/themer'
-import {userContentWrapperStyle}                                                                 from '../../admin/views/styles'
-import {userDashboardBookmarkStyle, userDashboardInfoWrapperStyle, userDashboardRTEHeadingStyle} from './styles'
+import {bookmark}                 from 'config/icons'
+import {userDashboardMenu}        from 'config/menus/dashboard/user'
+import {colorPalette}             from 'config/styles'
+import React, {useEffect}         from 'react'
+import {useDispatch, useSelector} from 'react-redux'
+import Div                        from 'shared/Basic/Div'
+import Icon                       from 'shared/Basic/Icon'
+import LinkSwitch                 from 'shared/Basic/LinkSwitch'
+import ContentWrapper             from 'shared/Layout/ContentWrapper'
+import DashboardInfo              from 'shared/Layout/Dashboard/DashboardInfo'
+import DashboardWrapper           from 'shared/Layout/Dashboard/DashboardWrapper'
+import {white}                    from 'utils/themer'
+import {userContentWrapperStyle}  from '../../admin/views/styles'
+import {
+    dashboardParagraphStyle,
+    userDashboardBookmarkStyle,
+    userDashboardInfoWrapperStyle,
+    userDashboardRTEHeadingStyle
+}                                 from './styles'
 
 const UserDashboard = () => {
     const {
@@ -85,25 +85,33 @@ const UserDashboard = () => {
                     )}
                 </Div>
                 <Div theme={userDashboardInfoWrapperStyle}>
-                    <Div>
-                        <strong>Who we are</strong> — Inclusive Guide is an online community that lists safe and
-                        welcoming spaces for people who experience discrimination. Individuals can rate businesses and
-                        spaces on their experience relating to each person’s specific identities (race, ability, gender,
-                        etc).
+                    <Div theme={dashboardParagraphStyle}>
+                        <Div theme={userDashboardRTEHeadingStyle}>Who we are</Div>
+                        <Div>
+                            Inclusive Guide is an online community that lists safe and
+                            welcoming spaces for people who experience discrimination. Individuals can rate businesses
+                            and
+                            spaces on their experience relating to each person’s specific identities (race, ability,
+                            gender,
+                            etc).
+                        </Div>
+                        <br/>
+                        <Div>
+                            Inclusive Guide was started by two Black women with a mission to create data-driven,
+                            economic
+                            incentives for businesses to be more inclusive and welcoming, resulting in safer spaces for
+                            people who regularly experience discrimination.
+                        </Div>
+
                     </Div>
-                    <Div>
-                        Inclusive Guide was started by two Black women with a mission to create data-driven, economic
-                        incentives for businesses to be more inclusive and welcoming, resulting in safer spaces for
-                        people who regularly experience discrimination.
-                    </Div>
-                    <Div>
+                    <Div theme={dashboardParagraphStyle}>
                         <strong>Celebrate your community!</strong> — We need people of all identities to start rating
                         businesses so we can celebrate the places that celebrate you! These ratings will be available to
                         the public, allowing individuals to support businesses that align with their values.
                     </Div>
 
                     <Div>
-                        <Div>
+                        <Div theme={dashboardParagraphStyle}>
                             <Div theme={userDashboardRTEHeadingStyle}>Leave a Review!</Div>
                             <Div>
                                 <strong>SAFE</strong> - This is both your physical and emotional safety. Feeling safe
@@ -121,8 +129,9 @@ const UserDashboard = () => {
                         </Div>
                     </Div>
                     <Div>
-                        <Div theme={userDashboardRTEHeadingStyle}>Save your favorite places!</Div>
-                        <Div>
+                        <Div theme={dashboardParagraphStyle}>
+                            <Div theme={userDashboardRTEHeadingStyle}>Save your favorite places!</Div>
+
                             To save your favorite places simply click on this bookmark icon ( <Icon icon={bookmark}
                                                                                                     theme={userDashboardBookmarkStyle}/> )
                             and the place will be
