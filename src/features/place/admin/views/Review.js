@@ -39,7 +39,7 @@ const Review = () => {
             <Div theme={reviewLeaveWrapperStyle}>
                 <H2 theme={reviewFormHeadingStyle}>
                     <Div>Leave a Review for</Div>
-                    <span>{unslugify(slug)}</span>
+                    <span>{place.name}</span>
                 </H2>
             </Div>
             <Form
