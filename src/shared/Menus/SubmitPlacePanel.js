@@ -1,16 +1,27 @@
 import {submitPlaceFields, validateSubmitPlace} from 'features/user/admin/fields/submit'
 import {submitFormWrapperStyle}                 from 'features/user/admin/views/styles'
-import React                                    from 'react'
-import {useSelector}                            from 'react-redux'
-import Div                                      from 'shared/Basic/Div'
+import React, {useContext, useEffect} from 'react'
+import {useDispatch, useSelector}     from 'react-redux'
+import Div                            from 'shared/Basic/Div'
 import Form                                     from 'shared/Fields/Form'
-import {adminFormWrapperStyle}                  from 'shared/Layout/Dashboard/admin/styles'
+import {menuPanelContext}                       from '../Containers/MenuPanelController'
 import {submitPlaceWrapperStyle}                from './styles'
 
 const SubmitPlacePanel = () => {
-    const {_id, token} = useSelector(state => state.user)
+    const {_id, token, placeSubmissionSuccess} = useSelector(state => state.user)
     const {taxonomy} = useSelector(state => state.place)
     const {communitiesServed, placeCategory} = taxonomy
+    const {setPanel} = useContext(menuPanelContext)
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        if (placeSubmissionSuccess) {
+            setPanel(null)
+            dispatch({type: 'user/closeSubmissionPanel'})
+        }
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [placeSubmissionSuccess])
 
     const options = [
         {
@@ -45,19 +56,17 @@ const SubmitPlacePanel = () => {
 
     return (
         <Div theme={submitPlaceWrapperStyle}>
-            <Div>
-                <Form
-                    initialValues={initialValues}
-                    fields={submitPlaceFields}
-                    validationSchema={validateSubmitPlace}
-                    dispatchAction={'user/submitPlace'}
-                    formHeading={'Submit A Place'}
-                    buttonText={'Submit'}
-                    theme={submitFormWrapperStyle}
-                    options={options}
-                    enableReinitialize={true}
-                />
-            </Div>
+            <Form
+                initialValues={initialValues}
+                fields={submitPlaceFields}
+                validationSchema={validateSubmitPlace}
+                dispatchAction={'user/submitPlace'}
+                formHeading={'Submit A Place'}
+                buttonText={'Submit'}
+                theme={submitFormWrapperStyle}
+                options={options}
+                enableReinitialize={true}
+            />
         </Div>
     )
 }

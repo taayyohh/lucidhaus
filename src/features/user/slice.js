@@ -27,8 +27,9 @@ const initialState = {
     error: false,
     loading: false,
     redirectToReferrer: false,
-    purchaseHistory: [],
     pendingPlaces: [],
+    placeSubmissionSuccess: null,
+    purchaseHistory: [],
     confirmationRequest: undefined,
     users: [],
     user: {
@@ -111,7 +112,7 @@ export const slice = createSlice({
             state.slug = action.payload.user.slug
             state.tel = action.payload.user.tel
             state.type = action.payload.user.type
-           // state.flaggedReviews = [...action.payload.user.flaggedReviews]
+            // state.flaggedReviews = [...action.payload.user.flaggedReviews]
         },
         isAuthenticatedFailure: state => {
             state.isAuthenticated = false
@@ -207,6 +208,12 @@ export const slice = createSlice({
         },
         flagReviewSuccess: (state, action) => {
 
+        },
+        submitPlaceSuccess: (state, action) => {
+            state.placeSubmissionSuccess = true
+        },
+        closeSubmissionPanel: (state) => {
+            state.placeSubmissionSuccess = null
         },
 
 

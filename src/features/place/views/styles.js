@@ -2,7 +2,7 @@ import {colorPalette, globals} from 'config/styles'
 import {CDN}                   from 'config/variables'
 import {
     absolute,
-    auto,
+    auto, black,
     center,
     column,
     flex,
@@ -18,7 +18,7 @@ import {
     uppercase,
     white,
     wrap
-}                              from 'utils/themer'
+} from 'utils/themer'
 
 export const placesWrapperStyle = {
     display: 'grid',
@@ -145,8 +145,10 @@ export const placesSearchFormStyle = {
 
 export const placeCardStyle = {
     backgroundColor: white,
+    border: `1px solid ${globals.colors.borderColor}`,
     hover: {
-        color: colorPalette.paleGreen
+        color: colorPalette.forestGreen,
+        borderColor: black
     },
     textWrapper: {
         paddingLeft: [20, globals.style.layoutScalingValue, 20],

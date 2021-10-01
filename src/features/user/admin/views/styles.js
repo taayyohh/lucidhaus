@@ -74,11 +74,6 @@ export const submitFormWrapperStyle = {
         lastOfType: {
             marginBottom: [70, .7, 50]
         }
-    },
-    inner: {
-        // display: grid,
-        // gridTemplateColumns: '1fr 1fr',
-        // maxWidth: '50%'
     }
 }
 
@@ -141,4 +136,10 @@ export const submitPlaceButtonStyle = {
         border: `1px solid ${colorPalette.honeyYellow}`,
 
     }
+}
+
+export const myPlacesWrapperStyle = {
+    display: grid,
+    gridTemplateColumns: '1fr',
+    gridGap: sv(20, globals.style.layoutScalingValue),
 }
