@@ -1,5 +1,5 @@
-import React           from 'react'
-import ReactCrop       from 'react-image-crop'
+import React                from 'react'
+import ReactCrop            from 'react-image-crop'
 import {Portal}             from 'react-portal'
 import Div                  from 'shared/Basic/Div'
 import Img                  from 'shared/Basic/Img'
@@ -28,8 +28,8 @@ const CropPortal = ({isOpen, setIsOpen, uploadBlob, setCrop, crop, makeClientCro
             >
                 <Div theme={imageDropZoneStyle.portalInner}>
                     <Div
-                        theme={{height: 50, width: 50, borderRadius: 25, backgroundColor: '#AFE'}}
-                         onClick={() => setIsOpen(false)}
+                        theme={imageDropZoneStyle.close}
+                        onClick={() => setIsOpen(false)}
                     >
                         close
                     </Div>

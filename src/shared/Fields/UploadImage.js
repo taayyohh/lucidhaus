@@ -1,23 +1,25 @@
-import {ACCEPTABLE_EXTENSIONS} from 'config/variables'
-import moment from 'moment'
+import {camera}                           from 'config/icons'
+import {ACCEPTABLE_EXTENSIONS}            from 'config/variables'
+import moment                             from 'moment'
 import React, {memo, useEffect, useState} from 'react'
-import Dropzone from 'react-dropzone'
+import Dropzone                           from 'react-dropzone'
 import 'react-image-crop/dist/ReactCrop.css'
-import Div from 'shared/Basic/Div'
-import Img from 'shared/Basic/Img'
-import S3Img from 'shared/Basic/S3Img'
-import Span from 'shared/Basic/Span'
-import {genericCardImageStyle} from 'shared/Cards/styles'
-import {uploadErrorMessageStyle} from 'shared/Fields/styles'
-import {slugify} from 'utils/helpers'
-import CropPortal from './CropPortal'
+import Div                                from 'shared/Basic/Div'
+import Icon                               from 'shared/Basic/Icon'
+import Img                                from 'shared/Basic/Img'
+import S3Img                              from 'shared/Basic/S3Img'
+import Span                               from 'shared/Basic/Span'
+import {genericCardImageStyle}            from 'shared/Cards/styles'
+import {uploadErrorMessageStyle}          from 'shared/Fields/styles'
+import {slugify}                          from 'utils/helpers'
+import CropPortal                         from './CropPortal'
 import {
     defaultFieldHeadingStyle,
     imageDropZonePreviewStyle,
     imageDropZonePreviewWrapperStyle,
     imageDropZoneStyle,
     imageDropZoneWrapperStyle
-} from './styles'
+}                                         from './styles'
 
 const UploadImage = memo(({
                               formik,
@@ -96,10 +98,10 @@ const UploadImage = memo(({
     }
 
     useEffect(() => {
-        if(!!croppedImage)
+        if (!!croppedImage)
             formik.setFieldValue(file, croppedImage ? croppedImage : '')
 
-        if(!!sanitizedName)
+        if (!!sanitizedName)
             formik.setFieldValue(id, sanitizedName ? sanitizedName : '')
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -121,7 +123,7 @@ const UploadImage = memo(({
                         <Div {...getRootProps()} theme={imageDropZoneStyle}>
                             <Span theme={uploadErrorMessageStyle}>{errorMessage}</Span>
                             <input {...getInputProps()} />
-                            <p>Drag and Drop or click upload an image</p>
+                            <Icon icon={camera} theme={imageDropZoneStyle.icon}/>
                         </Div>
                     )}
                 </Dropzone>

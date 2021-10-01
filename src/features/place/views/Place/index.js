@@ -274,7 +274,7 @@ const Place = () => {
         <AnimatePresence>
             <MotionDiv initial={nOpacity} animate={fadeIn} exit={fadeOut}>
                 <ContentWrapper theme={{width: '100%'}}>
-                    <Div theme={placeMarqueeStyle}>
+                    <Div theme={placeMarqueeStyle(place.photo)}>
                         {isVerified && (
                             <Bookmark
                                 place={place}

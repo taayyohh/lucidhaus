@@ -212,20 +212,22 @@ export const placeInnerRightInfoStyle = {
 
 }
 
-export const placeMarqueeStyle = {
-    width: '100%',
-    height: [420, .7, 230],
-    backgroundSize: 'cover',
-    backgroundPosition: 'center center',
-    cursor: pointer,
-    display: flex,
-    alignItems: center,
-    justifyContent: center,
-    backgroundImage: `url(${CDN}assets/ij-home+2)`,
-    hover: {
-        cursor: 'default'
+export const placeMarqueeStyle = url => {
+    return {
+        width: '100%',
+        height: [420, .7, 230],
+        backgroundSize: 'cover',
+        backgroundPosition: 'center center',
+        cursor: pointer,
+        display: flex,
+        alignItems: center,
+        justifyContent: center,
+        backgroundImage: !url ? `url(${CDN}assets/ij-home+2)` : `url(${CDN}${url})`,
+        hover: {
+            cursor: 'default'
+        }
     }
-    //  opacity: .4
+
 }
 
 export const placeWrapperTopStyle = {

@@ -291,9 +291,9 @@ export const imageDropZonePreviewWrapperStyle = {
     boxSizing: borderBox,
     padding: [20, globals.style.layoutScalingValue, 20],
     marginTop: [50, .7, 50],
-    mobile: {
-        height: 300
-    }
+    // mobile: {
+    //     height: 300
+    // }
 }
 
 export const audioUploadPreviewWrapperStyle = {
@@ -304,13 +304,25 @@ export const audioUploadPreviewWrapperStyle = {
 export const imageDropZoneStyle = {
     position: relative,
     display: block,
-    minHeight: [500, globals.style.layoutScalingValue, 100],
     marginTop: [50, .7, 50],
-    // width: [500, globals.style.layoutScalingValue, '100%'],
     width: '50%',
     background: '#fff',
     border: `1px solid ${globals.colors.borderColor}`,
     borderRadius: 10,
+    paddingTop: [50, .7, 50],
+    paddingBottom: [50, .7, 50],
+    hover: {
+        cursor: pointer
+    },
+    icon: {
+        size: [28, .7, 28],
+    },
+    close: {
+        height: 50,
+        width: 50,
+        borderRadius: 25,
+        backgroundColor: '#AFE'
+    },
     portal: {
         position: fixed,
         top: 0,
@@ -342,9 +354,6 @@ export const imageDropZoneStyle = {
         backgroundColor: white,
         child: {
             selector: '> div',
-            // firstChild: {
-            //     width: 500
-            // },
             lastChild: {
                 width: '20%'
             }
