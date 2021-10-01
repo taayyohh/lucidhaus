@@ -299,6 +299,7 @@ export const headerDashboardMenuLinkStyle = {}
 
 export const searchMenuSearchStyle = {
     background: none,
+
     mobile: {
         padding: 0,
         paddingTop: 30
@@ -306,7 +307,7 @@ export const searchMenuSearchStyle = {
 }
 
 export const leaveAReviewStyle = {
-    marginTop: [100, .7, 100]
+    marginTop: [100, .7, 40]
 }
 
 export const searchMenuInnerWrapperStyle = {
@@ -330,3 +331,8 @@ export const searchMenuHeadingStyle = {
     }
 }
 
+export const submitPlaceWrapperStyle = {
+    marginTop: [100, .7, '0'],
+    marginBottom: [100, .7, 100],
+    textTransform: none
+}

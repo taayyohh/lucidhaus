@@ -56,7 +56,7 @@ export const multiSelectInnerWrapperStyle = {
 }
 
 export const multiSelectHelperTextStyle = {
-    size: [22, .7, 22],
+    size: [15, .7, 15],
     marginLeft: [5, .7, 5]
 }
 
@@ -66,6 +66,15 @@ export const userContentWrapperStyle = {
 }
 
 export const submitFormWrapperStyle = {
+    border: 0,
+    paddingLeft: [100, globals.style.layoutScalingValue, 20],
+    paddingRight: [100, globals.style.layoutScalingValue, 20],
+    fieldset: {
+        marginBottom: [20, .7, 20],
+        lastOfType: {
+            marginBottom: [70, .7, 50]
+        }
+    },
     inner: {
         // display: grid,
         // gridTemplateColumns: '1fr 1fr',
