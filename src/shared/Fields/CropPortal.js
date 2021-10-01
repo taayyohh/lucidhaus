@@ -1,7 +1,9 @@
+import {times}              from 'config/icons'
 import React                from 'react'
 import ReactCrop            from 'react-image-crop'
 import {Portal}             from 'react-portal'
 import Div                  from 'shared/Basic/Div'
+import Icon                 from 'shared/Basic/Icon'
 import Img                  from 'shared/Basic/Img'
 import MotionDiv            from 'shared/Basic/MotionDiv'
 import {imageDropZoneStyle} from './styles'
@@ -31,7 +33,7 @@ const CropPortal = ({isOpen, setIsOpen, uploadBlob, setCrop, crop, makeClientCro
                         theme={imageDropZoneStyle.close}
                         onClick={() => setIsOpen(false)}
                     >
-                        close
+                        <Icon icon={times} theme={imageDropZoneStyle.closeIcon}/>
                     </Div>
                     {uploadBlob && (
                         <ReactCrop

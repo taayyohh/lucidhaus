@@ -463,20 +463,28 @@ export const placeReviewUserReviewCountStyle = {
 
 export const placeReviewUserNameStyle = {
     marginTop: [5, .7, 5],
-    size: [16, .7, 16]
+    size: [13, .7, 13],
+    weight: 700,
+    fontStyle: 'italic',
 }
 
 
 export const placeReviewUserInfoStyle = {
     display: 'flex',
     flexDirection: 'column',
+    alignItems: center,
     marginRight: [50, .7, 50],
     width: [120, .7, 100],
     minWidth: [120, .7, 100]
 }
 
 export const placeReviewedByStyle = {
-    size: [16, .7, 16]
+    size: [14, .7, 14],
+    child: {
+        selector: 'span',
+        fontStyle: 'italic',
+        size: [16, .7, 16]
+    }
 }
 
 export const placeReviewDescriptionStyle = {

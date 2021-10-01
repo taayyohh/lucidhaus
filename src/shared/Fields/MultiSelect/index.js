@@ -19,12 +19,13 @@ const MultiSelect = memo(({className, name, errorMessage, field, formik, options
     const [filteredArray, setFilteredArray] = useState(optionsArray)
 
     useEffect(() => {
-        setFilteredArray(optionsArray?.reduce(function (accumulator = [], currentValue) {
-            if (currentValue.name.toLowerCase().includes(filterInput.toLowerCase()))
-                accumulator.push(currentValue)
+        if(!!optionsArray)
+            setFilteredArray(optionsArray?.reduce(function (accumulator = [], currentValue) {
+                if (currentValue.name.toLowerCase().includes(filterInput.toLowerCase()))
+                    accumulator.push(currentValue)
 
-            return accumulator
-        }, []))
+                return accumulator
+            }, []))
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [filterInput])

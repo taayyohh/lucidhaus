@@ -1,11 +1,12 @@
-import {userDashboardMenu}            from 'config/menus/dashboard/user'
-import {LeaveAReviewButtonStyle}      from 'features/place/views/Place/styles'
-import React, {useContext, useEffect} from 'react'
-import {useDispatch, useSelector}     from 'react-redux'
-import Div                            from 'shared/Basic/Div'
-import {menuPanelContext}             from 'shared/Containers/MenuPanelController'
-import ContentWrapper                 from 'shared/Layout/ContentWrapper'
+import {userDashboardMenu}                               from 'config/menus/dashboard/user'
+import {LeaveAReviewButtonStyle}                         from 'features/place/views/Place/styles'
+import React, {useContext, useEffect}                    from 'react'
+import {useDispatch, useSelector}                        from 'react-redux'
+import Div                                               from 'shared/Basic/Div'
+import {menuPanelContext}                                from 'shared/Containers/MenuPanelController'
+import ContentWrapper                                    from 'shared/Layout/ContentWrapper'
 import DashboardWrapper                                  from 'shared/Layout/Dashboard/DashboardWrapper'
+import DashboardInfo                                     from '../../../../shared/Layout/Dashboard/DashboardInfo'
 import {submitPlaceButtonStyle, userContentWrapperStyle} from './styles'
 
 const Submit = () => {
@@ -40,8 +41,12 @@ const Submit = () => {
     return (
         <ContentWrapper theme={userContentWrapperStyle}>
             <DashboardWrapper menu={userDashboardMenu}>
+                <DashboardInfo
+                    heading={'Submit a Place'}
+                    description={"Don't see a place you know on the Guide? Submit a Place here."}
+                />
                 <Div>
-                    <Div>
+                    <Div theme={{marginBottom: [20, .7, 20]}}>
                         <Div
                             theme={submitPlaceButtonStyle}
                             onClick={() => setPanel(
@@ -55,11 +60,11 @@ const Submit = () => {
                     </Div>
 
 
-                    Pending Submissions
+                    <Div>Submitted Places</Div>
                     {pendingPlaces && pendingPlaces.map((place) =>
-                        <Div key={place._id}>
+                        <Div key={place._id} theme={{display: 'flex'}}>
                             <Div>{place.name}</Div>
-                            <Div>{place.isPendingSubmission ? 'Pending' : 'Submitted'}</Div>
+                            <Div>{place.isPendingSubmission ? 'Pending' : 'Accepted!'}</Div>
                         </Div>
                     )}
                 </Div>

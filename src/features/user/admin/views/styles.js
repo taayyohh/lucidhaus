@@ -38,6 +38,8 @@ export const multiSelectSearchFieldStyle = {
     height: [50, .7, 50],
     borderRadius: [10, .7, 10],
     width: [350, globals.style.layoutScalingValue, '100%'],
+    size: [14, .7, 14],
+    weight: 400,
     focus: {
         outline: none
     }

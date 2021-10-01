@@ -30,6 +30,8 @@ const Manage = () => {
         //             })
         //         )
 
+        console.log('places', places)
+
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [places])
 
@@ -38,7 +40,7 @@ const Manage = () => {
             <AdminDashboardWrapper>
                 <DashboardInfo
                     heading={'Manage Pending Places'}
-                    description={'Type & Enter to search. Click to edit.'}
+                    description={'Accept or Deny User Submitted Places.'}
                 />
 
                 <Div theme={{display: 'flex', flexDirection: 'column'}}>

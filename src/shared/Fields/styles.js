@@ -314,14 +314,27 @@ export const imageDropZoneStyle = {
     hover: {
         cursor: pointer
     },
+    closeIcon: {
+        size: [18, .7, 18],
+        color: white
+    },
     icon: {
-        size: [28, .7, 28],
+        size: [28, .7, 28]
     },
     close: {
+        display: flex,
+        alignItems:center,
+        justifyContent: center,
         height: 50,
         width: 50,
         borderRadius: 25,
-        backgroundColor: '#AFE'
+        backgroundColor: colorPalette.darkHoneyYellow,
+        border: `1px solid ${colorPalette.darkHoneyYellow}`,
+        hover: {
+            cursor: pointer,
+            backgroundColor: colorPalette.honeyYellow,
+            borderColor: colorPalette.honeyYellow
+        }
     },
     portal: {
         position: fixed,

@@ -40,7 +40,7 @@ import {
     faStepForward,
     faStore,
     faStream,
-    faTags,
+    faTags, faTimes,
     faTimesCircle,
     faTrashAlt,
     faUser,
@@ -50,7 +50,7 @@ import {
     faVolumeUp,
     faWindowMaximize,
     faWindowMinimize
-}                               from '@fortawesome/free-solid-svg-icons'
+} from '@fortawesome/free-solid-svg-icons'
 
 export const
     bookmark = faBookmark,
@@ -94,6 +94,7 @@ export const
     play = faPlay,
     playCircle = faPlayCircle,
     tags = faTags,
+    times = faTimes,
     timesCircle = faTimesCircle,
     trashAlt = faTrashAlt,
     twitter = faTwitter,

@@ -60,7 +60,7 @@ const Reviews = ({reviewIds, userFlaggedReviews, placeSlug}) => {
                             </Div>
                             <Div>
                                 <Div theme={placeReviewedByStyle}>Reviewed
-                                    on {dayjs(review.updated).format('MMMM DD, YYYY')}</Div>
+                                    on <span>{dayjs(review.updated).format('MMMM DD, YYYY')}</span></Div>
                                 <RichText theme={placeReviewDescriptionStyle}>{review.review}</RichText>
                                 <Div theme={placeReviewLikertStyle}>
                                     <Div><strong>Safe:</strong> {review.safe[0]}</Div>
