@@ -106,30 +106,46 @@ export const deletePromptButtonStyle = {
 }
 
 export const deletePromptConfirmButtonStyle = {
-    borderColor: colorPalette.brightRed,
-    backgroundColor: colorPalette.brightRed,
+    borderColor: colorPalette.darkHoneyYellow,
+    backgroundColor: colorPalette.darkHoneyYellow,
     color: white,
     hover: {
         cursor: pointer,
-        backgroundColor: colorPalette.brightRed,
+        backgroundColor: colorPalette.honeyYellow,
+        borderColor: colorPalette.honeyYellow,
         color: white
     }
 }
 
-export const deletePromptCloseIconStyle = {
-    size: [38, .7, 38],
+export const deletePromptCloseIconWrapperStyle = {
+    display: flex,
+    alignItems:center,
+    justifyContent: center,
+    height: 50,
+    width: 50,
+    borderRadius: `${sv(10)} ${sv(10)} ${sv(10)} ${sv(10)}`,
+    backgroundColor: colorPalette.paleGreen,
+    border: `1px solid ${colorPalette.paleGreen}`,
     position: absolute,
-    right: [20, .7, 20],
-    top: [20, .7, 20],
+    top: [5, .7, 5],
+    right: [5, .7, 5],
     hover: {
-        color: colorPalette.red,
-        cursor: pointer
+        cursor: pointer,
+        backgroundColor: colorPalette.forestGreen,
+        borderColor: colorPalette.forestGreen
     }
 }
 
+export const deletePromptIconStyle = {
+    size: [18, .7, 18],
+    color: white
+}
+
 export const deletePromptHeadingStyle = {
-    size: [42, .7, 24],
-    marginBottom: [20, .7, 20]
+    size: [24, .7, 24],
+    marginBottom: [20, .7, 20],
+    marginTop: [50, .7, 50],
+    weight: 800
 }
 
 export const dangerZoneStyle = {

@@ -232,7 +232,8 @@ export const defaultModalStyle = {
     marginTop: '-15vw',
     padding: sv(50),
     backgroundColor: white,
-    border: `1px solid #000`,
+    border: `1px solid ${globals.colors.borderColor}`,
+    borderRadius: [10, .7, 10],
     mobile: {
         paddingTop: 100,
         marginLeft: 0,

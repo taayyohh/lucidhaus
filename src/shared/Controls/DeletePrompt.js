@@ -1,4 +1,4 @@
-import {timesCircle}              from 'config/icons'
+import {times, timesCircle}       from 'config/icons'
 import {AnimatePresence}          from 'framer-motion'
 import React                      from 'react'
 import {Portal}                   from 'react-portal'
@@ -8,11 +8,12 @@ import Icon                       from 'shared/Basic/Icon'
 import MotionDiv                  from 'shared/Basic/MotionDiv'
 import {
     deletePromptButtonStyle,
-    deletePromptCloseIconStyle,
+    deletePromptCloseIconWrapperStyle,
     deletePromptConfirmButtonStyle,
-    deletePromptHeadingStyle
-}                                 from 'shared/Controls/styles'
+    deletePromptHeadingStyle, deletePromptIconStyle
+} from 'shared/Controls/styles'
 import {defaultModalStyle}        from 'shared/Layout/styles'
+import {imageDropZoneStyle}       from '../Fields/styles'
 
 const DeletePrompt = ({destroyAction, type, index, objectID}) => {
     const {_id, token} = useSelector(state => state.user)
@@ -26,11 +27,12 @@ const DeletePrompt = ({destroyAction, type, index, objectID}) => {
                 <Portal node={document && document.getElementById('modal')}>
                     <AnimatePresence>
                         <MotionDiv theme={defaultModalStyle}>
-                            <Icon
-                                icon={timesCircle}
-                                theme={deletePromptCloseIconStyle}
+                            <Div
+                                theme={deletePromptCloseIconWrapperStyle}
                                 onClick={() => dispatch({type: 'site/denyDestroyEntity'})}
-                            />
+                            >
+                                <Icon icon={times} theme={deletePromptIconStyle}/>
+                            </Div>
                             {!destroy && (
                                 <Div>
                                     <Div theme={deletePromptHeadingStyle}>Are you sure?</Div>
