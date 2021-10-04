@@ -1,5 +1,5 @@
-import {colorPalette, globals}         from 'config/styles'
-import {block, borderBox, flex, white} from 'utils/themer'
+import {colorPalette, globals}   from 'config/styles'
+import {block, borderBox, white} from 'utils/themer'
 
 export const userDashboardInfoWrapperStyle = {
     font: globals.fonts.serif,

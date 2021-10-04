@@ -1,4 +1,4 @@
-import {times, timesCircle}       from 'config/icons'
+import {times}                    from 'config/icons'
 import {AnimatePresence}          from 'framer-motion'
 import React                      from 'react'
 import {Portal}                   from 'react-portal'
@@ -10,10 +10,10 @@ import {
     deletePromptButtonStyle,
     deletePromptCloseIconWrapperStyle,
     deletePromptConfirmButtonStyle,
-    deletePromptHeadingStyle, deletePromptIconStyle
-} from 'shared/Controls/styles'
+    deletePromptHeadingStyle,
+    deletePromptIconStyle
+}                                 from 'shared/Controls/styles'
 import {defaultModalStyle}        from 'shared/Layout/styles'
-import {imageDropZoneStyle}       from '../Fields/styles'
 
 const DeletePrompt = ({destroyAction, type, index, objectID}) => {
     const {_id, token} = useSelector(state => state.user)

@@ -1,12 +1,11 @@
 import {userDashboardMenu}                               from 'config/menus/dashboard/user'
-import {LeaveAReviewButtonStyle}                         from 'features/place/views/Place/styles'
 import React, {useContext, useEffect}                    from 'react'
 import {useDispatch, useSelector}                        from 'react-redux'
 import Div                                               from 'shared/Basic/Div'
 import {menuPanelContext}                                from 'shared/Containers/MenuPanelController'
 import ContentWrapper                                    from 'shared/Layout/ContentWrapper'
+import DashboardInfo                                     from 'shared/Layout/Dashboard/DashboardInfo'
 import DashboardWrapper                                  from 'shared/Layout/Dashboard/DashboardWrapper'
-import DashboardInfo                                     from '../../../../shared/Layout/Dashboard/DashboardInfo'
 import {submitPlaceButtonStyle, userContentWrapperStyle} from './styles'
 
 const Submit = () => {
