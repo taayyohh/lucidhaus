@@ -6,6 +6,7 @@ import LinkSwitch                 from 'shared/Basic/LinkSwitch'
 import ContentWrapper             from 'shared/Layout/ContentWrapper'
 import DashboardInfo              from 'shared/Layout/Dashboard/DashboardInfo'
 import BreadCrumb                 from 'features/user/admin/views/Breadcrumb'
+import {adminContentWrapperStyle} from 'shared/Layout/styles'
 import Create                     from './Create'
 
 const ManageAdaptiveEquipment = () => {
@@ -20,7 +21,7 @@ const ManageAdaptiveEquipment = () => {
     }, [])
 
     return (
-        <ContentWrapper>
+        <ContentWrapper theme={adminContentWrapperStyle}>
             <AdminDashboardWrapper>
                 <DashboardInfo
                     heading={'Manage Adaptive Equipment Taxonomy'}

@@ -22,10 +22,11 @@ import {
 }                                   from '../styles'
 
 const Reviews = ({reviewIds, userFlaggedReviews, placeSlug}) => {
+    const dispatch = useDispatch()
     const {_id, token} = useSelector(state => state.user)
     const {reviews} = useSelector(state => state.place)
     const [filteredArray, setFilteredArray] = useState()
-    const dispatch = useDispatch()
+    const [openReportPrompt, setOpenReportPromp] = useState(false)
 
     useEffect(() => {
         for (const review of reviewIds) {
@@ -75,15 +76,16 @@ const Reviews = ({reviewIds, userFlaggedReviews, placeSlug}) => {
                             {!isFlagged && (
                                 <Div
                                     theme={placeReviewReportWrapperStyle}
-                                    onClick={() => dispatch({
-                                        type: 'user/flagReview',
-                                        payload: {
-                                            reviewId: review._id,
-                                            placeSlug,
-                                            _id,
-                                            token
-                                        }
-                                    })}
+                                    // onClick={() => dispatch({
+                                    //     type: 'user/flagReview',
+                                    //     payload: {
+                                    //         reviewId: review._id,
+                                    //         placeSlug,
+                                    //         _id,
+                                    //         token
+                                    //     }
+                                    // })}
+
                                 >
                                     <Icon
                                         theme={placeReviewReportIconStyle}

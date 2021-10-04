@@ -1,11 +1,12 @@
 import {foodOptionsField, validateFoodOptions} from 'features/place/admin/taxonomy/foodOptions/fields'
 import React, {useEffect}                      from 'react'
-import {useDispatch, useSelector}         from 'react-redux'
-import DangerZone                         from 'shared/Controls/DangerZone'
-import Form                               from 'shared/Fields/Form'
-import ContentWrapper                     from 'shared/Layout/ContentWrapper'
-import AdminDashboardWrapper              from 'shared/Layout/Dashboard/admin/AdminDashboardWrapper'
-import {adminFormWrapperStyle}            from 'shared/Layout/Dashboard/admin/styles'
+import {useDispatch, useSelector}              from 'react-redux'
+import DangerZone                              from 'shared/Controls/DangerZone'
+import Form                                    from 'shared/Fields/Form'
+import ContentWrapper                          from 'shared/Layout/ContentWrapper'
+import AdminDashboardWrapper                   from 'shared/Layout/Dashboard/admin/AdminDashboardWrapper'
+import {adminFormWrapperStyle}                 from 'shared/Layout/Dashboard/admin/styles'
+import {adminContentWrapperStyle}              from 'shared/Layout/styles'
 
 const Update = () => {
     const dispatch = useDispatch()
@@ -34,7 +35,7 @@ const Update = () => {
     }, [])
 
     return (
-        <ContentWrapper>
+        <ContentWrapper theme={adminContentWrapperStyle}>
             <AdminDashboardWrapper>
                 <Form
                     initialValues={initialValues}

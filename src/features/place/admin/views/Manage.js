@@ -6,7 +6,7 @@ import {searchContext}                          from 'shared/Containers/SearchCo
 import ContentWrapper                           from 'shared/Layout/ContentWrapper'
 import AdminDashboardWrapper                    from 'shared/Layout/Dashboard/admin/AdminDashboardWrapper'
 import DashboardInfo                            from 'shared/Layout/Dashboard/DashboardInfo'
-import {adminContentWrapperStyle}               from './styles'
+import {adminContentWrapperStyle}               from '../../../../shared/Layout/styles'
 
 const Manage = () => {
     const {places} = useSelector(state => state.place)

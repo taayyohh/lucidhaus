@@ -109,5 +109,4 @@ const DeletePrompt = ({destroyAction, type, index, objectID}) => {
     )
 }
 
-
 export default DeletePrompt

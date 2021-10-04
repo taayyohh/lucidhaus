@@ -1,10 +1,10 @@
 import {adminDashboardMenu}       from 'config/menus/dashboard/admin'
-import {adminContentWrapperStyle} from 'features/place/admin/views/styles'
 import React                      from 'react'
 import {useSelector}              from 'react-redux'
 import ContentWrapper             from 'shared/Layout/ContentWrapper'
 import DashboardInfo              from 'shared/Layout/Dashboard/DashboardInfo'
 import DashboardWrapper           from 'shared/Layout/Dashboard/DashboardWrapper'
+import {adminContentWrapperStyle} from '../../styles'
 
 const AdminDashboard = () => {
     const {nameFirst, tel} = useSelector(state => state.user)

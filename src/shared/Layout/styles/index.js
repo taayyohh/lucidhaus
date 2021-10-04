@@ -1,19 +1,5 @@
-import {
-    colorPalette,
-    genericMobileContainerStyles,
-    globals
-} from 'config/styles'
-import {
-    center,
-    column,
-    fixed,
-    flex,
-    pointer,
-    relative,
-    sv,
-    transparent,
-    white
-} from 'utils/themer'
+import {colorPalette, genericMobileContainerStyles, globals}                    from 'config/styles'
+import {center, column, fixed, flex, pointer, relative, sv, transparent, white} from 'utils/themer'
 
 const contentRow = 3
 
@@ -297,3 +283,6 @@ export const transitionOverlayStyle = {
     display: 'static'
 }
 
+export const adminContentWrapperStyle = {
+    width: [1280, globals.style.layoutScalingValue, '100%']
+}
