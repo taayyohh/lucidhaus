@@ -286,3 +286,24 @@ export const transitionOverlayStyle = {
 export const adminContentWrapperStyle = {
     width: [1280, globals.style.layoutScalingValue, '100%']
 }
+
+export const closeButtonStyle = {
+    display: flex,
+    alignItems:center,
+    justifyContent: center,
+    height: 50,
+    width: 50,
+    borderRadius: 25,
+    backgroundColor: colorPalette.darkHoneyYellow,
+    border: `1px solid ${colorPalette.darkHoneyYellow}`,
+    hover: {
+        cursor: pointer,
+        backgroundColor: colorPalette.honeyYellow,
+        borderColor: colorPalette.honeyYellow
+    }
+}
+
+export const closeButtonIconStyle = {
+    size: [18, .7, 18],
+    color: white
+}

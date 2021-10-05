@@ -605,23 +605,19 @@ export const selectFieldErrorMessageStyle = {
     top: [15, .7, 15]
 }
 
-export const songsFormStyle = {
+export const textAreaWrapperStyle = {
+    child: {
+        selector: 'textarea',
+        width: '100%',
+        minHeight: [250, .7, 250],
+        resize: none
+    }
+}
 
-    border: 0,
-    marginTop: [80, .7, 50],
-    boxSizing: borderBox,
-    paddingLeft: [160, .7, 160],
-    paddingRight: [160, .7, 160],
-    marginBottom: [50, .7, 50],
+export const textAreaErrorMessageStyle = {
 
-    heading: {},
-    inner: {},
-    button: {},
-    child: [
-        {
-            selector: '> div > div > div',
-            minHeight: [200, .7, 200]
-        }
-    ]
+}
+
+export const textAreaStyle = {
 
 }

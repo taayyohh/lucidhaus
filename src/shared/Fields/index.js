@@ -15,7 +15,7 @@ import {
     RICH_TEXT,
     SELECT,
     TEL,
-    TEXT,
+    TEXT, TEXTAREA,
     TOGGLE, USER
 } from 'config/variables'
 import React, {memo}  from 'react'
@@ -30,6 +30,7 @@ import Region         from './Region'
 import RichTextEditor from './RichTextEditor'
 import Select         from './Select'
 import SmartInput     from './SmartInput'
+import TextArea       from './TextArea'
 import Toggle         from './Toggle'
 import User           from './User'
 
@@ -137,6 +138,15 @@ const FieldSwitch = memo(({field, formik, options, theme, autoSubmit}) => {
                 options={options}
                 className={formik.touched[field.name] && formik.errors[field.name] ? 'error' : ''}
                 errorMessage={formik.touched[field.name] && formik.errors[field.name] ? formik.errors[field.name] : null}
+            />
+        case TEXTAREA:
+            return <TextArea
+                {...formik.getFieldProps(field.name)}
+                formik={formik}
+                field={field}
+                className={formik.touched[field.name] && formik.errors[field.name] ? 'error' : ''}
+                errorMessage={formik.touched[field.name] && formik.errors[field.name] ? formik.errors[field.name] : null}
+                theme={theme}
             />
         case TOGGLE:
             return <Toggle

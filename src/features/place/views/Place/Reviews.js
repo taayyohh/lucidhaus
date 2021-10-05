@@ -1,12 +1,14 @@
-import {flag}                       from 'config/icons'
-import dayjs                        from 'dayjs'
-import React, {useEffect, useState} from 'react'
-import {PortalWithState}            from 'react-portal'
-import {useDispatch, useSelector}   from 'react-redux'
-import Div                          from 'shared/Basic/Div'
-import Icon                         from 'shared/Basic/Icon'
-import RichText                     from 'shared/Basic/RichText'
-import S3Img                        from 'shared/Basic/S3Img'
+import {flag}                         from 'config/icons'
+import dayjs                          from 'dayjs'
+import React, {useEffect, useState}   from 'react'
+import {PortalWithState}              from 'react-portal'
+import {useDispatch, useSelector}     from 'react-redux'
+import Div                            from 'shared/Basic/Div'
+import Icon                           from 'shared/Basic/Icon'
+import RichText                       from 'shared/Basic/RichText'
+import S3Img                          from 'shared/Basic/S3Img'
+import Form                           from '../../../../shared/Fields/Form'
+import {reportFields, validateReport} from '../../admin/fields/report'
 import {
     placeFlaggedTextStyle,
     placeReportPortalStyle,
@@ -20,8 +22,9 @@ import {
     placeReviewUserAvatarStyle,
     placeReviewUserInfoStyle,
     placeReviewUserNameStyle,
+    placesReportFormStyle,
     reviewsWrapperStyle
-}                                   from '../styles'
+}                                     from '../styles'
 
 const Reviews = ({reviewIds, userFlaggedReviews, placeSlug}) => {
     const dispatch = useDispatch()
@@ -43,6 +46,12 @@ const Reviews = ({reviewIds, userFlaggedReviews, placeSlug}) => {
             setFilteredArray([...reviews].sort((a, b) => (b.updated > a.updated) ? 1 : ((a.updated > b.updated) ? -1 : 0)))
 
     }, [reviews])
+
+    const initialValues = {
+        reason: '',
+        _id,
+        token
+    }
 
 
     return (
@@ -87,17 +96,19 @@ const Reviews = ({reviewIds, userFlaggedReviews, placeSlug}) => {
                                                 icon={flag}
                                             />
                                             <Div>Report</Div>
-
                                             {portal(
                                                 <Div theme={placeReportPortalStyle}>
-                                                    This is more advanced Portal. It handles its own state.{' '}
-                                                    <Icon onClick={closePortal}>Close me!</Icon>
-                                                    , hit ESC or
-                                                    click outside of me.
+                                                    <Form
+                                                        theme={{...placesReportFormStyle}}
+                                                        initialValues={initialValues}
+                                                        fields={reportFields}
+                                                        validationSchema={validateReport}
+                                                        dispatchAction={'place/reportReview'}
+                                                        formHeading={'Report this review as inappropriate?'}
+                                                        buttonText={"Report Review"}
+                                                    />
                                                 </Div>
                                             )}
-
-
                                         </Div>
                                     )}
                                 </PortalWithState>
