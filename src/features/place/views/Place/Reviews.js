@@ -1,6 +1,7 @@
 import {flag}                       from 'config/icons'
 import dayjs                        from 'dayjs'
 import React, {useEffect, useState} from 'react'
+import {PortalWithState}            from 'react-portal'
 import {useDispatch, useSelector}   from 'react-redux'
 import Div                          from 'shared/Basic/Div'
 import Icon                         from 'shared/Basic/Icon'
@@ -8,6 +9,7 @@ import RichText                     from 'shared/Basic/RichText'
 import S3Img                        from 'shared/Basic/S3Img'
 import {
     placeFlaggedTextStyle,
+    placeReportPortalStyle,
     placeReviewBlurStyle,
     placeReviewDescriptionStyle,
     placeReviewedByStyle,
@@ -74,26 +76,31 @@ const Reviews = ({reviewIds, userFlaggedReviews, placeSlug}) => {
                             </Div>
 
                             {!isFlagged && (
-                                <Div
-                                    theme={placeReviewReportWrapperStyle}
-                                    // onClick={() => dispatch({
-                                    //     type: 'user/flagReview',
-                                    //     payload: {
-                                    //         reviewId: review._id,
-                                    //         placeSlug,
-                                    //         _id,
-                                    //         token
-                                    //     }
-                                    // })}
+                                <PortalWithState closeOnOutsideClick closeOnEsc>
+                                    {({openPortal, closePortal, isOpen, portal}) => (
+                                        <Div
+                                            theme={placeReviewReportWrapperStyle}
+                                            onClick={openPortal}
+                                        >
+                                            <Icon
+                                                theme={placeReviewReportIconStyle}
+                                                icon={flag}
+                                            />
+                                            <Div>Report</Div>
 
-                                >
-                                    <Icon
-                                        theme={placeReviewReportIconStyle}
-                                        icon={flag}
-                                    />
-                                    <Div>Report</Div>
-                                </Div>
+                                            {portal(
+                                                <Div theme={placeReportPortalStyle}>
+                                                    This is more advanced Portal. It handles its own state.{' '}
+                                                    <Icon onClick={closePortal}>Close me!</Icon>
+                                                    , hit ESC or
+                                                    click outside of me.
+                                                </Div>
+                                            )}
 
+
+                                        </Div>
+                                    )}
+                                </PortalWithState>
                             )}
                             {isFlagged && (
                                 <>

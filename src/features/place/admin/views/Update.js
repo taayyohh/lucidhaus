@@ -7,7 +7,7 @@ import Form                           from 'shared/Fields/Form'
 import ContentWrapper                 from 'shared/Layout/ContentWrapper'
 import AdminDashboardWrapper          from 'shared/Layout/Dashboard/admin/AdminDashboardWrapper'
 import {adminFormWrapperStyle}        from 'shared/Layout/Dashboard/admin/styles'
-import {adminContentWrapperStyle}     from '../../../../shared/Layout/styles'
+import {adminContentWrapperStyle}     from 'shared/Layout/styles'
 import {pendingFields}                from '../fields/pending'
 
 const Update = () => {

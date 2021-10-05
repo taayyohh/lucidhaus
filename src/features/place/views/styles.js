@@ -4,7 +4,7 @@ import {
     absolute,
     auto, black,
     center,
-    column,
+    column, fixed,
     flex,
     flexStart,
     grid,
@@ -541,6 +541,24 @@ export const placeReviewReportIconStyle = {
     marginRight: [12, .7, 12],
     zIndex: 3,
     color: colorPalette.darkGray
+}
+
+export const placeReportPortalStyle = {
+    position: fixed,
+    zIndex: 10,
+    height: [200, globals.style.layoutScalingValue, 200],
+    width: [300, globals.style.layoutScalingValue, 250],
+    border: `1px solid ${globals.colors.borderColor}`,
+    padding: [50, globals.style.layoutScalingValue, 30],
+    background: white,
+    top: '50%',
+    left: '50%',
+    marginLeft: [-100, globals.style.layoutScalingValue, '0'],
+    marginTop: [-75, globals.style.layoutScalingValue, '0'],
+    mobile: {
+
+    }
+
 }
 
 export const bookmarkIconStyle = isBookmark => {

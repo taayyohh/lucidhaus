@@ -13,7 +13,7 @@ import ContentWrapper                                                    from 's
 import DashboardInfo                                                     from 'shared/Layout/Dashboard/DashboardInfo'
 import DashboardWrapper                                                  from 'shared/Layout/Dashboard/DashboardWrapper'
 import {adminDashboardMenu}                                              from '../../../../config/menus/dashboard/admin'
-import LinkSwitch                                                        from '../../../../shared/Basic/LinkSwitch'
+import LinkSwitch                                                        from 'shared/Basic/LinkSwitch'
 import {userContentWrapperStyle}                                         from './styles'
 
 const UpdateReview = () => {

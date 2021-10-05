@@ -5,7 +5,7 @@ import Div                        from 'shared/Basic/Div'
 import ContentWrapper             from 'shared/Layout/ContentWrapper'
 import AdminDashboardWrapper      from 'shared/Layout/Dashboard/admin/AdminDashboardWrapper'
 import DashboardInfo              from 'shared/Layout/Dashboard/DashboardInfo'
-import {adminContentWrapperStyle} from '../../../../shared/Layout/styles'
+import {adminContentWrapperStyle} from 'shared/Layout/styles'
 
 const Manage = () => {
     const {flaggedReviews} = useSelector(state => state.place)
