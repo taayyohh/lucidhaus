@@ -1,69 +1,38 @@
-import {chevronDown}                                                                                     from 'config/icons'
-import {adminDashboardMenu}                                                                              from 'config/menus/dashboard/admin'
-import {userDashboardMenu}                                                                               from 'config/menus/dashboard/user'
-import {globals}                                                                                         from 'config/styles'
-import React, {useState}                                                                                 from 'react'
-import {
-    useDispatch,
-    useSelector
-}                                                                                                        from 'react-redux'
-import Div
-                                                                                                         from 'shared/Basic/Div'
-import Icon
-                                                                                                         from 'shared/Basic/Icon'
-import MotionDiv
-                                                                                                         from 'shared/Basic/MotionDiv'
-import Span
-                                                                                                         from 'shared/Basic/Span'
-import {headerIconStyle}                                                                                 from 'shared/Layout/styles/header'
-import HeaderDashboardMenu
-                                                                                                         from './HeaderDashboardMenu'
-import {headerAccountMenuButtonStyle, headerAccountMenuDropdownWrapperStyle, headerAccountMenuLinkStyle} from './styles'
+import {chevronDown}                  from 'config/icons'
+import {AnimatePresence}              from 'framer-motion'
+import React                          from 'react'
+import {useDispatch, useSelector}     from 'react-redux'
+import Div                            from 'shared/Basic/Div'
+import Icon                           from 'shared/Basic/Icon'
+import Span                           from 'shared/Basic/Span'
+import {headerIconStyle}              from 'shared/Layout/styles/header'
+import HeaderMenuUserDropdownMenu     from './HeaderMenuUserDropdownMenu'
+import {headerAccountMenuButtonStyle} from './styles'
 
 const HeaderMenuUserDropdown = ({nameFirst}) => {
-    const {isAdmin} = useSelector(state => state.user)
-    const [isOpen, setIsOpen] = useState()
     const dispatch = useDispatch()
-
-    const variants = {
-        initial: {
-            height: 0,
-            border: 'none'
-        },
-        open: {
-            height: 'auto',
-            border: `1px solid ${globals.colors.borderColor}`
-        }
-    }
+    const {closeHeaderMenuDropdown} = useSelector(state => state.site)
 
     return (
         <Div
             theme={headerAccountMenuButtonStyle}
-            onClick={() => setIsOpen(flag => !flag)}
         >
-            {`Hi, ${nameFirst}`}
-            <Icon
-                icon={chevronDown}
-                theme={headerIconStyle}
-            />
-            <MotionDiv
-                intial={{height: 0}}
-                animate={isOpen ? 'open' : 'initial'}
-                variants={variants}
-                theme={headerAccountMenuDropdownWrapperStyle}
+            <Span
+                onClick={() => dispatch({type: 'site/closeHeaderMenuDropdown', payload: !closeHeaderMenuDropdown})}
+                theme={{pointerEvents: !closeHeaderMenuDropdown ? 'none' : 'auto'}}
             >
-                <Div theme={{display: 'flex', padding: '20px', flexDirection: 'column', width: '100%'}}>
-                    <HeaderDashboardMenu
-                        menu={isAdmin ? adminDashboardMenu : userDashboardMenu}
-                    />
-                    <Span
-                        theme={{...headerAccountMenuLinkStyle, ...headerAccountMenuLinkStyle.signOut}}
-                        onClick={() => dispatch({type: 'user/signOut'})}
-                    >
-                        Sign Out
-                    </Span>
-                </Div>
-            </MotionDiv>
+                {`Hi, ${nameFirst}`}
+                <Icon
+                    icon={chevronDown}
+                    theme={headerIconStyle}
+                />
+            </Span>
+
+            <AnimatePresence>
+                {!closeHeaderMenuDropdown && (
+                    <HeaderMenuUserDropdownMenu/>
+                )}
+            </AnimatePresence>
         </Div>
     )
 }

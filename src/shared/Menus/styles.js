@@ -276,6 +276,13 @@ export const headerAccountMenuDropdownWrapperStyle = {
     }
 }
 
+export const headerAccountMenuDropdownInnerWrapperStyle = {
+    display: flex,
+    padding: [20, .7, 20],
+    flexDirection: column,
+    width: '100%'
+}
+
 export const headerAccountMenuLinkStyle = isActive => {
     return {
         textDecoration: isActive ? 'underline' : none,

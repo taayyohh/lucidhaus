@@ -7,6 +7,7 @@ const initialState = {
         slug: '',
         type: ''
     },
+    closeHeaderMenuDropdown: true,
     isInitialized: false,
     loading: false,
     slug: '',
@@ -53,6 +54,9 @@ export const slice = createSlice({
         },
         setDocumentHead: (state, action) => {
             state.documentHead = {...state.documentHead, ...action.payload}
+        },
+        closeHeaderMenuDropdown: (state, action) => {
+            state.closeHeaderMenuDropdown = action.payload
         },
 
 
