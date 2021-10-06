@@ -470,6 +470,7 @@ export const placeReviewUserNameStyle = {
     size: [13, .7, 13],
     weight: 700,
     fontStyle: 'italic',
+    textAlign: center
 }
 
 

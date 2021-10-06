@@ -1,37 +1,28 @@
-import {flag}                         from 'config/icons'
-import dayjs                          from 'dayjs'
-import {reportFields, validateReport} from 'features/place/admin/fields/report'
-import React, {useEffect, useState}   from 'react'
-import {PortalWithState}              from 'react-portal'
-import {useDispatch, useSelector}     from 'react-redux'
-import Div                            from 'shared/Basic/Div'
-import Icon                           from 'shared/Basic/Icon'
-import RichText                       from 'shared/Basic/RichText'
-import S3Img                          from 'shared/Basic/S3Img'
-import Form                           from 'shared/Fields/Form'
+import dayjs                        from 'dayjs'
+import React, {useEffect, useState} from 'react'
+import {useDispatch, useSelector}   from 'react-redux'
+import Div                          from 'shared/Basic/Div'
+import RichText                     from 'shared/Basic/RichText'
+import S3Img                        from 'shared/Basic/S3Img'
 import {
     placeFlaggedTextStyle,
-    placeReportPortalStyle,
     placeReviewBlurStyle,
     placeReviewDescriptionStyle,
     placeReviewedByStyle,
     placeReviewLikertStyle,
-    placeReviewReportIconStyle,
-    placeReviewReportWrapperStyle,
     placeReviewStyle,
     placeReviewUserAvatarStyle,
     placeReviewUserInfoStyle,
     placeReviewUserNameStyle,
-    placesReportFormStyle,
     reviewsWrapperStyle
-}                                     from '../styles'
+}                                   from '../styles'
+import Report                       from './Report'
 
 const Reviews = ({reviewIds, userFlaggedReviews, placeSlug}) => {
     const dispatch = useDispatch()
     const {_id, token} = useSelector(state => state.user)
     const {reviews} = useSelector(state => state.place)
     const [filteredArray, setFilteredArray] = useState()
-    const [openReportPrompt, setOpenReportPromp] = useState(false)
 
     useEffect(() => {
         for (const review of reviewIds) {
@@ -47,12 +38,6 @@ const Reviews = ({reviewIds, userFlaggedReviews, placeSlug}) => {
 
     }, [reviews])
 
-    const initialValues = {
-        reason: '',
-        _id,
-        token
-    }
-
 
     return (
         <Div theme={reviewsWrapperStyle}>
@@ -65,7 +50,11 @@ const Reviews = ({reviewIds, userFlaggedReviews, placeSlug}) => {
                             theme={placeReviewStyle}
                         >
                             <Div theme={placeReviewUserInfoStyle}>
-                                <S3Img url={review.reviewerAvatar} theme={placeReviewUserAvatarStyle}/>
+                                {(review?.reviewerAvatar && (
+                                    <S3Img url={review.reviewerAvatar} theme={placeReviewUserAvatarStyle}/>
+                                )) || (
+                                    <Div theme={placeReviewUserAvatarStyle} />
+                                )}
                                 {review.reviewerName && (
                                     <Div theme={placeReviewUserNameStyle}>{review.reviewerName}</Div>
                                 )}
@@ -85,33 +74,7 @@ const Reviews = ({reviewIds, userFlaggedReviews, placeSlug}) => {
                             </Div>
 
                             {!isFlagged && (
-                                <PortalWithState closeOnOutsideClick closeOnEsc>
-                                    {({openPortal, closePortal, isOpen, portal}) => (
-                                        <Div
-                                            theme={placeReviewReportWrapperStyle}
-                                            onClick={openPortal}
-                                        >
-                                            <Icon
-                                                theme={placeReviewReportIconStyle}
-                                                icon={flag}
-                                            />
-                                            <Div>Report</Div>
-                                            {portal(
-                                                <Div theme={placeReportPortalStyle}>
-                                                    <Form
-                                                        theme={{...placesReportFormStyle}}
-                                                        initialValues={initialValues}
-                                                        fields={reportFields}
-                                                        validationSchema={validateReport}
-                                                        dispatchAction={'place/reportReview'}
-                                                        formHeading={'Report this review as inappropriate?'}
-                                                        buttonText={"Report Review"}
-                                                    />
-                                                </Div>
-                                            )}
-                                        </Div>
-                                    )}
-                                </PortalWithState>
+                                <Report/>
                             )}
                             {isFlagged && (
                                 <>
