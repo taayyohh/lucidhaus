@@ -1,5 +1,6 @@
 import {flag}                         from 'config/icons'
 import dayjs                          from 'dayjs'
+import {reportFields, validateReport} from 'features/place/admin/fields/report'
 import React, {useEffect, useState}   from 'react'
 import {PortalWithState}              from 'react-portal'
 import {useDispatch, useSelector}     from 'react-redux'
@@ -7,8 +8,7 @@ import Div                            from 'shared/Basic/Div'
 import Icon                           from 'shared/Basic/Icon'
 import RichText                       from 'shared/Basic/RichText'
 import S3Img                          from 'shared/Basic/S3Img'
-import Form                           from '../../../../shared/Fields/Form'
-import {reportFields, validateReport} from '../../admin/fields/report'
+import Form                           from 'shared/Fields/Form'
 import {
     placeFlaggedTextStyle,
     placeReportPortalStyle,

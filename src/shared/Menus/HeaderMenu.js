@@ -17,10 +17,9 @@ const HeaderMenu = () => {
 
     return (
         <Div theme={headerMenuStyle}>
-            {!isMobile && (
+            {(!isMobile && (
                 <HeaderMenuControls/>
-            )}
-            {isMobile && (
+            )) || (
                 <>
                     <MenuToggle
                         theme={menuToggleStyle}
@@ -46,7 +45,6 @@ const HeaderMenu = () => {
                         />
                     </Div>
                 </>
-
             )}
             <MenuPanels/>
         </Div>

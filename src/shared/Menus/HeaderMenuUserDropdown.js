@@ -1,18 +1,21 @@
 import {chevronDown}                                                                                     from 'config/icons'
-import React, {useState}          from 'react'
-import {useDispatch, useSelector} from 'react-redux'
+import {adminDashboardMenu}                                                                              from 'config/menus/dashboard/admin'
+import {userDashboardMenu}                                                                               from 'config/menus/dashboard/user'
+import {globals}                                                                                         from 'config/styles'
+import React, {useState}                                                                                 from 'react'
+import {
+    useDispatch,
+    useSelector
+}                                                                                                        from 'react-redux'
 import Div
-                                  from 'shared/Basic/Div'
+                                                                                                         from 'shared/Basic/Div'
 import Icon
                                                                                                          from 'shared/Basic/Icon'
 import MotionDiv
                                                                                                          from 'shared/Basic/MotionDiv'
-import {headerIconStyle}                                                                                 from 'shared/Layout/styles/header'
-import {adminDashboardMenu}                                                                              from '../../config/menus/dashboard/admin'
-import {userDashboardMenu}                                                                               from '../../config/menus/dashboard/user'
-import {globals}                                                                                         from '../../config/styles'
 import Span
-                                                                                                         from '../Basic/Span'
+                                                                                                         from 'shared/Basic/Span'
+import {headerIconStyle}                                                                                 from 'shared/Layout/styles/header'
 import HeaderDashboardMenu
                                                                                                          from './HeaderDashboardMenu'
 import {headerAccountMenuButtonStyle, headerAccountMenuDropdownWrapperStyle, headerAccountMenuLinkStyle} from './styles'
@@ -60,8 +63,6 @@ const HeaderMenuUserDropdown = ({nameFirst}) => {
                         Sign Out
                     </Span>
                 </Div>
-
-
             </MotionDiv>
         </Div>
     )

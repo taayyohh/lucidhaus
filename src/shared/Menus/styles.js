@@ -276,23 +276,26 @@ export const headerAccountMenuDropdownWrapperStyle = {
     }
 }
 
-export const headerAccountMenuLinkStyle = {
-    textDecoration: none,
-    marginBottom: [4, .7, 7],
-    color: globals.colors.textColor,
-    mobile: {
-        size: 15
-    },
-    signOut: {
-        color: colorPalette.red,
+export const headerAccountMenuLinkStyle = isActive => {
+    return {
+        textDecoration: isActive ? 'underline' : none,
+        marginBottom: [4, .7, 7],
+        color: isActive ? colorPalette.honeyYellow : globals.colors.textColor,
+        mobile: {
+            size: 15
+        },
+        signOut: {
+            color: colorPalette.red,
+            hover: {
+                color: colorPalette.red
+            }
+        },
         hover: {
-            color: colorPalette.red
+            color: colorPalette.forestGreen,
+            textDecoration: 'underline'
         }
-    },
-    hover: {
-        color: colorPalette.forestGreen,
-        textDecoration: 'underline'
     }
+
 }
 
 export const headerDashboardMenuLinkStyle = {}

@@ -1,18 +1,10 @@
-import logo       from 'assets/logo.png'
-import PropTypes  from 'prop-types'
-import React      from 'react'
-import Div        from 'shared/Basic/Div'
-import Img        from 'shared/Basic/Img'
-import LinkSwitch from 'shared/Basic/LinkSwitch'
-import HeaderMenu from 'shared/Menus/HeaderMenu'
-import {
-    headerInnerStyle,
-    headerLogoLinkStyle,
-    headerLogoWrapperStyle,
-    headerNowPlayingStyle,
-    headerStyle,
-    headerTopStyle
-}                 from './styles/header'
+import PropTypes                                       from 'prop-types'
+import React                                           from 'react'
+import Div                                             from 'shared/Basic/Div'
+import LinkSwitch                                      from 'shared/Basic/LinkSwitch'
+import HeaderMenu                                      from 'shared/Menus/HeaderMenu'
+import Logo                                            from './Logo'
+import {headerInnerStyle, headerStyle, headerTopStyle} from './styles/header'
 
 const Header = ({theme}) => {
     return (
@@ -34,13 +26,7 @@ const Header = ({theme}) => {
                 </Div>
             </Div>
             <Div theme={headerInnerStyle}>
-                <Div theme={headerNowPlayingStyle}>
-                    <Div theme={headerLogoWrapperStyle}>
-                        <LinkSwitch url="/" theme={headerLogoLinkStyle}>
-                            <Img src={logo}/>
-                        </LinkSwitch>
-                    </Div>
-                </Div>
+                <Logo/>
                 <HeaderMenu/>
             </Div>
         </Div>
@@ -48,11 +34,11 @@ const Header = ({theme}) => {
 }
 
 Header.defaultProps = {
-    theme: {},
+    theme: {}
 }
 
 Header.propTypes = {
-    theme: PropTypes.object,
+    theme: PropTypes.object
 }
 
 export default Header
