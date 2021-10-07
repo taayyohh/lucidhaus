@@ -7,17 +7,20 @@ import Icon                              from 'shared/Basic/Icon'
 import RichText                          from 'shared/Basic/RichText'
 import S3Img                             from 'shared/Basic/S3Img'
 import {
-    placeReviewIconWrapperStyle,
+    placeLikertItemWrapperStyle,
     placeReviewDescriptionStyle,
     placeReviewDisclaimerStyle,
     placeReviewedByStyle,
+    placeReviewIconWrapperStyle,
     placeReviewLikertStyle,
+    placeReviewScaleInnerStyle,
+    placeReviewScaleStyle,
     placeReviewStyle,
     placeReviewUserAvatarStyle,
     placeReviewUserInfoStyle,
     placeReviewUserNameStyle,
-    reviewsWrapperStyle, placeReviewScaleStyle, placeReviewScaleInnerStyle, placeLikertItemWrapperStyle
-} from '../styles'
+    reviewsWrapperStyle
+}                                        from '../styles'
 import Report                            from './Report'
 
 const Reviews = ({reviewIds, userFlaggedReviews}) => {
@@ -76,9 +79,8 @@ const Reviews = ({reviewIds, userFlaggedReviews}) => {
                                                     <Icon icon={spa}/>
                                                     <strong>Safe</strong>
                                                 </Div>
-                                                {/*{review.safe[0]}*/}
                                                 <Div theme={placeReviewScaleStyle}>
-                                                    <Div theme={placeReviewScaleInnerStyle(review.safe[1])} />
+                                                    <Div theme={placeReviewScaleInnerStyle(review.safe[1])}/>
                                                 </Div>
                                             </Div>
                                             <Div theme={placeLikertItemWrapperStyle}>
@@ -86,9 +88,8 @@ const Reviews = ({reviewIds, userFlaggedReviews}) => {
                                                     <Icon icon={doorOpen}/>
                                                     <strong>Welcome</strong>
                                                 </Div>
-                                                {/*{review.welcome[0]}*/}
                                                 <Div theme={placeReviewScaleStyle}>
-                                                    <Div theme={placeReviewScaleInnerStyle(review.welcome[1])} />
+                                                    <Div theme={placeReviewScaleInnerStyle(review.welcome[1])}/>
                                                 </Div>
                                             </Div>
                                             <Div theme={placeLikertItemWrapperStyle}>
@@ -96,12 +97,9 @@ const Reviews = ({reviewIds, userFlaggedReviews}) => {
                                                     <Icon icon={handHoldingHeart}/>
                                                     <strong>Celebrated</strong>
                                                 </Div>
-                                                {/*{review.celebrated[0]}*/}
-
                                                 <Div theme={placeReviewScaleStyle}>
-                                                    <Div theme={placeReviewScaleInnerStyle(review.celebrated[1])} />
+                                                    <Div theme={placeReviewScaleInnerStyle(review.celebrated[1])}/>
                                                 </Div>
-
                                             </Div>
                                         </Div>
                                         {review.photo && (
@@ -112,14 +110,12 @@ const Reviews = ({reviewIds, userFlaggedReviews}) => {
                                             Inclusive Guide &#174;.
                                         </Div>
                                     </Div>
-
                                     {!isFlagged && (
                                         <Report review={review}/>
                                     )}
                                 </Div>
                             )) || null}
                         </>
-
                     )
                 }
             )}

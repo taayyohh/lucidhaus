@@ -52,7 +52,7 @@ const UpdateReview = () => {
         celebrated: currentReview?.celebrated,
         welcome: currentReview?.welcome,
         user: _id,
-        placeId: currentReview?._id,
+        placeId: currentReview?.place,
         placeName: currentReview?.placeName,
         placeSlug: currentReview?.placeSlug,
         isFlagged: currentReview?.isFlagged,

@@ -254,7 +254,6 @@ export function* getUserSuccess({payload}) {
 }
 
 export function* flagReview({payload}) {
-    console.log('payload', payload)
     const {reason, placeSlug, token, _id} = payload
 
     const review = new FormData()
