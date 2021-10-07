@@ -4,7 +4,7 @@ import * as Yup   from 'yup'
 export const reportFields = [
     {
         name: 'reason',
-        inputLabel: 'What happened?',
+        inputLabel: 'Tell us why you find the review inappropriate.',
         type: TEXTAREA,
     }
 ]

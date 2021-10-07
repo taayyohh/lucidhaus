@@ -606,16 +606,22 @@ export const selectFieldErrorMessageStyle = {
 }
 
 export const textAreaWrapperStyle = {
+    position: relative,
     child: {
+        border: `1px solid ${globals.colors.borderColor}`,
         selector: 'textarea',
         width: '100%',
         minHeight: [250, .7, 250],
-        resize: none
+        resize: none,
     }
 }
 
 export const textAreaErrorMessageStyle = {
-
+    position: absolute,
+    right: [10, .7, 10],
+    top: [10, .7, 10],
+    size: [14, .7, 14],
+    color: colorPalette.brightRed
 }
 
 export const textAreaStyle = {

@@ -3,7 +3,7 @@ import {CDN}                   from 'config/variables'
 import {
     absolute,
     auto,
-    black,
+    black, borderBox,
     center,
     column,
     fixed,
@@ -20,7 +20,8 @@ import {
     uppercase,
     white,
     wrap
-}                              from 'utils/themer'
+} from 'utils/themer'
+import {textAreaWrapperStyle}  from '../../../shared/Fields/styles'
 
 export const placesWrapperStyle = {
     display: 'grid',
@@ -502,8 +503,8 @@ export const placeReviewLikertStyle = {
     marginBottom: [25, .7, 25],
     width: '100%',
     mobile: {
-      display: flex,
-      flexDirection: column
+        display: flex,
+        flexDirection: column
     },
     child: {
         selector: 'svg',
@@ -608,7 +609,7 @@ export const placeReviewReportIconStyle = {
 export const placeReportPortalStyle = {
     position: fixed,
     zIndex: 10,
- //   height: [200, globals.style.layoutScalingValue, 200],
+    height: [550, .7, 200],
     width: [700, globals.style.layoutScalingValue, 250],
     border: `1px solid ${globals.colors.borderColor}`,
     padding: [50, globals.style.layoutScalingValue, 30],
@@ -616,14 +617,29 @@ export const placeReportPortalStyle = {
     top: '50%',
     left: '50%',
     marginLeft: [-350, globals.style.layoutScalingValue, '0'],
-    marginTop: [-75, globals.style.layoutScalingValue, '0'],
+    marginTop: [-270, globals.style.layoutScalingValue, '0'],
     boxShadow: '0px 0px 15px 10px #00000029',
     mobile: {}
 }
 
 export const placesReportFormStyle = {
     padding: 0,
-    border: 0
+    border: 0,
+    heading: {
+        size: [26, .6, 26]
+    },
+    inputLabel: {
+        size: [16, .7, 16],
+    },
+    textAreaWrapper: {
+        child: {
+            selector: 'textarea',
+            ...textAreaWrapperStyle.child,
+            height: [200, globals.style.layoutScalingValue, 200],
+            padding: [20, .7, 20],
+            boxSizing: borderBox
+        }
+    }
 }
 
 export const bookmarkIconStyle = isBookmark => {
