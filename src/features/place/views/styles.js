@@ -484,12 +484,9 @@ export const placeReviewUserInfoStyle = {
 }
 
 export const placeReviewedByStyle = {
-    size: [14, .7, 14],
-    child: {
-        selector: 'span',
-        fontStyle: 'italic',
-        size: [16, .7, 16]
-    }
+    size: [13, .7, 13],
+    weight: 400,
+    color: colorPalette.darkGray
 }
 
 export const placeReviewDescriptionStyle = {
@@ -498,10 +495,62 @@ export const placeReviewDescriptionStyle = {
 }
 
 export const placeReviewLikertStyle = {
-    display: 'flex',
-    flexDirection: 'column',
+    display: grid,
+    gridTemplateColumns: '1fr 1fr 1fr',
+    gridGap: sv(20),
     font: globals.fonts.serif,
-    marginBottom: [25, .7, 25]
+    marginBottom: [25, .7, 25],
+    width: '100%',
+    mobile: {
+      display: flex,
+      flexDirection: column
+    },
+    child: {
+        selector: 'svg',
+        size: [32, .7, 24],
+        marginRight: [10, .7, 10],
+        color: colorPalette.paleGreen
+    }
+}
+
+export const placeLikertItemWrapperStyle = {
+    mobile: {
+        marginBottom: 20
+    }
+}
+
+export const placeReviewIconWrapperStyle = {
+    display: flex,
+    flexDirection: column,
+    color: colorPalette.forestGreen,
+    child: {
+        selector: 'strong',
+        size: [18, .6, 18]
+    }
+}
+
+const placeReviewScaleWidth = 150
+
+export const placeReviewScaleStyle = {
+    position: relative,
+    height: [20, .7, 20],
+    border: `1px solid ${globals.colors.borderColor}`,
+    width: [placeReviewScaleWidth, globals.style.layoutScalingValue, placeReviewScaleWidth],
+    borderRadius: [20, .7, 20],
+    marginTop: [10, .7, 10]
+}
+
+export const placeReviewScaleInnerStyle = rating => {
+    return {
+        position: absolute,
+        left: 0,
+        top: 0,
+        height: '100%',
+        width: [`${(rating / 5) * placeReviewScaleWidth}`, globals.style.layoutScalingValue, `${(rating / 5) * placeReviewScaleWidth}`],
+        background: colorPalette.seaFoamGreen,
+        borderRadius: [20, .7, 20],
+        transition: 'width: 500ms ease'
+    }
 }
 
 export const placeReviewDisclaimerStyle = {
@@ -532,8 +581,8 @@ export const placeReviewBlurStyle = {
 
 export const placeReviewReportWrapperStyle = {
     position: absolute,
-    right: [50, globals.style.layoutScalingValue, 25],
-    bottom: [50, globals.style.layoutScalingValue, 25],
+    right: [25, globals.style.layoutScalingValue, 25],
+    bottom: [25, globals.style.layoutScalingValue, 25],
     marginTop: 20,
     display: flex,
     alignItems: center,

@@ -1,20 +1,24 @@
-import dayjs                        from 'dayjs'
-import React, {useEffect, useState} from 'react'
-import {useDispatch, useSelector}   from 'react-redux'
-import Div                          from 'shared/Basic/Div'
-import RichText                     from 'shared/Basic/RichText'
-import S3Img                        from 'shared/Basic/S3Img'
+import {doorOpen, handHoldingHeart, spa} from 'config/icons'
+import dayjs                             from 'dayjs'
+import React, {useEffect, useState}      from 'react'
+import {useDispatch, useSelector}        from 'react-redux'
+import Div                               from 'shared/Basic/Div'
+import Icon                              from 'shared/Basic/Icon'
+import RichText                          from 'shared/Basic/RichText'
+import S3Img                             from 'shared/Basic/S3Img'
 import {
-    placeReviewDescriptionStyle, placeReviewDisclaimerStyle,
+    placeReviewIconWrapperStyle,
+    placeReviewDescriptionStyle,
+    placeReviewDisclaimerStyle,
     placeReviewedByStyle,
     placeReviewLikertStyle,
     placeReviewStyle,
     placeReviewUserAvatarStyle,
     placeReviewUserInfoStyle,
     placeReviewUserNameStyle,
-    reviewsWrapperStyle
+    reviewsWrapperStyle, placeReviewScaleStyle, placeReviewScaleInnerStyle, placeLikertItemWrapperStyle
 } from '../styles'
-import Report                       from './Report'
+import Report                            from './Report'
 
 const Reviews = ({reviewIds, userFlaggedReviews}) => {
     const dispatch = useDispatch()
@@ -59,21 +63,53 @@ const Reviews = ({reviewIds, userFlaggedReviews}) => {
                                             <Div theme={placeReviewUserNameStyle}>{review.reviewerName}</Div>
                                         )}
                                     </Div>
-                                    <Div>
-                                        <Div theme={placeReviewedByStyle}>Reviewed
-                                            on <span>{dayjs(review.updated).format('MMMM DD, YYYY')}</span>
+                                    <Div theme={{width: '100%'}}>
+                                        <Div theme={placeReviewedByStyle}>
+                                            <span>
+                                                {dayjs(review.updated).format('MMMM DD, YYYY')}
+                                            </span>
                                         </Div>
                                         <RichText theme={placeReviewDescriptionStyle}>{review.review}</RichText>
                                         <Div theme={placeReviewLikertStyle}>
-                                            <Div><strong>Safe:</strong> {review.safe[0]}</Div>
-                                            <Div><strong>Welcome:</strong> {review.welcome[0]}</Div>
-                                            <Div><strong>Celebrated:</strong> {review.celebrated[0]}</Div>
+                                            <Div theme={placeLikertItemWrapperStyle}>
+                                                <Div theme={placeReviewIconWrapperStyle}>
+                                                    <Icon icon={spa}/>
+                                                    <strong>Safe</strong>
+                                                </Div>
+                                                {/*{review.safe[0]}*/}
+                                                <Div theme={placeReviewScaleStyle}>
+                                                    <Div theme={placeReviewScaleInnerStyle(review.safe[1])} />
+                                                </Div>
+                                            </Div>
+                                            <Div theme={placeLikertItemWrapperStyle}>
+                                                <Div theme={placeReviewIconWrapperStyle}>
+                                                    <Icon icon={doorOpen}/>
+                                                    <strong>Welcome</strong>
+                                                </Div>
+                                                {/*{review.welcome[0]}*/}
+                                                <Div theme={placeReviewScaleStyle}>
+                                                    <Div theme={placeReviewScaleInnerStyle(review.welcome[1])} />
+                                                </Div>
+                                            </Div>
+                                            <Div theme={placeLikertItemWrapperStyle}>
+                                                <Div theme={placeReviewIconWrapperStyle}>
+                                                    <Icon icon={handHoldingHeart}/>
+                                                    <strong>Celebrated</strong>
+                                                </Div>
+                                                {/*{review.celebrated[0]}*/}
+
+                                                <Div theme={placeReviewScaleStyle}>
+                                                    <Div theme={placeReviewScaleInnerStyle(review.celebrated[1])} />
+                                                </Div>
+
+                                            </Div>
                                         </Div>
                                         {review.photo && (
                                             <S3Img url={review.photo} theme={placeReviewStyle.image}/>
                                         )}
                                         <Div theme={placeReviewDisclaimerStyle}>
-                                            This review is the subjective opinion of an InclusiveGuide member and not of Inclusive Guide &#174;.
+                                            This review is the subjective opinion of an InclusiveGuide member and not of
+                                            Inclusive Guide &#174;.
                                         </Div>
                                     </Div>
 
