@@ -296,7 +296,9 @@ const Place = () => {
                                     <LeaveAReviewButton/>
                                 )}
                             </Div>
-                            <Description description={description}/>
+                            {description && (
+                                <Description description={description}/>
+                            )}
 
                             <Div theme={placeTaxonomyWrapperStyle}>
                                 {audioAvailable && (

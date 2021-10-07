@@ -531,7 +531,6 @@ export const placeReviewIconWrapperStyle = {
 }
 
 const placeReviewScaleWidth = 150
-
 export const placeReviewScaleStyle = {
     position: relative,
     height: [20, .7, 20],

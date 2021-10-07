@@ -35,7 +35,7 @@ const HeaderMenuUserDropdownMenu = () => {
     return (
         <MotionDiv
             intial={{height: 0}}
-            animate={!closeHeaderMenuDropdown ? 'open' : 'initial'}
+            animate={closeHeaderMenuDropdown === false ? 'open' : 'initial'}
             exit={'initial'}
             variants={variants}
             theme={headerAccountMenuDropdownWrapperStyle}
