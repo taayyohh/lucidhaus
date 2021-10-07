@@ -9,7 +9,7 @@ import {
     fixed,
     flex,
     flexStart,
-    grid,
+    grid, hidden,
     inlineFlex,
     none,
     pointer,
@@ -535,10 +535,11 @@ const placeReviewScaleWidth = 150
 export const placeReviewScaleStyle = {
     position: relative,
     height: [20, .7, 20],
-    border: `1px solid ${globals.colors.borderColor}`,
+    border: `1px solid ${colorPalette.forestGreen}`,
     width: [placeReviewScaleWidth, globals.style.layoutScalingValue, placeReviewScaleWidth],
     borderRadius: [20, .7, 20],
-    marginTop: [10, .7, 10]
+    marginTop: [10, .7, 10],
+    overflow: hidden
 }
 
 export const placeReviewScaleInnerStyle = rating => {
@@ -618,8 +619,14 @@ export const placeReportPortalStyle = {
     left: '50%',
     marginLeft: [-350, globals.style.layoutScalingValue, '0'],
     marginTop: [-270, globals.style.layoutScalingValue, '0'],
-    boxShadow: '0px 0px 15px 10px #00000029',
-    mobile: {}
+    boxShadow: '0px 0px 15px 2px #00000029',
+    mobile: {
+        top: 50,
+        left: 50,
+        width: 'calc(100% - 100px)',
+        height: auto,
+        zIndex: 20
+    }
 }
 
 export const placesReportFormStyle = {

@@ -25,7 +25,7 @@ import Report                            from './Report'
 
 const Reviews = ({reviewIds, userFlaggedReviews}) => {
     const dispatch = useDispatch()
-    const {_id, token} = useSelector(state => state.user)
+    const {_id, token, isAuthenticated} = useSelector(state => state.user)
     const {reviews} = useSelector(state => state.place)
     const [filteredArray, setFilteredArray] = useState()
 
@@ -110,7 +110,7 @@ const Reviews = ({reviewIds, userFlaggedReviews}) => {
                                             Inclusive Guide &#174;.
                                         </Div>
                                     </Div>
-                                    {!isFlagged && (
+                                    {!isFlagged && isAuthenticated && (
                                         <Report review={review}/>
                                     )}
                                 </Div>
