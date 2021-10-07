@@ -5,8 +5,6 @@ import Div                          from 'shared/Basic/Div'
 import RichText                     from 'shared/Basic/RichText'
 import S3Img                        from 'shared/Basic/S3Img'
 import {
-    placeFlaggedTextStyle,
-    placeReviewBlurStyle,
     placeReviewDescriptionStyle,
     placeReviewedByStyle,
     placeReviewLikertStyle,
@@ -42,50 +40,46 @@ const Reviews = ({reviewIds, userFlaggedReviews, placeSlug}) => {
     return (
         <Div theme={reviewsWrapperStyle}>
             {filteredArray && filteredArray.map((review) => {
-                    const isFlagged = userFlaggedReviews.filter(item => item === review.id).length > 0
+                    const isFlagged = userFlaggedReviews.filter(item => item === review._id).length > 0
 
                     return (
-                        <Div
-                            key={review.updated}
-                            theme={placeReviewStyle}
-                        >
-                            <Div theme={placeReviewUserInfoStyle}>
-                                {(review?.reviewerAvatar && (
-                                    <S3Img url={review.reviewerAvatar} theme={placeReviewUserAvatarStyle}/>
-                                )) || (
-                                    <Div theme={placeReviewUserAvatarStyle} />
-                                )}
-                                {review.reviewerName && (
-                                    <Div theme={placeReviewUserNameStyle}>{review.reviewerName}</Div>
-                                )}
-                            </Div>
-                            <Div>
-                                <Div theme={placeReviewedByStyle}>Reviewed
-                                    on <span>{dayjs(review.updated).format('MMMM DD, YYYY')}</span></Div>
-                                <RichText theme={placeReviewDescriptionStyle}>{review.review}</RichText>
-                                <Div theme={placeReviewLikertStyle}>
-                                    <Div><strong>Safe:</strong> {review.safe[0]}</Div>
-                                    <Div><strong>Welcome:</strong> {review.welcome[0]}</Div>
-                                    <Div><strong>Celebrated:</strong> {review.celebrated[0]}</Div>
-                                </Div>
-                                {review.photo && (
-                                    <S3Img url={review.photo} theme={placeReviewStyle.image}/>
-                                )}
-                            </Div>
-
-                            {!isFlagged && (
-                                <Report/>
-                            )}
-                            {isFlagged && (
-                                <>
-                                    <Div theme={placeFlaggedTextStyle}>
-                                        You have flagged this Review. It has been submitted to our admins for review.
+                        <>
+                            {(!isFlagged && (
+                                <Div
+                                    key={review.updated}
+                                    theme={placeReviewStyle}
+                                >
+                                    <Div theme={placeReviewUserInfoStyle}>
+                                        {(review?.reviewerAvatar && (
+                                            <S3Img url={review.reviewerAvatar} theme={placeReviewUserAvatarStyle}/>
+                                        )) || (
+                                            <Div theme={placeReviewUserAvatarStyle}/>
+                                        )}
+                                        {review.reviewerName && (
+                                            <Div theme={placeReviewUserNameStyle}>{review.reviewerName}</Div>
+                                        )}
                                     </Div>
-                                    <Div theme={placeReviewBlurStyle}/>
+                                    <Div>
+                                        <Div theme={placeReviewedByStyle}>Reviewed
+                                            on <span>{dayjs(review.updated).format('MMMM DD, YYYY')}</span></Div>
+                                        <RichText theme={placeReviewDescriptionStyle}>{review.review}</RichText>
+                                        <Div theme={placeReviewLikertStyle}>
+                                            <Div><strong>Safe:</strong> {review.safe[0]}</Div>
+                                            <Div><strong>Welcome:</strong> {review.welcome[0]}</Div>
+                                            <Div><strong>Celebrated:</strong> {review.celebrated[0]}</Div>
+                                        </Div>
+                                        {review.photo && (
+                                            <S3Img url={review.photo} theme={placeReviewStyle.image}/>
+                                        )}
+                                    </Div>
 
-                                </>
-                            )}
-                        </Div>
+                                    {!isFlagged && (
+                                        <Report review={review}/>
+                                    )}
+                                </Div>
+                            )) || null}
+                        </>
+
                     )
                 }
             )}

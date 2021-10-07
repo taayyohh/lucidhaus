@@ -505,10 +505,11 @@ export const placeReviewLikertStyle = {
 }
 
 export const placeFlaggedTextStyle = {
-    color: '#fff',
-    size: [32, .7, 22],
+    color: black,
+    size: [22, .7, 22],
     padding: [20, .7, 20],
-    zIndex: 1
+    zIndex: 1,
+    position: absolute
 }
 
 export const placeReviewBlurStyle = {
@@ -517,7 +518,7 @@ export const placeReviewBlurStyle = {
     left: 0,
     height: '100%',
     width: '100%',
-    background: '#000'
+    background: globals.colors.borderColor
 }
 
 export const placeReviewReportWrapperStyle = {

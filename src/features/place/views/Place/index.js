@@ -25,9 +25,9 @@ import {
     reviewsHeadingWrapperStyle
 }                                               from '../styles'
 import Address                                  from './Address'
-import Description        from './Description'
-import LeaveAReviewButton from './LeaveAReview'
-import Rating             from './Rating'
+import Description                              from './Description'
+import LeaveAReviewButton                       from './LeaveAReview'
+import Rating                                   from './Rating'
 import Reviews                                  from './Reviews'
 import Tags                                     from './Tags'
 import Title                                    from './Title'
@@ -259,10 +259,10 @@ const Place = () => {
 
     const [userFlaggedReviews, setUserFlaggedReviews] = useState([])
     useEffect(() => {
-        const flaggedReviews = reviews.filter(review => review?.flaggedBy.length > 0)
+        const flaggedReviews = reviews.filter(review => review?.report.length > 0)
 
         for (const flagged of flaggedReviews) {
-            if (flagged?.flaggedBy.includes(_id)) {
+            if (flagged?.report.filter(flag => flag.flaggedBy)) {
                 setUserFlaggedReviews([...userFlaggedReviews, flagged.id])
             }
         }

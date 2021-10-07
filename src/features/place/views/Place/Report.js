@@ -16,10 +16,11 @@ import {
     placesReportFormStyle
 }                        from '../styles'
 
-const Report = () => {
+const Report = ({review}) => {
     const {_id, token} = useSelector(state => state.user)
     const initialValues = {
         reason: '',
+        review,
         _id,
         token
     }
@@ -27,7 +28,7 @@ const Report = () => {
     return (
 
         <PortalWithState closeOnOutsideClick closeOnEsc>
-            {({openPortal, closePortal, isOpen, portal}) => (
+            {({openPortal, portal}) => (
                 <Div
                     theme={placeReviewReportWrapperStyle}
                     onClick={openPortal}
@@ -44,7 +45,7 @@ const Report = () => {
                                 initialValues={initialValues}
                                 fields={reportFields}
                                 validationSchema={validateReport}
-                                dispatchAction={'place/reportReview'}
+                                dispatchAction={'user/flagReview'}
                                 formHeading={'Report this review as inappropriate?'}
                                 buttonText={"Report Review"}
                             />
