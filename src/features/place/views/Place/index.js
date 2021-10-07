@@ -292,9 +292,6 @@ const Place = () => {
                             />
                             <Div theme={{display: 'flex', flexDirection: 'column'}}>
                                 <Rating/>
-                                {(isAuthenticated && isVerified && hasNoReviews) && (
-                                    <LeaveAReviewButton/>
-                                )}
                             </Div>
                             {description && (
                                 <Description description={description}/>
@@ -447,6 +444,9 @@ const Place = () => {
                                 />
                                 <Website website={website}/>
                                 <Tags placeCategory={placeCategory}/>
+                                {(isAuthenticated && isVerified && hasNoReviews) && (
+                                    <LeaveAReviewButton/>
+                                )}
                             </Div>
                         </Div>
                     </MotionDiv>

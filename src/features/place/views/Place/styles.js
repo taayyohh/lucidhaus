@@ -22,6 +22,8 @@ export const placeDescriptionWrapperStyle = {
 
 export const LeaveAReviewButtonStyle = {
     alignSelf: flexStart,
+    alignItems: center,
+    marginTop: [15, .7, 15],
     backgroundColor: colorPalette.darkHoneyYellow,
     paddingLeft: [15, .7, 15],
     paddingRight: [15, .7, 15],
