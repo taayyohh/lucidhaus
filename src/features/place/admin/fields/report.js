@@ -1,5 +1,5 @@
-import {TEXT, TEXTAREA} from 'config/variables'
-import * as Yup         from 'yup'
+import {TEXTAREA} from 'config/variables'
+import * as Yup   from 'yup'
 
 export const reportFields = [
     {

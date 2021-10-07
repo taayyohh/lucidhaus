@@ -17,16 +17,17 @@ import {
 }                        from '../styles'
 
 const Report = ({review}) => {
+    const {slug} = useSelector(state => state.site)
     const {_id, token} = useSelector(state => state.user)
     const initialValues = {
         reason: '',
+        placeSlug: slug,
         review,
         _id,
         token
     }
 
     return (
-
         <PortalWithState closeOnOutsideClick closeOnEsc>
             {({openPortal, portal}) => (
                 <Div
@@ -54,7 +55,6 @@ const Report = ({review}) => {
                 </Div>
             )}
         </PortalWithState>
-
     )
 }
 

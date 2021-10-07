@@ -1,5 +1,5 @@
-import React, { useRef, useEffect } from "react"
-import {useDispatch}                from 'react-redux'
+import React, {useEffect} from "react"
+import {useDispatch}      from 'react-redux'
 
 /**
  * Hook that alerts clicks outside of the passed ref

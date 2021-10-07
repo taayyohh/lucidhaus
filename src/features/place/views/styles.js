@@ -445,7 +445,7 @@ export const placeReviewStyle = {
     padding: [20, globals.style.layoutScalingValue, 20],
     borderBottom: `1px solid ${globals.colors.borderColor}`,
     marginBottom: [20, .7, 20],
-    paddingBottom: [50, .7, 50],
+    paddingBottom: [100, .7, 100],
     mobile: {
         flexDirection: column
     },
@@ -502,6 +502,15 @@ export const placeReviewLikertStyle = {
     flexDirection: 'column',
     font: globals.fonts.serif,
     marginBottom: [25, .7, 25]
+}
+
+export const placeReviewDisclaimerStyle = {
+    size: [11, .7, 11],
+    color: colorPalette.darkGray,
+    fontStyle: 'italic',
+    paddingTop: [10, .7, 10],
+    marginTop: [30, .7, 30],
+    borderTop: `1px solid ${globals.colors.borderColor}`
 }
 
 export const placeFlaggedTextStyle = {

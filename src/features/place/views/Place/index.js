@@ -424,7 +424,6 @@ const Place = () => {
                                     <Reviews
                                         reviewIds={place.reviews}
                                         userFlaggedReviews={userFlaggedReviews}
-                                        placeSlug={slug}
                                     />
                                 </Div>
                             )}

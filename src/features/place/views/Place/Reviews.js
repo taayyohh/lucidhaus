@@ -5,7 +5,7 @@ import Div                          from 'shared/Basic/Div'
 import RichText                     from 'shared/Basic/RichText'
 import S3Img                        from 'shared/Basic/S3Img'
 import {
-    placeReviewDescriptionStyle,
+    placeReviewDescriptionStyle, placeReviewDisclaimerStyle,
     placeReviewedByStyle,
     placeReviewLikertStyle,
     placeReviewStyle,
@@ -13,10 +13,10 @@ import {
     placeReviewUserInfoStyle,
     placeReviewUserNameStyle,
     reviewsWrapperStyle
-}                                   from '../styles'
+} from '../styles'
 import Report                       from './Report'
 
-const Reviews = ({reviewIds, userFlaggedReviews, placeSlug}) => {
+const Reviews = ({reviewIds, userFlaggedReviews}) => {
     const dispatch = useDispatch()
     const {_id, token} = useSelector(state => state.user)
     const {reviews} = useSelector(state => state.place)
@@ -61,7 +61,8 @@ const Reviews = ({reviewIds, userFlaggedReviews, placeSlug}) => {
                                     </Div>
                                     <Div>
                                         <Div theme={placeReviewedByStyle}>Reviewed
-                                            on <span>{dayjs(review.updated).format('MMMM DD, YYYY')}</span></Div>
+                                            on <span>{dayjs(review.updated).format('MMMM DD, YYYY')}</span>
+                                        </Div>
                                         <RichText theme={placeReviewDescriptionStyle}>{review.review}</RichText>
                                         <Div theme={placeReviewLikertStyle}>
                                             <Div><strong>Safe:</strong> {review.safe[0]}</Div>
@@ -71,6 +72,9 @@ const Reviews = ({reviewIds, userFlaggedReviews, placeSlug}) => {
                                         {review.photo && (
                                             <S3Img url={review.photo} theme={placeReviewStyle.image}/>
                                         )}
+                                        <Div theme={placeReviewDisclaimerStyle}>
+                                            This review is the subjective opinion of an InclusiveGuide member and not of Inclusive Guide &#174;.
+                                        </Div>
                                     </Div>
 
                                     {!isFlagged && (
