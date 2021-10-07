@@ -9,7 +9,7 @@ import {
     fixed,
     flex,
     flexStart,
-    grid, hidden,
+    grid, hidden, inlineBlock,
     inlineFlex,
     none,
     pointer,
@@ -340,7 +340,17 @@ export const placeTagsIconStyle = {
 
 export const placeTagsWrapperStyle = {
     display: flex,
-    flexWrap: wrap
+    flexWrap: wrap,
+    child: {
+        selector: '> a',
+        display: inlineBlock,
+        color: colorPalette.paleGreen,
+        marginRight: [5, .7, 5],
+        textDecoration: none,
+        hover: {
+            color: colorPalette.forestGreen
+        }
+    }
 }
 
 
