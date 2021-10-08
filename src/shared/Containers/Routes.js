@@ -84,9 +84,9 @@ const Routes = () => {
                             <Route path="/music/:slug" exact component={Album} sitemapIndex={true}/>
                             <Route path="/posts" exact component={Posts} sitemapIndex={true}/>
                             <Route path="/posts/:slug" exact component={Post} sitemapIndex={true}/>
-                            <Route path="/shop" exact component={Shop} sitemapIndex={true}/>
-                            <Route path="/shop/:slug" exact component={Product} sitemapIndex={true}/>
-                            <Route path="/shop/category/:slug" exact component={FilteredProduct} sitemapIndex={true}/>
+                            {/*<Route path="/shop" exact component={Shop} sitemapIndex={true}/>*/}
+                            {/*<Route path="/shop/:slug" exact component={Product} sitemapIndex={true}/>*/}
+                            {/*<Route path="/shop/category/:slug" exact component={FilteredProduct} sitemapIndex={true}/>*/}
                             <PrivateRoute path="/dashboard" exact component={UserDashboard}/>
                             <PrivateRoute path="/dashboard/orders" exact component={UserOrders}/>
                             <PrivateRoute path="/dashboard/settings" exact component={UserSettings}/>

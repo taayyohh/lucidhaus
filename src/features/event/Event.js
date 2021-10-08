@@ -59,6 +59,11 @@ const Event = () => {
                             )}
                         </Div>
                         <Div theme={eventInfoStyle}>
+                            {attendees && attendees?.map((a) => (
+                                <Div>
+                                    {a.email}
+                                </Div>
+                            ))}
 
                             {((party > now) && (
                                 <>

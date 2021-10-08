@@ -1,8 +1,8 @@
 export const headerMenu = [
-    {
-        url: '/shop',
-        title: 'Shop'
-    },
+    // {
+    //     url: '/shop',
+    //     title: 'Shop'
+    // },
     {
         url: '/artists',
         title: 'Artists'
