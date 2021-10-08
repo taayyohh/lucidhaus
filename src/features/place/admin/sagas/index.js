@@ -303,9 +303,8 @@ export function* addReview({payload}) {
             })
 
         if (!updated.error) {
-            yield put({type: 'place/updatePlaceSuccess', payload: updated})
             yield put({type: 'place/addReviewSuccess'})
-            yield put({type: 'place/getPlace', payload: {slug: slug}})
+            yield put({type: 'place/getReview', payload: {_id, token, review: updated._id}})
             yield put({
                 type: 'site/setNotification',
                 payload: {
@@ -323,7 +322,6 @@ export function* addReview({payload}) {
 
 export function* updateReview({payload}) {
     const {
-        celebrated,
         photo,
         photoFile,
         placeName,
@@ -332,7 +330,11 @@ export function* updateReview({payload}) {
         reviewerAvatar,
         reviewerName,
         safe,
+        celebrated,
         welcome,
+        safe_prev,
+        celebrated_prev,
+        welcome_prev,
         isFlagged,
         flaggedBy,
         user,
@@ -345,13 +347,16 @@ export function* updateReview({payload}) {
     const placeReview = new FormData()
     const fields = [
         {id},
-        {celebrated},
         {photo},
         {review},
         {reviewerAvatar},
         {reviewerName},
         {safe},
         {welcome},
+        {celebrated},
+        {safe_prev},
+        {welcome_prev},
+        {celebrated_prev},
         {isFlagged},
         {flaggedBy},
         {user},
@@ -359,6 +364,7 @@ export function* updateReview({payload}) {
         {placeName},
         {placeSlug}
     ]
+
     for (let field of fields)
         setFormData(placeReview, field)
 
@@ -381,6 +387,7 @@ export function* updateReview({payload}) {
 
         if (!updated.error) {
             yield put({type: 'place/updateReviewSuccess', payload: updated})
+            yield put({type: 'place/getReview', payload: {_id, token, review: updated._id}})
             yield put({
                 type: 'site/setNotification',
                 payload: {
@@ -390,7 +397,7 @@ export function* updateReview({payload}) {
             })
 
             //TODO: temp solution refresh reviews
-          //  yield put({type: 'place/getFlaggedReviews'})
+            //  yield put({type: 'place/getFlaggedReviews'})
 
         } else {
             yield put({type: 'place/updatePlaceFailure', payload: updated})
