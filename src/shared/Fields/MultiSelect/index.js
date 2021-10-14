@@ -50,7 +50,7 @@ const MultiSelect = memo(({className, name, errorMessage, field, formik, options
                 />
                 <Div theme={{...multiSelectOptionListWrapperStyle, ...theme.multiSelect}}>
                     {filteredArray?.length > 0 && filteredArray?.map(o => (
-                        <Div key={o.name} theme={{...multiSelectOptionWrapperStyle}}>
+                        <Div key={o._id} theme={{...multiSelectOptionWrapperStyle}}>
                             <SelectOption
                                 field={field}
                                 formik={formik}

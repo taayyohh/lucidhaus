@@ -55,27 +55,21 @@ const Place = () => {
     const userSlug = useSelector(state => state.user.slug)
 
     const {
-        address1,
-        address2,
         audioAvailable,
         braille,
-        city,
         description,
+        geojson,
         largeAdaptiveEquipment,
-        longitude,
-        latitude,
         name,
         photo,
         onlyAccessibleByStairs,
         publicTransportation,
         signLanguageAccessible,
-        state,
         website,
         wheelchairElevator,
         wheelchairParking,
         wheelchairRamps,
         wheelchairRestroom,
-        zip,
     } = place
     const {slug} = useSelector(state => state.site)
     const placeId = slug.substr(slug.lastIndexOf('-') + 1)
@@ -256,6 +250,8 @@ const Place = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [createdFromBoone])
 
+    console.log('geojson', geojson)
+
 
     const [userFlaggedReviews, setUserFlaggedReviews] = useState([])
     useEffect(() => {
@@ -430,17 +426,17 @@ const Place = () => {
                         <Div theme={placeInnerRightWrapperStyle}>
                             <Div theme={placeInnerRightInfoStyle}>
                                 <Map
-                                    lon={longitude || (!isEmpty(boonePlace) && boonePlace.locations[0].longitude)}
-                                    lat={latitude || (!isEmpty(boonePlace) && boonePlace.locations[0].latitude)}
+                                    lon={geojson?.[0]?.geometry?.coordinates?.[0] || (!isEmpty(boonePlace) && boonePlace.locations[0].longitude)}
+                                    lat={geojson?.[0]?.geometry?.coordinates?.[1] || (!isEmpty(boonePlace) && boonePlace.locations[0].latitude)}
                                     theme={placeMapStyle}
                                 />
                                 <Address
-                                    address1={address1}
-                                    address2={address2}
+                                    address1={geojson?.[0]?.properties?.address}
+                                    address2={geojson?.[0]?.properties?.address2}
                                     boonePlace={boonePlace}
-                                    city={city}
-                                    state={state}
-                                    zip={zip}
+                                    city={geojson?.[0]?.properties?.city}
+                                    state={geojson?.[0]?.properties?.state}
+                                    zip={geojson?.[0]?.properties?.postalCode}
                                 />
                                 <Website website={website}/>
                                 <Tags placeCategory={placeCategory}/>

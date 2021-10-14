@@ -1,5 +1,5 @@
-import {IMAGE_UPLOAD, MULTI_SELECT, NUMBER, RICH_TEXT, SELECT, TEXT, TOGGLE, UPLOAD_PATHS} from 'config/variables'
-import * as Yup                                                                            from 'yup'
+import {IMAGE_UPLOAD, MULTI_SELECT, NUMBER, RICH_TEXT, SELECT, TEL, TEXT, TOGGLE, UPLOAD_PATHS} from 'config/variables'
+import * as Yup                                                                                 from 'yup'
 
 export const placeFields = [
     {
@@ -60,6 +60,11 @@ export const placeFields = [
         name: 'state',
         inputLabel: 'State ',
         type: TEXT
+    },
+    {
+        name: 'tel',
+        inputLabel: 'Phone Number',
+        type: TEL
     },
     {
         name: 'longitude',

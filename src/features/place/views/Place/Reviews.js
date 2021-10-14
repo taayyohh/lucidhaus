@@ -53,7 +53,7 @@ const Reviews = ({reviewIds, userFlaggedReviews}) => {
                         <>
                             {(!isFlagged && (
                                 <Div
-                                    key={review.updated}
+                                    key={review._id}
                                     theme={placeReviewStyle}
                                 >
                                     <Div theme={placeReviewUserInfoStyle}>

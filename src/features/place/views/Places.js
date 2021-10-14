@@ -5,13 +5,14 @@ import {
     placeSearchResultsQueryTextStyle
 }                                   from 'features/place/views/styles'
 import React, {useEffect, useState} from 'react'
-import {useDispatch, useSelector}                                   from 'react-redux'
-import Div                                                          from 'shared/Basic/Div'
-import GenericCard                                                  from 'shared/Cards/GenericCard'
-import ContentWrapper                                               from 'shared/Layout/ContentWrapper'
-import {slugify, unslugify}                                         from 'utils/helpers'
-import NoResults                                                    from './NoResults'
-import {placesWrapperStyle}                                         from './styles'
+import {useDispatch, useSelector}   from 'react-redux'
+import Div                          from 'shared/Basic/Div'
+import GenericCard                  from 'shared/Cards/GenericCard'
+import ContentWrapper               from 'shared/Layout/ContentWrapper'
+import Map                          from 'shared/Map'
+import {slugify, unslugify}         from 'utils/helpers'
+import NoResults                    from './NoResults'
+import {placesWrapperStyle}         from './styles'
 
 const Places = () => {
     const {boonePlaces, algoliaPlaces, places, noResults} = useSelector(state => state.place)
@@ -53,6 +54,16 @@ const Places = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [places])
 
+
+    const features = {
+        "type": "FeatureCollection",
+        "features": []
+    }
+    for (const place of allPlaces.filter(place => place._id)) {
+        features?.["features"].push(place.geojson[0])
+    }
+
+
     return (
         <ContentWrapper theme={placeContentWrapperStyle}>
             <Div>
@@ -70,6 +81,25 @@ const Places = () => {
                         <em>Search results for</em>: {slug ? unslugify(slug) : ''}
                     </Div>
                 ))}
+                {features && !!features?.features?.[0]?.geometry?.coordinates?.[0] && !!features?.features?.[0]?.geometry?.coordinates?.[1] && (
+                    <Map
+                        style={'mapbox://styles/mapbox/light-v10'}
+                        features={features}
+                        lon={features?.features?.[0]?.geometry?.coordinates?.[0]}
+                        lat={features?.features?.[0]?.geometry?.coordinates?.[1]}
+                        theme={{height: 500, width: 500}}
+                        zoom={5}
+                    />
+                )}
+
+
+                <div className='sidebar'>
+                    <div className='heading'>
+                        <h1>Our locations</h1>
+                    </div>
+                    <Div id={'listings'} className="listings"/>
+                </div>
+
                 <Div theme={placesWrapperStyle}>
                     {allPlaces.length > 0 && allPlaces.map((place) => {
                         if (!!place.uuid) { // if place does not exist in Inclusive Guide database
@@ -95,11 +125,11 @@ const Places = () => {
                                 />
                             )
                         } else {
-                            const address1 = !!place?.address1 ? `${place?.address1}` : ''
+                            const address1 = !!place?.geojson?.[0]?.properties?.address ? `${place?.geojson?.[0]?.properties?.address}` : ''
                             // const address2 = !!place?.address2 ? place?.address2 : ''
-                            const city = !!place.city ? `, ${place.city}` : ''
-                            const state = !!place.state ? `, ${place.state}` : ''
-                            const zip = !!place.postal_code ? place.postal_code : ''
+                            const city = !!place?.geojson?.[0]?.properties?.city ? `, ${place?.geojson?.[0]?.properties?.city}` : ''
+                            const state = !!place?.geojson?.[0]?.properties?.state ? `, ${place?.geojson?.[0]?.properties?.state}` : ''
+                            const zip = !!place?.geojson?.[0]?.properties?.postal_code ? place?.geojson?.[0]?.properties?.postal_code : ''
                             const composedAddress = `${address1}${city}${state}${zip}`
 
 
