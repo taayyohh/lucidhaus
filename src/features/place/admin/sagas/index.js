@@ -199,6 +199,8 @@ export function* updatePlaceDetail({payload}) {
         }
     }
 
+    console.log('fields', fields)
+
     try {
         const updated = yield call(updateEntity,
             {
@@ -397,7 +399,7 @@ export function* updateReview({payload}) {
             })
 
             //TODO: temp solution refresh reviews
-            //  yield put({type: 'place/getFlaggedReviews'})    
+            //  yield put({type: 'place/getFlaggedReviews'})
 
         } else {
             yield put({type: 'place/updatePlaceFailure', payload: updated})

@@ -1,15 +1,19 @@
 import {colorPalette, globals} from 'config/styles'
 import {CDN}                   from 'config/variables'
+import {textAreaWrapperStyle}  from 'shared/Fields/styles'
 import {
     absolute,
     auto,
-    black, borderBox,
+    black,
+    borderBox,
     center,
     column,
     fixed,
     flex,
     flexStart,
-    grid, hidden, inlineBlock,
+    grid,
+    hidden,
+    inlineBlock,
     inlineFlex,
     none,
     pointer,
@@ -20,8 +24,7 @@ import {
     uppercase,
     white,
     wrap
-} from 'utils/themer'
-import {textAreaWrapperStyle}  from '../../../shared/Fields/styles'
+}                              from 'utils/themer'
 
 export const placesWrapperStyle = {
     display: 'grid',
@@ -36,10 +39,10 @@ export const placesWrapperStyle = {
     }
 }
 
-export const placeContentWrapperStyle = {
-    maxWidth: [1280, globals.style.layoutScalingValue, '100%'],
-    marginBottom: [40, .7, 20],
-    marginTop: [30, .7, '0'],
+export const placesContentWrapperStyle = {
+    maxWidth: '100%',
+    height: `calc(100vh - ${sv(100, .7)} - ${sv(28, .7)} - ${sv(55, .7)})`,
+    overflow: hidden
 }
 
 export const placesHeadingStyle = {
@@ -67,6 +70,19 @@ export const placeSearchResultsQueryTextStyle = {
         selector: 'em',
         size: [19, .7, 19]
     }
+}
+
+export const placesMapStyle = {
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    height: `calc(100vh - ${sv(100, .7)} - ${sv(28, .7)} - ${sv(55, .7)})`,
+    width: 500
+}
+
+export const placesMapSidebarStyle = {
+    height: `calc(100vh - ${sv(100, .7)} - ${sv(28, .7)} - ${sv(55, .7)})`,
+
 }
 
 export const placeDetailStyle = {

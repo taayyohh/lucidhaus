@@ -20,6 +20,7 @@ const PageFrame = () => {
     const isHome = url.length === 0
     const isMobile = useSelector(mobileFlag)
     const isPlaceDetail = url.length === 2 && url.includes('places')
+    const isSearchResults = url.length === 3 && url.includes('search')
 
 
     return (
@@ -33,10 +34,10 @@ const PageFrame = () => {
             )}
             <Div id="header-right-margin" theme={pageFrameStyle.hrm}/>
             <Div id="left-margin" theme={pageFrameStyle.lm}/>
-            <Main theme={pageFrameStyle.main(slug)}/>
+            <Main theme={pageFrameStyle.main({slug, isSearchResults})}/>
             <Div id="right-margin" theme={pageFrameStyle.rm}/>
             <Div id="footer-left-margin" theme={pageFrameStyle.flm}/>
-            <Footer theme={pageFrameStyle.footer(slug)}/>
+            <Footer theme={pageFrameStyle.footer({slug, isSearchResults})}/>
             <Div id="footer-right-margin" theme={pageFrameStyle.frm}/>
             <Overlay/>
             <Notification/>
