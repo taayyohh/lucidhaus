@@ -84,54 +84,57 @@ const Map = ({
 
 
     useEffect(() => {
-        mapboxgl.accessToken = MAPBOX_PUBLIC
-        const map = new mapboxgl.Map({
-            container: 'map', // container id
-            style: styles, // style URL
-            center: [parseInt(lon), parseInt(lat)], // starting position [lng, lat]
-            zoom: zoom, // starting zoom
-            scrollZoom: scrollZoom
-        })
-
-        map.on('load', () => {
-            map.addLayer({
-                id: 'locations',
-                type: 'circle',
-                /* Add a GeoJSON source containing place coordinates and information. */
-                source: {
-                    type: 'geojson',
-                    data: features
-                }
+        if(features?.length > 0) {
+            mapboxgl.accessToken = MAPBOX_PUBLIC
+            const map = new mapboxgl.Map({
+                container: 'map', // container id
+                style: styles, // style URL
+                center: [parseInt(lon), parseInt(lat)], // starting position [lng, lat]
+                zoom: zoom, // starting zoom
+                scrollZoom: scrollZoom
             })
-            map.on('click', ({point}) => {
-                /* Determine if a feature in the "locations" layer exists at that point. */
-                const features = map.queryRenderedFeatures(point, {
-                    layers: ['locations']
+
+            map.on('load', () => {
+                map.addLayer({
+                    id: 'locations',
+                    type: 'circle',
+                    /* Add a GeoJSON source containing place coordinates and information. */
+                    source: {
+                        type: 'geojson',
+                        data: features
+                    }
                 })
+                map.on('click', ({point}) => {
+                    /* Determine if a feature in the "locations" layer exists at that point. */
+                    const features = map.queryRenderedFeatures(point, {
+                        layers: ['locations']
+                    })
 
-                /* If it does not exist, return */
-                if (!features.length) return
+                    /* If it does not exist, return */
+                    if (!features.length) return
 
-                const clickedPoint = features[0]
+                    const clickedPoint = features[0]
 
-                /* Fly to the point */
-                flyToStore(clickedPoint, map)
+                    /* Fly to the point */
+                    flyToStore(clickedPoint, map)
 
-                /* Close all other popups and display popup for clicked store */
-                createPopUp(clickedPoint, map)
+                    /* Close all other popups and display popup for clicked store */
+                    createPopUp(clickedPoint, map)
 
-                /* Highlight listing in sidebar (and remove highlight for all other listings) */
-                const activeItem = document.getElementsByClassName('active')
-                if (activeItem[0]) {
-                    activeItem[0].classList.remove('active')
-                }
-                const listing = document.getElementById(
-                    `listing-${clickedPoint.properties._id}`
-                )
-                listing.classList.add('active')
+                    /* Highlight listing in sidebar (and remove highlight for all other listings) */
+                    const activeItem = document.getElementsByClassName('active')
+                    if (activeItem[0]) {
+                        activeItem[0].classList.remove('active')
+                    }
+                    const listing = document.getElementById(
+                        `listing-${clickedPoint.properties._id}`
+                    )
+                    listing.classList.add('active')
+                })
+                buildLocationList(features, map)
             })
-            buildLocationList(features, map)
-        })
+        }
+
 
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
