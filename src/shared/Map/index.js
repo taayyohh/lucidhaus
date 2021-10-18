@@ -1,6 +1,7 @@
 import mapboxgl           from '!mapbox-gl'
 import {MAPBOX_PUBLIC}    from 'config/variables'
 import React, {useEffect} from 'react'
+import {useSelector}      from 'react-redux'
 import Div                from 'shared/Basic/Div'
 /* eslint import/no-webpack-loader-syntax: off */
 
@@ -13,7 +14,10 @@ const Map = ({
                  scrollZoom = true,
                  theme
              }) => {
+    const {url} = useSelector(state => state.site)
+
     const buildLocationList = ({features}, map) => {
+
         const listings = document.getElementById('listings')
         listings.innerHTML = ''
 
@@ -84,7 +88,9 @@ const Map = ({
 
 
     useEffect(() => {
-        if(features?.length > 0) {
+        // if(!!features && features.length > 0) {
+
+        if(url.includes('search')) {
             mapboxgl.accessToken = MAPBOX_PUBLIC
             const map = new mapboxgl.Map({
                 container: 'map', // container id
@@ -134,6 +140,9 @@ const Map = ({
                 buildLocationList(features, map)
             })
         }
+
+
+
 
 
 
