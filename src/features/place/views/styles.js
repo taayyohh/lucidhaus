@@ -46,8 +46,12 @@ export const placesContentWrapperStyle = {
     overflow: hidden
 }
 
-export const placesContentInnerWrapperStyle = {
-    display: 'flex'
+export const placesContentInnerWrapperStyle = noResults => {
+    return {
+        display: 'flex',
+        flexDirection: noResults ? column: row
+    }
+
 }
 
 export const placesHeadingStyle = {
@@ -68,7 +72,6 @@ export const placesHeadingStyle = {
 }
 
 export const placesMapStyle = {
-  // position: 'absolute',
     position: relative,
     top: 0,
     right: 0,
@@ -98,25 +101,7 @@ export const placesMapStyle = {
 
 }
 
-export const placesMapSidebarStyle = {
-    position: relative,
-    height: `calc(100vh - ${sv(100, .7)} - ${sv(28, .7)} - ${sv(55, .7)})`,
-    paddingLeft: [50, globals.style.layoutScalingValue, 50],
-    paddingRight: [0, globals.style.layoutScalingValue, '0'],
-    paddingTop: [50, globals.style.layoutScalingValue, 50],
-    paddingBottom: [150, .7, 50],
-    width: '500px'
-}
-
-export const placeSidebarListingsStyle = {
-    boxSizing: borderBox,
-    paddingLeft: [30, .7, 30],
-    paddingRight: [30, .7, 30]
-
-}
-
 export const placeDetailStyle = {
-    //maxWidth: [800, globals.style.layoutScalingValue, '100%'],
     margin: '0 auto',
     font: globals.fonts.serif,
     size: [16, .7, 16],
@@ -373,10 +358,7 @@ export const placeTagsStyle = {
     display: inlineFlex,
     size: [16, .7, 16],
     textDecoration: none,
-    marginTop: [10, .7, 10],
-    // hover: {
-    //     color: globals.colors.linkHoverColor
-    // }
+    marginTop: [10, .7, 10]
 }
 
 export const placeTagsIconStyle = {
@@ -399,7 +381,6 @@ export const placeTagsWrapperStyle = {
     }
 }
 
-
 export const placeTaxonomyStyle = {
     borderRadius: [5, .7, 5],
     paddingLeft: [20, globals.style.layoutScalingValue, 20],
@@ -408,7 +389,6 @@ export const placeTaxonomyStyle = {
     paddingBottom: [20, globals.style.layoutScalingValue, 20],
     border: `1px solid ${globals.colors.borderColor}`,
     background: white,
-    // boxShadow: '0px 3px 6px 0px #e6e6e6',
     title: {
         textTransform: uppercase,
         letterSpacing: [0.5, .7, 0.5],
@@ -529,7 +509,6 @@ export const placeReviewUserNameStyle = {
     fontStyle: 'italic',
     textAlign: center
 }
-
 
 export const placeReviewUserInfoStyle = {
     display: 'flex',

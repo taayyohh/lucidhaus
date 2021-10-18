@@ -24,7 +24,6 @@ const Address = ({address1, address2, boonePlace, city, state, zip}) => {
                     {' '}
                     {(!!zip && zip !== 'null' && zip) || (!isEmpty(boonePlace) && !!boonePlace.locations ? boonePlace.locations[0].postal_code : '')}
                     {' '}
-                    {/*{!!country && country}*/}
                 </Div>
             </Div>
         </Div>

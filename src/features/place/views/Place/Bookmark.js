@@ -3,15 +3,15 @@ import React, {useEffect, useState}       from 'react'
 import {useDispatch, useSelector}         from 'react-redux'
 import Div                                from 'shared/Basic/Div'
 import Icon                               from 'shared/Basic/Icon'
-import {bookmarkIconStyle, bookmarkStyle} from './styles'
+import {bookmarkIconStyle, bookmarkStyle} from '../styles'
 
 const Bookmark = ({place, userSlug, _id, token}) => {
     const dispatch = useDispatch()
     const {user} = useSelector(state => state.user)
-    const [isBookmark, setUserBookmark] = useState(user?.bookmarks?.includes(place._id))
+    const [isBookmark, setUserBookmark] = useState(user?.bookmarks?.filter(bookmark => bookmark.includes(place._id)))
 
     useEffect(() => {
-        setUserBookmark(user?.bookmarks?.includes(place._id))
+        setUserBookmark(user?.bookmarks?.filter(bookmark => bookmark.includes(place._id)))
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [user.bookmarks])

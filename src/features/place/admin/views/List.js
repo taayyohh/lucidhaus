@@ -51,7 +51,6 @@ const List = () => {
         if (!!sentinel.current) {
 
             const observer = new IntersectionObserver(entries => {
-                console.log('entries', entries)
                 entries.forEach(entry => {
                     if (entry.isIntersecting && hasMore) {
                         refineNext()

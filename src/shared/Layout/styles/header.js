@@ -205,7 +205,7 @@ export const headerLogoWrapperStyle = {
 
 export const headerLogoLinkStyle = {
     display: block,
-    width: [170, globals.style.layoutScalingValue, 170],
+    width: [170, .7, 170],
     zIndex: 1,
     mobile: {
         minWidth: 50

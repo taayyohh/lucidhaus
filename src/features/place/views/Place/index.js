@@ -1,4 +1,4 @@
-import Bookmark                                 from 'features/place/views/Bookmark'
+import Bookmark                                 from 'features/place/views/Place/Bookmark'
 import {AnimatePresence}                        from 'framer-motion'
 import React, {useContext, useEffect, useState} from 'react'
 import {useDispatch, useSelector}               from 'react-redux'
@@ -250,8 +250,6 @@ const Place = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [createdFromBoone])
 
-    console.log('geojson', geojson)
-
 
     const [userFlaggedReviews, setUserFlaggedReviews] = useState([])
     useEffect(() => {
@@ -287,7 +285,10 @@ const Place = () => {
                                 name={name}
                             />
                             <Div theme={{display: 'flex', flexDirection: 'column'}}>
-                                <Rating/>
+                                <Rating
+                                    reviews={reviews}
+                                    place={place}
+                                />
                             </Div>
                             {description && (
                                 <Description description={description}/>

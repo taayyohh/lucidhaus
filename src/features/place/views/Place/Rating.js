@@ -1,16 +1,9 @@
 import React                                                                     from 'react'
-import {useSelector}                                                             from 'react-redux'
 import Div                                                                       from 'shared/Basic/Div'
 import {inclusiveScoreStyle, scoreBarStyle, scoreCircleStyle, scoreWrapperStyle} from './styles'
 
-const Rating = () => {
-    const {
-        place,
-        reviews,
-    } = useSelector(state => state.place)
-
+const Rating = ({reviews, place}) => {
     const {averageSafe, averageCelebrated, averageWelcome, inclusiveScore} = place
-
 
     return (
         <Div theme={{display: 'flex'}}>
@@ -30,7 +23,6 @@ const Rating = () => {
                         theme={scoreCircleStyle}>{reviews.length}</Div></Div>
                 </Div>
             )}
-
         </Div>
     )
 }
