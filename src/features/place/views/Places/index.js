@@ -1,18 +1,19 @@
 import {
     placesContentInnerWrapperStyle,
     placesContentWrapperStyle,
-    placeSearchResultsQueryTextStyle, placeSidebarListingsStyle,
+    placeSidebarListingsStyle,
     placesMapSidebarStyle,
-    placesMapStyle,
-    placesSidebarHeadlineStyle
-} from 'features/place/views/styles'
-import React, {useEffect, useState} from 'react'
-import {useDispatch, useSelector}   from 'react-redux'
-import Div                          from 'shared/Basic/Div'
-import ContentWrapper               from 'shared/Layout/ContentWrapper'
-import Map                          from 'shared/Map'
-import {unslugify}                  from 'utils/helpers'
-import NoResults                    from './NoResults'
+    placesMapStyle
+}                                                                     from 'features/place/views/styles'
+import React, {useEffect, useState}                                   from 'react'
+import {useDispatch, useSelector}                                     from 'react-redux'
+import Div                                                            from 'shared/Basic/Div'
+import ContentWrapper                                                 from 'shared/Layout/ContentWrapper'
+import Map                                                            from 'shared/Map'
+import {unslugify}                                                    from 'utils/helpers'
+import NoResults                                                      from '../NoResults'
+import Query                                                          from './Query'
+import {placeSearchResultsQueryTextStyle, placesSidebarHeadlineStyle} from './styles'
 
 const Places = () => {
     const {boonePlaces, algoliaPlaces, places, noResults} = useSelector(state => state.place)
@@ -104,14 +105,7 @@ const Places = () => {
         <ContentWrapper theme={placesContentWrapperStyle}>
             <Div theme={placesContentInnerWrapperStyle}>
                 <Div className='sidebar' theme={placesMapSidebarStyle}>
-                    <Div>
-                        <Div theme={placesSidebarHeadlineStyle}>Celebrating places that celebrate you</Div>
-                        {(slug !== 'places' && (
-                            <Div theme={placeSearchResultsQueryTextStyle}>
-                                <em>Search results for</em>: {slug ? unslugify(slug) : ''}
-                            </Div>
-                        ))}
-                    </Div>
+                    <Query slug={slug} />
                     <Div
                         id='listings'
                         className="listings"

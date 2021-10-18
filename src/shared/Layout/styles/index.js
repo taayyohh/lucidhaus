@@ -192,7 +192,7 @@ export const overlayStyle = {
     right: 0,
     top: 0,
     bottom: 0,
-    backgroundColor: colorPalette.grayPurple,
+    backgroundColor: colorPalette.paleGreen,
     zIndex: -1,
     hover: {
         cursor: pointer

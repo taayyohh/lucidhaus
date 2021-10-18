@@ -67,16 +67,6 @@ export const placesHeadingStyle = {
     }
 }
 
-export const placeSearchResultsQueryTextStyle = {
-    size: [24, .7, 20],
-    marginBottom: [30, .7, 30],
-    //lineHeight: [42, .7, 22],
-    child: {
-        selector: 'em',
-        size: [19, .7, 19]
-    }
-}
-
 export const placesMapStyle = {
   // position: 'absolute',
     position: relative,
@@ -116,12 +106,6 @@ export const placesMapSidebarStyle = {
     paddingTop: [50, globals.style.layoutScalingValue, 50],
     paddingBottom: [150, .7, 50],
     width: '500px'
-}
-
-export const placesSidebarHeadlineStyle = {
-    size: [32, .7, 32],
-    weight: 700,
-    boxSizing: borderBox
 }
 
 export const placeSidebarListingsStyle = {
