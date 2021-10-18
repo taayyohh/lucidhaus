@@ -1,9 +1,11 @@
 import {
+    placesContentInnerWrapperStyle,
     placesContentWrapperStyle,
-    placeSearchResultsQueryTextStyle,
+    placeSearchResultsQueryTextStyle, placeSidebarListingsStyle,
     placesMapSidebarStyle,
-    placesMapStyle
-}                                   from 'features/place/views/styles'
+    placesMapStyle,
+    placesSidebarHeadlineStyle
+} from 'features/place/views/styles'
 import React, {useEffect, useState} from 'react'
 import {useDispatch, useSelector}   from 'react-redux'
 import Div                          from 'shared/Basic/Div'
@@ -59,7 +61,23 @@ const Places = () => {
     }
     for (const place of allPlaces) {
         if (!!place._id) {
-            features?.["features"].push(place.geojson[0])
+            features?.["features"].push({
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": place.geojson?.[0]?.geometry?.coordinates
+                },
+                "properties": {
+                    "name": place.geojson[0]?.properties?.name,
+                    "address": place.geojson[0]?.properties?.address,
+                    "city": place.geojson[0]?.properties?.city,
+                    "country": place.geojson[0]?.properties?.country,
+                    "postalCode": place.geojson[0]?.properties?.postalCode,
+                    "state": place.geojson[0]?.properties?.state,
+                    "slug": place?.slug,
+                    "_id": place._id
+                }
+            })
         } else {
             features?.["features"].push({
                 "type": "Feature",
@@ -74,6 +92,7 @@ const Places = () => {
                     "country": place?.locations?.[0]?.country,
                     "postalCode": place?.locations?.[0]?.postal_code,
                     "state": place?.locations?.[0]?.state,
+                    "slug": place.id,
                     "_id": place.id
                 }
             })
@@ -81,89 +100,40 @@ const Places = () => {
     }
 
 
-
     return (
         <ContentWrapper theme={placesContentWrapperStyle}>
-            <Div>
-                {/*<Div>*/}
-                {/*    <Div theme={placeDetailStyle}>*/}
-                {/*        By reviewing businesses, you help other members of your*/}
-                {/*        community know where you felt safe, welcomed, and celebrated!*/}
-                {/*        It’s a win/win way to celebrate the businesses that celebrate*/}
-                {/*        you as well as to provide local resources to your friends and neighbors.*/}
-                {/*    </Div>*/}
-                {/*</Div>*/}
-
+            <Div theme={placesContentInnerWrapperStyle}>
                 <Div className='sidebar' theme={placesMapSidebarStyle}>
                     <Div>
-                        <h1>Our locations</h1>
+                        <Div theme={placesSidebarHeadlineStyle}>Celebrating places that celebrate you</Div>
                         {(slug !== 'places' && (
                             <Div theme={placeSearchResultsQueryTextStyle}>
                                 <em>Search results for</em>: {slug ? unslugify(slug) : ''}
                             </Div>
                         ))}
                     </Div>
-                    <Div id={'listings'} className="listings"/>
-                </Div>
-
-
-                {features && !!features?.features?.[0]?.geometry?.coordinates?.[0] && !!features?.features?.[0]?.geometry?.coordinates?.[1] && (
-                    <Map
-                        style={'mapbox://styles/mapbox/light-v10'}
-                        features={features}
-                        lon={features?.features?.[0]?.geometry?.coordinates?.[0]}
-                        lat={features?.features?.[0]?.geometry?.coordinates?.[1]}
-                        theme={placesMapStyle}
-                        zoom={5}
+                    <Div
+                        id='listings'
+                        className="listings"
+                        theme={placeSidebarListingsStyle}
                     />
-                )}
-
-
-                {/*<Div theme={placesWrapperStyle}>*/}
-                {/*    {allPlaces.length > 0 && allPlaces.map((place) => {*/}
-                {/*        if (!!place.uuid) { // if place does not exist in Inclusive Guide database*/}
-
-
-                {/*            const address1 = !!place?.locations[0]?.address1 ? `${place?.locations[0]?.address1}` : ''*/}
-                {/*            const city = !!place.locations[0].city ? `, ${place.locations[0].city}` : ''*/}
-                {/*            const state = !!place.locations[0].state ? `, ${place.locations[0].state}` : ''*/}
-                {/*            const zip = !!place.locations[0].postal_code ? `, ${place.locations[0].postal_code}` : ''*/}
-                {/*            const composedAddress = `${address1}${city}${state}${zip}`*/}
-
-                {/*            const slug = `${slugify(place.name)}-${*/}
-                {/*                place?.locations[0].length > 0 ?*/}
-                {/*                    slugify(place?.locations[0]?.address1) : ''}-${place.id}`*/}
-
-                {/*            return (*/}
-                {/*                <GenericCard*/}
-                {/*                    key={slug}*/}
-                {/*                    slug={`/places/${place.id}`}*/}
-                {/*                    name={place.name}*/}
-                {/*                    address={composedAddress}*/}
-                {/*                    theme={placeCardStyle}*/}
-                {/*                />*/}
-                {/*            )*/}
-                {/*        } else {*/}
-                {/*            const address1 = !!place?.geojson?.[0]?.properties?.address ? `${place?.geojson?.[0]?.properties?.address}` : ''*/}
-                {/*            // const address2 = !!place?.address2 ? place?.address2 : ''*/}
-                {/*            const city = !!place?.geojson?.[0]?.properties?.city ? `, ${place?.geojson?.[0]?.properties?.city}` : ''*/}
-                {/*            const state = !!place?.geojson?.[0]?.properties?.state ? `, ${place?.geojson?.[0]?.properties?.state}` : ''*/}
-                {/*            const zip = !!place?.geojson?.[0]?.properties?.postal_code ? place?.geojson?.[0]?.properties?.postal_code : ''*/}
-                {/*            const composedAddress = `${address1}${city}${state}${zip}`*/}
-
-
-                {/*            return (*/}
-                {/*                <GenericCard*/}
-                {/*                    key={place.slug}*/}
-                {/*                    slug={`/places/${place.slug}`}*/}
-                {/*                    name={place.name}*/}
-                {/*                    address={composedAddress}*/}
-                {/*                    theme={{...placeCardStyle}}*/}
-                {/*                />*/}
-                {/*            )*/}
-                {/*        }*/}
-                {/*    })}*/}
-                {/*</Div>*/}
+                </Div>
+                {
+                    !!features
+                    && !!features?.features?.[0]?.geometry?.coordinates?.[0]
+                    && !!features?.features?.[0]?.geometry?.coordinates?.[1]
+                    && (
+                        <Map
+                            style={'mapbox://styles/mapbox/light-v10'}
+                            features={features}
+                            lon={features?.features?.[0]?.geometry?.coordinates?.[0]}
+                            lat={features?.features?.[0]?.geometry?.coordinates?.[1]}
+                            theme={placesMapStyle}
+                            zoom={5}
+                            scrollZoom={false}
+                        />
+                    )
+                }
                 {noResults.boone && noResults.algolia && (
                     <NoResults/>
                 )}

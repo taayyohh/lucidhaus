@@ -199,8 +199,6 @@ export function* updatePlaceDetail({payload}) {
         }
     }
 
-    console.log('fields', fields)
-
     try {
         const updated = yield call(updateEntity,
             {

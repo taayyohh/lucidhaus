@@ -40,9 +40,14 @@ export const placesWrapperStyle = {
 }
 
 export const placesContentWrapperStyle = {
-    maxWidth: '100%',
+    width: '100%',
+    margin: 0,
     height: `calc(100vh - ${sv(100, .7)} - ${sv(28, .7)} - ${sv(55, .7)})`,
     overflow: hidden
+}
+
+export const placesContentInnerWrapperStyle = {
+    display: 'flex'
 }
 
 export const placesHeadingStyle = {
@@ -73,15 +78,56 @@ export const placeSearchResultsQueryTextStyle = {
 }
 
 export const placesMapStyle = {
-    position: 'absolute',
+  // position: 'absolute',
+    position: relative,
     top: 0,
     right: 0,
     height: `calc(100vh - ${sv(100, .7)} - ${sv(28, .7)} - ${sv(55, .7)})`,
-    width: 500
+    width: [1420, globals.style.layoutScalingValue, '100%'],
+    child: [
+        {
+            selector: '.mapboxgl-popup-content',
+            border: `1px solid ${globals.colors.borderColor}`,
+            boxSizing: borderBox,
+            padding: [30, .7, 30]
+        },
+        {
+            selector: '.mapboxgl-popup-content h4',
+            margin: 0,
+            padding: 0
+        },
+        {
+            selector: '.mapboxgl-popup-content a.place-name',
+            size: [24, .7, 24],
+            textDecoration: none,
+            hover: {
+                color: globals.colors.linkHoverColor
+            }
+        }
+    ]
+
 }
 
 export const placesMapSidebarStyle = {
+    position: relative,
     height: `calc(100vh - ${sv(100, .7)} - ${sv(28, .7)} - ${sv(55, .7)})`,
+    paddingLeft: [50, globals.style.layoutScalingValue, 50],
+    paddingRight: [0, globals.style.layoutScalingValue, '0'],
+    paddingTop: [50, globals.style.layoutScalingValue, 50],
+    paddingBottom: [150, .7, 50],
+    width: '500px'
+}
+
+export const placesSidebarHeadlineStyle = {
+    size: [32, .7, 32],
+    weight: 700,
+    boxSizing: borderBox
+}
+
+export const placeSidebarListingsStyle = {
+    boxSizing: borderBox,
+    paddingLeft: [30, .7, 30],
+    paddingRight: [30, .7, 30]
 
 }
 
