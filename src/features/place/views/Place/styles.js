@@ -1,5 +1,5 @@
-import {colorPalette, globals}                                                from 'config/styles'
-import {auto, borderBox, center, column, flex, flexStart, pointer, sv, white} from 'utils/themer'
+import {colorPalette, globals}                                                          from 'config/styles'
+import {absolute, auto, borderBox, center, column, flex, flexStart, pointer, sv, white} from 'utils/themer'
 
 export const placeDescriptionStyle = {
     boxSizing: borderBox,
@@ -79,5 +79,30 @@ export const scoreBarStyle = {
     marginBottom: [30, .7, 30],
     mobile: {
         flexDirection: column
+    }
+}
+export const bookmarkIconStyle = isBookmark => {
+    return {
+        size: [20, .7, 20],
+        marginLeft: [20, globals.style.layoutScalingValue, 20],
+        color: isBookmark ? colorPalette.honeyYellow : globals.colors.borderColor
+    }
+}
+export const bookmarkStyle = isBookmark => {
+    return {
+        display: flex,
+        alignItems: center,
+        backgroundColor: white,
+        border: `1px solid ${globals.colors.borderColor}`,
+        borderRadius: [5, .7, 5],
+        position: absolute,
+        right: [80, .7, 40],
+        top: [20, .7, 40],
+        size: [14, .7, 14],
+        padding: `${sv(10, .7)} ${sv(40, globals.style.layoutScalingValue)} ${sv(10, .7)} ${sv(40, globals.style.layoutScalingValue)}`,
+        transition: 'width 250ms ease',
+        hover: {
+            cursor: pointer,
+        }
     }
 }

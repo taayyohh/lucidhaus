@@ -3,7 +3,7 @@ import React, {useEffect, useState}       from 'react'
 import {useDispatch, useSelector}         from 'react-redux'
 import Div                                from 'shared/Basic/Div'
 import Icon                               from 'shared/Basic/Icon'
-import {bookmarkIconStyle, bookmarkStyle} from '../styles'
+import {bookmarkIconStyle, bookmarkStyle} from './styles'
 
 const Bookmark = ({place, userSlug, _id, token}) => {
     const dispatch = useDispatch()
@@ -15,10 +15,6 @@ const Bookmark = ({place, userSlug, _id, token}) => {
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [user.bookmarks])
-
-
-    console.log('user', user.bookmarks.includes(place._id))
-    console.log('id', place._id)
 
 
     return (
@@ -34,7 +30,6 @@ const Bookmark = ({place, userSlug, _id, token}) => {
                 }
             })}
         >
-            {console.log('isBookmark', isBookmark)}
             <span>{!user.bookmarks.includes(place._id) ? `Save to My Places` : `Place Saved!`}</span>
             <Icon
                 icon={bookmark}
