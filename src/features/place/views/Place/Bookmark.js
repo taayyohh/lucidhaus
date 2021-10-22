@@ -8,13 +8,17 @@ import {bookmarkIconStyle, bookmarkStyle} from '../styles'
 const Bookmark = ({place, userSlug, _id, token}) => {
     const dispatch = useDispatch()
     const {user} = useSelector(state => state.user)
-    const [isBookmark, setUserBookmark] = useState(user?.bookmarks?.filter(bookmark => bookmark.includes(place._id)))
+    const [isBookmark, setUserBookmark] = useState(user?.bookmarks?.includes(place._id))
 
     useEffect(() => {
-        setUserBookmark(user?.bookmarks?.filter(bookmark => bookmark.includes(place._id)))
+        setUserBookmark(user?.bookmarks?.includes(place._id))
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [user.bookmarks])
+
+
+    console.log('user', user.bookmarks.includes(place._id))
+    console.log('id', place._id)
 
 
     return (
@@ -30,10 +34,11 @@ const Bookmark = ({place, userSlug, _id, token}) => {
                 }
             })}
         >
-            <span>{!isBookmark ? `Save to My Places` : `Place Saved!`}</span>
+            {console.log('isBookmark', isBookmark)}
+            <span>{!user.bookmarks.includes(place._id) ? `Save to My Places` : `Place Saved!`}</span>
             <Icon
                 icon={bookmark}
-                theme={bookmarkIconStyle(isBookmark)}
+                theme={bookmarkIconStyle(user.bookmarks.includes(place._id))}
             />
         </Div>
     )

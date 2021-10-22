@@ -88,10 +88,9 @@ const Map = ({
 
 
     useEffect(() => {
-        // if(!!features && features.length > 0) {
-
-        if(url.includes('search')) {
+        if (url.includes('search')) {
             mapboxgl.accessToken = MAPBOX_PUBLIC
+
             const map = new mapboxgl.Map({
                 container: 'map', // container id
                 style: styles, // style URL
@@ -140,10 +139,6 @@ const Map = ({
                 buildLocationList(features, map)
             })
         }
-
-
-
-
 
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
