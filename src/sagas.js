@@ -3,12 +3,15 @@ import {
     watchAttemptDestroyPlace,
     watchCreatePlace,
     watchDestroyPlace,
-    watchDestroyPlaceSuccess, watchFlaggedReviews, watchGetPendingPlaces,
+    watchDestroyPlaceSuccess,
+    watchFlaggedReviews,
+    watchGetPendingPlaces,
     watchUpdatePlace,
     watchUpdateReview
-} from 'features/place/admin/sagas'
+}                                  from 'features/place/admin/sagas'
 import {watchCreatePlaceFromBoone} from 'features/place/admin/sagas/boone'
 import {
+    watchGetPlaceCategoryByNameOrDescription,
     watchGetPlaceDetail,
     watchGetPlaces,
     watchGetReviews,
@@ -76,7 +79,9 @@ import {
 }                                  from 'features/user/admin/sagas'
 import {
     watchConfirmUser,
-    watchCreateVerificationToken, watchFlagReview,
+    watchCreateVerificationToken,
+    watchFlagReview,
+    watchGetSubmittedBy,
     watchGetUser,
     watchGetUsers,
     watchGetUserSuccess,
@@ -86,7 +91,7 @@ import {
     watchSignUpSignInSuccess,
     watchUserHistory,
     watchVerifyUser
-} from 'features/user/sagas'
+}                                  from 'features/user/sagas'
 import {
     watchAuthenticate,
     watchAuthenticateSuccess,
@@ -234,6 +239,7 @@ export default function* rootSaga() {
         fork(watchGetUsers),
         fork(watchGetUserSuccess),
         fork(watchGetUser),
+        fork(watchGetSubmittedBy),
         fork(watchCreateVerificationToken),
         fork(watchVerifyUser),
         fork(watchManageBookmark),
@@ -309,6 +315,7 @@ export default function* rootSaga() {
         fork(watchGetPlaceDetail),
         fork(watchCreatePlaceFromBoone),
         fork(watchSearchAllPlaces),
+        fork(watchGetPlaceCategoryByNameOrDescription),
         fork(watchSearchAlgoliaPlaceIndex),
         fork(watchAddReview),
         fork(watchUpdateReview),
@@ -317,7 +324,7 @@ export default function* rootSaga() {
         fork(watchGetPendingPlaces),
         fork(watchFlaggedReviews),
 
-        //taxonomy
+        //place taxonomy
         fork(watchCreateBathroom),
         fork(watchGetBathroomList),
         fork(watchGetBathroomDetail),
@@ -378,7 +385,6 @@ export default function* rootSaga() {
         fork(watchRemoveFromCart),
         fork(watchGetBraintreeToken),
         fork(watchGetPaymentNonce),
-
 
         //boone
         fork(watchGetBooneAutoComplete),

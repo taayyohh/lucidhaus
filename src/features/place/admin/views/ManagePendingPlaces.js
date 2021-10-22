@@ -5,6 +5,7 @@ import LinkSwitch                 from 'shared/Basic/LinkSwitch'
 import ContentWrapper             from 'shared/Layout/ContentWrapper'
 import AdminDashboardWrapper      from 'shared/Layout/Dashboard/admin/AdminDashboardWrapper'
 import DashboardInfo              from 'shared/Layout/Dashboard/DashboardInfo'
+import {adminContentWrapperStyle} from 'shared/Layout/styles'
 
 const Manage = () => {
     const {places, pendingPlaces} = useSelector(state => state.place)
@@ -29,15 +30,17 @@ const Manage = () => {
         //             })
         //         )
 
+        console.log('places', places)
+
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [places])
 
     return (
-        <ContentWrapper>
+        <ContentWrapper theme={adminContentWrapperStyle}>
             <AdminDashboardWrapper>
                 <DashboardInfo
                     heading={'Manage Pending Places'}
-                    description={'Type & Enter to search. Click to edit.'}
+                    description={'Accept or Deny User Submitted Places.'}
                 />
 
                 <Div theme={{display: 'flex', flexDirection: 'column'}}>

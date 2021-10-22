@@ -1,13 +1,15 @@
-import {headerMenu}                       from 'config/menus/header'
-import {mobileFlag}                       from 'features/site/slice'
-import React, {useContext}                from 'react'
-import {useSelector}                      from 'react-redux'
-import Div                                from 'shared/Basic/Div'
-import {menuPanelContext}                 from 'shared/Containers/MenuPanelController'
-import MenuPanels                         from 'shared/Menus/MenuPanel'
-import HeaderMenuItems                    from './HeaderMenuItems'
-import MenuToggle                         from './MenuToggle'
-import {headerMenuStyle, menuToggleStyle} from './styles'
+import {search}                                          from 'config/icons'
+import {mobileFlag}                                      from 'features/site/slice'
+import React, {useContext}                               from 'react'
+import {useSelector}                                     from 'react-redux'
+import Div                                               from 'shared/Basic/Div'
+import Icon                                              from 'shared/Basic/Icon'
+import {menuPanelContext}                                from 'shared/Containers/MenuPanelController'
+import {headerSearchIconStyle, headerSearchWrapperStyle} from 'shared/Layout/styles/header'
+import MenuPanels                                        from 'shared/Menus/MenuPanel'
+import HeaderMenuControls                                from './HeaderMenuControls'
+import MenuToggle                                        from './MenuToggle'
+import {headerMenuStyle, menuToggleStyle}                from './styles'
 
 const HeaderMenu = () => {
     const {setPanel, currentPanel} = useContext(menuPanelContext)
@@ -15,19 +17,34 @@ const HeaderMenu = () => {
 
     return (
         <Div theme={headerMenuStyle}>
-            {!isMobile && (
-                <HeaderMenuItems items={headerMenu}/>
-            )}
-            {isMobile && (
-                <MenuToggle
-                    theme={menuToggleStyle}
-                    onClick={
-                        () => setPanel(
-                            !currentPanel
-                                ? 'mobile-header-menu-panel'
-                                : null
-                        )}
-                />
+            {(!isMobile && (
+                <HeaderMenuControls/>
+            )) || (
+                <>
+                    <MenuToggle
+                        theme={menuToggleStyle}
+                        onClick={
+                            () => setPanel(
+                                !currentPanel
+                                    ? 'mobile-header-menu-panel'
+                                    : null
+                            )}
+                    />
+                    <Div
+                        theme={headerSearchWrapperStyle}
+                        onClick={
+                            () => setPanel(
+                                !currentPanel
+                                    ? 'search-menu'
+                                    : null
+                            )}
+                    >
+                        <Icon
+                            icon={search}
+                            theme={headerSearchIconStyle}
+                        />
+                    </Div>
+                </>
             )}
             <MenuPanels/>
         </Div>

@@ -2,33 +2,35 @@ import React          from 'react'
 import {useSelector}  from 'react-redux'
 import Div            from 'shared/Basic/Div'
 import LinkSwitch     from 'shared/Basic/LinkSwitch'
-import S3Img          from 'shared/Basic/S3Img'
 import ContentWrapper from 'shared/Layout/ContentWrapper'
+import Search         from 'shared/Layout/Search'
 import {
+    homeContentWrapperStyle,
+    homeHeadlineStyle,
     homeImageStyle,
     homeImageWrapperStyle,
-    homeQuoteStyle,
+    homeSearchStyle,
+    homeSearchWrapperStyle,
     homeSignupButtonStyle,
-    homeSignupImageStyle,
-    homeSignupImageWrapperStyle,
     homeSignupQuoteStyle,
     homeSignupQuoteWrapperStyle,
-    homeSignupWrapperStyle,
-    homeSpacerStyle
+    homeSignupWrapperStyle
 }                     from './styles'
 
 const Home = () => {
     const {isAuthenticated, isAdmin} = useSelector(state => state.user)
 
     return (
-        <ContentWrapper theme={{width: '100%', margin: 0}}>
+        <ContentWrapper theme={homeContentWrapperStyle}>
             <Div theme={homeImageWrapperStyle}>
                 <Div theme={homeImageStyle}/>
+                <Div theme={homeSearchWrapperStyle}>
+                    <Div theme={homeHeadlineStyle}>
+                        Celebrating the places that celebrate you
+                    </Div>
+                    <Search theme={homeSearchStyle} />
+                </Div>
             </Div>
-            <Div theme={homeQuoteStyle}>
-                <Div>Celebrating the places that celebrate <span>You</span></Div>
-            </Div>
-            <Div theme={homeSpacerStyle}/>
             <Div theme={homeSignupWrapperStyle}>
                 <Div theme={homeSignupQuoteWrapperStyle}>
                     <Div theme={homeSignupQuoteStyle}>
@@ -48,12 +50,6 @@ const Home = () => {
                             Create Account
                         </LinkSwitch>
                     )}
-                </Div>
-                <Div theme={homeSignupImageWrapperStyle}>
-                    <S3Img
-                        theme={homeSignupImageStyle}
-                        url={'assets/ij-home-2.jpg'}
-                    />
                 </Div>
             </Div>
         </ContentWrapper>

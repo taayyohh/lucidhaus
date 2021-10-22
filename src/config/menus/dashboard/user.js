@@ -7,9 +7,14 @@ export const userDashboardMenu = [
         title: 'Dashboard'
     },
     {
+        url: '/dashboard/account',
+        icon: userCog,
+        title: 'Account Details'
+    },
+    {
         url: '/dashboard/profile',
         icon: userCog,
-        title: 'Profile'
+        title: 'Identity Profile'
     },
     {
         url: '/dashboard/reviews',

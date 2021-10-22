@@ -15,6 +15,7 @@ import {
     pointer,
     relative,
     row,
+    sv,
     white
 }                              from 'utils/themer'
 
@@ -28,8 +29,8 @@ export const headerMenuPanelStyle = {
     flexDirection: column,
     font: globals.fonts.sans,
     height: '100vh',
-    width: [940, .5, '100vw'],
-    maxWidth: [940, .5, '100vw'],
+    width: [940, .6, '100vw'],
+    maxWidth: [940, .6, '100vw'],
     top: 0,
     right: 0,
     paddingLeft: [60, globals.style.layoutScalingValue],
@@ -40,7 +41,7 @@ export const headerMenuPanelStyle = {
     boxSizing: borderBox,
     zIndex: 22,
     mobile: {
-        top: 50,
+        top: 86,
         left: 0
     },
     scrollBar: {
@@ -48,7 +49,7 @@ export const headerMenuPanelStyle = {
     },
     heading: {
         font: globals.fonts.sans,
-        size: [72, .5],
+       // size: [72, .5],
         marginTop: 0,
         marginBottom: [45, .7],
         lineHeight: 66,
@@ -179,22 +180,6 @@ export const dashboardMenuStyle = {
     }
 }
 
-export const dashboardUserMenuToggleStyle = {
-    zIndex: 3,
-    position: absolute,
-    left: 0,
-    top: 14,
-    mobile: {
-        left: 0,
-        width: '100%',
-        background: '#f2f2f2',
-        top: 0,
-        paddingLeft: 37,
-        paddingTop: 5,
-        borderBottom: `1px solid #d9dce0`,
-    }
-}
-
 export const dashboardMenuMobileStyle = {
     overflow: 'hidden',
     position: absolute,
@@ -209,9 +194,8 @@ export const dashboardMenuMobileStyle = {
 }
 
 export const dashboardMenuInnerStyle = {
-    width: [300, globals.style.layoutScalingValue, '100%'],
+    width: [200, globals.style.layoutScalingValue, '100%'],
     position: 'fixed',
-    borderRight: '1px solid #dadce0',
     mobile: {
         background: '#fff',
         position: absolute,
@@ -224,12 +208,10 @@ export const dashboardMenuItemStyle = isActive => {
     return {
         display: flex,
         alignItems: center,
-        borderBottom: '1px solid #dadce0',
         boxSizing: borderBox,
         paddingLeft: [10, globals.style.layoutScalingValue, 10],
         paddingRight: [10, globals.style.layoutScalingValue, 10],
-        paddingTop: [20, .7, 20],
-        paddingBottom: [20, .7, 20],
+        paddingBottom: [10, .7, 10],
         lineHeight: [20, .7, 20],
         color: !isActive ? black : colorPalette.honeyYellow,
         textDecoration: none,
@@ -248,8 +230,9 @@ export const dashboardMenuItemStyle = isActive => {
 }
 
 export const dashboardItemTitleStyle = {
-    size: [18, .7, 18],
-    lineHeight: [18, .7, 18]
+    textTransform: none,
+    size: [15, .7, 15],
+    weight: 500
 }
 
 export const dashboardIconWrapperStyle = {
@@ -266,4 +249,100 @@ export const dashboardActiveIndicator = {
     borderRadius: [5, .7, 5],
     right: [-20, .7, -20],
     backgroundColor: colorPalette.honeyYellow
+}
+
+export const headerAccountMenuButtonStyle = {
+    textTransform: 'none',
+    size: [14, .7, 14],
+    weight: 500,
+    hover: {
+        cursor: pointer
+    }
+}
+
+export const headerAccountMenuDropdownWrapperStyle = {
+    position: absolute,
+    width: '100%',
+    background: '#fff',
+    overflow: 'hidden',
+    borderRadius: [5, .7, 5],
+    height: 0,
+    left: 0,
+    top: [30, .7, 30],
+    textDecoration: none,
+    border: `1px solid ${globals.colors.borderColor}`,
+    hover: {
+        cursor: pointer
+    }
+}
+
+export const headerAccountMenuDropdownInnerWrapperStyle = {
+    display: flex,
+    padding: [20, .7, 20],
+    flexDirection: column,
+    width: '100%'
+}
+
+export const headerAccountMenuLinkStyle = isActive => {
+    return {
+        textDecoration: isActive ? 'underline' : none,
+        marginBottom: [4, .7, 7],
+        color: isActive ? colorPalette.honeyYellow : globals.colors.textColor,
+        mobile: {
+            size: 15
+        },
+        signOut: {
+            color: colorPalette.red,
+            hover: {
+                color: colorPalette.red
+            }
+        },
+        hover: {
+            color: colorPalette.forestGreen,
+            textDecoration: 'underline'
+        }
+    }
+
+}
+
+export const headerDashboardMenuLinkStyle = {}
+
+export const searchMenuSearchStyle = {
+    background: none,
+
+    mobile: {
+        padding: 0,
+        paddingTop: 30
+    }
+}
+
+export const leaveAReviewStyle = {
+    marginTop: [100, .7, 40]
+}
+
+export const searchMenuInnerWrapperStyle = {
+    display: flex,
+    flexDirection: column,
+    textTransform: none,
+    width: `calc(100% - ${sv(200, globals.style.layoutScalingValue)})`,
+    margin: '0 auto',
+    mobile: {
+        width: '100%'
+    }
+}
+
+export const searchMenuHeadingStyle = {
+    size: [32, .7, 28],
+    color: colorPalette.forestGreen,
+    weight: 800,
+    width: `calc(100% - ${sv(200, globals.style.layoutScalingValue)})`,
+    mobile: {
+        width: '100%'
+    }
+}
+
+export const submitPlaceWrapperStyle = {
+    marginTop: [100, .7, '0'],
+    marginBottom: [100, .7, 100],
+    textTransform: none
 }

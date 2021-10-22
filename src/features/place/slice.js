@@ -7,6 +7,7 @@ import {languageSpoken}    from './admin/taxonomy/languageSpoken/reducers'
 import {placeCategory}     from './admin/taxonomy/placeCategory/reducers'
 
 const initialState = {
+    addReviewSuccess: false,
     bathrooms: [],
     businessOwner: [],
     communitiesServed: [],
@@ -15,6 +16,7 @@ const initialState = {
     placeCategory: [],
     pendingPlaces: [],
     place: [],
+    placeLoaded: false,
     places: [],
     reviews: [],
     flaggedReviews: [],
@@ -42,13 +44,25 @@ const initialState = {
         placeCategory: [],
     },
     algoliaPlaces: [],
-    createdFromBoone: []
+    createdFromBoone: [],
+    // introducing new organization of state -- use current object for info about currently loaded place
+    current: {
+        submittedBy: {
+
+        }
+    }
 }
 
 export const slice = createSlice({
     name: 'place',
     initialState: initialState,
     reducers: {
+        addReviewSuccess: (state) => {
+            state.addReviewSuccess = true
+        },
+        closeReviewPanel: (state) => {
+            state.addReviewSuccess = false
+        },
         clear: (state, action) => {
             state.error = {
                 places: {},
@@ -72,6 +86,10 @@ export const slice = createSlice({
         getPlaceSuccess: (state, action) => {
             state.place = action.payload
             state.reviews = []
+            state.placeLoaded = true
+        },
+        taxonomyLoaded: (state) => {
+            state.placeLoaded = false
         },
         getPlaceFailure: (state, action) => {
             state.error.place = action.payload
@@ -162,6 +180,9 @@ export const slice = createSlice({
             // state.flaggedReviews = state.flaggedReviews.filter(item => item._id === action.payload._id).length < 1
             //     ? [...state.flaggedReviews, action.payload.e]
             //     : state.flaggedReviews
+        },
+        getSubmittedByUserSuccess: (state, action) => {
+            state.current.submittedBy = action.payload
         },
 
 

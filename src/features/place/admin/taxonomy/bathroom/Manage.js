@@ -6,6 +6,7 @@ import DashboardInfo              from 'shared/Layout/Dashboard/DashboardInfo'
 import AdminDashboardWrapper      from 'shared/Layout/Dashboard/admin/AdminDashboardWrapper'
 import LinkSwitch                 from 'shared/Basic/LinkSwitch'
 import BreadCrumb                 from 'features/place/admin/views/Breadcrumb'
+import {adminContentWrapperStyle} from 'shared/Layout/styles'
 import Create                     from './Create'
 
 const ManageBathrooms = () => {
@@ -20,7 +21,7 @@ const ManageBathrooms = () => {
     }, [])
 
     return (
-        <ContentWrapper>
+        <ContentWrapper theme={adminContentWrapperStyle}>
             <AdminDashboardWrapper>
                 <DashboardInfo
                     heading={'Manage Bathroom Taxonomy'}

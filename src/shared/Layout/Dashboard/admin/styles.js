@@ -204,11 +204,23 @@ export const adminCreateButtonStyle = {
 }
 export const adminMenuStyle = {
     ...menuPanelStyle,
+    tagline: {
+        size: [32, .7, 20],
+        color: colorPalette.forestGreen,
+        weight: 800
+    },
+    greeting: {
+        mobile: {
+            size: 18,
+            marginBottom: 15
+        }
+    },
     list: {
         display: flex,
         flexDirection: column,
         margin: 0,
         padding: 0,
+        textTransform: none
     },
     listItem: {
         position: relative,

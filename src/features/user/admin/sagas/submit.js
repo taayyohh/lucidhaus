@@ -9,6 +9,8 @@ export function* submitPlace({payload}) {
         token,
         address1,
         address2,
+        longitude,
+        latitude,
         city,
         zip,
         country,
@@ -17,6 +19,7 @@ export function* submitPlace({payload}) {
         communitiesServed,
         isPendingSubmission,
         name,
+        submittedBy,
         website,
     } = payload
 
@@ -25,6 +28,8 @@ export function* submitPlace({payload}) {
     const fields = [
         {address1},
         {address2},
+        {longitude},
+        {latitude},
         {city},
         {zip},
         {country},
@@ -33,6 +38,7 @@ export function* submitPlace({payload}) {
         {communitiesServed},
         {isPendingSubmission},
         {name},
+        {submittedBy},
         {website},
     ]
 
@@ -87,15 +93,16 @@ export function* submitPlaceSuccess({payload}) {
     })
 
     if (!submission.error) {
+        //TODO: clear form
        // console.log('submission', submission)
-        // yield put({
-        //     type: 'user/getUser',
-        //     payload: {
-        //         slug: slug,
-        //         _id: _id,
-        //         token: token
-        //     }
-        // })
+        yield put({
+            type: 'user/getUserById',
+            payload: {
+                userId: _id,
+                _id: _id,
+                token: token
+            }
+        })
     }
 }
 

@@ -1,5 +1,5 @@
-import {IMAGE_UPLOAD, MULTI_SELECT, NUMBER, RICH_TEXT, SELECT, TEXT, TOGGLE, UPLOAD_PATHS} from 'config/variables'
-import * as Yup                                                                            from 'yup'
+import {IMAGE_UPLOAD, MULTI_SELECT, NUMBER, RICH_TEXT, SELECT, TEL, TEXT, TOGGLE, UPLOAD_PATHS} from 'config/variables'
+import * as Yup                                                                                 from 'yup'
 
 export const placeFields = [
     {
@@ -15,8 +15,9 @@ export const placeFields = [
     {
         name: 'photo',
         file: 'photoFile',
-        cropWidth: 500,
-        cropHeight: 500,
+        cropWidth: 1920,
+        cropHeight: 1080,
+        aspect: 16 / 9,
         s3Path: UPLOAD_PATHS.place,
         type: IMAGE_UPLOAD,
     },
@@ -61,6 +62,11 @@ export const placeFields = [
         type: TEXT
     },
     {
+        name: 'tel',
+        inputLabel: 'Phone Number',
+        type: TEL
+    },
+    {
         name: 'longitude',
         inputLabel: 'Longitude ',
         type: NUMBER
@@ -103,11 +109,6 @@ export const placeFields = [
     {
         name: 'isPublished',
         inputLabel: 'Published',
-        type: TOGGLE
-    },
-    {
-        name: 'isPendingSubmission',
-        inputLabel: 'Pending Submission',
         type: TOGGLE
     },
     {

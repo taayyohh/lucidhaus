@@ -1,32 +1,60 @@
 import {colorPalette, globals} from 'config/styles'
+import {CDN}                   from 'config/variables'
+import {textAreaWrapperStyle}  from 'shared/Fields/styles'
 import {
     absolute,
     auto,
+    black,
     borderBox,
     center,
     column,
+    fixed,
     flex,
     flexStart,
     grid,
+    hidden,
+    inlineBlock,
+    inlineFlex,
     none,
     pointer,
     relative,
     row,
+    spaceBetween,
     sv,
-    white
+    uppercase,
+    white,
+    wrap
 }                              from 'utils/themer'
 
 export const placesWrapperStyle = {
     display: 'grid',
-    gridTemplateColumns: '1fr 1fr',
+    gridTemplateColumns: '1fr 1fr 1fr',
     gridGap: sv(50, globals.style.layoutScalingValue),
     margin: '0 auto',
-    marginTop: [100, .7, 100],
-    maxWidth: [1200, globals.style.layoutScalingValue, '100%'],
+    marginTop: [15, .7, 15],
+    maxWidth: [1280, globals.style.layoutScalingValue, '100%'],
     mobile: {
         display: flex,
         flexDirection: column
     }
+}
+
+export const placesContentWrapperStyle = {
+    width: '100%',
+    margin: 0,
+    height: `calc(100vh - ${sv(100, .7)} - ${sv(28, .7)} - ${sv(55, .7)})`,
+    overflow: hidden
+}
+
+export const placesContentInnerWrapperStyle = noResults => {
+    return {
+        display: 'flex',
+        flexDirection: noResults ? column: row,
+        mobile: {
+            flexDirection: column
+        }
+    }
+
 }
 
 export const placesHeadingStyle = {
@@ -46,21 +74,30 @@ export const placesHeadingStyle = {
     }
 }
 
-export const placeContentWrapperStyle = {
-    marginBottom: [40, .7, 20],
-    //marginTop: [-50, .7, '0'],
-}
-
 export const placeDetailStyle = {
-    maxWidth: [800, globals.style.layoutScalingValue, '100%'],
     margin: '0 auto',
     font: globals.fonts.serif,
-    size: [20, .7, 20],
+    size: [16, .7, 16],
     lineHeight: [28, .7, 28],
     marginTop: [40, .7, 30],
+    marginBottom: [30, .7, 30],
     mobile: {
         paddingLeft: 25,
         paddingRight: 25
+    }
+}
+
+export const placeSearchFormWrapperStyle = {
+    background: colorPalette.forestGreen,
+    color: white,
+    display: flex,
+    alignItems: center,
+    justifyContent: 'space-around',
+    height: [100, .7, 'auto'],
+    size: 58,
+    lineHeight: 70,
+    mobile: {
+        padding: '30px'
     }
 }
 
@@ -68,10 +105,11 @@ export const placesSearchFormStyle = {
     flexDirection: row,
     border: 0,
     padding: 0,
-    width: [800, globals.style.layoutScalingValue, '100%'],
+    width: [900, globals.style.layoutScalingValue, '100%'],
     margin: '0',
+    weight: 400,
     mobile: {
-        flexDirection: column
+        flexDirection: column,
     },
     field: {
         position: absolute,
@@ -80,7 +118,8 @@ export const placesSearchFormStyle = {
     fieldset: {
         height: [52, .7, 52],
         marginBottom: 0,
-        maxWidth: [650, globals.style.layoutScalingValue, '100%'],
+        marginRight: [30, .7, '0'],
+        width: auto
     },
     inputLabelFocused: {
         transform: `translate(-6%, 14%) scale(${globals.style.inputLabelShrinkRatio})`
@@ -91,7 +130,8 @@ export const placesSearchFormStyle = {
         justifyContent: center,
         marginTop: [0, .7, 20],
         height: [52, .7, 52],
-        width: [150, globals.style.layoutScalingValue, 150],
+        whiteSpace: 'nowrap',
+        width: auto,
         backgroundColor: colorPalette.honeyYellow,
         borderColor: colorPalette.honeyYellow,
         mobile: {
@@ -112,25 +152,25 @@ export const placesSearchFormStyle = {
 
 export const placeCardStyle = {
     backgroundColor: white,
-    textAlign: center,
+    border: `1px solid ${globals.colors.borderColor}`,
     hover: {
-        color: colorPalette.paleGreen
+        color: colorPalette.forestGreen,
+        borderColor: black
     },
     textWrapper: {
-        paddingLeft: [50, globals.style.layoutScalingValue, 20],
-        paddingRight: [50, globals.style.layoutScalingValue, 20]
+        paddingLeft: [20, globals.style.layoutScalingValue, 20],
+        paddingRight: [20, globals.style.layoutScalingValue, 20]
     },
     name: {
-        size: [32, .7, 28],
+        size: [20, .7, 20],
         lineHeight: [24, .7, 32],
+        weight: 400,
         width: '100%',
-        textAlign: center
     },
     address: {
-        size: [22, .7, 22],
+        size: [16, .7, 16],
         lineHeight: [20, .7, 20],
         width: '100%',
-        textAlign: center
     },
     child: {
         selector: 'img',
@@ -145,9 +185,58 @@ export const placeCardStyle = {
 
 export const placeWrapperStyle = {
     display: flex,
-    flexDirection: column,
-    width: [1450, globals.style.layoutScalingValue, '100%'],
-    margin: '0 auto'
+    justifyContent: spaceBetween,
+    width: [1200, globals.style.layoutScalingValue, '100%'],
+    margin: '0 auto',
+    mobile: {
+        flexDirection: column
+    }
+}
+
+export const placeInnerLeftWrapperStyle = {
+    width: [800, globals.style.layoutScalingValue, '100%'],
+    marginRight: auto,
+    marginTop: [35, .7, 35],
+    mobile: {
+        marginRight: 0
+    }
+}
+
+export const placeInnerRightWrapperStyle = {
+    width: [300, globals.style.layoutScalingValue, '100%'],
+    marginTop: [50, .7, 50]
+}
+
+export const placeInnerRightInfoStyle = {
+    position: 'sticky',
+    top: [50, .7, 50],
+    background: white,
+    border: `1px solid ${globals.colors.borderColor}`,
+    borderRadius: [10, globals.style.layoutScalingValue, 10],
+    marginTop: [30, .7, 30],
+    paddingLeft: [30, globals.style.layoutScalingValue, 30],
+    paddingRight: [30, globals.style.layoutScalingValue, 30],
+    paddingTop: [30, globals.style.layoutScalingValue, 30],
+    paddingBottom: [30, globals.style.layoutScalingValue, 30],
+
+}
+
+export const placeMarqueeStyle = url => {
+    return {
+        width: '100%',
+        height: [420, .7, 230],
+        backgroundSize: 'cover',
+        backgroundPosition: 'center center',
+        cursor: pointer,
+        display: flex,
+        alignItems: center,
+        justifyContent: center,
+        backgroundImage: !url ? `url(${CDN}assets/ij-home+2)` : `url(${CDN}${url})`,
+        hover: {
+            cursor: 'default'
+        }
+    }
+
 }
 
 export const placeWrapperTopStyle = {
@@ -185,8 +274,8 @@ export const placeWrapperBottomStyle = {
 }
 
 export const placeMapStyle = {
-    height: 500,
-    width: [500, globals.style.layoutScalingValue, '100%']
+    height: [250, globals.style.layoutScalingValue, 250],
+    width: '100%'
 }
 
 export const placePhotoStyle = {
@@ -204,43 +293,89 @@ export const placeTitleStyle = {
     display: flex,
     flexDirection: column,
     position: relative,
-    textAlign: center,
-    backgroundColor: colorPalette.seaFoamGreen,
     font: globals.fonts.fancy,
-    size: [34, .7, 28],
-    paddingTop: [20, .7, 20],
+    size: [48, .7, 28],
+    lineHeight: [54, .7, 32],
     paddingBottom: [20, .7, 20],
-    borderRadius: [50, .7, '0'],
+    weight: 600,
     margin: 0,
     marginBottom: [30, .7, 20],
-    // borderRadius: `${sv(10)} ${sv(10)} 0 0`
+    borderBottom: `1px solid ${globals.colors.borderColor}`
 }
 
 export const placeAddressStyle = {
-    font: globals.fonts.serif,
-    size: [20, .7, 20]
+    display: flex,
+    size: [16, .7, 16],
+    marginTop: [20, .7, 20],
+    address: {
+        marginLeft: [10, .7, 10]
+    }
 }
 
 export const placeWebsiteStyle = {
-    font: globals.fonts.serif,
-    size: [20, .7, 20]
+    display: flex,
+    size: [16, .7, 16],
+    textDecoration: none,
+    marginTop: [10, .7, 10],
+    hover: {
+        color: globals.colors.linkHoverColor
+    }
+}
+
+export const placeWebsiteIconStyle = {
+    marginRight: [10, .7, 10],
+    marginTop: [2, .7, 2]
+}
+
+export const placeTagsStyle = {
+    display: inlineFlex,
+    size: [16, .7, 16],
+    textDecoration: none,
+    marginTop: [10, .7, 10]
+}
+
+export const placeTagsIconStyle = {
+    marginRight: [10, .7, 10],
+    marginTop: [5, .7, 5]
+}
+
+export const placeTagsWrapperStyle = {
+    display: flex,
+    flexWrap: wrap,
+    child: {
+        selector: '> a',
+        display: inlineBlock,
+        color: colorPalette.paleGreen,
+        marginRight: [5, .7, 5],
+        textDecoration: none,
+        hover: {
+            color: colorPalette.forestGreen
+        }
+    }
 }
 
 export const placeTaxonomyStyle = {
-    border: `1px solid ${colorPalette.seaFoamGreen}`,
-    borderRadius: [7, .7, 7],
-    padding: [30, .7, 30],
-    marginBottom: [30, .7, 30],
-    // boxShadow: '0px 3px 6px 0px #e6e6e6',
+    borderRadius: [5, .7, 5],
+    paddingLeft: [20, globals.style.layoutScalingValue, 20],
+    paddingRight: [20, globals.style.layoutScalingValue, 20],
+    paddingTop: [20, globals.style.layoutScalingValue, 20],
+    paddingBottom: [20, globals.style.layoutScalingValue, 20],
+    border: `1px solid ${globals.colors.borderColor}`,
+    background: white,
     title: {
-        color: colorPalette.forestGreen,
-        size: [22, .7, 22],
+        textTransform: uppercase,
         letterSpacing: [0.5, .7, 0.5],
+        marginBottom: [15, .7, 15],
+        size: [13, .7, 13],
+        weight: 600,
+    },
+    name: {
+        size: [15, .7, 15],
+        color: colorPalette.darkGray
     }
 }
 
 export const placeTaxonomyWrapperStyle = {
-    marginTop: [50, .7, 50],
     display: grid,
     gridTemplateColumns: '1fr 1fr 1fr',
     gridGap: sv(20),
@@ -248,17 +383,6 @@ export const placeTaxonomyWrapperStyle = {
         display: flex,
         flexDirection: column
     }
-}
-
-export const placeDescriptionStyle = {
-    boxSizing: borderBox,
-    paddingRight: [30, globals.style.layoutScalingValue, '0'],
-}
-
-export const placeDescriptionWrapperStyle = {
-    marginTop: [30, .7, 20],
-    marginBottom: [40, .7, 20],
-    textAlign: 'center'
 }
 
 export const placeImageStyle = {}
@@ -279,70 +403,180 @@ export const reviewHelperTextStyle = {
 }
 
 export const reviewFormStyle = {
-    width: '100%',
+    width: `calc(100% - ${sv(100, globals.style.layoutScalingValue)})`,
     padding: 0,
     border: 0,
-    marginTop: [50, .7, 50]
+    marginTop: [50, .7, 50],
+    marginBottom: [150, .7, 100],
+    marginLeft: auto,
+    marginRight: auto,
+    mobile: {
+        width: '100%'
+    },
+    heading: {
+        size: [20, .7, 20]
+    }
 }
 
 export const reviewFormWrapperStyle = {
-    maxWidth: [600, globals.style.layoutScalingValue, '100%'],
-    marginTop: 50,
+    paddingLeft: [70, globals.style.layoutScalingValue, '0'],
+    paddingRight: [70, globals.style.layoutScalingValue, '0']
 }
 
-export const reviewLeaveWrapperStyle = {
-    marginTop: [65, .7, 65]
-}
+export const reviewLeaveWrapperStyle = {}
 
 export const reviewFormHeadingStyle = {
-    size: [30, .7, 24],
+    display: flex,
+    flexDirection: column,
+    size: [24, .7, 18],
     marginBottom: [20, .7, 20],
-    letterSpacing: [1, .7, 1],
-    font: globals.fonts.fancy
+    child: {
+        selector: 'span',
+        size: [30, .7, 24],
+        color: colorPalette.darkHoneyYellow
+
+    }
 }
 
 export const reviewHeadingStyle = {
-    font: globals.fonts.fancy,
-    size: [32, .7, 28],
-    backgroundColor: colorPalette.seaFoamGreen,
-    paddingLeft: [20, .7, 20],
+    size: [22, .7, 22],
     paddingTop: [20, .7, 20],
     paddingBottom: [20, .7, 20],
-    borderRadius: `${sv(10)} ${sv(10)} 0 0`
+    marginBottom: [20, .7, 20],
+    weight: 600,
+    borderBottom: `1px solid ${globals.colors.borderColor}`
 }
 
 export const placeReviewStyle = {
     display: flex,
-    flexDirection: column,
     background: 'none',
     position: relative,
     width: '100%',
     padding: [20, globals.style.layoutScalingValue, 20],
     borderBottom: `1px solid ${globals.colors.borderColor}`,
-    boxShadow: '1px 3px 5px 0px #e2e2e2',
     marginBottom: [20, .7, 20],
-    paddingBottom: [50, .7, 50],
+    paddingBottom: [100, .7, 100],
+    mobile: {
+        flexDirection: column
+    },
     image: {
         maxWidth: [150, .7, 150]
     }
 }
 
+export const placeReviewUserAvatarStyle = {
+    height: [100, globals.style.layoutScalingValue, 100],
+    width: [100, globals.style.layoutScalingValue, 100],
+    borderRadius: [50, globals.style.layoutScalingValue, 50],
+    backgroundColor: colorPalette.seaFoamGreen
+}
+
+export const placeReviewUserReviewCountStyle = {
+    size: [16, .7, 16]
+}
+
+export const placeReviewUserNameStyle = {
+    marginTop: [5, .7, 5],
+    size: [13, .7, 13],
+    weight: 700,
+    fontStyle: 'italic',
+    textAlign: center
+}
+
+export const placeReviewUserInfoStyle = {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: center,
+    marginRight: [50, .7, 50],
+    width: [120, .7, 100],
+    minWidth: [120, .7, 100]
+}
+
+export const placeReviewedByStyle = {
+    size: [13, .7, 13],
+    weight: 400,
+    color: colorPalette.darkGray
+}
+
 export const placeReviewDescriptionStyle = {
-    marginTop: [30, .7, 30]
+    size: [17, .7, 17],
+    marginTop: [20, .7, 20]
 }
 
 export const placeReviewLikertStyle = {
-    display: 'flex',
-    flexDirection: 'column',
+    display: grid,
+    gridTemplateColumns: '1fr 1fr 1fr',
+    gridGap: sv(20),
     font: globals.fonts.serif,
-    marginBottom: [25, .7, 25]
+    marginBottom: [25, .7, 25],
+    width: '100%',
+    mobile: {
+        display: flex,
+        flexDirection: column
+    },
+    child: {
+        selector: 'svg',
+        size: [32, .7, 24],
+        marginRight: [10, .7, 10],
+        color: colorPalette.paleGreen
+    }
+}
+
+export const placeLikertItemWrapperStyle = {
+    mobile: {
+        marginBottom: 20
+    }
+}
+
+export const placeReviewIconWrapperStyle = {
+    display: flex,
+    flexDirection: column,
+    color: colorPalette.forestGreen,
+    child: {
+        selector: 'strong',
+        size: [18, .6, 18]
+    }
+}
+
+const placeReviewScaleWidth = 150
+export const placeReviewScaleStyle = {
+    position: relative,
+    height: [20, .7, 20],
+    border: `1px solid ${colorPalette.forestGreen}`,
+    width: [placeReviewScaleWidth, globals.style.layoutScalingValue, placeReviewScaleWidth],
+    borderRadius: [20, .7, 20],
+    marginTop: [10, .7, 10],
+    overflow: hidden
+}
+
+export const placeReviewScaleInnerStyle = rating => {
+    return {
+        position: absolute,
+        left: 0,
+        top: 0,
+        height: '100%',
+        width: [`${(rating / 5) * placeReviewScaleWidth}`, globals.style.layoutScalingValue, `${(rating / 5) * placeReviewScaleWidth}`],
+        background: colorPalette.seaFoamGreen,
+        borderRadius: [20, .7, 20],
+        transition: 'width: 500ms ease'
+    }
+}
+
+export const placeReviewDisclaimerStyle = {
+    size: [11, .7, 11],
+    color: colorPalette.darkGray,
+    fontStyle: 'italic',
+    paddingTop: [10, .7, 10],
+    marginTop: [30, .7, 30],
+    borderTop: `1px solid ${globals.colors.borderColor}`
 }
 
 export const placeFlaggedTextStyle = {
-    color: '#fff',
-    size: [32, .7, 22],
+    color: black,
+    size: [22, .7, 22],
     padding: [20, .7, 20],
-    zIndex: 1
+    zIndex: 1,
+    position: absolute
 }
 
 export const placeReviewBlurStyle = {
@@ -351,33 +585,74 @@ export const placeReviewBlurStyle = {
     left: 0,
     height: '100%',
     width: '100%',
-    background: '#000'
+    background: globals.colors.borderColor
 }
 
-export const placeReviewReportIconStyle = {
-    marginTop: 20,
+export const placeReviewReportWrapperStyle = {
     position: absolute,
-    bottom: [20, .7, 20],
-    zIndex: 3,
+    right: [25, globals.style.layoutScalingValue, 25],
+    bottom: [25, globals.style.layoutScalingValue, 25],
+    marginTop: 20,
+    display: flex,
+    alignItems: center,
+    color: colorPalette.darkGray,
+    size: [15, .7, 15],
     hover: {
         color: colorPalette.red,
-        cursor: pointer
-    }
-}
-
-export const bookmarkIconStyle = isBookmark => {
-    return {
-        size: [50, .7, 30],
-        color: isBookmark ? colorPalette.honeyYellow : '#fff',
-        hover: {
-            color: colorPalette.honeyYellow,
-            cursor: 'pointer'
+        cursor: pointer,
+        child: {
+            selector: 'svg',
+            color: colorPalette.red,
+            cursor: pointer
         }
     }
 }
 
-export const bookmarkStyle = {
-    position: absolute,
-    right: [80, .7, 5],
-    top: 0
+export const placeReviewReportIconStyle = {
+    marginRight: [12, .7, 12],
+    zIndex: 3,
+    color: colorPalette.darkGray
 }
+
+export const placeReportPortalStyle = {
+    position: fixed,
+    zIndex: 10,
+    height: [550, .7, 200],
+    width: [700, globals.style.layoutScalingValue, 250],
+    border: `1px solid ${globals.colors.borderColor}`,
+    padding: [50, globals.style.layoutScalingValue, 30],
+    background: white,
+    top: '50%',
+    left: '50%',
+    marginLeft: [-350, globals.style.layoutScalingValue, '0'],
+    marginTop: [-270, globals.style.layoutScalingValue, '0'],
+    boxShadow: '0px 0px 15px 2px #00000029',
+    mobile: {
+        top: 50,
+        left: 50,
+        width: 'calc(100% - 100px)',
+        height: auto,
+        zIndex: 20
+    }
+}
+
+export const placesReportFormStyle = {
+    padding: 0,
+    border: 0,
+    heading: {
+        size: [26, .6, 26]
+    },
+    inputLabel: {
+        size: [16, .7, 16],
+    },
+    textAreaWrapper: {
+        child: {
+            selector: 'textarea',
+            ...textAreaWrapperStyle.child,
+            height: [200, globals.style.layoutScalingValue, 200],
+            padding: [20, .7, 20],
+            boxSizing: borderBox
+        }
+    }
+}
+

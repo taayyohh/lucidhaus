@@ -13,10 +13,12 @@ import ContentWrapper                                                    from 's
 import DashboardInfo                                                     from 'shared/Layout/Dashboard/DashboardInfo'
 import DashboardWrapper                                                  from 'shared/Layout/Dashboard/DashboardWrapper'
 import {adminDashboardMenu}                                              from '../../../../config/menus/dashboard/admin'
+import LinkSwitch                                                        from 'shared/Basic/LinkSwitch'
+import {userContentWrapperStyle}                                         from './styles'
 
 const UpdateReview = () => {
     const dispatch = useDispatch()
-    const {_id, token, isAdmin} = useSelector(state => state.user)
+    const {_id, token, isAdmin, nameFirst, avatar} = useSelector(state => state.user)
     const {slug} = useSelector(state => state.site)
     const {reviews} = useSelector(state => state.place)
     const [currentReview, setCurrentReview] = useState({})
@@ -43,12 +45,17 @@ const UpdateReview = () => {
 
     const initialValues = {
         review: currentReview?.review,
+        reviewerName: nameFirst,
+        reviewerAvatar: avatar,
         photo: currentReview?.photo,
         safe: currentReview?.safe,
         celebrated: currentReview?.celebrated,
         welcome: currentReview?.welcome,
+        safe_prev: currentReview?.safe,
+        celebrated_prev: currentReview?.celebrated,
+        welcome_prev: currentReview?.welcome,
         user: _id,
-        placeId: currentReview?._id,
+        placeId: currentReview?.place,
         placeName: currentReview?.placeName,
         placeSlug: currentReview?.placeSlug,
         isFlagged: currentReview?.isFlagged,
@@ -60,15 +67,19 @@ const UpdateReview = () => {
     }
 
     return (
-        <ContentWrapper>
+        <ContentWrapper theme={userContentWrapperStyle}>
             <DashboardWrapper menu={isAdmin ? adminDashboardMenu : userDashboardMenu}>
                 <DashboardInfo
-                    heading={'Your Reviews'}
+                    heading={'Update Review'}
                     description={"Here are the reviews you've left."}
                 />
                 <Div theme={reviewFormWrapperStyle}>
-                    <H2 theme={reviewFormHeadingStyle}>Update Your of Review: <Span
-                        theme={{color: colorPalette.seaGreen}}>{currentReview?.placeName}</Span></H2>
+                    <H2 theme={reviewFormHeadingStyle}>Update Your Review of: <Span
+                        theme={{color: colorPalette.seaGreen}}>
+                        <LinkSwitch url={`/places/${currentReview?.placeSlug}`}>
+                            {currentReview?.placeName}
+                        </LinkSwitch>
+                    </Span></H2>
                     <Form
                         initialValues={initialValues}
                         fields={isAdmin ? reviewAdminFields : reviewFields}

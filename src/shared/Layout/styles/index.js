@@ -1,21 +1,7 @@
-import {
-    colorPalette,
-    genericMobileContainerStyles,
-    globals
-} from 'config/styles'
-import {
-    center,
-    column,
-    fixed,
-    flex,
-    pointer,
-    relative,
-    sv,
-    transparent,
-    white
-} from 'utils/themer'
+import {colorPalette, genericMobileContainerStyles, globals}                          from 'config/styles'
+import {center, column, fixed, flex, none, pointer, relative, sv, transparent, white} from 'utils/themer'
 
-const contentRow = 2
+const contentRow = 3
 
 
 export const pageFrameStyle = {
@@ -41,6 +27,12 @@ export const pageFrameStyle = {
         gridColumnSpan: 6,
         msGridRow: 1,
         gridRow: 1,
+    },
+    search: {
+        gridColumn: '1 / 7',
+        gridColumnSpan: 6,
+        msGridRow: 2,
+        gridRow: 2,
     },
     hlm: {
         msGridRow: 1,
@@ -97,7 +89,7 @@ export const pageFrameStyle = {
             maxHeight: 200
         }
     },
-    main: slug => {
+    main: ({slug, isSearchResults}) => {
         const base = {
             position: relative,
             msGridRow: contentRow,
@@ -128,6 +120,18 @@ export const pageFrameStyle = {
         if(slug === 'places')
             return {
                 ...base,
+                gridColumn: '1 / 7',
+                minHeight: none,
+                mobile: {
+                    padding: 0
+                }
+            }
+
+        if(isSearchResults)
+            return {
+                ...base,
+                gridColumn: '1 / 7',
+                minHeight: none,
                 mobile: {
                     padding: 0
                 }
@@ -145,7 +149,7 @@ export const pageFrameStyle = {
         gridRow: 3,
         marginTop: 50
     },
-    footer: slug => {
+    footer: ({slug, isSearchResults}) => {
         const base = {
             gridColumn: '1 / 7',
             gridColumnSpan: 6,
@@ -154,7 +158,8 @@ export const pageFrameStyle = {
             background: white
         }
 
-        if (slug.length === 0)
+
+        if (slug.length === 0 || isSearchResults)
             return {
                 ...base,
                 marginTop: 0
@@ -187,7 +192,7 @@ export const overlayStyle = {
     right: 0,
     top: 0,
     bottom: 0,
-    backgroundColor: colorPalette.grayPurple,
+    backgroundColor: colorPalette.paleGreen,
     zIndex: -1,
     hover: {
         cursor: pointer
@@ -226,7 +231,17 @@ export const defaultModalStyle = {
     marginTop: '-15vw',
     padding: sv(50),
     backgroundColor: white,
-    border: `1px solid #000`,
+    border: `1px solid ${globals.colors.borderColor}`,
+    borderRadius: [10, .7, 10],
+    mobile: {
+        paddingTop: 100,
+        marginLeft: 0,
+        marginTop: 0,
+        top: 0,
+        left: 0,
+        height: '100vh',
+        width: '100vw'
+    }
 }
 
 export const notificationWrapperStyle = theme => {
@@ -281,3 +296,27 @@ export const transitionOverlayStyle = {
     display: 'static'
 }
 
+export const adminContentWrapperStyle = {
+    width: [1280, globals.style.layoutScalingValue, '100%']
+}
+
+export const closeButtonStyle = {
+    display: flex,
+    alignItems:center,
+    justifyContent: center,
+    height: 50,
+    width: 50,
+    borderRadius: 25,
+    backgroundColor: colorPalette.darkHoneyYellow,
+    border: `1px solid ${colorPalette.darkHoneyYellow}`,
+    hover: {
+        cursor: pointer,
+        backgroundColor: colorPalette.honeyYellow,
+        borderColor: colorPalette.honeyYellow
+    }
+}
+
+export const closeButtonIconStyle = {
+    size: [18, .7, 18],
+    color: white
+}

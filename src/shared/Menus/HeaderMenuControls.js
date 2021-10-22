@@ -1,18 +1,28 @@
-import {user}                                        from 'config/icons'
-import React                                         from 'react'
-import {useSelector}                                 from 'react-redux'
-import Div                                           from 'shared/Basic/Div'
-import Icon                                          from 'shared/Basic/Icon'
-import LinkSwitch                                    from 'shared/Basic/LinkSwitch'
-import {headerIconStyle, headerMenuIconWrapperStyle} from 'shared/Layout/styles/header'
-import {headerMenuControlWrapperStyle}               from './styles'
+import {search}                        from 'config/icons'
+import React, {useContext}             from 'react'
+import {useSelector}                   from 'react-redux'
+import Div                             from 'shared/Basic/Div'
+import Icon                            from 'shared/Basic/Icon'
+import LinkSwitch                      from 'shared/Basic/LinkSwitch'
+import {menuPanelContext}              from 'shared/Containers/MenuPanelController'
+import {
+    headerButtonSignInStyle,
+    headerButtonSignUpStyle,
+    headerButtonWrapperStyle,
+    headerMenuIconWrapperStyle,
+    headerSearchIconStyle,
+    headerSearchWrapperStyle
+}                                      from 'shared/Layout/styles/header'
+import HeaderMenuUserDropdown          from './HeaderMenuUserDropdown'
+import {headerMenuControlWrapperStyle} from './styles'
 
 const HeaderMenuControls = () => {
-    const {isAuthenticated, isAdmin} = useSelector(state => state.user)
+    const {isAuthenticated, isAdmin, nameFirst} = useSelector(state => state.user)
+    const {setPanel, currentPanel} = useContext(menuPanelContext)
 
     return (
         <Div theme={headerMenuControlWrapperStyle}>
-            <LinkSwitch
+            <Div
                 url={
                     isAuthenticated && isAdmin
                         ? '/admin'
@@ -22,11 +32,42 @@ const HeaderMenuControls = () => {
                 }
                 theme={headerMenuIconWrapperStyle}
             >
-                <Icon
-                    icon={user}
-                    theme={headerIconStyle}
-                />
-            </LinkSwitch>
+                {(isAuthenticated && (
+                    <HeaderMenuUserDropdown
+                        nameFirst={nameFirst}
+                    />
+                )) || (
+                    <Div theme={headerButtonWrapperStyle}>
+                        <LinkSwitch
+                            url={'/signin'}
+                            theme={headerButtonSignInStyle}
+                        >
+                            Signin
+                        </LinkSwitch>
+                        <LinkSwitch
+                            url={'/signup'}
+                            theme={headerButtonSignUpStyle}
+                        >
+                            Sign Up
+                        </LinkSwitch>
+                    </Div>
+                )}
+                <Div
+                    theme={headerSearchWrapperStyle}
+                    onClick={
+                        () => setPanel(
+                            !currentPanel
+                                ? 'search-menu'
+                                : null
+                        )}
+                >
+                    <Icon
+                        icon={search}
+                        theme={headerSearchIconStyle}
+                    />
+                </Div>
+
+            </Div>
         </Div>
 
     )

@@ -15,9 +15,7 @@ import {
 }                              from 'utils/themer'
 
 export const footerStyle = {
-    size: [18, .7, 18],
-    letterSpacing: [0.2, .7, 0.2],
-    textTransform: uppercase,
+    size: [15, .7, 15],
     borderTop: `1px solid ${colorPalette.gray}`,
     zIndex: 3,
     background: white,
@@ -34,7 +32,7 @@ export const footerStyle = {
     },
     copy: {
         mobile: {
-            marginBottom: 5
+            marginBottom: 10
         }
     },
     inner: {
@@ -59,12 +57,12 @@ export const footerStyle = {
         child: {
             selector: 'a',
             color: colorPalette.paleGreen,
-            marginLeft: [7, .7, '0'],
+            marginLeft: [15, .7, '0'],
             textDecoration: none,
             mobile: {
                 marginLeft: 0,
                 marginRight: 12,
-                marginBottom: 5
+                marginBottom: 10
             },
             hover: {
                 color: colorPalette.seaGreen,
@@ -81,9 +79,9 @@ export const footerStyle = {
     feedback: {
         display: inlineFlex,
         alignItems: center,
-        color: `${black} !important`,
+        color: `${white} !important`,
         justifyContent: center,
-        background: '#FFB400',
+        backgroundColor: colorPalette.seaGreen,
         paddingLeft: [15, .7, 15],
         paddingRight: [15, .7, 15],
         paddingTop: [10, .7, 10],
@@ -93,7 +91,7 @@ export const footerStyle = {
             marginBottom: 5
         },
         hover: {
-            backgroundColor: colorPalette.paleGreen,
+            backgroundColor: colorPalette.forestGreen,
             color: `${white} !important`,
             textDecoration: 'none !important'
         }

@@ -26,7 +26,7 @@ const Footer = ({theme}) =>
                     <LinkSwitch
                         theme={footerStyle.feedback}
                         url={'https://docs.google.com/forms/d/1jVOQmYLDvdTEiGICDmZY9wmSmKirNo1oYNZxO-UjylE/edit?ts=60c78b0f'}
-                        children={'Leave us Feedback!'}
+                        children={'Leave us Feedback'}
                     />
                 </Div>
             </Div>

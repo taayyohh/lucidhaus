@@ -6,6 +6,7 @@ import DashboardInfo              from 'shared/Layout/Dashboard/DashboardInfo'
 import AdminDashboardWrapper      from 'shared/Layout/Dashboard/admin/AdminDashboardWrapper'
 import LinkSwitch                 from 'shared/Basic/LinkSwitch'
 import BreadCrumb                 from 'features/user/admin/views/Breadcrumb'
+import {adminContentWrapperStyle} from 'shared/Layout/styles'
 import Create                     from './Create'
 
 const ManageBodyModifications = () => {
@@ -19,7 +20,7 @@ const ManageBodyModifications = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     return (
-        <ContentWrapper>
+        <ContentWrapper theme={adminContentWrapperStyle}>
             <AdminDashboardWrapper>
                 <DashboardInfo
                     heading={'Manage Body Modification Taxonomy'}

@@ -116,12 +116,26 @@ export const addPlaceFromBoone = ({_id, token, place}) =>
             return error
         })
 
-
 export const getAlgoliaPlaces = ({input, index}) => {
+
     return (
         index.search(input)
             .then(response => {
                 return response
+            })
+            .catch(error => {
+                return error
+            })
+    )
+}
+
+export const getPlaceCategories = ({payload}) => {
+    return (
+        fetch(`${API}/place-category/by/name/or/description/${payload}`, {
+            method: 'GET',
+        })
+            .then(response => {
+                return response.json()
             })
             .catch(error => {
                 return error

@@ -30,7 +30,6 @@ export const defaultFormStyle = {
     flexDirection: column,
     width: auto,
     padding: [50, .7, 50],
-    background: colorPalette.hyphaGray,
     border: `1px solid ${colorPalette.gray}`,
     position: relative,
     height: auto,
@@ -43,8 +42,9 @@ export const defaultFormStyle = {
         margin: 0,
         fontFamily: globals.fonts.sans,
         alignSelf: flexStart,
-        size: [60, .7, 38],
-        weight: 300,
+        size: [30, .7, 30],
+        letterSpacing: [-1.75, .7, -0.5],
+        weight: 800,
         marginBottom: 20,
         empty: {
             display: none
@@ -90,13 +90,13 @@ export const defaultInputStyle = {
     position: relative,
     height: [50, .7, 50],
     width: '100%',
-    padding: `0 ${sv(25)}`,
+    padding: `0 ${sv(25, globals.style.layoutScalingValue)}`,
     border: none,
     margin: 0,
     font: globals.fonts.sans,
     size: [16, .7, 16],
     lineHeight: [16, .7, 16],
-    fontWeight: 300,
+    fontWeight: 400,
     textOverflow: 'ellipsis',
     backgroundColor: transparent,
     color: globals.colors.black,
@@ -111,6 +111,7 @@ export const defaultInputStyle = {
     placeholder: {
         color: transparent,
         textTransform: none,
+        weight: 500
     },
     focus: {
         outline: 'none'
@@ -140,12 +141,12 @@ export const defaultInputLabelStyle = {
     transform: 'translate(0px, 100%) scale(1)',
     zIndex: 1,
     border: 0,
-    weight: 300,
+    weight: 500,
     transition: 'color 300ms cubic-bezier(0.0, 0, 0.3, 1) 0ms, ' +
         'transform 300ms cubic-bezier(0.0, 0, 0.3, 1) 0ms',
     transformOrigin: 'top left',
     pointerEvents: none,
-    size: [16, .7, 16],
+    size: [14, .7, 14],
     lineHeight: [16, .7, 16]
 }
 
@@ -172,8 +173,9 @@ export const defaultFieldErrorStyle = {
 }
 
 export const defaultFieldHeadingStyle = {
-    size: [30, .7, 30],
-    weight: 300,
+    size: [19, .7, 19],
+    marginBottom: [10, .7, 10],
+    weight: 400,
     margin: `0 0 ${sv(5)} 0`,
     empty: {
         display: none
@@ -181,9 +183,9 @@ export const defaultFieldHeadingStyle = {
 }
 
 export const defaultHelperTextStyle = {
-    font: globals.fonts.serif,
-    size: [16, .7, 16],
-    marginBottom: [30, .7, 30]
+    size: [15, .7, 15],
+    marginBottom: [30, .7, 30],
+    weight: 400
 }
 
 
@@ -194,6 +196,9 @@ export const richTextStyle = {
     minHeight: 300,
     marginBottom: [50, .7, 50],
     width: '100%',
+    color: globals.colors.textColor,
+    size: [16, .7, 16],
+    weight: 400,
     class: {
         name: 'error',
         child: [
@@ -286,9 +291,9 @@ export const imageDropZonePreviewWrapperStyle = {
     boxSizing: borderBox,
     padding: [20, globals.style.layoutScalingValue, 20],
     marginTop: [50, .7, 50],
-    mobile: {
-        height: 300
-    }
+    // mobile: {
+    //     height: 300
+    // }
 }
 
 export const audioUploadPreviewWrapperStyle = {
@@ -299,13 +304,38 @@ export const audioUploadPreviewWrapperStyle = {
 export const imageDropZoneStyle = {
     position: relative,
     display: block,
-    minHeight: [500, globals.style.layoutScalingValue, 100],
     marginTop: [50, .7, 50],
-    // width: [500, globals.style.layoutScalingValue, '100%'],
     width: '50%',
     background: '#fff',
     border: `1px solid ${globals.colors.borderColor}`,
     borderRadius: 10,
+    paddingTop: [50, .7, 50],
+    paddingBottom: [50, .7, 50],
+    hover: {
+        cursor: pointer
+    },
+    closeIcon: {
+        size: [18, .7, 18],
+        color: white
+    },
+    icon: {
+        size: [28, .7, 28]
+    },
+    close: {
+        display: flex,
+        alignItems:center,
+        justifyContent: center,
+        height: 50,
+        width: 50,
+        borderRadius: 25,
+        backgroundColor: colorPalette.darkHoneyYellow,
+        border: `1px solid ${colorPalette.darkHoneyYellow}`,
+        hover: {
+            cursor: pointer,
+            backgroundColor: colorPalette.honeyYellow,
+            borderColor: colorPalette.honeyYellow
+        }
+    },
     portal: {
         position: fixed,
         top: 0,
@@ -337,9 +367,6 @@ export const imageDropZoneStyle = {
         backgroundColor: white,
         child: {
             selector: '> div',
-            // firstChild: {
-            //     width: 500
-            // },
             lastChild: {
                 width: '20%'
             }
@@ -578,23 +605,25 @@ export const selectFieldErrorMessageStyle = {
     top: [15, .7, 15]
 }
 
-export const songsFormStyle = {
+export const textAreaWrapperStyle = {
+    position: relative,
+    child: {
+        border: `1px solid ${globals.colors.borderColor}`,
+        selector: 'textarea',
+        width: '100%',
+        minHeight: [250, .7, 250],
+        resize: none,
+    }
+}
 
-    border: 0,
-    marginTop: [80, .7, 50],
-    boxSizing: borderBox,
-    paddingLeft: [160, .7, 160],
-    paddingRight: [160, .7, 160],
-    marginBottom: [50, .7, 50],
+export const textAreaErrorMessageStyle = {
+    position: absolute,
+    right: [10, .7, 10],
+    top: [10, .7, 10],
+    size: [14, .7, 14],
+    color: colorPalette.brightRed
+}
 
-    heading: {},
-    inner: {},
-    button: {},
-    child: [
-        {
-            selector: '> div > div > div',
-            minHeight: [200, .7, 200]
-        }
-    ]
+export const textAreaStyle = {
 
 }

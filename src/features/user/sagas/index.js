@@ -6,7 +6,7 @@ import {
     addFlaggedReview,
     addPlaceSubmissionToUserHistory,
     getPurchaseHistory,
-    getUser,
+    getUser, getUserById,
     getUsers,
     verifyUserEmail
 } from 'features/user/services'
@@ -174,6 +174,20 @@ export function* getUserDetail({payload}) {
     }
 }
 
+export function* getSubmittedByUser({payload}) {
+    try {
+        const user = yield call(getUserById, payload)
+        if (!user.error) {
+            yield put({type: 'place/getSubmittedByUserSuccess', payload: user})
+        } else {
+            yield put({type: 'place/getSubmittedByUserFailure', payload: user})
+        }
+    } catch (error) {
+        yield put({type: 'place/getSubmittedByUserFailure', error})
+    }
+}
+
+
 export function* createVerificationToken({payload}) {
     const {_id, token, verificationToken} = payload
 
@@ -240,11 +254,12 @@ export function* getUserSuccess({payload}) {
 }
 
 export function* flagReview({payload}) {
-    const {reviewId, placeSlug, token, _id} = payload
+    const {reason, placeSlug, token, _id} = payload
 
     const review = new FormData()
     const fields = [
-        {reviewId}
+        {reviewId: payload.review.id},
+        {reason}
     ]
 
     for (let field of fields)
@@ -254,7 +269,7 @@ export function* flagReview({payload}) {
     const user = yield call(addFlaggedReview, {
         _id,
         token,
-        reviewId,
+        reviewId: payload.review.id,
         review
     })
 
@@ -263,18 +278,18 @@ export function* flagReview({payload}) {
             type: 'user/flagReviewSuccess',
         })
         //TODO: make this call more specific so the entire place doesn't need to be reloaded
-        yield put({type: 'place/getPlace', payload: {slug: placeSlug}})
+       yield put({type: 'place/getPlace', payload: {slug: placeSlug}})
 
 
-        //    console.log('flagged', flagged)
-        // yield put({
-        //     type: 'user/getUser',
-        //     payload: {
-        //         slug: slug,
-        //         _id: _id,
-        //         token: token
-        //     }
-        // })
+       //    console.log('flagged', flagged)
+       //  yield put({
+       //      type: 'user/getUser',
+       //      payload: {
+       //          slug: slug,
+       //          _id: _id,
+       //          token: token
+       //      }
+       //  })
     }
 }
 
@@ -353,6 +368,10 @@ export function* watchGetUserSuccess() {
 
 export function* watchGetUser() {
     yield takeEvery('user/getUser', getUserDetail)
+}
+
+export function* watchGetSubmittedBy() {
+    yield takeEvery('user/getSubmittedByUser', getSubmittedByUser)
 }
 
 export function* watchCreateVerificationToken() {

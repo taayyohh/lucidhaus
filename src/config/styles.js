@@ -24,18 +24,18 @@ export const colorPalette = {
     seaFoamGreen: '#B7DAC9',
     paleGreen: '#80A390',
     honeyYellow: '#FFB400',
-    darkHoneyYellow: '#8f6502'
+    darkHoneyYellow: '#cd9010'
 }
 
 export const globals = {
     fonts: {
-        fancy: '\'Shrikhand\', cursive',
-        sans: '\'Teko\', sans-serif',
-        serif: "'EB Garamond', serif"
+        fancy: '\'Be Vietnam Pro\', sans-serif',
+        sans: '\'Be Vietnam Pro\', sans-serif',
+        serif: "'Be Vietnam Pro', sans-serif"
     },
     style: {
         layoutScalingValue: .45,
-        inputLabelShrinkRatio: .9,
+        inputLabelShrinkRatio: .75,
         siteInnerWidth: 1570,
         contentWidth: 1320,
         headerHeight: 100,
@@ -51,12 +51,13 @@ export const globals = {
         }
     },
     colors: {
+        textColor: colorPalette.black,
         linkColor: colorPalette.seaGreen,
         linkHoverColor: colorPalette.paleGreen,
-        inputLabelColor: colorPalette.black,
+        inputLabelColor: colorPalette.darkGray,
         menuPanelCloseButtonBackgroundColor: colorPalette.honeyYellow,
-        transitionOverlayBackground: colorPalette.grayPurple,
-        buttonHoverColor: colorPalette.grayPurple,
+        transitionOverlayBackground: colorPalette.paleGreen,
+        buttonHoverColor: colorPalette.honeyYellow,
         borderHoverColor: colorPalette.honeyYellow,
         borderColor: colorPalette.lightGray,
         errorColor: colorPalette.brightRed

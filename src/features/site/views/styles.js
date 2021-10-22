@@ -1,12 +1,17 @@
-import {colorPalette, globals}                                                     from 'config/styles'
-import {CDN}                                                                             from 'config/variables'
-import {center, column, flex, inlineFlex, none, pointer, relative, sv, uppercase, white} from 'utils/themer'
+import {colorPalette, globals}                                                               from 'config/styles'
+import {CDN}                                                                                 from 'config/variables'
+import {absolute, auto, center, column, flex, none, pointer, relative, sv, uppercase, white} from 'utils/themer'
+import {placesSearchFormStyle}                                                               from '../../place/views/styles'
 
 export const homeImageWrapperStyle = {
+    display: flex,
+    alignItems: center,
+    justifyContent: center,
     height: '100vh',
     width: '100vw',
+    background: '#000',
     mobile: {
-        height: '35vh'
+        height: '50vh'
     }
 }
 
@@ -19,10 +24,57 @@ export const homeImageStyle = {
     display: flex,
     alignItems: center,
     justifyContent: center,
-    backgroundImage: `url(${CDN}assets/ij-home+2)`
+    backgroundImage: `url(${CDN}assets/ij-home+2)`,
+    opacity: .4
+}
+
+export const homeSearchWrapperStyle = {
+    display: flex,
+    flexDirection: column,
+    position: absolute,
+    marginTop: [-250, .7, -25],
+    padding: [40, .7, 40],
+    borderRadius: [10, .7, 10],
+    maxWidth: [800, globals.style.layoutScalingValue, '100%'],
+    width: [800, globals.style.layoutScalingValue, '100%'],
+    textAlign: 'center',
+    mobile: {
+        width: '100%'
+    }
+}
+
+export const homeSearchStyle = {
+    padding: 30,
+    borderRadius: 10,
+    backgroundColor: colorPalette.seaGreen,
+    form: {
+        field: {
+            position: absolute,
+            left: 0,
+            top: 0
+        },
+        button: {
+            ...placesSearchFormStyle.button,
+        }
+    },
+    mobile: {
+        height: auto
+    }
+}
+
+export const homeHeadlineStyle = {
+    weight: 800,
+    marginBottom: 20,
+    lineHeight: [80, .7, 38],
+    size: [62, globals.style.layoutScalingValue, 26],
+    color: '#fff',
+    mobile: {
+        marginBottom: 15
+    }
 }
 
 export const homeQuoteStyle = {
+    display: none,
     position: relative,
     zIndex: 1,
     width: [1107, globals.style.layoutScalingValue, '100%'],
@@ -31,11 +83,11 @@ export const homeQuoteStyle = {
     borderRadius: `${sv(10)} ${sv(10)} ${sv(10)} 0`,
     borderRadiusLeft: 0,
     paddingLeft: [90, globals.style.layoutScalingValue, 25],
-    size: [96, globals.style.layoutScalingValue, 54],
-    lineHeight: [110, globals.style.layoutScalingValue, 60],
+    size: [54, globals.style.layoutScalingValue, 32],
+    lineHeight: [110, globals.style.layoutScalingValue, 45],
     textTransform: uppercase,
     backgroundColor: colorPalette.forestGreen,
-    display: inlineFlex,
+    // display: inlineFlex,
     alignItems: center,
     justifyContent: center,
     color: white,
@@ -81,16 +133,26 @@ export const homeSignupWrapperStyle = {
 }
 
 export const homeSignupQuoteWrapperStyle = {
-    width: [670, globals.style.layoutScalingValue, '100%'],
-    paddingTop: [70, globals.style.layoutScalingValue],
-    paddingLeft: [108, globals.style.layoutScalingValue],
-    paddingRight: [108, globals.style.layoutScalingValue],
+    display: flex,
+    flexDirection: column,
+    width: [1200, globals.style.layoutScalingValue, '100%'],
+    background: white,
+    paddingLeft: [108, globals.style.layoutScalingValue, '0'],
+    paddingRight: [108, globals.style.layoutScalingValue, '0'],
+    paddingTop: [50, globals.style.layoutScalingValue, 50],
+    paddingBottom: [50, globals.style.layoutScalingValue, 50],
+    marginTop: [80, .7, '0'],
+    borderRadius: [10, .7, 10],
+    border: `1px solid ${globals.colors.borderColor}`,
     margin: '0 auto'
 }
 
 export const homeSignupQuoteStyle = {
-    size: [48, globals.style.layoutScalingValue, 24],
-    lineHeight: [55, globals.style.layoutScalingValue, 30],
+    size: [28, globals.style.layoutScalingValue, 19],
+    width: '70%',
+    margin: '0 auto',
+    textAlign: center,
+    // lineHeight: [55, globals.style.layoutScalingValue, 30],
     paddingLeft: 0,
     child: {
         selector: '> div',
@@ -99,22 +161,30 @@ export const homeSignupQuoteStyle = {
 }
 
 export const homeSignupButtonStyle = {
-    width : '100%',
-    height: [80, globals.style.layoutScalingValue, 50   ],
+    alignSelf: center,
+    width: auto,
     marginTop: [30, .7, 30],
-    size: [32, .7, 24],
-    weight: 700,
-    lineHeight: [38, .7, 22],
-    textTransform: uppercase,
+    size: [16, .7, 16],
+    paddingLeft: [20, globals.style.layoutScalingValue, 20],
+    paddingRight: [20, globals.style.layoutScalingValue, 20],
+    paddingTop: [15, globals.style.layoutScalingValue, 15],
+    paddingBottom: [15, globals.style.layoutScalingValue, 15],
+    backgroundColor: colorPalette.seaGreen,
     display: flex,
     alignItems: center,
     justifyContent: center,
-    border: `1px solid ${colorPalette.forestGreen}`,
-    borderRadius: [10, .7, 10],
+    border: `1px solid ${colorPalette.seaGreen}`,
+    borderRadius: [5, .7, 5],
     textDecoration: none,
-    color: colorPalette.forestGreen,
+    color: white,
     hover: {
         backgroundColor: colorPalette.forestGreen,
+        border: `1px solid ${colorPalette.forestGreen}`,
         color: white
     }
+}
+
+export const homeContentWrapperStyle = {
+    width: '100%',
+    margin: 0
 }

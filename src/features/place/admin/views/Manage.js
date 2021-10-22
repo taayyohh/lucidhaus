@@ -6,6 +6,7 @@ import {searchContext}                          from 'shared/Containers/SearchCo
 import ContentWrapper                           from 'shared/Layout/ContentWrapper'
 import AdminDashboardWrapper                    from 'shared/Layout/Dashboard/admin/AdminDashboardWrapper'
 import DashboardInfo                            from 'shared/Layout/Dashboard/DashboardInfo'
+import {adminContentWrapperStyle}               from 'shared/Layout/styles'
 
 const Manage = () => {
     const {places} = useSelector(state => state.place)
@@ -34,7 +35,7 @@ const Manage = () => {
     }, [places])
 
     return (
-        <ContentWrapper>
+        <ContentWrapper theme={adminContentWrapperStyle}>
             <AdminDashboardWrapper>
                 <DashboardInfo
                     heading={'Manage Places'}
@@ -43,7 +44,7 @@ const Manage = () => {
                 <LinkSwitch url={'/admin/place/taxonomy'} children={'Taxonomy'}/>
 
                 {isIndexed && (
-                    <List places={places}/>
+                    <List />
                 )}
             </AdminDashboardWrapper>
         </ContentWrapper>

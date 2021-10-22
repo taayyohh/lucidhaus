@@ -5,7 +5,8 @@ import Div                        from 'shared/Basic/Div'
 import ContentWrapper             from 'shared/Layout/ContentWrapper'
 import DashboardInfo              from 'shared/Layout/Dashboard/DashboardInfo'
 import DashboardWrapper           from 'shared/Layout/Dashboard/DashboardWrapper'
-import Review                     from './Review'
+import Review                                             from './Review'
+import {adminReviewWrapperStyle, userContentWrapperStyle} from './styles'
 
 const Reviews = () => {
     const dispatch = useDispatch()
@@ -18,23 +19,26 @@ const Reviews = () => {
     }, [])
 
     return (
-        <ContentWrapper>
+        <ContentWrapper theme={userContentWrapperStyle}>
             <DashboardWrapper menu={userDashboardMenu}>
                 <DashboardInfo
                     heading={'Your Reviews'}
-                    description={"Here are the reviews you've left."}
+                    description={"Here are the reviews you've left. Click to Edit."}
                 />
                 {!isVerified && (
                     <Div>In order to leave a review, make sure you verify your email!</Div>
                 )}
 
-                {reviews && reviews.map((review) => (
-                    <Review
-                        key={review._id}
-                        review={review}
-                        url={`/dashboard/reviews/update/${review._id}`}
-                    />
-                ))}
+                <Div theme={adminReviewWrapperStyle}>
+                    {reviews && reviews.map((review) => (
+                        <Review
+                            key={review._id}
+                            review={review}
+                            url={`/dashboard/reviews/update/${review._id}`}
+                        />
+                    ))}
+                </Div>
+
 
             </DashboardWrapper>
         </ContentWrapper>

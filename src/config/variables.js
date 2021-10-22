@@ -42,18 +42,20 @@ export const URL = "url"
 export const WEEK = "week"
 
 // HYPHA INPUT TYPES
-export const COUNT = "count"
 export const ADDRESS = 'autoAddress'
-export const COUNTRY = 'country'
-export const REGION = 'region'
-export const IMAGE_UPLOAD = 'imageUpload'
 export const AUDIO_UPLOAD = 'audioUpload'
-export const RICH_TEXT = 'richText'
-export const TOGGLE = 'toggle'
-export const MULTI_SELECT = 'multi-select'
-export const LIKERT = 'likert'
-export const SONGS = 'songs'
+export const COUNT = "count"
+export const COUNTRY = 'country'
 export const FILTER = 'filter'
+export const IMAGE_UPLOAD = 'imageUpload'
+export const LIKERT = 'likert'
+export const MULTI_SELECT = 'multi-select'
+export const REGION = 'region'
+export const RICH_TEXT = 'richText'
+export const SONGS = 'songs'
+export const TEXTAREA = "textarea"
+export const TOGGLE = 'toggle'
+export const USER = 'user'
 
 export const ACCEPTABLE_EXTENSIONS = [
     '.png',

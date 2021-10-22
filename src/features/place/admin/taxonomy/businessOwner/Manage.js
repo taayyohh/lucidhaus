@@ -1,11 +1,12 @@
+import BreadCrumb                 from 'features/place/admin/views/Breadcrumb'
 import React, {useEffect}         from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import Div                        from 'shared/Basic/Div'
-import ContentWrapper             from 'shared/Layout/ContentWrapper'
-import DashboardInfo              from 'shared/Layout/Dashboard/DashboardInfo'
-import AdminDashboardWrapper      from 'shared/Layout/Dashboard/admin/AdminDashboardWrapper'
 import LinkSwitch                 from 'shared/Basic/LinkSwitch'
-import BreadCrumb                 from 'features/place/admin/views/Breadcrumb'
+import ContentWrapper             from 'shared/Layout/ContentWrapper'
+import AdminDashboardWrapper      from 'shared/Layout/Dashboard/admin/AdminDashboardWrapper'
+import DashboardInfo              from 'shared/Layout/Dashboard/DashboardInfo'
+import {adminContentWrapperStyle} from 'shared/Layout/styles'
 import Create                     from './Create'
 
 const ManageBusinessOwner = () => {
@@ -20,7 +21,7 @@ const ManageBusinessOwner = () => {
     }, [])
 
     return (
-        <ContentWrapper>
+        <ContentWrapper theme={adminContentWrapperStyle}>
             <AdminDashboardWrapper>
                 <DashboardInfo
                     heading={'Manage Business Owner Taxonomy'}

@@ -7,6 +7,8 @@ import Form                           from 'shared/Fields/Form'
 import ContentWrapper                 from 'shared/Layout/ContentWrapper'
 import AdminDashboardWrapper          from 'shared/Layout/Dashboard/admin/AdminDashboardWrapper'
 import {adminFormWrapperStyle}        from 'shared/Layout/Dashboard/admin/styles'
+import {adminContentWrapperStyle}     from 'shared/Layout/styles'
+import {pendingFields}                from '../fields/pending'
 
 const Update = () => {
     const dispatch = useDispatch()
@@ -16,14 +18,6 @@ const Update = () => {
     const {
         accessibleDoorway,
         audioAvailable,
-        address1,
-        address2,
-        city,
-        zip,
-        country,
-        state,
-        latitude,
-        longitude,
         bathrooms,
         businessOwner,
         braille,
@@ -42,6 +36,7 @@ const Update = () => {
         photo,
         publicTransportation,
         signLanguageAccessible,
+        submittedBy,
         website,
         wheelchairElevator,
         wheelchairParking,
@@ -54,14 +49,14 @@ const Update = () => {
     const initialValues = {
         accessibleDoorway: accessibleDoorway,
         audioAvailable: audioAvailable,
-        address1: address1,
-        address2: address2,
-        city: city,
-        zip: zip,
-        country: country,
-        state: state,
-        latitude: latitude,
-        longitude: longitude,
+        address1: place.geojson?.[0]?.properties?.address,
+        address2:  place.geojson?.[0]?.properties?.address2,
+        city:  place.geojson?.[0]?.properties?.city,
+        zip:  place.geojson?.[0]?.properties?.postalCode,
+        country:  place.geojson?.[0]?.properties?.country,
+        state:  place.geojson?.[0]?.properties?.state,
+        longitude: place.geojson?.[0]?.geometry?.coordinates?.[0],
+        latitude:  place.geojson?.[0]?.geometry?.coordinates?.[1],
         bathrooms: bathrooms || [],
         businessOwner: businessOwner || [],
         braille: braille,
@@ -81,6 +76,7 @@ const Update = () => {
         photoFile: '',
         publicTransportation: publicTransportation,
         signLanguageAccessible: signLanguageAccessible,
+        submittedBy: submittedBy,
         website: website,
         wheelchairElevator: wheelchairElevator,
         wheelchairParking: wheelchairParking,
@@ -144,11 +140,11 @@ const Update = () => {
     }, [])
 
     return (
-        <ContentWrapper>
+        <ContentWrapper theme={adminContentWrapperStyle}>
             <AdminDashboardWrapper>
                 <Form
                     initialValues={initialValues}
-                    fields={placeFields}
+                    fields={isPendingSubmission ? pendingFields : placeFields}
                     validationSchema={validatePlace}
                     dispatchAction={'place/updatePlace'}
                     formHeading={'Update Place'}

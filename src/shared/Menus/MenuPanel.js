@@ -1,6 +1,6 @@
-import {globals}           from 'config/styles'
-import CartPanel           from 'features/shop/views/CartPanel'
-import React, {useContext} from 'react'
+import {globals}                     from 'config/styles'
+import CartPanel                     from 'features/shop/views/CartPanel'
+import React, {useContext}           from 'react'
 import Div                           from 'shared/Basic/Div'
 import {menuPanelContext}            from 'shared/Containers/MenuPanelController'
 import MenuOverlay                   from 'shared/Menus/MenuOverlay'
@@ -8,6 +8,9 @@ import MenuPanelWrapper              from 'shared/Menus/MenuPanelWrapper'
 import MobileHeaderMenu              from 'shared/Menus/MobileHeaderMenu'
 import {headerMenuPanelWrapperStyle} from 'shared/Menus/styles'
 import Player                        from 'shared/Player'
+import LeaveAReview                  from './LeaveAReview'
+import SearchPanel                   from './SearchPanel'
+import SubmitPlacePanel              from './SubmitPlacePanel'
 
 const MenuPanels = () => {
     const {currentPanel, setPanel} = useContext(menuPanelContext)
@@ -17,6 +20,12 @@ const MenuPanels = () => {
                 return <CartPanel/>
             case 'mobile-header-menu-panel':
                 return <MobileHeaderMenu/>
+            case 'search-menu':
+                return <SearchPanel/>
+            case 'leave-a-review':
+                return <LeaveAReview/>
+            case 'submit-a-place':
+                return <SubmitPlacePanel/>
             case 'player':
                 return <Player/>
             default:
@@ -31,14 +40,14 @@ const MenuPanels = () => {
                 name={currentPanel}
             />
             <MenuOverlay
-            isOpen={!!currentPanel}
-            onClick={
-                () => {
-                    setPanel(null)
-                    globals.style.resetBody()
+                isOpen={!!currentPanel}
+                onClick={
+                    () => {
+                        setPanel(null)
+                        globals.style.resetBody()
+                    }
                 }
-            }
-        />
+            />
         </Div>
     )
 }

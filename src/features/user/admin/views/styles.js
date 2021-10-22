@@ -1,5 +1,5 @@
-import {globals}                     from 'config/styles'
-import {flex, flexStart, none, wrap} from 'utils/themer'
+import {colorPalette, globals}                                                            from 'config/styles'
+import {black, column, flex, flexStart, grid, inlineFlex, none, pointer, sv, white, wrap} from 'utils/themer'
 
 export const userProfileFormStyle = {
     multiSelect: {
@@ -10,7 +10,6 @@ export const userProfileFormStyle = {
 export const multiSelectOptionListWrapperStyle = {
     display: flex,
     flexWrap: wrap,
-    minHeight: [200, .7, 200],
     maxHeight: [300, .7, 300],
     overflow: 'scroll',
     scrollBar: {
@@ -39,6 +38,8 @@ export const multiSelectSearchFieldStyle = {
     height: [50, .7, 50],
     borderRadius: [10, .7, 10],
     width: [350, globals.style.layoutScalingValue, '100%'],
+    size: [14, .7, 14],
+    weight: 400,
     focus: {
         outline: none
     }
@@ -55,6 +56,90 @@ export const multiSelectInnerWrapperStyle = {
 }
 
 export const multiSelectHelperTextStyle = {
-    size: [22, .7, 22],
+    size: [15, .7, 15],
     marginLeft: [5, .7, 5]
+}
+
+
+export const userContentWrapperStyle = {
+    width: [1280, globals.style.layoutScalingValue, '100%']
+}
+
+export const submitFormWrapperStyle = {
+    border: 0,
+    paddingLeft: [100, globals.style.layoutScalingValue, 20],
+    paddingRight: [100, globals.style.layoutScalingValue, 20],
+    fieldset: {
+        marginBottom: [20, .7, 20],
+        lastOfType: {
+            marginBottom: [70, .7, 50]
+        }
+    }
+}
+
+export const adminReviewWrapperStyle = {
+    display: grid,
+    gridTemplateColumns: '1fr 1fr',
+    gridGap: sv(30, globals.style.layoutScalingValue),
+    mobile: {
+        display: flex,
+        flexDirection: column
+    }
+}
+
+export const adminReviewStyle = {
+    paddingTop: [30, globals.style.layoutScalingValue, 30],
+    paddingBottom: [30, globals.style.layoutScalingValue, 30],
+    paddingLeft: [30, globals.style.layoutScalingValue, 30],
+    paddingRight: [30, globals.style.layoutScalingValue, 30],
+    border: `1px solid ${globals.colors.borderColor}`,
+    borderRadius: [10, .7, 10],
+    color: globals.colors.textColor,
+    textDecoration: none,
+    transition: 'background-color 250ms ease, border-color 250ms ease',
+    background: white,
+    name: {
+        size: [24, .7, 24],
+        lineHeight: [28, .7, 28]
+    },
+    date: {
+        color: colorPalette.darkGray,
+        size: [15, .7, 15]
+    },
+    top: {
+        marginBottom: [15, .7, 15]
+    },
+    hover: {
+        borderColor: black,
+        color: black
+    }
+}
+
+export const submitPlaceButtonStyle = {
+    alignSelf: flexStart,
+    backgroundColor: colorPalette.darkHoneyYellow,
+    paddingLeft: [15, .7, 15],
+    paddingRight: [15, .7, 15],
+    paddingTop: [10, .7, 10],
+    paddingBottom: [10, .7, 10],
+    display: inlineFlex,
+    flexDirection: 'column',
+    borderRadius: [5, .7, 5],
+    color: white,
+    size: [15, .7, 15],
+    weight: 600,
+    border: `1px solid ${colorPalette.darkHoneyYellow}`,
+    transition: 'background 200ms ease',
+    hover: {
+        cursor: pointer,
+        backgroundColor: colorPalette.honeyYellow,
+        border: `1px solid ${colorPalette.honeyYellow}`,
+
+    }
+}
+
+export const myPlacesWrapperStyle = {
+    display: grid,
+    gridTemplateColumns: '1fr',
+    gridGap: sv(20, globals.style.layoutScalingValue),
 }

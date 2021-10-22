@@ -1,6 +1,6 @@
 import {Formik}           from 'formik'
 import PropTypes          from 'prop-types'
-import React, {useEffect} from 'react'
+import React              from 'react'
 import {useDispatch}      from 'react-redux'
 import Div                from 'shared/Basic/Div'
 import H3                 from 'shared/Basic/H3'
@@ -25,9 +25,6 @@ const Form = ({
               }) => {
     const dispatch = useDispatch()
 
-    useEffect(() => {
-
-    }, [initialValues])
 
     return (
         <Formik
