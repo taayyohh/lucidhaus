@@ -1,11 +1,12 @@
-import {placesContentInnerWrapperStyle, placesContentWrapperStyle, placesMapStyle} from 'features/place/views/styles'
-import React, {useEffect, useState}                                                from 'react'
-import {useDispatch, useSelector}                                                  from 'react-redux'
-import Div                                                                         from 'shared/Basic/Div'
-import ContentWrapper                                                              from 'shared/Layout/ContentWrapper'
-import Map                                                                         from 'shared/Map'
-import NoResults                                                                   from './NoResults'
-import Sidebar                                                                     from './Sidebar'
+import {placesContentInnerWrapperStyle, placesContentWrapperStyle} from 'features/place/views/styles'
+import React, {useEffect, useState}                                from 'react'
+import {useDispatch, useSelector}                                  from 'react-redux'
+import Div                                                         from 'shared/Basic/Div'
+import ContentWrapper                                              from 'shared/Layout/ContentWrapper'
+import Map                                                         from 'shared/Map'
+import {placesMapStyle}                                            from '../Place/styles'
+import NoResults                                                   from './NoResults'
+import Sidebar                                                     from './Sidebar'
 
 const Places = () => {
     const {boonePlaces, algoliaPlaces, places, noResults} = useSelector(state => state.place)

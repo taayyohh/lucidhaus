@@ -49,7 +49,10 @@ export const placesContentWrapperStyle = {
 export const placesContentInnerWrapperStyle = noResults => {
     return {
         display: 'flex',
-        flexDirection: noResults ? column: row
+        flexDirection: noResults ? column: row,
+        mobile: {
+            flexDirection: column
+        }
     }
 
 }
@@ -69,36 +72,6 @@ export const placesHeadingStyle = {
         padding: 30,
         alignItems: flexStart
     }
-}
-
-export const placesMapStyle = {
-    position: relative,
-    top: 0,
-    right: 0,
-    height: `calc(100vh - ${sv(100, .7)} - ${sv(28, .7)} - ${sv(55, .7)})`,
-    width: [1420, globals.style.layoutScalingValue, '100%'],
-    child: [
-        {
-            selector: '.mapboxgl-popup-content',
-            border: `1px solid ${globals.colors.borderColor}`,
-            boxSizing: borderBox,
-            padding: [30, .7, 30]
-        },
-        {
-            selector: '.mapboxgl-popup-content h4',
-            margin: 0,
-            padding: 0
-        },
-        {
-            selector: '.mapboxgl-popup-content a.place-name',
-            size: [24, .7, 24],
-            textDecoration: none,
-            hover: {
-                color: globals.colors.linkHoverColor
-            }
-        }
-    ]
-
 }
 
 export const placeDetailStyle = {

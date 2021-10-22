@@ -34,7 +34,7 @@ const Map = ({
             const link = listing.appendChild(document.createElement('div'))
             link.className = 'title'
             link.id = `link-${properties._id}`
-            link.innerHTML = `${properties.address}`
+            link.innerHTML = `<div>${properties.name}</div>${properties.address}`
 
             link.addEventListener('click', function () {
                 for (const feature of features) {

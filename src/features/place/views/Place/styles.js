@@ -1,5 +1,18 @@
-import {colorPalette, globals}                                                          from 'config/styles'
-import {absolute, auto, borderBox, center, column, flex, flexStart, pointer, sv, white} from 'utils/themer'
+import {colorPalette, globals} from 'config/styles'
+import {
+    absolute,
+    auto,
+    borderBox,
+    center,
+    column,
+    flex,
+    flexStart,
+    none,
+    pointer,
+    relative,
+    sv,
+    white
+}                              from 'utils/themer'
 
 export const placeDescriptionStyle = {
     boxSizing: borderBox,
@@ -105,4 +118,43 @@ export const bookmarkStyle = isBookmark => {
             cursor: pointer,
         }
     }
+}
+export const placesMapStyle = {
+    position: relative,
+    top: 0,
+    right: 0,
+    height: `calc(100vh - ${sv(100, .7)} - ${sv(28, .7)} - ${sv(55, .7)})`,
+    width: [1420, globals.style.layoutScalingValue, '100%'],
+    mobile: {
+        maxHeight: 400,
+        borderTop: `2px solid ${colorPalette.forestGreen}`
+    },
+    child: [
+        {
+            selector: '.mapboxgl-popup-content',
+            border: `1px solid ${globals.colors.borderColor}`,
+            boxSizing: borderBox,
+            padding: [30, .7, 30]
+        },
+        {
+            selector: '.mapboxgl-popup-content h4',
+            margin: 0,
+            padding: 0
+        },
+        {
+            selector: '.mapboxgl-popup-content a.place-name',
+            size: [24, .7, 24],
+            textDecoration: none,
+            hover: {
+                color: globals.colors.linkHoverColor
+            }
+        },
+        {
+            selector: '.title',
+            hover: {
+                cursor: pointer
+            }
+        }
+    ]
+
 }
