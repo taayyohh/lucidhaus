@@ -1,14 +1,14 @@
-import React                                                          from 'react'
-import {useSelector}                                                  from 'react-redux'
-import Div                                                            from 'shared/Basic/Div'
-import {unslugify}                                                    from 'utils/helpers'
-import {placeSearchResultsQueryTextStyle, placesSidebarHeadlineStyle} from './styles'
+import React                                                                           from 'react'
+import {useSelector}                                                                   from 'react-redux'
+import Div                                                                             from 'shared/Basic/Div'
+import {unslugify}                                                                     from 'utils/helpers'
+import {placeQueryStyle, placeSearchResultsQueryTextStyle, placesSidebarHeadlineStyle} from './styles'
 
 const Query = () => {
     const {slug} = useSelector(state => state.site)
 
     return (
-        <Div>
+        <Div theme={placeQueryStyle}>
             <Div theme={placesSidebarHeadlineStyle}>Celebrating places that celebrate you</Div>
             {(slug !== 'places' && (
                 <Div theme={placeSearchResultsQueryTextStyle}>

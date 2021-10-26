@@ -1,8 +1,9 @@
-import mapboxgl           from '!mapbox-gl'
-import {MAPBOX_PUBLIC}    from 'config/variables'
-import React, {useEffect} from 'react'
-import {useSelector}      from 'react-redux'
-import Div                from 'shared/Basic/Div'
+import mapboxgl                       from '!mapbox-gl'
+import {MAPBOX_PUBLIC}                from 'config/variables'
+import React, {useContext, useEffect} from 'react'
+import {useDispatch, useSelector}     from 'react-redux'
+import Div                            from 'shared/Basic/Div'
+import {mapContext}                   from 'shared/Containers/MapController'
 /* eslint import/no-webpack-loader-syntax: off */
 
 const Map = ({
@@ -15,75 +16,18 @@ const Map = ({
                  theme
              }) => {
     const {url} = useSelector(state => state.site)
+    const dispatch = useDispatch()
+    const {setMapBoxInstance, setIsActivePlaceCard, flyToStore, createPopUp} = useContext(mapContext)
+
 
     const buildLocationList = ({features}, map) => {
-
-        const listings = document.getElementById('listings')
-        listings.innerHTML = ''
-
-        for (const {properties} of features) {
-            /* Add a new listing section to the sidebar. */
-            const listings = document.getElementById('listings')
-            const listing = listings.appendChild(document.createElement('div'))
-            /* Assign a unique `id` to the listing. */
-            listing.id = `listing-${properties._id}`
-            /* Assign the `item` class to each listing for styling. */
-            listing.className = 'item'
-
-            /* Add the link to the individual listing created above. */
-            const link = listing.appendChild(document.createElement('div'))
-            link.className = 'title'
-            link.id = `link-${properties._id}`
-            link.innerHTML = `<div>${properties.name}</div>${properties.address}`
-
-            link.addEventListener('click', function () {
-                for (const feature of features) {
-                    if (this.id === `link-${feature.properties._id}`) {
-                        flyToStore(feature, map)
-                        createPopUp(feature, map)
-                    }
-                }
-                const activeItem = document.getElementsByClassName('active')
-                if (activeItem[0]) {
-                    activeItem[0].classList.remove('active')
-                }
-                this.parentNode.classList.add('active')
-            })
-
-            /* Add details to the individual listing. */
-            const details = listing.appendChild(document.createElement('div'))
-            details.innerHTML = `${properties.name}`
-            details.innerHTML = `${properties.city}`
-            if (properties.phone) {
-                details.innerHTML += ` · ${properties.phoneFormatted}`
+        dispatch({
+            type: 'place/buildLocationList',
+            payload: {
+                features
             }
-            if (properties.distance) {
-                const roundedDistance = Math.round(properties.distance * 100) / 100
-                details.innerHTML += `<div><strong>${roundedDistance} miles away</strong></div>`
-            }
-
-        }
-    }
-
-    const flyToStore = (currentFeature, map) => {
-        map.flyTo({
-            center: currentFeature.geometry.coordinates,
-            zoom: 15
         })
-    }
-
-    const createPopUp = (currentFeature, map) => {
-        const popUps = document.getElementsByClassName('mapboxgl-popup')
-        /** Check if there is already a popup on the map and if so, remove it */
-        if (popUps[0]) popUps[0].remove()
-
-        new mapboxgl.Popup({closeOnClick: false})
-            .setLngLat(currentFeature.geometry.coordinates)
-            .setHTML(`
-                <a class="place-name" href="/places/${currentFeature.properties.slug}">${currentFeature.properties.name}</a>
-                <h4>${currentFeature.properties.address}</h4>
-            `)
-            .addTo(map)
+        setMapBoxInstance(map)
     }
 
 
@@ -120,21 +64,9 @@ const Map = ({
 
                     const clickedPoint = features[0]
 
-                    /* Fly to the point */
                     flyToStore(clickedPoint, map)
-
-                    /* Close all other popups and display popup for clicked store */
                     createPopUp(clickedPoint, map)
-
-                    /* Highlight listing in sidebar (and remove highlight for all other listings) */
-                    const activeItem = document.getElementsByClassName('active')
-                    if (activeItem[0]) {
-                        activeItem[0].classList.remove('active')
-                    }
-                    const listing = document.getElementById(
-                        `listing-${clickedPoint.properties._id}`
-                    )
-                    listing.classList.add('active')
+                    setIsActivePlaceCard(clickedPoint?.properties?._id)
                 })
                 buildLocationList(features, map)
             })

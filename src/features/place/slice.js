@@ -13,6 +13,7 @@ const initialState = {
     communitiesServed: [],
     foodOptions: [],
     languageSpoken: [],
+    locationList: [],
     placeCategory: [],
     pendingPlaces: [],
     place: [],
@@ -59,6 +60,9 @@ export const slice = createSlice({
     reducers: {
         addReviewSuccess: (state) => {
             state.addReviewSuccess = true
+        },
+        buildLocationList: (state, action) => {
+            state.locationList = action.payload.features
         },
         closeReviewPanel: (state) => {
             state.addReviewSuccess = false

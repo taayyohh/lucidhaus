@@ -1,4 +1,4 @@
-import {globals} from 'config/styles'
+import {colorPalette, globals} from 'config/styles'
 import {
     auto,
     black,
@@ -9,12 +9,12 @@ import {
     flex,
     flexEnd,
     grid,
-    none,
+    none, pointer,
     sv,
     uppercase,
     white,
     wrap
-}                from 'utils/themer'
+}                              from 'utils/themer'
 
 export const productCardImageStyle = {
     width: 80,
@@ -189,5 +189,15 @@ export const productCardCountStyle = {
     margin: 0,
     mobile: {
         marginTop: 20
+    }
+}
+
+export const placeCardStyle = {
+    transition: '250ms background-color ease',
+    padding: [20, globals.style.layoutScalingValue, 20],
+    borderRadius: [5, globals.style.layoutScalingValue, 5],
+    hover: {
+        cursor: pointer,
+        backgroundColor: '#D8E7E0'
     }
 }

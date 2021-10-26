@@ -4,9 +4,9 @@ import {useDispatch, useSelector}                                  from 'react-r
 import Div                                                         from 'shared/Basic/Div'
 import ContentWrapper                                              from 'shared/Layout/ContentWrapper'
 import Map                                                         from 'shared/Map'
-import {placesMapStyle}                                            from '../Place/styles'
 import NoResults                                                   from './NoResults'
 import Sidebar                                                     from './Sidebar'
+import {placesMapStyle}                                            from './styles'
 
 const Places = () => {
     const {boonePlaces, algoliaPlaces, places, noResults} = useSelector(state => state.place)
@@ -98,25 +98,22 @@ const Places = () => {
         <ContentWrapper theme={placesContentWrapperStyle}>
             <Div theme={placesContentInnerWrapperStyle(noResults.boone && noResults.algolia)}>
                 <Sidebar noResults={noResults.boone && noResults.algolia}/>
-                {
-                    features.length > 0 && (
-                        <Map
-                            styles={'mapbox://styles/mapbox/light-v10'}
-                            features={
-                                {
-                                    "type": "FeatureCollection",
-                                    "features": features
-                                }
+                {(features.length > 0 && (
+                    <Map
+                        styles={'mapbox://styles/mapbox/light-v10'}
+                        features={
+                            {
+                                "type": "FeatureCollection",
+                                "features": features
                             }
-                            lon={features?.[0]?.geometry?.coordinates?.[0]}
-                            lat={features?.[0]?.geometry?.coordinates?.[1]}
-                            theme={placesMapStyle}
-                            zoom={5}
-                            scrollZoom={false}
-                        />
-                    )
-                }
-                {noResults.boone && noResults.algolia && (
+                        }
+                        lon={features?.[0]?.geometry?.coordinates?.[0]}
+                        lat={features?.[0]?.geometry?.coordinates?.[1]}
+                        theme={placesMapStyle}
+                        zoom={5}
+                        scrollZoom={false}
+                    />
+                )) || (
                     <NoResults/>
                 )}
             </Div>
