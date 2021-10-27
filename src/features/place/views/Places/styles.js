@@ -39,15 +39,13 @@ export const placeSidebarCardStyle = isActive => {
 
 export const placeQueryStyle = {
     padding: [25, globals.style.layoutScalingValue, 25],
-    paddingLeft: [50, globals.style.layoutScalingValue, 20],
-    paddingRight: [50, globals.style.layoutScalingValue, 20],
-  //  marginBottom: [20, globals.style.layoutScalingValue, 20],
-    //  borderBottom: `1px solid ${colorPalette.forestGreen}`,
+    paddingLeft: [25, globals.style.layoutScalingValue, 20],
+    paddingRight: [25, globals.style.layoutScalingValue, 20],
     boxShadow: `-6px -2px 19px 0px #d5d5d5`
 }
 
 export const placeQueryHeadingStyle = {
-    marginBottom: [10, .7 ,10],
+    marginBottom: [10, .7, 10],
     size: [14, .7, 14],
     margin: '0 auto'
 }
@@ -56,12 +54,12 @@ export const placesMapSidebarStyle = noResults => {
     return {
         position: relative,
         height: noResults ? auto : `calc(100vh - ${sv(100, .7)} - ${sv(28, .7)} - ${sv(55, .7)})`,
-       // paddingBottom: [150, .7, 50],
+        // paddingBottom: [150, .7, 50],
         width: '500px',
         mobile: {
             width: '100%',
             //padding: 0,
-          //  maxHeight: 350
+            //  maxHeight: 350
         }
     }
 
@@ -82,7 +80,8 @@ export const placesMapStyle = {
             selector: '.mapboxgl-popup-content',
             border: `1px solid ${globals.colors.borderColor}`,
             boxSizing: borderBox,
-            padding: [30, .7, 30]
+            padding: [30, .7, 30],
+            width: [500, globals.style.layoutScalingValue, 500]
         },
         {
             selector: '.mapboxgl-popup-content h4',

@@ -15,7 +15,6 @@ const MapController = ({children}) => {
         })
     })
 
-
     const flyToStore = (currentFeature, map) => {
         map.flyTo({
             center: currentFeature.geometry.coordinates,
@@ -31,8 +30,12 @@ const MapController = ({children}) => {
         new mapboxgl.Popup({closeOnClick: false})
             .setLngLat(currentFeature.geometry.coordinates)
             .setHTML(`
-                <a class="place-name" href="/places/${currentFeature.properties.slug}">${currentFeature.properties.name}</a>
-                <h4>${currentFeature.properties.address}</h4>
+                <div>
+                    <a class="place-name" href="/places/${currentFeature.properties.slug}">
+                        ${currentFeature.properties.name}
+                    </a>
+                    <h4>${currentFeature.properties.address}</h4>
+                </div>
             `)
             .addTo(map)
     }
@@ -40,6 +43,7 @@ const MapController = ({children}) => {
     useEffect(() => {
         if (geo)
             getLocation()
+
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 

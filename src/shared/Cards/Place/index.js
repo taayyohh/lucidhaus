@@ -2,8 +2,8 @@ import {mapMarkerSolid} from 'config/icons'
 import React            from 'react'
 import Div              from 'shared/Basic/Div'
 import Icon             from 'shared/Basic/Icon'
-import {placeCardStyle} from '../styles'
 import InclusiveScore   from './InclusiveScore'
+import {placeCardStyle} from './styles'
 
 const PlaceCard = ({
                        address,

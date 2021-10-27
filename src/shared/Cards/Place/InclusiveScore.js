@@ -3,14 +3,12 @@ import Div   from 'shared/Basic/Div'
 import {
     placeCardInclusiveScoreInfoStyle,
     placeCardInclusiveScoreStyle,
-    placeCardInclusiveScoreTextStyle,
-    placeCardInclusiveScoreWrapperStyle,
+    placeCardInclusiveScoreTextStyle, placeCardInclusiveScoreWrapperStyle,
     placeCardRatingScaleInnerStyle,
     placeCardRatingScaleStyle,
     placeCardRatingsIconWrapperStyle,
-    placeCardRatingsItemStyle,
-    placeCardRatingsWrapperStyle
-}            from '../styles'
+    placeCardRatingsItemStyle, placeCardRatingsWrapperStyle
+}            from './styles'
 
 const InclusiveScore = ({inclusiveScore, safe, welcome, celebrated}) => {
     return (
