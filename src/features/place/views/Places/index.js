@@ -62,6 +62,7 @@ const Places = () => {
                         }
                     }])
             } else {
+                // console.log('meeee')
                 if (!!place?.locations?.[0].latitude && !!place?.locations?.[0].longitude)
                     setFeatures(features => [...features, {
                         "type": "Feature",

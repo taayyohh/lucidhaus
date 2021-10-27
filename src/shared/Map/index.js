@@ -1,12 +1,12 @@
 import mapboxgl                       from '!mapbox-gl'
-import {MAPBOX_PUBLIC}                from 'config/variables'
-import React, {useContext, useEffect} from 'react'
-import {useDispatch, useSelector}     from 'react-redux'
+import {MAPBOX_PUBLIC}                      from 'config/variables'
+import React, {memo, useContext, useEffect} from 'react'
+import {useDispatch, useSelector}           from 'react-redux'
 import Div                            from 'shared/Basic/Div'
 import {mapContext}                   from 'shared/Containers/MapController'
 /* eslint import/no-webpack-loader-syntax: off */
 
-const Map = ({
+const Map = memo(({
                  lon,
                  lat,
                  zoom = 14,
@@ -22,6 +22,7 @@ const Map = ({
 
 
     const buildLocationList = ({features}, map) => {
+        console.log('BUILD')
         dispatch({
             type: 'place/buildLocationList',
             payload: {
@@ -33,6 +34,7 @@ const Map = ({
 
     /*  Search Map  */
     useEffect(() => {
+        console.log('FEAT', features)
         if (url.includes('search')) {
             mapboxgl.accessToken = MAPBOX_PUBLIC
 
@@ -101,7 +103,7 @@ const Map = ({
             theme={theme}
         />
     )
-}
+})
 
 Map.defaultProps = {
     theme: {position: 'absolute', top: 0, bottom: 0, left: 0, width: '100%'}

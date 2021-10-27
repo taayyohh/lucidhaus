@@ -1,8 +1,8 @@
 import React, {useContext, useEffect, useState}                                         from 'react'
 import {useSelector}                                                                    from 'react-redux'
-import Div          from 'shared/Basic/Div'
-import PlaceCard    from 'shared/Cards/Place'
-import {mapContext} from 'shared/Containers/MapController'
+import Div                                                                              from 'shared/Basic/Div'
+import PlaceCard                                                                        from 'shared/Cards/Place'
+import {mapContext}                                                                     from 'shared/Containers/MapController'
 import {isEmpty}                                                                        from 'utils/helpers'
 import {placeSidebarCardStyle, placeSidebarCardWrapperStyle, placeSidebarListingsStyle} from './styles'
 
@@ -10,11 +10,11 @@ const SidebarListings = () => {
     const {mapBoxInstance, flyToStore, isActivePlaceCard, setIsActivePlaceCard, createPopUp} = useContext(mapContext)
     const {locationList} = useSelector(state => state.place)
     const [properties, setProperties] = useState([])
-    const reducer = (previousValue, currentValue) => [...previousValue, currentValue.properties]
+    const propertiesReducer = (previousValue, currentValue) => [...previousValue, currentValue.properties]
 
     useEffect(() => {
         if (!isEmpty(locationList)) {
-            setProperties(locationList?.reduce(reducer, []))
+            setProperties(locationList?.reduce(propertiesReducer, []))
         }
 
     }, [locationList])
