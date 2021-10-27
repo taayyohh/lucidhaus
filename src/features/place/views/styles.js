@@ -150,7 +150,7 @@ export const placesSearchFormStyle = {
     }
 }
 
-export const placeCardStyle = {
+export const genericPlaceCardStyle = {
     backgroundColor: white,
     border: `1px solid ${globals.colors.borderColor}`,
     hover: {

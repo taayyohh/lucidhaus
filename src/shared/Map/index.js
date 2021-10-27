@@ -18,6 +18,7 @@ const Map = ({
     const {url} = useSelector(state => state.site)
     const dispatch = useDispatch()
     const {setMapBoxInstance, setIsActivePlaceCard, flyToStore, createPopUp} = useContext(mapContext)
+    const isPlaceDetail = (url.includes('places') && url.length === 2)
 
 
     const buildLocationList = ({features}, map) => {
@@ -30,16 +31,16 @@ const Map = ({
         setMapBoxInstance(map)
     }
 
-
+    /*  Search Map  */
     useEffect(() => {
         if (url.includes('search')) {
             mapboxgl.accessToken = MAPBOX_PUBLIC
 
             const map = new mapboxgl.Map({
-                container: 'map', // container id
-                style: styles, // style URL
-                center: [parseInt(lon), parseInt(lat)], // starting position [lng, lat]
-                zoom: zoom, // starting zoom
+                container: 'map',
+                style: styles,
+                center: [parseInt(lon), parseInt(lat)],
+                zoom: zoom,
                 scrollZoom: scrollZoom
             })
 
@@ -72,19 +73,18 @@ const Map = ({
             })
         }
 
-
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [features])
 
-
+    /*  Place Detail Sidebar Map  */
     useEffect(() => {
-        if (!!lon && !!lat && !features) {
+        if (!!lon && !!lat && isPlaceDetail) {
             mapboxgl.accessToken = MAPBOX_PUBLIC
             const map = new mapboxgl.Map({
-                container: 'map', // container id
-                style: styles, // style URL
-                center: [lon, lat], // starting position [lng, lat]
-                zoom: zoom // starting zoom
+                container: 'map',
+                style: styles,
+                center: [lon, lat],
+                zoom: zoom
             })
 
             new mapboxgl.Marker()

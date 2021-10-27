@@ -194,10 +194,41 @@ export const productCardCountStyle = {
 
 export const placeCardStyle = {
     transition: '250ms background-color ease',
-    padding: [20, globals.style.layoutScalingValue, 20],
+    paddingTop: [25, globals.style.layoutScalingValue, 25],
+    paddingBottom: [20, globals.style.layoutScalingValue, 20],
+    paddingLeft: [45, globals.style.layoutScalingValue, 30],
+    paddingRight: [45, globals.style.layoutScalingValue, 30],
     borderRadius: [5, globals.style.layoutScalingValue, 5],
+    address: {
+      display: none
+    },
+    name: {
+        size: [22, .7, 22],
+        weight: 600
+    },
+    locationWrapper: {
+        display: flex,
+        alignItems: center,
+        marginTop: [10, .7, 10]
+    },
+    locationTextWrapper: {
+        display: flex,
+        alignItems: center,
+        marginTop: [2, .7, 2],
+        size: [16, .7, 16]
+    },
+    locationIcon: {
+        size: [16, .7, 16],
+        marginRight: [10, .7, 10]
+    },
+    city: {
+
+    },
+    state: {
+      marginLeft: [3, .7, 3]
+    },
     hover: {
         cursor: pointer,
-        backgroundColor: '#D8E7E0'
+        backgroundColor: '#f5f5f5'
     }
 }

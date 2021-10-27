@@ -55,6 +55,10 @@ import {
     faWindowMinimize
 } from '@fortawesome/free-solid-svg-icons'
 
+import {
+    faMapMarkerAlt as faMapMarkerAltSolid
+} from '@fortawesome/pro-solid-svg-icons'
+
 export const
     bookmark = faBookmark,
     building = faBuilding,
@@ -78,6 +82,7 @@ export const
     home = faHome,
     list = faList,
     mapMarker = faMapMarkerAlt,
+    mapMarkerSolid = faMapMarkerAltSolid,
     minusCircle = faMinusCircle,
     music = faMusic,
     newsPaper = faNewspaper,

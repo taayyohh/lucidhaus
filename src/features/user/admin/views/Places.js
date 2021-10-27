@@ -1,6 +1,6 @@
-import {userDashboardMenu}                             from 'config/menus/dashboard/user'
-import {placeCardStyle}                                from 'features/place/views/styles'
-import React                                           from 'react'
+import {userDashboardMenu}     from 'config/menus/dashboard/user'
+import {genericPlaceCardStyle} from 'features/place/views/styles'
+import React                   from 'react'
 import {useSelector}                                   from 'react-redux'
 import Div                                             from 'shared/Basic/Div'
 import GenericCard                                     from 'shared/Cards/GenericCard'
@@ -37,7 +37,7 @@ const Places = () => {
                                 slug={`/places/${place.slug}`}
                                 name={place.name}
                                 address={address()}
-                                theme={placeCardStyle}
+                                theme={genericPlaceCardStyle}
                             />
                         )
                     })}
