@@ -38,7 +38,6 @@ const Places = () => {
     useEffect(() => {
         setFeatures([])
         for (const place of allPlaces) {
-            console.log('PLACE', place)
             if (!!place._id) {
                 if (!!place?.geojson?.[0]?.geometry?.coordinates[0] && place?.geojson?.[0]?.geometry?.coordinates[1])
                     setFeatures(features => [...features, {

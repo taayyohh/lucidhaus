@@ -40,6 +40,10 @@ const SidebarListings = () => {
                         address={p.address}
                         city={p.city}
                         state={p.state}
+                        safe={p.averageSafe}
+                        celebrated={p.averageCelebrated}
+                        welcome={p.averageWelcome}
+                        inclusiveScore={p.inclusiveScore}
                         theme={placeSidebarCardStyle(p._id === isActivePlaceCard)}
                     />
                 </Div>

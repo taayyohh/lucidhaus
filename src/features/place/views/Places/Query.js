@@ -9,10 +9,9 @@ const Query = () => {
 
     return (
         <Div theme={placeQueryStyle}>
-            <Div theme={placesSidebarHeadlineStyle}>Celebrating places that celebrate you</Div>
             {(slug !== 'places' && (
                 <Div theme={placeSearchResultsQueryTextStyle}>
-                    <em>Search results for</em>: {slug ? unslugify(slug) : ''}
+                    <em>Search results for </em><em>&ldquo; </em>{slug ? unslugify(slug) : ''}<em> &rdquo;</em>
                 </Div>
             ))}
         </Div>

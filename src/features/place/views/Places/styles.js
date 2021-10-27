@@ -1,20 +1,20 @@
-import {colorPalette, globals}                                from 'config/styles'
-import {auto, borderBox, center, none, pointer, relative, sv} from 'utils/themer'
+import {colorPalette, globals}                               from 'config/styles'
+import {auto, borderBox, none, pointer, relative, sv, white} from 'utils/themer'
 
 export const placeSearchResultsQueryTextStyle = {
-    size: [15, .7, 15],
-    marginBottom: [30, .7, 30],
+    size: [22, .7, 22],
+    weight: 700,
+    color: colorPalette.honeyYellow,
     child: {
         selector: 'em',
-        size: [16, .7, 16]
+        color: globals.colors.textColor
     }
 }
 
 export const placesSidebarHeadlineStyle = {
-    size: [22, .7, 20],
+    size: [26, .7, 22],
     weight: 700,
-    boxSizing: borderBox,
-    textAlign: center
+    boxSizing: borderBox
 }
 
 export const placeSidebarListingsStyle = {
@@ -29,7 +29,8 @@ export const placeSidebarCardWrapperStyle = {
 
 export const placeSidebarCardStyle = isActive => {
     return {
-        backgroundColor: !isActive ? '#fff' : colorPalette.seaFoamGreen
+        borderColor: !isActive ? globals.colors.borderColor : colorPalette.forestGreen,
+        backgroundColor: white
     }
 
 }
@@ -39,7 +40,7 @@ export const placeQueryStyle = {
     paddingLeft: [50, globals.style.layoutScalingValue, 20],
     paddingRight: [50, globals.style.layoutScalingValue, 20],
     marginBottom: [20, globals.style.layoutScalingValue, 20],
-    borderBottom: `1px solid ${globals.colors.borderColor}`,
+    //  borderBottom: `1px solid ${colorPalette.forestGreen}`,
     boxShadow: `-6px -2px 19px 0px #d5d5d5`
 }
 
@@ -94,5 +95,4 @@ export const placesMapStyle = {
             }
         }
     ]
-
 }
