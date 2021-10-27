@@ -221,9 +221,9 @@ export const placeCardInclusiveScore = {
 export const placeCardStyle = {
     transition: '250ms background-color ease, 250ms border-color ease',
     paddingTop: [20, globals.style.layoutScalingValue, 20],
-    paddingBottom: [20, globals.style.layoutScalingValue, 20],
-    paddingLeft: [45, globals.style.layoutScalingValue, 30],
-    paddingRight: [45, globals.style.layoutScalingValue, 30],
+    paddingBottom: [30, globals.style.layoutScalingValue, 30],
+    paddingLeft: [40, globals.style.layoutScalingValue, 30],
+    paddingRight: [40, globals.style.layoutScalingValue, 30],
     borderRadius: [5, globals.style.layoutScalingValue, 5],
     border: `1px solid #fff`,
     backgroundColor: '#f5f5f5',
@@ -231,8 +231,8 @@ export const placeCardStyle = {
         display: none
     },
     name: {
-        size: [22, .7, 22],
-     //   weight: 600
+        size: [18, .7, 18],
+        weight: 600
     },
     locationWrapper: {
         display: flex,

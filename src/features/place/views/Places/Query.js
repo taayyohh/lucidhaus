@@ -1,8 +1,8 @@
-import React                                                                           from 'react'
-import {useSelector}                                                                   from 'react-redux'
-import Div                                                                             from 'shared/Basic/Div'
-import {unslugify}                                                                     from 'utils/helpers'
-import {placeQueryStyle, placeSearchResultsQueryTextStyle, placesSidebarHeadlineStyle} from './styles'
+import React                                               from 'react'
+import {useSelector}                                       from 'react-redux'
+import Div                                                 from 'shared/Basic/Div'
+import {unslugify}                                         from 'utils/helpers'
+import {placeQueryStyle, placeSearchResultsQueryTextStyle} from './styles'
 
 const Query = () => {
     const {slug} = useSelector(state => state.site)

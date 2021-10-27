@@ -43,7 +43,11 @@ export const placesContentWrapperStyle = {
     width: '100%',
     margin: 0,
     height: `calc(100vh - ${sv(100, .7)} - ${sv(28, .7)} - ${sv(55, .7)})`,
-    overflow: hidden
+    overflow: hidden,
+    mobile: {
+        height: auto,
+        overflow: auto
+    }
 }
 
 export const placesContentInnerWrapperStyle = noResults => {
@@ -51,7 +55,7 @@ export const placesContentInnerWrapperStyle = noResults => {
         display: 'flex',
         flexDirection: noResults ? column: row,
         mobile: {
-            flexDirection: column
+            flexDirection: 'column-reverse',
         }
     }
 
