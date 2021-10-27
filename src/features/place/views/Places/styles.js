@@ -22,7 +22,7 @@ export const placeSidebarListingsStyle = {
     paddingTop: [30, .7, 30],
     paddingLeft: [25, globals.style.layoutScalingValue, 20],
     paddingRight: [25, globals.style.layoutScalingValue, 20],
-    paddingBottom: [50, .7, 50]
+    paddingBottom: [150, .7, 50]
 }
 
 export const placeSidebarCardWrapperStyle = {

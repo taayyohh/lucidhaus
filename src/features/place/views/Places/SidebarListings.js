@@ -1,8 +1,8 @@
 import React, {useContext, useEffect, useState}                                         from 'react'
 import {useSelector}                                                                    from 'react-redux'
-import Div                                                                              from 'shared/Basic/Div'
-import PlaceCard                                                                        from 'shared/Cards/PlaceCard'
-import {mapContext}                                                                     from 'shared/Containers/MapController'
+import Div          from 'shared/Basic/Div'
+import PlaceCard    from 'shared/Cards/Place'
+import {mapContext} from 'shared/Containers/MapController'
 import {isEmpty}                                                                        from 'utils/helpers'
 import {placeSidebarCardStyle, placeSidebarCardWrapperStyle, placeSidebarListingsStyle} from './styles'
 

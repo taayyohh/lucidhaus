@@ -203,7 +203,15 @@ export const placeCardInclusiveScoreWrapperStyle = {
     marginBottom: 10
 }
 
-export const placeCardInclusiveScore = {
+export const placeCardInclusiveScoreInfoStyle = {
+    marginTop: 20,
+    boxSizing: borderBox,
+    padding: [20, .7, 20],
+    backgroundColor: colorPalette.ijGray,
+    borderRadius: [10, .7, 10]
+}
+
+export const placeCardInclusiveScoreStyle = {
     height: [40, .7, 40],
     width: [40, .7, 40],
     minHeight: [40, .7, 40],
@@ -214,7 +222,11 @@ export const placeCardInclusiveScore = {
     display: flex,
     alignItems: center,
     justifyContent: center,
-    marginLeft: [10, .7, 10],
+    marginRight: [10, .7, 10],
+    size: [14, .7, 14]
+}
+
+export const placeCardInclusiveScoreTextStyle = {
     size: [14, .7, 14]
 }
 
@@ -231,7 +243,7 @@ export const placeCardStyle = {
         display: none
     },
     name: {
-        size: [18, .7, 18],
+        size: [22, .7, 18],
         weight: 600
     },
     locationWrapper: {
@@ -280,6 +292,9 @@ export const placeCardRatingsWrapperStyle = {
 }
 
 export const placeCardRatingsItemStyle = {
+    display: flex,
+    alignItems: center,
+    flexDirection: column,
     mobile: {
         marginBottom: 20
     }
@@ -287,9 +302,12 @@ export const placeCardRatingsItemStyle = {
 
 export const placeCardRatingsIconWrapperStyle = {
     display: flex,
+    alignItems: center,
     flexDirection: column,
     color: colorPalette.forestGreen,
-    size: [14, .7, 14]
+    size: [10, .7, 10],
+    textTransform: uppercase,
+    weight: 600
 }
 
 const placeReviewScaleWidth = 80
