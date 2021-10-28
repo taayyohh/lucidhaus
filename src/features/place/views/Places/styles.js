@@ -18,6 +18,8 @@ export const placesSidebarHeadlineStyle = {
 }
 
 export const placeSidebarListingsStyle = {
+    height: '100%',
+    overflow: auto,
     boxSizing: borderBox,
     paddingTop: [30, .7, 30],
     paddingLeft: [25, globals.style.layoutScalingValue, 20],

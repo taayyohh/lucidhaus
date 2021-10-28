@@ -1,4 +1,4 @@
-import {colorPalette, globals} from '../../../config/styles'
+import {colorPalette, globals} from 'config/styles'
 import {
     absolute,
     borderBox,
@@ -13,13 +13,11 @@ import {
     sv,
     uppercase,
     white
-}                              from '../../../utils/themer'
+}                              from 'utils/themer'
 
 export const placeCardInclusiveScoreWrapperStyle = {
     display: flex,
-    alignItems: center,
-    // justifyContent: center,
-    marginBottom: 10
+    alignItems: center
 }
 export const placeCardInclusiveScoreInfoStyle = {
     marginTop: 20,
@@ -91,7 +89,7 @@ export const placeCardRatingsWrapperStyle = {
     gridTemplateColumns: '1fr 1fr 1fr',
     gridGap: sv(20),
     font: globals.fonts.serif,
-    marginBottom: [25, .7, 25],
+    marginTop: [10, .7, 10],
     width: '100%',
     mobile: {
         display: flex,

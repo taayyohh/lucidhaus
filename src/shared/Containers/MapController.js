@@ -1,5 +1,7 @@
 import mapboxgl                                    from 'mapbox-gl'
 import React, {createContext, useEffect, useState} from 'react'
+import ReactDOMServer                              from 'react-dom/server';
+import PopUp                                       from 'shared/Map/PopUp'
 
 export const mapContext = createContext(null)
 
@@ -22,6 +24,7 @@ const MapController = ({children}) => {
         })
     }
 
+
     const createPopUp = (currentFeature, map) => {
         const popUps = document.getElementsByClassName('mapboxgl-popup')
         /** Check if there is already a popup on the map and if so, remove it */
@@ -29,14 +32,7 @@ const MapController = ({children}) => {
 
         new mapboxgl.Popup({closeOnClick: false})
             .setLngLat(currentFeature.geometry.coordinates)
-            .setHTML(`
-                <div>
-                    <a class="place-name" href="/places/${currentFeature.properties.slug}">
-                        ${currentFeature.properties.name}
-                    </a>
-                    <h4>${currentFeature.properties.address}</h4>
-                </div>
-            `)
+            .setHTML(ReactDOMServer.renderToString(<PopUp currentFeature={currentFeature}/>))
             .addTo(map)
     }
 
