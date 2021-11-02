@@ -14,10 +14,13 @@ import {
     REGION,
     RICH_TEXT,
     SELECT,
+    STATE_CITY,
     TEL,
-    TEXT, TEXTAREA,
-    TOGGLE, USER
-} from 'config/variables'
+    TEXT,
+    TEXTAREA,
+    TOGGLE,
+    USER
+}                     from 'config/variables'
 import React, {memo}  from 'react'
 import UploadAudio    from 'shared/Fields/UploadAudio'
 import UploadImage    from 'shared/Fields/UploadImage'
@@ -30,6 +33,7 @@ import Region         from './Region'
 import RichTextEditor from './RichTextEditor'
 import Select         from './Select'
 import SmartInput     from './SmartInput'
+import StateCity      from './StateCity'
 import TextArea       from './TextArea'
 import Toggle         from './Toggle'
 import User           from './User'
@@ -118,6 +122,18 @@ const FieldSwitch = memo(({field, formik, options, theme, autoSubmit}) => {
                 errorMessage={formik.touched[field.name] && formik.errors[field.name] ? formik.errors[field.name] : null}
                 theme={theme}
             />
+        case STATE_CITY:
+            return <StateCity
+                {...formik.getFieldProps(field.name)}
+                name={field.name}
+                formik={formik}
+                field={field}
+                options={options}
+                className={formik.touched[field.name] && formik.errors[field.name] ? 'error' : ''}
+                errorMessage={formik.touched[field.name] && formik.errors[field.name] ? formik.errors[field.name] : null}
+                theme={theme}
+            />
+
         case REGION:
             return <Region
                 name={field.name}
@@ -163,8 +179,6 @@ const FieldSwitch = memo(({field, formik, options, theme, autoSubmit}) => {
                 formik={formik}
                 inputLabel={field.inputLabel}
             />
-
-
         default:
             return null
     }

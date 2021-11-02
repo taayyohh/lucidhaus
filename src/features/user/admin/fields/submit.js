@@ -1,5 +1,5 @@
-import {MULTI_SELECT, NUMBER, TEXT} from 'config/variables'
-import * as Yup                     from 'yup'
+import {MULTI_SELECT, NUMBER, STATE_CITY, TEXT} from 'config/variables'
+import * as Yup                                 from 'yup'
 
 export const submitPlaceFields = [
     {
@@ -23,23 +23,18 @@ export const submitPlaceFields = [
         type: TEXT
     },
     {
-        name: 'city',
+        name: ['state', 'city'],
         inputLabel: 'City ',
-        type: TEXT
+        type: STATE_CITY
     },
+    // {
+    //     name: 'state',
+    //     inputLabel: 'State ',
+    //     type: STATE_CITY
+    // },
     {
         name: 'zip',
         inputLabel: 'Zip ',
-        type: TEXT
-    },
-    {
-        name: 'country',
-        inputLabel: 'Country',
-        type: TEXT
-    },
-    {
-        name: 'state',
-        inputLabel: 'State ',
         type: TEXT
     },
     {

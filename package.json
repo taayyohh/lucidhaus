@@ -23,6 +23,7 @@
     "braintree-web": "^3.68.0",
     "braintree-web-drop-in-react": "^1.1.1",
     "connected-react-router": "^6.8.0",
+    "country-state-city": "^3.0.1",
     "crypto-random-string": "^4.0.0",
     "dayjs": "^1.10.5",
     "dotenv": "^8.2.0",

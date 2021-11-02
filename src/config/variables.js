@@ -53,6 +53,7 @@ export const MULTI_SELECT = 'multi-select'
 export const REGION = 'region'
 export const RICH_TEXT = 'richText'
 export const SONGS = 'songs'
+export const STATE_CITY = 'state-city'
 export const TEXTAREA = "textarea"
 export const TOGGLE = 'toggle'
 export const USER = 'user'
