@@ -1,13 +1,15 @@
-import {globals}                            from 'config/styles'
-import {City}                               from 'country-state-city'
-import React, {useEffect, useRef, useState} from 'react'
-import Div                                  from 'shared/Basic/Div'
-import Fieldset                             from 'shared/Basic/Fieldset'
-import Input                                from 'shared/Basic/Input'
-import InputLabel                           from 'shared/Basic/InputLabel'
-import Legend                               from 'shared/Basic/Legend'
-import useMeasure                           from 'utils/useMeasure'
-import {defaultFocusedInputLabelStyle}      from '../styles'
+import {globals}                                                                           from 'config/styles'
+import {City}                                                                              from 'country-state-city'
+import React, {useEffect, useRef, useState}                                                from 'react'
+import Div                                                                                 from 'shared/Basic/Div'
+import Fieldset                                                                            from 'shared/Basic/Fieldset'
+import Input                                                                               from 'shared/Basic/Input'
+import InputLabel
+                                                                                           from 'shared/Basic/InputLabel'
+import Legend                                                                              from 'shared/Basic/Legend'
+import useMeasure                                                                          from 'utils/useMeasure'
+import {defaultFocusedInputLabelStyle}                                                     from '../styles'
+import {stateCityFieldsetWrapperStyle, stateCityOptionStyle, stateCityOptionsWrapperStyle} from './styles'
 
 const CitySelect = ({
                         filteredCityArray,
@@ -71,9 +73,19 @@ const CitySelect = ({
 
     return (
         <Div>
-            <Div>
-                <Div>City</Div>
-                <Fieldset theme={theme} className={className}>
+            <Div theme={{display: 'flex'}}>
+                <Div theme={{
+                    width: '50%',
+                    minWidth: '50%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                }}>
+                    <Div>
+                        {value}
+                    </Div>
+                </Div>
+                <Fieldset theme={stateCityFieldsetWrapperStyle} className={className}>
                     <Legend
                         theme={{
                             ...theme.legend,
@@ -96,22 +108,22 @@ const CitySelect = ({
                         onFocus={handleFocus}
                         onBlur={handleBlur}
                         type={'text'}
-                        value={value || ''}
+                        // value={value || ''}
                         theme={theme.field}
                         ref={inputRef}
                     />
                 </Fieldset>
-                <Div theme={{maxHeight: 200, overflow: 'scroll'}}>
-
-                    {filteredCityArray.map((city, i) => (
-                        <Div
-                            key={city.name}
-                            onClick={() => handleCitySelect(city.name)}
-                        >
-                            {city.name}
-                        </Div>
-                    ))}
-                </Div>
+            </Div>
+            <Div theme={stateCityOptionsWrapperStyle}>
+                {filteredCityArray.map((city, i) => (
+                    <Div
+                        key={city.name}
+                        onClick={() => handleCitySelect(city.name)}
+                        theme={stateCityOptionStyle}
+                    >
+                        {city.name}
+                    </Div>
+                ))}
             </Div>
         </Div>
     )

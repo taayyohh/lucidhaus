@@ -7,7 +7,8 @@ import Input                                from 'shared/Basic/Input'
 import InputLabel                           from 'shared/Basic/InputLabel'
 import Legend                               from 'shared/Basic/Legend'
 import useMeasure                           from 'utils/useMeasure'
-import {defaultFocusedInputLabelStyle}      from '../styles'
+import {defaultFocusedInputLabelStyle}                                                     from '../styles'
+import {stateCityFieldsetWrapperStyle, stateCityOptionStyle, stateCityOptionsWrapperStyle} from './styles'
 
 const StateSelect = ({formik, setSelectedState, setFilteredCityArray, className, name, value, theme}) => {
     const inputRef = useRef()
@@ -73,40 +74,49 @@ const StateSelect = ({formik, setSelectedState, setFilteredCityArray, className,
 
     return (
         <Div>
-            <Div>State</Div>
-            <Fieldset theme={theme} className={className}>
-                <Legend
-                    theme={{
-                        ...theme.legend,
-                        width: legendWidth + ((isInputLabelFocused || hasValue) ? 10 : 0)
-                    }}
-                    ref={legendRef}
-                />
-                <InputLabel
-                    theme={
-                        isInputLabelFocused
-                            ? {...defaultFocusedInputLabelStyle, ...theme.inputLabelFocused}
-                            : {...theme.inputLabel}
-                    }
-                    ref={inputLabelRef}
-                    children={'State'}
-                />
-                <Input
-                    // id={id}
-                    onChange={(event) => setFilteredStateInput(event.target.value)}
-                    onFocus={handleFocus}
-                    onBlur={handleBlur}
-                    type={'text'}
-                    value={value || ''}
-                    theme={theme.field}
-                    ref={inputRef}
-                />
-            </Fieldset>
-            <Div theme={{maxHeight: 200, overflow: 'scroll'}}>
+            <Div theme={{display: 'flex'}}>
+                <Div theme={{width: '50%', minWidth: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                    <Div>
+                        {value}
+                    </Div>
+                </Div>
+                <Fieldset theme={stateCityFieldsetWrapperStyle} className={className}>
+                    <Legend
+                        theme={{
+                            ...theme.legend,
+                            width: legendWidth + ((isInputLabelFocused || hasValue) ? 10 : 0)
+                        }}
+                        ref={legendRef}
+                    />
+                    <InputLabel
+                        theme={
+                            isInputLabelFocused
+                                ? {...defaultFocusedInputLabelStyle, ...theme.inputLabelFocused}
+                                : {...theme.inputLabel}
+                        }
+                        ref={inputLabelRef}
+                        children={'State'}
+                    />
+                    <Input
+                        // id={id}
+                        onChange={(event) => setFilteredStateInput(event.target.value)}
+                        onFocus={handleFocus}
+                        onBlur={handleBlur}
+                        type={'text'}
+                    //    value={value || ''}
+                        theme={theme.field}
+                        ref={inputRef}
+                    />
+                </Fieldset>
+
+
+            </Div>
+            <Div theme={stateCityOptionsWrapperStyle}>
                 {filteredStateArray && filteredStateArray.map((state, i) => (
                     <Div
                         key={state.isoCode}
                         onClick={() => handleStateSelect(state.isoCode, state.name)}
+                        theme={stateCityOptionStyle}
                     >
                         {state.name}
                     </Div>

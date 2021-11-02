@@ -11,26 +11,26 @@ const StateCity = memo(({className, name, errorMessage, field, formik, options, 
     return (
         <Div>
             <StateSelect
+                className={className}
                 formik={formik}
+                name={name}
+                theme={theme}
+                value={value[name[0]]}
                 setSelectedState={setSelectedState}
                 setFilteredCityArray={setFilteredCityArray}
-                className={className}
-                name={name}
-                value={value[name[0]]}
-                theme={theme}
             />
-            {filteredCityArray.length > 0 && (
+            {formik.values[name[0]].length > 0 && (
                 <CitySelect
+                    className={className}
                     formik={formik}
+                    name={name}
+                    theme={theme}
+                    value={value[name[1]]}
+                    filteredCityArray={filteredCityArray}
+                    filterCityInput={filterCityInput}
+                    selectedState={selectedState}
                     setFilteredCityInput={setFilteredCityInput}
                     setFilteredCityArray={setFilteredCityArray}
-                    filteredCityArray={filteredCityArray}
-                    selectedState={selectedState}
-                    filterCityInput={filterCityInput}
-                    name={name}
-                    value={value[name[1]]}
-                    theme={theme}
-                    className={className}
                 />
             )}
         </Div>
