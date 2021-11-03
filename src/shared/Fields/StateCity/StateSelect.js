@@ -6,9 +6,9 @@ import Fieldset                             from 'shared/Basic/Fieldset'
 import Input                                from 'shared/Basic/Input'
 import InputLabel                           from 'shared/Basic/InputLabel'
 import Legend                               from 'shared/Basic/Legend'
-import useMeasure                      from 'utils/useMeasure'
-import {timesCircle, timesCircleSolid} from '../../../config/icons'
-import Icon                            from '../../Basic/Icon'
+import useMeasure                           from 'utils/useMeasure'
+import {timesCircleSolid}                   from '../../../config/icons'
+import Icon                                 from '../../Basic/Icon'
 import {defaultFocusedInputLabelStyle}      from '../styles'
 import {
     stateCityFieldsetWrapperStyle,
@@ -120,7 +120,13 @@ const StateSelect = ({
                 <Div theme={stateSelectSelectionInnerWrapperStyle}>
                     <Div theme={stateSelectionLabelStyle}>Selected</Div>
                     {selectedState.state && (
-                        <Div theme={stateCitySelectedOptionStyle}>
+                        <Div
+                            theme={stateCitySelectedOptionStyle}
+                            onClick={() => {
+                                formik.setFieldValue(name[0], '')
+                                setSelectedState('')
+                            }}
+                        >
                             {selectedState.state}
                             <Icon
                                 icon={timesCircleSolid}

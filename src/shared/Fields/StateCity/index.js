@@ -49,7 +49,6 @@ const StateCity = memo(({className, name, errorMessage, field, formik, options, 
                 selectedState={selectedState}
                 setFilteredCityArray={setFilteredCityArray}
             />
-            {formik.values[name[0]].length > 0 && (
                 <CitySelect
                     className={className}
                     formik={formik}
@@ -62,7 +61,6 @@ const StateCity = memo(({className, name, errorMessage, field, formik, options, 
                     setFilteredCityInput={setFilteredCityInput}
                     setFilteredCityArray={setFilteredCityArray}
                 />
-            )}
         </Div>
     )
 })

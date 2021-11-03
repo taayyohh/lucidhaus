@@ -63,6 +63,13 @@ export const stateCitySelectedOptionStyle = {
         position: absolute,
         right: [10, globals.style.layoutScalingValue, 10],
         top: [13, .7, 14]
+    },
+    hover: {
+        backgroundColor: colorPalette.darkHoneyYellow,
+        cursor: pointer,
+        child: {
+            selector: 'svg',
+        }
     }
 }
 

@@ -7,6 +7,8 @@ import Input                                from 'shared/Basic/Input'
 import InputLabel                           from 'shared/Basic/InputLabel'
 import Legend                               from 'shared/Basic/Legend'
 import useMeasure                           from 'utils/useMeasure'
+import {timesCircleSolid}                   from '../../../config/icons'
+import Icon                                 from '../../Basic/Icon'
 import {defaultFocusedInputLabelStyle}      from '../styles'
 import {
     stateCityFieldsetWrapperStyle,
@@ -101,26 +103,40 @@ const CitySelect = ({
                         ref={inputRef}
                     />
                 </Fieldset>
-                <Div theme={stateSelectSelectionInnerWrapperStyle}>
-                    <Div theme={stateSelectionLabelStyle}>Selected</Div>
-                    {value && (
-                        <Div theme={stateCitySelectedOptionStyle}>
-                            {value}
-                        </Div>
-                    )}
-                </Div>
-            </Div>
-            <Div theme={stateCityOptionsWrapperStyle}>
-                {filteredCityArray.map(city => (
-                    <Div
-                        key={city.name}
-                        onClick={() => handleCitySelect(city.name)}
-                        theme={stateCityOptionStyle}
-                    >
-                        {city.name}
+                {(formik.values[name[0]].length > 0) && (
+                    <Div theme={stateSelectSelectionInnerWrapperStyle}>
+                        <Div theme={stateSelectionLabelStyle}>Selected</Div>
+                        {value && (
+                            <Div
+                                theme={stateCitySelectedOptionStyle}
+                                onClick={() => {
+                                    formik.setFieldValue(name[0], '')
+                                }}
+                            >
+                                {value}
+                                <Icon
+                                    icon={timesCircleSolid}
+                                    theme={stateCitySelectedOptionStyle.icon}
+                                />
+                            </Div>
+                        )}
                     </Div>
-                ))}
+                )}
+
             </Div>
+            {formik.values[name[0]].length > 0 && (
+                <Div theme={stateCityOptionsWrapperStyle}>
+                    {filteredCityArray.map(city => (
+                        <Div
+                            key={city.name}
+                            onClick={() => handleCitySelect(city.name)}
+                            theme={stateCityOptionStyle}
+                        >
+                            {city.name}
+                        </Div>
+                    ))}
+                </Div>
+            )}
         </Div>
     )
 }
