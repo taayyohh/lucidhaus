@@ -30,7 +30,6 @@ const Manage = () => {
         //             })
         //         )
 
-        console.log('places', places)
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [places])

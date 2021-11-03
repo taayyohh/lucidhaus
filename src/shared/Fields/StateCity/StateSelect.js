@@ -6,7 +6,9 @@ import Fieldset                             from 'shared/Basic/Fieldset'
 import Input                                from 'shared/Basic/Input'
 import InputLabel                           from 'shared/Basic/InputLabel'
 import Legend                               from 'shared/Basic/Legend'
-import useMeasure                           from 'utils/useMeasure'
+import useMeasure                      from 'utils/useMeasure'
+import {timesCircle, timesCircleSolid} from '../../../config/icons'
+import Icon                            from '../../Basic/Icon'
 import {defaultFocusedInputLabelStyle}      from '../styles'
 import {
     stateCityFieldsetWrapperStyle,
@@ -104,7 +106,7 @@ const StateSelect = ({
                                 : {...theme.inputLabel}
                         }
                         ref={inputLabelRef}
-                        children={'State'}
+                        children={'State - Type to Search. Click to Select.'}
                     />
                     <Input
                         onChange={(event) => setFilteredStateInput(event.target.value)}
@@ -120,6 +122,10 @@ const StateSelect = ({
                     {selectedState.state && (
                         <Div theme={stateCitySelectedOptionStyle}>
                             {selectedState.state}
+                            <Icon
+                                icon={timesCircleSolid}
+                                theme={stateCitySelectedOptionStyle.icon}
+                            />
                         </Div>
                     )}
                 </Div>

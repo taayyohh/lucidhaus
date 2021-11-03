@@ -51,13 +51,19 @@ export const stateSelectionLabelStyle = {
 }
 
 export const stateCitySelectedOptionStyle = {
+    position: relative,
     background: colorPalette.honeyYellow,
     paddingLeft: [40, .7, 30],
     paddingRight: [40, .7, 30],
     paddingTop: [10, .7, 10],
     paddingBottom: [10, .7, 10],
     borderRadius: [10, .7, 10],
-    size: [16, .7, 16]
+    size: [16, .7, 16],
+    icon: {
+        position: absolute,
+        right: [10, globals.style.layoutScalingValue, 10],
+        top: [13, .7, 14]
+    }
 }
 
 export const stateSelectSelectionWrapperStyle = {

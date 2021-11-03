@@ -22,7 +22,6 @@ const Map = memo(({
 
 
     const buildLocationList = ({features}, map) => {
-        console.log('BUILD')
         dispatch({
             type: 'place/buildLocationList',
             payload: {
@@ -34,7 +33,6 @@ const Map = memo(({
 
     /*  Search Map  */
     useEffect(() => {
-        console.log('FEAT', features)
         if (url.includes('search')) {
             mapboxgl.accessToken = MAPBOX_PUBLIC
 

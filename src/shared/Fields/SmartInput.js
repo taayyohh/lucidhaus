@@ -60,25 +60,7 @@ const SmartInput = ({
             formik.submitForm()
         }
 
-        const address = formik.values.address1
-        const city = formik.values.city
-        const state = formik.values.state
 
-        if (address?.length > 0 && city?.length > 0 && state?.length > 0 && formik.values.isPendingSubmission) {
-            geocodingClient.forwardGeocode({
-                query: `${address} ${city} ${state}`,
-                mode: 'mapbox.places-permanent',
-                limit: 2
-            })
-                .send()
-                .then(response => {
-                    const match = response.body;
-                    const long = match.features[0].center[0]
-                    const lat = match.features[0].center[1]
-                    formik.setFieldValue('longitude', long)
-                    formik.setFieldValue('latitude', lat)
-                })
-        }
 
 
     }

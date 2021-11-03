@@ -281,7 +281,6 @@ export function* flagReview({payload}) {
        yield put({type: 'place/getPlace', payload: {slug: placeSlug}})
 
 
-       //    console.log('flagged', flagged)
        //  yield put({
        //      type: 'user/getUser',
        //      payload: {
@@ -312,7 +311,6 @@ export function* submitPlaceSuccess({payload}) {
     })
 
     if (!submission.error) {
-        // console.log('submission', submission)
         // yield put({
         //     type: 'user/getUser',
         //     payload: {

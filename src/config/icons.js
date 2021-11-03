@@ -56,7 +56,8 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 
 import {
-    faMapMarkerAlt as faMapMarkerAltSolid
+    faMapMarkerAlt as faMapMarkerAltSolid,
+    faTimesCircle as faTimesCircleSolid,
 } from '@fortawesome/pro-solid-svg-icons'
 
 export const
@@ -107,6 +108,7 @@ export const
     tags = faTags,
     times = faTimes,
     timesCircle = faTimesCircle,
+    timesCircleSolid = faTimesCircleSolid,
     trashAlt = faTrashAlt,
     twitter = faTwitter,
     instagram = faInstagram,

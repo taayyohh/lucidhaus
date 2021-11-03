@@ -71,6 +71,13 @@ export function* submitPlace({payload}) {
 
     } else {
         yield put({type: 'place/submitPlaceFailure', payload})
+        yield put({
+            type: 'site/setNotification',
+            payload: {
+                notification: 'Place already submitted!',
+                theme: 'red'
+            }
+        })
     }
 }
 
@@ -94,7 +101,6 @@ export function* submitPlaceSuccess({payload}) {
 
     if (!submission.error) {
         //TODO: clear form
-       // console.log('submission', submission)
         yield put({
             type: 'user/getUserById',
             payload: {
@@ -106,6 +112,11 @@ export function* submitPlaceSuccess({payload}) {
     }
 }
 
+export function* submitPlaceFailure({payload}) {
+
+}
+
+
 
 export function* watchSubmitPlace() {
     yield takeLatest('user/submitPlace', submitPlace)
@@ -113,4 +124,8 @@ export function* watchSubmitPlace() {
 
 export function* watchSubmitPlaceSuccess() {
     yield takeLatest('user/submitPlaceSuccess', submitPlaceSuccess)
+}
+
+export function* watchSubmitPlaceFailure() {
+    yield takeLatest('user/submitPlaceFailure', submitPlaceFailure)
 }

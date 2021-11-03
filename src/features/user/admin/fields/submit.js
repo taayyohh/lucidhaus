@@ -23,19 +23,15 @@ export const submitPlaceFields = [
         type: TEXT
     },
     {
-        name: ['state', 'city'],
+        name: ['state', 'city'], // needs to be state, city
         inputLabel: 'City ',
         type: STATE_CITY
     },
-    // {
-    //     name: 'state',
-    //     inputLabel: 'State ',
-    //     type: STATE_CITY
-    // },
     {
         name: 'zip',
         inputLabel: 'Zip ',
-        type: TEXT
+        type: TEXT,
+        disabled: true
     },
     {
         name: 'longitude',
