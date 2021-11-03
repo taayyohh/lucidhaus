@@ -17,6 +17,7 @@ const StateCity = memo(({className, name, errorMessage, field, formik, options, 
                 theme={theme}
                 value={value[name[0]]}
                 setSelectedState={setSelectedState}
+                selectedState={selectedState}
                 setFilteredCityArray={setFilteredCityArray}
             />
             {formik.values[name[0]].length > 0 && (

@@ -7,10 +7,28 @@ import Input                                from 'shared/Basic/Input'
 import InputLabel                           from 'shared/Basic/InputLabel'
 import Legend                               from 'shared/Basic/Legend'
 import useMeasure                           from 'utils/useMeasure'
-import {defaultFocusedInputLabelStyle}                                                     from '../styles'
-import {stateCityFieldsetWrapperStyle, stateCityOptionStyle, stateCityOptionsWrapperStyle} from './styles'
+import {defaultFocusedInputLabelStyle}      from '../styles'
+import {
+    stateCityFieldsetWrapperStyle,
+    stateCityOptionStyle,
+    stateCityOptionsWrapperStyle,
+    stateCitySelectedOptionStyle,
+    stateCitySelectStyle,
+    stateSelectionLabelStyle,
+    stateSelectSelectionInnerWrapperStyle,
+    stateSelectSelectionWrapperStyle
+}                                           from './styles'
 
-const StateSelect = ({formik, setSelectedState, setFilteredCityArray, className, name, value, theme}) => {
+const StateSelect = ({
+                         formik,
+                         setSelectedState,
+                         selectedState,
+                         setFilteredCityArray,
+                         className,
+                         name,
+                         value,
+                         theme
+                     }) => {
     const inputRef = useRef()
     const legendRef = useRef()
     const inputLabelRef = useRef()
@@ -18,10 +36,25 @@ const StateSelect = ({formik, setSelectedState, setFilteredCityArray, className,
     const [isInputLabelFocused, setIsInputLabelFocused] = useState(false)
     const [hasValue, setHasValue] = useState(false)
     const [legendWidth, setLegendWidth] = useState(0)
-
     const [filterStateInput, setFilteredStateInput] = useState('')
     const [filteredStateArray, setFilteredStateArray] = useState(State.getStatesOfCountry('US'))
 
+    const handleStateSelect = (iso, state) => {
+        setFilteredCityArray(City.getCitiesOfState('US', iso))
+        setSelectedState({iso, state})
+        formik.setFieldValue(name[0], iso)
+        formik.setFieldValue(name[1], '')
+    }
+    const handleFocus = () => {
+        setIsInputLabelFocused(true)
+        setLegendWidth(inputLabelWidth)
+    }
+    const handleBlur = () => {
+        if (!hasValue) {
+            setIsInputLabelFocused(false)
+            setLegendWidth(0)
+        }
+    }
 
     useEffect(() => {
         if (!!State.getStatesOfCountry('US'))
@@ -34,25 +67,6 @@ const StateSelect = ({formik, setSelectedState, setFilteredCityArray, className,
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [filterStateInput])
-
-
-    const handleStateSelect = (iso, state) => {
-        setFilteredCityArray(City.getCitiesOfState('US', iso))
-        setSelectedState(iso)
-        formik.setFieldValue(name[0], state)
-    }
-
-    const handleFocus = () => {
-        setIsInputLabelFocused(true)
-        setLegendWidth(inputLabelWidth)
-    }
-
-    const handleBlur = () => {
-        if (!hasValue) {
-            setIsInputLabelFocused(false)
-            setLegendWidth(0)
-        }
-    }
 
     useEffect(() => {
         const valueExists = value?.length > 0
@@ -73,13 +87,8 @@ const StateSelect = ({formik, setSelectedState, setFilteredCityArray, className,
     }, [])
 
     return (
-        <Div>
-            <Div theme={{display: 'flex'}}>
-                <Div theme={{width: '50%', minWidth: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-                    <Div>
-                        {value}
-                    </Div>
-                </Div>
+        <Div theme={stateCitySelectStyle}>
+            <Div theme={stateSelectSelectionWrapperStyle}>
                 <Fieldset theme={stateCityFieldsetWrapperStyle} className={className}>
                     <Legend
                         theme={{
@@ -98,18 +107,22 @@ const StateSelect = ({formik, setSelectedState, setFilteredCityArray, className,
                         children={'State'}
                     />
                     <Input
-                        // id={id}
                         onChange={(event) => setFilteredStateInput(event.target.value)}
                         onFocus={handleFocus}
                         onBlur={handleBlur}
                         type={'text'}
-                    //    value={value || ''}
                         theme={theme.field}
                         ref={inputRef}
                     />
                 </Fieldset>
-
-
+                <Div theme={stateSelectSelectionInnerWrapperStyle}>
+                    <Div theme={stateSelectionLabelStyle}>Selected</Div>
+                    {selectedState.state && (
+                        <Div theme={stateCitySelectedOptionStyle}>
+                            {selectedState.state}
+                        </Div>
+                    )}
+                </Div>
             </Div>
             <Div theme={stateCityOptionsWrapperStyle}>
                 {filteredStateArray && filteredStateArray.map((state, i) => (
