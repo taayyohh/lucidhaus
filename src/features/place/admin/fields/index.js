@@ -1,4 +1,15 @@
-import {IMAGE_UPLOAD, MULTI_SELECT, NUMBER, RICH_TEXT, SELECT, TEL, TEXT, TOGGLE, UPLOAD_PATHS} from 'config/variables'
+import {
+    IMAGE_UPLOAD,
+    MULTI_SELECT,
+    NUMBER,
+    RICH_TEXT,
+    SELECT,
+    STATE_CITY,
+    TEL,
+    TEXT,
+    TOGGLE,
+    UPLOAD_PATHS
+} from 'config/variables'
 import * as Yup                                                                                 from 'yup'
 
 export const placeFields = [
@@ -13,6 +24,11 @@ export const placeFields = [
         type: RICH_TEXT
     },
     {
+        name: 'website',
+        inputLabel: 'Website',
+        type: TEXT
+    },
+    {
         name: 'photo',
         file: 'photoFile',
         cropWidth: 1920,
@@ -22,14 +38,9 @@ export const placeFields = [
         type: IMAGE_UPLOAD,
     },
     {
-        name: 'accessibleDoorway',
-        inputLabel: 'Accessible Doorway ',
-        type: TEXT
-    },
-    {
-        name: 'audioAvailable',
-        inputLabel: 'Audio Available',
-        type: TOGGLE
+        name: 'tel',
+        inputLabel: 'Phone Number',
+        type: TEL
     },
     {
         name: 'address1',
@@ -42,29 +53,14 @@ export const placeFields = [
         type: TEXT
     },
     {
-        name: 'city',
+        name: ['state', 'city'], // needs to be state, city
         inputLabel: 'City ',
-        type: TEXT
+        type: STATE_CITY
     },
     {
         name: 'zip',
         inputLabel: 'Zip ',
         type: TEXT
-    },
-    {
-        name: 'country',
-        inputLabel: 'Country',
-        type: TEXT
-    },
-    {
-        name: 'state',
-        inputLabel: 'State ',
-        type: TEXT
-    },
-    {
-        name: 'tel',
-        inputLabel: 'Phone Number',
-        type: TEL
     },
     {
         name: 'longitude',
@@ -75,6 +71,16 @@ export const placeFields = [
         name: 'latitude',
         inputLabel: 'Latitude ',
         type: NUMBER
+    },
+    {
+        name: 'accessibleDoorway',
+        inputLabel: 'Accessible Doorway ',
+        type: TEXT
+    },
+    {
+        name: 'audioAvailable',
+        inputLabel: 'Audio Available',
+        type: TOGGLE
     },
     {
         name: 'bathrooms',
@@ -145,11 +151,6 @@ export const placeFields = [
         name: 'signLanguageAccessible',
         inputLabel: 'Sign Language Accessible',
         type: TOGGLE
-    },
-    {
-        name: 'website',
-        inputLabel: 'Website',
-        type: TEXT
     },
     {
         name: 'wheelchairElevator',

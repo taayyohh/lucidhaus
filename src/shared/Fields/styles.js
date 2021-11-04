@@ -24,6 +24,13 @@ import {
 
 /** Default **/
 
+export const invisibleStyle = {
+    fieldset: {
+        visibility: 'hidden',
+        height: 0
+    }
+}
+
 export const defaultFormStyle = {
     display: flex,
     alignItems: flexStart,

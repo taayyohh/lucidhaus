@@ -1,15 +1,15 @@
-import {globals}                                               from 'config/styles'
-import {DATE, MAPBOX_PUBLIC, TEL}                              from 'config/variables'
-import PropTypes                                               from 'prop-types'
-import React, {useEffect, useRef, useState}                    from 'react'
-import Fieldset                                                from 'shared/Basic/Fieldset'
-import Input                                                   from 'shared/Basic/Input'
-import InputLabel                                              from 'shared/Basic/InputLabel'
-import Legend                                                  from 'shared/Basic/Legend'
-import Span                                                    from 'shared/Basic/Span'
-import {formatPhone}                                           from 'utils/helpers'
-import useMeasure                                              from 'utils/useMeasure'
-import {defaultFieldErrorStyle, defaultFocusedInputLabelStyle} from './styles'
+import {globals}                                                               from 'config/styles'
+import {DATE, MAPBOX_PUBLIC, TEL}                                              from 'config/variables'
+import PropTypes                                                               from 'prop-types'
+import React, {useEffect, useRef, useState}                                    from 'react'
+import Fieldset                                                                from 'shared/Basic/Fieldset'
+import Input                                                                   from 'shared/Basic/Input'
+import InputLabel                                                              from 'shared/Basic/InputLabel'
+import Legend                                                                  from 'shared/Basic/Legend'
+import Span                                                                    from 'shared/Basic/Span'
+import {formatPhone}                                                           from 'utils/helpers'
+import useMeasure                                                              from 'utils/useMeasure'
+import {defaultFieldErrorStyle, defaultFocusedInputLabelStyle, invisibleStyle} from './styles'
 
 
 const mapboxGeo = require('@mapbox/mapbox-sdk/services/geocoding');
@@ -22,6 +22,7 @@ const SmartInput = ({
                         disabled,
                         errorMessage,
                         formik,
+                        hidden,
                         id,
                         inputLabel,
                         onChange,
@@ -61,8 +62,6 @@ const SmartInput = ({
         }
 
 
-
-
     }
     const handleFocus = () => {
         setIsInputLabelFocused(true)
@@ -95,7 +94,7 @@ const SmartInput = ({
     }, [value, type])
 
     return (
-        <Fieldset theme={theme} className={className}>
+        <Fieldset theme={hidden ? {...theme, ...invisibleStyle} : {...theme}} className={className}>
             <Legend
                 theme={{
                     ...theme.legend,

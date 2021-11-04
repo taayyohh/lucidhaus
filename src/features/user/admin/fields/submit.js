@@ -31,19 +31,22 @@ export const submitPlaceFields = [
         name: 'zip',
         inputLabel: 'Zip ',
         type: TEXT,
-        disabled: true
+        disabled: true,
+        hidden: true
     },
     {
         name: 'longitude',
         inputLabel: 'Longitude ',
         type: NUMBER,
-        disabled: true
+        disabled: true,
+        hidden: true
     },
     {
         name: 'latitude',
         inputLabel: 'Latitude ',
         type: NUMBER,
-        disabled: true
+        disabled: true,
+        hidden: true
     },
     {
         name: 'categories',

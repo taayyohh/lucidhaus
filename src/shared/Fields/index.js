@@ -78,6 +78,7 @@ const FieldSwitch = memo(({field, formik, options, theme, autoSubmit}) => {
                 {...formik.getFieldProps(field.name)}
                 className={formik.touched[field.name] && formik.errors[field.name] ? 'error' : ''}
                 disabled={field.disabled}
+                hidden={field.hidden}
                 errorMessage={formik.touched[field.name] && formik.errors[field.name] ? formik.errors[field.name] : null}
                 formik={formik}
                 id={field.name}
