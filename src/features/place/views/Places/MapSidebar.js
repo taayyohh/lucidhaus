@@ -1,16 +1,16 @@
 import React                   from 'react'
 import Div                     from 'shared/Basic/Div'
 import Query                   from './Query'
-import SidebarListings         from './SidebarListings'
+import MapSidebarListings      from './MapSidebarListings'
 import {placesMapSidebarStyle} from './styles'
 
-const Sidebar = ({noResults}) => {
+const MapSidebar = ({noResults}) => {
     return (
         <Div theme={placesMapSidebarStyle(noResults)}>
             <Query/>
-            <SidebarListings/>
+            <MapSidebarListings/>
         </Div>
     )
 }
 
-export default Sidebar
+export default MapSidebar

@@ -2,6 +2,8 @@ import {mapMarkerSolid} from 'config/icons'
 import React            from 'react'
 import Div              from 'shared/Basic/Div'
 import Icon             from 'shared/Basic/Icon'
+import LinkSwitch       from 'shared/Basic/LinkSwitch'
+import InclusiveScore   from './InclusiveScore'
 import {placeCardStyle} from './styles'
 
 const PlaceCard = ({
@@ -13,16 +15,32 @@ const PlaceCard = ({
                        celebrated,
                        welcome,
                        inclusiveScore,
-                       theme
+                       url,
+                       theme,
                    }) => {
+
     return (
         <Div theme={{...placeCardStyle, ...theme}}>
-
             <Div theme={{display: 'flex'}}>
-                <Div theme={{...placeCardStyle.name, ...theme.name}}>{name}</Div>
+                <LinkSwitch
+                    url={url}
+                    theme={{...placeCardStyle.name, ...theme.name}}
+                >
+                    {name}
+                </LinkSwitch>
             </Div>
 
             <Div theme={{...placeCardStyle.address, ...theme.address}}>{address}</Div>
+
+            {inclusiveScore > 0 && (
+                <InclusiveScore
+                    inclusiveScore={inclusiveScore}
+                    safe={safe}
+                    welcome={welcome}
+                    celebrated={celebrated}
+                    theme={theme}
+                />
+            )}
             <Div theme={{...placeCardStyle.locationWrapper}}>
                 <Icon
                     theme={{...placeCardStyle.locationIcon}}

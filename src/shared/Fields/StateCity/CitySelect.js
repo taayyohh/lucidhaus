@@ -1,14 +1,14 @@
+import {timesCircleSolid}                   from 'config/icons'
 import {globals}                            from 'config/styles'
 import {City}                               from 'country-state-city'
 import React, {useEffect, useRef, useState} from 'react'
 import Div                                  from 'shared/Basic/Div'
 import Fieldset                             from 'shared/Basic/Fieldset'
+import Icon                                 from 'shared/Basic/Icon'
 import Input                                from 'shared/Basic/Input'
 import InputLabel                           from 'shared/Basic/InputLabel'
 import Legend                               from 'shared/Basic/Legend'
 import useMeasure                           from 'utils/useMeasure'
-import {timesCircleSolid}                   from '../../../config/icons'
-import Icon                                 from '../../Basic/Icon'
 import {defaultFocusedInputLabelStyle}      from '../styles'
 import {
     stateCityFieldsetWrapperStyle,
@@ -103,7 +103,7 @@ const CitySelect = ({
                         ref={inputRef}
                     />
                 </Fieldset>
-                {(formik.values[name[0]].length > 0) && (
+                {(formik.values[name[0]]?.length > 0) && (
                     <Div theme={stateSelectSelectionInnerWrapperStyle}>
                         <Div theme={stateSelectionLabelStyle}>Selected</Div>
                         {value && (

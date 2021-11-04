@@ -4,9 +4,9 @@ import {useDispatch, useSelector}                                  from 'react-r
 import Div                                                         from 'shared/Basic/Div'
 import ContentWrapper                                              from 'shared/Layout/ContentWrapper'
 import Map                                                         from 'shared/Map'
-import NoResults                                                   from './NoResults'
-import Sidebar                                                     from './Sidebar'
-import {placesMapStyle}                                            from './styles'
+import NoResults        from './NoResults'
+import MapSidebar       from './MapSidebar'
+import {placesMapStyle} from './styles'
 
 const Places = () => {
     const {boonePlaces, algoliaPlaces, places, noResults} = useSelector(state => state.place)
@@ -101,7 +101,7 @@ const Places = () => {
     return (
         <ContentWrapper theme={placesContentWrapperStyle}>
             <Div theme={placesContentInnerWrapperStyle(noResults.boone && noResults.algolia)}>
-                <Sidebar noResults={noResults.boone && noResults.algolia}/>
+                <MapSidebar noResults={noResults.boone && noResults.algolia}/>
                 {(features.length > 0 && (
                     <Map
                         styles={'mapbox://styles/mapbox/light-v10'}

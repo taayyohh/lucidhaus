@@ -56,8 +56,9 @@ export const placeCardStyle = {
         display: none
     },
     name: {
-        size: [22, .7, 18],
-        weight: 600
+        size: [20, .7, 18],
+        weight: 500,
+        textDecoration: none
     },
     locationWrapper: {
         display: flex,

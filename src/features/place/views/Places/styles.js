@@ -31,7 +31,7 @@ export const placeSidebarCardWrapperStyle = {
     paddingBottom: 20,
 }
 
-export const placeSidebarCardStyle = isActive => {
+export const placeSidebarCardStyle = (isActive) => {
     return {
         borderColor: !isActive ? globals.colors.borderColor : colorPalette.forestGreen,
         backgroundColor: white

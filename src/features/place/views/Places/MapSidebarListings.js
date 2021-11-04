@@ -6,7 +6,7 @@ import {mapContext}                                                             
 import {isEmpty}                                                                        from 'utils/helpers'
 import {placeSidebarCardStyle, placeSidebarCardWrapperStyle, placeSidebarListingsStyle} from './styles'
 
-const SidebarListings = () => {
+const MapSidebarListings = () => {
     const {mapBoxInstance, flyToStore, isActivePlaceCard, setIsActivePlaceCard, createPopUp} = useContext(mapContext)
     const {locationList} = useSelector(state => state.place)
     const [properties, setProperties] = useState([])
@@ -44,6 +44,7 @@ const SidebarListings = () => {
                         celebrated={p.averageCelebrated}
                         welcome={p.averageWelcome}
                         inclusiveScore={p.inclusiveScore}
+                        url={`/places/${p.slug}`}
                         theme={placeSidebarCardStyle(p._id === isActivePlaceCard)}
                     />
                 </Div>
@@ -52,4 +53,4 @@ const SidebarListings = () => {
     )
 }
 
-export default SidebarListings
+export default MapSidebarListings

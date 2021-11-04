@@ -19,14 +19,14 @@ const PopUp = ({currentFeature}) => {
                     </LinkSwitch>
                     <Div theme={mapPopUpAddressStyle}>{currentFeature.properties.address}</Div>
                 </Div>
-                {currentFeature?.properties?.inclusiveScore > 0 && (
-                    <InclusiveScore
-                        safe={currentFeature?.properties?.averageSafe}
-                        celebrated={currentFeature?.properties?.averageCelebrated}
-                        welcome={currentFeature?.properties?.averageWelcome}
-                        inclusiveScore={currentFeature?.properties?.inclusiveScore}
-                    />
-                )}
+                {/*{currentFeature?.properties?.inclusiveScore > 0 && (*/}
+                {/*    <InclusiveScore*/}
+                {/*        safe={currentFeature?.properties?.averageSafe}*/}
+                {/*        celebrated={currentFeature?.properties?.averageCelebrated}*/}
+                {/*        welcome={currentFeature?.properties?.averageWelcome}*/}
+                {/*        inclusiveScore={currentFeature?.properties?.inclusiveScore}*/}
+                {/*    />*/}
+                {/*)}*/}
             </BrowserRouter>
 
         </Div>

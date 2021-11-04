@@ -6,6 +6,8 @@ export const getBooneAutoComplete = ({input, longitude, latitude, radius}) => {
     //     : `${CORS}${BOONE_HOST}${BOONE_API}search?name=${input}&limit=100`
     const fetchString = `${CORS}${BOONE_HOST}${BOONE_API}search?name=${input}&limit=100`
 
+    console.log('fETCH', fetchString)
+
     return (
         fetch(fetchString, {
             method: 'GET',
