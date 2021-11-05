@@ -6,9 +6,7 @@ export function* getBooneAutoComplete({payload}) {
     try {
         const suggestions = yield call(getBooneSuggestions, payload)
         const failedToFetch = !!suggestions?.stack && suggestions?.stack?.includes('TypeError')
-
-        console.log('suggestions', suggestions)
-
+        
         if (!suggestions?.error && !failedToFetch && suggestions?.data?.length > 0) {
             yield put({type: 'place/getBooneAutoCompleteSuccess', payload: suggestions})
         } else {
