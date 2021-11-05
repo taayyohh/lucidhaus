@@ -66,7 +66,8 @@ export function* createPlaceFromBoone({payload}) {
         yield put({type: 'place/createPlaceFromBooneSuccess', payload: {createdPlace}})
 
     } else {
-        yield put({type: 'place/createPlaceFromBooneFailure', payload: {createdPlace}})
+        yield put(push(`/places/${createdPlace.error}`))
+       // yield put({type: 'place/createPlaceFromBooneFailure', payload: {createdPlace}})
     }
 
 }

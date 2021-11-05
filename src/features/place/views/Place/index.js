@@ -8,15 +8,11 @@ import {menuPanelContext}                       from 'shared/Containers/MenuPane
 import {searchContext}                          from 'shared/Containers/SearchController'
 import ContentWrapper                           from 'shared/Layout/ContentWrapper'
 import {fadeIn, fadeOut, nOpacity}              from 'shared/Layout/styles/animations'
-import Map                                      from 'shared/Map'
 import {history}                                from 'store'
 import {debounce}                               from 'utils/helpers'
 import {isEmpty}                                from 'utils/themer'
 import {
     placeInnerLeftWrapperStyle,
-    placeInnerRightInfoStyle,
-    placeInnerRightWrapperStyle,
-    placeMapStyle,
     placeMarqueeStyle,
     placeTaxonomyStyle,
     placeTaxonomyWrapperStyle,
@@ -24,14 +20,11 @@ import {
     reviewHeadingStyle,
     reviewsHeadingWrapperStyle
 }                                               from '../styles'
-import Address                                  from './Address'
 import Description                              from './Description'
-import LeaveAReviewButton                       from './LeaveAReview'
+import PlaceSidebar                             from './PlaceSidebar'
 import Rating                                   from './Rating'
 import Reviews                                  from './Reviews'
-import Tags                                     from './Tags'
 import Title                                    from './Title'
-import Website                                  from './Website'
 
 const Place = () => {
     const {setPanel} = useContext(menuPanelContext)
@@ -102,13 +95,15 @@ const Place = () => {
         })
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, [slug, placeId])
 
     useEffect(() => {
         const boonePlaceRemoved = hasError(error?.boonePlace?.[0]?.status)
         const hasNoBoonePlace = hasError(error?.boonePlace?.status)
         const hasNoPlace = hasError(error?.place?.status)
         const hasBoonePlace = !isEmpty(boonePlace)
+
+        console.log('error', error)
 
         if ((hasNoPlace && hasNoBoonePlace) || boonePlaceRemoved) {
             debounce(history.push(`/places`), 500)
@@ -424,28 +419,15 @@ const Place = () => {
                                 </Div>
                             )}
                         </Div>
-                        <Div theme={placeInnerRightWrapperStyle}>
-                            <Div theme={placeInnerRightInfoStyle}>
-                                <Map
-                                    lon={geojson?.[0]?.geometry?.coordinates?.[0] || (!isEmpty(boonePlace) && boonePlace.locations[0].longitude)}
-                                    lat={geojson?.[0]?.geometry?.coordinates?.[1] || (!isEmpty(boonePlace) && boonePlace.locations[0].latitude)}
-                                    theme={placeMapStyle}
-                                />
-                                <Address
-                                    address1={geojson?.[0]?.properties?.address}
-                                    address2={geojson?.[0]?.properties?.address2}
-                                    boonePlace={boonePlace}
-                                    city={geojson?.[0]?.properties?.city}
-                                    state={geojson?.[0]?.properties?.state}
-                                    zip={geojson?.[0]?.properties?.postalCode}
-                                />
-                                <Website website={website}/>
-                                <Tags placeCategory={placeCategory}/>
-                                {(isAuthenticated && isVerified && hasNoReviews) && (
-                                    <LeaveAReviewButton/>
-                                )}
-                            </Div>
-                        </Div>
+                        <PlaceSidebar
+                            boonePlace={boonePlace}
+                            geojson={geojson}
+                            hasNoReviews={hasNoReviews}
+                            isAuthenticated={isAuthenticated}
+                            isVerified={isVerified}
+                            placeCategory={placeCategory}
+                            website={website}
+                        />
                     </MotionDiv>
                 </ContentWrapper>
             </MotionDiv>

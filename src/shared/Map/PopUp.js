@@ -12,12 +12,12 @@ const PopUp = ({currentFeature}) => {
             <BrowserRouter>
                 <Div>
                     <LinkSwitch
-                        url={`/places/${currentFeature.properties.slug}`}
+                        url={`/places/${currentFeature?.properties?.slug}`}
                         theme={mapPopUpNameStyle}
                     >
-                        {currentFeature.properties.name}
+                        {currentFeature?.properties?.name}
                     </LinkSwitch>
-                    <Div theme={mapPopUpAddressStyle}>{currentFeature.properties.address}</Div>
+                    <Div theme={mapPopUpAddressStyle}>{currentFeature?.properties?.address}</Div>
                 </Div>
                 {/*{currentFeature?.properties?.inclusiveScore > 0 && (*/}
                 {/*    <InclusiveScore*/}

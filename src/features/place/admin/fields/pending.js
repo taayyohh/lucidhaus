@@ -1,4 +1,15 @@
-import {IMAGE_UPLOAD, MULTI_SELECT, NUMBER, RICH_TEXT, SELECT, TEXT, TOGGLE, UPLOAD_PATHS, USER} from 'config/variables'
+import {
+    IMAGE_UPLOAD,
+    MULTI_SELECT,
+    NUMBER,
+    RICH_TEXT,
+    SELECT,
+    STATE_CITY,
+    TEXT,
+    TOGGLE,
+    UPLOAD_PATHS,
+    USER
+} from 'config/variables'
 import * as Yup                                                                                  from 'yup'
 
 export const pendingFields = [
@@ -41,9 +52,9 @@ export const pendingFields = [
         type: TEXT
     },
     {
-        name: 'city',
+        name: ['state', 'city'], // needs to be state, city
         inputLabel: 'City ',
-        type: TEXT
+        type: STATE_CITY
     },
     {
         name: 'zip',
@@ -53,11 +64,6 @@ export const pendingFields = [
     {
         name: 'country',
         inputLabel: 'Country',
-        type: TEXT
-    },
-    {
-        name: 'state',
-        inputLabel: 'State ',
         type: TEXT
     },
     {

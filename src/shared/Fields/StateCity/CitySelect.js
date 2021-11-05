@@ -124,7 +124,7 @@ const CitySelect = ({
                 )}
 
             </Div>
-            {formik.values[name[0]].length > 0 && (
+            {formik?.values[name[0]]?.length > 0 && (
                 <Div theme={stateCityOptionsWrapperStyle}>
                     {filteredCityArray.map(city => (
                         <Div
