@@ -23,8 +23,7 @@ const MapController = ({children}) => {
             zoom: 15
         })
     }
-
-
+    
     const createPopUp = (currentFeature, map) => {
         const popUps = document.getElementsByClassName('mapboxgl-popup')
         /** Check if there is already a popup on the map and if so, remove it */

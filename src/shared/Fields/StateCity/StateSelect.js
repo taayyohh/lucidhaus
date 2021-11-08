@@ -85,8 +85,14 @@ const StateSelect = ({
             setLegendWidth(inputLabelWidth)
         }
 
+
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
+
+    useEffect(() => {
+        setSelectedState(formik.values.state)
+
+    }, [formik.values.state, setSelectedState])
 
     return (
         <Div theme={stateCitySelectStyle}>
@@ -116,10 +122,11 @@ const StateSelect = ({
                         theme={theme.field}
                         ref={inputRef}
                     />
+                    {        console.log('value', formik.values)}
                 </Fieldset>
                 <Div theme={stateSelectSelectionInnerWrapperStyle}>
                     <Div theme={stateSelectionLabelStyle}>Selected</Div>
-                    {selectedState.state && (
+                    {selectedState?.state && (
                         <Div
                             theme={stateCitySelectedOptionStyle}
                             onClick={() => {
@@ -127,7 +134,7 @@ const StateSelect = ({
                                 setSelectedState('')
                             }}
                         >
-                            {selectedState.state}
+                            {selectedState?.state}
                             <Icon
                                 icon={timesCircleSolid}
                                 theme={stateCitySelectedOptionStyle.icon}

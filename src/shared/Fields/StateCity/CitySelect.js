@@ -56,7 +56,7 @@ const CitySelect = ({
 
     useEffect(() => {
         if (!!filteredCityArray)
-            setFilteredCityArray(City.getCitiesOfState('US', selectedState.iso)?.reduce(function (accumulator = [], currentValue) {
+            setFilteredCityArray(City.getCitiesOfState('US', selectedState?.iso)?.reduce(function (accumulator = [], currentValue) {
                 if (currentValue.name.toLowerCase().includes(filterCityInput.toLowerCase()))
                     accumulator.push(currentValue)
 

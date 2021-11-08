@@ -1,25 +1,24 @@
-import mapboxgl                       from '!mapbox-gl'
+import mapboxgl                             from '!mapbox-gl'
 import {MAPBOX_PUBLIC}                      from 'config/variables'
 import React, {memo, useContext, useEffect} from 'react'
 import {useDispatch, useSelector}           from 'react-redux'
-import Div                            from 'shared/Basic/Div'
-import {mapContext}                   from 'shared/Containers/MapController'
+import Div                                  from 'shared/Basic/Div'
+import {mapContext}                         from 'shared/Containers/MapController'
 /* eslint import/no-webpack-loader-syntax: off */
 
 const Map = memo(({
-                 lon,
-                 lat,
-                 zoom = 14,
-                 styles = 'mapbox://styles/mapbox/streets-v11',
-                 features,
-                 scrollZoom = true,
-                 theme
-             }) => {
+                      lon,
+                      lat,
+                      zoom = 14,
+                      styles = 'mapbox://styles/mapbox/streets-v11',
+                      features,
+                      scrollZoom = true,
+                      theme
+                  }) => {
     const {url} = useSelector(state => state.site)
     const dispatch = useDispatch()
     const {setMapBoxInstance, setIsActivePlaceCard, flyToStore, createPopUp} = useContext(mapContext)
     const isPlaceDetail = (url.includes('places') && url.length === 2)
-
 
     const buildLocationList = ({features}, map) => {
         dispatch({
@@ -74,7 +73,7 @@ const Map = memo(({
         }
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [features])
+    }, [lat, lon])
 
     /*  Place Detail Sidebar Map  */
     useEffect(() => {

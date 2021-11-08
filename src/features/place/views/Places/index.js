@@ -102,7 +102,7 @@ const Places = () => {
         <ContentWrapper theme={placesContentWrapperStyle}>
             <Div theme={placesContentInnerWrapperStyle(noResults.boone && noResults.algolia)}>
                 <MapSidebar noResults={noResults.boone && noResults.algolia}/>
-                {(features.length > 0 && (
+                {((features.length > 0 && !!features?.[0]?.geometry?.coordinates?.[0] && !!features?.[0]?.geometry?.coordinates?.[1]) && (
                     <Map
                         styles={'mapbox://styles/mapbox/light-v10'}
                         features={
