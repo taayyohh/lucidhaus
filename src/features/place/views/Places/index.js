@@ -13,6 +13,7 @@ const Places = () => {
     const dispatch = useDispatch()
     const [allPlaces, setAllPlaces] = useState([])
     const [features, setFeatures] = useState([])
+    const [geoJsonFeature, setGeoJsonFeature] = useState()
 
     useEffect(() => {
         setAllPlaces(
@@ -87,6 +88,14 @@ const Places = () => {
     }, [allPlaces])
 
     useEffect(() => {
+        setGeoJsonFeature( {
+            "type": "FeatureCollection",
+            "features": features
+        })
+
+    }, [features])
+
+    useEffect(() => {
         dispatch({
             type: 'site/setDocumentHead',
             payload: {
@@ -105,12 +114,7 @@ const Places = () => {
                 {((features.length > 0 && !!features?.[0]?.geometry?.coordinates?.[0] && !!features?.[0]?.geometry?.coordinates?.[1]) && (
                     <Map
                         styles={'mapbox://styles/mapbox/light-v10'}
-                        features={
-                            {
-                                "type": "FeatureCollection",
-                                "features": features
-                            }
-                        }
+                        features={geoJsonFeature}
                         lon={features?.[0]?.geometry?.coordinates?.[0]}
                         lat={features?.[0]?.geometry?.coordinates?.[1]}
                         theme={placesMapStyle}

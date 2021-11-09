@@ -32,8 +32,11 @@ const Map = memo(({
 
     /*  Search Map  */
     useEffect(() => {
-        if (url.includes('search')) {
+        if (url.includes('search') && !!parseInt(lon) && !!parseInt(lat) && !!features) {
             mapboxgl.accessToken = MAPBOX_PUBLIC
+            console.log('lon', parseInt(lon))
+            console.log('lat', parseInt(lat))
+
 
             const map = new mapboxgl.Map({
                 container: 'map',
@@ -73,7 +76,7 @@ const Map = memo(({
         }
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [lat, lon])
+    }, [lat, lon, features])
 
     /*  Place Detail Sidebar Map  */
     useEffect(() => {

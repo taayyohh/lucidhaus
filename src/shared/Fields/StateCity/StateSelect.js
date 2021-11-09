@@ -1,14 +1,14 @@
+import {timesCircleSolid}                   from 'config/icons'
 import {globals}                            from 'config/styles'
 import {City, State}                        from 'country-state-city'
 import React, {useEffect, useRef, useState} from 'react'
 import Div                                  from 'shared/Basic/Div'
 import Fieldset                             from 'shared/Basic/Fieldset'
+import Icon                                 from 'shared/Basic/Icon'
 import Input                                from 'shared/Basic/Input'
 import InputLabel                           from 'shared/Basic/InputLabel'
 import Legend                               from 'shared/Basic/Legend'
 import useMeasure                           from 'utils/useMeasure'
-import {timesCircleSolid}                   from '../../../config/icons'
-import Icon                                 from '../../Basic/Icon'
 import {defaultFocusedInputLabelStyle}      from '../styles'
 import {
     stateCityFieldsetWrapperStyle,
@@ -44,6 +44,8 @@ const StateSelect = ({
     const handleStateSelect = (iso, state) => {
         setFilteredCityArray(City.getCitiesOfState('US', iso))
         setSelectedState({iso, state})
+        console.log('iso', iso)
+        console.log('state', state)
         formik.setFieldValue(name[0], iso)
         formik.setFieldValue(name[1], '')
     }
@@ -90,7 +92,10 @@ const StateSelect = ({
     }, [])
 
     useEffect(() => {
-        setSelectedState(formik.values.state)
+        console.log('form',)
+
+        // console.log('state', City.getCity   ('US', formik.values.state))
+
 
     }, [formik.values.state, setSelectedState])
 
@@ -122,11 +127,10 @@ const StateSelect = ({
                         theme={theme.field}
                         ref={inputRef}
                     />
-                    {        console.log('value', formik.values)}
                 </Fieldset>
                 <Div theme={stateSelectSelectionInnerWrapperStyle}>
                     <Div theme={stateSelectionLabelStyle}>Selected</Div>
-                    {selectedState?.state && (
+                    {State.getStateByCodeAndCountry(formik.values.state, 'US')?.name?.length > 0 && (
                         <Div
                             theme={stateCitySelectedOptionStyle}
                             onClick={() => {
@@ -134,7 +138,7 @@ const StateSelect = ({
                                 setSelectedState('')
                             }}
                         >
-                            {selectedState?.state}
+                            {State.getStateByCodeAndCountry(formik.values.state, 'US').name}
                             <Icon
                                 icon={timesCircleSolid}
                                 theme={stateCitySelectedOptionStyle.icon}
