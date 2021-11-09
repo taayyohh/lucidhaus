@@ -23,8 +23,6 @@ import {
 
 const StateSelect = ({
                          formik,
-                         setSelectedState,
-                         selectedState,
                          setFilteredCityArray,
                          className,
                          name,
@@ -41,11 +39,8 @@ const StateSelect = ({
     const [filterStateInput, setFilteredStateInput] = useState('')
     const [filteredStateArray, setFilteredStateArray] = useState(State.getStatesOfCountry('US'))
 
-    const handleStateSelect = (iso, state) => {
+    const handleStateSelect = (iso) => {
         setFilteredCityArray(City.getCitiesOfState('US', iso))
-        setSelectedState({iso, state})
-        console.log('iso', iso)
-        console.log('state', state)
         formik.setFieldValue(name[0], iso)
         formik.setFieldValue(name[1], '')
     }
@@ -87,17 +82,9 @@ const StateSelect = ({
             setLegendWidth(inputLabelWidth)
         }
 
-
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    useEffect(() => {
-        console.log('form',)
-
-        // console.log('state', City.getCity   ('US', formik.values.state))
-
-
-    }, [formik.values.state, setSelectedState])
 
     return (
         <Div theme={stateCitySelectStyle}>
@@ -135,7 +122,6 @@ const StateSelect = ({
                             theme={stateCitySelectedOptionStyle}
                             onClick={() => {
                                 formik.setFieldValue(name[0], '')
-                                setSelectedState('')
                             }}
                         >
                             {State.getStateByCodeAndCountry(formik.values.state, 'US').name}

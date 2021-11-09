@@ -32,21 +32,21 @@ export const submitPlaceFields = [
         inputLabel: 'Zip ',
         type: TEXT,
         disabled: true,
-        hidden: true
+      //  hidden: true
     },
     {
         name: 'longitude',
         inputLabel: 'Longitude ',
         type: NUMBER,
         disabled: true,
-        hidden: true
+      //  hidden: true
     },
     {
         name: 'latitude',
         inputLabel: 'Latitude ',
         type: NUMBER,
         disabled: true,
-        hidden: true
+       // hidden: true
     },
     {
         name: 'categories',

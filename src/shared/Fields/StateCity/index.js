@@ -58,7 +58,6 @@ const StateCity = memo(({className, name, errorMessage, field, formik, options, 
                 value={value[name[1]]}
                 filteredCityArray={filteredCityArray}
                 filterCityInput={filterCityInput}
-                selectedState={selectedState}
                 setFilteredCityInput={setFilteredCityInput}
                 setFilteredCityArray={setFilteredCityArray}
             />
