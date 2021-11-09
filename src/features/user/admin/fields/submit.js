@@ -55,7 +55,7 @@ export const submitPlaceFields = [
     },
     {
         name: 'communitiesServed',
-        inputLabel: 'Communities Served',
+        inputLabel: 'Affinity Space',
         type: MULTI_SELECT
     }
 ]

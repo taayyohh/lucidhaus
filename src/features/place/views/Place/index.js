@@ -103,8 +103,6 @@ const Place = () => {
         const hasNoPlace = hasError(error?.place?.status)
         const hasBoonePlace = !isEmpty(boonePlace)
 
-        console.log('error', error)
-
         if ((hasNoPlace && hasNoBoonePlace) || boonePlaceRemoved) {
             debounce(history.push(`/places`), 500)
             //TODO::add 404 error, create a collection in db with ids of booneplaces that no longer exist
@@ -319,7 +317,7 @@ const Place = () => {
                                 {communitiesServed.length > 0 && (
                                     <Div theme={placeTaxonomyStyle}>
                                         <Div theme={placeTaxonomyStyle.title}>
-                                            Communities Served
+                                            Affinity Space
                                         </Div>
                                         {communitiesServed && communitiesServed.map((community, i) => (
                                             <Div key={i} theme={placeTaxonomyStyle.name}>{community.name}</Div>
