@@ -27,6 +27,9 @@ export function* createPlaceFromBoone({payload}) {
 
         if (!createdPlaceCategory.error) {
             booneCategories.push(createdPlaceCategory.id)
+        } else {
+            if (!!createdPlaceCategory.error.id)
+                booneCategories.push(createdPlaceCategory.error.id)
         }
     }
 
@@ -67,7 +70,7 @@ export function* createPlaceFromBoone({payload}) {
 
     } else {
         yield put(push(`/places/${createdPlace.error}`))
-       // yield put({type: 'place/createPlaceFromBooneFailure', payload: {createdPlace}})
+        // yield put({type: 'place/createPlaceFromBooneFailure', payload: {createdPlace}})
     }
 
 }
