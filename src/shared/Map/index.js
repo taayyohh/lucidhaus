@@ -34,9 +34,6 @@ const Map = memo(({
     useEffect(() => {
         if (url.includes('search') && !!parseInt(lon) && !!parseInt(lat) && !!features) {
             mapboxgl.accessToken = MAPBOX_PUBLIC
-            console.log('lon', parseInt(lon))
-            console.log('lat', parseInt(lat))
-
 
             const map = new mapboxgl.Map({
                 container: 'map',

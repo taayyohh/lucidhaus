@@ -116,18 +116,15 @@ export const addPlaceFromBoone = ({_id, token, place}) =>
             return error
         })
 
-export const getAlgoliaPlaces = ({input, index}) => {
+export const getAlgoliaPlaces = ({input, index}) =>
+    index.search(input)
+        .then(response => {
+            return response
+        })
+        .catch(error => {
+            return error
+        })
 
-    return (
-        index.search(input)
-            .then(response => {
-                return response
-            })
-            .catch(error => {
-                return error
-            })
-    )
-}
 
 export const getPlaceCategories = ({payload}) => {
     return (
@@ -143,3 +140,23 @@ export const getPlaceCategories = ({payload}) => {
     )
 }
 
+export const handlePageView = ({_id, token, viewedAt, placeId}) => {
+    fetch(`${API}/place/${placeId}/handle-page-view/${_id}`, {
+        method: 'POST',
+        headers: {
+            Accept: 'application/json',
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify({
+            viewedBy: _id,
+            viewedAt: viewedAt
+        })
+    })
+        .then(response => {
+            return response.json()
+        })
+        .catch(error => {
+            return error
+        })
+}

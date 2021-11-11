@@ -33,6 +33,14 @@ export function* createPlaceFromBoone({payload}) {
         }
     }
 
+    const hours = []
+    if (!!boonePlace?.hours?.['<default>']) {
+        const array = Object.entries(boonePlace?.hours?.['<default>'])
+        for (const entry of array) {
+            hours.push(`&${entry[0]}/${entry[1]}`)
+        }
+    }
+
     const place = new FormData()
     const fields = [
         {booneId: boonePlace.id},
@@ -41,6 +49,7 @@ export function* createPlaceFromBoone({payload}) {
         {address2: boonePlace?.locations?.[0].address2},
         {city: boonePlace?.locations?.[0].city},
         {categories: booneCategories},
+        {hours: hours},
         {zip: boonePlace?.locations?.[0].postal_code},
         {country: boonePlace?.locations?.[0].country},
         {state: boonePlace?.locations?.[0].state},
@@ -79,7 +88,7 @@ export function* createPlaceFromBoone({payload}) {
 /**
  *
  *
- * ADMIN ARTIST WATCHERS
+ * ADMIN BOONE PLACE WATCHERS
  *
  *
  */

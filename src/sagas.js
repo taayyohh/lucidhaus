@@ -11,6 +11,7 @@ import {
 }                                  from 'features/place/admin/sagas'
 import {watchCreatePlaceFromBoone} from 'features/place/admin/sagas/boone'
 import {
+    watchAddToViewCount,
     watchGetPlaceCategoryByNameOrDescription,
     watchGetPlaceDetail,
     watchGetPlaces,
@@ -316,6 +317,7 @@ export default function* rootSaga() {
         fork(watchCreatePlaceFromBoone),
         fork(watchSearchAllPlaces),
         fork(watchGetPlaceCategoryByNameOrDescription),
+        fork(watchAddToViewCount),
         fork(watchSearchAlgoliaPlaceIndex),
         fork(watchAddReview),
         fork(watchUpdateReview),

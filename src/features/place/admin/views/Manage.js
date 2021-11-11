@@ -38,7 +38,7 @@ const Manage = () => {
                     })
                 )
         }
-        
+
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [places])
 

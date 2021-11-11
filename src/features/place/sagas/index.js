@@ -1,8 +1,15 @@
-import {push}                                                                    from 'connected-react-router'
-import {getAlgoliaPlaces, getPlace, getPlaceById, getPlaceCategories, getPlaces} from 'features/place/services'
-import {call, put, takeEvery}                                                    from 'redux-saga/effects'
-import {getEntityById}                                                           from 'utils/abstractions/crud'
-import {slugify}                                                                 from 'utils/helpers'
+import {push}                             from 'connected-react-router'
+import {
+    getAlgoliaPlaces,
+    getPlace,
+    getPlaceById,
+    getPlaceCategories,
+    getPlaces,
+    handlePageView
+}                                         from 'features/place/services'
+import {call, put, takeEvery, takeLatest} from 'redux-saga/effects'
+import {getEntityById}    from 'utils/abstractions/crud'
+import {slugify}                          from 'utils/helpers'
 
 /**
  *
@@ -57,7 +64,7 @@ export function* searchAllPlaces({payload}) {
     yield put({type: 'place/searchAlgoliaPlaceIndex', payload})
     yield put({type: 'place/getBooneAutoComplete', payload})
     yield put({type: 'place/getPlaceCategoryByNameOrDescription', payload: payload.input})
-    
+
     if (payload.input.length > 0)
         yield put(push(`/places/search/${slugify(payload.input)}`))
 }
@@ -90,6 +97,13 @@ export function* getReview({payload}) {
     })
     if (!review.error) {
         yield put({type: 'place/getReviewSuccess', payload: review})
+    }
+}
+
+export function* addToViewCount({payload}) {
+    const place = yield call(handlePageView, payload)
+    if(!place.error) {
+        yield put({type: 'place/addViewSuccess', payload: place})
     }
 }
 
@@ -127,4 +141,8 @@ export function* watchGetUserReviewedPlaces() {
 
 export function* watchGetPlaceCategoryByNameOrDescription() {
     yield takeEvery('place/getPlaceCategoryByNameOrDescription', getPlaceCategoryByNameOrDescription)
+}
+
+export function* watchAddToViewCount() {
+    yield takeLatest('place/addToViewCount', addToViewCount)
 }

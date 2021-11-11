@@ -67,6 +67,7 @@ const Place = () => {
     const {slug} = useSelector(state => state.site)
     const placeId = slug.substr(slug.lastIndexOf('-') + 1)
     const [hasNoReviews, setHasNoReviews] = useState(true)
+    const [viewed, setViewed] = useState(false)
 
     const hasError = (response) => {
         switch (parseInt(response)) {
@@ -97,6 +98,10 @@ const Place = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [slug, placeId])
 
+
+    /**
+     Add Boone Place Resource to InclusiveGuide Database
+     **/
     useEffect(() => {
         const boonePlaceRemoved = hasError(error?.boonePlace?.[0]?.status)
         const hasNoBoonePlace = hasError(error?.boonePlace?.status)
@@ -220,10 +225,35 @@ const Place = () => {
             }
         })
 
+        setTimeout(() => {
+            if(!!place._id) {
+                dispatch({
+                    type: 'place/addToViewCount',
+                    payload: {
+                        placeId: place._id,
+                        viewedAt: Date.now(),
+                        _id,
+                        token
+                    }
+                })
+            }
+        }, 5000)
+
+
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [place])
 
-    /* ---- Index Newly Added Boone Place in Algolia Search Index */
+    useEffect(() => {
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+
+    }, [])
+
+    /**
+     *
+     * Index Newly Added Boone Place in Algolia Search Index
+     *
+     **/
     useEffect(() => {
         if (createdFromBoone.length > 0) {
             placesIndex.saveObjects(createdFromBoone)

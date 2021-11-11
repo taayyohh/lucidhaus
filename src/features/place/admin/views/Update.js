@@ -15,6 +15,7 @@ const Update = () => {
     const {_id, token} = useSelector(state => state.user)
     const {slug} = useSelector(state => state.site)
     const {place, taxonomy} = useSelector(state => state.place)
+    const {placesIndex} = useContext(searchContext)
     const {
         accessibleDoorway,
         audioAvailable,
@@ -44,7 +45,6 @@ const Update = () => {
         wheelchairRestroom,
         type
     } = place
-    const {placesIndex} = useContext(searchContext)
 
     const initialValues = {
         accessibleDoorway: accessibleDoorway,
@@ -97,6 +97,27 @@ const Update = () => {
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
+
+    useEffect(() => {
+        if(!place?.isPendingSubmission && !!place?.objectID) {
+            // console.log('place', placesIndex.saveObjects(place))
+            console.log('place', place)
+            // placesIndex.saveObjects(place)
+            //     .then(() => {
+            //         dispatch({
+            //             type: 'place/indexPlaceSuccess'
+            //         })
+            //     })
+            //     .catch(error =>
+            //         dispatch({
+            //             type: 'site/setNotification',
+            //             payload: {notification: error}
+            //         })
+            //     )
+        }
+
+
+    }, [place])
 
 
     const options = [
