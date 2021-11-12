@@ -41,7 +41,7 @@ const PlaceCard = ({
                     theme={theme}
                 />
             )}
-            <Div theme={{...placeCardStyle.locationWrapper}}>
+            <Div theme={{...placeCardStyle.locationWrapper, ...theme.locationWrapper}}>
                 <Icon
                     theme={{...placeCardStyle.locationIcon}}
                     icon={mapMarkerSolid}

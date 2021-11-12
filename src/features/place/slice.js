@@ -176,7 +176,7 @@ export const slice = createSlice({
         },
         getLanguageSpokenEntitySuccess: (state, action) => {
             state.languageSpoken = state.languageSpoken.filter(item => item._id === action.payload.entity._id).length < 1
-                ? [...state.languageSpoken, action.payload.entity]
+                ? [...action.payload.entity, ...state.languageSpoken]
                 : state.languageSpoken
         },
         getFlaggedReviewsSuccess: (state, action) => {

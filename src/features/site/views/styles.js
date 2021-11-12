@@ -189,12 +189,14 @@ export const homeContentWrapperStyle = {
 }
 
 export const recentlyViewedPlaceCardStyle = {
-
+    locationWrapper: {
+        display: none
+    }
 }
 
 export const recentlyViewedPlaceCardWrapperStyle = {
     display: 'grid',
-    gridTemplateColumns: `${sv(300, globals.style.layoutScalingValue)} ${sv(300, globals.style.layoutScalingValue)} ${sv(300, globals.style.layoutScalingValue)}`,
+    gridTemplateColumns: `${sv(400, globals.style.layoutScalingValue)} ${sv(400, globals.style.layoutScalingValue)} ${sv(400, globals.style.layoutScalingValue)}`,
     gridGap: sv(30, globals.style.layoutScalingValue),
     mobile: {
         display: flex,
@@ -206,11 +208,18 @@ export const recentlyViewedPlaceCardWrapperStyle = {
 export const recentlyViewedWrapperStyle = {
     maxWidth: [1280, globals.style.layoutScalingValue, '100%'],
     margin: '0 auto',
-    marginTop: [50, .7, 50]
+    marginTop: [50, .7, 50],
+    mobile: {
+        width: 'calc(100% - 50px)',
+        margin: '0 auto',
+        marginTop: 50
+    }
 }
 
 export const recentlyViewedPlacesHeadingStyle = {
     size: [24, .7, 24],
     weight: 500,
-    borderBottom: `1px solid ${globals.colors.borderColor}`
+    borderBottom: `1px solid ${globals.colors.borderColor}`,
+    marginBottom: [50, .7, 50],
+    paddingBottom: [20,.7, 20]
 }
