@@ -19,7 +19,7 @@ const MapController = ({children}) => {
 
     const flyToStore = (currentFeature, map) => {
         map.flyTo({
-            center: currentFeature.geometry.coordinates,
+            center: currentFeature?.geometry?.coordinates,
             zoom: 15
         })
     }
@@ -30,7 +30,7 @@ const MapController = ({children}) => {
         if (popUps[0]) popUps[0].remove()
 
         new mapboxgl.Popup({closeOnClick: false})
-            .setLngLat(currentFeature.geometry.coordinates)
+            .setLngLat(currentFeature?.geometry?.coordinates)
             .setHTML(ReactDOMServer.renderToString(<PopUp currentFeature={currentFeature}/>))
             .addTo(map)
     }

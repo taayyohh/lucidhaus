@@ -126,6 +126,7 @@ export const homeSignupImageStyle = {
 
 export const homeSignupWrapperStyle = {
     display: flex,
+    flexDirection: column,
     marginBottom: [100, .7, 100],
     mobile: {
         flexDirection: column
@@ -135,12 +136,6 @@ export const homeSignupWrapperStyle = {
 export const homeSignupQuoteWrapperStyle = {
     display: flex,
     flexDirection: column,
-    width: [1200, globals.style.layoutScalingValue, '100%'],
-    background: white,
-    paddingLeft: [108, globals.style.layoutScalingValue, '0'],
-    paddingRight: [108, globals.style.layoutScalingValue, '0'],
-    paddingTop: [50, globals.style.layoutScalingValue, 50],
-    paddingBottom: [50, globals.style.layoutScalingValue, 50],
     marginTop: [80, .7, '0'],
     borderRadius: [10, .7, 10],
     border: `1px solid ${globals.colors.borderColor}`,
@@ -149,11 +144,15 @@ export const homeSignupQuoteWrapperStyle = {
 
 export const homeSignupQuoteStyle = {
     size: [28, globals.style.layoutScalingValue, 19],
-    width: '70%',
     margin: '0 auto',
     textAlign: center,
+    background: white,
+    paddingLeft: [108, globals.style.layoutScalingValue, '0'],
+    paddingRight: [108, globals.style.layoutScalingValue, '0'],
+    paddingTop: [50, globals.style.layoutScalingValue, 50],
+    paddingBottom: [50, globals.style.layoutScalingValue, 50],
+    width: [1200, globals.style.layoutScalingValue, '100%'],
     // lineHeight: [55, globals.style.layoutScalingValue, 30],
-    paddingLeft: 0,
     child: {
         selector: '> div',
         marginTop: [15, .7, 15]
@@ -187,4 +186,31 @@ export const homeSignupButtonStyle = {
 export const homeContentWrapperStyle = {
     width: '100%',
     margin: 0
+}
+
+export const recentlyViewedPlaceCardStyle = {
+
+}
+
+export const recentlyViewedPlaceCardWrapperStyle = {
+    display: 'grid',
+    gridTemplateColumns: `${sv(300, globals.style.layoutScalingValue)} ${sv(300, globals.style.layoutScalingValue)} ${sv(300, globals.style.layoutScalingValue)}`,
+    gridGap: sv(30, globals.style.layoutScalingValue),
+    mobile: {
+        display: flex,
+        flexDirection: column
+    }
+
+}
+
+export const recentlyViewedWrapperStyle = {
+    maxWidth: [1280, globals.style.layoutScalingValue, '100%'],
+    margin: '0 auto',
+    marginTop: [50, .7, 50]
+}
+
+export const recentlyViewedPlacesHeadingStyle = {
+    size: [24, .7, 24],
+    weight: 500,
+    borderBottom: `1px solid ${globals.colors.borderColor}`
 }

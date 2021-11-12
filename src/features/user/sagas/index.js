@@ -9,12 +9,13 @@ import {
     getUser, getUserById,
     getUsers,
     verifyUserEmail
-} from 'features/user/services'
-import {takeEvery}                                              from 'redux-saga/dist/redux-saga-effects-npm-proxy.esm'
-import {call, put}                                              from 'redux-saga/effects'
-import {createEntity}                                           from 'utils/abstractions/crud'
-import {setFormData}                                            from 'utils/abstractions/setFormData'
-import {formatPhone}                                            from 'utils/helpers'
+}                     from 'features/user/services'
+import {takeEvery}    from 'redux-saga/dist/redux-saga-effects-npm-proxy.esm'
+import {call, put}    from 'redux-saga/effects'
+import {createEntity} from 'utils/abstractions/crud'
+import {setFormData}  from 'utils/abstractions/setFormData'
+import {formatPhone}            from 'utils/helpers'
+import {getPlace, getPlaceById} from '../../place/services'
 
 export function* signIn({payload}) {
     try {
@@ -322,6 +323,19 @@ export function* submitPlaceSuccess({payload}) {
     }
 }
 
+export function* getRecentlyViewedPlace({payload}) {
+    try {
+        const place = yield call(getPlaceById, payload)
+        if (!place.error) {
+          yield put({type: 'user/getRecentlyViewedPlaceSuccess', payload: place})
+        } else {
+           yield put({type: 'user/getRecentlyViewedPlaceFailure', payload: place})
+        }
+    } catch (error) {
+        yield put({type: 'user/getPlaceFailure'})
+    }
+}
+
 
 
 /**
@@ -384,5 +398,8 @@ export function* watchFlagReview() {
     yield takeEvery('user/flagReview', flagReview)
 }
 
+export function* watchGetRecentlyViewedPlace() {
+    yield takeEvery('user/getRecentlyViewedPlace', getRecentlyViewedPlace)
+}
 
 

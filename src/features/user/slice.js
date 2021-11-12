@@ -27,6 +27,7 @@ const initialState = {
     error: false,
     loading: false,
     redirectToReferrer: false,
+    recentlyViewedPlaces: [],
     pendingPlaces: [],
     placeSubmissionSuccess: null,
     purchaseHistory: [],
@@ -214,6 +215,11 @@ export const slice = createSlice({
         },
         closeSubmissionPanel: (state) => {
             state.placeSubmissionSuccess = null
+        },
+        getRecentlyViewedPlaceSuccess: (state, action) => {
+            state.recentlyViewedPlaces = state.recentlyViewedPlaces.filter(item => item._id === action.payload._id).length < 1
+                ? [...state.recentlyViewedPlaces, {...action.payload}]
+                : state.recentlyViewedPlaces
         },
 
 
