@@ -102,7 +102,7 @@ export function* getReview({payload}) {
 
 export function* addToViewCount({payload}) {
     const place = yield call(handlePageView, payload)
-    if(!place.error) {
+    if(!place?.error) {
         yield put({type: 'place/addViewSuccess', payload: place})
     }
 }

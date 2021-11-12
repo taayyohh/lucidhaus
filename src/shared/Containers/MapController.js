@@ -29,10 +29,11 @@ const MapController = ({children}) => {
         /** Check if there is already a popup on the map and if so, remove it */
         if (popUps[0]) popUps[0].remove()
 
-        new mapboxgl.Popup({closeOnClick: false})
-            .setLngLat(currentFeature?.geometry?.coordinates)
-            .setHTML(ReactDOMServer.renderToString(<PopUp currentFeature={currentFeature}/>))
-            .addTo(map)
+        if(!!currentFeature?.geometry?.coordinates)
+            new mapboxgl.Popup({closeOnClick: false})
+                .setLngLat(currentFeature?.geometry?.coordinates)
+                .setHTML(ReactDOMServer.renderToString(<PopUp currentFeature={currentFeature}/>))
+                .addTo(map)
     }
 
     useEffect(() => {

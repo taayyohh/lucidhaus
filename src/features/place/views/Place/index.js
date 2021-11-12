@@ -226,7 +226,7 @@ const Place = () => {
         })
 
         setTimeout(() => {
-            if(!!place._id) {
+            if (!!place._id) {
                 dispatch({
                     type: 'place/addToViewCount',
                     payload: {

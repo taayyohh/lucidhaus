@@ -10,8 +10,11 @@ import {
     flexEnd,
     flexStart,
     grid,
+    hidden,
+    inlineFlex,
     none,
     pointer,
+    relative,
     spaceBetween,
     sv,
     white
@@ -119,7 +122,7 @@ export const deletePromptConfirmButtonStyle = {
 
 export const deletePromptCloseIconWrapperStyle = {
     display: flex,
-    alignItems:center,
+    alignItems: center,
     justifyContent: center,
     height: 50,
     width: 50,
@@ -209,4 +212,38 @@ export const dangerZoneItemHeadingStyle = {
 
 export const dangerZoneItemDescriptionStyle = {
     weight: 300
+}
+
+export const toolTipIconStyles = {
+    size: [22, .7, 22],
+    color: colorPalette.paleGreen,
+    marginLeft: [5, .7, 5],
+    hover: {
+        cursor: pointer
+    }
+}
+
+export const toolTipStyles = {
+    display: inlineFlex,
+    alignSelf: flexStart,
+    position: relative,
+    width: [200, globals.style.layoutScalingValue, 200]
+}
+
+export const toolTipMessageStyles = {
+    overflow: hidden,
+    position: absolute,
+    right: [-150, globals.style.layoutScalingValue, -150],
+    top: [-40, .7, 40],
+    borderRadius: [10, .7, 10],
+    background: colorPalette.seaFoamGreen,
+    size: [14, .7, 14]
+}
+
+export const toolTipMessageInnerStyles = {
+    paddingLeft: [10, globals.style.layoutScalingValue, 10],
+    paddingRight: [10, globals.style.layoutScalingValue, 10],
+    paddingTop: [10, globals.style.layoutScalingValue, 10],
+    paddingBottom: [10, globals.style.layoutScalingValue, 10]
+
 }

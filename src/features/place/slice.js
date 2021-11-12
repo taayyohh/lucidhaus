@@ -163,7 +163,8 @@ export const slice = createSlice({
         getPlaceCategoryEntitySuccess: (state, action) => {
             state.placeCategory = state.placeCategory.filter(item => item._id === action.payload.entity._id).length < 1
                 ? [...state.placeCategory, action.payload.entity]
-                : state.placeCategory        },
+                : state.placeCategory
+        },
         getCommunitiesServedEntitySuccess: (state, action) => {
             state.communitiesServed = state.communitiesServed.filter(item => item._id === action.payload.entity._id).length < 1
                 ? [...state.communitiesServed, action.payload.entity]
@@ -176,7 +177,7 @@ export const slice = createSlice({
         },
         getLanguageSpokenEntitySuccess: (state, action) => {
             state.languageSpoken = state.languageSpoken.filter(item => item._id === action.payload.entity._id).length < 1
-                ? [...action.payload.entity, ...state.languageSpoken]
+                ? [...state.languageSpoken, action.payload.entity, ]
                 : state.languageSpoken
         },
         getFlaggedReviewsSuccess: (state, action) => {

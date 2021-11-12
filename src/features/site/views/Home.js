@@ -1,10 +1,13 @@
-import React, {useEffect}         from 'react'
-import {useDispatch, useSelector} from 'react-redux'
-import Div                        from 'shared/Basic/Div'
-import LinkSwitch                 from 'shared/Basic/LinkSwitch'
-import ContentWrapper             from 'shared/Layout/ContentWrapper'
-import Search                     from 'shared/Layout/Search'
-import PlaceCard                  from '../../../shared/Cards/Place'
+import React, {useEffect, useState} from 'react'
+import {useDispatch, useSelector}   from 'react-redux'
+import Div                          from 'shared/Basic/Div'
+import LinkSwitch                   from 'shared/Basic/LinkSwitch'
+import ContentWrapper               from 'shared/Layout/ContentWrapper'
+import Search                       from 'shared/Layout/Search'
+import {infoCircle}                 from '../../../config/icons'
+import Icon                         from '../../../shared/Basic/Icon'
+import PlaceCard                    from '../../../shared/Cards/Place'
+import Tooltip                      from '../../../shared/Controls/ToolTip'
 import {
     homeContentWrapperStyle,
     homeHeadlineStyle,
@@ -20,11 +23,12 @@ import {
     recentlyViewedPlaceCardWrapperStyle,
     recentlyViewedPlacesHeadingStyle,
     recentlyViewedWrapperStyle
-}                                 from './styles'
+}                                   from './styles'
 
 const Home = () => {
     const {isAuthenticated, isAdmin, recentlyViewedPlaces, user} = useSelector(state => state.user)
     const dispatch = useDispatch()
+    const [orderedViewedPlaces, setOrderedViewedPlaces] = useState([])
 
 
     useEffect(() => {
@@ -35,15 +39,21 @@ const Home = () => {
                     payload: {_id: recent}
                 })
             }
-
-
     }, [user.recentlyViewed])
+
+    // useEffect(() => {
+    //     if(recentlyViewedPlaces.length > 0)
+    //         setOrderedViewedPlaces([...recentlyViewedPlaces].sort((a, b) => (b.views[views.length - 1] > a.views[views.length - 1]) ? 1 : ((a.views[views.length - 1] > b.views[views.length - 1]) ? -1 : 0)))
+    //
+    //
+    // }, [recentlyViewedPlaces])
 
 
     return (
         <ContentWrapper theme={homeContentWrapperStyle}>
             <Div theme={homeImageWrapperStyle}>
                 <Div theme={homeImageStyle}/>
+                {console.log('or', orderedViewedPlaces)}
                 <Div theme={homeSearchWrapperStyle}>
                     <Div theme={homeHeadlineStyle}>
                         Celebrating the places that celebrate you
@@ -73,7 +83,12 @@ const Home = () => {
                 </Div>
 
                 <Div theme={recentlyViewedWrapperStyle}>
-                    <Div theme={recentlyViewedPlacesHeadingStyle}>Recently Viewed</Div>
+                    <Div theme={recentlyViewedPlacesHeadingStyle}>
+                        Recently Viewed
+                        <Tooltip
+                            message={"Below are the most recent places you've visited."}
+                        />
+                    </Div>
                     <Div theme={recentlyViewedPlaceCardWrapperStyle}>
                         {recentlyViewedPlaces?.length > 0 && recentlyViewedPlaces?.map((p, i) => (
                             <PlaceCard
