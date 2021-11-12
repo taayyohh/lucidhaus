@@ -33,7 +33,8 @@ const Tooltip = ({message}) => {
         <Div theme={toolTipStyles}>
             <Icon
                 icon={infoCircle}
-                onClick={() => setIsOpen(flag => !flag)}
+                onMouseOver={() => setIsOpen(flag => !flag)}
+                onMouseOut={() => setIsOpen(flag => !flag)}
                 theme={toolTipIconStyles}
             />
             <AnimatePresence>

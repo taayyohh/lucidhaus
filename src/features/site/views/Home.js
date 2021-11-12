@@ -39,21 +39,20 @@ const Home = () => {
                     payload: {_id: recent}
                 })
             }
-    }, [user.recentlyViewed])
+    }, [user])
 
-    // useEffect(() => {
-    //     if(recentlyViewedPlaces.length > 0)
-    //         setOrderedViewedPlaces([...recentlyViewedPlaces].sort((a, b) => (b.views[views.length - 1] > a.views[views.length - 1]) ? 1 : ((a.views[views.length - 1] > b.views[views.length - 1]) ? -1 : 0)))
-    //
-    //
-    // }, [recentlyViewedPlaces])
+    useEffect(() => {
+        // if(recentlyViewedPlaces.length > 0)
+        //     setOrderedViewedPlaces([...recentlyViewedPlaces].sort((a, b) => (b.views[views.length - 1] > a.views[views.length - 1]) ? 1 : ((a.views[views.length - 1] > b.views[views.length - 1]) ? -1 : 0)))
+
+
+    }, [recentlyViewedPlaces])
 
 
     return (
         <ContentWrapper theme={homeContentWrapperStyle}>
             <Div theme={homeImageWrapperStyle}>
                 <Div theme={homeImageStyle}/>
-                {console.log('or', orderedViewedPlaces)}
                 <Div theme={homeSearchWrapperStyle}>
                     <Div theme={homeHeadlineStyle}>
                         Celebrating the places that celebrate you
@@ -92,6 +91,7 @@ const Home = () => {
                     <Div theme={recentlyViewedPlaceCardWrapperStyle}>
                         {recentlyViewedPlaces?.length > 0 && recentlyViewedPlaces?.map((p, i) => (
                             <PlaceCard
+                                key={p._id}
                                 name={p.name}
                                 address={p.address}
                                 city={p.city}
@@ -102,6 +102,7 @@ const Home = () => {
                                 inclusiveScore={p.inclusiveScore}
                                 url={`/places/${p.slug}`}
                                 theme={recentlyViewedPlaceCardStyle}
+                                linkCard={true}
                             />
                         ))}
                     </Div>

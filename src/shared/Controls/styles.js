@@ -227,23 +227,23 @@ export const toolTipStyles = {
     display: inlineFlex,
     alignSelf: flexStart,
     position: relative,
-    width: [200, globals.style.layoutScalingValue, 200]
+    width: [200, .7, 200]
 }
 
 export const toolTipMessageStyles = {
     overflow: hidden,
     position: absolute,
-    right: [-150, globals.style.layoutScalingValue, -150],
-    top: [-40, .7, 40],
+    left: [30, .7, 30],
+    top: [-40, .7, -40],
     borderRadius: [10, .7, 10],
     background: colorPalette.seaFoamGreen,
     size: [14, .7, 14]
 }
 
 export const toolTipMessageInnerStyles = {
-    paddingLeft: [10, globals.style.layoutScalingValue, 10],
-    paddingRight: [10, globals.style.layoutScalingValue, 10],
-    paddingTop: [10, globals.style.layoutScalingValue, 10],
-    paddingBottom: [10, globals.style.layoutScalingValue, 10]
+    paddingLeft: [10, .7, 10],
+    paddingRight: [10, .7, 10],
+    paddingTop: [10, .7, 10],
+    paddingBottom: [10, .7, 10]
 
 }

@@ -8,8 +8,9 @@ import {
     handlePageView
 }                                         from 'features/place/services'
 import {call, put, takeEvery, takeLatest} from 'redux-saga/effects'
-import {getEntityById}    from 'utils/abstractions/crud'
+import {getEntityById}                    from 'utils/abstractions/crud'
 import {slugify}                          from 'utils/helpers'
+import {getUserById}                      from '../../user/services'
 
 /**
  *
@@ -104,6 +105,8 @@ export function* addToViewCount({payload}) {
     const place = yield call(handlePageView, payload)
     if(!place?.error) {
         yield put({type: 'place/addViewSuccess', payload: place})
+        const user = yield call(getUserById, {userId: payload._id, _id: payload._id, token: payload.token})
+
     }
 }
 

@@ -1,6 +1,6 @@
 import {colorPalette, globals} from 'config/styles'
 import {
-    absolute,
+    absolute, block,
     borderBox,
     center,
     column,
@@ -13,7 +13,7 @@ import {
     sv,
     uppercase,
     white
-}                              from 'utils/themer'
+} from 'utils/themer'
 
 export const placeCardInclusiveScoreWrapperStyle = {
     display: flex,
@@ -44,6 +44,7 @@ export const placeCardInclusiveScoreTextStyle = {
     size: [14, .7, 14]
 }
 export const placeCardStyle = {
+    display: block,
     transition: '250ms background-color ease, 250ms border-color ease',
     paddingTop: [20, globals.style.layoutScalingValue, 20],
     paddingBottom: [30, globals.style.layoutScalingValue, 30],

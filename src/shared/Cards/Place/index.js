@@ -15,12 +15,13 @@ const PlaceCard = ({
                        celebrated,
                        welcome,
                        inclusiveScore,
+                       linkCard,
                        url,
                        theme,
                    }) => {
 
     return (
-        <Div theme={{...placeCardStyle, ...theme}}>
+        <LinkSwitch url={!!linkCard ? url : ''} theme={{...placeCardStyle, ...theme}}>
             <Div theme={{display: 'flex'}}>
                 <LinkSwitch
                     url={url}
@@ -52,7 +53,7 @@ const PlaceCard = ({
                 </Div>
             </Div>
 
-        </Div>
+        </LinkSwitch>
     )
 }
 
