@@ -3,8 +3,8 @@ import React            from 'react'
 import Div              from 'shared/Basic/Div'
 import Icon             from 'shared/Basic/Icon'
 import LinkSwitch       from 'shared/Basic/LinkSwitch'
-import InclusiveScore   from './InclusiveScore'
-import {placeCardStyle} from './styles'
+import InclusiveScore                                                                          from './InclusiveScore'
+import {placeCardInclusiveScoreInfoStyle, placeCardInclusiveScoreWrapperStyle, placeCardStyle} from './styles'
 
 const PlaceCard = ({
                        address,
@@ -33,7 +33,7 @@ const PlaceCard = ({
 
             <Div theme={{...placeCardStyle.address, ...theme.address}}>{address}</Div>
 
-            {inclusiveScore > 0 && (
+            {(inclusiveScore > 0 && (
                 <InclusiveScore
                     inclusiveScore={inclusiveScore}
                     safe={safe}
@@ -41,6 +41,14 @@ const PlaceCard = ({
                     celebrated={celebrated}
                     theme={theme}
                 />
+            )) || (
+                <Div>
+                    <Div theme={{...placeCardInclusiveScoreInfoStyle}}>
+                        <Div theme={{...placeCardInclusiveScoreWrapperStyle}}>
+                            No reviews have been left yet, be the first!
+                        </Div>
+                    </Div>
+                </Div>
             )}
             <Div theme={{...placeCardStyle.locationWrapper, ...theme.locationWrapper}}>
                 <Icon

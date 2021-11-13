@@ -2,12 +2,10 @@ import React, {useEffect, useState} from 'react'
 import {useDispatch, useSelector}   from 'react-redux'
 import Div                          from 'shared/Basic/Div'
 import LinkSwitch                   from 'shared/Basic/LinkSwitch'
+import PlaceCard                    from 'shared/Cards/Place'
+import Tooltip                      from 'shared/Controls/ToolTip'
 import ContentWrapper               from 'shared/Layout/ContentWrapper'
 import Search                       from 'shared/Layout/Search'
-import {infoCircle}                 from '../../../config/icons'
-import Icon                         from '../../../shared/Basic/Icon'
-import PlaceCard                    from '../../../shared/Cards/Place'
-import Tooltip                      from '../../../shared/Controls/ToolTip'
 import {
     homeContentWrapperStyle,
     homeHeadlineStyle,
@@ -42,6 +40,8 @@ const Home = () => {
     }, [user])
 
     useEffect(() => {
+        console.log('rece', recentlyViewedPlaces)
+       // console.log('recent', recentlyViewedPlaces.sort((a,b) => console.log('a', a)))
         // if(recentlyViewedPlaces.length > 0)
         //     setOrderedViewedPlaces([...recentlyViewedPlaces].sort((a, b) => (b.views[views.length - 1] > a.views[views.length - 1]) ? 1 : ((a.views[views.length - 1] > b.views[views.length - 1]) ? -1 : 0)))
 
@@ -81,32 +81,35 @@ const Home = () => {
                     )}
                 </Div>
 
-                <Div theme={recentlyViewedWrapperStyle}>
-                    <Div theme={recentlyViewedPlacesHeadingStyle}>
-                        Recently Viewed
-                        <Tooltip
-                            message={"Below are the most recent places you've visited."}
-                        />
-                    </Div>
-                    <Div theme={recentlyViewedPlaceCardWrapperStyle}>
-                        {recentlyViewedPlaces?.length > 0 && recentlyViewedPlaces?.map((p, i) => (
-                            <PlaceCard
-                                key={p._id}
-                                name={p.name}
-                                address={p.address}
-                                city={p.city}
-                                state={p.state}
-                                safe={p.averageSafe}
-                                celebrated={p.averageCelebrated}
-                                welcome={p.averageWelcome}
-                                inclusiveScore={p.inclusiveScore}
-                                url={`/places/${p.slug}`}
-                                theme={recentlyViewedPlaceCardStyle}
-                                linkCard={true}
+                {recentlyViewedPlaces?.length > 0 && (
+                    <Div theme={recentlyViewedWrapperStyle}>
+                        <Div theme={recentlyViewedPlacesHeadingStyle}>
+                            Recently Viewed
+                            <Tooltip
+                                message={"Below are the most recent places you've visited."}
                             />
-                        ))}
+                        </Div>
+                        <Div theme={recentlyViewedPlaceCardWrapperStyle}>
+                            {recentlyViewedPlaces?.map((p, i) => (
+                                <PlaceCard
+                                    key={p._id}
+                                    name={p.name}
+                                    address={p.address}
+                                    city={p.city}
+                                    state={p.state}
+                                    safe={p.averageSafe}
+                                    celebrated={p.averageCelebrated}
+                                    welcome={p.averageWelcome}
+                                    inclusiveScore={p.inclusiveScore}
+                                    url={`/places/${p.slug}`}
+                                    theme={recentlyViewedPlaceCardStyle}
+                                    linkCard={true}
+                                />
+                            ))}
+                        </Div>
                     </Div>
-                </Div>
+                )}
+
 
             </Div>
         </ContentWrapper>
