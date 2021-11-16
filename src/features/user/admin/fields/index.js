@@ -25,6 +25,11 @@ export const userFields = [
         type: TEXT
     },
     {
+        name: 'dateOfBirth',
+        inputLabel: 'Birthday',
+        type: DATE
+    },
+    {
         name: 'tel',
         inputLabel: 'Phone Number',
         type: TEL
@@ -33,13 +38,8 @@ export const userFields = [
         name: 'email',
         inputLabel: 'Email',
         type: TEXT,
-        disabled: true
     },
-    {
-        name: 'dateOfBirth',
-        inputLabel: 'Birthday',
-        type: DATE
-    },
+
     // {
     //     name: 'handle',
     //     inputLabel: 'Handle',

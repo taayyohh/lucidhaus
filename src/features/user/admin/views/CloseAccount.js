@@ -4,22 +4,21 @@ import Div                                          from 'shared/Basic/Div'
 import H2                                           from 'shared/Basic/H2'
 import Span                                         from 'shared/Basic/Span'
 import {searchContext}                              from 'shared/Containers/SearchController'
-import DangerZone                                   from 'shared/Controls/DangerZone'
-import DeletePrompt                                 from 'shared/Controls/DeletePrompt'
-import {closeAccountButtonStyle, closeAccountStyle} from './styles'
+import DeletePrompt                                from 'shared/Controls/DeletePrompt'
+import {closeAccountButtonStyle, userAccountStyle} from './styles'
 
-const CloseAccount = (formik) => {
-    const {user, objectID, slug} = useSelector(state => state.user)
+const CloseAccount = () => {
+    const {objectID, slug} = useSelector(state => state.user)
     const {usersIndex} = useContext(searchContext)
     const dispatch = useDispatch()
     const {confirmDelete} = useSelector(state => state.site)
     const {shouldDelete} = confirmDelete
 
     return (
-        <Div theme={closeAccountStyle}>
-            <H2 heme={closeAccountStyle.heading}>Close Account</H2>
-            <p>Delete your account and all saved account data.</p>
-            <Span theme={closeAccountStyle.disclaimer}>
+        <Div theme={userAccountStyle}>
+            <H2 theme={userAccountStyle.heading}>Close Account</H2>
+            <Span>Delete your account and all saved account data.</Span>
+            <Span theme={userAccountStyle.disclaimer}>
                 <span>*</span>Please Note: Deleting your Inclusive Guide account will remove all saved account details,
                 identity profile information, saved places, and reviews from our database.
                 You will need to repeat the verification process for your desired phone number

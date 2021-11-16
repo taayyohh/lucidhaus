@@ -1,5 +1,6 @@
 import {colorPalette, globals}                                                                     from 'config/styles'
 import {black, column, flex, flexEnd, flexStart, grid, inlineFlex, none, pointer, sv, white, wrap} from 'utils/themer'
+import {genericButtonStyle}                                                                        from '../../../../shared/Controls/styles'
 
 export const userProfileFormStyle = {
     multiSelect: {
@@ -144,19 +145,22 @@ export const myPlacesWrapperStyle = {
     gridGap: sv(20, globals.style.layoutScalingValue),
 }
 
-export const closeAccountStyle = {
+export const userAccountStyle = {
     display: flex,
     flexDirection: column,
     marginTop: [50, .7, 50],
     paddingTop: [50, .7, 50],
     borderTop: `1px solid ${globals.colors.borderColor}`,
     heading: {
-        size: [24, .7, 24],
-        weight: 400
+        size: [28, .7, 24],
+        weight: 700,
+        marginBottom: [10, .7, 10]
     },
     disclaimer: {
         size: [14, .7, 14],
         lineHeight: [20, .7, 20],
+        marginTop: [20, .7, 20],
+        weight: 700,
         child: [
             {
                 selector: 'span',
@@ -173,18 +177,17 @@ export const closeAccountButtonStyle = {
     color: white,
     font: globals.fonts.sans,
     borderRadius: [5, .7, 5],
-    alignSelf: flexEnd,
+    alignSelf: flexStart,
     paddingTop: [10, .7, 10],
     paddingBottom: [10, .7, 10],
     paddingLeft: [20, globals.style.layoutScalingValue, 20],
     paddingRight: [20, globals.style.layoutScalingValue, 20],
     letterSpacing: [1, globals.style.layoutScalingValue, 1],
     cursor: pointer,
-    marginTop: 20,
+    marginTop: [30, .7, 50],
     size: [16, .7, 16],
     transition: 'background-color 150ms ease, border-color 150ms ease, color 150ms ease',
     mobile: {
-        width: '100%',
         marginTop: 20
     },
     focus: {
@@ -196,4 +199,28 @@ export const closeAccountButtonStyle = {
         background: colorPalette.red,
         color: white,
     }
+}
+
+export const resetPasswordStyle = {
+    paddingBottom: [50, .7, 50],
+    paddingTop: [50, .7, 50],
+    marginBottom: [50, .7, 50],
+    marginTop: [50, .7, 50],
+    borderBottom: `1px solid ${globals.colors.borderColor}`,
+    borderTop: `1px solid ${globals.colors.borderColor}`,
+    width: '100%',
+    heading: {
+        size: [28, .7, 24],
+        weight: 700,
+        marginBottom: [10, .7, 10]
+    }
+}
+
+export const resetButtonStyle = {
+    ...genericButtonStyle,
+    display: inlineFlex,
+}
+
+export const resetContactInfoStyle = {
+
 }

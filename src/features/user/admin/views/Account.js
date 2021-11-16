@@ -1,13 +1,13 @@
 import {userDashboardMenu}                             from 'config/menus/dashboard/user'
-import {globals}                                       from 'config/styles'
 import {userFields}                                    from 'features/user/admin/fields'
 import React, {useEffect}                              from 'react'
 import {useDispatch, useSelector}                      from 'react-redux'
-import Div                                             from 'shared/Basic/Div'
 import Form                                            from 'shared/Fields/Form'
 import ContentWrapper                                  from 'shared/Layout/ContentWrapper'
 import DashboardWrapper                                from 'shared/Layout/Dashboard/DashboardWrapper'
 import CloseAccount                                    from './CloseAccount'
+import ResetContactInfo                                from './ResetContactInfo'
+import ResetPassword                                   from './ResetPassword'
 import {userContentWrapperStyle, userProfileFormStyle} from './styles'
 
 const Account = () => {
@@ -56,9 +56,11 @@ const Account = () => {
                     dispatchAction={'user/updateUserProfile'}
                     formHeading={'Account Details'}
                     buttonText={'Update'}
-                  //  enableReinitialize={true}
+                    enableReinitialize={true}
                     theme={userProfileFormStyle}
                 >
+                    <ResetPassword />
+                    <ResetContactInfo />
                     <CloseAccount />
                 </Form>
             </DashboardWrapper>
