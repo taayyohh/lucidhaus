@@ -145,6 +145,16 @@ export const myPlacesWrapperStyle = {
     gridGap: sv(20, globals.style.layoutScalingValue),
 }
 
+export const userAccountFormStyle = {
+    maxWidth: [700, .7, '100%'],
+    margin: '0 auto',
+    padding: 0,
+    border: 0,
+    fieldset: {
+        marginBottom: [15, .7, 15]
+    }
+}
+
 export const userAccountStyle = {
     display: flex,
     flexDirection: column,

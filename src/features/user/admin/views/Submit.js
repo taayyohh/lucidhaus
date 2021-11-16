@@ -6,6 +6,7 @@ import {menuPanelContext}                                from 'shared/Containers
 import ContentWrapper                                    from 'shared/Layout/ContentWrapper'
 import DashboardInfo                                     from 'shared/Layout/Dashboard/DashboardInfo'
 import DashboardWrapper                                  from 'shared/Layout/Dashboard/DashboardWrapper'
+import PlaceCard                                         from '../../../../shared/Cards/Place'
 import {submitPlaceButtonStyle, userContentWrapperStyle} from './styles'
 
 const Submit = () => {
@@ -61,10 +62,8 @@ const Submit = () => {
 
                     <Div>Submitted Places</Div>
                     {pendingPlaces && pendingPlaces.map((place) =>
-                        <Div key={place._id} theme={{display: 'flex'}}>
-                            <Div>{place.name}</Div>
-                            <Div>{place.isPendingSubmission ? 'Pending' : 'Accepted!'}</Div>
-                        </Div>
+                        <PlaceCard name={place.name} />
+
                     )}
                 </Div>
             </DashboardWrapper>

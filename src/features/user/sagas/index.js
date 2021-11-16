@@ -82,6 +82,19 @@ export function* signUp({payload}) {
     }
 }
 
+export function* updateUserPhoneNumber({payload}) {
+    const verificationToken = yield call(sendTwilioVerification, payload)
+    if (verificationToken === 'pending') {
+        yield put({
+            type: 'user/requestTwilioCodeConfirmation',
+            payload: {
+                verificationToken: verificationToken,
+                ...payload
+            }
+        })
+    }
+}
+
 export function* confirmUser({payload}) {
     const confirmedUser = yield call(confirmTwilioVerification, payload)
     const {acceptTerms, email, nameFirst, password, tel, verificationCode,} = payload
@@ -360,6 +373,11 @@ export function* watchSignOut() {
 
 export function* watchSignUp() {
     yield takeEvery('user/signUp', signUp)
+}
+
+export function* watchUpdateUserPhoneNumber() {
+    yield takeEvery('user/updatePhoneNumber', updateUserPhoneNumber)
+
 }
 
 export function* watchUserHistory() {

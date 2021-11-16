@@ -1,14 +1,21 @@
-import React                                     from 'react'
-import {PortalWithState}                         from 'react-portal'
-import {useSelector}                             from 'react-redux'
-import Div                                       from 'shared/Basic/Div'
-import H2                                        from 'shared/Basic/H2'
-import MotionDiv                                 from 'shared/Basic/MotionDiv'
-import {defaultModalStyle}                       from 'shared/Layout/styles'
-import {resetContactInfoStyle, userAccountStyle} from './styles'
+import {confirmationCodeFields}                                        from 'features/site/admin/fields/signUp'
+import {resetPhoneFields, validateResetPhone}                          from 'features/user/admin/fields/resetPhone'
+import {signUpFormStyle}                                               from 'features/user/views/styles'
+import React                                                           from 'react'
+import {PortalWithState}                                               from 'react-portal'
+import {useSelector}                                                   from 'react-redux'
+import Div                                                             from 'shared/Basic/Div'
+import H2                                                              from 'shared/Basic/H2'
+import MotionDiv                                                       from 'shared/Basic/MotionDiv'
+import Form                                                            from 'shared/Fields/Form'
+import {defaultModalStyle}                                             from 'shared/Layout/styles'
+import {resetContactInfoStyle, userAccountFormStyle, userAccountStyle} from './styles'
 
 const ResetContactInfo = () => {
-    const {_id, token, tel, email} = useSelector(state => state.user)
+    const {_id, token, tel, email, confirmationRequest} = useSelector(state => state.user)
+    const confirmationCodeInitialValues = {verificationCode: '', ...confirmationRequest}
+    const resetPhoneInitialValues = {tel: ''}
+
 
     return (
         <Div theme={resetContactInfoStyle}>
@@ -31,7 +38,26 @@ const ResetContactInfo = () => {
                                 </Div>
                                 {portal(
                                     <MotionDiv theme={defaultModalStyle}>
-                                        Update PHONE
+                                        {(confirmationRequest && (
+                                            <Form
+                                                initialValues={confirmationCodeInitialValues}
+                                                fields={confirmationCodeFields}
+                                                dispatchAction={'user/confirmUser'}
+                                                formHeading={'Verify Phone'}
+                                                buttonText={'Confirm'}
+                                                theme={signUpFormStyle}
+                                            />
+                                        )) || (
+                                            <Form
+                                                initialValues={resetPhoneInitialValues}
+                                                fields={resetPhoneFields}
+                                                validationSchema={validateResetPhone}
+                                                dispatchAction={'user/updatePhoneNumber'}
+                                                formHeading={'Update Phone Number'}
+                                                buttonText={'Update'}
+                                                theme={userAccountFormStyle}
+                                            />
+                                        )}
                                     </MotionDiv>
                                 )}
                             </>

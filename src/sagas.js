@@ -89,7 +89,7 @@ import {
     watchSignIn,
     watchSignOut,
     watchSignUp,
-    watchSignUpSignInSuccess,
+    watchSignUpSignInSuccess, watchUpdateUserPhoneNumber,
     watchUserHistory,
     watchVerifyUser
 } from 'features/user/sagas'
@@ -252,6 +252,7 @@ export default function* rootSaga() {
         fork(watchResetPassword),
         fork(watchFlagReview),
         fork(watchGetRecentlyViewedPlace),
+        fork(watchUpdateUserPhoneNumber),
 
         //user -- taxonomy
         fork(watchCreateAdaptiveEquipment),
