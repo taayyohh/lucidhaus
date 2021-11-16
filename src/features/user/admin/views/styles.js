@@ -1,6 +1,6 @@
-import {colorPalette, globals}                                                                     from 'config/styles'
-import {black, column, flex, flexEnd, flexStart, grid, inlineFlex, none, pointer, sv, white, wrap} from 'utils/themer'
-import {genericButtonStyle}                                                                        from '../../../../shared/Controls/styles'
+import {colorPalette, globals}                                                            from 'config/styles'
+import {black, column, flex, flexStart, grid, inlineFlex, none, pointer, sv, white, wrap} from 'utils/themer'
+import {genericButtonStyle}                                                               from '../../../../shared/Controls/styles'
 
 export const userProfileFormStyle = {
     multiSelect: {
@@ -152,21 +152,39 @@ export const userAccountStyle = {
     paddingTop: [50, .7, 50],
     borderTop: `1px solid ${globals.colors.borderColor}`,
     heading: {
-        size: [28, .7, 24],
+        size: [24, .7, 24],
         weight: 700,
         marginBottom: [10, .7, 10]
     },
     disclaimer: {
-        size: [14, .7, 14],
+        size: [12, .7, 12],
         lineHeight: [20, .7, 20],
         marginTop: [20, .7, 20],
-        weight: 700,
+        weight: 300,
         child: [
             {
                 selector: 'span',
                 color: colorPalette.red
             }
         ]
+    },
+    infoWrapper: {
+        marginTop: [20, .7, 20],
+        padding: [20, .7, 20],
+        border: `1px solid ${globals.colors.borderColor}`,
+        borderRadius: [10, .7, 10]
+    },
+    info: {
+        display: grid,
+        gridTemplateColumns: '1fr 1fr',
+        gridGap: sv(40, .7),
+        marginBottom: [10, .7, 10],
+        marginTop: [10, .7, 10],
+        child: {
+            selector: 'span',
+            color: colorPalette.seaGreen,
+            weight: 700
+        }
     }
 }
 
@@ -221,6 +239,4 @@ export const resetButtonStyle = {
     display: inlineFlex,
 }
 
-export const resetContactInfoStyle = {
-
-}
+export const resetContactInfoStyle = {}

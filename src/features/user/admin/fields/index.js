@@ -29,16 +29,16 @@ export const userFields = [
         inputLabel: 'Birthday',
         type: DATE
     },
-    {
-        name: 'tel',
-        inputLabel: 'Phone Number',
-        type: TEL
-    },
-    {
-        name: 'email',
-        inputLabel: 'Email',
-        type: TEXT,
-    },
+    // {
+    //     name: 'tel',
+    //     inputLabel: 'Phone Number',
+    //     type: TEL
+    // },
+    // {
+    //     name: 'email',
+    //     inputLabel: 'Email',
+    //     type: TEXT,
+    // },
 
     // {
     //     name: 'handle',

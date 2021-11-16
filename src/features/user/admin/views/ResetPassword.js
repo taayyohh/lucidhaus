@@ -4,7 +4,7 @@ import Div                                                      from 'shared/Bas
 import H2                                                       from 'shared/Basic/H2'
 import {resetButtonStyle, resetPasswordStyle, userAccountStyle} from './styles'
 
-const ResetPassword = (formik) => {
+const ResetPassword = () => {
     const dispatch = useDispatch()
     const {_id, token, email} = useSelector(state => state.user)
 
@@ -23,7 +23,10 @@ const ResetPassword = (formik) => {
                         token,
                         email
                     }
-                })}>Reset Password</Div>
+                })}
+            >
+                Reset Password
+            </Div>
         </Div>
     )
 }

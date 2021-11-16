@@ -36,8 +36,10 @@ const PlaceSidebar = ({
                 />
                 <Website website={website}/>
                 <Tags placeCategory={placeCategory}/>
-                {(isAuthenticated && isVerified && hasNoReviews) && (
+                {((isAuthenticated && isVerified && hasNoReviews) && (
                     <LeaveAReviewButton/>
+                )) || (
+                    <LeaveAReviewButton isAuth={false}/>
                 )}
             </Div>
         </Div>
