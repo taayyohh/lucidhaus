@@ -1,21 +1,22 @@
-import {push}                                                   from 'connected-react-router'
-import cryptoRandomString                                       from 'crypto-random-string'
-import {signin, signout, signup}                                from 'features/site/services'
-import {confirmTwilioVerification, sendTwilioVerification}      from 'features/site/services/twilio'
+import {push}                                              from 'connected-react-router'
+import cryptoRandomString                                  from 'crypto-random-string'
+import {signin, signout, signup}                           from 'features/site/services'
+import {confirmTwilioVerification, sendTwilioVerification} from 'features/site/services/twilio'
 import {
     addFlaggedReview,
     addPlaceSubmissionToUserHistory,
     getPurchaseHistory,
-    getUser, getUserById,
+    getUser,
+    getUserById,
     getUsers,
     verifyUserEmail
-}                     from 'features/user/services'
-import {takeEvery}    from 'redux-saga/dist/redux-saga-effects-npm-proxy.esm'
-import {call, put}    from 'redux-saga/effects'
-import {createEntity} from 'utils/abstractions/crud'
-import {setFormData}  from 'utils/abstractions/setFormData'
-import {formatPhone}            from 'utils/helpers'
-import {getPlace, getPlaceById} from '../../place/services'
+}                                                          from 'features/user/services'
+import {getPlaceById}                                      from 'features/place/services'
+import {takeEvery}                                         from 'redux-saga/dist/redux-saga-effects-npm-proxy.esm'
+import {call, put}                                         from 'redux-saga/effects'
+import {createEntity}                                      from 'utils/abstractions/crud'
+import {setFormData}                                       from 'utils/abstractions/setFormData'
+import {formatPhone}                                       from 'utils/helpers'
 
 export function* signIn({payload}) {
     try {
@@ -292,17 +293,17 @@ export function* flagReview({payload}) {
             type: 'user/flagReviewSuccess',
         })
         //TODO: make this call more specific so the entire place doesn't need to be reloaded
-       yield put({type: 'place/getPlace', payload: {slug: placeSlug}})
+        yield put({type: 'place/getPlace', payload: {slug: placeSlug}})
 
 
-       //  yield put({
-       //      type: 'user/getUser',
-       //      payload: {
-       //          slug: slug,
-       //          _id: _id,
-       //          token: token
-       //      }
-       //  })
+        //  yield put({
+        //      type: 'user/getUser',
+        //      payload: {
+        //          slug: slug,
+        //          _id: _id,
+        //          token: token
+        //      }
+        //  })
     }
 }
 
@@ -340,15 +341,14 @@ export function* getRecentlyViewedPlace({payload}) {
     try {
         const place = yield call(getPlaceById, payload)
         if (!place.error) {
-          yield put({type: 'user/getRecentlyViewedPlaceSuccess', payload: place})
+            yield put({type: 'user/getRecentlyViewedPlaceSuccess', payload: place})
         } else {
-           yield put({type: 'user/getRecentlyViewedPlaceFailure', payload: place})
+            yield put({type: 'user/getRecentlyViewedPlaceFailure', payload: place})
         }
     } catch (error) {
         yield put({type: 'user/getPlaceFailure'})
     }
 }
-
 
 
 /**

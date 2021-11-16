@@ -61,7 +61,6 @@ const ResetContactInfo = () => {
                                     </MotionDiv>
                                 )}
                             </>
-
                         )}
                     </PortalWithState>
                 </Div>

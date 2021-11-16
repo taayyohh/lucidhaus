@@ -67,7 +67,6 @@ const Place = () => {
     const {slug} = useSelector(state => state.site)
     const placeId = slug.substr(slug.lastIndexOf('-') + 1)
     const [hasNoReviews, setHasNoReviews] = useState(true)
-    const [viewed, setViewed] = useState(false)
 
     const hasError = (response) => {
         switch (parseInt(response)) {

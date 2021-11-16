@@ -1,9 +1,8 @@
-import AdminDashboardWrapper from 'shared/Layout/Dashboard/admin/AdminDashboardWrapper'
-import List                  from 'features/shop/admin/product/taxonomy/category/List'
+import List                       from 'features/shop/admin/product/taxonomy/category/List'
 import React, {useEffect}         from 'react'
 import {useDispatch, useSelector} from 'react-redux'
-import DeletePrompt               from 'shared/Controls/DeletePrompt'
 import ContentWrapper             from 'shared/Layout/ContentWrapper'
+import AdminDashboardWrapper      from 'shared/Layout/Dashboard/admin/AdminDashboardWrapper'
 import DashboardInfo              from 'shared/Layout/Dashboard/DashboardInfo'
 import {slugify}                  from 'utils/helpers'
 

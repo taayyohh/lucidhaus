@@ -1,4 +1,4 @@
-import {push}                             from 'connected-react-router'
+import {push}          from 'connected-react-router'
 import {
     getAlgoliaPlaces,
     getPlace,
@@ -6,11 +6,15 @@ import {
     getPlaceCategories,
     getPlaces,
     handlePageView
-}                                         from 'features/place/services'
-import {call, put, takeEvery, takeLatest} from 'redux-saga/effects'
-import {getEntityById}                    from 'utils/abstractions/crud'
-import {slugify}                          from 'utils/helpers'
-import {getUserById}                      from '../../user/services'
+}                      from 'features/place/services'
+import {
+    call,
+    put,
+    takeEvery,
+    takeLatest
+}                      from 'redux-saga/effects'
+import {getEntityById} from 'utils/abstractions/crud'
+import {slugify}       from 'utils/helpers'
 
 /**
  *
@@ -103,10 +107,9 @@ export function* getReview({payload}) {
 
 export function* addToViewCount({payload}) {
     const place = yield call(handlePageView, payload)
-    if(!place?.error) {
+    if (!place?.error) {
         yield put({type: 'place/addViewSuccess', payload: place})
-        const user = yield call(getUserById, {userId: payload._id, _id: payload._id, token: payload.token})
-
+        //TODO:: update recently viewed
     }
 }
 

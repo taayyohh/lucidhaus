@@ -1,11 +1,11 @@
-import React, {useEffect, useState} from 'react'
-import {useDispatch, useSelector}   from 'react-redux'
-import Div                          from 'shared/Basic/Div'
-import LinkSwitch                   from 'shared/Basic/LinkSwitch'
-import PlaceCard                    from 'shared/Cards/Place'
-import Tooltip                      from 'shared/Controls/ToolTip'
-import ContentWrapper               from 'shared/Layout/ContentWrapper'
-import Search                       from 'shared/Layout/Search'
+import React, {useEffect}         from 'react'
+import {useDispatch, useSelector} from 'react-redux'
+import Div                        from 'shared/Basic/Div'
+import LinkSwitch                 from 'shared/Basic/LinkSwitch'
+import PlaceCard                  from 'shared/Cards/Place'
+import Tooltip                    from 'shared/Controls/ToolTip'
+import ContentWrapper             from 'shared/Layout/ContentWrapper'
+import Search                     from 'shared/Layout/Search'
 import {
     homeContentWrapperStyle,
     homeHeadlineStyle,
@@ -21,13 +21,11 @@ import {
     recentlyViewedPlaceCardWrapperStyle,
     recentlyViewedPlacesHeadingStyle,
     recentlyViewedWrapperStyle
-}                                   from './styles'
+}                                 from './styles'
 
 const Home = () => {
     const {isAuthenticated, isAdmin, recentlyViewedPlaces, user} = useSelector(state => state.user)
     const dispatch = useDispatch()
-    const [orderedViewedPlaces, setOrderedViewedPlaces] = useState([])
-
 
     useEffect(() => {
         if (!!user.recentlyViewed)
@@ -37,17 +35,7 @@ const Home = () => {
                     payload: {_id: recent}
                 })
             }
-    }, [user])
-
-    useEffect(() => {
-        console.log('rece', recentlyViewedPlaces)
-       // console.log('recent', recentlyViewedPlaces.sort((a,b) => console.log('a', a)))
-        // if(recentlyViewedPlaces.length > 0)
-        //     setOrderedViewedPlaces([...recentlyViewedPlaces].sort((a, b) => (b.views[views.length - 1] > a.views[views.length - 1]) ? 1 : ((a.views[views.length - 1] > b.views[views.length - 1]) ? -1 : 0)))
-
-
-    }, [recentlyViewedPlaces])
-
+    }, [user, dispatch])
 
     return (
         <ContentWrapper theme={homeContentWrapperStyle}>
@@ -109,8 +97,6 @@ const Home = () => {
                         </Div>
                     </Div>
                 )}
-
-
             </Div>
         </ContentWrapper>
     )
