@@ -66,10 +66,10 @@ const Form = ({
                             children={buttonText}
                         />
                     )}
-                    {!!children && children.map((c) => (
-                        <>
+                    {!!children && children.map((c, i) => (
+                        <Div key={i} theme={{width: '100%'}}>
                             {c?.type(formik)}
-                        </>
+                        </Div>
                     ))}
                 </Div>
             }
