@@ -35,7 +35,6 @@ const Manage = () => {
                     description={'Click to edit.'}
                 />
                 <List taxonomies={taxonomies}/>
-                <DeletePrompt destroyAction={'shop/destroyProductCategory'}/>
             </AdminDashboardWrapper>
         </ContentWrapper>
     )

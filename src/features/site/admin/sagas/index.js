@@ -1,13 +1,13 @@
 /* WATCHERS */
 
 import {push}                        from 'connected-react-router'
-import {call, put, takeLatest}       from 'redux-saga/effects'
 import {deleteBathroom}              from 'features/place/admin/taxonomy/bathroom/services'
 import {deleteBusinessOwner}         from 'features/place/admin/taxonomy/businessOwner/services'
 import {deleteCommunitiesServed}     from 'features/place/admin/taxonomy/communitiesServed/services'
 import {deleteFoodOptions}           from 'features/place/admin/taxonomy/foodOptions/services'
 import {deleteLanguageSpoken}        from 'features/place/admin/taxonomy/languageSpoken/services'
 import {deletePlaceCategory}         from 'features/place/admin/taxonomy/placeCategory/services'
+import {deletePlace}                 from 'features/place/services'
 import {deleteAdaptiveEquipment}     from 'features/user/admin/taxonomy/adaptiveEquipment/services'
 import {deleteBodyModification}      from 'features/user/admin/taxonomy/bodyModification/services'
 import {deleteGender}                from 'features/user/admin/taxonomy/gender/services'
@@ -18,8 +18,8 @@ import {deletePronoun}               from 'features/user/admin/taxonomy/pronoun/
 import {deleteRace}                  from 'features/user/admin/taxonomy/race/services'
 import {deleteServiceAnimal}         from 'features/user/admin/taxonomy/serviceAnimal/services'
 import {deleteSexualOrientation}     from 'features/user/admin/taxonomy/sexualOrientation/services'
-import {deletePlace}              from 'features/place/services'
-import {deleteReview, deleteUser} from 'features/user/services'
+import {deleteReview, deleteUser}    from 'features/user/services'
+import {call, put, takeLatest}       from 'redux-saga/effects'
 
 
 export function* attemptDestroyEntity({payload}) {
@@ -85,8 +85,11 @@ export function* destroyEntity({payload}) {
             }
         })
 
-        if(type === 'user') {
+        if (type === 'user') {
             yield put({type: 'user/destroyUserSuccess', payload: {objectID}})
+            yield put({type: 'user/signOut'})
+            yield put(push('/signin'))
+
         } else if (type === 'place') {
             yield put({type: 'place/destroyPlaceSuccess', payload: {objectID}})
         }

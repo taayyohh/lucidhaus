@@ -105,7 +105,6 @@ export function* addToViewCount({payload}) {
     const place = yield call(handlePageView, payload)
     if(!place?.error) {
         yield put({type: 'place/addViewSuccess', payload: place})
-        console.log('place', place)
         const user = yield call(getUserById, {userId: payload._id, _id: payload._id, token: payload.token})
 
     }

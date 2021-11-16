@@ -7,6 +7,7 @@ import Div                                             from 'shared/Basic/Div'
 import Form                                            from 'shared/Fields/Form'
 import ContentWrapper                                  from 'shared/Layout/ContentWrapper'
 import DashboardWrapper                                from 'shared/Layout/Dashboard/DashboardWrapper'
+import CloseAccount                                    from './CloseAccount'
 import {userContentWrapperStyle, userProfileFormStyle} from './styles'
 
 const Account = () => {
@@ -43,32 +44,23 @@ const Account = () => {
             })
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, [slug])
 
     return (
         <ContentWrapper theme={userContentWrapperStyle}>
             <DashboardWrapper menu={userDashboardMenu}>
-                <Div theme={{
-                    weight: 300,
-                    fontStyle: 'italic',
-                    font: globals.fonts.serif,
-                    marginTop: [30, .7, 30],
-                    marginBottom: 15,
-                    size: [18, .7, 18]
-                }}>
-                    <strong>Disclaimer</strong>: Updating your email is not possible at the moment. We are working on
-                    this feature!
-                </Div>
                 <Form
                     initialValues={initialValues}
                     fields={userFields}
                     //validationSchema={validateProfile}
                     dispatchAction={'user/updateUserProfile'}
-                    formHeading={'Update Profile'}
+                    formHeading={'Account Details'}
                     buttonText={'Update'}
-                    enableReinitialize={true}
+                  //  enableReinitialize={true}
                     theme={userProfileFormStyle}
-                />
+                >
+                    <CloseAccount />
+                </Form>
             </DashboardWrapper>
         </ContentWrapper>
     )

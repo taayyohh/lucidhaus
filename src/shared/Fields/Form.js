@@ -25,7 +25,6 @@ const Form = ({
               }) => {
     const dispatch = useDispatch()
 
-
     return (
         <Formik
             initialValues={initialValues}
@@ -67,7 +66,7 @@ const Form = ({
                             children={buttonText}
                         />
                     )}
-                    {children}
+                    {children?.type(formik)}
                 </Div>
             }
         </Formik>

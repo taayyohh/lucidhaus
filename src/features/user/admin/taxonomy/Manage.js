@@ -57,8 +57,6 @@ const Manage = () => {
                         Sexual Orientation
                     </LinkSwitch>
                 </Div>
-
-                <DeletePrompt destroyAction={'shop/destroyProductCategory'}/>
             </AdminDashboardWrapper>
         </ContentWrapper>
     )

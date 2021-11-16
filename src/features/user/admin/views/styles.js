@@ -1,5 +1,5 @@
-import {colorPalette, globals}                                                            from 'config/styles'
-import {black, column, flex, flexStart, grid, inlineFlex, none, pointer, sv, white, wrap} from 'utils/themer'
+import {colorPalette, globals}                                                                     from 'config/styles'
+import {black, column, flex, flexEnd, flexStart, grid, inlineFlex, none, pointer, sv, white, wrap} from 'utils/themer'
 
 export const userProfileFormStyle = {
     multiSelect: {
@@ -142,4 +142,58 @@ export const myPlacesWrapperStyle = {
     display: grid,
     gridTemplateColumns: '1fr',
     gridGap: sv(20, globals.style.layoutScalingValue),
+}
+
+export const closeAccountStyle = {
+    display: flex,
+    flexDirection: column,
+    marginTop: [50, .7, 50],
+    paddingTop: [50, .7, 50],
+    borderTop: `1px solid ${globals.colors.borderColor}`,
+    heading: {
+        size: [24, .7, 24],
+        weight: 400
+    },
+    disclaimer: {
+        size: [14, .7, 14],
+        lineHeight: [20, .7, 20],
+        child: [
+            {
+                selector: 'span',
+                color: colorPalette.red
+            }
+        ]
+    }
+}
+
+export const closeAccountButtonStyle = {
+    display: inlineFlex,
+    border: `1px solid #dadce0`,
+    background: colorPalette.brightRed,
+    color: white,
+    font: globals.fonts.sans,
+    borderRadius: [5, .7, 5],
+    alignSelf: flexEnd,
+    paddingTop: [10, .7, 10],
+    paddingBottom: [10, .7, 10],
+    paddingLeft: [20, globals.style.layoutScalingValue, 20],
+    paddingRight: [20, globals.style.layoutScalingValue, 20],
+    letterSpacing: [1, globals.style.layoutScalingValue, 1],
+    cursor: pointer,
+    marginTop: 20,
+    size: [16, .7, 16],
+    transition: 'background-color 150ms ease, border-color 150ms ease, color 150ms ease',
+    mobile: {
+        width: '100%',
+        marginTop: 20
+    },
+    focus: {
+        outline: none,
+    },
+    hover: {
+        cursor: 'pointer',
+        border: `1px solid #dadce0`,
+        background: colorPalette.red,
+        color: white,
+    }
 }

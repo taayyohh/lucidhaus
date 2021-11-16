@@ -45,9 +45,6 @@ const Manage = () => {
                         Place Category
                     </LinkSwitch>
                 </Div>
-
-
-                <DeletePrompt destroyAction={'admin/destroyProductCategory'}/>
             </AdminDashboardWrapper>
         </ContentWrapper>
     )

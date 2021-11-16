@@ -82,6 +82,7 @@ export const slice = createSlice({
             state.slug = action.payload.user.slug
             state.tel = action.payload.user.tel
             state.type = action.payload.user.type
+            state.objectID = action.payload.user.objectID
         },
         signInFailure: (state, action) => {
             state.loading = false
@@ -113,6 +114,7 @@ export const slice = createSlice({
             state.slug = action.payload.user.slug
             state.tel = action.payload.user.tel
             state.type = action.payload.user.type
+            state.objectID = action.payload.user.objectID
             // state.flaggedReviews = [...action.payload.user.flaggedReviews]
         },
         isAuthenticatedFailure: state => {
@@ -128,6 +130,8 @@ export const slice = createSlice({
             state.isAdmin = false
             state.token = ''
             state._id = ''
+            state.objectID = ''
+
         },
         signOutFailure: (state, action) => {
             state.error = action.payload.message

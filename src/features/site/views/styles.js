@@ -198,7 +198,7 @@ export const recentlyViewedPlaceCardStyle = {
 
 export const recentlyViewedPlaceCardWrapperStyle = {
     display: 'grid',
-    gridTemplateColumns: `${sv(400, globals.style.layoutScalingValue)} ${sv(400, globals.style.layoutScalingValue)} ${sv(400, globals.style.layoutScalingValue)}`,
+    gridTemplateColumns: `${sv(460, globals.style.layoutScalingValue)} ${sv(460, globals.style.layoutScalingValue)} ${sv(460, globals.style.layoutScalingValue)}`,
     gridGap: sv(30, globals.style.layoutScalingValue),
     mobile: {
         display: flex,
@@ -208,7 +208,7 @@ export const recentlyViewedPlaceCardWrapperStyle = {
 }
 
 export const recentlyViewedWrapperStyle = {
-    maxWidth: [1280, globals.style.layoutScalingValue, '100%'],
+    maxWidth: [1420, globals.style.layoutScalingValue, '100%'],
     margin: '0 auto',
     marginTop: [50, .7, 50],
     mobile: {

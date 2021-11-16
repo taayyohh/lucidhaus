@@ -3,7 +3,6 @@ import {DATE, IMAGE_UPLOAD, TEL, TEXT, UPLOAD_PATHS} from 'config/variables'
 export const userFields = [
     {
         name: 'avatar',
-        inputLabel: 'Avatar',
         file: 'avatarFile',
         cropWidth: 500,
         cropHeight: 500,
