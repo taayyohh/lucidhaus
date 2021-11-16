@@ -16,7 +16,7 @@ const Places = () => {
         <ContentWrapper theme={userContentWrapperStyle}>
             <DashboardWrapper menu={userDashboardMenu}>
                 <DashboardInfo
-                    heading={'Your Saved Places'}
+                    heading={'My Places'}
                     description={"Here are the places you've saved."}
                 />
                 {!isVerified && (

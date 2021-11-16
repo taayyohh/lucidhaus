@@ -39,7 +39,11 @@ const PlaceSidebar = ({
                 {((isAuthenticated && isVerified && hasNoReviews) && (
                     <LeaveAReviewButton/>
                 )) || (
-                    <LeaveAReviewButton isAuth={false}/>
+                    <>
+                        {hasNoReviews && (
+                            <LeaveAReviewButton isAuth={false}/>
+                        )}
+                    </>
                 )}
             </Div>
         </Div>

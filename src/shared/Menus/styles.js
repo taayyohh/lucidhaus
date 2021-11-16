@@ -194,7 +194,7 @@ export const dashboardMenuMobileStyle = {
 }
 
 export const dashboardMenuInnerStyle = {
-    width: [200, globals.style.layoutScalingValue, '100%'],
+    width: [250, globals.style.layoutScalingValue, '100%'],
     position: 'fixed',
     background: white,
     display: flex,
@@ -241,7 +241,7 @@ export const dashboardMenuItemStyle = isActive => {
 export const dashboardItemTitleStyle = {
     textTransform: none,
     size: [15, .7, 15],
-    paddingLeft: [30, .7, 30],
+    paddingLeft: [30, globals.style.layoutScalingValue, 30],
     weight: 500
 }
 
