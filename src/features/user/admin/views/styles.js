@@ -185,6 +185,13 @@ export const userAccountStyle = {
             color: colorPalette.seaGreen,
             weight: 700
         }
+    },
+    updateLink: {
+        textDecoration: 'underline',
+        hover: {
+            cursor: pointer,
+            color: colorPalette.brightRed
+        }
     }
 }
 

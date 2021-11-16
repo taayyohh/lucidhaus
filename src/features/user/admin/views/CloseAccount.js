@@ -19,7 +19,7 @@ const CloseAccount = () => {
             <H2 theme={userAccountStyle.heading}>Close Account</H2>
             <Span>Delete your account and all saved account data.</Span>
             <Span theme={userAccountStyle.disclaimer}>
-                <span>*</span>Please Note: Deleting your Inclusive Guide account will remove all saved account details,
+                * Please Note: Deleting your Inclusive Guide account will remove all saved account details,
                 identity profile information, saved places, and reviews from our database.
                 You will need to repeat the verification process for your desired phone number
                 and email address should you choose to create a new account on the Inclusive Guide website.

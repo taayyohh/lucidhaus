@@ -1,12 +1,14 @@
 import React                                     from 'react'
+import {PortalWithState}                         from 'react-portal'
 import {useSelector}                             from 'react-redux'
 import Div                                       from 'shared/Basic/Div'
 import H2                                        from 'shared/Basic/H2'
+import MotionDiv                                 from 'shared/Basic/MotionDiv'
+import {defaultModalStyle}                       from 'shared/Layout/styles'
 import {resetContactInfoStyle, userAccountStyle} from './styles'
 
 const ResetContactInfo = () => {
     const {_id, token, tel, email} = useSelector(state => state.user)
-
 
     return (
         <Div theme={resetContactInfoStyle}>
@@ -21,17 +23,42 @@ const ResetContactInfo = () => {
                     <Div>
                         Registered Phone Number : <span>{tel}</span>
                     </Div>
-                    <Div>
-                        Update My Registered Phone Number
-                    </Div>
+                    <PortalWithState closeOnOutsideClick closeOnEsc>
+                        {({openPortal, portal}) => (
+                            <>
+                                <Div onClick={openPortal} theme={userAccountStyle.updateLink}>
+                                    Update My Registered Phone Number
+                                </Div>
+                                {portal(
+                                    <MotionDiv theme={defaultModalStyle}>
+                                        Update PHONE
+                                    </MotionDiv>
+                                )}
+                            </>
+
+                        )}
+                    </PortalWithState>
                 </Div>
                 <Div theme={userAccountStyle.info}>
                     <Div>
                         Registered Email : <span>{email}</span>
                     </Div>
-                    <Div>
-                        Update My Registered Email
-                    </Div>
+                    <PortalWithState closeOnOutsideClick closeOnEsc>
+                        {({openPortal, portal}) => (
+                            <>
+                                <Div onClick={openPortal} theme={userAccountStyle.updateLink}>
+                                    Update My Registered Email
+                                </Div>
+                                {portal(
+                                    <MotionDiv theme={defaultModalStyle}>
+                                        Update Email
+                                    </MotionDiv>
+                                )}
+                            </>
+
+                        )}
+                    </PortalWithState>
+
                 </Div>
             </Div>
             <Div theme={userAccountStyle.disclaimer}>
