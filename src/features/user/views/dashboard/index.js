@@ -1,22 +1,22 @@
-import {bookmark}                 from 'config/icons'
-import {userDashboardMenu}        from 'config/menus/dashboard/user'
-import {colorPalette}             from 'config/styles'
-import React, {useEffect}         from 'react'
-import {useDispatch, useSelector} from 'react-redux'
-import Div                        from 'shared/Basic/Div'
-import Icon                       from 'shared/Basic/Icon'
-import LinkSwitch                 from 'shared/Basic/LinkSwitch'
-import ContentWrapper             from 'shared/Layout/ContentWrapper'
-import DashboardInfo              from 'shared/Layout/Dashboard/DashboardInfo'
-import DashboardWrapper           from 'shared/Layout/Dashboard/DashboardWrapper'
-import {white}                    from 'utils/themer'
-import {userContentWrapperStyle}  from '../../admin/views/styles'
+import {bookmark}                                           from 'config/icons'
+import {userDashboardMenu}                                  from 'config/menus/dashboard/user'
+import {colorPalette}                                       from 'config/styles'
+import React, {useEffect}                                   from 'react'
+import {useDispatch, useSelector}                           from 'react-redux'
+import Div                                                  from 'shared/Basic/Div'
+import Icon                                                 from 'shared/Basic/Icon'
+import LinkSwitch                                           from 'shared/Basic/LinkSwitch'
+import ContentWrapper                                       from 'shared/Layout/ContentWrapper'
+import DashboardWrapper                                     from 'shared/Layout/Dashboard/DashboardWrapper'
+import S3Img                                                from '../../../../shared/Basic/S3Img'
+import {white}                                              from '../../../../utils/themer'
+import {userContentWrapperStyle, userDashboardWelcomeStyle} from '../../admin/views/styles'
 import {
     dashboardParagraphStyle,
     userDashboardBookmarkStyle,
     userDashboardInfoWrapperStyle,
     userDashboardRTEHeadingStyle
-}                                 from './styles'
+}                                                           from './styles'
 
 const UserDashboard = () => {
     const {
@@ -24,9 +24,11 @@ const UserDashboard = () => {
         token,
         user,
         email,
+        isVerified,
         slug,
         nameFirst,
-        tel
+        tel,
+        avatar
     } = useSelector(state => state.user)
     const dispatch = useDispatch()
 
@@ -46,44 +48,56 @@ const UserDashboard = () => {
     return (
         <ContentWrapper theme={userContentWrapperStyle}>
             <DashboardWrapper menu={userDashboardMenu}>
-                <DashboardInfo
-                    heading={`Hey, ${nameFirst}`}
-                    description={`${tel}`}
-                />
-                <Div theme={{display: 'flex', flexDirection: 'column'}}>
-                    <Div theme={{display: 'flex'}}>
-                        <Div>Email: {email}</Div>
-                        <Div theme={{marginLeft: 15}}>{user.emailVerified ? 'verified' : 'unverified'}</Div>
-                    </Div>
-                    {!user.emailVerified && (
+                <Div theme={userDashboardWelcomeStyle}>
+                    {(avatar && (
+                        <S3Img
+                            url={avatar}
+                            theme={{height: 130, width: 130, borderRadius: 70}}
+                        />
+                    ) || (
                         <Div
-                            onClick={() => dispatch(
-                                {
-                                    type: 'user/resendVerificationLink',
-                                    payload: {
-                                        verificationLink: `https://beta.inclusiveguide.com/verify/${user.verificationToken}`,
-                                        email: email,
-                                        _id,
-                                        token
-                                    }
-                                })}
-                            theme={{
-                                padding: '10px 15px',
-                                background: colorPalette.paleGreen,
-                                display: 'flex',
-                                alignSelf: 'flex-start',
-                                borderRadius: '10px',
-                                hover: {
-                                    cursor: 'pointer',
-                                    backgroundColor: colorPalette.forestGreen,
-                                    color: white
-                                }
-                            }}
-                        >
-                            Resend Verification Link
+                            theme={{height: 130, width: 130, borderRadius: 70, background: colorPalette.seaFoamGreen}}/>
+                    ))}
+
+
+                    <Div theme={userDashboardWelcomeStyle.info}>
+                        <Div theme={userDashboardWelcomeStyle.heading}>Hey, {nameFirst}</Div>
+                        <Div>Registered Phone Number: {tel}</Div>
+                        <Div>Registered Email: {email}</Div>
+                        <Div theme={{display: 'flex'}}>
+                            Account Verification Status: {(isVerified && (
+                            <Div>Verified</Div>
+                        )) || (
+                            <Div theme={userDashboardWelcomeStyle.unverified}>Unverified</Div>
+                        )}
                         </Div>
-                    )}
+                        <Div theme={{display: 'flex', flexDirection: 'column', marginTop: 20}}>
+                            <Div>*Please Note: Account verification is required to leave reviews!</Div>
+                            {!user.emailVerified && (
+                                <Div
+                                    onClick={() => dispatch(
+                                        {
+                                            type: 'user/resendVerificationLink',
+                                            payload: {
+                                                verificationLink: `https://beta.inclusiveguide.com/verify/${user.verificationToken}`,
+                                                email: email,
+                                                _id,
+                                                token
+                                            }
+                                        })}
+                                    theme={userDashboardWelcomeStyle.verifyEmail}
+                                >
+                                    Click here to Verify Your Account
+                                </Div>
+                            )}
+                        </Div>
+                    </Div>
                 </Div>
+                {/*<DashboardInfo*/}
+                {/*    heading={`Hey, ${nameFirst}`}*/}
+                {/*    description={`${tel}`}*/}
+                {/*/>*/}
+
                 <Div theme={userDashboardInfoWrapperStyle}>
                     <Div theme={dashboardParagraphStyle}>
                         <Div theme={userDashboardRTEHeadingStyle}>Who we are</Div>

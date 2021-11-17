@@ -1,6 +1,6 @@
-import {colorPalette, globals}                                                            from 'config/styles'
-import {black, column, flex, flexStart, grid, inlineFlex, none, pointer, sv, white, wrap} from 'utils/themer'
-import {genericButtonStyle}                                                               from '../../../../shared/Controls/styles'
+import {colorPalette, globals}                                                                    from 'config/styles'
+import {black, center, column, flex, flexStart, grid, inlineFlex, none, pointer, sv, white, wrap} from 'utils/themer'
+import {genericButtonStyle}                                                                       from '../../../../shared/Controls/styles'
 
 export const userProfileFormStyle = {
     multiSelect: {
@@ -64,6 +64,41 @@ export const multiSelectHelperTextStyle = {
 
 export const userContentWrapperStyle = {
     width: [1280, globals.style.layoutScalingValue, '100%']
+}
+
+export const userDashboardWelcomeStyle = {
+    display: flex,
+    alignItems: center,
+    marginBottom: [70, .7, 70],
+    info: {
+        marginLeft: [50, .7, 50]
+    },
+    heading: {
+        size: [36, .7, 36]
+    },
+    unverified: {
+        color: colorPalette.brightRed,
+        weight: 700,
+        marginLeft: [5, .7, 5]
+    },
+    verifyEmail: {
+        paddingTop: [10, .7, 10],
+        paddingBottom: [10, .7, 10],
+        paddingLeft: [15, .7, 15],
+        paddingRight: [15, .7, 15],
+        marginTop: [20, .7, 20],
+        background: colorPalette.paleGreen,
+        display: flex,
+        alignSelf: flexStart,
+        borderRadius: [5, .7, 5],
+        color: white,
+        hover: {
+            cursor: pointer,
+            backgroundColor: colorPalette.forestGreen,
+            color: white
+        }
+    }
+
 }
 
 export const submitFormWrapperStyle = {

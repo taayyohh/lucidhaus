@@ -38,6 +38,7 @@ const ResetContactInfo = () => {
                                 </Div>
                                 {portal(
                                     <MotionDiv theme={defaultModalStyle}>
+                                        {console.log('conf', confirmationRequest)}
                                         {(confirmationRequest && (
                                             <Form
                                                 initialValues={confirmationCodeInitialValues}
@@ -80,7 +81,6 @@ const ResetContactInfo = () => {
                                     </MotionDiv>
                                 )}
                             </>
-
                         )}
                     </PortalWithState>
 

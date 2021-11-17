@@ -41,6 +41,7 @@ const Form = ({
                     theme={{...defaultFormStyle, ...theme}}
                     onSubmit={formik.handleSubmit}
                 >
+                    {console.log('FORMIK', formik)}
                     <H3
                         theme={{
                             ...defaultFormStyle.heading,
