@@ -1,6 +1,6 @@
-import {userDashboardMenu}        from 'config/menus/dashboard/user'
-import {userFields, validateUser} from 'features/user/admin/fields'
-import React, {useEffect}         from 'react'
+import {userDashboardMenu}                             from 'config/menus/dashboard/user'
+import {userFields, validateUser}                      from 'features/user/admin/fields'
+import React, {useEffect}                              from 'react'
 import {useDispatch, useSelector}                      from 'react-redux'
 import Form                                            from 'shared/Fields/Form'
 import ContentWrapper                                  from 'shared/Layout/ContentWrapper'
@@ -61,9 +61,9 @@ const Account = () => {
                     enableReinitialize={true}
                     theme={userProfileFormStyle}
                 >
-                    <ResetPassword />
-                    <ResetContactInfo />
-                    <CloseAccount />
+                    <ResetPassword/>
+                    <ResetContactInfo/>
+                    <CloseAccount/>
                 </Form>
             </DashboardWrapper>
         </ContentWrapper>

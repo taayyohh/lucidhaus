@@ -7,12 +7,12 @@ import {userDashboardAvatarStyle} from './styles'
 const Avatar = ({avatar}) => {
     return (
         <Div theme={userDashboardAvatarStyle}>
-            {(avatar && (
+            {((avatar && (
                 <S3Img
                     url={avatar}
                     theme={{width: '100%'}}
                 />
-            ) || (
+            )) || (
                 <Div
                     theme={{background: colorPalette.seaFoamGreen}}/>
             ))}

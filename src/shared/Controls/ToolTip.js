@@ -7,7 +7,6 @@ import MotionDiv                                                                
 import {auto}                                                                              from 'utils/themer'
 import useOutsideAlerter
                                                                                            from '../../utils/clickOutside'
-import Span                                                                                from '../Basic/Span'
 import {toolTipIconStyles, toolTipMessageInnerStyles, toolTipMessageStyles, toolTipStyles} from './styles'
 
 const Tooltip = ({message, theme}) => {

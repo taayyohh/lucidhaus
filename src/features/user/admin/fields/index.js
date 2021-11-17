@@ -1,6 +1,5 @@
 import {DATE, IMAGE_UPLOAD, TEXT, UPLOAD_PATHS} from 'config/variables'
 import * as Yup                                 from 'yup'
-import {passwordRegExp, phoneRegExp}            from '../../../../utils/helpers'
 
 export const userFields = [
     {
