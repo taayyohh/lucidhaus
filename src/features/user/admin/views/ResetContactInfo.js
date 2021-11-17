@@ -27,63 +27,64 @@ const ResetContactInfo = () => {
             </Div>
             <Div theme={userAccountStyle.infoWrapper}>
                 <Div theme={userAccountStyle.info}>
-                    <Div>
-                        Registered Phone Number : <span>{tel}</span>
+                    <Div theme={userAccountStyle.infoText}>
+                        <div>Registered Phone Number:</div>
+                        <span>{tel}</span>
+                        <PortalWithState closeOnOutsideClick closeOnEsc>
+                            {({openPortal, portal}) => (
+                                <>
+                                    <Div onClick={openPortal} theme={userAccountStyle.updateLink}>
+                                        Update My Registered Phone Number
+                                    </Div>
+                                    {portal(
+                                        <MotionDiv theme={defaultModalStyle}>
+                                            {console.log('conf', confirmationRequest)}
+                                            {(confirmationRequest && (
+                                                <Form
+                                                    initialValues={confirmationCodeInitialValues}
+                                                    fields={confirmationCodeFields}
+                                                    dispatchAction={'user/confirmUser'}
+                                                    formHeading={'Verify Phone'}
+                                                    buttonText={'Confirm'}
+                                                    theme={signUpFormStyle}
+                                                />
+                                            )) || (
+                                                <Form
+                                                    initialValues={resetPhoneInitialValues}
+                                                    fields={resetPhoneFields}
+                                                    validationSchema={validateResetPhone}
+                                                    dispatchAction={'user/updatePhoneNumber'}
+                                                    formHeading={'Update Phone Number'}
+                                                    buttonText={'Update'}
+                                                    theme={userAccountFormStyle}
+                                                />
+                                            )}
+                                        </MotionDiv>
+                                    )}
+                                </>
+                            )}
+                        </PortalWithState>
                     </Div>
-                    <PortalWithState closeOnOutsideClick closeOnEsc>
-                        {({openPortal, portal}) => (
-                            <>
-                                <Div onClick={openPortal} theme={userAccountStyle.updateLink}>
-                                    Update My Registered Phone Number
-                                </Div>
-                                {portal(
-                                    <MotionDiv theme={defaultModalStyle}>
-                                        {console.log('conf', confirmationRequest)}
-                                        {(confirmationRequest && (
-                                            <Form
-                                                initialValues={confirmationCodeInitialValues}
-                                                fields={confirmationCodeFields}
-                                                dispatchAction={'user/confirmUser'}
-                                                formHeading={'Verify Phone'}
-                                                buttonText={'Confirm'}
-                                                theme={signUpFormStyle}
-                                            />
-                                        )) || (
-                                            <Form
-                                                initialValues={resetPhoneInitialValues}
-                                                fields={resetPhoneFields}
-                                                validationSchema={validateResetPhone}
-                                                dispatchAction={'user/updatePhoneNumber'}
-                                                formHeading={'Update Phone Number'}
-                                                buttonText={'Update'}
-                                                theme={userAccountFormStyle}
-                                            />
-                                        )}
-                                    </MotionDiv>
-                                )}
-                            </>
-                        )}
-                    </PortalWithState>
                 </Div>
                 <Div theme={userAccountStyle.info}>
-                    <Div>
-                        Registered Email : <span>{email}</span>
+                    <Div theme={userAccountStyle.infoText}>
+                        <div>Registered Email:</div>
+                        <span>{email}</span>
+                        <PortalWithState closeOnOutsideClick closeOnEsc>
+                            {({openPortal, portal}) => (
+                                <>
+                                    <Div onClick={openPortal} theme={userAccountStyle.updateLink}>
+                                        Update My Registered Email
+                                    </Div>
+                                    {portal(
+                                        <MotionDiv theme={defaultModalStyle}>
+                                            Update Email
+                                        </MotionDiv>
+                                    )}
+                                </>
+                            )}
+                        </PortalWithState>
                     </Div>
-                    <PortalWithState closeOnOutsideClick closeOnEsc>
-                        {({openPortal, portal}) => (
-                            <>
-                                <Div onClick={openPortal} theme={userAccountStyle.updateLink}>
-                                    Update My Registered Email
-                                </Div>
-                                {portal(
-                                    <MotionDiv theme={defaultModalStyle}>
-                                        Update Email
-                                    </MotionDiv>
-                                )}
-                            </>
-                        )}
-                    </PortalWithState>
-
                 </Div>
             </Div>
             <Div theme={userAccountStyle.disclaimer}>

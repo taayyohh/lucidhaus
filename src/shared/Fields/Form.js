@@ -41,7 +41,6 @@ const Form = ({
                     theme={{...defaultFormStyle, ...theme}}
                     onSubmit={formik.handleSubmit}
                 >
-                    {console.log('FORMIK', formik)}
                     <H3
                         theme={{
                             ...defaultFormStyle.heading,
@@ -61,6 +60,7 @@ const Form = ({
                             />
                         )}
                     </Div>
+                    {console.log('FORMIKL', formik)}
                     {!autoSubmit && !hideButton && (
                         <SubmitButton
                             theme={{...theme.button}}

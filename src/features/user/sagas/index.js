@@ -97,8 +97,9 @@ export function* updateUserPhoneNumber({payload}) {
 }
 
 export function* confirmUser({payload}) {
+    console.log('PAYLOAD', payload)
     const confirmedUser = yield call(confirmTwilioVerification, payload)
-    const {acceptTerms, email, nameFirst, password, tel, verificationCode,} = payload
+    const {acceptTerms, email, nameFirst, password, tel, verificationCode} = payload
 
     if (confirmedUser === 'approved') {
         const user = yield call(signup, {
@@ -107,7 +108,7 @@ export function* confirmUser({payload}) {
             nameFirst,
             password,
             tel: formatPhone(tel),
-            verificationCode,
+            verificationCode
         })
         try {
             if (!user.error) {

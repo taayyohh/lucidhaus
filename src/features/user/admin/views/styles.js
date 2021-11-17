@@ -401,21 +401,33 @@ export const userAccountStyle = {
         ]
     },
     infoWrapper: {
-        marginTop: [20, .7, 20],
-        padding: [20, .7, 20],
-        border: `1px solid ${globals.colors.borderColor}`,
-        borderRadius: [10, .7, 10]
-    },
-    info: {
         display: grid,
         gridTemplateColumns: '1fr 1fr',
         gridGap: sv(40, .7),
+        marginTop: [20, .7, 20],
+        padding: [20, .7, 20],
+        border: `1px solid ${globals.colors.borderColor}`,
+        borderRadius: [10, .7, 10],
+        mobile: {
+            display: flex,
+            flexDirection: column
+        }
+    },
+    info: {
         marginBottom: [10, .7, 10],
         marginTop: [10, .7, 10],
         child: {
             selector: 'span',
             color: colorPalette.seaGreen,
             weight: 700
+        }
+    },
+    infoText: {
+        display: flex,
+        flexDirection: column,
+        child: {
+            selector: 'span',
+            wordBreak: 'break-all'
         }
     },
     updateLink: {
