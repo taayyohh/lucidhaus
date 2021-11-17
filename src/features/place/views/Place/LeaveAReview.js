@@ -19,7 +19,7 @@ const LeaveAReview = ({isAuth = true}) => {
                     : null
             ) : () => dispatch(push('/dashboard'))}
         >
-            {isAuth ? `Leave A Review` : `Verify Your Email to Leave A Review`}
+            {isAuth ? `Leave A Review` : `Leave A Review`}
         </Div>
     )
 }

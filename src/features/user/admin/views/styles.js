@@ -1,6 +1,22 @@
-import {colorPalette, globals}                                                                    from 'config/styles'
-import {black, center, column, flex, flexStart, grid, inlineFlex, none, pointer, sv, white, wrap} from 'utils/themer'
-import {genericButtonStyle}                                                                       from '../../../../shared/Controls/styles'
+import {colorPalette, globals}   from 'config/styles'
+import {
+    black,
+    borderBox,
+    center,
+    column,
+    flex,
+    flexStart,
+    grid,
+    inlineFlex,
+    none,
+    pointer,
+    row,
+    sv,
+    white,
+    wrap
+}                                from 'utils/themer'
+import {genericButtonStyle}             from '../../../../shared/Controls/styles'
+import {dashboardContentContainerStyle} from '../../views/dashboard/styles'
 
 export const userProfileFormStyle = {
     multiSelect: {
@@ -66,10 +82,92 @@ export const userContentWrapperStyle = {
     width: [1360, globals.style.layoutScalingValue, '100%']
 }
 
+export const userDashboardIconWrapperStyle = {
+    display: flex,
+    alignItems: center,
+    marginBottom: [40, .7, 20],
+    mobile: {
+        flexDirection: column
+    }
+}
+
+export const userDashboardIconTextStyle = {
+    child: {
+        selector: 'strong',
+        color: colorPalette.forestGreen
+    }
+}
+
+const userDashboardIconStyle = {
+    display: flex,
+    alignItems: center,
+    justifyContent: center,
+    height: [90, globals.style.layoutScalingValue, 90],
+    width: [90, globals.style.layoutScalingValue, 90],
+    minHeight: [90, globals.style.layoutScalingValue, 90],
+    minWidth: [90, globals.style.layoutScalingValue, 90],
+    borderRadius: [90, globals.style.layoutScalingValue, 90],
+    marginRight: [40, globals.style.layoutScalingValue, 40],
+    mobile: {
+        marginBottom: 20
+    },
+    child: {
+        selector: 'svg',
+        size: [32, globals.style.layoutScalingValue, 32]
+    }
+}
+
+export const userDashboardSafeIconStyle = {
+    ...userDashboardIconStyle,
+    backgroundColor: 'rgb(84 13 110 / 30%)'
+}
+
+export const userDashboardWelcomeIconStyle = {
+    ...userDashboardIconStyle,
+    backgroundColor: 'rgb(255 180 0 / 30%)'
+}
+
+export const userDashboardCelebratedIconStyle = {
+    ...userDashboardIconStyle,
+    backgroundColor: 'rgb(14 131 75 / 30%)'
+}
+
+export const userDashboardHowToStyle = {
+    banner: {
+        paddingTop: [30, .7, 30],
+        paddingBottom: [30, .7, 30],
+        marginTop: [85, .7, 85],
+        marginBottom: [70, .7, 70],
+        size: [22, .7, 22],
+        lineHeight: [36, .7, 36],
+        textAlign: center,
+        weight: 300,
+        color: white,
+        backgroundColor: colorPalette.forestGreen
+    },
+    bannerInner: {
+        maxWidth: [628, globals.style.layoutScalingValue, 'calc(100% - 50px)'],
+        margin: '0 auto'
+    }
+}
+
 export const userDashboardWelcomeStyle = {
     display: flex,
     alignItems: center,
-    marginBottom: [70, .7, 70],
+    boxSizing: borderBox,
+    mobile: {
+        flexDirection: column
+    },
+    inner: {
+        ...dashboardContentContainerStyle,
+        marginBottom: 0,
+        flexDirection: row,
+        width: '100%',
+        mobile: {
+            flexDirection: column
+        }
+    }
+    ,
     howToWrapper: {
         display: grid,
         gridTemplateColumns: `${sv(250, .4)} ${sv(250, .4)} ${sv(250, .4)}`,
@@ -79,8 +177,16 @@ export const userDashboardWelcomeStyle = {
             flexDirection: column
         }
     },
+    text: {
+        textAlign: center,
+        padding: [28, .7, 28]
+    },
     details: {
         display: flex,
+        mobile: {
+            flexDirection: column,
+            marginBottom: 15
+        },
         child: {
             selector: 'span',
             display: inlineFlex,
@@ -89,24 +195,50 @@ export const userDashboardWelcomeStyle = {
         }
 
     },
+    howToHeader: {
+        size: [28, .7, 22],
+        background: '#540D6E',
+        color: white,
+        paddingTop: [10, .7, 10],
+        paddingBottom: [10, .7, 10],
+        marginBottom: [50, .7, 50],
+        textAlign: center,
+        width: '100%',
+        mobile: {
+            paddingLeft: 10,
+            paddingRight: 10
+        }
+    },
     howToHeading: {
-        size: [32, .7, 32]
+        size: [32, .7, 32],
+        paddingTop: [20, .7, 20],
+        paddingBottom: [20, .7, 20],
+        textAlign: center
     },
     setup: {
+        borderRadius: [10, .7, 10],
         backgroundColor: 'rgb(84 13 110 / 30%)'
     },
     search: {
+        borderRadius: [10, .7, 10],
         backgroundColor: 'rgb(255 180 0 / 30%)'
     },
     review: {
+        borderRadius: [10, .7, 10],
         backgroundColor: 'rgb(14 131 75 / 30%)'
     },
     info: {
-        marginLeft: [50, .7, 50],
+        width: '100%',
+        paddingLeft: [50, .7, '0'],
+        boxSizing: borderBox,
         size: [15, .7, 15],
         child: {
             selector: 'span',
             weight: 700
+        },
+        mobile: {
+            width: '100%',
+            marginTop: 15
         }
     },
     heading: {
@@ -138,7 +270,7 @@ export const userDashboardWelcomeStyle = {
     },
     verifyWrapper: {
         display: flex,
-        flexDirection: column
+        flexDirection: column,
     },
     tooltip: {
         width: [400, .7, 400],
