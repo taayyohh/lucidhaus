@@ -379,6 +379,15 @@ export const myPlacesWrapperStyle = {
     gridGap: sv(20, globals.style.layoutScalingValue),
 }
 
+export const userAccountVerifyStyle = {
+    margin: '0 auto',
+    border: 0,
+    padding: 0,
+    fieldset: {
+        marginBottom: [15, .7, 15]
+    }
+}
+
 export const userAccountFormStyle = {
     maxWidth: [700, .7, '100%'],
     margin: '0 auto',
@@ -396,7 +405,7 @@ export const userAccountStyle = {
     paddingTop: [50, .7, 50],
     borderTop: `1px solid ${globals.colors.borderColor}`,
     subHeading: {
-     //   width: '90%',
+        //   width: '90%',
         width: '100%',
         margin: '0 auto',
         marginTop: [30, .7, 30],

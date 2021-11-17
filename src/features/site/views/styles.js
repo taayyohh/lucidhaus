@@ -1,6 +1,19 @@
 import {colorPalette, globals}                                                               from 'config/styles'
 import {CDN}                                                                                 from 'config/variables'
-import {absolute, auto, center, column, flex, none, pointer, relative, sv, uppercase, white} from 'utils/themer'
+import {
+    absolute,
+    auto,
+    center,
+    column,
+    flex,
+    inlineFlex,
+    none,
+    pointer,
+    relative,
+    sv,
+    uppercase,
+    white
+} from 'utils/themer'
 import {placesSearchFormStyle}                                                               from '../../place/views/styles'
 
 export const homeImageWrapperStyle = {
@@ -160,7 +173,6 @@ export const homeSignupQuoteStyle = {
 }
 
 export const homeSignupButtonStyle = {
-    alignSelf: center,
     width: auto,
     marginTop: [30, .7, 30],
     size: [16, .7, 16],
@@ -169,7 +181,8 @@ export const homeSignupButtonStyle = {
     paddingTop: [15, globals.style.layoutScalingValue, 15],
     paddingBottom: [15, globals.style.layoutScalingValue, 15],
     backgroundColor: colorPalette.seaGreen,
-    display: flex,
+    display: inlineFlex,
+    alignSelf: center,
     alignItems: center,
     justifyContent: center,
     border: `1px solid ${colorPalette.seaGreen}`,

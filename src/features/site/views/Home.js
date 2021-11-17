@@ -58,15 +58,15 @@ const Home = () => {
                         {!isAuthenticated && !isAdmin && (
                             <Div>Click below to join us today!</Div>
                         )}
+                        {!isAuthenticated && !isAdmin && (
+                            <LinkSwitch
+                                url={'/signup'}
+                                theme={homeSignupButtonStyle}
+                            >
+                                Create Account
+                            </LinkSwitch>
+                        )}
                     </Div>
-                    {!isAuthenticated && !isAdmin && (
-                        <LinkSwitch
-                            url={'/signup'}
-                            theme={homeSignupButtonStyle}
-                        >
-                            Create Account
-                        </LinkSwitch>
-                    )}
                 </Div>
 
                 {recentlyViewedPlaces?.length > 0 && (

@@ -8,8 +8,8 @@ import Div                                                             from 'sha
 import H2                                                              from 'shared/Basic/H2'
 import MotionDiv                                                       from 'shared/Basic/MotionDiv'
 import Form                                                            from 'shared/Fields/Form'
-import {defaultModalStyle}                                             from 'shared/Layout/styles'
-import {resetContactInfoStyle, userAccountFormStyle, userAccountStyle} from './styles'
+import {defaultModalStyle}                                                                     from 'shared/Layout/styles'
+import {resetContactInfoStyle, userAccountFormStyle, userAccountStyle, userAccountVerifyStyle} from './styles'
 
 const ResetContactInfo = () => {
     const {_id, token, tel, email, confirmationRequest} = useSelector(state => state.user)
@@ -46,7 +46,7 @@ const ResetContactInfo = () => {
                                                     dispatchAction={'user/confirmUser'}
                                                     formHeading={'Verify Phone'}
                                                     buttonText={'Confirm'}
-                                                    theme={signUpFormStyle}
+                                                    theme={userAccountVerifyStyle}
                                                 />
                                             )) || (
                                                 <Form
