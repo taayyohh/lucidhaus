@@ -36,12 +36,12 @@ const Notification = () => {
                     key={'notification'}
                     initial={{
                         y: -100,
-                        height: 40,
+                        height: 150,
                         opacity: 0
                     }}
                     animate={{
-                        height: 40,
-                        y: 0,
+                        height: 150,
+                        y: 20,
                         opacity: 1,
                         transition: {
                             duration: 0.25,

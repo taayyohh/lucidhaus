@@ -60,7 +60,6 @@ const Form = ({
                             />
                         )}
                     </Div>
-                    {console.log('FORMIKL', formik)}
                     {!autoSubmit && !hideButton && (
                         <SubmitButton
                             theme={{...theme.button}}

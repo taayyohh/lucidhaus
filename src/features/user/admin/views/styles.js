@@ -196,7 +196,7 @@ export const userDashboardWelcomeStyle = {
 
     },
     howToHeader: {
-        size: [28, .7, 22],
+        size: [24, .7, 22],
         background: '#540D6E',
         color: white,
         paddingTop: [10, .7, 10],
@@ -447,7 +447,8 @@ export const userAccountStyle = {
         child: [
             {
                 selector: 'span',
-                wordBreak: 'break-all'
+                wordBreak: 'break-all',
+                size: [16, .7, 16]
             },
             {
                 selector: 'strong',

@@ -16,11 +16,11 @@ const ResetContactInfo = () => {
     const confirmationCodeInitialValues = {verificationCode: '', ...confirmationRequest}
     const resetPhoneInitialValues = {tel: ''}
 
-
     return (
         <Div theme={resetContactInfoStyle}>
             <H2 theme={userAccountStyle.heading}>Phone and Email</H2>
-            <Div theme={userAccountStyle.subHeading}>Every user of the Inclusive Guide is required to have a
+            <Div theme={userAccountStyle.subHeading}>
+                Every user of the Inclusive Guide is required to have a
                 registered phone number and email to leave reviews for places and businesses.
                 This requirement ensures the integrity of each review or rating,
                 and helps to limit the likelihood of false reviews.

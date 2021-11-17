@@ -261,7 +261,9 @@ export const notificationWrapperStyle = theme => {
         paddingRight: [5, globals.style.layoutScalingValue, 5],
         top: [0, .7, globals.style.mobileHeaderHeight],
         left: 0,
-        width: '100vw',
+     //   width: '100vw',
+        width: [300, globals.style.layoutScalingValue, '100vw'],
+        // height: [200, .7, ]
         textAlign: center,
         color: white,
         size: [18, .7, 18],

@@ -284,6 +284,7 @@ export function* recoverPassword({payload}) {
             yield put({
                 type: 'site/setNotification',
                 payload: {
+                    delay: 50000000,
                     notification: recover.message,
                     theme: 'green'
                 }

@@ -16,10 +16,9 @@ export const signInFormWrapperStyle = {
 }
 
 export const signUpFormStyle = {
-    maxWidth: [700, .7, '100%'],
     margin: '0 auto',
-    marginTop: [50, .7, 50],
-    padding: 70,
+    border: 0,
+    padding: 0,
     fieldset: {
         marginBottom: [15, .7, 15]
     }
