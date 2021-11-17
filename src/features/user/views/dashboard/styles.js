@@ -77,6 +77,12 @@ export const yourInputInfoWrapperStyle = {
         size: [20, .7, 20],
         paddingBottom: [20, .7, 20]
     },
+    imageWrapper: {
+      mobile: {
+          maxWidth: 400,
+          margin: '0 auto'
+      }
+    },
     image: {
         width: [345, globals.style.layoutScalingValue, '100%'],
         height: [345, globals.style.layoutScalingValue, 'auto'],
@@ -84,6 +90,7 @@ export const yourInputInfoWrapperStyle = {
         minHeight: [345, globals.style.layoutScalingValue, 'auto'],
         marginLeft: [90, globals.style.layoutScalingValue, '0'],
         mobile: {
+            maxWidth: 400,
             marginTop: 15
         }
     }

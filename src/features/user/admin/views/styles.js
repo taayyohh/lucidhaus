@@ -217,15 +217,27 @@ export const userDashboardWelcomeStyle = {
     },
     setup: {
         borderRadius: [10, .7, 10],
-        backgroundColor: 'rgb(84 13 110 / 30%)'
+        backgroundColor: 'rgb(84 13 110 / 30%)',
+        mobile: {
+            margin: '0 auto',
+            maxWidth: 400
+        }
     },
     search: {
         borderRadius: [10, .7, 10],
-        backgroundColor: 'rgb(255 180 0 / 30%)'
+        backgroundColor: 'rgb(255 180 0 / 30%)',
+        mobile: {
+            margin: '0 auto',
+            maxWidth: 400
+        }
     },
     review: {
         borderRadius: [10, .7, 10],
-        backgroundColor: 'rgb(14 131 75 / 30%)'
+        backgroundColor: 'rgb(14 131 75 / 30%)',
+        mobile: {
+            margin: '0 auto',
+            maxWidth: 400
+        }
     },
     info: {
         width: '100%',

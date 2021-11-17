@@ -21,7 +21,7 @@ const YourInput = () => {
                         that align with their values.
                     </Div>
                 </Div>
-                <Div>
+                <Div theme={yourInputInfoWrapperStyle.imageWrapper}>
                     <Img
                         src={yourInput}
                         theme={yourInputInfoWrapperStyle.image}
