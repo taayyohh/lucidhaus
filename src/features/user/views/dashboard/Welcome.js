@@ -24,7 +24,7 @@ const Welcome = ({
             <Div theme={userDashboardWelcomeStyle.details}>
                 <span>Account Verification Status:</span>
                 {(emailVerified && (
-                    <Div>Verified</Div>
+                    <Div theme={userDashboardWelcomeStyle.verified}>Verified</Div>
                 )) || (
                     <Div theme={userDashboardWelcomeStyle.unverified}>
                         Unverified

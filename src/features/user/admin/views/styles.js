@@ -1,4 +1,4 @@
-import {colorPalette, globals}   from 'config/styles'
+import {colorPalette, globals}          from 'config/styles'
 import {
     black,
     borderBox,
@@ -14,7 +14,7 @@ import {
     sv,
     white,
     wrap
-}                                from 'utils/themer'
+}                                       from 'utils/themer'
 import {genericButtonStyle}             from '../../../../shared/Controls/styles'
 import {dashboardContentContainerStyle} from '../../views/dashboard/styles'
 
@@ -244,6 +244,10 @@ export const userDashboardWelcomeStyle = {
     heading: {
         size: [36, .7, 36],
         marginBottom: [10, .7, 10]
+    },
+    verified: {
+        color: colorPalette.seaGreen,
+        weight: 700
     },
     unverified: {
         display: flex,
