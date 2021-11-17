@@ -1,6 +1,7 @@
-import {colorPalette}             from 'config/styles'
+import defaultAvatar              from 'assets/default-avatar.png'
 import React                      from 'react'
 import Div                        from 'shared/Basic/Div'
+import Img                        from 'shared/Basic/Img'
 import S3Img                      from 'shared/Basic/S3Img'
 import {userDashboardAvatarStyle} from './styles'
 
@@ -13,8 +14,10 @@ const Avatar = ({avatar}) => {
                     theme={{width: '100%'}}
                 />
             )) || (
-                <Div
-                    theme={{background: colorPalette.seaFoamGreen}}/>
+                <Img
+                    src={defaultAvatar}
+                    theme={{width: '100%'}}
+                />
             ))}
         </Div>
     )

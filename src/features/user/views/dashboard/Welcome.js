@@ -22,14 +22,14 @@ const Welcome = ({
             <Div theme={userDashboardWelcomeStyle.details}><span>Registered Phone Number:</span> {tel}</Div>
             <Div theme={userDashboardWelcomeStyle.details}><span>Registered Email:</span> {email}</Div>
             <Div theme={userDashboardWelcomeStyle.details}>
-                <span>Account Verification Status:</span>
+                <span>Email Verification Status:</span>
                 {(emailVerified && (
                     <Div theme={userDashboardWelcomeStyle.verified}>Verified</Div>
                 )) || (
                     <Div theme={userDashboardWelcomeStyle.unverified}>
                         Unverified
                         <Tooltip
-                            message={'Account verification is required to leave reviews!'}
+                            message={'Email verification is required to leave reviews.'}
                             theme={userDashboardWelcomeStyle.tooltip}
                         />
                     </Div>
@@ -50,7 +50,7 @@ const Welcome = ({
                             })}
                         theme={userDashboardWelcomeStyle.verifyEmail}
                     >
-                        Click here to Verify Your Account
+                        Click here to Verify Your Email
                     </Div>
                 )}
             </Div>

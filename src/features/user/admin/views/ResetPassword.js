@@ -11,8 +11,8 @@ const ResetPassword = () => {
     return (
         <Div theme={resetPasswordStyle}>
             <H2 theme={userAccountStyle.heading}>Password</H2>
-            <Div>
-                Manage your account password.
+            <Div theme={userAccountStyle.resetEmailText}>
+                Manage your account password. Click on the <strong>Reset Password</strong> button below to receive a password reset link sent to: <span>{email}</span>.
             </Div>
             <Div
                 theme={resetButtonStyle}

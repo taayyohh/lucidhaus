@@ -35,13 +35,15 @@ const Notification = () => {
                 <MotionDiv
                     key={'notification'}
                     initial={{
-                        y: -100,
+                        y: 20,
+                        x: -480,
                         height: 150,
                         opacity: 0
                     }}
                     animate={{
                         height: 150,
                         y: 20,
+                        x: 20,
                         opacity: 1,
                         transition: {
                             duration: 0.25,

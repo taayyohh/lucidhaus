@@ -5,8 +5,6 @@ import Div                                                                      
 import Icon                                                                                from 'shared/Basic/Icon'
 import MotionDiv                                                                           from 'shared/Basic/MotionDiv'
 import {auto}                                                                              from 'utils/themer'
-import useOutsideAlerter
-                                                                                           from '../../utils/clickOutside'
 import {toolTipIconStyles, toolTipMessageInnerStyles, toolTipMessageStyles, toolTipStyles} from './styles'
 
 const Tooltip = ({message, theme}) => {
@@ -25,9 +23,6 @@ const Tooltip = ({message, theme}) => {
             padding: 0
         }
     }
-
-    useOutsideAlerter(toolTipRef, {type: 'site/closeToolTip', payload: true})
-
 
     return (
         <Div theme={{...toolTipStyles, ...theme}}>

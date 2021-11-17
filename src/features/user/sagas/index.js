@@ -13,9 +13,9 @@ import {
 }                                                          from 'features/user/services'
 import {getPlaceById}                                      from 'features/place/services'
 import {takeEvery}                                         from 'redux-saga/dist/redux-saga-effects-npm-proxy.esm'
-import {call, put}                                         from 'redux-saga/effects'
-import {createEntity}                                      from 'utils/abstractions/crud'
-import {setFormData}                                       from 'utils/abstractions/setFormData'
+import {call, put}                  from 'redux-saga/effects'
+import {createEntity, updateEntity} from 'utils/abstractions/crud'
+import {setFormData}                from 'utils/abstractions/setFormData'
 import {formatPhone}                                       from 'utils/helpers'
 
 export function* signIn({payload}) {
@@ -95,6 +95,48 @@ export function* updateUserPhoneNumber({payload}) {
             }
         })
     }
+}
+
+export function* confirmUpdatePhoneNumber({payload}) {
+    const confirmedUser = yield call(confirmTwilioVerification, payload)
+    const {tel, slug, _id, token} = payload
+
+    console.log('confirmed', confirmedUser)
+    console.log('payload', payload)
+    console.log('tel', tel)
+
+    const user = new FormData()
+    const fields = [{tel}]
+    for (let field of fields)
+        setFormData(user, field)
+
+    if (confirmedUser === 'approved') {
+        try {
+            const updated = yield call(updateEntity, {
+                slug: slug,
+                parentSlug: 'user',
+                body: user,
+                _id: _id,
+                token: token,
+            })
+            if (!updated.error) {
+                yield put({type: 'user/updateUserPhoneNumberSuccess', payload: updated})
+                yield put({
+                    type: 'site/setNotification',
+                    payload: {
+                        notification: 'Your phone number has been updated.',
+                        theme: 'green'
+                    }
+                })
+
+            } else {
+                yield put({type: 'user/updateUserFailure', payload: updated})
+            }
+        } catch (error) {
+            yield put({type: 'user/updateUserFailure'})
+        }
+    }
+
 }
 
 export function* confirmUser({payload}) {
@@ -379,7 +421,10 @@ export function* watchSignUp() {
 
 export function* watchUpdateUserPhoneNumber() {
     yield takeEvery('user/updatePhoneNumber', updateUserPhoneNumber)
+}
 
+export function* watchConfirmUpdatePhoneNumber() {
+    yield takeEvery('user/confirmUpdatePhoneNumber', confirmUpdatePhoneNumber)
 }
 
 export function* watchUserHistory() {

@@ -289,12 +289,12 @@ export const userDashboardWelcomeStyle = {
         flexDirection: column,
     },
     tooltip: {
-        width: [400, .7, 400],
-        color: globals.colors.textColor,
+        width: [200, .7, 200],
+        color: white,
         weight: 400,
         message: {
             top: [-10, .7, -10],
-            backgroundColor: globals.colors.borderColor
+            backgroundColor: colorPalette.paleGreen,
         }
     }
 
@@ -411,6 +411,13 @@ export const userAccountStyle = {
         marginTop: [30, .7, 30],
         marginBottom: [40, .7, 20]
     },
+    resetEmailText: {
+        child: {
+            selector: 'span',
+            color: colorPalette.seaGreen,
+            weight: 700
+        }
+    },
     heading: {
         size: [24, .7, 24],
         weight: 700,
@@ -479,7 +486,7 @@ export const userAccountStyle = {
         color: black,
         hover: {
             cursor: pointer,
-            backgroundColor: colorPalette.forestGreen,
+            backgroundColor: colorPalette.seaGreen,
             color: white
         }
     }
@@ -534,6 +541,13 @@ export const resetPasswordStyle = {
 export const resetButtonStyle = {
     ...genericButtonStyle,
     display: inlineFlex,
+    backgroundColor: white,
+    size: [14, .7, 14],
+    paddingLeft: [15, globals.style.layoutScalingValue, 15],
+    paddingRight: [15, globals.style.layoutScalingValue, 15],
+    paddingTop: [7, globals.style.layoutScalingValue, 7],
+    paddingBottom: [7, globals.style.layoutScalingValue, 7],
+    color: black
 }
 
 export const resetContactInfoStyle = {}

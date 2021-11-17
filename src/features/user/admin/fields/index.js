@@ -43,7 +43,5 @@ export const validateUser = Yup.object().shape({
         .max(5)
         .required('*'),
     nameFirst: Yup.string()
-        .required('*'),
-    nameLast: Yup.string()
         .required('*')
 })

@@ -134,7 +134,7 @@ export const slice = createSlice({
             state.token = ''
             state._id = ''
             state.objectID = ''
-
+            state.confirmationRequest = undefined
         },
         signOutFailure: (state, action) => {
             state.error = action.payload.message
@@ -155,6 +155,10 @@ export const slice = createSlice({
             state.error = false
             state.loading = false
             state.redirectToReferrer = false
+        },
+        updateUserPhoneNumberSuccess: (state, action) => {
+            state.confirmationRequest = undefined
+            state.tel = action.payload.tel
         },
         updateUserProfileSuccess: (state, action) => {
             state.isAdmin = action.payload.role === 0

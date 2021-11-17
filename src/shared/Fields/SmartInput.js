@@ -84,6 +84,8 @@ const SmartInput = ({
     useEffect(() => {
         if (type === TEL) {
             setTel(formatPhone(value))
+        } else {
+            setTel(undefined)
         }
 
 
@@ -114,7 +116,7 @@ const SmartInput = ({
                 onBlur={handleBlur}
                 onKeyUp={handleKeyUp}
                 type={type || 'text'}
-                value={tel || value || ''}
+                value={value || tel || ''}
                 theme={theme.field}
                 disabled={disabled}
                 autoFocus={autoFocus}

@@ -260,7 +260,7 @@ export const notificationWrapperStyle = theme => {
         paddingLeft: [5, globals.style.layoutScalingValue, 5],
         paddingRight: [5, globals.style.layoutScalingValue, 5],
         top: [0, .7, globals.style.mobileHeaderHeight],
-        left: 0,
+        // left: [-380, globals.style.layoutScalingValue, '-100vw'],
      //   width: '100vw',
         width: [300, globals.style.layoutScalingValue, '100vw'],
         // height: [200, .7, ]

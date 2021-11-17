@@ -1,19 +1,22 @@
-import {confirmationCodeFields}                                        from 'features/site/admin/fields/signUp'
-import {resetPhoneFields, validateResetPhone}                          from 'features/user/admin/fields/resetPhone'
-import {signUpFormStyle}                                               from 'features/user/views/styles'
-import React                                                           from 'react'
-import {PortalWithState}                                               from 'react-portal'
-import {useSelector}                                                   from 'react-redux'
-import Div                                                             from 'shared/Basic/Div'
-import H2                                                              from 'shared/Basic/H2'
-import MotionDiv                                                       from 'shared/Basic/MotionDiv'
-import Form                                                            from 'shared/Fields/Form'
+import {confirmationCodeFields}                                                                from 'features/site/admin/fields/signUp'
+import {
+    resetPhoneFields,
+    validateResetPhone
+}                                                                                              from 'features/user/admin/fields/resetPhone'
+import React                                                                                   from 'react'
+import {PortalWithState}                                                                       from 'react-portal'
+import {useSelector}                                                                           from 'react-redux'
+import Div                                                                                     from 'shared/Basic/Div'
+import H2                                                                                      from 'shared/Basic/H2'
+import MotionDiv
+                                                                                               from 'shared/Basic/MotionDiv'
+import Form                                                                                    from 'shared/Fields/Form'
 import {defaultModalStyle}                                                                     from 'shared/Layout/styles'
 import {resetContactInfoStyle, userAccountFormStyle, userAccountStyle, userAccountVerifyStyle} from './styles'
 
 const ResetContactInfo = () => {
-    const {_id, token, tel, email, confirmationRequest} = useSelector(state => state.user)
-    const confirmationCodeInitialValues = {verificationCode: '', ...confirmationRequest}
+    const {_id, token, slug, tel, email, confirmationRequest} = useSelector(state => state.user)
+    const confirmationCodeInitialValues = {verificationCode: '', slug, _id, token, ...confirmationRequest}
     const resetPhoneInitialValues = {tel: ''}
 
     return (
@@ -38,15 +41,15 @@ const ResetContactInfo = () => {
                                     </Div>
                                     {portal(
                                         <MotionDiv theme={defaultModalStyle}>
-                                            {console.log('conf', confirmationRequest)}
                                             {(confirmationRequest && (
                                                 <Form
                                                     initialValues={confirmationCodeInitialValues}
                                                     fields={confirmationCodeFields}
-                                                    dispatchAction={'user/confirmUser'}
+                                                    dispatchAction={'user/confirmUpdatePhoneNumber'}
                                                     formHeading={'Verify Phone'}
                                                     buttonText={'Confirm'}
                                                     theme={userAccountVerifyStyle}
+                                                    enableReinitialize={true}
                                                 />
                                             )) || (
                                                 <Form
@@ -57,6 +60,7 @@ const ResetContactInfo = () => {
                                                     formHeading={'Update Phone Number'}
                                                     buttonText={'Update'}
                                                     theme={userAccountFormStyle}
+                                                    enableReinitialize={true}
                                                 />
                                             )}
                                         </MotionDiv>

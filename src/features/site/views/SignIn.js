@@ -3,10 +3,10 @@ import {signInFormStyle, signInFormWrapperStyle} from 'features/user/views/style
 import React, {useEffect}                        from 'react'
 import {useSelector}                             from 'react-redux'
 import Div                                       from 'shared/Basic/Div'
+import LinkSwitch                                from 'shared/Basic/LinkSwitch'
 import Form                                      from 'shared/Fields/Form'
 import ContentWrapper                            from 'shared/Layout/ContentWrapper'
 import {history}                                 from 'store'
-import LinkSwitch                                from '../../../shared/Basic/LinkSwitch'
 
 const SignIn = () => {
     const {isAuthenticated, isAdmin} = useSelector(state => state.user)
