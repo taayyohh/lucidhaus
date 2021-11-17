@@ -84,6 +84,7 @@ export function* signUp({payload}) {
 }
 
 export function* updateUserPhoneNumber({payload}) {
+    console.log('PAY', payload)
     const verificationToken = yield call(sendTwilioVerification, payload)
     if (verificationToken === 'pending') {
         yield put({
