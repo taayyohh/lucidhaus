@@ -2,9 +2,9 @@ import {confirmationCodeFields}                                                 
 import {
     resetPhoneFields,
     validateResetPhone
-}                         from 'features/user/admin/fields/resetPhone'
-import React, {useEffect} from 'react'
-import {PortalWithState}  from 'react-portal'
+}                                 from 'features/user/admin/fields/resetPhone'
+import React, {useEffect, useRef} from 'react'
+import {PortalWithState}          from 'react-portal'
 import {useSelector}                                                                           from 'react-redux'
 import Div                                                                                     from 'shared/Basic/Div'
 import H2                                                                                      from 'shared/Basic/H2'
@@ -18,16 +18,18 @@ const ResetContactInfo = () => {
     const {_id, token, slug, tel, email, confirmationRequest} = useSelector(state => state.user)
     const confirmationCodeInitialValues = {verificationCode: '', slug, _id, token, ...confirmationRequest}
     const resetPhoneInitialValues = {tel: ''}
+    const ref = useRef()
 
     useEffect(() => {
-        if(!!confirmationRequest) {
-
+        if(!confirmationRequest ) {
+            console.log('hey')
+            ref?.current.click()
         }
 
     }, [confirmationRequest])
 
     return (
-        <Div theme={resetContactInfoStyle}>
+        <Div theme={resetContactInfoStyle} ref={ref}>
             <H2 theme={userAccountStyle.heading}>Phone and Email</H2>
             <Div theme={userAccountStyle.subHeading}>
                 Every user of the Inclusive Guide is required to have a
