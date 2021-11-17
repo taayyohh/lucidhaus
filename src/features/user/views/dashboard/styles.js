@@ -1,5 +1,5 @@
-import {colorPalette, globals}   from 'config/styles'
-import {block, borderBox, white} from 'utils/themer'
+import {colorPalette, globals}           from 'config/styles'
+import {block, borderBox, hidden, white} from 'utils/themer'
 
 export const userDashboardInfoWrapperStyle = {
     font: globals.fonts.serif,
@@ -19,6 +19,8 @@ export const userDashboardRTEHeadingStyle = {
 export const dashboardParagraphStyle = {
     background: white,
     padding: [50, .7, 50],
+    paddingLeft: [50, globals.style.layoutScalingValue, 50],
+    paddingRight: [50, globals.style.layoutScalingValue, 50],
     boxSizing: borderBox,
     border: `1px solid ${globals.colors.borderColor}`,
     borderRadius: [10, .7, 10],
@@ -33,4 +35,13 @@ export const dashboardParagraphStyle = {
 export const userDashboardBookmarkStyle = {
     size: [20, .7, 20],
     color: colorPalette.honeyYellow
+}
+
+export const userDashboardAvatarStyle = {
+    minHeight: [130, .7, 130],
+    minWidth: [130, .7, 130],
+    width: [130, .7, 130],
+    height: [130, .7, 130],
+    borderRadius: 100,
+    overflow: hidden
 }

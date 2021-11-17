@@ -63,20 +63,58 @@ export const multiSelectHelperTextStyle = {
 
 
 export const userContentWrapperStyle = {
-    width: [1280, globals.style.layoutScalingValue, '100%']
+    width: [1360, globals.style.layoutScalingValue, '100%']
 }
 
 export const userDashboardWelcomeStyle = {
     display: flex,
     alignItems: center,
     marginBottom: [70, .7, 70],
+    howToWrapper: {
+        display: grid,
+        gridTemplateColumns: `${sv(250, .4)} ${sv(250, .4)} ${sv(250, .4)}`,
+        gridGap: sv(50, globals.style.layoutScalingValue),
+        mobile: {
+            display: flex,
+            flexDirection: column
+        }
+    },
+    details: {
+        display: flex,
+        child: {
+            selector: 'span',
+            display: inlineFlex,
+            whiteSpace: 'nowrap',
+            marginRight: [5, .7, 5]
+        }
+
+    },
+    howToHeading: {
+        size: [32, .7, 32]
+    },
+    setup: {
+        backgroundColor: 'rgb(84 13 110 / 30%)'
+    },
+    search: {
+        backgroundColor: 'rgb(255 180 0 / 30%)'
+    },
+    review: {
+        backgroundColor: 'rgb(14 131 75 / 30%)'
+    },
     info: {
-        marginLeft: [50, .7, 50]
+        marginLeft: [50, .7, 50],
+        size: [15, .7, 15],
+        child: {
+            selector: 'span',
+            weight: 700
+        }
     },
     heading: {
-        size: [36, .7, 36]
+        size: [36, .7, 36],
+        marginBottom: [10, .7, 10]
     },
     unverified: {
+        display: flex,
         color: colorPalette.brightRed,
         weight: 700,
         marginLeft: [5, .7, 5]
@@ -96,6 +134,19 @@ export const userDashboardWelcomeStyle = {
             cursor: pointer,
             backgroundColor: colorPalette.forestGreen,
             color: white
+        }
+    },
+    verifyWrapper: {
+        display: flex,
+        flexDirection: column
+    },
+    tooltip: {
+        width: [400, .7, 400],
+        color: globals.colors.textColor,
+        weight: 400,
+        message: {
+            top: [-10, .7, -10],
+            backgroundColor: globals.colors.borderColor
         }
     }
 

@@ -237,7 +237,8 @@ export const toolTipMessageStyles = {
     top: [-40, .7, -40],
     borderRadius: [10, .7, 10],
     background: colorPalette.seaFoamGreen,
-    size: [14, .7, 14]
+    size: [14, .7, 14],
+    zIndex: 20
 }
 
 export const toolTipMessageInnerStyles = {

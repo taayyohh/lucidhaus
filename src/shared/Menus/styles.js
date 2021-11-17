@@ -173,6 +173,7 @@ export const headerMenuAuthStyleListItemStyle = {
 }
 export const dashboardMenuStyle = {
     minHeight: '750px',
+    marginBottom: [50, .7, 50],
     mobile: {
         minHeight: auto,
         zIndex: 5,
