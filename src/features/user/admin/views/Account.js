@@ -57,7 +57,7 @@ const Account = () => {
                     validationSchema={validateUser}
                     dispatchAction={'user/updateUserProfile'}
                     formHeading={'Account Details'}
-                    buttonText={'Update'}
+                    buttonText={'Save'}
                     enableReinitialize={true}
                     theme={userProfileFormStyle}
                 >

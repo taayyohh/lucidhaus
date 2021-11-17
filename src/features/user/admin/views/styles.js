@@ -383,6 +383,13 @@ export const userAccountStyle = {
     marginTop: [50, .7, 50],
     paddingTop: [50, .7, 50],
     borderTop: `1px solid ${globals.colors.borderColor}`,
+    subHeading: {
+     //   width: '90%',
+        width: '100%',
+        margin: '0 auto',
+        marginTop: [30, .7, 30],
+        marginBottom: [40, .7, 20]
+    },
     heading: {
         size: [24, .7, 24],
         weight: 700,
@@ -425,16 +432,33 @@ export const userAccountStyle = {
     infoText: {
         display: flex,
         flexDirection: column,
-        child: {
-            selector: 'span',
-            wordBreak: 'break-all'
-        }
+        child: [
+            {
+                selector: 'span',
+                wordBreak: 'break-all'
+            },
+            {
+                selector: 'strong',
+                size: [13, .7, 13],
+                weight: 400
+            }
+        ]
     },
     updateLink: {
-        textDecoration: 'underline',
+        ...genericButtonStyle,
+        alignSelf: flexStart,
+        marginTop: [10, .7, 10],
+        size: [12, .7, 12],
+        backgroundColor: white,
+        paddingLeft: [15, globals.style.layoutScalingValue, 15],
+        paddingRight: [15, globals.style.layoutScalingValue, 15],
+        paddingTop: [7, globals.style.layoutScalingValue, 7],
+        paddingBottom: [7, globals.style.layoutScalingValue, 7],
+        color: black,
         hover: {
             cursor: pointer,
-            color: colorPalette.brightRed
+            backgroundColor: colorPalette.forestGreen,
+            color: white
         }
     }
 }

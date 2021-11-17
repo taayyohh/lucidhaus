@@ -19,8 +19,8 @@ const ResetContactInfo = () => {
 
     return (
         <Div theme={resetContactInfoStyle}>
-            <H2 theme={userAccountStyle.heading}>Registered Phone Number and Email Address</H2>
-            <Div>Every user of the Inclusive Guide is required to have a
+            <H2 theme={userAccountStyle.heading}>Phone and Email</H2>
+            <Div theme={userAccountStyle.subHeading}>Every user of the Inclusive Guide is required to have a
                 registered phone number and email to leave reviews for places and businesses.
                 This requirement ensures the integrity of each review or rating,
                 and helps to limit the likelihood of false reviews.
@@ -28,13 +28,13 @@ const ResetContactInfo = () => {
             <Div theme={userAccountStyle.infoWrapper}>
                 <Div theme={userAccountStyle.info}>
                     <Div theme={userAccountStyle.infoText}>
-                        <div>Registered Phone Number:</div>
+                        <div><strong>Registered Phone Number:</strong></div>
                         <span>{tel}</span>
                         <PortalWithState closeOnOutsideClick closeOnEsc>
                             {({openPortal, portal}) => (
                                 <>
                                     <Div onClick={openPortal} theme={userAccountStyle.updateLink}>
-                                        Update My Registered Phone Number
+                                        Update
                                     </Div>
                                     {portal(
                                         <MotionDiv theme={defaultModalStyle}>
@@ -68,13 +68,13 @@ const ResetContactInfo = () => {
                 </Div>
                 <Div theme={userAccountStyle.info}>
                     <Div theme={userAccountStyle.infoText}>
-                        <div>Registered Email:</div>
+                        <div><strong>Registered Email:</strong></div>
                         <span>{email}</span>
                         <PortalWithState closeOnOutsideClick closeOnEsc>
                             {({openPortal, portal}) => (
                                 <>
                                     <Div onClick={openPortal} theme={userAccountStyle.updateLink}>
-                                        Update My Registered Email
+                                        Update
                                     </Div>
                                     {portal(
                                         <MotionDiv theme={defaultModalStyle}>
