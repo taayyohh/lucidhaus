@@ -26,6 +26,7 @@ const Update = () => {
         nameFirst,
         nameLast,
         tel,
+        zip,
         role,
         type
     } = user
@@ -41,6 +42,7 @@ const Update = () => {
         dateOfBirth: dateOfBirth?.split('T')[0],
         handle: handle,
         tel: tel,
+        zip: zip,
         ethnicHispanicOrigin: ethnicHispanicOrigin,
         role: role,
         slug,

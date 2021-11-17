@@ -1,6 +1,6 @@
-import {userDashboardMenu}                             from 'config/menus/dashboard/user'
-import {userFields}                                    from 'features/user/admin/fields'
-import React, {useEffect}                              from 'react'
+import {userDashboardMenu}        from 'config/menus/dashboard/user'
+import {userFields, validateUser} from 'features/user/admin/fields'
+import React, {useEffect}         from 'react'
 import {useDispatch, useSelector}                      from 'react-redux'
 import Form                                            from 'shared/Fields/Form'
 import ContentWrapper                                  from 'shared/Layout/ContentWrapper'
@@ -28,6 +28,8 @@ const Account = () => {
         ethnicHispanicOrigin: user.ethnicHispanicOrigin,
         role: user.role,
         slug: slug,
+        zip: user.zip,
+
         _id,
         token,
     }
@@ -52,7 +54,7 @@ const Account = () => {
                 <Form
                     initialValues={initialValues}
                     fields={userFields}
-                    //validationSchema={validateProfile}
+                    validationSchema={validateUser}
                     dispatchAction={'user/updateUserProfile'}
                     formHeading={'Account Details'}
                     buttonText={'Update'}

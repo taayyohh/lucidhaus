@@ -20,6 +20,7 @@ const initialState = {
     nameMiddle: '',
     nameLast: '',
     tel: '',
+    zip: '',
     slug: '',
     isAuthenticated: false,
     isVerified: false,
@@ -81,6 +82,7 @@ export const slice = createSlice({
             state.role = action.payload.user.role
             state.slug = action.payload.user.slug
             state.tel = action.payload.user.tel
+            state.zip = action.payload.user.zip
             state.type = action.payload.user.type
             state.objectID = action.payload.user.objectID
         },
@@ -114,6 +116,7 @@ export const slice = createSlice({
             state.slug = action.payload.user.slug
             state.tel = action.payload.user.tel
             state.type = action.payload.user.type
+            state.zip = action.payload.user.zip
             state.objectID = action.payload.user.objectID
             // state.flaggedReviews = [...action.payload.user.flaggedReviews]
         },
@@ -167,6 +170,7 @@ export const slice = createSlice({
             state.slug = action.payload.slug
             state.tel = action.payload.tel
             state.type = action.payload.type
+            state.zip = action.payload.zip
         },
         updateFailure: (state, action) => {
             state.error = action.payload.error
