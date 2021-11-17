@@ -84,7 +84,6 @@ export function* signUp({payload}) {
 }
 
 export function* updateUserPhoneNumber({payload}) {
-    console.log('PAY', payload)
     const verificationToken = yield call(sendTwilioVerification, payload)
     if (verificationToken === 'pending') {
         yield put({
@@ -100,10 +99,6 @@ export function* updateUserPhoneNumber({payload}) {
 export function* confirmUpdatePhoneNumber({payload}) {
     const confirmedUser = yield call(confirmTwilioVerification, payload)
     const {tel, slug, _id, token} = payload
-
-    console.log('confirmed', confirmedUser)
-    console.log('payload', payload)
-    console.log('tel', tel)
 
     const user = new FormData()
     const fields = [{tel}]
@@ -140,7 +135,6 @@ export function* confirmUpdatePhoneNumber({payload}) {
 }
 
 export function* confirmUser({payload}) {
-    console.log('PAYLOAD', payload)
     const confirmedUser = yield call(confirmTwilioVerification, payload)
     const {acceptTerms, email, nameFirst, password, tel, verificationCode} = payload
 

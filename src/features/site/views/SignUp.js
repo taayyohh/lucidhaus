@@ -20,7 +20,6 @@ const SignUp = () => {
     return (
         <ContentWrapper>
             {(confirmationRequest && (
-                <>
                     <Form
                         initialValues={confirmationCodeInitialValues}
                         fields={confirmationCodeFields}
@@ -29,9 +28,6 @@ const SignUp = () => {
                         buttonText={'Confirm'}
                         theme={signUpFormStyle}
                     />
-                    {console.log('cciv', confirmationCodeInitialValues)}
-                </>
-
             )) || (
                 <Form
                     initialValues={signUpInitialValues}

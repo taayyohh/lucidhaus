@@ -2,9 +2,9 @@ import {confirmationCodeFields}                                                 
 import {
     resetPhoneFields,
     validateResetPhone
-}                                                                                              from 'features/user/admin/fields/resetPhone'
-import React                                                                                   from 'react'
-import {PortalWithState}                                                                       from 'react-portal'
+}                         from 'features/user/admin/fields/resetPhone'
+import React, {useEffect} from 'react'
+import {PortalWithState}  from 'react-portal'
 import {useSelector}                                                                           from 'react-redux'
 import Div                                                                                     from 'shared/Basic/Div'
 import H2                                                                                      from 'shared/Basic/H2'
@@ -18,6 +18,13 @@ const ResetContactInfo = () => {
     const {_id, token, slug, tel, email, confirmationRequest} = useSelector(state => state.user)
     const confirmationCodeInitialValues = {verificationCode: '', slug, _id, token, ...confirmationRequest}
     const resetPhoneInitialValues = {tel: ''}
+
+    useEffect(() => {
+        if(!!confirmationRequest) {
+
+        }
+
+    }, [confirmationRequest])
 
     return (
         <Div theme={resetContactInfoStyle}>
