@@ -16,7 +16,7 @@ const Footer = ({theme}) =>
                 <Span theme={footerStyle.copy}>&copy; {moment().format('YYYY')} {siteDisplayName}</Span>
                 <Div theme={footerStyle.linksWrapper}>
                     <LinkSwitch
-                        url={'https://inclusive-guide.s3.us-east-2.amazonaws.com/assets/Inclusive+Journeys+Privacy+Policy+-+4824-7519-7925+5.pdf'}
+                        url={'https://inclusive-guide.s3.us-east-2.amazonaws.com/assets/InclusiveGuide-PrivacyPolicy-11.18.21.pdf'}
                         children={'Privacy Policy '}
                     />
                     <LinkSwitch

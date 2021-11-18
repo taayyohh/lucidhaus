@@ -109,7 +109,7 @@ const Routes = () => {
                     <Suspense fallback={<Fallback/>}>
                         <Switch location={{pathname: currentPath}}>
                             <Route path="/" exact component={Home}/>
-                            <Route path="/help" exact component={Help}/>
+                            <Route path="/faq" exact component={Help}/>
                             <Route path="/about" exact component={About}/>
 
                             <Route path="/for-businesses" exact component={ForBusinesses}/>

@@ -18,17 +18,17 @@ const Header = ({theme}) => {
                         About
                     </LinkSwitch>
                     <LinkSwitch
-                        url={'/help'}
+                        url={'/faq'}
                         theme={headerTopStyle.link}
                     >
-                        Help
+                        FAQ
                     </LinkSwitch>
-                    <LinkSwitch
-                        url={'/for-businesses'}
-                        theme={headerTopStyle.link}
-                    >
-                        For Businesses
-                    </LinkSwitch>
+                    {/*<LinkSwitch*/}
+                    {/*    url={'/for-businesses'}*/}
+                    {/*    theme={headerTopStyle.link}*/}
+                    {/*>*/}
+                    {/*    For Businesses*/}
+                    {/*</LinkSwitch>*/}
                 </Div>
             </Div>
             <Div theme={headerInnerStyle}>
