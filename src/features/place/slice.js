@@ -46,7 +46,6 @@ const initialState = {
     },
     algoliaPlaces: [],
     createdFromBoone: [],
-    // introducing new organization of state -- use current object for info about currently loaded place
     current: {
         submittedBy: {
 
