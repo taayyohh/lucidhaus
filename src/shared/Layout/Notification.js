@@ -9,7 +9,8 @@ import {
     timeoutAsync
 }                                 from 'utils/helpers'
 import MotionDiv                  from 'shared/Basic/MotionDiv'
-import {notificationWrapperStyle} from './styles'
+import Div                                                       from '../Basic/Div'
+import {notificationInnerWrapperStyle, notificationWrapperStyle} from './styles'
 
 const Notification = () => {
     const dispatch = useDispatch()
@@ -60,7 +61,10 @@ const Notification = () => {
                     }}
                     theme={notificationWrapperStyle(notificationTheme)}
                 >
-                    {notification}
+                    <Div theme={notificationInnerWrapperStyle}>
+                        {notification}
+                    </Div>
+
                 </MotionDiv>
             )}
         </AnimatePresence>

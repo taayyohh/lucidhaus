@@ -1,7 +1,11 @@
 import {push}                                              from 'connected-react-router'
 import cryptoRandomString                                  from 'crypto-random-string'
 import {signin, signout, signup}                           from 'features/site/services'
-import {confirmTwilioVerification, sendTwilioVerification} from 'features/site/services/twilio'
+import {
+    confirmTwilioVerification,
+    sendTwilioEmailVerification,
+    sendTwilioVerification
+} from 'features/site/services/twilio'
 import {
     addFlaggedReview,
     addPlaceSubmissionToUserHistory,
@@ -130,9 +134,78 @@ export function* confirmUpdatePhoneNumber({payload}) {
         } catch (error) {
             yield put({type: 'user/updateUserFailure'})
         }
+    } else {
+        yield put({
+            type: 'site/setNotification',
+            payload: {
+                notification: 'The Verification code entered is invalid. Please Re-enter the code.',
+                theme: 'red'
+            }
+        })
     }
-
 }
+
+export function* updateUserEmail({payload}) {
+    console.log('payload', payload)
+    //SEND TO EMAIL
+    const verificationToken = yield call(sendTwilioEmailVerification, payload)
+    if (verificationToken === 'pending') {
+        yield put({
+            type: 'user/requestTwilioCodeConfirmation',
+            payload: {
+                verificationToken: verificationToken,
+                ...payload
+            }
+        })
+    }
+}
+
+export function* confirmUpdateEmail({payload}) {
+    const confirmedUser = yield call(confirmTwilioVerification, payload)
+    const {email, slug, _id, token} = payload
+
+    const user = new FormData()
+    const fields = [{email}]
+    for (let field of fields)
+        setFormData(user, field)
+
+    if (confirmedUser === 'approved') {
+        try {
+            const updated = yield call(updateEntity, {
+                slug: slug,
+                parentSlug: 'user',
+                body: user,
+                _id: _id,
+                token: token,
+            })
+            if (!updated.error) {
+                yield put({type: 'user/updateUserEmailSuccess', payload: updated})
+                yield put({
+                    type: 'site/setNotification',
+                    payload: {
+                        notification: 'Your email address has been successfully updated.',
+                        theme: 'green'
+                    }
+                })
+
+            } else {
+                yield put({type: 'user/updateUserFailure', payload: updated})
+            }
+        } catch (error) {
+            yield put({type: 'user/updateUserFailure'})
+        }
+    } else {
+        yield put({
+            type: 'site/setNotification',
+            payload: {
+                notification: 'The Verification code entered is invalid. Please Re-enter the code.',
+                theme: 'red'
+            }
+        })
+    }
+}
+
+
 
 export function* confirmUser({payload}) {
     const confirmedUser = yield call(confirmTwilioVerification, payload)
@@ -181,7 +254,7 @@ export function* confirmUser({payload}) {
         yield put({
             type: 'site/setNotification',
             payload: {
-                notification: 'incorrect code',
+                notification: 'The Verification code entered is invalid. Please Re-enter the code.',
                 theme: 'red'
             }
         })
@@ -419,6 +492,14 @@ export function* watchUpdateUserPhoneNumber() {
 
 export function* watchConfirmUpdatePhoneNumber() {
     yield takeEvery('user/confirmUpdatePhoneNumber', confirmUpdatePhoneNumber)
+}
+
+export function* watchUpdateUserEmail() {
+    yield takeEvery('user/updateEmail', updateUserEmail)
+}
+
+export function* watchConfirmUpdateEmail() {
+    yield takeEvery('user/confirmUpdateEmail', confirmUpdateEmail)
 }
 
 export function* watchUserHistory() {

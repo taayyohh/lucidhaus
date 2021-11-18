@@ -1,6 +1,7 @@
 import {placeFields, validatePlace}   from 'features/place/admin/fields'
 import React, {useContext, useEffect} from 'react'
 import {useDispatch, useSelector}     from 'react-redux'
+import Span                           from 'shared/Basic/Span'
 import {searchContext}                from 'shared/Containers/SearchController'
 import DangerZone                     from 'shared/Controls/DangerZone'
 import Form                           from 'shared/Fields/Form'
@@ -50,13 +51,13 @@ const Update = () => {
         accessibleDoorway: accessibleDoorway,
         audioAvailable: audioAvailable,
         address1: place.geojson?.[0]?.properties?.address,
-        address2:  place.geojson?.[0]?.properties?.address2,
-        city:  place.geojson?.[0]?.properties?.city,
-        zip:  place.geojson?.[0]?.properties?.postalCode,
-        country:  place.geojson?.[0]?.properties?.country,
-        state:  place.geojson?.[0]?.properties?.state,
+        address2: place.geojson?.[0]?.properties?.address2,
+        city: place.geojson?.[0]?.properties?.city,
+        zip: place.geojson?.[0]?.properties?.postalCode,
+        country: place.geojson?.[0]?.properties?.country,
+        state: place.geojson?.[0]?.properties?.state,
         longitude: place.geojson?.[0]?.geometry?.coordinates?.[0],
-        latitude:  place.geojson?.[0]?.geometry?.coordinates?.[1],
+        latitude: place.geojson?.[0]?.geometry?.coordinates?.[1],
         bathrooms: bathrooms || [],
         businessOwner: businessOwner || [],
         braille: braille,
@@ -99,7 +100,7 @@ const Update = () => {
     }, [])
 
     useEffect(() => {
-        if(!place?.isPendingSubmission && !!place?.objectID) {
+        if (!place?.isPendingSubmission && !!place?.objectID) {
             // console.log('place', placesIndex.saveObjects(place))
             console.log('place', place)
             // placesIndex.saveObjects(place)
@@ -168,7 +169,7 @@ const Update = () => {
                     fields={isPendingSubmission ? pendingFields : placeFields}
                     validationSchema={validatePlace}
                     dispatchAction={'place/updatePlace'}
-                    formHeading={'Update Place'}
+                    formHeading={`Update ${name}`}
                     buttonText={'Update'}
                     theme={adminFormWrapperStyle}
                     enableReinitialize={true}

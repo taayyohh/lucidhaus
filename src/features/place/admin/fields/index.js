@@ -187,9 +187,10 @@ export const validatePlace = Yup.object().shape({
         .string(),
     name: Yup
         .string()
-        .max(50)
+        .max(255)
         .required('Required'),
     description: Yup
         .string()
+        .max(5000)
         .required('Required'),
 })

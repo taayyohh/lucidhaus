@@ -1,10 +1,14 @@
 import {confirmationCodeFields}                                                                from 'features/site/admin/fields/signUp'
 import {
+    updateEmailFields,
+    validateUpdateEmail
+}                                                                                              from 'features/user/admin/fields/resetEmail'
+import {
     resetPhoneFields,
     validateResetPhone
-}                                 from 'features/user/admin/fields/resetPhone'
-import React, {useEffect, useRef} from 'react'
-import {PortalWithState}          from 'react-portal'
+}                                                                                              from 'features/user/admin/fields/resetPhone'
+import React, {useEffect, useRef}                                                              from 'react'
+import {PortalWithState}                                                                       from 'react-portal'
 import {useSelector}                                                                           from 'react-redux'
 import Div                                                                                     from 'shared/Basic/Div'
 import H2                                                                                      from 'shared/Basic/H2'
@@ -17,12 +21,12 @@ import {resetContactInfoStyle, userAccountFormStyle, userAccountStyle, userAccou
 const ResetContactInfo = () => {
     const {_id, token, slug, tel, email, confirmationRequest} = useSelector(state => state.user)
     const confirmationCodeInitialValues = {verificationCode: '', slug, _id, token, ...confirmationRequest}
-    const resetPhoneInitialValues = {tel: ''}
+    const updatedPhoneNumberInitialValues = {tel: ''}
+    const updatedEmailInitialValues = {email: ''}
     const ref = useRef()
 
     useEffect(() => {
-        if(!confirmationRequest ) {
-            console.log('hey')
+        if (!confirmationRequest) {
             ref?.current.click()
         }
 
@@ -62,7 +66,7 @@ const ResetContactInfo = () => {
                                                 />
                                             )) || (
                                                 <Form
-                                                    initialValues={resetPhoneInitialValues}
+                                                    initialValues={updatedPhoneNumberInitialValues}
                                                     fields={resetPhoneFields}
                                                     validationSchema={validateResetPhone}
                                                     dispatchAction={'user/updatePhoneNumber'}
@@ -91,7 +95,28 @@ const ResetContactInfo = () => {
                                     </Div>
                                     {portal(
                                         <MotionDiv theme={defaultModalStyle}>
-                                            Update Email
+                                            {(confirmationRequest && (
+                                                <Form
+                                                    initialValues={confirmationCodeInitialValues}
+                                                    fields={confirmationCodeFields}
+                                                    dispatchAction={'user/confirmUpdateEmail'}
+                                                    formHeading={'Verify Email Address'}
+                                                    buttonText={'Confirm'}
+                                                    theme={userAccountVerifyStyle}
+                                                    enableReinitialize={true}
+                                                />
+                                            )) || (
+                                                <Form
+                                                    initialValues={updatedEmailInitialValues}
+                                                    fields={updateEmailFields}
+                                                    validationSchema={validateUpdateEmail}
+                                                    dispatchAction={'user/updateEmail'}
+                                                    formHeading={'Update Email Address'}
+                                                    buttonText={'Update'}
+                                                    theme={userAccountFormStyle}
+                                                    enableReinitialize={true}
+                                                />
+                                            )}
                                         </MotionDiv>
                                     )}
                                 </>

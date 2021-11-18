@@ -38,10 +38,14 @@ export const userFields = [
 ]
 
 export const validateUser = Yup.object().shape({
+    nameFirst: Yup.string()
+        .required('*')
+        .max(255),
+    nameMiddle: Yup.string()
+        .max(255),
+    nameLast: Yup.string()
+        .max(255),
     zip: Yup
         .string()
         .max(5)
-        .required('*'),
-    nameFirst: Yup.string()
-        .required('*')
 })

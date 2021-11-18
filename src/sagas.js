@@ -79,6 +79,7 @@ import {
     watchUpdateUserIdentity
 }                                  from 'features/user/admin/sagas'
 import {
+    watchConfirmUpdateEmail,
     watchConfirmUpdatePhoneNumber,
     watchConfirmUser,
     watchCreateVerificationToken,
@@ -90,7 +91,7 @@ import {
     watchSignIn,
     watchSignOut,
     watchSignUp,
-    watchSignUpSignInSuccess, watchUpdateUserPhoneNumber,
+    watchSignUpSignInSuccess, watchUpdateUserEmail, watchUpdateUserPhoneNumber,
     watchUserHistory,
     watchVerifyUser
 } from 'features/user/sagas'
@@ -255,6 +256,9 @@ export default function* rootSaga() {
         fork(watchGetRecentlyViewedPlace),
         fork(watchUpdateUserPhoneNumber),
         fork(watchConfirmUpdatePhoneNumber),
+        fork(watchUpdateUserEmail),
+        fork(watchConfirmUpdateEmail),
+
 
         //user -- taxonomy
         fork(watchCreateAdaptiveEquipment),

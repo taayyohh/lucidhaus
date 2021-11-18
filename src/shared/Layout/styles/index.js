@@ -245,6 +245,10 @@ export const defaultModalStyle = {
     }
 }
 
+export const notificationInnerWrapperStyle = {
+    padding: [30, .7, 30]
+}
+
 export const notificationWrapperStyle = theme => {
     const baseStyle = {
         position: 'fixed',
