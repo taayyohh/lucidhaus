@@ -254,8 +254,21 @@ export const aboutPageStyle = {
             marginBottom: 20
         }
     },
+    image: {
+        float: 'right',
+        width: [500, globals.style.layoutScalingValue, '100%'],
+        paddingLeft: [50, .7, 20],
+        paddingBottom: [20, .7, 20],
+        height: auto
+    },
+    sectionHeading: {
+        textAlign: center,
+    },
+    sectionInner: {
+        marginTop: [40, .7, 40]
+    },
     section: {
-        paddingTop: [40, .7, 40],
+        paddingTop: [20, .7, 40],
         marginTop: [40, .7, 40],
         borderTop: `1px solid ${globals.colors.borderColor}`,
         firstOfType: {
@@ -282,6 +295,7 @@ export const aboutPageStyle = {
             {
                 selector: 'p',
                 size: [18, .7, 18],
+                lineHeight: [32, .7, 32],
             }
         ]
     }

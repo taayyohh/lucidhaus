@@ -20,7 +20,7 @@ const Footer = ({theme}) =>
                         children={'Privacy Policy '}
                     />
                     <LinkSwitch
-                        url={'https://inclusive-guide.s3.us-east-2.amazonaws.com/assets/Inclusive+Journeys+Website+Terms+of+Service+-+4817-1972-0421+4.pdf'}
+                        url={'https://inclusive-guide.s3.us-east-2.amazonaws.com/assets/InclusiveGuide-TermsOfService-01.18.21.pdf'}
                         children={'Terms of Service'}
                     />
                     <LinkSwitch

@@ -32,7 +32,7 @@ export const signUpFields = [
     {
         name: 'acceptTerms',
         inputLabel: 'Accept Terms of Service',
-        inputLabelHelper: 'https://inclusive-guide.s3.us-east-2.amazonaws.com/assets/Inclusive+Journeys+Website+Terms+of+Service+-+4817-1972-0421+4.pdf',
+        inputLabelHelper: 'https://inclusive-guide.s3.us-east-2.amazonaws.com/assets/InclusiveGuide-TermsOfService-01.18.21.pdf',
         type: TOGGLE
     }
 ]

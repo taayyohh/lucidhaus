@@ -4,6 +4,7 @@ import H2               from 'shared/Basic/H2'
 import LinkSwitch       from 'shared/Basic/LinkSwitch'
 import ContentWrapper   from 'shared/Layout/ContentWrapper'
 import H1               from 'shared/Basic/H1'
+import Img              from '../../../shared/Basic/Img'
 import {aboutPageStyle} from './styles'
 
 const About = () => {
@@ -13,46 +14,53 @@ const About = () => {
             <Div>
                 <H1 theme={aboutPageStyle.heading}>About us</H1>
                 <Div theme={aboutPageStyle.section}>
-                    <H2>
+                    <H2 theme={aboutPageStyle.sectionHeading}>
                         Celebrating the places that celebrate you!
                     </H2>
-                    <p>
-                        Imagine a business whose sole purpose is to guide humanity towards a more inclusive world
-                        through solidarity and equity
-                        in practice. This is Inclusive Guide — the new digital Green Book, a website that’s been
-                        described as
-                        “Yelp for inclusivity”. Inclusive Guide is a user review platform created by two Black women
-                        with a
-                        mission to create data-driven, economic incentives for businesses to be more inclusive and
-                        welcoming,
-                        resulting in safer spaces for people who regularly experience discrimination.
-                        Co-Founders Crystal Egli and Parker McMullen Bushman want to change the way businesses think
-                        about inclusion.
-                        On this digital platform, users aren’t rating the products they purchased or the cleanliness of
-                        the store.
-                        Instead, individuals can rate businesses and spaces on their customer service experience
-                        relative to the users’
-                        specific identities, such as race, ability, gender, and more. Inclusive Guide users can rate
-                        businesses on a range of things,
-                        such as courtesy of staff, ADA compliance, sense of personal safety, availability of gender
-                        neutral bathrooms, and so on.
-                        Individual users can also access the reviews of others who have rated those spaces to easily
-                        identify locations that are safe and welcoming for them.
-                        Combined, these user-sourced ratings generate ‘inclusivity scores’ for each business.
-                        On the back end, business owners and managers can see the reviews and request data-driven
-                        reports that are analyzed through
-                        demographic breakdowns. Inclusive Guide doesn’t stop there-- businesses seeking to improve their
-                        scores can also request customized
-                        resources based on their unique reports in order to target the specific issues their customers
-                        have reported.
-                        Gathering, analyzing and reporting all of this data in conjunction with customized solutions and
-                        recommendations
-                        will provide businesses with the economic incentive to recruit and retain a diverse customer
-                        base,
-                        in turn allowing the users to plan their travels and conduct business with peace of mind,
-                        and as a result we can utilize this platform’s unique position to help inform policy at the
-                        highest levels.
-                    </p>
+                    <Div theme={aboutPageStyle.sectionInner}>
+                        <Img
+                            src={'https://inclusive-guide.s3.us-east-2.amazonaws.com/assets/Parker+and+Crystal+on+Bridge.jpeg'}
+                            theme={aboutPageStyle.image}
+                        />
+                        <p>
+                            Imagine a business whose sole purpose is to help guide humanity towards a more inclusive world
+                            through solidarity and equity
+                            in practice. This is Inclusive Guide — the new digital Green Book, a website that’s been
+                            described as
+                            “Yelp for inclusivity”. Inclusive Guide is a user review platform created by two Black women
+                            with a
+                            mission to create data-driven, economic incentives for businesses to be more inclusive and
+                            welcoming,
+                            resulting in safer spaces for people who regularly experience discrimination.
+                            Co-Founders Crystal Egli and Parker McMullen Bushman want to change the way businesses think
+                            about inclusion.
+                            On this digital platform, users aren’t rating the products they purchased or the cleanliness of
+                            the store.
+                            Instead, individuals can rate businesses and spaces on their customer service experience
+                            relative to the users’
+                            specific identities, such as race, ability, gender, and more. Inclusive Guide users can rate
+                            businesses on a range of things,
+                            such as courtesy of staff, ADA compliance, sense of personal safety, availability of gender
+                            neutral bathrooms, and so on.
+                            Individual users can also access the reviews of others who have rated those spaces to easily
+                            identify locations that are safe and welcoming for them.
+                            Combined, these user-sourced ratings generate ‘inclusivity scores’ for each business.
+                            On the back end, business owners and managers can see the reviews and request data-driven
+                            reports that are analyzed through
+                            demographic breakdowns. Inclusive Guide doesn’t stop there-- businesses seeking to improve their
+                            scores can also request customized
+                            resources based on their unique reports in order to target the specific issues their customers
+                            have reported.
+                            Gathering, analyzing and reporting all of this data in conjunction with customized solutions and
+                            recommendations
+                            will provide businesses with the economic incentive to recruit and retain a diverse customer
+                            base,
+                            in turn allowing the users to plan their travels and conduct business with peace of mind,
+                            and as a result we can utilize this platform’s unique position to help inform policy at the
+                            highest levels.
+                        </p>
+                    </Div>
+
                 </Div>
                 <Div theme={aboutPageStyle.section}>
                     <H2>Our Vision</H2>
