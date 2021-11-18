@@ -3,6 +3,7 @@ import Div              from 'shared/Basic/Div'
 import H2               from 'shared/Basic/H2'
 import LinkSwitch       from 'shared/Basic/LinkSwitch'
 import ContentWrapper   from 'shared/Layout/ContentWrapper'
+import H1               from 'shared/Basic/H1'
 import {aboutPageStyle} from './styles'
 
 const About = () => {
@@ -10,6 +11,7 @@ const About = () => {
     return (
         <ContentWrapper theme={aboutPageStyle}>
             <Div>
+                <H1 theme={aboutPageStyle.heading}>About us</H1>
                 <Div theme={aboutPageStyle.section}>
                     <H2>
                         Celebrating the places that celebrate you!

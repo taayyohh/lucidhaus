@@ -12,6 +12,12 @@ const Header = ({theme}) => {
             <Div theme={headerTopStyle}>
                 <Div theme={headerTopStyle.inner}>
                     <LinkSwitch
+                        url={'/about'}
+                        theme={headerTopStyle.link}
+                    >
+                        About
+                    </LinkSwitch>
+                    <LinkSwitch
                         url={'/help'}
                         theme={headerTopStyle.link}
                     >

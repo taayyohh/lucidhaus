@@ -241,13 +241,24 @@ export const recentlyViewedPlacesHeadingStyle = {
 
 export const aboutPageStyle = {
     width: [1180, globals.style.layoutScalingValue, '100%'],
-    marginTop: [50, .7, 50],
+    marginTop: [50, .7, '0'],
+    heading: {
+        size: [36, .7, 32],
+        margin: 0,
+        padding: 0,
+        color: colorPalette.seaGreen
+    },
     section: {
         paddingTop: [40, .7, 40],
         marginTop: [40, .7, 40],
         borderTop: `1px solid ${globals.colors.borderColor}`,
         firstOfType: {
-            border: 0
+            border: 0,
+            marginTop: 0,
+            mobile: {
+                marginTop: 0,
+                paddingTop: 0
+            }
         },
         child: [
             {
