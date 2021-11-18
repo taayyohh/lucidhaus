@@ -204,6 +204,9 @@ export const homeContentWrapperStyle = {
 export const recentlyViewedPlaceCardStyle = {
     border: `1px solid ${globals.colors.borderColor}`,
     textDecoration: none,
+    hover: {
+        color: colorPalette.seaGreen
+    },
     locationWrapper: {
         display: none
     }
@@ -246,7 +249,10 @@ export const aboutPageStyle = {
         size: [36, .7, 32],
         margin: 0,
         padding: 0,
-        color: colorPalette.seaGreen
+        color: colorPalette.seaGreen,
+        mobile: {
+            marginBottom: 20
+        }
     },
     section: {
         paddingTop: [40, .7, 40],
