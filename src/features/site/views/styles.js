@@ -1,5 +1,5 @@
-import {colorPalette, globals}                                                               from 'config/styles'
-import {CDN}                                                                                 from 'config/variables'
+import {colorPalette, globals} from 'config/styles'
+import {CDN}                   from 'config/variables'
 import {
     absolute,
     auto,
@@ -13,8 +13,8 @@ import {
     sv,
     uppercase,
     white
-} from 'utils/themer'
-import {placesSearchFormStyle}                                                               from '../../place/views/styles'
+}                              from 'utils/themer'
+import {placesSearchFormStyle} from '../../place/views/styles'
 
 export const homeImageWrapperStyle = {
     display: flex,
@@ -236,5 +236,36 @@ export const recentlyViewedPlacesHeadingStyle = {
     weight: 500,
     borderBottom: `1px solid ${globals.colors.borderColor}`,
     marginBottom: [50, .7, 50],
-    paddingBottom: [20,.7, 20]
+    paddingBottom: [20, .7, 20]
+}
+
+export const aboutPageStyle = {
+    width: [1180, globals.style.layoutScalingValue, '100%'],
+    marginTop: [50, .7, 50],
+    section: {
+        paddingTop: [40, .7, 40],
+        marginTop: [40, .7, 40],
+        borderTop: `1px solid ${globals.colors.borderColor}`,
+        firstOfType: {
+            border: 0
+        },
+        child: [
+            {
+                selector: 'h2',
+                marginBottom: [10, .7, 10],
+                size: [26, .7, 26]
+            },
+            {
+                selector: 'a',
+                color: colorPalette.seaGreen,
+                hover: {
+                    color: colorPalette.paleGreen
+                }
+            },
+            {
+                selector: 'p',
+                size: [18, .7, 18],
+            }
+        ]
+    }
 }

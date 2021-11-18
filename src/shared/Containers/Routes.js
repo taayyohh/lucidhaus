@@ -10,6 +10,8 @@ import {TransitionAnimations}                 from './TransitionController'
 const Sitemap = lazy(() => import('./Sitemap'))
 const Home = lazy(() => import('features/site/views/Home'))
 const Help = lazy(() => import('features/site/views/Help'))
+const About = lazy(() => import('features/site/views/About'))
+
 const ForBusinesses = lazy(() => import('features/site/views/ForBusinesses'))
 const Privacy = lazy(() => import('features/site/views/Privacy'))
 const Terms = lazy(() => import('features/site/views/Terms'))
@@ -108,6 +110,8 @@ const Routes = () => {
                         <Switch location={{pathname: currentPath}}>
                             <Route path="/" exact component={Home}/>
                             <Route path="/help" exact component={Help}/>
+                            <Route path="/about" exact component={About}/>
+
                             <Route path="/for-businesses" exact component={ForBusinesses}/>
                             <Route path="/privacy-policy" exact component={Privacy}/>
                             <Route path="/terms-of-service" exact component={Terms}/>
