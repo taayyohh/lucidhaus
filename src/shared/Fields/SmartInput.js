@@ -9,6 +9,7 @@ import Legend                                                                  f
 import Span                                                                    from 'shared/Basic/Span'
 import {formatPhone}                                                           from 'utils/helpers'
 import useMeasure                                                              from 'utils/useMeasure'
+import Div                                                                     from '../Basic/Div'
 import {defaultFieldErrorStyle, defaultFocusedInputLabelStyle, invisibleStyle} from './styles'
 
 const SmartInput = ({
@@ -56,8 +57,6 @@ const SmartInput = ({
         if (autoSubmit) {
             formik.submitForm()
         }
-
-
     }
     const handleFocus = () => {
         setIsInputLabelFocused(true)
@@ -120,6 +119,7 @@ const SmartInput = ({
                 theme={theme.field}
                 disabled={disabled}
                 autoFocus={autoFocus}
+                autoComplete="no"
                 ref={inputRef}
             />
             <Span theme={defaultFieldErrorStyle}>{errorMessage}</Span>

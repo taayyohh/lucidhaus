@@ -1,8 +1,9 @@
-import React                                     from 'react'
-import {BrowserRouter}                           from 'react-router-dom';
-import Div                                       from 'shared/Basic/Div'
-import LinkSwitch                                from 'shared/Basic/LinkSwitch'
-import {mapPopUpAddressStyle, mapPopUpNameStyle} from './styles'
+import React                                                               from 'react'
+import {BrowserRouter}                                                     from 'react-router-dom';
+import Div                                                                 from 'shared/Basic/Div'
+import LinkSwitch                                                          from 'shared/Basic/LinkSwitch'
+import {excerpt}                                                           from 'utils/helpers'
+import {mapPopUpAddressStyle, mapPopUpDescriptionStyle, mapPopUpNameStyle} from './styles'
 
 
 const PopUp = ({currentFeature}) => {
@@ -17,6 +18,12 @@ const PopUp = ({currentFeature}) => {
                         {currentFeature?.properties?.name}
                     </LinkSwitch>
                     <Div theme={mapPopUpAddressStyle}>{currentFeature?.properties?.address}</Div>
+                    {!!currentFeature?.properties?.description && (
+                        <Div theme={mapPopUpDescriptionStyle}>
+                            {excerpt(currentFeature?.properties?.description, 35)}
+                        </Div>
+                    )}
+
                 </Div>
             </BrowserRouter>
 

@@ -19,6 +19,7 @@ const Create = () => {
         address2: '',
         city: '',
         zip: '',
+        tel: '',
         country: '',
         state: '',
         latitude: 0,

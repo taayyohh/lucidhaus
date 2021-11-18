@@ -102,6 +102,19 @@ const CitySelect = ({
                         ref={inputRef}
                     />
                 </Fieldset>
+                {formik?.values[name[0]]?.length > 0 && (
+                    <Div theme={stateCityOptionsWrapperStyle}>
+                        {filteredCityArray.map(city => (
+                            <Div
+                                key={city.name}
+                                onClick={() => handleCitySelect(city.name)}
+                                theme={stateCityOptionStyle}
+                            >
+                                {city.name}
+                            </Div>
+                        ))}
+                    </Div>
+                )}
                 {(formik.values[name[0]]?.length > 0) && (
                     <Div theme={stateSelectSelectionInnerWrapperStyle}>
                         <Div theme={stateSelectionLabelStyle}>Selected</Div>
@@ -123,19 +136,6 @@ const CitySelect = ({
                 )}
 
             </Div>
-            {formik?.values[name[0]]?.length > 0 && (
-                <Div theme={stateCityOptionsWrapperStyle}>
-                    {filteredCityArray.map(city => (
-                        <Div
-                            key={city.name}
-                            onClick={() => handleCitySelect(city.name)}
-                            theme={stateCityOptionStyle}
-                        >
-                            {city.name}
-                        </Div>
-                    ))}
-                </Div>
-            )}
         </Div>
     )
 }

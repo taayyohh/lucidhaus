@@ -14,6 +14,14 @@ import * as Yup                                                                 
 
 export const pendingFields = [
     {
+        name: 'photo',
+        file: 'photoFile',
+        cropWidth: 500,
+        cropHeight: 500,
+        s3Path: UPLOAD_PATHS.place,
+        type: IMAGE_UPLOAD,
+    },
+    {
         name: 'name',
         inputLabel: 'Name',
         type: TEXT
@@ -21,15 +29,8 @@ export const pendingFields = [
     {
         name: 'description',
         inputLabel: 'Description',
-        type: RICH_TEXT
-    },
-    {
-        name: 'photo',
-        file: 'photoFile',
-        cropWidth: 500,
-        cropHeight: 500,
-        s3Path: UPLOAD_PATHS.place,
-        type: IMAGE_UPLOAD,
+        type: RICH_TEXT,
+        tooltip: 'Write a description for your business.'
     },
     {
         name: 'accessibleDoorway',

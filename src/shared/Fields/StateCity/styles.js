@@ -1,9 +1,10 @@
-import {colorPalette, globals}                                        from 'config/styles'
-import {absolute, borderBox, center, column, flex, pointer, relative} from 'utils/themer'
+import {colorPalette, globals}                                               from 'config/styles'
+import {absolute, borderBox, center, column, flex, pointer, relative, white} from 'utils/themer'
 
 export const stateCityOptionsWrapperStyle = {
     maxHeight: 200,
     overflowY: 'scroll',
+    marginTop: [10, .7, 10],
     marginBottom: 50,
     padding: 30,
     border: `1px solid ${globals.colors.borderColor}`,
@@ -20,13 +21,13 @@ export const stateCityOptionStyle = {
     padding: [15, .7, 15],
     paddingBottom: [10, .7, 10],
     paddingTop: [10, .7, 10],
-    backgroundColor: '#BDBDBD',
+    backgroundColor: globals.colors.borderColor,
     marginBottom: [5, .7, 5],
     borderRadius: [5, .7, 5],
     size: [16, .7, 16],
     hover: {
         cursor: pointer,
-        backgroundColor: globals.colors.borderColor
+        backgroundColor: '#BDBDBD'
     }
 }
 
@@ -35,7 +36,7 @@ export const stateSelectSelectionInnerWrapperStyle = {
     display: flex,
     alignItems: center,
     justifyContent: center,
-    background: '#CDCDCD',
+    background: '#fafafa',
     height: [150, .7, 100],
     padding: [50, .7, 20],
     borderRadius: [10, .7, 10],
@@ -80,7 +81,7 @@ export const stateSelectSelectionWrapperStyle = {
 }
 
 export const stateCitySelectStyle = {
-    background: '#E0E0E0',
+    background: white,
     boxSizing: borderBox,
     padding: [50, globals.style.layoutScalingValue, 25],
     border: `1px solid ${globals.colors.borderColor}`,

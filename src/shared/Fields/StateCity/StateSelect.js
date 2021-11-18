@@ -115,6 +115,17 @@ const StateSelect = ({
                         ref={inputRef}
                     />
                 </Fieldset>
+                <Div theme={stateCityOptionsWrapperStyle}>
+                    {filteredStateArray && filteredStateArray.map((state, i) => (
+                        <Div
+                            key={state.isoCode}
+                            onClick={() => handleStateSelect(state.isoCode, state.name)}
+                            theme={stateCityOptionStyle}
+                        >
+                            {state.name}
+                        </Div>
+                    ))}
+                </Div>
                 <Div theme={stateSelectSelectionInnerWrapperStyle}>
                     <Div theme={stateSelectionLabelStyle}>Selected</Div>
                     {State.getStateByCodeAndCountry(formik.values.state, 'US')?.name?.length > 0 && (
@@ -132,17 +143,6 @@ const StateSelect = ({
                         </Div>
                     )}
                 </Div>
-            </Div>
-            <Div theme={stateCityOptionsWrapperStyle}>
-                {filteredStateArray && filteredStateArray.map((state, i) => (
-                    <Div
-                        key={state.isoCode}
-                        onClick={() => handleStateSelect(state.isoCode, state.name)}
-                        theme={stateCityOptionStyle}
-                    >
-                        {state.name}
-                    </Div>
-                ))}
             </Div>
         </Div>
     )

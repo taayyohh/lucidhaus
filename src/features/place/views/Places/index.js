@@ -4,12 +4,15 @@ import {useDispatch, useSelector}                                  from 'react-r
 import Div                                                         from 'shared/Basic/Div'
 import ContentWrapper                                              from 'shared/Layout/ContentWrapper'
 import Map                                                         from 'shared/Map'
-import NoResults        from './NoResults'
-import MapSidebar       from './MapSidebar'
-import {placesMapStyle} from './styles'
+import {unslugify}                                                 from 'utils/helpers'
+import MapSidebar                                                  from './MapSidebar'
+import NoResults                                                   from './NoResults'
+import {placesMapStyle}                                            from './styles'
 
 const Places = () => {
     const {boonePlaces, algoliaPlaces, places, noResults} = useSelector(state => state.place)
+    const {slug} = useSelector(state => state.site)
+
     const dispatch = useDispatch()
     const [allPlaces, setAllPlaces] = useState([])
     const [features, setFeatures] = useState([])
@@ -53,6 +56,7 @@ const Places = () => {
                             "averageWelcome": place.averageWelcome,
                             "inclusiveScore": place.inclusiveScore,
                             "name": place.geojson[0]?.properties?.name,
+                            "description": place.geojson[0]?.properties?.description,
                             "address": place.geojson[0]?.properties?.address,
                             "city": place.geojson[0]?.properties?.city,
                             "country": place.geojson[0]?.properties?.country,
@@ -75,6 +79,7 @@ const Places = () => {
                             "address": place?.locations?.[0]?.address1,
                             "city": place?.locations?.[0]?.city,
                             "country": place?.locations?.[0]?.country,
+                            "description": place.description,
                             "postalCode": place?.locations?.[0]?.postal_code,
                             "state": place?.locations?.[0]?.state,
                             "slug": place.id,
@@ -88,7 +93,7 @@ const Places = () => {
     }, [allPlaces])
 
     useEffect(() => {
-        setGeoJsonFeature( {
+        setGeoJsonFeature({
             "type": "FeatureCollection",
             "features": features
         })
@@ -122,7 +127,7 @@ const Places = () => {
                         scrollZoom={false}
                     />
                 )) || (
-                    <NoResults/>
+                    <NoResults search={unslugify(slug)}/>
                 )}
             </Div>
         </ContentWrapper>

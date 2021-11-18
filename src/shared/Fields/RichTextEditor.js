@@ -17,7 +17,7 @@ const RichTextEditor = ({name, formik, className, errorMessage, tooltip, label})
             <H3 theme={defaultFieldHeadingStyle}>
                 {label}
                 {!!tooltip && (
-                    <Tooltip/>
+                    <Tooltip message={'Write a Description.'}/>
                 )}
             </H3>
             <CKEditor
