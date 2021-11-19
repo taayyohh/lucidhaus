@@ -17,7 +17,12 @@ import {
 
 export const placeCardInclusiveScoreWrapperStyle = {
     display: flex,
-    alignItems: center
+    alignItems: center,
+    noReview: {
+        color: colorPalette.seaGreen,
+        weight: 700,
+        textAlign: center
+    }
 }
 export const placeCardInclusiveScoreInfoStyle = {
     marginTop: 20,
@@ -53,6 +58,19 @@ export const placeCardStyle = {
     borderRadius: [5, globals.style.layoutScalingValue, 5],
     border: `1px solid #fff`,
     backgroundColor: '#f5f5f5',
+    position: relative,
+    pendingReview: {
+        position: absolute,
+        right: [20, globals.style.layoutScalingValue, 20],
+        bottom: [10, .7, 10],
+        color: colorPalette.darkHoneyYellow
+    },
+    acceptedReview: {
+        position: absolute,
+        right: [20, globals.style.layoutScalingValue, 20],
+        bottom: [10, .7, 10],
+        color: colorPalette.paleGreen
+    },
     address: {
         display: none
     },

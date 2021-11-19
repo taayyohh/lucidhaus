@@ -24,7 +24,7 @@ export const userDashboardMenu = [
     {
         url: '/dashboard/places',
         icon: bookmark,
-        title: 'My Places'
+        title: '    My Places'
     },
     {
         url: '/dashboard/submit',

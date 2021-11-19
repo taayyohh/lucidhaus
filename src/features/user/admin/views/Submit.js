@@ -62,8 +62,15 @@ const Submit = () => {
 
                     <Div theme={submitPlaceHeadingStyle}>Your submitted places</Div>
                     {pendingPlaces && pendingPlaces.map((place) =>
-                        <PlaceCard name={place.name} />
-
+                        <>
+                            <PlaceCard
+                                name={place.name}
+                                city={place?.geojson?.[0].properties.city}
+                                state={place?.geojson?.[0].properties.state}
+                                isPending={[true, place.isPendingSubmission]}
+                                hideScore={true}
+                            />
+                        </>
                     )}
                 </Div>
             </DashboardWrapper>

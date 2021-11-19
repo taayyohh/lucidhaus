@@ -1,8 +1,9 @@
-import {mapMarkerSolid} from 'config/icons'
-import React            from 'react'
-import Div              from 'shared/Basic/Div'
-import Icon             from 'shared/Basic/Icon'
-import LinkSwitch       from 'shared/Basic/LinkSwitch'
+import {mapMarkerSolid}                                                                        from 'config/icons'
+import React                                                                                   from 'react'
+import Div                                                                                     from 'shared/Basic/Div'
+import Icon                                                                                    from 'shared/Basic/Icon'
+import LinkSwitch
+                                                                                               from 'shared/Basic/LinkSwitch'
 import InclusiveScore                                                                          from './InclusiveScore'
 import {placeCardInclusiveScoreInfoStyle, placeCardInclusiveScoreWrapperStyle, placeCardStyle} from './styles'
 
@@ -17,6 +18,8 @@ const PlaceCard = ({
                        inclusiveScore,
                        linkCard,
                        url,
+                       isPending = false,
+                       hideScore,
                        theme,
                    }) => {
 
@@ -33,23 +36,30 @@ const PlaceCard = ({
 
             <Div theme={{...placeCardStyle.address, ...theme.address}}>{address}</Div>
 
-            {(inclusiveScore > 0 && (
-                <InclusiveScore
-                    inclusiveScore={inclusiveScore}
-                    safe={safe}
-                    welcome={welcome}
-                    celebrated={celebrated}
-                    theme={theme}
-                />
-            )) || (
-                <Div>
-                    <Div theme={{...placeCardInclusiveScoreInfoStyle}}>
-                        <Div theme={{...placeCardInclusiveScoreWrapperStyle}}>
-                            No reviews have been left yet, be the first!
+            {!hideScore && (
+                <>
+                    {(inclusiveScore > 0 && (
+                        <InclusiveScore
+                            inclusiveScore={inclusiveScore}
+                            safe={safe}
+                            welcome={welcome}
+                            celebrated={celebrated}
+                            theme={theme}
+                        />
+                    )) || (
+                        <Div>
+                            <Div theme={{...placeCardInclusiveScoreInfoStyle}}>
+                                <Div theme={{...placeCardInclusiveScoreWrapperStyle, alignItems: 'center'}}>
+                                    <Div theme={{...placeCardInclusiveScoreWrapperStyle.noReview}}>Be the first to Leave
+                                        a Review!</Div>
+                                </Div>
+                            </Div>
                         </Div>
-                    </Div>
-                </Div>
+                    )}
+
+                </>
             )}
+
             <Div theme={{...placeCardStyle.locationWrapper, ...theme.locationWrapper}}>
                 <Icon
                     theme={{...placeCardStyle.locationIcon}}
@@ -60,6 +70,15 @@ const PlaceCard = ({
                     <Div theme={{...placeCardStyle.state}}>{state}</Div>
                 </Div>
             </Div>
+            {!!isPending[0] && (
+                <>
+                    {(isPending[1] && (
+                        <Div theme={{...placeCardStyle.pendingReview, ...theme.pendingReview}}>Pending Review</Div>
+                    )) || (
+                        <Div theme={{...placeCardStyle.acceptedReview, ...theme.acceptedReview}}>Accepted</Div>
+                    )}
+                </>
+            )}
 
         </LinkSwitch>
     )

@@ -1,9 +1,9 @@
-import {userDashboardMenu}     from 'config/menus/dashboard/user'
-import {genericPlaceCardStyle} from 'features/place/views/styles'
-import React                   from 'react'
+import {userDashboardMenu}                             from 'config/menus/dashboard/user'
+import {genericPlaceCardStyle}                         from 'features/place/views/styles'
+import React                                           from 'react'
 import {useSelector}                                   from 'react-redux'
 import Div                                             from 'shared/Basic/Div'
-import GenericCard                                     from 'shared/Cards/GenericCard'
+import PlaceCard                                       from 'shared/Cards/Place'
 import ContentWrapper                                  from 'shared/Layout/ContentWrapper'
 import DashboardInfo                                   from 'shared/Layout/Dashboard/DashboardInfo'
 import DashboardWrapper                                from 'shared/Layout/Dashboard/DashboardWrapper'
@@ -32,11 +32,11 @@ const Places = () => {
                         }
 
                         return (
-                            <GenericCard
+                            <PlaceCard
                                 key={place.slug}
-                                slug={`/places/${place.slug}`}
+                                city={place.geojson?.[0]?.properties?.city}
+                                url={`/places/${place.slug}`}
                                 name={place.name}
-                                address={address()}
                                 theme={genericPlaceCardStyle}
                             />
                         )
