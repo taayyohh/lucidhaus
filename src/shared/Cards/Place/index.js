@@ -27,7 +27,7 @@ const PlaceCard = ({
         <LinkSwitch url={!!linkCard ? url : ''} theme={{...placeCardStyle, ...theme}}>
             <Div theme={{display: 'flex'}}>
                 <LinkSwitch
-                    url={url}
+                    url={!linkCard ? url : ''}
                     theme={{...placeCardStyle.name, ...theme.name}}
                 >
                     {name}
