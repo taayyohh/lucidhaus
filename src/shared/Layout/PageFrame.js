@@ -23,6 +23,7 @@ const PageFrame = () => {
     const isSearchResults = url.length === 3 && url.includes('search')
     const isReset = url.length === 2 && url[0] === 'reset'
     const isAbout = url.length === 1 && url[0] === 'about'
+    const isFaq = url.length === 1 && url[0] === 'faq'
 
     return (
         <Div theme={pageFrameStyle}>
@@ -30,7 +31,7 @@ const PageFrame = () => {
             <DocumentHead/>
             <Div id="header-left-margin" theme={pageFrameStyle.hlm}/>
             <Header theme={pageFrameStyle.header}/>
-            {(!isAdmin && !isSign && !isHome && !isMobile && !isPlaceDetail && !isReset && !isAbout) && (
+            {(!isAdmin && !isSign && !isHome && !isMobile && !isPlaceDetail && !isReset && !isAbout && !isFaq) && (
                 <Search theme={pageFrameStyle.search}/>
             )}
             <Div id="header-right-margin" theme={pageFrameStyle.hrm}/>

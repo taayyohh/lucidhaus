@@ -9,7 +9,7 @@ import {TransitionAnimations}                 from './TransitionController'
 
 const Sitemap = lazy(() => import('./Sitemap'))
 const Home = lazy(() => import('features/site/views/Home'))
-const Help = lazy(() => import('features/site/views/Help'))
+const FAQ = lazy(() => import('features/site/views/FAQ'))
 const About = lazy(() => import('features/site/views/About'))
 
 const ForBusinesses = lazy(() => import('features/site/views/ForBusinesses'))
@@ -109,7 +109,7 @@ const Routes = () => {
                     <Suspense fallback={<Fallback/>}>
                         <Switch location={{pathname: currentPath}}>
                             <Route path="/" exact component={Home}/>
-                            <Route path="/faq" exact component={Help}/>
+                            <Route path="/faq" exact component={FAQ}/>
                             <Route path="/about" exact component={About}/>
 
                             <Route path="/for-businesses" exact component={ForBusinesses}/>

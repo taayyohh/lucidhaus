@@ -58,7 +58,9 @@ import {
 import {
     faMapMarkerAlt as faMapMarkerAltSolid,
     faTimesCircle as faTimesCircleSolid,
-    faInfoCircle
+    faInfoCircle,
+    faChevronCircleDown,
+    faChevronCircleUp
 } from '@fortawesome/pro-solid-svg-icons'
 
 export const
@@ -68,6 +70,8 @@ export const
     cogs = faCogs,
     caretDown = faCaretDown,
     chevronDown = faChevronDown,
+    chevronCircleDown = faChevronCircleDown,
+    chevronCircleUp = faChevronCircleUp,
     comments = faComments,
     caretUp = faCaretUp,
     doorOpen = faDoorOpen,

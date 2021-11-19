@@ -242,12 +242,47 @@ export const recentlyViewedPlacesHeadingStyle = {
     paddingBottom: [20, .7, 20]
 }
 
+export const faqStyle = {
+    padding: [50, globals.style.layoutScalingValue, 25],
+    borderRadius: [10, .7, 10],
+    borderTop: `1px solid ${globals.colors.borderColor}`,
+    question: {
+        display: flex,
+        alignItems: center,
+        position: relative,
+        width: '100%',
+        backgroundColor: globals.colors.borderColor,
+        borderRadius: [5, .7, 5],
+        paddingTop: [10, .7, 10],
+        paddingBottom: [10, .7, 10],
+        paddingLeft: [15, .7, 15],
+        paddingRight: [50, .7, 50],
+        marginBottom: [10, .7, 10],
+        size: [20, .7, 18],
+        hover: {
+            cursor: pointer,
+            backgroundColor: colorPalette.ijGray
+        }
+    },
+    icon: {
+        position: absolute,
+        right: [20, globals.style.layoutScalingValue, 20]
+    },
+    answer: {
+        padding: [50, globals.style.layoutScalingValue, 30],
+        lineHeight: [28, .7, 24],
+        backgroundColor: colorPalette.ijGray,
+        borderRadius: [5, .7, 5]
+    }
+}
+
 export const aboutPageStyle = {
-    width: [1180, globals.style.layoutScalingValue, '100%'],
+    width: [1040, globals.style.layoutScalingValue, '100%'],
     marginTop: [50, .7, '0'],
     heading: {
         size: [36, .7, 32],
         margin: 0,
+        marginBottom: [20, .7, '0'],
         padding: 0,
         color: colorPalette.seaGreen,
         mobile: {
@@ -262,7 +297,9 @@ export const aboutPageStyle = {
         height: auto
     },
     sectionHeading: {
+        dispaly: flex,
         textAlign: center,
+        marginBottom: [40, .7, '0']
     },
     sectionInner: {
         marginTop: [40, .7, 40]
