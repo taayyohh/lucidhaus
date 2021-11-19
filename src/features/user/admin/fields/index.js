@@ -1,9 +1,9 @@
-import {DATE, IMAGE_UPLOAD, TEL, TEXT, UPLOAD_PATHS} from 'config/variables'
+import {DATE, IMAGE_UPLOAD, TEXT, UPLOAD_PATHS} from 'config/variables'
+import * as Yup                                 from 'yup'
 
 export const userFields = [
     {
         name: 'avatar',
-        inputLabel: 'Avatar',
         file: 'avatarFile',
         cropWidth: 500,
         cropHeight: 500,
@@ -26,30 +26,26 @@ export const userFields = [
         type: TEXT
     },
     {
-        name: 'tel',
-        inputLabel: 'Phone Number',
-        type: TEL
-    },
-    {
-        name: 'email',
-        inputLabel: 'Email',
-        type: TEXT,
-        disabled: true
-    },
-    {
         name: 'dateOfBirth',
         inputLabel: 'Birthday',
         type: DATE
     },
-    // {
-    //     name: 'handle',
-    //     inputLabel: 'Handle',
-    //     type: TEXT
-    // },
-    // {
-    //     name: 'role',
-    //     inputLabel: 'Account Type',
-    //     type: NUMBER,
-    //     disabled: true
-    // }
+    {
+        name: 'zip',
+        inputLabel: 'Zip Code',
+        type: TEXT
+    }
 ]
+
+export const validateUser = Yup.object().shape({
+    nameFirst: Yup.string()
+        .required('*')
+        .max(255),
+    nameMiddle: Yup.string()
+        .max(255),
+    nameLast: Yup.string()
+        .max(255),
+    zip: Yup
+        .string()
+        .max(5)
+})

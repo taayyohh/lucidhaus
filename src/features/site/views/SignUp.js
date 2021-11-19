@@ -20,14 +20,14 @@ const SignUp = () => {
     return (
         <ContentWrapper>
             {(confirmationRequest && (
-                <Form
-                    initialValues={confirmationCodeInitialValues}
-                    fields={confirmationCodeFields}
-                    dispatchAction={'user/confirmUser'}
-                    formHeading={'Verify Phone'}
-                    buttonText={'Confirm'}
-                    theme={signUpFormStyle}
-                />
+                    <Form
+                        initialValues={confirmationCodeInitialValues}
+                        fields={confirmationCodeFields}
+                        dispatchAction={'user/confirmUser'}
+                        formHeading={'Verify Phone'}
+                        buttonText={'Confirm'}
+                        theme={signUpFormStyle}
+                    />
             )) || (
                 <Form
                     initialValues={signUpInitialValues}

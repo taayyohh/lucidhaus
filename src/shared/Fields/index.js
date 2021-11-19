@@ -24,6 +24,7 @@ import {
 import React, {memo}  from 'react'
 import UploadAudio    from 'shared/Fields/UploadAudio'
 import UploadImage    from 'shared/Fields/UploadImage'
+import Tooltip        from '../Controls/ToolTip'
 import Address        from './Address'
 import Count          from './Count'
 import Country        from './Country'
@@ -147,6 +148,7 @@ const FieldSwitch = memo(({field, formik, options, theme, autoSubmit}) => {
                 label={field.inputLabel}
                 className={formik.touched[field.name] && formik.errors[field.name] ? 'error' : ''}
                 errorMessage={formik.touched[field.name] && formik.errors[field.name] ? formik.errors[field.name] : null}
+                tooltip={!!field.tooltip ? <Tooltip message={field.tooltip} /> : null}
             />
         case SELECT:
             return <Select

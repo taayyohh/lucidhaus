@@ -5,6 +5,9 @@ import {useDispatch, useSelector}                from 'react-redux'
 import Div                                       from 'shared/Basic/Div'
 import Form                                      from 'shared/Fields/Form'
 import ContentWrapper                            from 'shared/Layout/ContentWrapper'
+import {userDashboardMenu}                       from '../../../config/menus/dashboard/user'
+import DashboardWrapper                          from '../../../shared/Layout/Dashboard/DashboardWrapper'
+import {userContentWrapperStyle}                 from '../../user/admin/views/styles'
 
 const Reset = () => {
     const dispatch = useDispatch()
@@ -27,18 +30,20 @@ const Reset = () => {
     }, [])
 
     return (
-        <ContentWrapper>
-            <Div theme={signInFormWrapperStyle}>
-                <Form
-                    initialValues={initialValues}
-                    fields={resetFields}
-                    validationSchema={validateReset}
-                    dispatchAction={'user/resetPassword'}
-                    formHeading={'Reset Password'}
-                    buttonText={'Reset'}
-                    theme={signInFormStyle}
-                />
-            </Div>
+        <ContentWrapper theme={userContentWrapperStyle}>
+            <DashboardWrapper menu={userDashboardMenu}>
+                <Div theme={signInFormWrapperStyle}>
+                    <Form
+                        initialValues={initialValues}
+                        fields={resetFields}
+                        validationSchema={validateReset}
+                        dispatchAction={'user/resetPassword'}
+                        formHeading={'Reset Password'}
+                        buttonText={'Reset'}
+                        theme={signInFormStyle}
+                    />
+                </Div>
+            </DashboardWrapper>
         </ContentWrapper>
     )
 }

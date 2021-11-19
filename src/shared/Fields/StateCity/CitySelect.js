@@ -1,6 +1,6 @@
 import {timesCircleSolid}                   from 'config/icons'
 import {globals}                            from 'config/styles'
-import {City}                               from 'country-state-city'
+import {City, State}                        from 'country-state-city'
 import React, {useEffect, useRef, useState} from 'react'
 import Div                                  from 'shared/Basic/Div'
 import Fieldset                             from 'shared/Basic/Fieldset'
@@ -26,7 +26,6 @@ const CitySelect = ({
                         setFilteredCityInput,
                         setFilteredCityArray,
                         filterCityInput,
-                        selectedState,
                         className,
                         name,
                         value,
@@ -56,7 +55,7 @@ const CitySelect = ({
 
     useEffect(() => {
         if (!!filteredCityArray)
-            setFilteredCityArray(City.getCitiesOfState('US', selectedState.iso)?.reduce(function (accumulator = [], currentValue) {
+            setFilteredCityArray(City.getCitiesOfState('US', State.getStateByCodeAndCountry(formik.values.state, 'US')?.isoCode)?.reduce(function (accumulator = [], currentValue) {
                 if (currentValue.name.toLowerCase().includes(filterCityInput.toLowerCase()))
                     accumulator.push(currentValue)
 
@@ -64,7 +63,7 @@ const CitySelect = ({
             }, []))
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [filterCityInput, selectedState])
+    }, [filterCityInput, formik.values.state])
 
     useEffect(() => {
         const valueExists = value?.length > 0
@@ -103,6 +102,19 @@ const CitySelect = ({
                         ref={inputRef}
                     />
                 </Fieldset>
+                {formik?.values[name[0]]?.length > 0 && (
+                    <Div theme={stateCityOptionsWrapperStyle}>
+                        {filteredCityArray.map(city => (
+                            <Div
+                                key={city.name}
+                                onClick={() => handleCitySelect(city.name)}
+                                theme={stateCityOptionStyle}
+                            >
+                                {city.name}
+                            </Div>
+                        ))}
+                    </Div>
+                )}
                 {(formik.values[name[0]]?.length > 0) && (
                     <Div theme={stateSelectSelectionInnerWrapperStyle}>
                         <Div theme={stateSelectionLabelStyle}>Selected</Div>
@@ -124,19 +136,6 @@ const CitySelect = ({
                 )}
 
             </Div>
-            {formik?.values[name[0]]?.length > 0 && (
-                <Div theme={stateCityOptionsWrapperStyle}>
-                    {filteredCityArray.map(city => (
-                        <Div
-                            key={city.name}
-                            onClick={() => handleCitySelect(city.name)}
-                            theme={stateCityOptionStyle}
-                        >
-                            {city.name}
-                        </Div>
-                    ))}
-                </Div>
-            )}
         </Div>
     )
 }

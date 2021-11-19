@@ -173,6 +173,7 @@ export const headerMenuAuthStyleListItemStyle = {
 }
 export const dashboardMenuStyle = {
     minHeight: '750px',
+    marginBottom: [50, .7, 50],
     mobile: {
         minHeight: auto,
         zIndex: 5,
@@ -194,8 +195,16 @@ export const dashboardMenuMobileStyle = {
 }
 
 export const dashboardMenuInnerStyle = {
-    width: [200, globals.style.layoutScalingValue, '100%'],
+    width: [250, globals.style.layoutScalingValue, '100%'],
     position: 'fixed',
+    background: white,
+    display: flex,
+    flexDirection: column,
+    paddingTop: [30, .7, 30],
+    paddingBottom: [30, .7, 30],
+    borderRadius: [5, .7, 5],
+    border: `1px solid ${globals.colors.borderColor}`,
+    boxShadow: `1px 5px 7px 0px #e1e1e1`,
     mobile: {
         background: '#fff',
         position: absolute,
@@ -206,6 +215,7 @@ export const dashboardMenuInnerStyle = {
 }
 export const dashboardMenuItemStyle = isActive => {
     return {
+        position: relative,
         display: flex,
         alignItems: center,
         boxSizing: borderBox,
@@ -213,10 +223,10 @@ export const dashboardMenuItemStyle = isActive => {
         paddingRight: [10, globals.style.layoutScalingValue, 10],
         paddingBottom: [10, .7, 10],
         lineHeight: [20, .7, 20],
-        color: !isActive ? black : colorPalette.honeyYellow,
+        color: !isActive ? black : colorPalette.seaGreen,
         textDecoration: none,
         hover: {
-            color: colorPalette.honeyYellow,
+            color: colorPalette.seaGreen,
             cursor: pointer
         },
         child: [
@@ -232,6 +242,7 @@ export const dashboardMenuItemStyle = isActive => {
 export const dashboardItemTitleStyle = {
     textTransform: none,
     size: [15, .7, 15],
+    paddingLeft: [30, globals.style.layoutScalingValue, 30],
     weight: 500
 }
 
@@ -244,11 +255,10 @@ export const dashboardIconWrapperStyle = {
 
 export const dashboardActiveIndicator = {
     position: absolute,
-    height: [10, .7, 10],
-    width: [10, .7, 10],
-    borderRadius: [5, .7, 5],
-    right: [-20, .7, -20],
-    backgroundColor: colorPalette.honeyYellow
+    height: '100%',
+    width: [6, .7, 6],
+    left: 0,
+    backgroundColor: colorPalette.seaGreen
 }
 
 export const headerAccountMenuButtonStyle = {

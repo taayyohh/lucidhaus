@@ -20,6 +20,7 @@ const initialState = {
     nameMiddle: '',
     nameLast: '',
     tel: '',
+    zip: '',
     slug: '',
     isAuthenticated: false,
     isVerified: false,
@@ -27,6 +28,7 @@ const initialState = {
     error: false,
     loading: false,
     redirectToReferrer: false,
+    recentlyViewedPlaces: [],
     pendingPlaces: [],
     placeSubmissionSuccess: null,
     purchaseHistory: [],
@@ -80,7 +82,9 @@ export const slice = createSlice({
             state.role = action.payload.user.role
             state.slug = action.payload.user.slug
             state.tel = action.payload.user.tel
+            state.zip = action.payload.user.zip
             state.type = action.payload.user.type
+            state.objectID = action.payload.user.objectID
         },
         signInFailure: (state, action) => {
             state.loading = false
@@ -112,6 +116,8 @@ export const slice = createSlice({
             state.slug = action.payload.user.slug
             state.tel = action.payload.user.tel
             state.type = action.payload.user.type
+            state.zip = action.payload.user.zip
+            state.objectID = action.payload.user.objectID
             // state.flaggedReviews = [...action.payload.user.flaggedReviews]
         },
         isAuthenticatedFailure: state => {
@@ -127,6 +133,8 @@ export const slice = createSlice({
             state.isAdmin = false
             state.token = ''
             state._id = ''
+            state.objectID = ''
+            state.confirmationRequest = undefined
         },
         signOutFailure: (state, action) => {
             state.error = action.payload.message
@@ -148,6 +156,14 @@ export const slice = createSlice({
             state.loading = false
             state.redirectToReferrer = false
         },
+        updateUserPhoneNumberSuccess: (state, action) => {
+            state.confirmationRequest = undefined
+            state.tel = action.payload.tel
+        },
+        updateUserEmailSuccess: (state, action) => {
+            state.confirmationRequest = undefined
+            state.email = action.payload.email
+        },
         updateUserProfileSuccess: (state, action) => {
             state.isAdmin = action.payload.role === 0
             state.avatar = action.payload.avatar
@@ -162,6 +178,7 @@ export const slice = createSlice({
             state.slug = action.payload.slug
             state.tel = action.payload.tel
             state.type = action.payload.type
+            state.zip = action.payload.zip
         },
         updateFailure: (state, action) => {
             state.error = action.payload.error
@@ -214,6 +231,11 @@ export const slice = createSlice({
         },
         closeSubmissionPanel: (state) => {
             state.placeSubmissionSuccess = null
+        },
+        getRecentlyViewedPlaceSuccess: (state, action) => {
+            state.recentlyViewedPlaces = state.recentlyViewedPlaces.filter(item => item._id === action.payload._id).length < 1
+                ? [...state.recentlyViewedPlaces, {...action.payload}]
+                : state.recentlyViewedPlaces
         },
 
 

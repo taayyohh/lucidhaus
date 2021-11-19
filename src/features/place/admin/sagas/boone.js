@@ -27,6 +27,17 @@ export function* createPlaceFromBoone({payload}) {
 
         if (!createdPlaceCategory.error) {
             booneCategories.push(createdPlaceCategory.id)
+        } else {
+            if (!!createdPlaceCategory.error.id)
+                booneCategories.push(createdPlaceCategory.error.id)
+        }
+    }
+
+    const hours = []
+    if (!!boonePlace?.hours?.['<default>']) {
+        const array = Object.entries(boonePlace?.hours?.['<default>'])
+        for (const entry of array) {
+            hours.push(`&${entry[0]}/${entry[1]}`)
         }
     }
 
@@ -36,8 +47,10 @@ export function* createPlaceFromBoone({payload}) {
         {name: boonePlace.name},
         {address1: boonePlace?.locations?.[0].address1},
         {address2: boonePlace?.locations?.[0].address2},
+        {description: boonePlace?.description},
         {city: boonePlace?.locations?.[0].city},
         {categories: booneCategories},
+        {hours: hours},
         {zip: boonePlace?.locations?.[0].postal_code},
         {country: boonePlace?.locations?.[0].country},
         {state: boonePlace?.locations?.[0].state},
@@ -59,15 +72,10 @@ export function* createPlaceFromBoone({payload}) {
     if (!createdPlace.error) {
         yield put(push(`/places/${createdPlace.slug}`))
         yield put({type: 'place/getPlace', payload: {slug: createdPlace.slug}})
-
-
-        // yield put({type: 'place/getPlaces'})
-        // yield put(push(`/` + createdPlace.slug))
         yield put({type: 'place/createPlaceFromBooneSuccess', payload: {createdPlace}})
 
     } else {
         yield put(push(`/places/${createdPlace.error}`))
-       // yield put({type: 'place/createPlaceFromBooneFailure', payload: {createdPlace}})
     }
 
 }
@@ -76,7 +84,7 @@ export function* createPlaceFromBoone({payload}) {
 /**
  *
  *
- * ADMIN ARTIST WATCHERS
+ * ADMIN BOONE PLACE WATCHERS
  *
  *
  */

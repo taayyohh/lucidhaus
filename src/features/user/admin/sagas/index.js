@@ -26,12 +26,13 @@ export function* updateUser({payload}) {
         email,
         handle,
         ethnicHispanicOrigin,
-        tel
+        tel,
+        zip
     } = payload
 
     //add to formData so api can read
     const user = new FormData()
-    const fields = [{avatar}, {nameFirst}, {nameMiddle}, {nameLast}, {dateOfBirth}, {email}, {tel}, {handle}, {ethnicHispanicOrigin}]
+    const fields = [{avatar}, {nameFirst}, {nameMiddle}, {nameLast}, {dateOfBirth}, {email}, {tel}, {handle}, {ethnicHispanicOrigin}, {zip}]
     for (let field of fields)
         setFormData(user, field)
 
@@ -161,12 +162,13 @@ export function* updateProfile({payload}) {
         email,
         handle,
         ethnicHispanicOrigin,
-        tel
+        tel,
+        zip
     } = payload
 
     //add to formData so api can read
     const user = new FormData()
-    const fields = [{avatar}, {nameFirst}, {nameMiddle}, {nameLast}, {dateOfBirth}, {email}, {tel}, {handle}, {ethnicHispanicOrigin}]
+    const fields = [{avatar}, {nameFirst}, {nameMiddle}, {nameLast}, {dateOfBirth}, {email}, {tel}, {handle}, {ethnicHispanicOrigin}, {zip}]
     for (let field of fields)
         setFormData(user, field)
 
@@ -282,6 +284,7 @@ export function* recoverPassword({payload}) {
             yield put({
                 type: 'site/setNotification',
                 payload: {
+                    delay: 50000000,
                     notification: recover.message,
                     theme: 'green'
                 }

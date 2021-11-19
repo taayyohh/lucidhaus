@@ -36,7 +36,7 @@ export const defaultFormStyle = {
     alignItems: flexStart,
     flexDirection: column,
     width: auto,
-    padding: [50, .7, 50],
+    padding: [50, .7, 25],
     border: `1px solid ${colorPalette.gray}`,
     position: relative,
     height: auto,

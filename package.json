@@ -3,6 +3,9 @@
   "version": "0.1.2",
   "private": true,
   "dependencies": {
+    "@ckeditor/ckeditor5-basic-styles": "^31.0.0",
+    "@ckeditor/ckeditor5-essentials": "^31.0.0",
+    "@ckeditor/ckeditor5-paragraph": "^31.0.0",
     "@fortawesome/fontawesome-pro": "^5.15.4",
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
     "@fortawesome/free-solid-svg-icons": "^5.15.1",
@@ -90,6 +93,7 @@
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "^7.10.4",
     "@ckeditor/ckeditor5-build-classic": "^21.0.0",
+    "@ckeditor/ckeditor5-editor-classic": "^31.0.0",
     "@ckeditor/ckeditor5-react": "^2.1.0",
     "@fortawesome/free-brands-svg-icons": "^5.15.1",
     "history": "4.10.1",

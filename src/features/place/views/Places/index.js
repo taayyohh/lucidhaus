@@ -4,15 +4,19 @@ import {useDispatch, useSelector}                                  from 'react-r
 import Div                                                         from 'shared/Basic/Div'
 import ContentWrapper                                              from 'shared/Layout/ContentWrapper'
 import Map                                                         from 'shared/Map'
-import NoResults        from './NoResults'
-import MapSidebar       from './MapSidebar'
-import {placesMapStyle} from './styles'
+import {unslugify}                                                 from 'utils/helpers'
+import MapSidebar                                                  from './MapSidebar'
+import NoResults                                                   from './NoResults'
+import {placesMapStyle}                                            from './styles'
 
 const Places = () => {
     const {boonePlaces, algoliaPlaces, places, noResults} = useSelector(state => state.place)
+    const {slug} = useSelector(state => state.site)
+
     const dispatch = useDispatch()
     const [allPlaces, setAllPlaces] = useState([])
     const [features, setFeatures] = useState([])
+    const [geoJsonFeature, setGeoJsonFeature] = useState()
 
     useEffect(() => {
         setAllPlaces(
@@ -52,6 +56,7 @@ const Places = () => {
                             "averageWelcome": place.averageWelcome,
                             "inclusiveScore": place.inclusiveScore,
                             "name": place.geojson[0]?.properties?.name,
+                            "description": place.geojson[0]?.properties?.description,
                             "address": place.geojson[0]?.properties?.address,
                             "city": place.geojson[0]?.properties?.city,
                             "country": place.geojson[0]?.properties?.country,
@@ -74,6 +79,7 @@ const Places = () => {
                             "address": place?.locations?.[0]?.address1,
                             "city": place?.locations?.[0]?.city,
                             "country": place?.locations?.[0]?.country,
+                            "description": place.description,
                             "postalCode": place?.locations?.[0]?.postal_code,
                             "state": place?.locations?.[0]?.state,
                             "slug": place.id,
@@ -85,6 +91,14 @@ const Places = () => {
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [allPlaces])
+
+    useEffect(() => {
+        setGeoJsonFeature({
+            "type": "FeatureCollection",
+            "features": features
+        })
+
+    }, [features])
 
     useEffect(() => {
         dispatch({
@@ -102,15 +116,10 @@ const Places = () => {
         <ContentWrapper theme={placesContentWrapperStyle}>
             <Div theme={placesContentInnerWrapperStyle(noResults.boone && noResults.algolia)}>
                 <MapSidebar noResults={noResults.boone && noResults.algolia}/>
-                {(features.length > 0 && (
+                {((features.length > 0 && !!features?.[0]?.geometry?.coordinates?.[0] && !!features?.[0]?.geometry?.coordinates?.[1]) && (
                     <Map
                         styles={'mapbox://styles/mapbox/light-v10'}
-                        features={
-                            {
-                                "type": "FeatureCollection",
-                                "features": features
-                            }
-                        }
+                        features={geoJsonFeature}
                         lon={features?.[0]?.geometry?.coordinates?.[0]}
                         lat={features?.[0]?.geometry?.coordinates?.[1]}
                         theme={placesMapStyle}
@@ -118,7 +127,7 @@ const Places = () => {
                         scrollZoom={false}
                     />
                 )) || (
-                    <NoResults/>
+                    <NoResults search={unslugify(slug)}/>
                 )}
             </Div>
         </ContentWrapper>

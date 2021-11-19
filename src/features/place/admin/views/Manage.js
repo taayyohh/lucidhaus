@@ -21,8 +21,15 @@ const Manage = () => {
     }, [])
 
     useEffect(() => {
-        if (places?.length > 0)
-            placesIndex.saveObjects(places)
+        if (places?.length > 0) {
+            const reduced = places.reduce(function (accumulator = [], currentValue) {
+                if (!currentValue.isPendingSubmission)
+                    accumulator.push(currentValue)
+
+                return accumulator
+            }, [])
+
+            placesIndex.saveObjects(reduced)
                 .then(() => setIsIndexed(true))
                 .catch(error =>
                     dispatch({
@@ -30,6 +37,7 @@ const Manage = () => {
                         payload: {notification: error}
                     })
                 )
+        }
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [places])
@@ -44,7 +52,7 @@ const Manage = () => {
                 <LinkSwitch url={'/admin/place/taxonomy'} children={'Taxonomy'}/>
 
                 {isIndexed && (
-                    <List />
+                    <List/>
                 )}
             </AdminDashboardWrapper>
         </ContentWrapper>

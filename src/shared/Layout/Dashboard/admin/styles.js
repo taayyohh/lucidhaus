@@ -266,7 +266,11 @@ export const adminOrderWrapperStyle = {
 export const adminFormWrapperStyle = {
     width: '100%',
     paddingLeft: [100, globals.style.layoutScalingValue, 25],
-    paddingRight: [100, globals.style.layoutScalingValue, 25]
+    paddingRight: [100, globals.style.layoutScalingValue, 25],
+    heading: {
+        size: [36, .7, 30],
+        marginBottom: [30, .7, 30]
+    }
 }
 
 export const adminFormSongWrapperStyle = {

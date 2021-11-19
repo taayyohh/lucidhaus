@@ -35,6 +35,7 @@ const StateCity = memo(({className, name, errorMessage, field, formik, options, 
             formik.setFieldValue('zip', zipcodes.lookupByName(value.city, value.state)?.[0]?.zip)
         }
 
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [value.address1, value.city, value.state])
 
     return (
@@ -49,18 +50,17 @@ const StateCity = memo(({className, name, errorMessage, field, formik, options, 
                 selectedState={selectedState}
                 setFilteredCityArray={setFilteredCityArray}
             />
-                <CitySelect
-                    className={className}
-                    formik={formik}
-                    name={name}
-                    theme={theme}
-                    value={value[name[1]]}
-                    filteredCityArray={filteredCityArray}
-                    filterCityInput={filterCityInput}
-                    selectedState={selectedState}
-                    setFilteredCityInput={setFilteredCityInput}
-                    setFilteredCityArray={setFilteredCityArray}
-                />
+            <CitySelect
+                className={className}
+                formik={formik}
+                name={name}
+                theme={theme}
+                value={value[name[1]]}
+                filteredCityArray={filteredCityArray}
+                filterCityInput={filterCityInput}
+                setFilteredCityInput={setFilteredCityInput}
+                setFilteredCityArray={setFilteredCityArray}
+            />
         </Div>
     )
 })

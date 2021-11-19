@@ -1,20 +1,27 @@
-import {push}                                                   from 'connected-react-router'
-import cryptoRandomString                                       from 'crypto-random-string'
-import {signin, signout, signup}                                from 'features/site/services'
-import {confirmTwilioVerification, sendTwilioVerification}      from 'features/site/services/twilio'
+import {push}                                              from 'connected-react-router'
+import cryptoRandomString                                  from 'crypto-random-string'
+import {signin, signout, signup}                           from 'features/site/services'
+import {
+    confirmTwilioEmailVerification,
+    confirmTwilioVerification,
+    sendTwilioEmailVerification,
+    sendTwilioVerification
+} from 'features/site/services/twilio'
 import {
     addFlaggedReview,
     addPlaceSubmissionToUserHistory,
     getPurchaseHistory,
-    getUser, getUserById,
+    getUser,
+    getUserById,
     getUsers,
     verifyUserEmail
-} from 'features/user/services'
-import {takeEvery}                                              from 'redux-saga/dist/redux-saga-effects-npm-proxy.esm'
-import {call, put}                                              from 'redux-saga/effects'
-import {createEntity}                                           from 'utils/abstractions/crud'
-import {setFormData}                                            from 'utils/abstractions/setFormData'
-import {formatPhone}                                            from 'utils/helpers'
+}                                                          from 'features/user/services'
+import {getPlaceById}                                      from 'features/place/services'
+import {takeEvery}                                         from 'redux-saga/dist/redux-saga-effects-npm-proxy.esm'
+import {call, put}                  from 'redux-saga/effects'
+import {createEntity, updateEntity} from 'utils/abstractions/crud'
+import {setFormData}                from 'utils/abstractions/setFormData'
+import {formatPhone}                                       from 'utils/helpers'
 
 export function* signIn({payload}) {
     try {
@@ -81,9 +88,127 @@ export function* signUp({payload}) {
     }
 }
 
+export function* updateUserPhoneNumber({payload}) {
+    const verificationToken = yield call(sendTwilioVerification, payload)
+    if (verificationToken === 'pending') {
+        yield put({
+            type: 'user/requestTwilioCodeConfirmation',
+            payload: {
+                verificationToken: verificationToken,
+                ...payload
+            }
+        })
+    }
+}
+
+export function* confirmUpdatePhoneNumber({payload}) {
+    const confirmedUser = yield call(confirmTwilioVerification, payload)
+    const {tel, slug, _id, token} = payload
+
+    const user = new FormData()
+    const fields = [{tel}]
+    for (let field of fields)
+        setFormData(user, field)
+
+    if (confirmedUser === 'approved') {
+        try {
+            const updated = yield call(updateEntity, {
+                slug: slug,
+                parentSlug: 'user',
+                body: user,
+                _id: _id,
+                token: token,
+            })
+            if (!updated.error) {
+                yield put({type: 'user/updateUserPhoneNumberSuccess', payload: updated})
+                yield put({
+                    type: 'site/setNotification',
+                    payload: {
+                        notification: 'Your phone number has been updated.',
+                        theme: 'green'
+                    }
+                })
+
+            } else {
+                yield put({type: 'user/updateUserFailure', payload: updated})
+            }
+        } catch (error) {
+            yield put({type: 'user/updateUserFailure'})
+        }
+    } else {
+        yield put({
+            type: 'site/setNotification',
+            payload: {
+                notification: 'The Verification code entered is invalid. Please Re-enter the code.',
+                theme: 'red'
+            }
+        })
+    }
+}
+
+export function* updateUserEmail({payload}) {
+    const verificationToken = yield call(sendTwilioEmailVerification, payload)
+    if (verificationToken === 'pending') {
+        yield put({
+            type: 'user/requestTwilioCodeConfirmation',
+            payload: {
+                verificationToken: verificationToken,
+                ...payload
+            }
+        })
+    }
+}
+
+export function* confirmUpdateEmail({payload}) {
+    const confirmedUser = yield call(confirmTwilioEmailVerification, payload)
+    const {email, slug, _id, token} = payload
+
+    const user = new FormData()
+    const fields = [{email}]
+    for (let field of fields)
+        setFormData(user, field)
+
+    if (confirmedUser === 'approved') {
+        try {
+            const updated = yield call(updateEntity, {
+                slug: slug,
+                parentSlug: 'user',
+                body: user,
+                _id: _id,
+                token: token,
+            })
+            if (!updated.error) {
+                yield put({type: 'user/updateUserEmailSuccess', payload: updated})
+                yield put({
+                    type: 'site/setNotification',
+                    payload: {
+                        notification: 'Your email address has been successfully updated.',
+                        theme: 'green'
+                    }
+                })
+
+            } else {
+                yield put({type: 'user/updateUserFailure', payload: updated})
+            }
+        } catch (error) {
+            yield put({type: 'user/updateUserFailure'})
+        }
+    } else {
+        yield put({
+            type: 'site/setNotification',
+            payload: {
+                notification: 'The Verification code entered is invalid. Please Re-enter the code.',
+                theme: 'red'
+            }
+        })
+    }
+}
+
+
+
 export function* confirmUser({payload}) {
     const confirmedUser = yield call(confirmTwilioVerification, payload)
-    const {acceptTerms, email, nameFirst, password, tel, verificationCode,} = payload
+    const {acceptTerms, email, nameFirst, password, tel, verificationCode} = payload
 
     if (confirmedUser === 'approved') {
         const user = yield call(signup, {
@@ -92,7 +217,7 @@ export function* confirmUser({payload}) {
             nameFirst,
             password,
             tel: formatPhone(tel),
-            verificationCode,
+            verificationCode
         })
         try {
             if (!user.error) {
@@ -128,7 +253,7 @@ export function* confirmUser({payload}) {
         yield put({
             type: 'site/setNotification',
             payload: {
-                notification: 'incorrect code',
+                notification: 'The Verification code entered is invalid. Please Re-enter the code.',
                 theme: 'red'
             }
         })
@@ -278,17 +403,17 @@ export function* flagReview({payload}) {
             type: 'user/flagReviewSuccess',
         })
         //TODO: make this call more specific so the entire place doesn't need to be reloaded
-       yield put({type: 'place/getPlace', payload: {slug: placeSlug}})
+        yield put({type: 'place/getPlace', payload: {slug: placeSlug}})
 
 
-       //  yield put({
-       //      type: 'user/getUser',
-       //      payload: {
-       //          slug: slug,
-       //          _id: _id,
-       //          token: token
-       //      }
-       //  })
+        //  yield put({
+        //      type: 'user/getUser',
+        //      payload: {
+        //          slug: slug,
+        //          _id: _id,
+        //          token: token
+        //      }
+        //  })
     }
 }
 
@@ -322,6 +447,18 @@ export function* submitPlaceSuccess({payload}) {
     }
 }
 
+export function* getRecentlyViewedPlace({payload}) {
+    try {
+        const place = yield call(getPlaceById, payload)
+        if (!place.error) {
+            yield put({type: 'user/getRecentlyViewedPlaceSuccess', payload: place})
+        } else {
+            yield put({type: 'user/getRecentlyViewedPlaceFailure', payload: place})
+        }
+    } catch (error) {
+        yield put({type: 'user/getPlaceFailure'})
+    }
+}
 
 
 /**
@@ -346,6 +483,22 @@ export function* watchSignOut() {
 
 export function* watchSignUp() {
     yield takeEvery('user/signUp', signUp)
+}
+
+export function* watchUpdateUserPhoneNumber() {
+    yield takeEvery('user/updatePhoneNumber', updateUserPhoneNumber)
+}
+
+export function* watchConfirmUpdatePhoneNumber() {
+    yield takeEvery('user/confirmUpdatePhoneNumber', confirmUpdatePhoneNumber)
+}
+
+export function* watchUpdateUserEmail() {
+    yield takeEvery('user/updateEmail', updateUserEmail)
+}
+
+export function* watchConfirmUpdateEmail() {
+    yield takeEvery('user/confirmUpdateEmail', confirmUpdateEmail)
 }
 
 export function* watchUserHistory() {
@@ -384,5 +537,8 @@ export function* watchFlagReview() {
     yield takeEvery('user/flagReview', flagReview)
 }
 
+export function* watchGetRecentlyViewedPlace() {
+    yield takeEvery('user/getRecentlyViewedPlace', getRecentlyViewedPlace)
+}
 
 

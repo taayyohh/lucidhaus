@@ -22,7 +22,7 @@ const Reviews = () => {
         <ContentWrapper theme={userContentWrapperStyle}>
             <DashboardWrapper menu={userDashboardMenu}>
                 <DashboardInfo
-                    heading={'Your Reviews'}
+                    heading={'My Reviews'}
                     description={"Here are the reviews you've left. Click to Edit."}
                 />
                 {!isVerified && (

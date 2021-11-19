@@ -19,21 +19,21 @@ const MapController = ({children}) => {
 
     const flyToStore = (currentFeature, map) => {
         map.flyTo({
-            center: currentFeature.geometry.coordinates,
+            center: currentFeature?.geometry?.coordinates,
             zoom: 15
         })
     }
-
 
     const createPopUp = (currentFeature, map) => {
         const popUps = document.getElementsByClassName('mapboxgl-popup')
         /** Check if there is already a popup on the map and if so, remove it */
         if (popUps[0]) popUps[0].remove()
 
-        new mapboxgl.Popup({closeOnClick: false})
-            .setLngLat(currentFeature.geometry.coordinates)
-            .setHTML(ReactDOMServer.renderToString(<PopUp currentFeature={currentFeature}/>))
-            .addTo(map)
+        if(!!currentFeature?.geometry?.coordinates)
+            new mapboxgl.Popup({closeOnClick: false})
+                .setLngLat(currentFeature?.geometry?.coordinates)
+                .setHTML(ReactDOMServer.renderToString(<PopUp currentFeature={currentFeature}/>))
+                .addTo(map)
     }
 
     useEffect(() => {

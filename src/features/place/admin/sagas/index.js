@@ -1,10 +1,10 @@
 import {push}                          from 'connected-react-router'
 import {deletePlace, getPendingPlaces} from 'features/place/services'
+import {getFlaggedReviews}             from 'features/place/services/reviews'
 import {getSignedRequest, uploadFile}  from 'features/site/services/s3'
 import {call, put, takeLatest}         from 'redux-saga/effects'
 import {createEntity, updateEntity}    from 'utils/abstractions/crud'
 import {setFormData}                   from 'utils/abstractions/setFormData'
-import {getFlaggedReviews}             from '../../services/reviews'
 
 export function* createPlace({payload}) {
     const {

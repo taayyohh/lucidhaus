@@ -1,14 +1,14 @@
+import {timesCircleSolid}                   from 'config/icons'
 import {globals}                            from 'config/styles'
 import {City, State}                        from 'country-state-city'
 import React, {useEffect, useRef, useState} from 'react'
 import Div                                  from 'shared/Basic/Div'
 import Fieldset                             from 'shared/Basic/Fieldset'
+import Icon                                 from 'shared/Basic/Icon'
 import Input                                from 'shared/Basic/Input'
 import InputLabel                           from 'shared/Basic/InputLabel'
 import Legend                               from 'shared/Basic/Legend'
 import useMeasure                           from 'utils/useMeasure'
-import {timesCircleSolid}                   from '../../../config/icons'
-import Icon                                 from '../../Basic/Icon'
 import {defaultFocusedInputLabelStyle}      from '../styles'
 import {
     stateCityFieldsetWrapperStyle,
@@ -23,8 +23,6 @@ import {
 
 const StateSelect = ({
                          formik,
-                         setSelectedState,
-                         selectedState,
                          setFilteredCityArray,
                          className,
                          name,
@@ -41,9 +39,8 @@ const StateSelect = ({
     const [filterStateInput, setFilteredStateInput] = useState('')
     const [filteredStateArray, setFilteredStateArray] = useState(State.getStatesOfCountry('US'))
 
-    const handleStateSelect = (iso, state) => {
+    const handleStateSelect = (iso) => {
         setFilteredCityArray(City.getCitiesOfState('US', iso))
-        setSelectedState({iso, state})
         formik.setFieldValue(name[0], iso)
         formik.setFieldValue(name[1], '')
     }
@@ -88,6 +85,7 @@ const StateSelect = ({
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
+
     return (
         <Div theme={stateCitySelectStyle}>
             <Div theme={stateSelectSelectionWrapperStyle}>
@@ -117,17 +115,27 @@ const StateSelect = ({
                         ref={inputRef}
                     />
                 </Fieldset>
+                <Div theme={stateCityOptionsWrapperStyle}>
+                    {filteredStateArray && filteredStateArray.map((state, i) => (
+                        <Div
+                            key={state.isoCode}
+                            onClick={() => handleStateSelect(state.isoCode, state.name)}
+                            theme={stateCityOptionStyle}
+                        >
+                            {state.name}
+                        </Div>
+                    ))}
+                </Div>
                 <Div theme={stateSelectSelectionInnerWrapperStyle}>
                     <Div theme={stateSelectionLabelStyle}>Selected</Div>
-                    {selectedState.state && (
+                    {State.getStateByCodeAndCountry(formik.values.state, 'US')?.name?.length > 0 && (
                         <Div
                             theme={stateCitySelectedOptionStyle}
                             onClick={() => {
                                 formik.setFieldValue(name[0], '')
-                                setSelectedState('')
                             }}
                         >
-                            {selectedState.state}
+                            {State.getStateByCodeAndCountry(formik.values.state, 'US').name}
                             <Icon
                                 icon={timesCircleSolid}
                                 theme={stateCitySelectedOptionStyle.icon}
@@ -135,17 +143,6 @@ const StateSelect = ({
                         </Div>
                     )}
                 </Div>
-            </Div>
-            <Div theme={stateCityOptionsWrapperStyle}>
-                {filteredStateArray && filteredStateArray.map((state, i) => (
-                    <Div
-                        key={state.isoCode}
-                        onClick={() => handleStateSelect(state.isoCode, state.name)}
-                        theme={stateCityOptionStyle}
-                    >
-                        {state.name}
-                    </Div>
-                ))}
             </Div>
         </Div>
     )

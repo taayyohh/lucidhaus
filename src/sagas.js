@@ -11,6 +11,7 @@ import {
 }                                  from 'features/place/admin/sagas'
 import {watchCreatePlaceFromBoone} from 'features/place/admin/sagas/boone'
 import {
+    watchAddToViewCount,
     watchGetPlaceCategoryByNameOrDescription,
     watchGetPlaceDetail,
     watchGetPlaces,
@@ -78,9 +79,11 @@ import {
     watchUpdateUserIdentity
 }                                  from 'features/user/admin/sagas'
 import {
+    watchConfirmUpdateEmail,
+    watchConfirmUpdatePhoneNumber,
     watchConfirmUser,
     watchCreateVerificationToken,
-    watchFlagReview,
+    watchFlagReview, watchGetRecentlyViewedPlace,
     watchGetSubmittedBy,
     watchGetUser,
     watchGetUsers,
@@ -88,10 +91,10 @@ import {
     watchSignIn,
     watchSignOut,
     watchSignUp,
-    watchSignUpSignInSuccess,
+    watchSignUpSignInSuccess, watchUpdateUserEmail, watchUpdateUserPhoneNumber,
     watchUserHistory,
     watchVerifyUser
-}                                  from 'features/user/sagas'
+} from 'features/user/sagas'
 import {
     watchAuthenticate,
     watchAuthenticateSuccess,
@@ -250,6 +253,12 @@ export default function* rootSaga() {
         fork(watchConfirmResetToken),
         fork(watchResetPassword),
         fork(watchFlagReview),
+        fork(watchGetRecentlyViewedPlace),
+        fork(watchUpdateUserPhoneNumber),
+        fork(watchConfirmUpdatePhoneNumber),
+        fork(watchUpdateUserEmail),
+        fork(watchConfirmUpdateEmail),
+
 
         //user -- taxonomy
         fork(watchCreateAdaptiveEquipment),
@@ -316,6 +325,7 @@ export default function* rootSaga() {
         fork(watchCreatePlaceFromBoone),
         fork(watchSearchAllPlaces),
         fork(watchGetPlaceCategoryByNameOrDescription),
+        fork(watchAddToViewCount),
         fork(watchSearchAlgoliaPlaceIndex),
         fork(watchAddReview),
         fork(watchUpdateReview),

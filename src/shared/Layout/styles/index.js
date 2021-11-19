@@ -233,6 +233,7 @@ export const defaultModalStyle = {
     backgroundColor: white,
     border: `1px solid ${globals.colors.borderColor}`,
     borderRadius: [10, .7, 10],
+    zIndex: 4,
     mobile: {
         paddingTop: 100,
         marginLeft: 0,
@@ -242,6 +243,10 @@ export const defaultModalStyle = {
         height: '100vh',
         width: '100vw'
     }
+}
+
+export const notificationInnerWrapperStyle = {
+    padding: [30, .7, 30]
 }
 
 export const notificationWrapperStyle = theme => {
@@ -259,8 +264,10 @@ export const notificationWrapperStyle = theme => {
         paddingLeft: [5, globals.style.layoutScalingValue, 5],
         paddingRight: [5, globals.style.layoutScalingValue, 5],
         top: [0, .7, globals.style.mobileHeaderHeight],
-        left: 0,
-        width: '100vw',
+        // left: [-380, globals.style.layoutScalingValue, '-100vw'],
+     //   width: '100vw',
+        width: [300, globals.style.layoutScalingValue, '100vw'],
+        // height: [200, .7, ]
         textAlign: center,
         color: white,
         size: [18, .7, 18],

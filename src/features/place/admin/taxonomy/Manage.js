@@ -2,7 +2,6 @@ import React, {useEffect}         from 'react'
 import {useSelector}              from 'react-redux'
 import Div                        from 'shared/Basic/Div'
 import LinkSwitch                 from 'shared/Basic/LinkSwitch'
-import DeletePrompt               from 'shared/Controls/DeletePrompt'
 import ContentWrapper             from 'shared/Layout/ContentWrapper'
 import AdminDashboardWrapper      from 'shared/Layout/Dashboard/admin/AdminDashboardWrapper'
 import DashboardInfo              from 'shared/Layout/Dashboard/DashboardInfo'
@@ -45,9 +44,6 @@ const Manage = () => {
                         Place Category
                     </LinkSwitch>
                 </Div>
-
-
-                <DeletePrompt destroyAction={'admin/destroyProductCategory'}/>
             </AdminDashboardWrapper>
         </ContentWrapper>
     )

@@ -97,13 +97,15 @@ const Place = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [slug, placeId])
 
+
+    /**
+     Add Boone Place Resource to InclusiveGuide Database
+     **/
     useEffect(() => {
         const boonePlaceRemoved = hasError(error?.boonePlace?.[0]?.status)
         const hasNoBoonePlace = hasError(error?.boonePlace?.status)
         const hasNoPlace = hasError(error?.place?.status)
         const hasBoonePlace = !isEmpty(boonePlace)
-
-        console.log('error', error)
 
         if ((hasNoPlace && hasNoBoonePlace) || boonePlaceRemoved) {
             debounce(history.push(`/places`), 500)
@@ -222,10 +224,35 @@ const Place = () => {
             }
         })
 
+        setTimeout(() => {
+            if (!!place._id) {
+                dispatch({
+                    type: 'place/addToViewCount',
+                    payload: {
+                        placeId: place._id,
+                        viewedAt: Date.now(),
+                        _id,
+                        token
+                    }
+                })
+            }
+        }, 5000)
+
+
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [place])
 
-    /* ---- Index Newly Added Boone Place in Algolia Search Index */
+    useEffect(() => {
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+
+    }, [])
+
+    /**
+     *
+     * Index Newly Added Boone Place in Algolia Search Index
+     *
+     **/
     useEffect(() => {
         if (createdFromBoone.length > 0) {
             placesIndex.saveObjects(createdFromBoone)
@@ -319,7 +346,7 @@ const Place = () => {
                                 {communitiesServed.length > 0 && (
                                     <Div theme={placeTaxonomyStyle}>
                                         <Div theme={placeTaxonomyStyle.title}>
-                                            Communities Served
+                                            Affinity Space
                                         </Div>
                                         {communitiesServed && communitiesServed.map((community, i) => (
                                             <Div key={i} theme={placeTaxonomyStyle.name}>{community.name}</Div>

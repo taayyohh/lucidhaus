@@ -1,5 +1,5 @@
 import {globals}                                                               from 'config/styles'
-import {DATE, MAPBOX_PUBLIC, TEL}                                              from 'config/variables'
+import {DATE, TEL}                                                             from 'config/variables'
 import PropTypes                                                               from 'prop-types'
 import React, {useEffect, useRef, useState}                                    from 'react'
 import Fieldset                                                                from 'shared/Basic/Fieldset'
@@ -10,10 +10,6 @@ import Span                                                                    f
 import {formatPhone}                                                           from 'utils/helpers'
 import useMeasure                                                              from 'utils/useMeasure'
 import {defaultFieldErrorStyle, defaultFocusedInputLabelStyle, invisibleStyle} from './styles'
-
-
-const mapboxGeo = require('@mapbox/mapbox-sdk/services/geocoding');
-const geocodingClient = mapboxGeo({accessToken: MAPBOX_PUBLIC});
 
 const SmartInput = ({
                         autoFocus,
@@ -60,8 +56,6 @@ const SmartInput = ({
         if (autoSubmit) {
             formik.submitForm()
         }
-
-
     }
     const handleFocus = () => {
         setIsInputLabelFocused(true)
@@ -88,6 +82,8 @@ const SmartInput = ({
     useEffect(() => {
         if (type === TEL) {
             setTel(formatPhone(value))
+        } else {
+            setTel(undefined)
         }
 
 
@@ -118,10 +114,11 @@ const SmartInput = ({
                 onBlur={handleBlur}
                 onKeyUp={handleKeyUp}
                 type={type || 'text'}
-                value={tel || value || ''}
+                value={value || tel || ''}
                 theme={theme.field}
                 disabled={disabled}
                 autoFocus={autoFocus}
+                autoComplete="no"
                 ref={inputRef}
             />
             <Span theme={defaultFieldErrorStyle}>{errorMessage}</Span>

@@ -14,21 +14,6 @@ import * as Yup                                                                 
 
 export const placeFields = [
     {
-        name: 'name',
-        inputLabel: 'Name',
-        type: TEXT
-    },
-    {
-        name: 'description',
-        inputLabel: 'Description',
-        type: RICH_TEXT
-    },
-    {
-        name: 'website',
-        inputLabel: 'Website',
-        type: TEXT
-    },
-    {
         name: 'photo',
         file: 'photoFile',
         cropWidth: 1920,
@@ -36,6 +21,22 @@ export const placeFields = [
         aspect: 16 / 9,
         s3Path: UPLOAD_PATHS.place,
         type: IMAGE_UPLOAD,
+    },
+    {
+        name: 'name',
+        inputLabel: 'Name',
+        type: TEXT
+    },
+    {
+        name: 'description',
+        inputLabel: 'Description',
+        type: RICH_TEXT,
+        tooltip: 'Write a description for your business.'
+    },
+    {
+        name: 'website',
+        inputLabel: 'Website',
+        type: TEXT
     },
     {
         name: 'tel',
@@ -187,9 +188,10 @@ export const validatePlace = Yup.object().shape({
         .string(),
     name: Yup
         .string()
-        .max(50)
+        .max(255)
         .required('Required'),
     description: Yup
         .string()
+        .max(5000)
         .required('Required'),
 })

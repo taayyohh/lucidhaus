@@ -1,9 +1,9 @@
-import React                                     from 'react'
-import {BrowserRouter}                           from 'react-router-dom';
-import Div                                       from 'shared/Basic/Div'
-import LinkSwitch                                from 'shared/Basic/LinkSwitch'
-import InclusiveScore                            from 'shared/Cards/Place/InclusiveScore'
-import {mapPopUpAddressStyle, mapPopUpNameStyle} from './styles'
+import React                                                               from 'react'
+import {BrowserRouter}                                                     from 'react-router-dom';
+import Div                                                                 from 'shared/Basic/Div'
+import LinkSwitch                                                          from 'shared/Basic/LinkSwitch'
+import {excerpt}                                                           from 'utils/helpers'
+import {mapPopUpAddressStyle, mapPopUpDescriptionStyle, mapPopUpNameStyle} from './styles'
 
 
 const PopUp = ({currentFeature}) => {
@@ -18,15 +18,13 @@ const PopUp = ({currentFeature}) => {
                         {currentFeature?.properties?.name}
                     </LinkSwitch>
                     <Div theme={mapPopUpAddressStyle}>{currentFeature?.properties?.address}</Div>
+                    {!!currentFeature?.properties?.description && (
+                        <Div theme={mapPopUpDescriptionStyle}>
+                            {excerpt(currentFeature?.properties?.description, 35)}
+                        </Div>
+                    )}
+
                 </Div>
-                {/*{currentFeature?.properties?.inclusiveScore > 0 && (*/}
-                {/*    <InclusiveScore*/}
-                {/*        safe={currentFeature?.properties?.averageSafe}*/}
-                {/*        celebrated={currentFeature?.properties?.averageCelebrated}*/}
-                {/*        welcome={currentFeature?.properties?.averageWelcome}*/}
-                {/*        inclusiveScore={currentFeature?.properties?.inclusiveScore}*/}
-                {/*    />*/}
-                {/*)}*/}
             </BrowserRouter>
 
         </Div>

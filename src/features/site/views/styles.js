@@ -1,7 +1,20 @@
-import {colorPalette, globals}                                                               from 'config/styles'
-import {CDN}                                                                                 from 'config/variables'
-import {absolute, auto, center, column, flex, none, pointer, relative, sv, uppercase, white} from 'utils/themer'
-import {placesSearchFormStyle}                                                               from '../../place/views/styles'
+import {colorPalette, globals} from 'config/styles'
+import {CDN}                   from 'config/variables'
+import {
+    absolute,
+    auto,
+    center,
+    column,
+    flex,
+    inlineFlex,
+    none,
+    pointer,
+    relative,
+    sv,
+    uppercase,
+    white
+}                              from 'utils/themer'
+import {placesSearchFormStyle} from '../../place/views/styles'
 
 export const homeImageWrapperStyle = {
     display: flex,
@@ -126,6 +139,7 @@ export const homeSignupImageStyle = {
 
 export const homeSignupWrapperStyle = {
     display: flex,
+    flexDirection: column,
     marginBottom: [100, .7, 100],
     mobile: {
         flexDirection: column
@@ -135,12 +149,6 @@ export const homeSignupWrapperStyle = {
 export const homeSignupQuoteWrapperStyle = {
     display: flex,
     flexDirection: column,
-    width: [1200, globals.style.layoutScalingValue, '100%'],
-    background: white,
-    paddingLeft: [108, globals.style.layoutScalingValue, '0'],
-    paddingRight: [108, globals.style.layoutScalingValue, '0'],
-    paddingTop: [50, globals.style.layoutScalingValue, 50],
-    paddingBottom: [50, globals.style.layoutScalingValue, 50],
     marginTop: [80, .7, '0'],
     borderRadius: [10, .7, 10],
     border: `1px solid ${globals.colors.borderColor}`,
@@ -149,11 +157,15 @@ export const homeSignupQuoteWrapperStyle = {
 
 export const homeSignupQuoteStyle = {
     size: [28, globals.style.layoutScalingValue, 19],
-    width: '70%',
     margin: '0 auto',
     textAlign: center,
+    background: white,
+    paddingLeft: [108, globals.style.layoutScalingValue, '0'],
+    paddingRight: [108, globals.style.layoutScalingValue, '0'],
+    paddingTop: [50, globals.style.layoutScalingValue, 50],
+    paddingBottom: [50, globals.style.layoutScalingValue, 50],
+    width: [1200, globals.style.layoutScalingValue, '100%'],
     // lineHeight: [55, globals.style.layoutScalingValue, 30],
-    paddingLeft: 0,
     child: {
         selector: '> div',
         marginTop: [15, .7, 15]
@@ -161,7 +173,6 @@ export const homeSignupQuoteStyle = {
 }
 
 export const homeSignupButtonStyle = {
-    alignSelf: center,
     width: auto,
     marginTop: [30, .7, 30],
     size: [16, .7, 16],
@@ -170,7 +181,8 @@ export const homeSignupButtonStyle = {
     paddingTop: [15, globals.style.layoutScalingValue, 15],
     paddingBottom: [15, globals.style.layoutScalingValue, 15],
     backgroundColor: colorPalette.seaGreen,
-    display: flex,
+    display: inlineFlex,
+    alignSelf: center,
     alignItems: center,
     justifyContent: center,
     border: `1px solid ${colorPalette.seaGreen}`,
@@ -187,4 +199,141 @@ export const homeSignupButtonStyle = {
 export const homeContentWrapperStyle = {
     width: '100%',
     margin: 0
+}
+
+export const recentlyViewedPlaceCardStyle = {
+    border: `1px solid ${globals.colors.borderColor}`,
+    textDecoration: none,
+    hover: {
+        color: colorPalette.seaGreen
+    },
+    locationWrapper: {
+        display: none
+    }
+}
+
+export const recentlyViewedPlaceCardWrapperStyle = {
+    display: 'grid',
+    gridTemplateColumns: `${sv(460, globals.style.layoutScalingValue)} ${sv(460, globals.style.layoutScalingValue)} ${sv(460, globals.style.layoutScalingValue)}`,
+    gridGap: sv(30, globals.style.layoutScalingValue),
+    mobile: {
+        display: flex,
+        flexDirection: column
+    }
+
+}
+
+export const recentlyViewedWrapperStyle = {
+    maxWidth: [1420, globals.style.layoutScalingValue, '100%'],
+    margin: '0 auto',
+    marginTop: [50, .7, 50],
+    mobile: {
+        width: 'calc(100% - 50px)',
+        margin: '0 auto',
+        marginTop: 50
+    }
+}
+
+export const recentlyViewedPlacesHeadingStyle = {
+    size: [24, .7, 24],
+    weight: 500,
+    borderBottom: `1px solid ${globals.colors.borderColor}`,
+    marginBottom: [50, .7, 50],
+    paddingBottom: [20, .7, 20]
+}
+
+export const faqStyle = {
+    padding: [50, globals.style.layoutScalingValue, 25],
+    borderRadius: [10, .7, 10],
+    borderTop: `1px solid ${globals.colors.borderColor}`,
+    question: {
+        display: flex,
+        alignItems: center,
+        position: relative,
+        width: '100%',
+        backgroundColor: globals.colors.borderColor,
+        borderRadius: [5, .7, 5],
+        paddingTop: [10, .7, 10],
+        paddingBottom: [10, .7, 10],
+        paddingLeft: [15, .7, 15],
+        paddingRight: [50, .7, 50],
+        marginBottom: [10, .7, 10],
+        size: [20, .7, 18],
+        hover: {
+            cursor: pointer,
+            backgroundColor: colorPalette.ijGray
+        }
+    },
+    icon: {
+        position: absolute,
+        right: [20, globals.style.layoutScalingValue, 20]
+    },
+    answer: {
+        padding: [50, globals.style.layoutScalingValue, 30],
+        lineHeight: [28, .7, 24],
+        backgroundColor: colorPalette.ijGray,
+        borderRadius: [5, .7, 5]
+    }
+}
+
+export const aboutPageStyle = {
+    width: [1040, globals.style.layoutScalingValue, '100%'],
+    marginTop: [50, .7, '0'],
+    heading: {
+        size: [36, .7, 32],
+        margin: 0,
+        marginBottom: [20, .7, '0'],
+        padding: 0,
+        color: colorPalette.seaGreen,
+        mobile: {
+            marginBottom: 20
+        }
+    },
+    image: {
+        float: 'right',
+        width: [500, globals.style.layoutScalingValue, '100%'],
+        paddingLeft: [50, .7, 20],
+        paddingBottom: [20, .7, 20],
+        height: auto
+    },
+    sectionHeading: {
+        dispaly: flex,
+        textAlign: center,
+        marginBottom: [40, .7, '0']
+    },
+    sectionInner: {
+        marginTop: [40, .7, 40]
+    },
+    section: {
+        paddingTop: [20, .7, 40],
+        marginTop: [40, .7, 40],
+        borderTop: `1px solid ${globals.colors.borderColor}`,
+        firstOfType: {
+            border: 0,
+            marginTop: 0,
+            mobile: {
+                marginTop: 0,
+                paddingTop: 0
+            }
+        },
+        child: [
+            {
+                selector: 'h2',
+                marginBottom: [10, .7, 10],
+                size: [26, .7, 26]
+            },
+            {
+                selector: 'a',
+                color: colorPalette.seaGreen,
+                hover: {
+                    color: colorPalette.paleGreen
+                }
+            },
+            {
+                selector: 'p',
+                size: [18, .7, 18],
+                lineHeight: [32, .7, 32],
+            }
+        ]
+    }
 }

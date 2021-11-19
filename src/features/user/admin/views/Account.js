@@ -1,12 +1,13 @@
 import {userDashboardMenu}                             from 'config/menus/dashboard/user'
-import {globals}                                       from 'config/styles'
-import {userFields}                                    from 'features/user/admin/fields'
+import {userFields, validateUser}                      from 'features/user/admin/fields'
 import React, {useEffect}                              from 'react'
 import {useDispatch, useSelector}                      from 'react-redux'
-import Div                                             from 'shared/Basic/Div'
 import Form                                            from 'shared/Fields/Form'
 import ContentWrapper                                  from 'shared/Layout/ContentWrapper'
 import DashboardWrapper                                from 'shared/Layout/Dashboard/DashboardWrapper'
+import CloseAccount                                    from './CloseAccount'
+import ResetContactInfo                                from './ResetContactInfo'
+import ResetPassword                                   from './ResetPassword'
 import {userContentWrapperStyle, userProfileFormStyle} from './styles'
 
 const Account = () => {
@@ -27,6 +28,8 @@ const Account = () => {
         ethnicHispanicOrigin: user.ethnicHispanicOrigin,
         role: user.role,
         slug: slug,
+        zip: user.zip,
+
         _id,
         token,
     }
@@ -43,32 +46,25 @@ const Account = () => {
             })
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, [slug])
 
     return (
         <ContentWrapper theme={userContentWrapperStyle}>
             <DashboardWrapper menu={userDashboardMenu}>
-                <Div theme={{
-                    weight: 300,
-                    fontStyle: 'italic',
-                    font: globals.fonts.serif,
-                    marginTop: [30, .7, 30],
-                    marginBottom: 15,
-                    size: [18, .7, 18]
-                }}>
-                    <strong>Disclaimer</strong>: Updating your email is not possible at the moment. We are working on
-                    this feature!
-                </Div>
                 <Form
                     initialValues={initialValues}
                     fields={userFields}
-                    //validationSchema={validateProfile}
+                    validationSchema={validateUser}
                     dispatchAction={'user/updateUserProfile'}
-                    formHeading={'Update Profile'}
-                    buttonText={'Update'}
+                    formHeading={'Account Details'}
+                    buttonText={'Save'}
                     enableReinitialize={true}
                     theme={userProfileFormStyle}
-                />
+                >
+                    <ResetPassword/>
+                    <ResetContactInfo/>
+                    <CloseAccount/>
+                </Form>
             </DashboardWrapper>
         </ContentWrapper>
     )
