@@ -102,7 +102,6 @@ const Update = () => {
     useEffect(() => {
         if (!place?.isPendingSubmission && !!place?.objectID) {
             // console.log('place', placesIndex.saveObjects(place))
-            console.log('place', place)
             // placesIndex.saveObjects(place)
             //     .then(() => {
             //         dispatch({
