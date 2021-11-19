@@ -24,23 +24,15 @@ const Places = () => {
                 )}
 
                 <Div theme={myPlacesWrapperStyle}>
-                    {bookmarks && bookmarks.map((place) => {
-                        const address = () => {
-                            if (!!place.address1 && !!place.city && !!place.state && !!place.country) {
-                                return `${!!place.address1 && place.address1} ${(!!place.address2 && place.address2 !== 'undefined') ? place.address2 : ''}, ${!!place.city && place.city} ${place.state} ${place.country}`
-                            }
-                        }
-
-                        return (
-                            <PlaceCard
-                                key={place.slug}
-                                city={place.geojson?.[0]?.properties?.city}
-                                url={`/places/${place.slug}`}
-                                name={place.name}
-                                theme={genericPlaceCardStyle}
-                            />
-                        )
-                    })}
+                    {bookmarks && bookmarks.map((place) =>
+                        <PlaceCard
+                            key={place.slug}
+                            city={place.geojson?.[0]?.properties?.city}
+                            url={`/places/${place.slug}`}
+                            name={place.name}
+                            theme={genericPlaceCardStyle}
+                        />
+                    )}
                 </Div>
 
             </DashboardWrapper>

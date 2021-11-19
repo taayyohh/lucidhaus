@@ -83,8 +83,8 @@ const Home = () => {
                                     key={p._id}
                                     name={p.name}
                                     address={p.address}
-                                    city={p.city}
-                                    state={p.state}
+                                    city={p?.geojson?.[0]?.properties.city}
+                                    state={p?.geojson?.[0]?.properties.state}
                                     safe={p.averageSafe}
                                     celebrated={p.averageCelebrated}
                                     welcome={p.averageWelcome}

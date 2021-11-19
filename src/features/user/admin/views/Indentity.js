@@ -2,14 +2,13 @@ import {identityFields}            from 'features/user/admin/fields/indentity'
 import React, {useEffect}          from 'react'
 import {useDispatch, useSelector}  from 'react-redux'
 import Form                        from 'shared/Fields/Form'
-import {adminFormWrapperStyle}     from 'shared/Layout/Dashboard/admin/styles'
 import {identityProfileFormStyles} from './styles'
 
 const Identity = () => {
     const dispatch = useDispatch()
     const {_id, token, taxonomy, user} = useSelector(state => state.user)
     const {slug, identity} = user
-   // const {slug} = useSelector(state => state.site)
+    // const {slug} = useSelector(state => state.site)
 
     const {
         adaptiveEquipment,

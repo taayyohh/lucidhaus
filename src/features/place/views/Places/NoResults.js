@@ -1,9 +1,7 @@
-import {searchLocation} from 'config/icons'
-import React            from 'react'
-import Div              from 'shared/Basic/Div'
-import Icon             from 'shared/Basic/Icon'
-import {colorPalette}   from '../../../../config/styles'
-import Span             from '../../../../shared/Basic/Span'
+import {colorPalette} from 'config/styles'
+import React          from 'react'
+import Div            from 'shared/Basic/Div'
+import Span           from 'shared/Basic/Span'
 
 const NoResults = ({search}) => {
     return (
@@ -13,7 +11,8 @@ const NoResults = ({search}) => {
             display: 'inline-flex',
             size: 32
         }}>
-            <Span>No Results for </Span> <Span theme={{color: colorPalette.seaGreen, marginLeft: [10, .7, 10]}}>{search}</Span>.
+            <Span>No Results for </Span> <Span
+            theme={{color: colorPalette.seaGreen, marginLeft: [10, .7, 10]}}>{search}</Span>.
         </Div>
     )
 }

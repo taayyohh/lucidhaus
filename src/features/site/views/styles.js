@@ -152,7 +152,11 @@ export const homeSignupQuoteWrapperStyle = {
     marginTop: [80, .7, '0'],
     borderRadius: [10, .7, 10],
     border: `1px solid ${globals.colors.borderColor}`,
-    margin: '0 auto'
+    margin: '0 auto',
+    mobile: {
+        width: 'calc(100% - 50px)',
+        marginTop: 50
+    },
 }
 
 export const homeSignupQuoteStyle = {
