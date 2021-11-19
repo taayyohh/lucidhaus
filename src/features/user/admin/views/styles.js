@@ -352,7 +352,7 @@ export const adminReviewStyle = {
 
 export const submitPlaceButtonStyle = {
     alignSelf: flexStart,
-    backgroundColor: colorPalette.darkHoneyYellow,
+    backgroundColor: colorPalette.seaGreen,
     paddingLeft: [15, .7, 15],
     paddingRight: [15, .7, 15],
     paddingTop: [10, .7, 10],
@@ -363,14 +363,22 @@ export const submitPlaceButtonStyle = {
     color: white,
     size: [15, .7, 15],
     weight: 600,
-    border: `1px solid ${colorPalette.darkHoneyYellow}`,
+    border: `1px solid ${colorPalette.seaGreen}`,
     transition: 'background 200ms ease',
     hover: {
         cursor: pointer,
-        backgroundColor: colorPalette.honeyYellow,
-        border: `1px solid ${colorPalette.honeyYellow}`,
+        backgroundColor: colorPalette.forestGreen,
+        border: `1px solid ${colorPalette.forestGreen}`,
 
     }
+}
+
+export const submitPlaceHeadingStyle = {
+    textAlign: center,
+    padding: [50, .7, 40],
+    size: [28, .7, 28],
+    weight: 700,
+    color: colorPalette.forestGreen
 }
 
 export const myPlacesWrapperStyle = {

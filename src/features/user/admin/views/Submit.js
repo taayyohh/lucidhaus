@@ -6,8 +6,8 @@ import {menuPanelContext}                                from 'shared/Containers
 import ContentWrapper                                    from 'shared/Layout/ContentWrapper'
 import DashboardInfo                                     from 'shared/Layout/Dashboard/DashboardInfo'
 import DashboardWrapper                                  from 'shared/Layout/Dashboard/DashboardWrapper'
-import PlaceCard                                         from '../../../../shared/Cards/Place'
-import {submitPlaceButtonStyle, userContentWrapperStyle} from './styles'
+import PlaceCard                                                                  from '../../../../shared/Cards/Place'
+import {submitPlaceButtonStyle, submitPlaceHeadingStyle, userContentWrapperStyle} from './styles'
 
 const Submit = () => {
     const dispatch = useDispatch()
@@ -60,7 +60,7 @@ const Submit = () => {
                     </Div>
 
 
-                    <Div>Submitted Places</Div>
+                    <Div theme={submitPlaceHeadingStyle}>Your submitted places</Div>
                     {pendingPlaces && pendingPlaces.map((place) =>
                         <PlaceCard name={place.name} />
 
