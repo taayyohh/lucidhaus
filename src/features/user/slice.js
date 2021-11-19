@@ -160,6 +160,10 @@ export const slice = createSlice({
             state.confirmationRequest = undefined
             state.tel = action.payload.tel
         },
+        updateUserEmailSuccess: (state, action) => {
+            state.confirmationRequest = undefined
+            state.email = action.payload.email
+        },
         updateUserProfileSuccess: (state, action) => {
             state.isAdmin = action.payload.role === 0
             state.avatar = action.payload.avatar
