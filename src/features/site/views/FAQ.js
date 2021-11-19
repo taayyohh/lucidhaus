@@ -1,16 +1,14 @@
-import {globals}                  from 'config/styles'
-import React, {useState}          from 'react'
-import Div                        from 'shared/Basic/Div'
-import H1                         from 'shared/Basic/H1'
-import LinkSwitch                 from 'shared/Basic/LinkSwitch'
-import MotionDiv                  from 'shared/Basic/MotionDiv'
+import {chevronCircleDown, chevronCircleUp} from 'config/icons'
+import React, {useState}                    from 'react'
+import Div                                  from 'shared/Basic/Div'
+import H1                                   from 'shared/Basic/H1'
+import Icon                                 from 'shared/Basic/Icon'
+import LinkSwitch                           from 'shared/Basic/LinkSwitch'
+import MotionDiv                            from 'shared/Basic/MotionDiv'
 import ContentWrapper                       from 'shared/Layout/ContentWrapper'
-import {chevronCircleDown, chevronCircleUp} from '../../../config/icons'
-import Icon                                 from '../../../shared/Basic/Icon'
-import {aboutPageStyle, faqStyle} from './styles'
+import {aboutPageStyle, faqStyle}           from './styles'
 
 const FAQ = () => {
-
     const Question = ({q, a}) => {
         const [isOpen, setIsOpen] = useState(false)
         const variants = {

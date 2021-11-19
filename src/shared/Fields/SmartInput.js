@@ -9,7 +9,6 @@ import Legend                                                                  f
 import Span                                                                    from 'shared/Basic/Span'
 import {formatPhone}                                                           from 'utils/helpers'
 import useMeasure                                                              from 'utils/useMeasure'
-import Div                                                                     from '../Basic/Div'
 import {defaultFieldErrorStyle, defaultFocusedInputLabelStyle, invisibleStyle} from './styles'
 
 const SmartInput = ({

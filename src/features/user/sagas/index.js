@@ -2,6 +2,7 @@ import {push}                                              from 'connected-react
 import cryptoRandomString                                  from 'crypto-random-string'
 import {signin, signout, signup}                           from 'features/site/services'
 import {
+    confirmTwilioEmailVerification,
     confirmTwilioVerification,
     sendTwilioEmailVerification,
     sendTwilioVerification
@@ -146,8 +147,6 @@ export function* confirmUpdatePhoneNumber({payload}) {
 }
 
 export function* updateUserEmail({payload}) {
-    console.log('payload', payload)
-    //SEND TO EMAIL
     const verificationToken = yield call(sendTwilioEmailVerification, payload)
     if (verificationToken === 'pending') {
         yield put({
@@ -161,7 +160,7 @@ export function* updateUserEmail({payload}) {
 }
 
 export function* confirmUpdateEmail({payload}) {
-    const confirmedUser = yield call(confirmTwilioVerification, payload)
+    const confirmedUser = yield call(confirmTwilioEmailVerification, payload)
     const {email, slug, _id, token} = payload
 
     const user = new FormData()
