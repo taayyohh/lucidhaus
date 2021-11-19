@@ -13,10 +13,6 @@ const NoResults = ({search}) => {
             display: 'inline-flex',
             size: 32
         }}>
-            <Icon
-                icon={searchLocation}
-                theme={{size: 60, margin: '0 auto', color: colorPalette.seaGreen}}
-            />
             <Span>No Results for </Span> <Span theme={{color: colorPalette.seaGreen, marginLeft: [10, .7, 10]}}>{search}</Span>.
         </Div>
     )

@@ -564,3 +564,9 @@ export const resetButtonStyle = {
 }
 
 export const resetContactInfoStyle = {}
+
+export const identityProfileFormStyles = {
+    multiSelectHeading: {
+
+    }
+}

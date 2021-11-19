@@ -39,7 +39,8 @@ const MultiSelect = memo(({className, name, errorMessage, field, formik, options
 
     return (
         <Div theme={{...multiSelectWrapperStyle}} className={className ? className : ''}>
-            <Div theme={{...defaultFieldHeadingStyle, ...theme.heading}}>{field.inputLabel}
+            <Div theme={{...defaultFieldHeadingStyle, ...theme.heading}}>
+                {field.inputLabel}
                 <Span theme={{...multiSelectHelperTextStyle}}>- Select all that apply</Span>
             </Div>
             <Div theme={{...multiSelectInnerWrapperStyle}}>

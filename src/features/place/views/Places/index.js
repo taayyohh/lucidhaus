@@ -123,7 +123,7 @@ const Places = () => {
                         lon={features?.[0]?.geometry?.coordinates?.[0]}
                         lat={features?.[0]?.geometry?.coordinates?.[1]}
                         theme={placesMapStyle}
-                        zoom={5}
+                        zoom={6}
                         scrollZoom={false}
                     />
                 )) || (
