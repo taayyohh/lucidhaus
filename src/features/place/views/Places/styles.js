@@ -2,7 +2,7 @@ import {colorPalette, globals}                               from 'config/styles
 import {auto, borderBox, none, pointer, relative, sv, white} from 'utils/themer'
 
 export const placeSearchResultsQueryTextStyle = {
-    size: [22, .7, 22],
+    size: [22, .7, 16],
     weight: 700,
     color: colorPalette.honeyYellow,
     child: {
@@ -40,7 +40,7 @@ export const placeSidebarCardStyle = (isActive) => {
 }
 
 export const placeQueryStyle = {
-    padding: [25, globals.style.layoutScalingValue, 25],
+    padding: [25, globals.style.layoutScalingValue, 10],
     paddingLeft: [25, globals.style.layoutScalingValue, 20],
     paddingRight: [25, globals.style.layoutScalingValue, 20],
     boxShadow: `-6px -2px 19px 0px #d5d5d5`
@@ -73,8 +73,7 @@ export const placesMapStyle = {
     height: `calc(100vh - ${sv(100, .7)} - ${sv(28, .7)} - ${sv(55, .7)})`,
     width: [1420, globals.style.layoutScalingValue, '100%'],
     mobile: {
-        maxHeight: 300,
-        borderTop: `2px solid ${colorPalette.forestGreen}`,
+        maxHeight: 200,
         // display: none
     },
     child: [

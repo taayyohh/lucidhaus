@@ -157,6 +157,9 @@ export const placesSearchFormStyle = {
 export const genericPlaceCardStyle = {
     backgroundColor: white,
     border: `1px solid ${globals.colors.borderColor}`,
+    mobile: {
+        marginBottom: 15
+    },
     hover: {
         color: colorPalette.forestGreen,
         borderColor: black

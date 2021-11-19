@@ -1,4 +1,4 @@
-import {adminDashboardMenu}                                                         from 'config/menus/dashboard/admin'
+import {mobileAdminDashboardMenu}                                                   from 'config/menus/dashboard/admin'
 import {userDashboardMenu}                                                          from 'config/menus/dashboard/user'
 import React                                                                        from 'react'
 import {useDispatch, useSelector}                                                   from 'react-redux'
@@ -21,7 +21,7 @@ const MobileHeaderMenu = () => {
                     <>
                         <Div theme={adminMenuStyle.greeting}>Hello, {nameFirst}</Div>
                         <HeaderDashboardMenu
-                            menu={isAdmin ? adminDashboardMenu : userDashboardMenu}
+                            menu={isAdmin ? mobileAdminDashboardMenu : userDashboardMenu}
                         />
                         <Span
                             theme={{...headerAccountMenuLinkStyle, ...headerAccountMenuLinkStyle.signOut}}
