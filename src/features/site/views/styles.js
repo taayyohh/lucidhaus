@@ -170,6 +170,10 @@ export const homeSignupQuoteStyle = {
     paddingBottom: [50, globals.style.layoutScalingValue, 50],
     width: [1200, globals.style.layoutScalingValue, '100%'],
     // lineHeight: [55, globals.style.layoutScalingValue, 30],
+    mobile: {
+        paddingLeft: 50,
+        paddingRight: 50
+    },
     child: {
         selector: '> div',
         marginTop: [15, .7, 15]
