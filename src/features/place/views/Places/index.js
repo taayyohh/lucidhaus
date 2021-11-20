@@ -127,7 +127,9 @@ const Places = () => {
                         scrollZoom={false}
                     />
                 )) || (
-                    <NoResults search={unslugify(slug)}/>
+                    <Div theme={placesMapStyle}>
+                        <NoResults search={unslugify(slug)}/>
+                    </Div>
                 )}
             </Div>
         </ContentWrapper>
