@@ -21,8 +21,16 @@ const Places = () => {
     useEffect(() => {
         setAllPlaces(
             !boonePlaces?.data
-                ? [...algoliaPlaces]
-                : [...algoliaPlaces, ...boonePlaces?.data]
+                ? [...algoliaPlaces?.reduce((acc = [], cv) => {
+                    acc.push(cv[0])
+
+                    return acc
+                }, [])]
+                : [...algoliaPlaces?.reduce((acc = [], cv) => {
+                    acc.push(cv[0])
+
+                    return acc
+                }, []), ...boonePlaces?.data]
                     .reduce(function (accumulator = [], currentValue) {
                         if (!currentValue.isPendingSubmission)
                             if (currentValue.type === 'place') {
