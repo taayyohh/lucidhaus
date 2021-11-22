@@ -6,8 +6,8 @@ export const searchContext = createContext(null)
 
 const SearchController = ({children}) => {
     const searchClient = algoliasearch(ALGOLIA_APP_ID, ALGOLIA_ADMIN_KEY)
-    const placesIndex = searchClient.initIndex('dev_Places')
-    const usersIndex = searchClient.initIndex('dev_Users')
+    const placesIndex = searchClient.initIndex('Places')
+    const usersIndex = searchClient.initIndex('Users')
 
     return (
         <searchContext.Provider value={{
