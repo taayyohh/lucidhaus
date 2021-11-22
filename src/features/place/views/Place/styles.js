@@ -14,7 +14,6 @@ export const placeDescriptionWrapperStyle = {
     width: `calc(100% - ${sv(120, globals.style.layoutScalingValue)})`,
     marginLeft: auto,
     marginRight: auto,
-    borderBottom: `1px solid ${globals.colors.borderColor}`,
     mobile: {
         width: '100%'
     }

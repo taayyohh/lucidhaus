@@ -312,8 +312,8 @@ const Place = () => {
                                     place={place}
                                 />
                             </Div>
-                            {description && (
-                                <Description description={description}/>
+                            {(description || place?.geojson?.[0]?.properties?.description) && (
+                                <Description description={description || place?.geojson?.[0]?.properties?.description}/>
                             )}
 
                             <Div theme={placeTaxonomyWrapperStyle}>
