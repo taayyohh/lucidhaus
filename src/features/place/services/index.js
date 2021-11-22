@@ -26,7 +26,7 @@ export const addPlace = ({_id, token, place}) =>
         })
 
 export const getPlaces = () =>
-    fetch(`${API}/places?limit=undefined`, {
+    fetch(`${API}/places?limit=${50}`, {
         method: 'GET'
     })
         .then(response => {
