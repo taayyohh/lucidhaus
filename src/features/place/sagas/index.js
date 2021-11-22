@@ -66,7 +66,6 @@ export function* getUserReviewedPlace({payload}) {
 }
 
 export function* searchAllPlaces({payload}) {
-    console.log('PAYYY', payload)
     yield put({type: 'place/searchAlgoliaPlaceIndex', payload})
     yield put({type: 'place/getBooneAutoComplete', payload})
 
@@ -81,7 +80,6 @@ export function* getPlaceCategoryByNameOrDescription({payload}) {
 }
 
 export function* searchAlgoliaPlaceIndex({payload}) {
-    console.log('payload', payload)
     const result = yield call(getAlgoliaPlaces, payload)
     if (result.hits.length > 0) {
         yield put({
