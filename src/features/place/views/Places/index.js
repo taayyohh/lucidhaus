@@ -32,7 +32,7 @@ const Places = () => {
                     return acc
                 }, []), ...boonePlaces?.data]
                     .reduce(function (accumulator = [], currentValue) {
-                        if (!currentValue.isPendingSubmission)
+                        if (!currentValue?.isPendingSubmission)
                             if (currentValue.type === 'place') {
                                 accumulator.push(currentValue)
                             } else if (accumulator.filter(place =>
@@ -50,7 +50,7 @@ const Places = () => {
     useEffect(() => {
         setFeatures([])
         for (const place of allPlaces) {
-            if (!!place._id) {
+            if (!!place?._id) {
                 if (!!place?.geojson?.[0]?.geometry?.coordinates[0] && place?.geojson?.[0]?.geometry?.coordinates[1])
                     setFeatures(features => [...features, {
                         "type": "Feature",
