@@ -225,6 +225,15 @@ const Place = () => {
         })
 
         setTimeout(() => {
+            if(!!place._id) {
+                placesIndex.saveObjects([place])
+                    .then(() => {})
+                    .catch(error =>
+                        console.log('error', error)
+                    )
+            }
+
+
             if (!!place._id) {
                 dispatch({
                     type: 'place/addToViewCount',

@@ -50,10 +50,9 @@ const Reviews = ({reviewIds, userFlaggedReviews}) => {
                     const isFlagged = userFlaggedReviews.filter(item => item === review._id).length > 0
 
                     return (
-                        <>
+                        <Div key={review._id}>
                             {(!isFlagged && (
                                 <Div
-                                    key={review._id}
                                     theme={placeReviewStyle}
                                 >
                                     <Div theme={placeReviewUserInfoStyle}>
@@ -115,7 +114,7 @@ const Reviews = ({reviewIds, userFlaggedReviews}) => {
                                     )}
                                 </Div>
                             )) || null}
-                        </>
+                        </Div>
                     )
                 }
             )}
