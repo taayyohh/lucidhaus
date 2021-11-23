@@ -20,6 +20,9 @@ const Places = () => {
 
     useEffect(() => {
         if(!!algoliaPlaces && !!boonePlaces?.data) {
+            console.log('al', algoliaPlaces)
+            console.log('bo', boonePlaces?.data)
+
             setAllPlaces(
                 !boonePlaces?.data
                     ? [...algoliaPlaces?.reduce((acc = [], cv) => {
@@ -54,7 +57,9 @@ const Places = () => {
 
     useEffect(() => {
         setFeatures([])
+        // console.log('all', allPlaces)
         for (const place of allPlaces) {
+            // console.log('place', place)
             if (!!place?._id) {
                 if (!!place?.geojson?.[0]?.geometry?.coordinates[0] && place?.geojson?.[0]?.geometry?.coordinates[1])
                     setFeatures(features => [...features, {
