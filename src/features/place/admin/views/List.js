@@ -67,14 +67,13 @@ const List = () => {
             <>
                 {hits && hits.map((place) =>
                     <Div
-                        key={place[0]?.slug}
+                        key={place[0]?.slug || place?.slug}
                         theme={adminPlaceCardWrapperStyle}
                     >
-
                         <GenericCard
-                            slug={`places/update/${place[0]?.slug}`}
-                            name={place[0]?.name}
-                            photo={place[0]?.photo}
+                            slug={`places/update/${place[0]?.slug || place?.slug}`}
+                            name={place[0]?.name || place?.name}
+                            photo={place[0]?.photo || place.photo}
                             theme={adminPlaceCardStyle}
                         />
                     </Div>
