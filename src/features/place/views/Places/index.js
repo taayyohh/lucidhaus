@@ -19,31 +19,40 @@ const Places = () => {
     const [geoJsonFeature, setGeoJsonFeature] = useState()
 
     useEffect(() => {
-        setAllPlaces(
-            !boonePlaces?.data
-                ? [...algoliaPlaces?.reduce((acc = [], cv) => {
-                    acc.push(cv[0])
 
-                    return acc
-                }, [])]
-                : [...algoliaPlaces?.reduce((acc = [], cv) => {
-                    acc.push(cv[0])
+        console.log('alg', algoliaPlaces)
+        console.log('boon', boonePlaces)
 
-                    return acc
-                }, []), ...boonePlaces?.data]
-                    .reduce(function (accumulator = [], currentValue) {
-                        if (!currentValue?.isPendingSubmission)
-                            if (currentValue.type === 'place') {
-                                accumulator.push(currentValue)
-                            } else if (accumulator.filter(place =>
-                                !!place.booneId
-                                && (place.booneId === currentValue?.id)).length === 0) {
-                                accumulator.push(currentValue)
-                            }
+        if(!!algoliaPlaces && !!boonePlaces?.data) {
+            setAllPlaces(
+                !boonePlaces?.data
+                    ? [...algoliaPlaces?.reduce((acc = [], cv) => {
+                        acc.push(cv[0])
 
-                        return accumulator
-                    }, [])
-        )
+                        return acc
+                    }, [])]
+                    : [...algoliaPlaces?.reduce((acc = [], cv) => {
+                        acc.push(cv[0])
+
+                        return acc
+                    }, []), ...boonePlaces?.data]
+                        .reduce(function (accumulator = [], currentValue) {
+                            if (!!currentValue && !currentValue?.isPendingSubmission)
+                                if (currentValue.type === 'place') {
+                                    accumulator.push(currentValue)
+                                } else if (accumulator.filter(place =>
+                                    !!place.booneId
+                                    && (place.booneId === currentValue?.id)).length === 0) {
+                                    accumulator.push(currentValue)
+                                }
+
+                            return accumulator
+                        }, [])
+            )
+        }
+
+
+
 
     }, [algoliaPlaces, boonePlaces])
 
