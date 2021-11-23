@@ -19,10 +19,6 @@ const Places = () => {
     const [geoJsonFeature, setGeoJsonFeature] = useState()
 
     useEffect(() => {
-
-        console.log('alg', algoliaPlaces)
-        console.log('boon', boonePlaces)
-
         if(!!algoliaPlaces && !!boonePlaces?.data) {
             setAllPlaces(
                 !boonePlaces?.data
