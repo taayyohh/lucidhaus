@@ -212,6 +212,9 @@ export const homeContentWrapperStyle = {
 export const recentlyViewedPlaceCardStyle = {
     border: `1px solid ${globals.colors.borderColor}`,
     textDecoration: none,
+    mobile: {
+        textDecoration: none
+    },
     hover: {
         color: colorPalette.seaGreen
     },

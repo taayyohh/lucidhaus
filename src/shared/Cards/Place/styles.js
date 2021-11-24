@@ -59,6 +59,7 @@ export const placeCardStyle = {
     border: `1px solid #fff`,
     backgroundColor: '#f5f5f5',
     position: relative,
+    textDecoration:  none,
     pendingReview: {
         position: absolute,
         right: [20, globals.style.layoutScalingValue, 20],
