@@ -116,29 +116,19 @@ export const addPlaceFromBoone = ({_id, token, place}) =>
             return error
         })
 
-export const getAlgoliaPlaces = ({input, index}) => {
-    const reducer = (previousValue = [], currentValue) => {
-        previousValue.push(currentValue)
+export const getAlgoliaPlaces = ({input, index}) =>
+    index.search(input, {hitsPerPage: 50})
+        .then(response => {
+            return response.hits.reduce((acc = [], cv) => {
+                acc.push(!!cv._id ? cv : cv[0])
 
-        return currentValue
-    };
+                return acc
+            }, [])
+        })
+        .catch(error => {
+            return error
+        })
 
-    return (
-        index.search(input, {hitsPerPage: 50})
-            .then(response => {
-                const reduced = response.hits.reduce((acc = [], cv) => {
-                    acc.push(!!cv._id ? cv : cv[0])
-
-                    return acc
-                }, [])
-
-                return reduced
-            })
-            .catch(error => {
-                return error
-            })
-    )
-}
 
 export const getPlaceCategories = ({payload}) => {
     return (
