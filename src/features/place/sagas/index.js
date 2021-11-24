@@ -81,15 +81,15 @@ export function* getPlaceCategoryByNameOrDescription({payload}) {
 
 export function* searchAlgoliaPlaceIndex({payload}) {
     const result = yield call(getAlgoliaPlaces, payload)
-    if (result.hits.length > 0) {
+    if (result.length > 0) {
         yield put({
             type: 'place/getAlgoliaPlacesSuccess',
-            payload: result.hits
+            payload: result
         })
     } else {
         yield put({
             type: 'place/getAlgoliaPlacesFailure',
-            payload: result.hits
+            payload: result
         })
     }
 }

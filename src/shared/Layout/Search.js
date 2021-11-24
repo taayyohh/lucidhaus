@@ -13,19 +13,22 @@ const Search = ({theme}) => {
     const {coords} = useContext(mapContext)
     const {placesIndex} = useContext(searchContext)
     const {slug, url} = useSelector(state => state.site)
+    const radius = 10000
 
     useEffect(() => {
-        if (url.includes('search'))
+        if (url.includes('search')) {
             dispatch({
                 type: 'place/searchAllPlaces',
                 payload: {
                     longitude: coords.lon,
                     latitude: coords.lat,
-                    radius: 10000,
+                    radius: radius,
                     index: placesIndex,
-                    input: slug
+                    input: unslugify(slug)
                 }
             })
+        }
+
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
@@ -42,7 +45,7 @@ const Search = ({theme}) => {
                 payload={{
                     longitude: coords.lon,
                     latitude: coords.lat,
-                    radius: 10000,
+                    radius: radius,
                     index: placesIndex
                 }}
             />

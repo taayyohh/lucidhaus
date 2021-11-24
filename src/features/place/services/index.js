@@ -1,5 +1,4 @@
-import {API}       from 'config/variables'
-import {unslugify} from '../../../utils/helpers'
+import {API} from 'config/variables'
 
 /**
  * to perform crud on admin
@@ -118,10 +117,22 @@ export const addPlaceFromBoone = ({_id, token, place}) =>
         })
 
 export const getAlgoliaPlaces = ({input, index}) => {
+    const reducer = (previousValue = [], currentValue) => {
+        previousValue.push(currentValue)
+
+        return currentValue
+    };
+
     return (
-        index.search(unslugify(input))
+        index.search(input, {hitsPerPage: 50})
             .then(response => {
-                return response
+                const reduced = response.hits.reduce((acc = [], cv) => {
+                    acc.push(!!cv._id ? cv : cv[0])
+
+                    return acc
+                }, [])
+
+                return reduced
             })
             .catch(error => {
                 return error
