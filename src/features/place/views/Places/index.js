@@ -5,6 +5,8 @@ import Div                                                         from 'shared/
 import ContentWrapper                                              from 'shared/Layout/ContentWrapper'
 import Map                                                         from 'shared/Map'
 import {unslugify}                                                 from 'utils/helpers'
+import {center}                                                    from '../../../../utils/themer'
+import {mobileFlag}                                                from '../../../site/slice'
 import MapSidebar                                                  from './MapSidebar'
 import NoResults                                                   from './NoResults'
 import {placesMapStyle}                                            from './styles'
@@ -12,6 +14,7 @@ import {placesMapStyle}                                            from './style
 const Places = () => {
     const {boonePlaces, algoliaPlaces, places, noResults} = useSelector(state => state.place)
     const {slug} = useSelector(state => state.site)
+    const isMobile = useSelector(mobileFlag)
 
     const dispatch = useDispatch()
     const [allPlaces, setAllPlaces] = useState([])
@@ -19,7 +22,7 @@ const Places = () => {
     const [geoJsonFeature, setGeoJsonFeature] = useState()
 
     useEffect(() => {
-        if(!!algoliaPlaces || !!boonePlaces?.data) {
+        if (!!algoliaPlaces || !!boonePlaces?.data) {
             setAllPlaces(
                 !boonePlaces?.data
                     ? [...algoliaPlaces]
@@ -38,8 +41,6 @@ const Places = () => {
                         }, [])
             )
         }
-
-
 
 
     }, [algoliaPlaces, boonePlaces])
@@ -121,20 +122,30 @@ const Places = () => {
         <ContentWrapper theme={placesContentWrapperStyle}>
             <Div theme={placesContentInnerWrapperStyle(noResults.boone && noResults.algolia)}>
                 <MapSidebar noResults={noResults.boone && noResults.algolia}/>
-                {((features.length > 0 && !!features?.[0]?.geometry?.coordinates?.[0] && !!features?.[0]?.geometry?.coordinates?.[1]) && (
-                    <Map
-                        styles={'mapbox://styles/mapbox/light-v10'}
-                        features={geoJsonFeature}
-                        lon={features?.[0]?.geometry?.coordinates?.[0]}
-                        lat={features?.[0]?.geometry?.coordinates?.[1]}
-                        theme={placesMapStyle}
-                        zoom={6}
-                        scrollZoom={false}
-                    />
-                )) || (
-                    <Div theme={placesMapStyle}>
-                        <NoResults search={unslugify(slug)}/>
-                    </Div>
+                {((
+                    features.length > 0 &&
+                    !!features?.[0]?.geometry?.coordinates?.[0] &&
+                    !!features?.[0]?.geometry?.coordinates?.[1]) &&
+                    (
+                        <Map
+                            styles={'mapbox://styles/mapbox/light-v10'}
+                            features={geoJsonFeature}
+                            lon={features?.[0]?.geometry?.coordinates?.[0]}
+                            lat={features?.[0]?.geometry?.coordinates?.[1]}
+                            theme={placesMapStyle}
+                            zoom={6}
+                            scrollZoom={false}
+                        />
+                    )) || (
+                    <>
+                        {!isMobile && (
+                            <Div theme={placesMapStyle}>
+                                <Div theme={placesMapStyle.inner}>
+                                    <NoResults search={unslugify(slug)}/>
+                                </Div>
+                            </Div>
+                        )}
+                    </>
                 )}
             </Div>
         </ContentWrapper>

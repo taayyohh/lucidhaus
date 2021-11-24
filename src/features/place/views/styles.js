@@ -53,7 +53,7 @@ export const placesContentWrapperStyle = {
 export const placesContentInnerWrapperStyle = noResults => {
     return {
         display: 'flex',
-        flexDirection: noResults ? column: row,
+        flexDirection: row,
         mobile: {
             flexDirection: 'column-reverse',
         }

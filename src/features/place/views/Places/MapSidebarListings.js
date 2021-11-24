@@ -1,12 +1,14 @@
 import React, {useEffect, useState} from 'react'
 import {useSelector}                from 'react-redux'
-import Div                          from 'shared/Basic/Div'
-import {isEmpty}                    from 'utils/helpers'
-import MapSidebarListing            from './MapSidebarListing'
+import Div                  from 'shared/Basic/Div'
+import {isEmpty, unslugify} from 'utils/helpers'
+import MapSidebarListing    from './MapSidebarListing'
+import NoResults                    from './NoResults'
 import {placeSidebarListingsStyle}  from './styles'
 
 const MapSidebarListings = () => {
     const {locationList} = useSelector(state => state.place)
+    const {slug} = useSelector(state => state.site)
     const [properties, setProperties] = useState([])
     const propertiesReducer = (previousValue, currentValue) => [...previousValue, currentValue.properties]
 
@@ -23,13 +25,16 @@ const MapSidebarListings = () => {
             className="listings"
             theme={placeSidebarListingsStyle}
         >
-            {properties && properties.map((p, i) =>
+            {properties.length > 0 && properties.map((p, i) =>
                 <MapSidebarListing
                     key={i}
                     i={i}
                     p={p}
                     locationList={locationList}
                 />
+            )}
+            {properties.length === 0 && (
+                <NoResults  search={unslugify(slug)} />
             )}
         </Div>
     )

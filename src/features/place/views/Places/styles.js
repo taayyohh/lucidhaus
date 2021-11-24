@@ -1,5 +1,5 @@
-import {colorPalette, globals}                               from 'config/styles'
-import {auto, borderBox, none, pointer, relative, sv, white} from 'utils/themer'
+import {colorPalette, globals}                                       from 'config/styles'
+import {auto, borderBox, center, none, pointer, relative, sv, white} from 'utils/themer'
 
 export const placeSearchResultsQueryTextStyle = {
     size: [22, .7, 16],
@@ -24,7 +24,14 @@ export const placeSidebarListingsStyle = {
     paddingTop: [30, .7, 30],
     paddingLeft: [25, globals.style.layoutScalingValue, 20],
     paddingRight: [25, globals.style.layoutScalingValue, 20],
-    paddingBottom: [150, .7, 50]
+    paddingBottom: [150, .7, 50],
+    child: {
+        selector: '> div',
+        mobile: {
+            width: '100%'
+        }
+    },
+    mobile: {}
 }
 
 export const placeSidebarCardWrapperStyle = {
@@ -66,12 +73,24 @@ export const placesMapSidebarStyle = noResults => {
     }
 
 }
+
+export const noResultsTextStyle = {
+    color: colorPalette.seaGreen,
+    marginLeft: [10, .7, 10]
+}
+
 export const placesMapStyle = {
     position: relative,
     top: 0,
     right: 0,
     height: `calc(100vh - ${sv(100, .7)} - ${sv(28, .7)} - ${sv(55, .7)})`,
     width: [1420, globals.style.layoutScalingValue, '100%'],
+    inner: {
+        height: '100%',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: center
+    },
     mobile: {
         maxHeight: 200,
         // display: none
