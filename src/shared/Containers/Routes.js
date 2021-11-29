@@ -56,6 +56,7 @@ const Product = lazy(() => import('features/shop/Product'))
 const Shop = lazy(() => import('features/shop/Shop'))
 const FilteredProduct = lazy(() => import('features/shop/FilteredShop'))
 const NotFound = lazy(() => import('features/site/NotFound'))
+const Latest = lazy(() => import('features/site/Latest'))
 const SignIn = lazy(() => import('features/user/SignIn'))
 const SignUp = lazy(() => import('features/user/SignUp'))
 const UserOrders = lazy(() => import('features/user/dashboard/Orders'))
@@ -72,6 +73,7 @@ const Routes = () => {
                     <Suspense fallback={<Fallback/>}>
                         <Switch location={{pathname: currentPath}}>
                             <Route path="/" exact component={Posts} sitemapIndex={true}/>
+                            <Route path="/latest" exact component={Latest} sitemapIndex={true}/>
                             <Route path="/signup" exact component={SignUp} sitemapIndex={true}/>
                             <Route path="/signin" exact component={SignIn} sitemapIndex={true}/>
                             <Route path="/artists" exact component={Artists} sitemapIndex={true}/>
@@ -84,9 +86,9 @@ const Routes = () => {
                             <Route path="/music/:slug" exact component={Album} sitemapIndex={true}/>
                             <Route path="/posts" exact component={Posts} sitemapIndex={true}/>
                             <Route path="/posts/:slug" exact component={Post} sitemapIndex={true}/>
-                            {/*<Route path="/shop" exact component={Shop} sitemapIndex={true}/>*/}
-                            {/*<Route path="/shop/:slug" exact component={Product} sitemapIndex={true}/>*/}
-                            {/*<Route path="/shop/category/:slug" exact component={FilteredProduct} sitemapIndex={true}/>*/}
+                            <Route path="/shop" exact component={Shop} sitemapIndex={true}/>
+                            <Route path="/shop/:slug" exact component={Product} sitemapIndex={true}/>
+                            <Route path="/shop/category/:slug" exact component={FilteredProduct} sitemapIndex={true}/>
                             <PrivateRoute path="/dashboard" exact component={UserDashboard}/>
                             <PrivateRoute path="/dashboard/orders" exact component={UserOrders}/>
                             <PrivateRoute path="/dashboard/settings" exact component={UserSettings}/>
