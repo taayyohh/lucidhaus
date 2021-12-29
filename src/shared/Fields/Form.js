@@ -56,9 +56,13 @@ const Form = ({
                                 formik={formik}
                                 field={f}
                                 options={options}
+<<<<<<< HEAD
                                 theme={theme}
                                 autoSubmit={autoSubmit}
                                 dispatchOnBlur={dispatchOnBlur}
+=======
+                              //  autoSubmit
+>>>>>>> 7ea9664d193ee56359fc5d96c9ea5770b2f1dceb
                             />
                         )}
                     </Div>

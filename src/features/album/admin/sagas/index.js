@@ -1,9 +1,27 @@
+<<<<<<< HEAD:src/features/album/admin/sagas/index.js
 import {push}                               from 'connected-react-router'
 import {addAlbum, deleteAlbum, updateAlbum} from 'features/album/services'
 import {getSignedRequest, uploadFile}       from 'features/site/services/s3'
 import {call, put, takeLatest}              from 'redux-saga/effects'
 import {setFormData}                        from 'utils/abstractions/setFormData'
 
+=======
+import {push} from 'connected-react-router'
+import {
+    call,
+    put,
+    takeLatest
+}                       from 'redux-saga/effects'
+import {
+    addAlbum,
+    deleteAlbum,
+    updateAlbum
+}                       from 'services/apiAlbum'
+import {
+    getSignedRequest,
+    uploadFile
+}                       from 'services/apiS3'
+>>>>>>> 7ea9664d193ee56359fc5d96c9ea5770b2f1dceb:src/redux/sagas/admin/album.js
 
 export function* createAlbum({payload}) {
     const {
@@ -155,7 +173,11 @@ export function* addSongToAlbum({payload}) {
     if (!!audioFile) {
         const s3Payload = yield call(getSignedRequest, audioFile)
         if (!!s3Payload.signedRequest) {
+<<<<<<< HEAD:src/features/album/admin/sagas/index.js
             yield call(uploadFile, {file: audioFile, signedRequest: s3Payload.signedRequest})
+=======
+             yield call(uploadFile, {file: audioFile, signedRequest: s3Payload.signedRequest})
+>>>>>>> 7ea9664d193ee56359fc5d96c9ea5770b2f1dceb:src/redux/sagas/admin/album.js
             //TODO: upload success and failure
         }
     }

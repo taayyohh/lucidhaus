@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import {globals}                                                               from 'config/styles'
 import {DATE, TEL}                                                             from 'config/variables'
 import PropTypes                                                               from 'prop-types'
@@ -10,6 +11,26 @@ import Span                                                                    f
 import {formatPhone}                                                           from 'utils/helpers'
 import useMeasure                                                              from 'utils/useMeasure'
 import {defaultFieldErrorStyle, defaultFocusedInputLabelStyle, invisibleStyle} from './styles'
+=======
+import {globals}  from 'config/styles'
+import PropTypes  from 'prop-types'
+import React, {
+    useEffect,
+    useRef,
+    useState
+}                 from 'react'
+import Fieldset   from 'shared/Basic/Fieldset'
+import Input      from 'shared/Basic/Input'
+import InputLabel from 'shared/Basic/InputLabel'
+import Legend     from 'shared/Basic/Legend'
+import Span       from 'shared/Basic/Span'
+import useMeasure from 'utils/useMeasure'
+import {DATE}     from 'config'
+import {
+    defaultFieldErrorStyle,
+    defaultFocusedInputLabelStyle
+}                 from './styles'
+>>>>>>> 7ea9664d193ee56359fc5d96c9ea5770b2f1dceb
 
 const SmartInput = ({
                         autoFocus,
@@ -35,6 +56,7 @@ const SmartInput = ({
     const [legendWidth, setLegendWidth] = useState(0)
     const [tel, setTel] = useState(undefined)
 
+
     useEffect(() => {
         const valueExists =
             typeof value === 'number'
@@ -46,6 +68,11 @@ const SmartInput = ({
         setLegendWidth(value?.length < 1 ? 0 : inputLabelWidth)
 
     }, [setHasValue, setIsInputLabelFocused, inputLabelWidth, value, type])
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 7ea9664d193ee56359fc5d96c9ea5770b2f1dceb
 
     const handleBlur = () => {
         if (!hasValue) {
@@ -53,7 +80,7 @@ const SmartInput = ({
             setLegendWidth(0)
         }
 
-        if (autoSubmit) {
+        if (!!autoSubmit) {
             formik.submitForm()
         }
     }

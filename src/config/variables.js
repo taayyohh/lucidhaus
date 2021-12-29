@@ -20,7 +20,11 @@ export const MAPBOX_PUBLIC = process.env.REACT_APP_MAPBOX_PUBLIC
 export const BUTTON = "button"
 export const CHECKBOX = "checkbox"
 export const COLOR = "color"
+<<<<<<< HEAD:src/config/variables.js
 export const DATE = "date"
+=======
+export const DATE= "date"
+>>>>>>> 7ea9664d193ee56359fc5d96c9ea5770b2f1dceb:src/config/index.js
 export const DATETIME_LOCAL = "datetime-local"
 export const EMAIL = "email"
 export const FILE = "file"
@@ -72,6 +76,11 @@ export const ACCEPTABLE_EXTENSIONS = [
 export const UPLOAD_PATHS = {
     post: 'post/',
     shop: 'shop/',
+<<<<<<< HEAD:src/config/variables.js
+=======
+    artist: 'artist/',
+    event: 'event/',
+>>>>>>> 7ea9664d193ee56359fc5d96c9ea5770b2f1dceb:src/config/index.js
     collaborator: 'collaborator/',
     audio: 'audio/',
     place: 'place/',

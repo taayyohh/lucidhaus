@@ -152,6 +152,47 @@ export const adminCollaboratorCardStyle = {
     }
 }
 
+<<<<<<< HEAD:src/shared/Layout/Dashboard/admin/styles.js
+=======
+export const adminEventsInnerWrapperStyle = {
+    ...postsWrapperStyle,
+    width: '100%',
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr 1fr 1fr 1fr',
+    gridGap: sv(30),
+}
+export const adminEventCardWrapperStyle = {}
+export const adminEventCardStyle = {
+    display: flex,
+    width: '100%',
+    mobile: {
+        display: flex
+    },
+    imageWrapper: {
+        display: flex,
+        justifyContent: center,
+        maxHeight: 'none',
+        width: auto
+    },
+    image: {
+        //maxWidth: [90, .7, '100%']
+    },
+    name: {
+        paddingTop: 0,
+        size: [20, .7, 20],
+        lineHeight: [22, .7, 22]
+    }
+}
+
+export const adminAlbumsInnerWrapperStyle = {
+    ...postsWrapperStyle,
+    width: '100%',
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr 1fr 1fr 1fr',
+    gridGap: sv(30),
+}
+export const adminAlbumCardWrapperStyle = {}
+>>>>>>> 7ea9664d193ee56359fc5d96c9ea5770b2f1dceb:src/features/admin/styles.js
 export const adminAlbumCardStyle = {
     display: flex,
     width: '100%',

@@ -14,6 +14,12 @@ const SearchController = ({children}) => {
     const productsIndex = searchClient.initIndex('Products')
     const ordersIndex = searchClient.initIndex('Orders')
     const collaboratorsIndex = searchClient.initIndex('Collaborators')
+<<<<<<< HEAD
+=======
+    const albumsIndex = searchClient.initIndex('Albums')
+    const eventsIndex = searchClient.initIndex('Events')
+    const productCategoriesIndex = searchClient.initIndex('ProductCategories')
+>>>>>>> 7ea9664d193ee56359fc5d96c9ea5770b2f1dceb
 
     return (
         <searchContext.Provider value={{
@@ -23,9 +29,14 @@ const SearchController = ({children}) => {
             collaboratorsIndex,
             eventsIndex,
             albumsIndex,
+<<<<<<< HEAD
             usersIndex,
             productsIndex,
             ordersIndex,
+=======
+            eventsIndex,
+            productCategoriesIndex
+>>>>>>> 7ea9664d193ee56359fc5d96c9ea5770b2f1dceb
         }}>
             {children}
         </searchContext.Provider>

@@ -4,7 +4,7 @@ import {notFoundStyle} from 'shared/Layout/styles'
 
 const NotFound = () =>
     <Div theme={notFoundStyle}>
-        nothing to see here...
+        808 / 2
     </Div>
 
 export default NotFound

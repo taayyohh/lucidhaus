@@ -26,6 +26,7 @@ const HeaderMenuControls = () => {
     return (
         <Div theme={headerMenuControlWrapperStyle}>
             <Div
+<<<<<<< HEAD
                 url={
                     isAuthenticated && isAdmin
                         ? '/admin'
@@ -92,6 +93,43 @@ const HeaderMenuControls = () => {
                 {/*</Div>*/}
 
             </Div>
+=======
+                onClick={() => setPanel('cart-menu-panel')}
+                theme={headerMenuIconWrapperStyle}
+            >
+                <Icon
+                    icon={shoppingCart}
+                    theme={headerIconStyle}
+                />
+                <MotionDiv
+                    as={'sup'}
+                    theme={cart.length > 0
+                        ? {...cartNumberStyle}
+                        : {
+                            ...cartNumberStyle,
+                            color: transparent,
+                            backgroundColor: transparent
+                        }
+                    }
+                    children={cart.length}
+                />
+            </Div>
+            {/*<LinkSwitch*/}
+            {/*    url={*/}
+            {/*        isAuthenticated && isAdmin*/}
+            {/*            ? '/admin'*/}
+            {/*            : isAuthenticated*/}
+            {/*            ? '/dashboard'*/}
+            {/*            : '/signin'*/}
+            {/*    }*/}
+            {/*    theme={headerMenuIconWrapperStyle}*/}
+            {/*>*/}
+            {/*    <Icon*/}
+            {/*        icon={user}*/}
+            {/*        theme={headerIconStyle}*/}
+            {/*    />*/}
+            {/*</LinkSwitch>*/}
+>>>>>>> 7ea9664d193ee56359fc5d96c9ea5770b2f1dceb
         </Div>
 
     )

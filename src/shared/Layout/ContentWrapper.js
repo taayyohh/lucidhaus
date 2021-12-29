@@ -8,7 +8,11 @@ const ContentWrapper = ({children, theme}) =>
     </Div>
 
 ContentWrapper.defaultProps = {
+<<<<<<< HEAD
     theme: {}
+=======
+    theme: {},
+>>>>>>> 7ea9664d193ee56359fc5d96c9ea5770b2f1dceb
 }
 
 export default ContentWrapper

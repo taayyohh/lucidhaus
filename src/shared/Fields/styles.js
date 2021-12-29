@@ -637,3 +637,27 @@ export const textAreaErrorMessageStyle = {
 export const textAreaStyle = {
 
 }
+<<<<<<< HEAD
+=======
+
+export const rsvpsFormStyle = {
+    border: 0,
+    boxSizing: borderBox,
+    padding: '0 !important',
+    marginBottom: [50, .7, 50],
+    minWidth: [300, globals.style.layoutScalingValue, '100%'],
+
+    heading: {
+        marginLeft: auto
+    },
+    inner: {},
+    button: {},
+    child: [
+        {
+            selector: '> div > div > div',
+            minHeight: [200, .7, 200]
+        }
+    ]
+
+}
+>>>>>>> 7ea9664d193ee56359fc5d96c9ea5770b2f1dceb

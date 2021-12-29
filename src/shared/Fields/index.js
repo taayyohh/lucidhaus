@@ -20,6 +20,7 @@ import {
     TEXT,
     TEXTAREA,
     TOGGLE,
+<<<<<<< HEAD
     USER
 }                     from 'config/variables'
 import React, {memo}  from 'react'
@@ -27,6 +28,16 @@ import UploadAudio    from 'shared/Fields/UploadAudio'
 import UploadImage    from 'shared/Fields/UploadImage'
 import Tooltip        from '../Controls/ToolTip'
 import Address        from './Address'
+=======
+    IMAGE_UPLOAD,
+    AUDIO_UPLOAD,
+    SONGS, DATE
+} from 'config'
+import React, {memo} from 'react'
+import CreateSong  from 'features/admin/album/song/CreateSong'
+import UploadAudio from 'shared/Fields/UploadAudio'
+import Address     from './Address'
+>>>>>>> 7ea9664d193ee56359fc5d96c9ea5770b2f1dceb
 import Count          from './Count'
 import Country        from './Country'
 import Likert         from './Likert'
@@ -42,6 +53,7 @@ import User           from './User'
 
 const FieldSwitch = memo(({field, formik, options, theme, autoSubmit, dispatchOnBlur}) => {
     switch (field.type) {
+<<<<<<< HEAD
         case ADDRESS:
             return <Address
                 name={field.name}
@@ -50,6 +62,16 @@ const FieldSwitch = memo(({field, formik, options, theme, autoSubmit, dispatchOn
         case AUDIO_UPLOAD:
             return <UploadAudio
                 formik={formik}
+=======
+        case TEXT:
+        case PASSWORD:
+        case EMAIL:
+        case NUMBER:
+        case TEL:
+        case DATE:
+            return <SmartInput
+                {...formik.getFieldProps(field.name)}
+>>>>>>> 7ea9664d193ee56359fc5d96c9ea5770b2f1dceb
                 id={field.name}
                 file={field.file}
                 cropWidth={field.cropWidth}
@@ -58,6 +80,11 @@ const FieldSwitch = memo(({field, formik, options, theme, autoSubmit, dispatchOn
                 inputLabel={field.inputLabel}
                 className={formik.touched[field.name] && formik.errors[field.name] ? 'error' : ''}
                 errorMessage={formik.touched[field.name] && formik.errors[field.name] ? formik.errors[field.name] : null}
+<<<<<<< HEAD
+=======
+                autoSubmit={false}
+                formik={formik}
+>>>>>>> 7ea9664d193ee56359fc5d96c9ea5770b2f1dceb
             />
         case COUNT:
             return <Count
