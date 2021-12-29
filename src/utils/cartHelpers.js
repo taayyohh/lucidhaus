@@ -80,7 +80,7 @@ export const emptyCart = () => {
     }
 }
 
-export const getTotal = products =>
+export const getTotal = (products, isIntl = false) =>
     products?.reduce((currentValue, nextValue) => {
-        return currentValue + nextValue.count * nextValue.price
+        return currentValue + !isIntl ? (nextValue.count * nextValue.price) : (nextValue.count * (nextValue.price + nextValue.internationalShippingCost) )
     }, 0)

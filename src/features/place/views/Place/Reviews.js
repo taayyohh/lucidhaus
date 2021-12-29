@@ -106,7 +106,7 @@ const Reviews = ({reviewIds, userFlaggedReviews}) => {
                                         )}
                                         <Div theme={placeReviewDisclaimerStyle}>
                                             This review is the subjective opinion of an InclusiveGuide member and not of
-                                            Inclusive Guide &#174;.
+                                            LucidHaus &#174;.
                                         </Div>
                                     </Div>
                                     {!isFlagged && isAuthenticated && (

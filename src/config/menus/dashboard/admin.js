@@ -1,4 +1,4 @@
-import {bookmark, building, comments, exclamationTriangle, home, plusCircle, user, userCog} from 'config/icons'
+import {home, user, userCog} from 'config/icons'
 
 export const adminDashboardMenu = [
     {
@@ -7,27 +7,46 @@ export const adminDashboardMenu = [
         title: 'Admin Dashboard'
     },
     {
+        url: '/admin/artists',
+        active: ['artist'],
+        icon: user,
+        title: 'Manage Artists'
+    },
+    {
         url: '/admin/users',
         active: ['user'],
         icon: user,
         title: 'Manage Users'
     },
     {
-        url: '/admin/places',
-        active: ['place'],
+        url: '/admin/shop',
+        active: ['shop'],
         icon: user,
-        title: 'Manage Places'
+        title: 'Manage Shop'
     },
     {
-        url: '/admin/places/pending',
-        icon: building,
-        title: 'Pending Place Submissions'
+        url: '/admin/orders',
+        active: ['order'],
+        icon: user,
+        title: 'Manage Orders'
     },
     {
-        url: '/admin/flagged/reviews',
-        active: ['flagged', 'reviews'],
-        icon: exclamationTriangle,
-        title: 'Flagged Reviews'
+        url: '/admin/collaborators',
+        active: ['collaborator'],
+        icon: user,
+        title: 'Manage Collaborators'
+    },
+    {
+        url: '/admin/events',
+        active: ['event'],
+        icon: user,
+        title: 'Manage Events'
+    },
+    {
+        url: '/admin/music',
+        active: ['music'],
+        icon: user,
+        title: 'Manage Music'
     },
     {
         url: '/dashboard/',
@@ -50,21 +69,46 @@ export const mobileAdminDashboardMenu = [
         title: 'Manage Users'
     },
     {
-        url: '/admin/places',
-        active: ['place'],
+        url: '/admin/artists',
+        active: ['artist'],
         icon: user,
-        title: 'Manage Places'
+        title: 'Manage Artists'
     },
     {
-        url: '/admin/places/pending',
-        icon: building,
-        title: 'Pending Place Submissions'
+        url: '/admin/shop',
+        active: ['shop'],
+        icon: user,
+        title: 'Manage Shop'
     },
     {
-        url: '/admin/flagged/reviews',
-        active: ['flagged', 'reviews'],
-        icon: exclamationTriangle,
-        title: 'Flagged Reviews'
+        url: '/admin/orders',
+        active: ['order'],
+        icon: user,
+        title: 'Manage Orders'
+    },
+    {
+        url: '/admin/taxonomy',
+        active: ['taxonomy'],
+        icon: user,
+        title: 'Manage Taxonomy'
+    },
+    {
+        url: '/admin/collaborators',
+        active: ['collaborator'],
+        icon: user,
+        title: 'Manage Collaborators'
+    },
+    {
+        url: '/admin/events',
+        active: ['event'],
+        icon: user,
+        title: 'Manage Events'
+    },
+    {
+        url: '/admin/music',
+        active: ['music'],
+        icon: user,
+        title: 'Manage Music'
     },
     {
         url: '/dashboard/',
@@ -75,25 +119,5 @@ export const mobileAdminDashboardMenu = [
         url: '/dashboard/account',
         icon: userCog,
         title: 'Account Details'
-    },
-    {
-        url: '/dashboard/profile',
-        icon: userCog,
-        title: 'Identity Profile'
-    },
-    {
-        url: '/dashboard/reviews',
-        icon: comments,
-        title: 'My Reviews'
-    },
-    {
-        url: '/dashboard/places',
-        icon: bookmark,
-        title: '    My Places'
-    },
-    {
-        url: '/dashboard/submit',
-        icon: plusCircle,
-        title: 'Submit A Place'
     }
 ]

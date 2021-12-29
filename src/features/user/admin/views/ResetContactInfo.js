@@ -36,7 +36,7 @@ const ResetContactInfo = () => {
         <Div theme={resetContactInfoStyle} ref={ref}>
             <H2 theme={userAccountStyle.heading}>Phone and Email</H2>
             <Div theme={userAccountStyle.subHeading}>
-                Every user of the Inclusive Guide is required to have a
+                Every user of the LucidHaus is required to have a
                 registered phone number and email to leave reviews for places and businesses.
                 This requirement ensures the integrity of each review or rating,
                 and helps to limit the likelihood of false reviews.
@@ -130,7 +130,7 @@ const ResetContactInfo = () => {
                 reverification via text or email confirmation. A verification text will be sent to the number
                 provided when updating your phone number. An email confirmation will be sent to the address provided
                 when updating your registered email. This is done to protect the privacy and integrity of all
-                users of the Inclusive Guide.
+                users of the LucidHaus.
             </Div>
         </Div>
     )

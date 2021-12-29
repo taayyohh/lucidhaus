@@ -1,11 +1,11 @@
 Updated 07/28/21
 
-## Inclusive Guide Front End (app)
+## LucidHaus Front End (app)
 Repo: *https://github.com/inclusiveguide/app*
 
 ## Overview
 
-The Inclusive Guide front-end is a Javascript (node.js) application that uses React to manage the user interface, Redux Toolkit (RTK) to manage application state 
+The LucidHaus front-end is a Javascript (node.js) application that uses React to manage the user interface, Redux Toolkit (RTK) to manage application state 
 and Redux-Saga to manage side effects. ES6 & ES2020 are the preferred syntax
 
 
@@ -98,7 +98,7 @@ in the store. It also contains reducers which listen for dispatched actions.
 <br />
 **2. views** - contains React components that compose user interface elements specific to its parent feature.
 <br />
-**3. services** - contains fetch (Fetch API) calls to the Inclusive Guide API or external 3rd party APIs specific to its parent feature.
+**3. services** - contains fetch (Fetch API) calls to the LucidHaus API or external 3rd party APIs specific to its parent feature.
 <br />
 **4. sagas** - contains watcher functions that listen for dispatched Redux actions specific to that feature and generator functions which are called by those watchers.
 The generator functions handle all side-effects from the app.
@@ -119,23 +119,23 @@ Each taxonomy directory contains 7 .js files.
 <br />
 **5d.1 Create.js** - the form that creates the entity defined by the parent directory.
 <br />
-**5d.2 fields.js** -the field definitions and validation object for the fields that compose the forms specific to its parent directory.
+**5d.2 index.js** -the field definitions and validation object for the fields that compose the forms specific to its parent directory.
 <br />
 **5d.3 Manage.js** - the view to edit or create or search existing entities.
 <br />
 **5d.4 reducers.js** - reducer functions that are imported to the parent directories slice.
 <br />
-**5d.5 sagas.js** - watcher functions that listen for dispatched Redux actions specific to that feature and generator functions which are called by those watchers.
+**5d.5 index.js** - watcher functions that listen for dispatched Redux actions specific to that feature and generator functions which are called by those watchers.
 The generator functions handle all side-effects from the app.
 <br />
-**5d.6 services.js** - fetch (Fetch API) calls to the Inclusive Guide API.
+**5d.6 services.js** - fetch (Fetch API) calls to the LucidHaus API.
 <br />
 **5d.7 Update.js** -the form that manages (updates/deletes) the entity defined by the parent directory.
 <br />
 <br />
-**6. index.js** - This file is the entry point into the app. Wraps the application in the Redux Store and connects all defined Routes.
+**6. styles.js** - This file is the entry point into the app. Wraps the application in the Redux Store and connects all defined Routes.
 <br />
-**5. sagas.js** - This file combines all Redux Saga watchers listening for all dispatched actions from the app.
+**5. index.js** - This file combines all Redux Saga watchers listening for all dispatched actions from the app.
 <br />
 **5. store.js** - This file combines all Redux Slices into a single Store, which represents the state of the application.
 

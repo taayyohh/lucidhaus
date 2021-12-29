@@ -1,6 +1,7 @@
 /* WATCHERS */
 
 import {push}                        from 'connected-react-router'
+import {deleteArtist}                from 'features/artist/services'
 import {deleteBathroom}              from 'features/place/admin/taxonomy/bathroom/services'
 import {deleteBusinessOwner}         from 'features/place/admin/taxonomy/businessOwner/services'
 import {deleteCommunitiesServed}     from 'features/place/admin/taxonomy/communitiesServed/services'
@@ -8,7 +9,9 @@ import {deleteFoodOptions}           from 'features/place/admin/taxonomy/foodOpt
 import {deleteLanguageSpoken}        from 'features/place/admin/taxonomy/languageSpoken/services'
 import {deletePlaceCategory}         from 'features/place/admin/taxonomy/placeCategory/services'
 import {deletePlace}                 from 'features/place/services'
-import {deleteAdaptiveEquipment}     from 'features/user/admin/taxonomy/adaptiveEquipment/services'
+import {deleteProductCategory}   from 'features/shop/services/product/category'
+import {deleteProduct}           from 'features/shop/services/product'
+import {deleteAdaptiveEquipment} from 'features/user/admin/taxonomy/adaptiveEquipment/services'
 import {deleteBodyModification}      from 'features/user/admin/taxonomy/bodyModification/services'
 import {deleteGender}                from 'features/user/admin/taxonomy/gender/services'
 import {deleteLanguage}              from 'features/user/admin/taxonomy/language/services'
@@ -29,6 +32,8 @@ export function* attemptDestroyEntity({payload}) {
 export function* destroyEntity({payload}) {
     const deleteSwitch = () => {
         switch (payload.type) {
+            case 'artist':
+                return deleteArtist
             case 'adaptive-equipment':
                 return deleteAdaptiveEquipment
             case 'body-modification':
@@ -63,6 +68,10 @@ export function* destroyEntity({payload}) {
                 return deletePlaceCategory
             case 'place':
                 return deletePlace
+            case 'product-category':
+                return deleteProductCategory
+            case 'product':
+                return deleteProduct
             case 'user':
                 return deleteUser
             case 'review':

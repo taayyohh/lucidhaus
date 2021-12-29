@@ -6,7 +6,6 @@ import Overlay                    from 'shared/Layout/Overlay'
 import PageFrame                  from 'shared/Layout/PageFrame'
 import Div                        from '../Basic/Div'
 import LayoutSwitch               from './LayoutSwitch'
-import MapController              from './MapController'
 import MenuPanelController        from './MenuPanelController'
 import SearchController           from './SearchController'
 import TransitionController       from './TransitionController'
@@ -26,17 +25,15 @@ const Root = () => {
             {isInitialized ?
                 <LayoutSwitch>
                     <PlayerController>
-                        <MapController>
-                            <MenuPanelController>
-                                <TransitionController>
-                                    <SearchController>
-                                        <HelmetProvider>
-                                            <PageFrame/>
-                                        </HelmetProvider>
-                                    </SearchController>
-                                </TransitionController>
-                            </MenuPanelController>
-                        </MapController>
+                        <MenuPanelController>
+                            <TransitionController>
+                                <SearchController>
+                                    <HelmetProvider>
+                                        <PageFrame/>
+                                    </HelmetProvider>
+                                </SearchController>
+                            </TransitionController>
+                        </MenuPanelController>
                     </PlayerController>
                 </LayoutSwitch> : <Overlay/>
             }

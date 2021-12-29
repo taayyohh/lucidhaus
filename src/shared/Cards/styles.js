@@ -35,12 +35,12 @@ export const productCardTextWrapperStyle = {
 }
 
 export const productCardPriceStyle = {
-    size: [22, .7, 22]
+    size: [17, .7, 17]
 }
 
 export const productCardTitleStyle = {
     display: block,
-    size: [24, .7, 24],
+    size: [19, .7, 19],
     color: black,
     width: '100%',
     margin: 0
@@ -113,6 +113,30 @@ export const genericCardNameStyle = {
     color: black
 }
 
+export const genericCardArtistStyle = {
+    font: globals.fonts.sans,
+    size: [11, .7, 11],
+    lineHeight: [16, .7, 16],
+    textTransform: uppercase,
+    weight: 700,
+    letterSpacing: [.4, .7, .4],
+    textDecoration: none,
+    paddingTop: [2, .7, 2],
+    color: black
+}
+
+export const genericCardCollaboratorStyle = {
+    font: globals.fonts.sans,
+    size: [11, .7, 11],
+    lineHeight: [16, .7, 16],
+    textTransform: uppercase,
+    weight: 700,
+    letterSpacing: [.4, .7, .4],
+    textDecoration: none,
+    paddingTop: [2, .7, 2],
+    color: black
+}
+
 export const genericCardAddressStyle = {
     size: [28, .7, 28],
     lineHeight: [32, .7, 32],
@@ -123,15 +147,16 @@ export const genericCardPriceStyle = {
     font: globals.fonts.sans,
     size: [28, .7, 28],
     lineHeight: [32, .7, 32],
-    weight: 300,
+    weight: 700,
     letterSpacing: [.2, .7, .2],
     textDecoration: none,
     paddingTop: [5, .7, 5],
     paddingBottom: [10, .7, 10],
+    marginRight: auto,
     color: black,
     child: {
         selector: '> span',
-        size: [20, .7, 20]
+        size: [12, .7, 12]
     }
 }
 

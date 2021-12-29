@@ -1,16 +1,11 @@
-import {
-    productFields,
-    validateProduct
-}                              from 'features/shop/admin/product/fields/product'
-import AdminDashboardWrapper   from 'shared/Layout/Dashboard/admin/AdminDashboardWrapper'
-import {adminFormWrapperStyle} from 'shared/Layout/Dashboard/admin/styles'
-import React, {useEffect}      from 'react'
-import {
-    useDispatch,
-    useSelector
-}                              from 'react-redux'
-import Form                    from 'shared/Fields/Form'
-import ContentWrapper          from 'shared/Layout/ContentWrapper'
+import {productFields, validateProduct} from 'features/shop/admin/product/fields'
+import React, {useEffect}               from 'react'
+import {useDispatch, useSelector}       from 'react-redux'
+import Form                             from 'shared/Fields/Form'
+import ContentWrapper                   from 'shared/Layout/ContentWrapper'
+import AdminDashboardWrapper            from 'shared/Layout/Dashboard/admin/AdminDashboardWrapper'
+import {adminFormWrapperStyle}          from 'shared/Layout/Dashboard/admin/styles'
+import {userContentWrapperStyle}        from '../../../../user/admin/views/styles'
 
 const Create = () => {
     const dispatch = useDispatch()
@@ -25,6 +20,7 @@ const Create = () => {
         photoFile: '',
         quantity: 0,
         price: 0,
+        internationalShippingCost: 0,
         sold: 0,
         category: '',
         isPublished: false
@@ -44,7 +40,7 @@ const Create = () => {
     }, [])
 
     return (
-        <ContentWrapper>
+        <ContentWrapper theme={userContentWrapperStyle}>
             <AdminDashboardWrapper>
                 <Form
                     initialValues={initialValues}
@@ -52,7 +48,7 @@ const Create = () => {
                     options={options}
                     validationSchema={validateProduct}
                     dispatchAction={'shop/createProduct'}
-                    formHeading={'Create.js Product'}
+                    formHeading={'Create Product'}
                     buttonText={'Create'}
                     theme={adminFormWrapperStyle}
                 />

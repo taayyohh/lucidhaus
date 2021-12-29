@@ -18,8 +18,8 @@ import {
     spaceBetween,
     sv,
     transparent,
-    uppercase
-}                              from 'utils/themer'
+    uppercase, white
+} from 'utils/themer'
 
 
 export const checkoutDropIn = {
@@ -56,7 +56,9 @@ export const checkoutSectionStyle = {
 
 export const shopWrapperStyle = {
     display: flex,
-    width: '100%',
+    // width: '100%',
+    width: [1280, globals.style.layoutScalingValue, '100%'],
+    marginTop: [50, .7, '0'],
     mobile: {
         flexDirection: column
     }
@@ -64,13 +66,13 @@ export const shopWrapperStyle = {
 }
 
 export const shopLeftColumnStyle = {
-    width: [400, globals.style.layoutScalingValue, '100%'],
+    width: [300, globals.style.layoutScalingValue, '100%'],
     marginRight: auto
 }
 
 export const shopMenuStyle = {
     position: 'fixed',
-    width: [300, globals.style.layoutScalingValue, 100],
+    width: [200, globals.style.layoutScalingValue, 100],
     borderRight: `1px solid ${globals.colors.borderColor}`,
     mobile: {
         position: absolute,
@@ -84,13 +86,13 @@ export const shopMenuStyle = {
 }
 
 export const shopMenuLinkStyle = {
+    weight: 800,
     mobile: {
         display: flex,
         alignItems: center,
         justifyContent: spaceBetween,
         marginBottom: 20,
         padding: 15,
-        border: `1px solid ${globals.colors.borderColor}`
     }
 }
 
@@ -174,8 +176,17 @@ export const cartStyle = {
 }
 
 export const cartSummaryStyle = {
+    background: white,
+    border: `1px solid ${globals.colors.borderColor}`,
+    paddingLeft: [20, globals.style.layoutScalingValue, 20],
+    paddingRight: [20, globals.style.layoutScalingValue, 20],
+    paddingTop: [20, globals.style.layoutScalingValue, 20],
+    paddingBottom: [20, globals.style.layoutScalingValue, 20],
+    display: flex,
+    flexDirection: column,
+    alignItems: center,
     position: 'fixed',
-    width: [157, globals.style.layoutScalingValue, '100%'],
+    width: [150, globals.style.layoutScalingValue, '100%'],
     mobile: {
         display: flex,
         justifyContent: spaceBetween,
@@ -190,6 +201,14 @@ export const cartSummaryStyle = {
 }
 
 export const cartSummaryTotalStyle = {
+    textTransform: none,
+    size: [12, .7, 12],
+    display: flex,
+    flexDirection: column,
+    child: {
+        selector: 'span',
+        size: [32, .7, 32]
+    },
     mobile: {
         fontWeight: 500,
         size: 32
@@ -197,7 +216,14 @@ export const cartSummaryTotalStyle = {
 }
 
 export const cartSummaryLengthStyle = {
-    size: [22, .7, 22]
+    size: [16, .7, 16]
+}
+
+export const cartSummaryIntlDisc = {
+    size: [11, .7, 11],
+    textTransform: none,
+    lineHeight: [13, .7, 13],
+    marginTop: [10, .7, 10]
 }
 
 export const cartTotalWrapperStyle = {
@@ -208,9 +234,9 @@ export const cartTotalWrapperStyle = {
 
 export const cartTitleStyle = {
     font: globals.fonts.sans,
-    size: [22, .7, 28],
+    size: [18, .7, 18],
     marginTop: 0,
-    weight: 300,
+    weight: 600,
     textTransform: none,
     textAlign: center,
     marginBottom: [15, .7, 15]
@@ -220,7 +246,12 @@ export const productWrapperStyle = {
     display: flex,
     flexDirection: column,
     width: [800, globals.style.layoutScalingValue, '100%'],
+    background: white,
+    padding: [50, globals.style.layoutScalingValue, 20],
+    borderRadius: [5, globals.style.layoutScalingValue, 5],
+    border: `1px solid ${globals.colors.borderColor}`,
     margin: '0 auto',
+    boxShadow: '1px 0px 20px 1px #e9e9e9',
     mobile: {
         alignItems: flexStart
     }
@@ -303,7 +334,7 @@ export const shippingAddressStyle = {
         display: grid,
         width: '100%',
         gridColumnGap: sv(30, globals.style.layoutScalingValue),
-        gridTemplateColumns: '1fr 1fr',
+        gridTemplateColumns: '1fr',
         child: {
             selector: '> fieldset',
             marginBottom: [20, .7, 20],
@@ -325,21 +356,20 @@ export const shopCardStyle = {
     textWrapper: {
         paddingLeft: 25
     },
-    category: {
-        marginTop: [20, .7, 20],
+    productCategory: {
         letterSpacing: [1, .7, 1],
-        color: colorPalette.honeyYellow
+        color: colorPalette.honeyYellow,
+        size: [12, .7, 12]
     },
     name: {
         // marginRight: auto,
         // paddingLeft: [25, .7, 25],
         paddingBottom: 0,
-        size: [36, .7, 36]
+        size: [18, .7, 18],
     },
     price: {
-        marginTop: [20, .7, 20],
         paddingTop: [10, .7, 10],
-        borderTop: `1px solid #000`
+        size: [18, .7, 18]
         // marginRight: auto,
         // paddingLeft: [25, .7, 25]
     }

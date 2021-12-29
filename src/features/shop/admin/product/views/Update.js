@@ -1,6 +1,4 @@
-import {productFields, validateProduct} from 'features/shop/admin/product/fields/product'
-import AdminDashboardWrapper            from 'shared/Layout/Dashboard/admin/AdminDashboardWrapper'
-import {adminFormWrapperStyle}          from 'shared/Layout/Dashboard/admin/styles'
+import {productFields, validateProduct} from 'features/shop/admin/product/fields'
 import React, {useContext, useEffect}   from 'react'
 import 'react-image-crop/dist/ReactCrop.css'
 import {useDispatch, useSelector}       from 'react-redux'
@@ -8,14 +6,17 @@ import {searchContext}                  from 'shared/Containers/SearchController
 import DangerZone                       from 'shared/Controls/DangerZone'
 import Form                             from 'shared/Fields/Form'
 import ContentWrapper                   from 'shared/Layout/ContentWrapper'
+import AdminDashboardWrapper            from 'shared/Layout/Dashboard/admin/AdminDashboardWrapper'
+import {adminFormWrapperStyle}          from 'shared/Layout/Dashboard/admin/styles'
+import {userContentWrapperStyle}        from '../../../../user/admin/views/styles'
 
 const Update = () => {
     const dispatch = useDispatch()
     const {_id, token} = useSelector(state => state.user)
     const {slug} = useSelector(state => state.site)
     const {product} = useSelector(state => state.shop)
-    const {productCategories} = useSelector(state => state.shop)
-    const {name, description, photo, quantity, price, sold, category, isPublished} = product
+    const {productCategories} = useSelector(state => state.shop.taxonomy)
+    const {name, description, photo, quantity, price, sold, category, internationalShippingCost, isPublished} = product
     const {productsIndex} = useContext(searchContext)
     const initialValues = {
         name: name,
@@ -25,6 +26,7 @@ const Update = () => {
         quantity: quantity,
         category: category,
         price: price,
+        internationalShippingCost: internationalShippingCost,
         sold: sold,
         isPublished: isPublished,
         slug,
@@ -47,7 +49,7 @@ const Update = () => {
     }, [])
 
     return (
-        <ContentWrapper>
+        <ContentWrapper theme={userContentWrapperStyle}>
             <AdminDashboardWrapper>
                 <Form
                     initialValues={initialValues}

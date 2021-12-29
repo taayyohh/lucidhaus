@@ -1,18 +1,19 @@
-import AdminDashboardWrapper from 'shared/Layout/Dashboard/admin/AdminDashboardWrapper'
+import List                                     from 'features/shop/admin/order/views/List'
+import React, {useContext, useEffect, useState} from 'react'
+import {useDispatch, useSelector}               from 'react-redux'
+import Div                                      from 'shared/Basic/Div'
+import MotionDiv                 from 'shared/Basic/MotionDiv'
+import {searchContext}           from 'shared/Containers/SearchController'
+import ContentWrapper            from 'shared/Layout/ContentWrapper'
+import AdminDashboardWrapper     from 'shared/Layout/Dashboard/admin/AdminDashboardWrapper'
 import {
     adminOrderWrapperStyle,
     orderStatusActiveIndicatorStyle,
     orderStatusFilterStyle,
     orderStatusFilterWrapperStyle
-}                            from 'shared/Layout/Dashboard/admin/styles'
-import List                  from 'features/shop/admin/order/views/List'
-import React, {useContext, useEffect, useState} from 'react'
-import {useDispatch, useSelector}               from 'react-redux'
-import Div                                      from 'shared/Basic/Div'
-import MotionDiv                                from 'shared/Basic/MotionDiv'
-import {searchContext}                          from 'shared/Containers/SearchController'
-import ContentWrapper                           from 'shared/Layout/ContentWrapper'
-import DashboardInfo                            from 'shared/Layout/Dashboard/DashboardInfo'
+}                                from 'shared/Layout/Dashboard/admin/styles'
+import DashboardInfo             from 'shared/Layout/Dashboard/DashboardInfo'
+import {userContentWrapperStyle} from '../../../../user/admin/views/styles'
 
 const Manage = () => {
     const dispatch = useDispatch()
@@ -67,7 +68,7 @@ const Manage = () => {
     }, [updatedOrder])
 
     return (
-        <ContentWrapper>
+        <ContentWrapper theme={userContentWrapperStyle}>
             <AdminDashboardWrapper>
                 <DashboardInfo
                     heading={'Manage Orders'}

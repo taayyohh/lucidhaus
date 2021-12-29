@@ -1,10 +1,11 @@
-import {mobileAdminDashboardMenu}                                                   from 'config/menus/dashboard/admin'
-import {userDashboardMenu}                                                          from 'config/menus/dashboard/user'
-import React                                                                        from 'react'
+import {mobileAdminDashboardMenu}                   from 'config/menus/dashboard/admin'
+import {mobileUserDashboardMenu, userDashboardMenu} from 'config/menus/dashboard/user'
+import React                                        from 'react'
 import {useDispatch, useSelector}                                                   from 'react-redux'
 import Div                                                                          from 'shared/Basic/Div'
 import Span                                                                         from 'shared/Basic/Span'
 import {adminMenuStyle}                                                             from 'shared/Layout/Dashboard/admin/styles'
+import {mobileFlag}                                                                 from '../../features/site/slice'
 import LinkSwitch                                                                   from '../Basic/LinkSwitch'
 import {headerButtonSignInStyle, headerButtonSignUpStyle, headerButtonWrapperStyle} from '../Layout/styles/header'
 import HeaderDashboardMenu                                                          from './HeaderDashboardMenu'
@@ -13,6 +14,8 @@ import {headerAccountMenuLinkStyle}                                             
 const MobileHeaderMenu = () => {
     const {nameFirst, isAdmin, isAuthenticated} = useSelector(state => state.user)
     const dispatch = useDispatch()
+    const isMobile = useSelector(mobileFlag)
+
 
     return (
         <Div theme={adminMenuStyle}>
@@ -21,7 +24,9 @@ const MobileHeaderMenu = () => {
                     <>
                         <Div theme={adminMenuStyle.greeting}>Hello, {nameFirst}</Div>
                         <HeaderDashboardMenu
-                            menu={isAdmin ? mobileAdminDashboardMenu : userDashboardMenu}
+                            // menu={isAdmin ? mobileAdminDashboardMenu : userDashboardMenu}
+                            menu={isMobile ? mobileUserDashboardMenu : userDashboardMenu}
+
                         />
                         <Span
                             theme={{...headerAccountMenuLinkStyle, ...headerAccountMenuLinkStyle.signOut}}

@@ -43,7 +43,9 @@ const HeaderMenuUserDropdownMenu = () => {
         >
             <Div theme={headerAccountMenuDropdownInnerWrapperStyle}>
                 <HeaderDashboardMenu
-                    menu={isAdmin ? adminDashboardMenu : userDashboardMenu}
+                    // menu={isAdmin ? adminDashboardMenu : userDashboardMenu}
+                    menu={userDashboardMenu}
+
                 />
                 <Span
                     theme={{...headerAccountMenuLinkStyle, ...headerAccountMenuLinkStyle.signOut}}

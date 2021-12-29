@@ -25,19 +25,16 @@ import {
     watchGetBoonePlace
 }                                  from 'features/place/sagas/boone'
 import {
-    watchAttemptDestroyProduct,
     watchCreateProduct,
-    watchDestroyProduct,
-    watchDestroyProductSuccess,
     watchUpdateProduct,
     watchUpdateProductQuantity
 }                                  from 'features/shop/admin/product/sagas'
 import {
     watchCreateProductCategory,
-    watchDestroyProductCategory,
-    watchDestroyProductCategorySuccess,
+    watchGetProductCategoryDetail,
+    watchGetProductCategoryList,
     watchUpdateProductCategory
-}                                  from 'features/shop/admin/product/sagas/category'
+}                                  from 'features/shop/admin/product/taxonomy/category/sagas'
 import {
     watchGetBraintreeToken,
     watchGetFilteredShop,
@@ -83,7 +80,8 @@ import {
     watchConfirmUpdatePhoneNumber,
     watchConfirmUser,
     watchCreateVerificationToken,
-    watchFlagReview, watchGetRecentlyViewedPlace,
+    watchFlagReview,
+    watchGetRecentlyViewedPlace,
     watchGetSubmittedBy,
     watchGetUser,
     watchGetUsers,
@@ -91,10 +89,12 @@ import {
     watchSignIn,
     watchSignOut,
     watchSignUp,
-    watchSignUpSignInSuccess, watchUpdateUserEmail, watchUpdateUserPhoneNumber,
+    watchSignUpSignInSuccess,
+    watchUpdateUserEmail,
+    watchUpdateUserPhoneNumber,
     watchUserHistory,
     watchVerifyUser
-} from 'features/user/sagas'
+}                                  from 'features/user/sagas'
 import {
     watchAuthenticate,
     watchAuthenticateSuccess,
@@ -104,7 +104,42 @@ import {
 import {
     all,
     fork
-}                                  from 'redux-saga/effects'
+}                                   from 'redux-saga/effects'
+import {
+    watchAddSongToAlbum,
+    watchCreateAlbum,
+    watchUpdateAlbum
+}                                   from './features/album/admin/sagas'
+import {
+    watchGetAlbumDetail,
+    watchGetAlbums
+}                                                          from './features/album/sagas'
+import {watchGetAudiusProviderList, watchSearchAudiusUser} from './features/album/sagas/audius'
+import {
+    watchCreateArtist,
+    watchUpdateArtist
+}                                                          from './features/artist/admin/sagas'
+import {
+    watchGetArtistDetail,
+    watchGetArtists
+}                                   from './features/artist/sagas'
+import {
+    watchCreateCollaborator,
+    watchUpdateCollaborator
+}                                   from './features/collaborator/admin/sagas'
+import {
+    watchGetCollaboratorDetail,
+    watchGetCollaborators
+}                                  from './features/collaborator/sagas'
+import {
+    watchAddRsvpToEvent,
+    watchCreateEvent,
+    watchUpdateEvent
+}                                  from './features/event/admin/sagas'
+import {
+    watchGetEventDetail,
+    watchGetEvents
+}                                  from './features/event/sagas'
 import {
     watchCreateBathroom,
     watchGetBathroomDetail,
@@ -368,9 +403,6 @@ export default function* rootSaga() {
         // shop
         fork(watchCreateProduct),
         fork(watchUpdateProduct),
-        fork(watchAttemptDestroyProduct),
-        fork(watchDestroyProduct),
-        fork(watchDestroyProductSuccess),
         fork(watchGetProductDetail),
         fork(watchGetShop),
         fork(watchGetFilteredShop),
@@ -379,11 +411,41 @@ export default function* rootSaga() {
         // product placeCategory
         fork(watchCreateProductCategory),
         fork(watchUpdateProductCategory),
-        fork(watchDestroyProductCategory),
-        fork(watchDestroyProductCategorySuccess),
+        fork(watchGetProductCategoryList),
+        fork(watchGetProductCategoryDetail),
         fork(watchGetProductCategories),
         fork(watchGetProductCategory),
         fork(watchGetRelatedProducts),
+
+
+        //artists
+        fork(watchGetArtistDetail),
+        fork(watchGetArtists),
+        fork(watchCreateArtist),
+        fork(watchUpdateArtist),
+
+        //albums
+        fork(watchCreateAlbum),
+        fork(watchUpdateAlbum),
+        fork(watchAddSongToAlbum),
+        fork(watchGetAlbums),
+        fork(watchGetAlbumDetail),
+
+        //audius
+        fork(watchGetAudiusProviderList),
+        fork(watchSearchAudiusUser),
+
+        fork(watchCreateEvent),
+        fork(watchUpdateEvent),
+        fork(watchAddRsvpToEvent),
+        fork(watchGetEvents),
+        fork(watchGetEventDetail),
+
+
+        fork(watchCreateCollaborator),
+        fork(watchUpdateCollaborator),
+        fork(watchGetCollaborators),
+        fork(watchGetCollaboratorDetail),
 
         //orders
         fork(watchGetOrders),

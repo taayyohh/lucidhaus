@@ -14,21 +14,6 @@ const Footer = ({theme}) =>
         <Div theme={footerStyle.inner}>
             <Div theme={footerStyle.innerLinksWrapper}>
                 <Span theme={footerStyle.copy}>&copy; {moment().format('YYYY')} {siteDisplayName}</Span>
-                <Div theme={footerStyle.linksWrapper}>
-                    <LinkSwitch
-                        url={'https://inclusive-guide.s3.us-east-2.amazonaws.com/assets/InclusiveGuide-PrivacyPolicy-11.18.21.pdf'}
-                        children={'Privacy Policy '}
-                    />
-                    <LinkSwitch
-                        url={'https://inclusive-guide.s3.us-east-2.amazonaws.com/assets/InclusiveGuide-TermsOfService-01.18.21.pdf'}
-                        children={'Terms of Service'}
-                    />
-                    <LinkSwitch
-                        theme={footerStyle.feedback}
-                        url={'https://docs.google.com/forms/d/1jVOQmYLDvdTEiGICDmZY9wmSmKirNo1oYNZxO-UjylE/edit?ts=60c78b0f'}
-                        children={'Leave us Feedback'}
-                    />
-                </Div>
             </Div>
             <Div theme={footerContactStyle}>
                 <Div theme={footerSocialStyle}>

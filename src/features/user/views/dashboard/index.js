@@ -1,15 +1,13 @@
-import {userDashboardMenu}                                             from 'config/menus/dashboard/user'
-import {userContentWrapperStyle, userDashboardWelcomeStyle}            from 'features/user/admin/views/styles'
-import React, {useEffect}                                              from 'react'
-import {useDispatch, useSelector}                                      from 'react-redux'
-import Div                                                             from 'shared/Basic/Div'
-import ContentWrapper                                                  from 'shared/Layout/ContentWrapper'
-import DashboardWrapper                                                from 'shared/Layout/Dashboard/DashboardWrapper'
-import Avatar                                                          from './Avatar'
-import HowTo                                                           from './HowTo'
-import {dashboardContentContainerStyle, userDashboardInfoWrapperStyle} from './styles'
-import Welcome                                                         from './Welcome'
-import YourInput                                                       from './YourInput'
+import {userDashboardMenu}                                  from 'config/menus/dashboard/user'
+import {userContentWrapperStyle, userDashboardWelcomeStyle} from 'features/user/admin/views/styles'
+import React, {useEffect}                                   from 'react'
+import {useDispatch, useSelector}                           from 'react-redux'
+import Div                                                  from 'shared/Basic/Div'
+import ContentWrapper                                       from 'shared/Layout/ContentWrapper'
+import DashboardWrapper                                     from 'shared/Layout/Dashboard/DashboardWrapper'
+import Avatar                                               from './Avatar'
+import {userDashboardInfoWrapperStyle}                      from './styles'
+import Welcome                                              from './Welcome'
 
 const UserDashboard = () => {
     const {
@@ -56,12 +54,7 @@ const UserDashboard = () => {
                     </Div>
                 </Div>
                 <Div theme={userDashboardInfoWrapperStyle}>
-                    <Div theme={dashboardContentContainerStyle}>
-                        <HowTo/>
-                    </Div>
-                    <Div theme={dashboardContentContainerStyle}>
-                        <YourInput/>
-                    </Div>
+                    Hi
                 </Div>
             </DashboardWrapper>
         </ContentWrapper>

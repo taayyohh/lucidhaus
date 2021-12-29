@@ -1,24 +1,24 @@
 {
-  "name": "Inclusive Guide",
-  "short_name": "inclusiveguide",
-  "description": "A More inclusive world",
+  "name": "LucidHaus",
+  "short_name": "lucidhaus",
+  "description": "LucidHaus",
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#004722",
   "icons": [
     {
-      "src": "https://inclusive-guide.s3.us-east-2.amazonaws.com/assets/favicon-32x32.png",
+      "src": "https://lucidhaus.s3.us-west-2.amazonaws.com/config/favicon-32x32.png",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     },
     {
-      "src": "https://inclusive-guide.s3.us-east-2.amazonaws.com/assets/android-chrome-192x192.png",
+      "src": "https://lucidhaus.s3.us-west-2.amazonaws.com/config/android-chrome-192x192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "https://inclusive-guide.s3.us-east-2.amazonaws.com/assets/android-chrome-512x512.png",
+      "src": "https://lucidhaus.s3.us-west-2.amazonaws.com/config/android-chrome-512x512.png",
       "type": "image/png",
       "sizes": "512x512"
     }

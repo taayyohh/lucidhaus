@@ -1,6 +1,5 @@
 import React, {useContext, useEffect, useState} from 'react'
 import {useDispatch, useSelector}               from 'react-redux'
-import LinkSwitch                               from 'shared/Basic/LinkSwitch'
 import {searchContext}                          from 'shared/Containers/SearchController'
 import ContentWrapper                           from 'shared/Layout/ContentWrapper'
 import AdminDashboardWrapper                    from 'shared/Layout/Dashboard/admin/AdminDashboardWrapper'
@@ -42,7 +41,7 @@ const Manage = () => {
                     heading={`Manage Users - ${users.length} Total`}
                     description={'Type & Enter to search. Click to edit.'}
                 />
-                <LinkSwitch url={'/admin/users/taxonomy'} children={'Taxonomy'}/>
+                {/*<LinkSwitch url={'/admin/users/taxonomy'} children={'Taxonomy'}/>*/}
                 {isIndexed && (
                     <List users={users}/>
                 )}

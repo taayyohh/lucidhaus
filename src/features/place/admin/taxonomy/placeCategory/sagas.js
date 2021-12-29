@@ -72,8 +72,6 @@ export function* updatePlaceCategoryDetail({payload}) {
         setFormData(placeCategory, field)
 
 
-   
-
     try {
         const updated = yield call(updateEntity, {
             slug: slug,

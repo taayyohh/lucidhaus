@@ -1,5 +1,9 @@
 import {colorPalette, globals}          from 'config/styles'
+import {dashboardContentContainerStyle} from 'features/user/views/dashboard/styles'
+import {genericButtonStyle}             from 'shared/Controls/styles'
 import {
+    absolute,
+    auto,
     black,
     borderBox,
     center,
@@ -9,14 +13,12 @@ import {
     grid,
     inlineFlex,
     none,
-    pointer,
+    pointer, relative,
     row,
     sv,
     white,
     wrap
-}                                       from 'utils/themer'
-import {genericButtonStyle}             from '../../../../shared/Controls/styles'
-import {dashboardContentContainerStyle} from '../../views/dashboard/styles'
+} from 'utils/themer'
 
 export const userProfileFormStyle = {
     multiSelect: {
@@ -86,6 +88,46 @@ export const userContentWrapperStyle = {
 
     }
 }
+
+export const multiSelectOptionSelectedWrapperStyle = {
+    display: flex,
+    flexDirection: column,
+    backgroundColor: '#e4e4e4',
+    padding: [20, .7, 20],
+    border: `1px solid ${globals.colors.borderColor}`,
+    borderRadius: [5, .7, 5],
+    marginTop: [20, .7, 20],
+    heading: {
+        marginLeft: auto,
+        marginBottom: [10, .7, 10],
+        weight: 700,
+        size: [16, .7, 16]
+    },
+    option: {
+        ...multiSelectOptionStyle,
+        paddingTop: [5, .7, 5],
+        paddingBottom: [5, .7, 5],
+        paddingRight: [30, globals.style.layoutScalingValue, 30],
+        paddingLeft: [30, globals.style.layoutScalingValue, 30],
+        display: inlineFlex,
+        position: relative,
+        alignItems: center,
+        justifyContent: center,
+        backgroundColor: colorPalette.darkHoneyYellow,
+        color: white,
+        size: [15, .7, 15],
+        hover: {
+            cursor: pointer
+        }
+    },
+    optionIcon: {
+        size: [13, .7, 13],
+        position: absolute,
+        right: [10, globals.style.layoutScalingValue, 8],
+        top: [9, .7, 9]
+    }
+}
+
 
 export const userDashboardIconWrapperStyle = {
     display: flex,
@@ -566,7 +608,5 @@ export const resetButtonStyle = {
 export const resetContactInfoStyle = {}
 
 export const identityProfileFormStyles = {
-    multiSelectHeading: {
-
-    }
+    multiSelectHeading: {}
 }

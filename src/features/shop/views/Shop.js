@@ -2,11 +2,12 @@ import ShopWrapper                from 'features/shop/views/ShopWrapper'
 import {shopCardStyle}            from 'features/shop/views/styles'
 import React, {useEffect}         from 'react'
 import {useDispatch, useSelector} from 'react-redux'
-import GenericCard                from 'shared/Cards/GenericCard'
 import ContentWrapper             from 'shared/Layout/ContentWrapper'
+import ShopCard                   from './ShopCard'
 
 const Shop = () => {
-    const {shop, productCategories} = useSelector(state => state.shop)
+    const {shop, taxonomy} = useSelector(state => state.shop)
+    const {productCategories} = taxonomy
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -20,7 +21,7 @@ const Shop = () => {
         dispatch({
             type: 'site/setDocumentHead',
             payload: {
-                title: 'The Hypha Beta FilteredShop',
+                title: 'LucidHaus Shop',
                 description: 'Welcome to the shop.'
             }
         })
@@ -33,8 +34,8 @@ const Shop = () => {
         <ContentWrapper>
             <ShopWrapper>
                 {shop && shop.map(
-                    (product, i) => product.isPublished && product.quantity > 0 && (
-                        <GenericCard
+                    product => product.isPublished && product.quantity > 0 && (
+                        <ShopCard
                             key={product.slug}
                             slug={`shop/${product.slug}`}
                             name={product.name}

@@ -1,43 +1,30 @@
-import {CDN} from 'config/variables'
-import {
-    list,
-    pause,
-    play,
-    stepBackward,
-    stepForward,
-    volumeMute,
-    windowMinimize
-}            from 'config/icons'
-import {mobileFlag} from 'features/site/slice'
-import React, {
-    useContext,
-    useEffect,
-    useRef,
-    useState
-}                      from 'react'
-import ReactPlayer     from 'react-player'
-import {useSelector}   from 'react-redux'
-import Div             from 'shared/Basic/Div'
-import Icon            from 'shared/Basic/Icon'
-import LinkSwitch      from 'shared/Basic/LinkSwitch'
-import MotionDiv       from 'shared/Basic/MotionDiv'
-import {playerContext} from 'shared/Containers/PlayerController'
+import {list, pause, play, stepBackward, stepForward, volumeMute, windowMinimize} from 'config/icons'
+import {CDN}                                                                      from 'config/variables'
+import {mobileFlag}                                                               from 'features/site/slice'
+import React, {useContext, useEffect, useRef, useState}                           from 'react'
+import ReactPlayer                                                                from 'react-player'
+import {useSelector}                                                              from 'react-redux'
+import Div                                                                        from 'shared/Basic/Div'
+import Icon                                                                       from 'shared/Basic/Icon'
+import LinkSwitch                                                                 from 'shared/Basic/LinkSwitch'
+import MotionDiv                                                                  from 'shared/Basic/MotionDiv'
+import {playerContext}                                                            from 'shared/Containers/PlayerController'
 import {
     playerControlsWrapperStyle,
     playerIconStyle,
     playerInnerStyle,
     playerMinimizeIconStyle,
     playerMuteStyle,
-    playerQueuePlaceStyle,
     playerQueueInnerStyle,
+    playerQueueArtistStyle,
     playerQueueStyle,
     playerQueueTitleStyle,
     playerQueueTrackInnerStyle,
     playerQueueTrackStyle,
     playerSongsWrapperStyle,
     playerStyle
-}                      from 'shared/Player/styles'
-import {auto}          from 'utils/themer'
+}                                                                                 from 'shared/Player/styles'
+import {auto}                                                                     from 'utils/themer'
 
 const Player = () => {
     const isMobile = useSelector(mobileFlag)
@@ -168,10 +155,10 @@ const Player = () => {
                                             <Div key={i} theme={playerQueueTrackStyle}>
                                                 <Div theme={playerQueueTrackInnerStyle(isActive)}>
                                                     <LinkSwitch
-                                                        url={`/places/${m.primaryPlaceSlug}`}
-                                                        theme={playerQueuePlaceStyle}
+                                                        url={`/artists/${m.primaryArtistSlug}`}
+                                                        theme={playerQueueArtistStyle}
                                                     >
-                                                        {m.primaryPlace}
+                                                        {m.primaryArtist}
                                                     </LinkSwitch>
                                                     <LinkSwitch
                                                         url={`/music/${m.albumSlug}`}

@@ -50,6 +50,7 @@ export const FILTER = 'filter'
 export const IMAGE_UPLOAD = 'imageUpload'
 export const LIKERT = 'likert'
 export const MULTI_SELECT = 'multi-select'
+export const SINGLE_SELECT = 'single-select'
 export const REGION = 'region'
 export const RICH_TEXT = 'richText'
 export const SONGS = 'songs'
@@ -71,12 +72,17 @@ export const ACCEPTABLE_EXTENSIONS = [
 export const UPLOAD_PATHS = {
     post: 'post/',
     shop: 'shop/',
+    collaborator: 'collaborator/',
+    audio: 'audio/',
     place: 'place/',
     user: 'user/',
-    businessOwner: 'business-owner/'
+    artist: 'artist/',
+    businessOwner: 'business-owner/',
+    event: 'event/',
+    audioCoverArt: 'audio/coverArt/'
 }
 
 /** SITE CONFIG **/
-export const siteDisplayName = 'Inclusive Guide'
-export const siteTwitterUrl = 'https://twitter.com/inclusiveguide'
-export const siteInstagramUrl = 'https://instagram.com/inclusiveguide'
+export const siteDisplayName = 'LucidHaus'
+export const siteTwitterUrl = 'https://twitter.com/lucidhaus'
+export const siteInstagramUrl = 'https://instagram.com/lucid.haus'

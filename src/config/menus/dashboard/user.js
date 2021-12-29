@@ -1,4 +1,4 @@
-import {bookmark, comments, home, plusCircle, userCog} from 'config/icons'
+import {home, userCog} from 'config/icons'
 
 export const userDashboardMenu = [
     {
@@ -12,23 +12,52 @@ export const userDashboardMenu = [
         title: 'Account Details'
     },
     {
-        url: '/dashboard/profile',
+        url: '/dashboard/orders',
         icon: userCog,
-        title: 'Identity Profile'
-    },
-    {
-        url: '/dashboard/reviews',
-        icon: comments,
-        title: 'My Reviews'
-    },
-    {
-        url: '/dashboard/places',
-        icon: bookmark,
-        title: '    My Places'
-    },
-    {
-        url: '/dashboard/submit',
-        icon: plusCircle,
-        title: 'Submit A Place'
+        title: 'Orders'
     }
 ]
+
+
+export const mobileUserDashboardMenu = [
+    {
+        url: '/music',
+        title: 'Music',
+        active: ['music'],
+    },
+    {
+        url: '/events',
+        title: 'Events',
+        active: ['events', 'event'],
+    },
+    {
+        url: '/artists',
+        title: 'Artists',
+        active: ['artist', 'artists'],
+    },
+    {
+        url: '/shop',
+        title: 'Shop',
+        active: ['shop'],
+    },
+    {
+        url: '/dashboard',
+        icon: home,
+        title: 'Dashboard'
+    },
+    {
+        url: '/dashboard/account',
+        icon: userCog,
+        title: 'Account Details'
+    },
+    {
+        url: '/dashboard/orders',
+        icon: userCog,
+        title: 'Orders'
+    },
+]
+
+
+
+
+

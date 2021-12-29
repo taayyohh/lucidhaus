@@ -254,10 +254,12 @@ export const adminMenuStyle = {
     }
 }
 export const adminOrderWrapperStyle = {
-    width: '100%',
-    display: 'grid',
-    gridTemplateColumns: '1fr 1fr',
-    gridGap: sv(30),
+    // width: '100%',
+    // display: 'grid',
+    // gridTemplateColumns: '1fr 1fr',
+    // gridGap: sv(30),
+    display: flex,
+    flexDirection: column,
     mobile: {
         display: flex,
         flexDirection: column

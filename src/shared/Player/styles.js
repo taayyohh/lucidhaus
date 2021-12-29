@@ -65,7 +65,7 @@ export const playerMinimizeStyle = {
 export const playerMinimizeIconStyle = isOpen => {
     return {
         display: block,
-        marginBottom: [15, .7, 15],
+        // marginBottom: [15, .7, 15],
         marginLeft: auto,
         mobile: {
             size: 22,
@@ -142,12 +142,12 @@ export const playerQueueTrackInnerStyle = isActive => {
     if (isActive)
         return {
             ...base,
-            backgroundColor: colorPalette.honeyYellow,
+            backgroundColor: '#cdcdcd',
             child: {
                 selector: 'a',
                 color: white,
                 hover: {
-                    textDecoration: 'underline'
+                    color: colorPalette.black
                 }
             }
         }
@@ -166,7 +166,7 @@ export const playerQueueTitleStyle = {
     }
 }
 
-export const playerQueuePlaceStyle = {
+export const playerQueueArtistStyle = {
     textDecoration: none,
     whiteSpace: 'nowrap',
     paddingLeft: 20,

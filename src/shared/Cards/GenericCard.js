@@ -7,12 +7,13 @@ import RichText                    from 'shared/Basic/RichText'
 import Span                        from 'shared/Basic/Span'
 import {
     genericCardAddressStyle,
+    genericCardArtistStyle,
     genericCardPlaceNameStyle,
     genericCardPlaceWrapperStyle,
     genericCardPriceStyle,
     genericCardProductCategoryStyle,
     genericCardQuantityStyle
-} from 'shared/Cards/styles'
+}                                  from 'shared/Cards/styles'
 import {fadeIn, fadeOut, nOpacity} from 'shared/Layout/styles/animations'
 import {excerpt, getNameById}      from 'utils/helpers'
 import {
@@ -31,6 +32,7 @@ const GenericCard = ({
                          photo,
                          name,
                          slug,
+    artist,
                          description,
                          placeName,
                          collaborators,
@@ -82,6 +84,12 @@ const GenericCard = ({
                         <MotionDiv
                             theme={{...genericCardNameStyle, ...theme.name}}
                             children={name}
+                        />
+                    )}
+                    {artist && (
+                        <MotionDiv
+                            theme={{...genericCardArtistStyle, ...theme.artist}}
+                            children={artist}
                         />
                     )}
                     {address && (

@@ -21,6 +21,8 @@ const DeletePrompt = ({destroyAction, type, index, objectID}) => {
     const {shouldDelete, destroy} = confirmDelete
     const dispatch = useDispatch()
 
+    console.log('index', index)
+
     return (
         <>
             {shouldDelete && (
@@ -59,6 +61,7 @@ const DeletePrompt = ({destroyAction, type, index, objectID}) => {
                                     <Div
                                         theme={{...deletePromptButtonStyle, ...deletePromptConfirmButtonStyle}}
                                         onClick={() => index.deleteObject(objectID).then(() => {
+                                            console.log('yes!')
                                                 dispatch({
                                                     type: destroyAction,
                                                     payload: {

@@ -1,21 +1,18 @@
 import {push}                                     from 'connected-react-router'
-import {addProduct, deleteProduct, updateProduct} from 'features/shop/services/product/product'
+import {addProduct, deleteProduct, updateProduct} from 'features/shop/services/product'
 import {getSignedRequest, uploadFile}             from 'features/site/services/s3'
 import {call, put, takeLatest}                    from 'redux-saga/effects'
+import {setFormData}                              from 'utils/abstractions/setFormData'
 import {updateItem}                               from 'utils/cartHelpers'
 
 export function* createProduct({payload}) {
-    const {_id, token, name, description, photo, photoFile, quantity, price, isPublished, category} = payload
+    const {_id, token, name, description, photo, photoFile, quantity, price, internationalShippingCost, isPublished, category} = payload
 
     //add to formdata so api can read
     const product = new FormData()
-    product.set('name', name)
-    product.set('description', description)
-    product.set('photo', photo)
-    product.set('quantity', quantity)
-    product.set('price', price)
-    product.set('category', category)
-    product.set('isPublished', isPublished)
+    const fields = [{name}, {description}, {photo}, {quantity}, {price}, {internationalShippingCost}, {category}, {isPublished}]
+    for (let field of fields)
+        setFormData(product, field)
 
     const s3Payload = yield call(getSignedRequest, photoFile)
     if (!!s3Payload.signedRequest) {
@@ -37,18 +34,13 @@ export function* createProduct({payload}) {
 }
 
 export function* updateProductDetail({payload}) {
-    const {slug, _id, token, name, description, photo, photoFile, quantity, price, isPublished, category} = payload
+    const {slug, _id, token, name, description, photo, photoFile, quantity, price, internationalShippingCost, isPublished, category} = payload
 
     //add to formData so api can read
     const updatedProduct = new FormData()
-    updatedProduct.set('name', name)
-    updatedProduct.set('description', description)
-    updatedProduct.set('photo', photo)
-    updatedProduct.set('quantity', quantity)
-    updatedProduct.set('price', price)
-    updatedProduct.set('category', category)
-    updatedProduct.set('isPublished', isPublished)
-
+    const fields = [{name}, {description}, {photo}, {quantity}, {price}, {category}, {internationalShippingCost}, {isPublished}]
+    for (let field of fields)
+        setFormData(updatedProduct, field)
 
     if (!!photoFile) {
         const s3Payload = yield call(getSignedRequest, photoFile)
@@ -83,28 +75,6 @@ export function* updateProductDetail({payload}) {
     }
 }
 
-export function* attemptDestroyProduct({payload}) {
-    yield put({type: 'shop/confirmDestroyProduct', payload: payload})
-}
-
-export function* destroyProduct({payload}) {
-    const destroyed = yield call(deleteProduct, payload)
-    const {objectID} = payload
-
-    if (!destroyed.error) {
-        yield put({type: 'shop/destroyProductSuccess'})
-        yield put({type: 'shop/destroyProductSuccess', payload: {objectID}})
-        yield put({type: 'shop/getShop'})
-        yield put(push('/admin/shop'))
-    } else {
-        yield put({type: 'shop/destroyProductFailure'})
-    }
-}
-
-export function* destroyProductSuccess() {
-    yield put(push('/admin/shop'))
-}
-
 export function* updateProductQuantity({payload}) {
     const cart = yield call(updateItem, payload)
     yield put({type: 'shop/updateCartSuccess', payload: {cart: cart}})
@@ -122,18 +92,6 @@ export function* updateProductQuantity({payload}) {
 
 export function* watchCreateProduct() {
     yield takeLatest('shop/createProduct', createProduct)
-}
-
-export function* watchAttemptDestroyProduct() {
-    yield takeLatest('shop/attemptDestroyProduct', attemptDestroyProduct)
-}
-
-export function* watchDestroyProduct() {
-    yield takeLatest('shop/destroyProduct', destroyProduct)
-}
-
-export function* watchDestroyProductSuccess() {
-    yield takeLatest('shop/attemptDestroyProductSuccess', destroyProductSuccess)
 }
 
 export function* watchUpdateProduct() {

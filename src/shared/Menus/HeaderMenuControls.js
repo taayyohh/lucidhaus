@@ -1,4 +1,4 @@
-import {search}                        from 'config/icons'
+import {shoppingCart}                  from 'config/icons'
 import React, {useContext}             from 'react'
 import {useSelector}                   from 'react-redux'
 import Div                             from 'shared/Basic/Div'
@@ -6,18 +6,21 @@ import Icon                            from 'shared/Basic/Icon'
 import LinkSwitch                      from 'shared/Basic/LinkSwitch'
 import {menuPanelContext}              from 'shared/Containers/MenuPanelController'
 import {
+    cartNumberStyle,
     headerButtonSignInStyle,
     headerButtonSignUpStyle,
     headerButtonWrapperStyle,
-    headerMenuIconWrapperStyle,
-    headerSearchIconStyle,
-    headerSearchWrapperStyle
+    headerIconStyle,
+    headerMenuIconWrapperStyle
 }                                      from 'shared/Layout/styles/header'
+import {transparent}                   from '../../utils/themer'
+import MotionDiv                       from '../Basic/MotionDiv'
 import HeaderMenuUserDropdown          from './HeaderMenuUserDropdown'
 import {headerMenuControlWrapperStyle} from './styles'
 
 const HeaderMenuControls = () => {
     const {isAuthenticated, isAdmin, nameFirst} = useSelector(state => state.user)
+    const {cart} = useSelector(state => state.shop)
     const {setPanel, currentPanel} = useContext(menuPanelContext)
 
     return (
@@ -53,19 +56,40 @@ const HeaderMenuControls = () => {
                     </Div>
                 )}
                 <Div
-                    theme={headerSearchWrapperStyle}
-                    onClick={
-                        () => setPanel(
-                            !currentPanel
-                                ? 'search-menu'
-                                : null
-                        )}
+                    onClick={() => setPanel('cart-menu-panel')}
+                    theme={headerMenuIconWrapperStyle}
                 >
                     <Icon
-                        icon={search}
-                        theme={headerSearchIconStyle}
+                        icon={shoppingCart}
+                        theme={headerIconStyle}
+                    />
+                    <MotionDiv
+                        as={'sup'}
+                        theme={cart.length > 0
+                            ? {...cartNumberStyle}
+                            : {
+                                ...cartNumberStyle,
+                                color: transparent,
+                                backgroundColor: transparent
+                            }
+                        }
+                        children={cart.length}
                     />
                 </Div>
+                {/*<Div*/}
+                {/*    theme={headerSearchWrapperStyle}*/}
+                {/*    onClick={*/}
+                {/*        () => setPanel(*/}
+                {/*            !currentPanel*/}
+                {/*                ? 'search-menu'*/}
+                {/*                : null*/}
+                {/*        )}*/}
+                {/*>*/}
+                {/*    <Icon*/}
+                {/*        icon={search}*/}
+                {/*        theme={headerSearchIconStyle}*/}
+                {/*    />*/}
+                {/*</Div>*/}
 
             </Div>
         </Div>

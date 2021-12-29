@@ -3,7 +3,7 @@ import {call, put, takeLatest}                    from 'redux-saga/effects'
 
 export function* getProductCategories() {
     const productCategories = yield call(allProductCategories)
-    yield put({type: 'shop/getProductCategoriesSuccess', payload: {productCategories: productCategories}})
+    yield put({type: 'shop/getProductCategoriesSuccess', payload: productCategories})
 }
 
 export function* getProductCategoryDetail({payload}) {

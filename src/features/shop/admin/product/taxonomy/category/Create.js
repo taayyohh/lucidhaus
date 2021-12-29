@@ -1,8 +1,8 @@
-import {productCategoryFields, validateProductCategory} from 'features/shop/admin/product/fields/category'
 import React                                            from 'react'
 import {useSelector}                                    from 'react-redux'
 import Form                                             from 'shared/Fields/Form'
 import ContentWrapper                                   from 'shared/Layout/ContentWrapper'
+import {productCategoryFields, validateProductCategory} from './fields'
 
 const Create = () => {
     const {_id, token} = useSelector(state => state.user)
@@ -19,7 +19,7 @@ const Create = () => {
                 fields={productCategoryFields}
                 validationSchema={validateProductCategory}
                 dispatchAction={'shop/createProductCategory'}
-                formHeading={'Create.js Product Category'}
+                formHeading={'Create Product Category'}
                 buttonText={'Create'}
             />
         </ContentWrapper>

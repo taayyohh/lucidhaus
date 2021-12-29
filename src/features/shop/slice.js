@@ -1,4 +1,5 @@
-import {createSlice} from '@reduxjs/toolkit'
+import {createSlice}     from '@reduxjs/toolkit'
+import {productCategory} from './admin/product/taxonomy/category/reducers'
 
 const initialState = {
     cart: [],
@@ -7,6 +8,7 @@ const initialState = {
     productCategory: [],
     productCategories: [],
     relatedProducts: [],
+    taxonomy: {},
     orders: [],
     statusValues: [],
     deliveryAddress: '',
@@ -68,7 +70,7 @@ export const slice = createSlice({
             state.productCategory = action.payload.productCategory
         },
         getProductCategoriesSuccess: (state, action) => {
-            state.productCategories = action.payload.productCategories
+            state.taxonomy.productCategories = action.payload
         },
         getBraintreeTokenSuccess: (state, action) => {
             state.braintreeClientToken = action.payload.clientToken
@@ -78,7 +80,12 @@ export const slice = createSlice({
         },
         updateBillingAddress: (state, action) => {
             state.billingAddress = action.payload
-        }
+        },
+
+        /*   ADMIN  */
+
+        //taxonomy
+        ...productCategory
     },
 })
 

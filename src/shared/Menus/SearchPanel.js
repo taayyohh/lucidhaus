@@ -8,7 +8,7 @@ const SearchPanel = () =>
     <Div theme={adminMenuStyle}>
         <Div theme={searchMenuInnerWrapperStyle}>
             <Div theme={searchMenuHeadingStyle}>
-                Celebrating the places that celebrate you.
+                What ya lookin' for?
             </Div>
             <Search theme={searchMenuSearchStyle}/>
         </Div>

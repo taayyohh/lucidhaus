@@ -27,20 +27,28 @@ const Checkout = ({cart}) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    const purchase = () =>
-        dispatch({
-            type: 'shop/getPaymentNonce',
-            payload: {
-                _id: _id,
-                token: token,
-                dropInInstance: dropInInstance,
-                amount: getTotal(cart),
-                products: cart,
-                deliveryAddress: deliveryAddress,
-                billingAddress: billingAddress,
-                user: _id || undefined
-            }
-        })
+    const purchase = () => {
+        const isIntl = deliveryAddress.country !== 'United States'
+
+        return (
+            dispatch({
+                type: 'shop/getPaymentNonce',
+                payload: {
+                    _id: _id,
+                    token: token,
+                    dropInInstance: dropInInstance,
+                    amount: getTotal(cart, isIntl),
+                    products: cart,
+                    deliveryAddress: deliveryAddress,
+                    billingAddress: billingAddress,
+                    user: _id || undefined
+                }
+            })
+        )
+    }
+
+
+
 
     return (
         <Div theme={checkoutDropIn}>

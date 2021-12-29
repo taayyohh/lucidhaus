@@ -65,15 +65,15 @@ const List = () => {
 
         return (
             <>
-                {hits && hits.map((place) =>
+                {hits && hits.map((artist) =>
                     <Div
-                        key={place[0]?.slug || place?.slug}
+                        key={artist[0]?.slug || artist?.slug}
                         theme={adminPlaceCardWrapperStyle}
                     >
                         <GenericCard
-                            slug={`places/update/${place[0]?.slug || place?.slug}`}
-                            name={place[0]?.name || place?.name}
-                            photo={place[0]?.photo || place.photo}
+                            slug={`artists/update/${artist[0]?.slug || artist?.slug}`}
+                            name={artist[0]?.name || artist?.name}
+                            photo={artist[0]?.photo || artist.photo}
                             theme={adminPlaceCardStyle}
                         />
                     </Div>
@@ -85,7 +85,7 @@ const List = () => {
 
     return (
         <InstantSearch
-            indexName="Places"
+            indexName="Artists"
             searchClient={searchClient}
             stalledSearchDelay={500}
         >
@@ -94,7 +94,7 @@ const List = () => {
                     searchAsYouType={false}
                     autoFocus
                 />
-                <AdminCreateButton url={'/admin/create/place'}/>
+                <AdminCreateButton url={'/admin/create/artist'}/>
             </Div>
             <Div theme={adminPlacesInnerWrapperStyle}>
                 <Hits/>

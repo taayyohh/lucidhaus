@@ -26,6 +26,7 @@ const ShippingAddress = () => {
                 fields={orderFields}
                 theme={shippingAddressStyle}
                 dispatchAction={'shop/updateDeliveryAddress'}
+                dispatchOnBlur={true}
                 autoSubmit
             />
         </CheckoutSection>

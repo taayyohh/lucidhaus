@@ -42,7 +42,7 @@ const Welcome = ({
                             {
                                 type: 'user/resendVerificationLink',
                                 payload: {
-                                    verificationLink: `https://beta.inclusiveguide.com/verify/${verificationToken}`,
+                                    verificationLink: `https://lucid.haus/verify/${verificationToken}`,
                                     email: email,
                                     _id,
                                     token

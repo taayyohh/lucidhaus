@@ -6,7 +6,8 @@ import GenericCard                from 'shared/Cards/GenericCard'
 import ContentWrapper             from 'shared/Layout/ContentWrapper'
 
 const FilteredShop = () => {
-    const {shop, productCategories} = useSelector(state => state.shop)
+    const {shop, taxonomy} = useSelector(state => state.shop)
+    const {productCategories} = taxonomy
     const {slug} = useSelector(state => state.site)
     const dispatch = useDispatch()
 
@@ -17,22 +18,25 @@ const FilteredShop = () => {
     }, [])
 
     useEffect(() => {
-        if (!!slug)
+        if (!!productCategories) {
             dispatch({
                 type: 'shop/getFilteredShop',
                 payload: {
-                    category: productCategories.filter(cat => cat.slug === slug)[0]?.objectID
+                    category: productCategories?.filter(cat => cat.slug === slug)[0]?.objectID
                 }
             })
 
+        }
+
+
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [slug])
+    }, [productCategories, slug])
 
     useEffect(() => {
         dispatch({
             type: 'site/setDocumentHead',
             payload: {
-                title: 'The Hypha Beta FilteredShop',
+                title: 'LucidHaus',
                 description: 'Welcome to the shop.'
             }
         })

@@ -18,7 +18,8 @@ import MotionDiv                      from 'shared/Basic/MotionDiv'
 import {menuPanelContext}             from 'shared/Containers/MenuPanelController'
 
 const ShopMenu = () => {
-    const {productCategories, product} = useSelector(state => state.shop)
+    const {product} = useSelector(state => state.shop)
+    const {productCategories} = useSelector(state => state.shop.taxonomy)
     const {slug, url} = useSelector(state => state.site)
     const isMobile = useSelector(mobileFlag)
     const dispatch = useDispatch()

@@ -473,36 +473,40 @@ export const toggleErrorStyle = {
 /** Country **/
 
 export const countryFieldStyle = {
-    height: [52, .7, 52],
-    marginBottom: [50, .7, 50],
-    child: [
-        {
-            selector: '.country-field',
-            width: '100%',
-            height: [50, .7, 50],
-            borderRadius: [5, .7, 5],
-            padding: `0 ${sv(25)}`,
-            border: 0
-        }
-    ]
+    fieldset: {
+        height: [52, .7, 52],
+        marginBottom: [50, .7, 50],
+        child: [
+            {
+                selector: '.country-field',
+                width: '100%',
+                height: [50, .7, 50],
+                borderRadius: [5, .7, 5],
+                padding: `0 ${sv(25)}`,
+                border: 0
+            }
+        ]
+    }
 }
 
 
 /** Region **/
 
 export const regionFieldStyle = {
-    height: [52, .7, 52],
-    marginBottom: [50, .7, 50],
-    child: [
-        {
-            selector: '.region-field',
-            width: '100%',
-            height: [50, .7, 50],
-            borderRadius: [5, .7, 5],
-            padding: `0 ${sv(25)}`,
-            border: 0
-        }
-    ]
+    fieldset: {
+        height: [52, .7, 52],
+        marginBottom: [50, .7, 50],
+        child: [
+            {
+                selector: '.region-field',
+                width: '100%',
+                height: [50, .7, 50],
+                borderRadius: [5, .7, 5],
+                padding: `0 ${sv(25)}`,
+                border: 0
+            }
+        ]
+    }
 }
 
 
@@ -511,7 +515,6 @@ export const regionFieldStyle = {
 export const AutoCompleteInputStyle = {
     ...defaultInputStyle,
     backgroundColor: white,
-    marginBottom: [20, .7, 20],
     width: '100%',
     borderRadius: [5, .7, 5],
     placeholder: {

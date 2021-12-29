@@ -58,7 +58,7 @@ export const headerInnerStyle = {
     justifyContent: spaceBetween,
     position: relative,
     margin: '0 auto',
-    height: [55, .7, '100%'],
+    //height: [65, .7, '100%'],
     // width: '100%',
     width: [globals.style.siteInnerWidth, globals.style.layoutScalingValue, '100%'],
     mobile: {
@@ -199,7 +199,9 @@ export const headerNowPlayingInfoStyle = {
 }
 
 export const headerLogoWrapperStyle = {
-    marginRight: [40, .7, 40]
+    marginRight: [40, .7, 40],
+    paddingTop: [5, .7, 5],
+    paddingBottom: [5, .7, 5]
 }
 
 
@@ -221,7 +223,7 @@ export const cartNumberStyle = {
     alignItems: flexStart,
     justifyContent: center,
     borderRadius: 20,
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: 400,
     marginTop: -4,
     marginLeft: 2,

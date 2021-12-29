@@ -11,6 +11,7 @@ import {defaultFormStyle} from './styles'
 const Form = ({
                   autoSubmit = false,
                   hideButton = false,
+                  dispatchOnBlur = false,
                   buttonText,
                   children,
                   dispatchAction,
@@ -49,7 +50,7 @@ const Form = ({
                         children={formHeading}
                     />
                     <Div theme={{...defaultFormStyle.inner, ...theme.inner}}>
-                        {fields.map((f, i) =>
+                        {fields?.map((f, i) =>
                             <FieldSwitch
                                 key={i}
                                 formik={formik}
@@ -57,20 +58,34 @@ const Form = ({
                                 options={options}
                                 theme={theme}
                                 autoSubmit={autoSubmit}
+                                dispatchOnBlur={dispatchOnBlur}
                             />
                         )}
                     </Div>
                     {!autoSubmit && !hideButton && (
                         <SubmitButton
                             theme={{...theme.button}}
-                            children={buttonText}
+                            children={buttonText || ''}
                         />
                     )}
-                    {!!children && children.map((c, i) => (
-                        <Div key={i} theme={{width: '100%'}}>
-                            {c?.type(formik)}
-                        </Div>
-                    ))}
+                    {(Array.isArray(children) && (
+                        <>
+                            {!!children && children?.map((c, i) => (
+                                <Div key={i} theme={{width: '100%'}}>
+                                    {c?.type(formik)}
+                                    {console.log('CHIL', children)}
+                                </Div>
+                            ))}
+                        </>
+                    )) || (
+                        <>
+                            {!!children && (
+                                <Div>
+                                    {children.type(formik)}
+                                </Div>
+                            )}
+                        </>
+                    )}
                 </Div>
             }
         </Formik>

@@ -9,94 +9,92 @@ import {TransitionAnimations}                 from './TransitionController'
 
 const Sitemap = lazy(() => import('./Sitemap'))
 const Home = lazy(() => import('features/site/views/Home'))
-const FAQ = lazy(() => import('features/site/views/FAQ'))
-const About = lazy(() => import('features/site/views/About'))
-
-const ForBusinesses = lazy(() => import('features/site/views/ForBusinesses'))
-const Privacy = lazy(() => import('features/site/views/Privacy'))
-const Terms = lazy(() => import('features/site/views/Terms'))
+const SignIn = lazy(() => import('features/site/views/SignIn'))
+const SignUp = lazy(() => import('features/site/views/SignUp'))
+const AccountDetails = lazy(() => import('features/user/admin/views/Account'))
+const VerifyEmail = lazy(() => import('features/site/views/VerifyEmail'))
 const Recover = lazy(() => import('features/site/views/Recover'))
 const Reset = lazy(() => import('features/site/views/Reset'))
+const NotFound = lazy(() => import('features/site/views/NotFound'))
 
 
 const AdminDashboard = lazy(() => import('shared/Layout/Dashboard/admin/AdminDashboard'))
 const UserDashboard = lazy(() => import('features/user/views/dashboard'))
-const CreatePlace = lazy(() => import('features/place/admin/views/Create'))
-const CreateProduct = lazy(() => import('features/shop/admin/product/views/Create'))
-const CreateProductCategory = lazy(() => import('features/shop/admin/product/taxonomy/category/Create'))
-const CreateUser = lazy(() => import('features/user/admin/views/Create'))
+const ManageUsers = lazy(() => import('features/user/admin/views/Manage'))
+const UpdateUser = lazy(() => import('features/user/admin/views/Update'))
+const UserReviews = lazy(() => import('features/user/admin/views/Reviews'))
+const UpdateUserReviews = lazy(() => import('features/user/admin/views/UpdateReview'))
+
+
+const ManageEvents = lazy(() => import('features/event/admin/views/Manage'))
+const CreateEvent = lazy(() => import('features/event/admin/views/Create'))
+const UpdateEvent = lazy(() => import('features/event/admin/views/Update'))
+const Event = lazy(() => import('features/event/views/Event'))
+const Events = lazy(() => import('features/event/views/Events'))
+
+const ManageAlbums = lazy(() => import('features/album/admin/views/Manage'))
+const CreateAlbum = lazy(() => import('features/album/admin/views/Create'))
+const UpdateAlbum = lazy(() => import('features/album/admin/views/Update'))
+const Album = lazy(() => import('features/album/views/Album'))
+const Albums = lazy(() => import('features/album/views/Albums'))
+
+const ManageCollaborators = lazy(() => import('features/collaborator/admin/views/Manage'))
+const CreateCollaborator = lazy(() => import('features/collaborator/admin/views/Create'))
+const UpdateCollaborator = lazy(() => import('features/collaborator/admin/views/Update'))
+const Collaborator = lazy(() => import('features/collaborator/views/Collaborator'))
+const Collaborators = lazy(() => import('features/collaborator/views/Collaborators'))
+
+const ManageArtists = lazy(() => import('features/artist/admin/views/Manage'))
+const CreateArtist = lazy(() => import('features/artist/admin/views/Create'))
+const UpdateArtist = lazy(() => import('features/artist/admin/views/Update'))
+const Artist = lazy(() => import('features/artist/views/Artist'))
+const Artists = lazy(() => import('features/artist/views/Artists'))
+
 const ManagePlaces = lazy(() => import('features/place/admin/views/Manage'))
-const ManagePlaceTaxonomy = lazy(() => import('features/place/admin/taxonomy/Manage'))
-const ManageProductTaxonomy = lazy(() => import('features/shop/admin/product/taxonomy/Manage'))
-const ManageUserTaxonomy = lazy(() => import('features/user/admin/taxonomy/Manage'))
-const AdminUpdateReview = lazy(() => import('features/user/admin/views/UpdateReview'))
-
-
-const ManagePlaceCategory = lazy(() => import('features/place/admin/taxonomy/placeCategory/Manage'))
-const ManageBathrooms = lazy(() => import('features/place/admin/taxonomy/bathroom/Manage'))
-const ManageBusinessOwner = lazy(() => import('features/place/admin/taxonomy/businessOwner/Manage'))
-const ManageCommunitiesServed = lazy(() => import('features/place/admin/taxonomy/communitiesServed/Manage'))
-const ManageFoodOptions = lazy(() => import('features/place/admin/taxonomy/foodOptions/Manage'))
-const ManageLanguagesSpoken = lazy(() => import('features/place/admin/taxonomy/languageSpoken/Manage'))
-
-const UpdatePlaceCategory = lazy(() => import('features/place/admin/taxonomy/placeCategory/Update'))
-const UpdateBathrooms = lazy(() => import('features/place/admin/taxonomy/bathroom/Update'))
-const UpdateBusinessOwner = lazy(() => import('features/place/admin/taxonomy/businessOwner/Update'))
-const UpdateCommunitiesServed = lazy(() => import('features/place/admin/taxonomy/communitiesServed/Update'))
-const UpdateFoodOptions = lazy(() => import('features/place/admin/taxonomy/foodOptions/Update'))
-const UpdateLanguagesSpoken = lazy(() => import('features/place/admin/taxonomy/languageSpoken/Update'))
-
-
-const ManageAdaptiveEquipment = lazy(() => import('features/user/admin/taxonomy/adaptiveEquipment/Manage'))
-const ManageBodyModification = lazy(() => import('features/user/admin/taxonomy/bodyModification/Manage'))
-const ManageGender = lazy(() => import('features/user/admin/taxonomy/gender/Manage'))
-const ManageUserLanguage = lazy(() => import('features/user/admin/taxonomy/language/Manage'))
-const ManageMethodsOfCommunication = lazy(() => import('features/user/admin/taxonomy/methodOfCommunication/Manage'))
-const ManagePhysicalAppearance = lazy(() => import('features/user/admin/taxonomy/physicalAppearance/Manage'))
-const ManagePronouns = lazy(() => import('features/user/admin/taxonomy/pronoun/Manage'))
-const ManageRace = lazy(() => import('features/user/admin/taxonomy/race/Manage'))
-const ManageServiceAnimals = lazy(() => import('features/user/admin/taxonomy/serviceAnimal/Manage'))
-const ManageSexualOrientation = lazy(() => import('features/user/admin/taxonomy/sexualOrientation/Manage'))
+const CreatePlace = lazy(() => import('features/place/admin/views/Create'))
+const UpdatePlace = lazy(() => import('features/place/admin/views/Update'))
+const Place = lazy(() => import('features/place/views/Place'))
+const Places = lazy(() => import('features/place/views/Places'))
 const ManagePendingPlaces = lazy(() => import('features/place/admin/views/ManagePendingPlaces'))
 const ManageFlaggedReviews = lazy(() => import('features/place/admin/views/ManageFlaggedReviews'))
 
-
-const UpdateAdaptiveEquipment = lazy(() => import('features/user/admin/taxonomy/adaptiveEquipment/Update'))
-const UpdateBodyModification = lazy(() => import('features/user/admin/taxonomy/bodyModification/Update'))
-const UpdateGender = lazy(() => import('features/user/admin/taxonomy/gender/Update'))
-const UpdateUserLanguage = lazy(() => import('features/user/admin/taxonomy/language/Update'))
-const UpdateMethodsOfCommunication = lazy(() => import('features/user/admin/taxonomy/methodOfCommunication/Update'))
-const UpdatePhysicalAppearance = lazy(() => import('features/user/admin/taxonomy/physicalAppearance/Update'))
-const UpdatePronouns = lazy(() => import('features/user/admin/taxonomy/pronoun/Update'))
-const UpdateRace = lazy(() => import('features/user/admin/taxonomy/race/Update'))
-const UpdateServiceAnimals = lazy(() => import('features/user/admin/taxonomy/serviceAnimal/Update'))
-const UpdateSexualOrientation = lazy(() => import('features/user/admin/taxonomy/sexualOrientation/Update'))
+const CreateProduct = lazy(() => import('features/shop/admin/product/views/Create'))
+const CreateProductCategory = lazy(() => import('features/shop/admin/product/taxonomy/category/Create'))
+const CreateUser = lazy(() => import('features/user/admin/views/Create'))
+const ManageProductCategory = lazy(() => import('features/shop/admin/product/taxonomy/category/Manage'))
+const ManageShopTaxonomy = lazy(() => import('features/shop/admin/product/taxonomy/Manage'))
+const AdminUpdateReview = lazy(() => import('features/user/admin/views/UpdateReview'))
 
 
-const ManageUsers = lazy(() => import('features/user/admin/views/Manage'))
-const ManageOrders = lazy(() => import('features/shop/admin/order/views/Manage'))
+
+
+const ManagePlaceCategory = lazy(() => import('features/place/admin/taxonomy/placeCategory/Manage'))
+const UpdatePlaceCategory = lazy(() => import('features/place/admin/taxonomy/placeCategory/Update'))
+
+const ManageBathrooms = lazy(() => import('features/place/admin/taxonomy/bathroom/Manage'))
+const UpdateBathrooms = lazy(() => import('features/place/admin/taxonomy/bathroom/Update'))
+
+const ManageBusinessOwner = lazy(() => import('features/place/admin/taxonomy/businessOwner/Manage'))
+const UpdateBusinessOwner = lazy(() => import('features/place/admin/taxonomy/businessOwner/Update'))
+
+const ManageCommunitiesServed = lazy(() => import('features/place/admin/taxonomy/communitiesServed/Manage'))
+const UpdateCommunitiesServed = lazy(() => import('features/place/admin/taxonomy/communitiesServed/Update'))
+
+const ManageFoodOptions = lazy(() => import('features/place/admin/taxonomy/foodOptions/Manage'))
+const UpdateFoodOptions = lazy(() => import('features/place/admin/taxonomy/foodOptions/Update'))
+
+const ManageLanguagesSpoken = lazy(() => import('features/place/admin/taxonomy/languageSpoken/Manage'))
+const UpdateLanguagesSpoken = lazy(() => import('features/place/admin/taxonomy/languageSpoken/Update'))
+
+
+const Shop = lazy(() => import('features/shop/views/Shop'))
 const ManageShop = lazy(() => import('features/shop/admin/product/views/Manage'))
-const UpdatePlace = lazy(() => import('features/place/admin/views/Update'))
+const ManageOrders = lazy(() => import('features/shop/admin/order/views/Manage'))
+const UserOrders = lazy(() => import('features/user/views/dashboard/Orders'))
+const Product = lazy(() => import('features/shop/views/Product'))
 const UpdateProduct = lazy(() => import('features/shop/admin/product/views/Update'))
 const UpdateProductCategory = lazy(() => import('features/shop/admin/product/taxonomy/category/Update'))
-const UpdateUser = lazy(() => import('features/user/admin/views/Update'))
-const Place = lazy(() => import('features/place/views/Place'))
-const Places = lazy(() => import('features/place/views/Places'))
-const Product = lazy(() => import('features/shop/views/Product'))
-const Shop = lazy(() => import('features/shop/views/Shop'))
 const FilteredProduct = lazy(() => import('features/shop/views/FilteredShop'))
-const NotFound = lazy(() => import('features/site/views/NotFound'))
-const SignIn = lazy(() => import('features/site/views/SignIn'))
-const SignUp = lazy(() => import('features/site/views/SignUp'))
-const UserOrders = lazy(() => import('features/user/views/dashboard/Orders'))
-const IdentityProfile = lazy(() => import('features/user/admin/views/Profile'))
-const AccountDetails = lazy(() => import('features/user/admin/views/Account'))
-
-const UserReviews = lazy(() => import('features/user/admin/views/Reviews'))
-const UpdateUserReviews = lazy(() => import('features/user/admin/views/UpdateReview'))
-const UserPlaces = lazy(() => import('features/user/admin/views/Places'))
-const SubmitPlace = lazy(() => import('features/user/admin/views/Submit'))
-const VerifyEmail = lazy(() => import('features/site/views/VerifyEmail'))
 
 
 const Routes = () => {
@@ -108,16 +106,7 @@ const Routes = () => {
                 <MotionDiv animate={contentAnimation} theme={{width: '100%'}}>
                     <Suspense fallback={<Fallback/>}>
                         <Switch location={{pathname: currentPath}}>
-                            <Route path="/" exact component={Home}/>
-                            <Route path="/faq" exact component={FAQ}/>
-                            <Route path="/about" exact component={About}/>
-
-                            <Route path="/for-businesses" exact component={ForBusinesses}/>
-                            <Route path="/privacy-policy" exact component={Privacy}/>
-                            <Route path="/terms-of-service" exact component={Terms}/>
-                            <Route path="/verify/:slug" exact component={VerifyEmail}/>
-                            <Route path="/recover" exact component={Recover}/>
-                            <Route path="/reset/:slug" exact component={Reset}/>
+                            <Route path="/" exact component={Albums}/>
 
 
                             <Route path="/signup" exact component={SignUp}/>
@@ -129,20 +118,27 @@ const Routes = () => {
                             <Route path="/shop/:slug" exact component={Product}/>
                             <Route path="/shop/category/:slug" exact component={FilteredProduct}/>
 
+                            <Route path="/verify/:slug" exact component={VerifyEmail}/>
+                            <Route path="/recover" exact component={Recover}/>
+                            <Route path="/reset/:slug" exact component={Reset}/>
+
                             <PrivateRoute path="/dashboard" exact component={UserDashboard}/>
                             <PrivateRoute path="/dashboard/orders" exact component={UserOrders}/>
-                            <PrivateRoute path="/dashboard/profile" exact component={IdentityProfile}/>
                             <PrivateRoute path="/dashboard/account" exact component={AccountDetails}/>
                             <PrivateRoute path="/dashboard/reviews" exact component={UserReviews}/>
                             <PrivateRoute path="/dashboard/reviews/update/:slug" exact component={UpdateUserReviews}/>
-                            <PrivateRoute path="/dashboard/places" exact component={UserPlaces}/>
-                            <PrivateRoute path="/dashboard/submit" exact component={SubmitPlace}/>
 
 
                             <AdminRoute path="/admin" exact component={AdminDashboard}/>
                             <AdminRoute path="/admin/shop" exact component={ManageShop}/>
-                            <AdminRoute path="/admin/product-category" exact component={ManageProductTaxonomy}/>
-                            <AdminRoute path="/admin/product-category/update/:slug" exact
+                            <AdminRoute path="/admin/shop/update/:slug" exact component={UpdateProduct}/>
+
+
+                            <AdminRoute path="/admin/shop/taxonomy" exact component={ManageShopTaxonomy}/>
+                            <AdminRoute path="/admin/shop/taxonomy/product-category" exact
+                                        component={ManageProductCategory}/>
+
+                            <AdminRoute path="/admin/shop/taxonomy/product-category/update/:slug" exact
                                         component={UpdateProductCategory}/>
                             <AdminRoute path="/admin/create/product-category" exact component={CreateProductCategory}/>
 
@@ -153,7 +149,39 @@ const Routes = () => {
                             <AdminRoute path="/admin/flagged/reviews/update/:slug" exact component={AdminUpdateReview}/>
 
 
-                            <AdminRoute path="/admin/place/taxonomy" exact component={ManagePlaceTaxonomy}/>
+                            <AdminRoute path="/admin/artists" exact component={ManageArtists}/>
+                            <AdminRoute path="/admin/artists/update/:slug" exact component={UpdateArtist}/>
+                            <AdminRoute path="/admin/create/artist" exact component={CreateArtist}/>
+                            <Route path="/artists" exact component={Artists}/>
+                            <Route path="/artists/:slug" exact component={Artist}/>
+
+
+                            <AdminRoute path="/admin/collaborators" exact component={ManageCollaborators}/>
+                            <AdminRoute path="/admin/collaborators/update/:slug" exact component={UpdateCollaborator}/>
+                            <AdminRoute path="/admin/create/collaborator" exact component={CreateCollaborator}/>
+                            <Route path="/collaborators" exact component={Collaborators}/>
+                            <Route path="/collaborators/:slug" exact component={Collaborator}/>
+
+
+                            <AdminRoute path="/admin/events" exact component={ManageEvents}/>
+                            <AdminRoute path="/admin/events/update/:slug" exact component={UpdateEvent}/>
+                            <AdminRoute path="/admin/create/event" exact component={CreateEvent}/>
+                            <Route path="/events" exact component={Events}/>
+                            <Route path="/events/:slug" exact component={Event}/>
+
+
+                            <AdminRoute path="/admin/music" exact component={ManageAlbums}/>
+                            <AdminRoute path="/admin/music/update/:slug" exact component={UpdateAlbum}/>
+                            <AdminRoute path="/create/album" exact component={CreateAlbum}/>
+
+
+                            <Route path="/music" exact component={Albums} sitemapIndex={true}/>
+                            <Route path="/music/:slug" exact component={Album} sitemapIndex={true}/>
+                            <Route path="/shop" exact component={Shop} sitemapIndex={true}/>
+                            <Route path="/shop/:slug" exact component={Product} sitemapIndex={true}/>
+                            <Route path="/shop/category/:slug" exact component={FilteredProduct} sitemapIndex={true}/>
+                            <PrivateRoute path="/dashboard/orders" exact component={UserOrders}/>
+
 
                             <AdminRoute path="/admin/place/taxonomy/bathroom" exact component={ManageBathrooms}/>
                             <AdminRoute path="/admin/place/taxonomy/business-owner" exact
@@ -184,48 +212,8 @@ const Routes = () => {
 
                             <AdminRoute path="/admin/users" exact component={ManageUsers}/>
                             <AdminRoute path="/admin/users/update/:slug" exact component={UpdateUser}/>
-                            <AdminRoute path="/admin/users/taxonomy" exact component={ManageUserTaxonomy}/>
-
-                            <AdminRoute path="/admin/users/taxonomy/adaptive-equipment" exact
-                                        component={ManageAdaptiveEquipment}/>
-                            <AdminRoute path="/admin/users/taxonomy/body-modification" exact
-                                        component={ManageBodyModification}/>
-                            <AdminRoute path="/admin/users/taxonomy/gender" exact component={ManageGender}/>
-                            <AdminRoute path="/admin/users/taxonomy/language" exact component={ManageUserLanguage}/>
-                            <AdminRoute path="/admin/users/taxonomy/method-of-communication" exact
-                                        component={ManageMethodsOfCommunication}/>
-                            <AdminRoute path="/admin/users/taxonomy/physical-appearance" exact
-                                        component={ManagePhysicalAppearance}/>
-                            <AdminRoute path="/admin/users/taxonomy/pronoun" exact component={ManagePronouns}/>
-                            <AdminRoute path="/admin/users/taxonomy/race" exact component={ManageRace}/>
-                            <AdminRoute path="/admin/users/taxonomy/service-animal" exact
-                                        component={ManageServiceAnimals}/>
-                            <AdminRoute path="/admin/users/taxonomy/sexual-orientation" exact
-                                        component={ManageSexualOrientation}/>
-
-                            <AdminRoute path="/admin/users/taxonomy/adaptive-equipment/update/:slug" exact
-                                        component={UpdateAdaptiveEquipment}/>
-                            <AdminRoute path="/admin/users/taxonomy/body-modification/update/:slug" exact
-                                        component={UpdateBodyModification}/>
-                            <AdminRoute path="/admin/users/taxonomy/gender/update/:slug" exact
-                                        component={UpdateGender}/>
-                            <AdminRoute path="/admin/users/taxonomy/language/update/:slug" exact
-                                        component={UpdateUserLanguage}/>
-                            <AdminRoute path="/admin/users/taxonomy/method-of-communication/update/:slug" exact
-                                        component={UpdateMethodsOfCommunication}/>
-                            <AdminRoute path="/admin/users/taxonomy/physical-appearance/update/:slug" exact
-                                        component={UpdatePhysicalAppearance}/>
-                            <AdminRoute path="/admin/users/taxonomy/pronoun/update/:slug" exact
-                                        component={UpdatePronouns}/>
-                            <AdminRoute path="/admin/users/taxonomy/race/update/:slug" exact component={UpdateRace}/>
-                            <AdminRoute path="/admin/users/taxonomy/service-animal/update/:slug" exact
-                                        component={UpdateServiceAnimals}/>
-                            <AdminRoute path="/admin/users/taxonomy/sexual-orientation/update/:slug" exact
-                                        component={UpdateSexualOrientation}/>
-
 
                             <AdminRoute path="/admin/create/user" exact component={CreateUser}/>
-
 
                             <AdminRoute path="/admin/orders" exact component={ManageOrders}/>
                             <AdminRoute path="/admin/product/update/:slug" exact component={UpdateProduct}/>

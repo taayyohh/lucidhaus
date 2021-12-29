@@ -14,6 +14,7 @@ import {
     REGION,
     RICH_TEXT,
     SELECT,
+    SINGLE_SELECT,
     STATE_CITY,
     TEL,
     TEXT,
@@ -33,13 +34,13 @@ import MultiSelect    from './MultiSelect'
 import Region         from './Region'
 import RichTextEditor from './RichTextEditor'
 import Select         from './Select'
+import SingleSelect   from './SingleSelect'
 import SmartInput     from './SmartInput'
-import StateCity      from './StateCity'
 import TextArea       from './TextArea'
 import Toggle         from './Toggle'
 import User           from './User'
 
-const FieldSwitch = memo(({field, formik, options, theme, autoSubmit}) => {
+const FieldSwitch = memo(({field, formik, options, theme, autoSubmit, dispatchOnBlur}) => {
     switch (field.type) {
         case ADDRESS:
             return <Address
@@ -67,6 +68,7 @@ const FieldSwitch = memo(({field, formik, options, theme, autoSubmit}) => {
             return <Country
                 name={field.name}
                 formik={formik}
+                dispatchOnBlur={dispatchOnBlur}
             />
         case DATE:
         case EMAIL:
@@ -124,18 +126,6 @@ const FieldSwitch = memo(({field, formik, options, theme, autoSubmit}) => {
                 errorMessage={formik.touched[field.name] && formik.errors[field.name] ? formik.errors[field.name] : null}
                 theme={theme}
             />
-        case STATE_CITY:
-            return <StateCity
-                {...formik.getFieldProps(field.name)}
-                name={field.name}
-                formik={formik}
-                field={field}
-                options={options}
-                className={formik.touched[field.name] && formik.errors[field.name] ? 'error' : ''}
-                errorMessage={formik.touched[field.name] && formik.errors[field.name] ? formik.errors[field.name] : null}
-                theme={theme}
-            />
-
         case REGION:
             return <Region
                 name={field.name}
@@ -148,7 +138,18 @@ const FieldSwitch = memo(({field, formik, options, theme, autoSubmit}) => {
                 label={field.inputLabel}
                 className={formik.touched[field.name] && formik.errors[field.name] ? 'error' : ''}
                 errorMessage={formik.touched[field.name] && formik.errors[field.name] ? formik.errors[field.name] : null}
-                tooltip={!!field.tooltip ? <Tooltip message={field.tooltip} /> : null}
+                tooltip={!!field.tooltip ? <Tooltip message={field.tooltip}/> : null}
+            />
+        case SINGLE_SELECT:
+            return <SingleSelect
+                {...formik.getFieldProps(field.name)}
+                name={field.name}
+                formik={formik}
+                field={field}
+                options={options}
+                className={formik.touched[field.name] && formik.errors[field.name] ? 'error' : ''}
+                errorMessage={formik.touched[field.name] && formik.errors[field.name] ? formik.errors[field.name] : null}
+                theme={theme}
             />
         case SELECT:
             return <Select

@@ -1,4 +1,9 @@
-import {cartSummaryLengthStyle, cartSummaryStyle, cartSummaryTotalStyle} from 'features/shop/views/styles'
+import {
+    cartSummaryIntlDisc,
+    cartSummaryLengthStyle,
+    cartSummaryStyle,
+    cartSummaryTotalStyle
+} from 'features/shop/views/styles'
 import React                                                             from 'react'
 import {useSelector}                                                     from 'react-redux'
 import Div                                                               from 'shared/Basic/Div'
@@ -12,13 +17,18 @@ import {cartStyle}                                                       from '.
 const CartPanel = () => {
     const {cart} = useSelector(state => state.shop)
     const emptyCart = cart.length < 1
+    const {deliveryAddress} = useSelector(state => state.shop)
+    const isIntl = deliveryAddress?.country?.length > 0 && deliveryAddress?.country !== 'United States'
 
     return (
         <Div theme={cartStyle}>
             <Div>
                 <Div theme={cartSummaryStyle}>
-                    <H2 theme={cartSummaryTotalStyle}>Total: ${getTotal(cart)}</H2>
-                    <Div>Your cart has <Span theme={cartSummaryLengthStyle}>{`${cart.length}`}</Span> items</Div>
+                    <H2 theme={cartSummaryTotalStyle}>Total: <span>${getTotal(cart, isIntl)}</span></H2>
+                   <Span theme={cartSummaryLengthStyle}>{`${cart.length}`} items</Span>
+                    {isIntl && (
+                        <Span theme={cartSummaryIntlDisc}>* international shipping costs have been included in the total</Span>
+                    )}
                 </Div>
             </Div>
             <Div>
