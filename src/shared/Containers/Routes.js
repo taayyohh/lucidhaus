@@ -7,7 +7,6 @@ import PrivateRoute                           from 'shared/Basic/PrivateRoute'
 import Fallback                               from 'shared/Layout/Fallback'
 import {TransitionAnimations}                 from './TransitionController'
 
-const Sitemap = lazy(() => import('./Sitemap'))
 const Home = lazy(() => import('features/site/views/Home'))
 const SignIn = lazy(() => import('features/site/views/SignIn'))
 const SignUp = lazy(() => import('features/site/views/SignUp'))
@@ -64,8 +63,6 @@ const CreateUser = lazy(() => import('features/user/admin/views/Create'))
 const ManageProductCategory = lazy(() => import('features/shop/admin/product/taxonomy/category/Manage'))
 const ManageShopTaxonomy = lazy(() => import('features/shop/admin/product/taxonomy/Manage'))
 const AdminUpdateReview = lazy(() => import('features/user/admin/views/UpdateReview'))
-
-
 
 
 const ManagePlaceCategory = lazy(() => import('features/place/admin/taxonomy/placeCategory/Manage'))
@@ -175,10 +172,10 @@ const Routes = () => {
                             <AdminRoute path="/create/album" exact component={CreateAlbum}/>
 
 
-                            <Route path="/music" exact component={Albums} sitemapIndex={true}/>
-                            <Route path="/music/:slug" exact component={Album} sitemapIndex={true}/>
-                            <Route path="/shop" exact component={Shop} sitemapIndex={true}/>
-                            <Route path="/shop/:slug" exact component={Product} sitemapIndex={true}/>
+                            <Route path="/music" exact component={Albums}/>
+                            <Route path="/music/:slug" exact component={Album}/>
+                            <Route path="/shop" exact component={Shop}/>
+                            <Route path="/shop/:slug" exact component={Product}/>
                             <Route path="/shop/category/:slug" exact component={FilteredProduct} sitemapIndex={true}/>
                             <PrivateRoute path="/dashboard/orders" exact component={UserOrders}/>
 
@@ -219,7 +216,6 @@ const Routes = () => {
                             <AdminRoute path="/admin/product/update/:slug" exact component={UpdateProduct}/>
                             <AdminRoute path="/admin/create/product" exact component={CreateProduct}/>
 
-                            <AdminRoute path="/sitemap" exact component={Sitemap}/>
                             <Route component={NotFound}/>
                         </Switch>
                     </Suspense>
