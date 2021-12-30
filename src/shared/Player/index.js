@@ -15,8 +15,8 @@ import {
     playerInnerStyle,
     playerMinimizeIconStyle,
     playerMuteStyle,
-    playerQueueInnerStyle,
     playerQueueArtistStyle,
+    playerQueueInnerStyle,
     playerQueueStyle,
     playerQueueTitleStyle,
     playerQueueTrackInnerStyle,
@@ -54,22 +54,22 @@ const Player = () => {
         closed: {
             width: 50,
             height: 50,
-            paddingTop: 16,
+            // paddingTop: 16,
             borderRadius: 50
         }
     }
 
     const queueListVariants = {
         open: {
-            height: auto,
-            transition: {
-                ease: 'easeIn',
-                duration: 1,
-                delay: .5
-            }
+            // height: auto,
+            // transition: {
+            //     ease: 'easeIn',
+            //     duration: .5,
+            //     // delay: .5
+            // }
         },
         closed: {
-            height: 0
+            // height: 0
         }
     }
 
@@ -140,12 +140,13 @@ const Player = () => {
                                 icon={isQueueOpen ? windowMinimize : list}
                                 theme={playerMinimizeIconStyle(isQueueOpen)}
                                 onClick={() => setIsQueueOpen(flag => !flag)}
+
                             />
                             <MotionDiv
                                 theme={playerSongsWrapperStyle}
                                 variants={queueListVariants}
                                 initial={false}
-                                animate={isQueueOpen ? 'open' : 'closed'}
+                                // animate={isQueueOpen ? 'open' : 'closed'}
                             >
                                 {currentMedia && currentMedia.map((m, i) => {
                                         const currentAudio = currentMedia[currentMediaIndex]?.audio

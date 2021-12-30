@@ -29,12 +29,6 @@ export const signUpFields = [
         inputLabel: 'Confirm Password',
         type: PASSWORD
     },
-    {
-        name: 'acceptTerms',
-        inputLabel: 'Accept Terms of Service',
-        inputLabelHelper: 'https://inclusive-guide.s3.us-east-2.amazonaws.com/assets/InclusiveGuide-TermsOfService-01.18.21.pdf',
-        type: TOGGLE
-    }
 ]
 
 export const confirmationCodeFields = [
@@ -71,8 +65,8 @@ export const validateSignup = Yup.object().shape({
             passwordRegExp,
             'Must include at least 8 Characters'
         ),
-    acceptTerms: Yup.boolean()
-        .oneOf([true], 'Must Accept Terms and Conditions'),
+    // acceptTerms: Yup.boolean()
+    //     .oneOf([true], 'Must Accept Terms and Conditions'),
 
     passwordConfirm: Yup
         .string()

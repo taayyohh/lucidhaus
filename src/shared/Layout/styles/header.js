@@ -185,14 +185,15 @@ export const headerNowPlayingInfoStyle = {
         {
             selector: '> a',
             display: block,
-            size: [14, .7, 14],
+            size: [11, .7, 11],
             color: black,
             textDecoration: none,
+        //    textTransform: none,
             hover: {
                 color: colorPalette.honeyYellow
             },
             firstChild: {
-                size: [22, .7, 22],
+                size: [19, .7, 19],
             }
         }
     ]

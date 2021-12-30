@@ -58,6 +58,7 @@ export const shopWrapperStyle = {
     display: flex,
     // width: '100%',
     width: [1280, globals.style.layoutScalingValue, '100%'],
+    margin: '0 auto',
     marginTop: [50, .7, '0'],
     mobile: {
         flexDirection: column

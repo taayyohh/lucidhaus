@@ -1,6 +1,5 @@
-import {mobileAdminDashboardMenu}                   from 'config/menus/dashboard/admin'
-import {mobileUserDashboardMenu, userDashboardMenu} from 'config/menus/dashboard/user'
-import React                                        from 'react'
+import {mobileHeaderMenu, mobileUserDashboardMenu, userDashboardMenu} from 'config/menus/dashboard/user'
+import React                                                          from 'react'
 import {useDispatch, useSelector}                                                   from 'react-redux'
 import Div                                                                          from 'shared/Basic/Div'
 import Span                                                                         from 'shared/Basic/Span'
@@ -36,20 +35,25 @@ const MobileHeaderMenu = () => {
                         </Span>
                     </>
                 )) || (
-                    <Div theme={headerButtonWrapperStyle}>
-                        <LinkSwitch
-                            url={'/signin'}
-                            theme={headerButtonSignInStyle}
-                        >
-                            Signin
-                        </LinkSwitch>
-                        <LinkSwitch
-                            url={'/signup'}
-                            theme={headerButtonSignUpStyle}
-                        >
-                            Sign Up
-                        </LinkSwitch>
-                    </Div>
+                    <>
+                        <HeaderDashboardMenu
+                            menu={mobileHeaderMenu}
+                        />
+                        <Div theme={headerButtonWrapperStyle}>
+                            <LinkSwitch
+                                url={'/signin'}
+                                theme={headerButtonSignInStyle}
+                            >
+                                Signin
+                            </LinkSwitch>
+                            <LinkSwitch
+                                url={'/signup'}
+                                theme={headerButtonSignUpStyle}
+                            >
+                                Sign Up
+                            </LinkSwitch>
+                        </Div>
+                    </>
                 )}
             </Div>
         </Div>

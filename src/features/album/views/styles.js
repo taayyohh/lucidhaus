@@ -14,8 +14,7 @@ import {
     relative,
     spaceBetween,
     sv
-}                               from 'utils/themer'
-import {artistDescriptionStyle} from '../../artist/views/styles'
+}                                 from 'utils/themer'
 
 export const albumsWrapperStyle = {
     display: 'grid',
@@ -24,6 +23,7 @@ export const albumsWrapperStyle = {
     gridGap: sv(30),
     margin: '0 auto',
     marginTop: [50, .7, 50],
+    marginBottom: [100, .7, 50],
     mobile: {
         gridTemplateColumns: '1fr 1fr'
     }

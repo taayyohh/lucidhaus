@@ -1,9 +1,9 @@
 import {
-    albumCollaboratorStyle, albumDescriptionStyle,
+    albumCollaboratorStyle,
+    albumDescriptionStyle,
     albumSongActiveIndicatorStyle,
     albumSongTrackNumberStyle
-} from 'features/album/views/styles'
-import {artistDescriptionStyle}                from 'features/artist/views/styles'
+}                                              from 'features/album/views/styles'
 import {AnimatePresence}                       from 'framer-motion'
 import React, {useContext, useEffect}          from 'react'
 import {useDispatch, useSelector}              from 'react-redux'

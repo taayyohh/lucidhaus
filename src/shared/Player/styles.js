@@ -15,7 +15,7 @@ import {
     hidden,
     none,
     pointer,
-    relative,
+    relative, spaceBetween,
     sv,
     white
 } from 'utils/themer'
@@ -63,14 +63,16 @@ export const playerMinimizeStyle = {
 }
 
 export const playerMinimizeIconStyle = isOpen => {
+    console.log('is', isOpen)
     return {
         display: block,
         // marginBottom: [15, .7, 15],
+        marginTop: !isOpen ? 11 : -3,
         marginLeft: auto,
         mobile: {
-            size: 22,
-            marginTop: isOpen ? -10 : -3,
-            marginLeft: isOpen ? auto : -6,
+            size: 18,
+            marginTop: isOpen ? -10 : 7,
+            marginLeft: isOpen ? auto : -3,
         },
         hover: {
             color: colorPalette.honeyYellow,
@@ -110,10 +112,12 @@ export const playerQueueStyle = {
     overflowY: 'scroll',
     msScrollBar: none,
     ffScrollBar: none,
+    hover: {
+      cursor: pointer,
+    },
     scrollBar: {
         display: none,
     },
-    hover: {},
     mobile: {
         width: 'calc(100% - 50px)'
     }
@@ -126,13 +130,14 @@ export const playerQueueTrackStyle = {
 export const playerQueueTrackInnerStyle = isActive => {
     const base = {
         position: relative,
-        display: grid,
-        gridTemplateColumns: `${sv(90)} 1fr`,
-        gridGap: sv(30),
+        display: flex,
+        // display: grid,
+        // gridTemplateColumns: `${sv(90)} 1fr`,
+        // gridGap: sv(30),
         width: '100%',
         transform: 'color 250ms ease, font-size 250ms ease',
-        paddingTop: 3,
-        paddingBottom: 3,
+        // paddingTop: 3,
+        // paddingBottom: 3,
         mobile: {
             gridTemplateColumns: `100px 1fr`,
             gridGap: 50,
@@ -142,7 +147,8 @@ export const playerQueueTrackInnerStyle = isActive => {
     if (isActive)
         return {
             ...base,
-            backgroundColor: '#cdcdcd',
+            display: none,
+            backgroundColor: '#afe',
             child: {
                 selector: 'a',
                 color: white,
@@ -153,7 +159,8 @@ export const playerQueueTrackInnerStyle = isActive => {
         }
 
     return {
-        ...base
+        ...base,
+
 
     }
 }
@@ -161,6 +168,7 @@ export const playerQueueTrackInnerStyle = isActive => {
 export const playerQueueTitleStyle = {
     textDecoration: none,
     color: black,
+    marginLeft: [15, globals.style.layoutScalingValue, 15],
     hover: {
         color: colorPalette.honeyYellow
     }

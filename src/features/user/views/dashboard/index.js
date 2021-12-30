@@ -5,6 +5,7 @@ import {useDispatch, useSelector}                           from 'react-redux'
 import Div                                                  from 'shared/Basic/Div'
 import ContentWrapper                                       from 'shared/Layout/ContentWrapper'
 import DashboardWrapper                                     from 'shared/Layout/Dashboard/DashboardWrapper'
+import LinkSwitch                                           from '../../../../shared/Basic/LinkSwitch'
 import Avatar                                               from './Avatar'
 import {userDashboardInfoWrapperStyle}                      from './styles'
 import Welcome                                              from './Welcome'
@@ -54,7 +55,19 @@ const UserDashboard = () => {
                     </Div>
                 </Div>
                 <Div theme={userDashboardInfoWrapperStyle}>
-                    Hi
+                    Welcome to LucidHaus. This e-commerce / streaming web app was built by <LinkSwitch
+                    url={'/artists/theo-mode'}>th&eacute;o</LinkSwitch> and will be in continuous
+                    development to allow us as a label to build features that are meaningful to y'all!
+                    <br/>
+                    <br />
+                    You can <LinkSwitch url={'/music'}>stream our entire catalogue</LinkSwitch> by clicking on an album title or song name and can
+                    <LinkSwitch url={'/shop/category/vinyl'}> buy vinyl</LinkSwitch> from your fav LucidHaus artist or some label merch if you want to support {`<3`}.
+                    <br />
+                    <br/>
+                    Lots more to come, stay tuned!
+                    <br />
+                    <br />
+                    - LucidHaus
                 </Div>
             </DashboardWrapper>
         </ContentWrapper>

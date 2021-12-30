@@ -57,6 +57,24 @@ export const mobileUserDashboardMenu = [
     },
 ]
 
+export const mobileHeaderMenu = [
+    {
+        url: '/music',
+        title: 'Music',
+        active: ['music'],
+    },
+    {
+        url: '/events',
+        title: 'Events',
+        active: ['events', 'event'],
+    },
+    {
+        url: '/artists',
+        title: 'Artists',
+        active: ['artist', 'artists'],
+    },
+]
+
 
 
 

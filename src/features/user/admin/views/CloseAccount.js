@@ -20,10 +20,8 @@ const CloseAccount = () => {
             <Span>Delete your account and all saved account data.</Span>
             <Span theme={userAccountStyle.disclaimer}>
                 * Please Note: Deleting your LucidHaus account will remove all saved account details,
-                identity profile information, saved places, and reviews from our database.
-                You will need to repeat the verification process for your desired phone number
-                and email address should you choose to create a new account on the LucidHaus website.
-                A verified phone number and email are required to leave reviews on the LucidHaus.
+                from our database. You will need to repeat the verification process for your desired phone number
+                and email address should you choose to create a new account with LucidHaus.
             </Span>
             <Div
                 theme={closeAccountButtonStyle}

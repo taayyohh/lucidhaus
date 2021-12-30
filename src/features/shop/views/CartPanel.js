@@ -25,7 +25,7 @@ const CartPanel = () => {
             <Div>
                 <Div theme={cartSummaryStyle}>
                     <H2 theme={cartSummaryTotalStyle}>Total: <span>${getTotal(cart, isIntl)}</span></H2>
-                   <Span theme={cartSummaryLengthStyle}>{`${cart.length}`} items</Span>
+                   <Span theme={cartSummaryLengthStyle}>{`${cart.length}`} item{cart.length > 1?`s`:''}</Span>
                     {isIntl && (
                         <Span theme={cartSummaryIntlDisc}>* international shipping costs have been included in the total</Span>
                     )}

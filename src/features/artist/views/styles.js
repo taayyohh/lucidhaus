@@ -15,7 +15,7 @@ export const artistsWrapperStyle = {
 }
 
 export const artistCardStyle = {
-    width: [400, globals.style.layoutScalingValue, 400],
+    width: [400, globals.style.layoutScalingValue, '100%'],
     borderBottom: 0,
     // background: '#000',
     textWrapper: {
@@ -35,11 +35,11 @@ export const artistCardStyle = {
         textAlign: center
     },
     image: {
-        width: [400, globals.style.layoutScalingValue, 400]
+        width: [400, globals.style.layoutScalingValue, '100%']
     },
     child: {
         selector: 'img',
-        borderRadius: [400, globals.style.layoutScalingValue, 400],
+        borderRadius: [400, globals.style.layoutScalingValue, '100%'],
         transform: 'scale(.9)',
         transition: 'transform 500ms ease',
         hover: {

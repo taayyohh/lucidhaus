@@ -29,7 +29,6 @@ const Account = () => {
         role: user.role,
         slug: slug,
         zip: user.zip,
-
         _id,
         token,
     }
