@@ -18,7 +18,7 @@ const Privacy = () => {
                     collection and use of information in accordance with this Privacy Policy. This Privacy Policy has
                     been
                     created with the help of the <a href="https://www.privacypolicies.com/blog/privacy-policy-template/"
-                                                    target="_blank">Privacy Policy Template</a>.</p>
+                                                    target="_blank" rel="noreferrer">Privacy Policy Template</a>.</p>
                 <h1>Interpretation and Definitions</h1>
                 <h2>Interpretation</h2>
                 <p>The words of which the initial letter is capitalized have meanings defined under the following
@@ -78,7 +78,7 @@ const Privacy = () => {
                     </li>
                     <li>
                         <p><strong>Website</strong> refers to LucidHaus, accessible from <a href="lucid.haus"
-                                                                                            rel="external nofollow noopener"
+                                                                                            rel="external nofollow noopener noreferrer"
                                                                                             target="_blank">lucid.haus</a>
                         </p>
                     </li>
@@ -143,7 +143,7 @@ const Privacy = () => {
                         Cookies. For more information on how You can delete Flash Cookies, please read &quot;Where can I
                         change the settings for disabling, or deleting local shared objects?&quot; available at <a
                             href="https://helpx.adobe.com/flash-player/kb/disable-local-shared-objects-flash.html#main_Where_can_I_change_the_settings_for_disabling__or_deleting_local_shared_objects_"
-                            rel="external nofollow noopener"
+                            rel="external nofollow noopener noreferrer"
                             target="_blank">https://helpx.adobe.com/flash-player/kb/disable-local-shared-objects-flash.html#main_Where_can_I_change_the_settings_for_disabling__or_deleting_local_shared_objects_</a>
                     </li>
                     <li><strong>Web Beacons.</strong> Certain sections of our Service and our emails may contain small
@@ -162,7 +162,7 @@ const Privacy = () => {
                     You
                     close Your web browser. Learn more about cookies: <a
                         href="https://www.privacypolicies.com/blog/privacy-policy-template/#Use_Of_Cookies_Log_Files_And_Tracking"
-                        target="_blank">Cookies by PrivacyPolicies Generator</a>.</p>
+                        target="_blank" rel="noreferrer">Cookies by PrivacyPolicies Generator</a>.</p>
                 <p>We use both Session and Persistent Cookies for the purposes set out below:</p>
                 <ul>
                     <li>

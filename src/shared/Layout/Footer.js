@@ -1,6 +1,6 @@
-import {instagram, twitter}                                                  from 'config/icons'
-import {siteDisplayName, siteInstagramUrl, siteTwitterUrl}                   from 'config/variables'
-import moment                                                                from 'moment'
+import {github, instagram, twitter}                                       from 'config/icons'
+import {siteDisplayName, siteGithubUrl, siteInstagramUrl, siteTwitterUrl} from 'config/variables'
+import moment                                                             from 'moment'
 import PropTypes                                                             from 'prop-types'
 import React                                                                 from 'react'
 import Div                                                                   from 'shared/Basic/Div'
@@ -34,6 +34,9 @@ const Footer = ({theme}) =>
                     </LinkSwitch>
                     <LinkSwitch url={siteInstagramUrl}>
                         <Icon icon={instagram} theme={footerIconStyle}/>
+                    </LinkSwitch>
+                    <LinkSwitch url={siteGithubUrl}>
+                        <Icon icon={github} theme={footerIconStyle}/>
                     </LinkSwitch>
                 </Div>
             </Div>

@@ -86,3 +86,4 @@ export const UPLOAD_PATHS = {
 export const siteDisplayName = 'LucidHaus'
 export const siteTwitterUrl = 'https://twitter.com/lucidhaus'
 export const siteInstagramUrl = 'https://instagram.com/lucid.haus'
+export const siteGithubUrl = 'https://github.com/taayyohh'

@@ -55,9 +55,7 @@ const UserDashboard = () => {
                     </Div>
                 </Div>
                 <Div theme={userDashboardInfoWrapperStyle}>
-                    Welcome to LucidHaus. This e-commerce / streaming web app was built by <LinkSwitch
-                    url={'/artists/theo-mode'}>th&eacute;o</LinkSwitch> and will be in continuous
-                    development to allow us as a label to build features that are meaningful to y'all!
+                    Welcome to LucidHaus.
                     <br/>
                     <br />
                     You can <LinkSwitch url={'/music'}>stream our entire catalogue</LinkSwitch> by clicking on an album title or song name and can
@@ -68,6 +66,12 @@ const UserDashboard = () => {
                     <br />
                     <br />
                     - LucidHaus
+                    <br />
+                    <br />
+                    This e-commerce / streaming web app was built by <LinkSwitch
+                    url={'/artists/theo-mode'}>th&eacute;o</LinkSwitch> and will be in continuous
+                    development to allow us as a label to build features that are meaningful to y'all! Our code is open source and can be found
+                    on th&eacute;o's <LinkSwitch url={'https://github.com/taayyohh'}>Github</LinkSwitch> if you wish to fork it.
                 </Div>
             </DashboardWrapper>
         </ContentWrapper>

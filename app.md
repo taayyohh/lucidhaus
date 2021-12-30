@@ -1,7 +1,7 @@
 Updated 07/28/21
 
 ## LucidHaus Front End (app)
-Repo: *https://github.com/inclusiveguide/app*
+Repo: *https://github.com/taayyohh/lucidhaus*
 
 ## Overview
 
@@ -139,5 +139,14 @@ The generator functions handle all side-effects from the app.
 <br />
 **5. store.js** - This file combines all Redux Slices into a single Store, which represents the state of the application.
 
-## Additional Notes
-A Functioning E-commerce solution defined as the feature "Shop", utilizing **Braintree**'s API is built into this codebase, but is not actively being developed.
+## Required .env variables
+PORT=4001
+REACT_APP_API_URL<br />
+REACT_APP_ALGOLIA_APP_ID<br />
+REACT_APP_ALGOLIA_SEARCH_API_KEY<br />
+REACT_APP_ALGOLIA_ADMIN_API_KEY<br />
+REACT_APP_PLACES_API_KEY<br />
+REACT_APP_CDN_URL<br />
+REACT_APP_FA<br />
+REACT_APP_GOOGLE_ANALYTICS_ID<br />
+GENERATE_SOURCEMAP=false

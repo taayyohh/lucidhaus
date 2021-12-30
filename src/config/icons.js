@@ -1,4 +1,4 @@
-import {faInstagram, faTwitter} from '@fortawesome/free-brands-svg-icons'
+import {faInstagram, faTwitter, faGithub} from '@fortawesome/free-brands-svg-icons'
 import {
     faBackward,
     faBookmark,
@@ -82,6 +82,7 @@ export const
     fileAudio = faFileAudio,
     forward = faForward,
     flag = faFlag,
+    github = faGithub,
     globe = faGlobe,
     backward = faBackward,
     handHoldingHeart = faHandHoldingHeart,

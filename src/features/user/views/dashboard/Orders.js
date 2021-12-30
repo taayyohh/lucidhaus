@@ -12,7 +12,7 @@ const Orders = () => {
             <DashboardWrapper menu={userDashboardMenu}>
                 <DashboardInfo
                     heading={'Your Orders'}
-                    description={'Thanks for the support.'}
+                    description={'Thank you your support! <3'}
                 />
                 <PurchaseHistory/>
             </DashboardWrapper>
