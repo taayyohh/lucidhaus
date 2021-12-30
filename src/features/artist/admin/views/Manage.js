@@ -1,4 +1,3 @@
-import List                                     from 'features/place/admin/views/List'
 import {userContentWrapperStyle}                from 'features/user/admin/views/styles'
 import React, {useContext, useEffect, useState} from 'react'
 import {useDispatch, useSelector}               from 'react-redux'
@@ -6,6 +5,7 @@ import {searchContext}                          from 'shared/Containers/SearchCo
 import ContentWrapper                           from 'shared/Layout/ContentWrapper'
 import AdminDashboardWrapper                    from 'shared/Layout/Dashboard/admin/AdminDashboardWrapper'
 import DashboardInfo                            from 'shared/Layout/Dashboard/DashboardInfo'
+import List                                     from './List'
 
 const Manage = () => {
     const {artists} = useSelector(state => state.artist)

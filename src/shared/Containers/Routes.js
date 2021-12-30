@@ -22,8 +22,6 @@ const AdminDashboard = lazy(() => import('shared/Layout/Dashboard/admin/AdminDas
 const UserDashboard = lazy(() => import('features/user/views/dashboard'))
 const ManageUsers = lazy(() => import('features/user/admin/views/Manage'))
 const UpdateUser = lazy(() => import('features/user/admin/views/Update'))
-const UserReviews = lazy(() => import('features/user/admin/views/Reviews'))
-const UpdateUserReviews = lazy(() => import('features/user/admin/views/UpdateReview'))
 
 
 const ManageEvents = lazy(() => import('features/event/admin/views/Manage'))
@@ -50,40 +48,11 @@ const UpdateArtist = lazy(() => import('features/artist/admin/views/Update'))
 const Artist = lazy(() => import('features/artist/views/Artist'))
 const Artists = lazy(() => import('features/artist/views/Artists'))
 
-const ManagePlaces = lazy(() => import('features/place/admin/views/Manage'))
-const CreatePlace = lazy(() => import('features/place/admin/views/Create'))
-const UpdatePlace = lazy(() => import('features/place/admin/views/Update'))
-const Place = lazy(() => import('features/place/views/Place'))
-const Places = lazy(() => import('features/place/views/Places'))
-const ManagePendingPlaces = lazy(() => import('features/place/admin/views/ManagePendingPlaces'))
-const ManageFlaggedReviews = lazy(() => import('features/place/admin/views/ManageFlaggedReviews'))
-
 const CreateProduct = lazy(() => import('features/shop/admin/product/views/Create'))
 const CreateProductCategory = lazy(() => import('features/shop/admin/product/taxonomy/category/Create'))
 const CreateUser = lazy(() => import('features/user/admin/views/Create'))
 const ManageProductCategory = lazy(() => import('features/shop/admin/product/taxonomy/category/Manage'))
 const ManageShopTaxonomy = lazy(() => import('features/shop/admin/product/taxonomy/Manage'))
-const AdminUpdateReview = lazy(() => import('features/user/admin/views/UpdateReview'))
-
-
-const ManagePlaceCategory = lazy(() => import('features/place/admin/taxonomy/placeCategory/Manage'))
-const UpdatePlaceCategory = lazy(() => import('features/place/admin/taxonomy/placeCategory/Update'))
-
-const ManageBathrooms = lazy(() => import('features/place/admin/taxonomy/bathroom/Manage'))
-const UpdateBathrooms = lazy(() => import('features/place/admin/taxonomy/bathroom/Update'))
-
-const ManageBusinessOwner = lazy(() => import('features/place/admin/taxonomy/businessOwner/Manage'))
-const UpdateBusinessOwner = lazy(() => import('features/place/admin/taxonomy/businessOwner/Update'))
-
-const ManageCommunitiesServed = lazy(() => import('features/place/admin/taxonomy/communitiesServed/Manage'))
-const UpdateCommunitiesServed = lazy(() => import('features/place/admin/taxonomy/communitiesServed/Update'))
-
-const ManageFoodOptions = lazy(() => import('features/place/admin/taxonomy/foodOptions/Manage'))
-const UpdateFoodOptions = lazy(() => import('features/place/admin/taxonomy/foodOptions/Update'))
-
-const ManageLanguagesSpoken = lazy(() => import('features/place/admin/taxonomy/languageSpoken/Manage'))
-const UpdateLanguagesSpoken = lazy(() => import('features/place/admin/taxonomy/languageSpoken/Update'))
-
 
 const Shop = lazy(() => import('features/shop/views/Shop'))
 const ManageShop = lazy(() => import('features/shop/admin/product/views/Manage'))
@@ -111,9 +80,6 @@ const Routes = () => {
 
                             <Route path="/signup" exact component={SignUp}/>
                             <Route path="/signin" exact component={SignIn}/>
-                            <Route path="/places" exact component={Places}/>
-                            <Route path="/places/:slug" exact component={Place}/>
-                            <Route path="/places/search/:slug" exact component={Places}/>
                             <Route path="/shop" exact component={Shop}/>
                             <Route path="/shop/:slug" exact component={Product}/>
                             <Route path="/shop/category/:slug" exact component={FilteredProduct}/>
@@ -125,8 +91,6 @@ const Routes = () => {
                             <PrivateRoute path="/dashboard" exact component={UserDashboard}/>
                             <PrivateRoute path="/dashboard/orders" exact component={UserOrders}/>
                             <PrivateRoute path="/dashboard/account" exact component={AccountDetails}/>
-                            <PrivateRoute path="/dashboard/reviews" exact component={UserReviews}/>
-                            <PrivateRoute path="/dashboard/reviews/update/:slug" exact component={UpdateUserReviews}/>
 
 
                             <AdminRoute path="/admin" exact component={AdminDashboard}/>
@@ -141,12 +105,6 @@ const Routes = () => {
                             <AdminRoute path="/admin/shop/taxonomy/product-category/update/:slug" exact
                                         component={UpdateProductCategory}/>
                             <AdminRoute path="/admin/create/product-category" exact component={CreateProductCategory}/>
-
-                            <AdminRoute path="/admin/places" exact component={ManagePlaces}/>
-                            <AdminRoute path="/admin/places/update/:slug" exact component={UpdatePlace}/>
-                            <AdminRoute path="/admin/places/pending" exact component={ManagePendingPlaces}/>
-                            <AdminRoute path="/admin/flagged/reviews" exact component={ManageFlaggedReviews}/>
-                            <AdminRoute path="/admin/flagged/reviews/update/:slug" exact component={AdminUpdateReview}/>
 
 
                             <AdminRoute path="/admin/artists" exact component={ManageArtists}/>
@@ -183,32 +141,6 @@ const Routes = () => {
                             <PrivateRoute path="/dashboard/orders" exact component={UserOrders}/>
 
 
-                            <AdminRoute path="/admin/place/taxonomy/bathroom" exact component={ManageBathrooms}/>
-                            <AdminRoute path="/admin/place/taxonomy/business-owner" exact
-                                        component={ManageBusinessOwner}/>
-                            <AdminRoute path="/admin/place/taxonomy/communities-served" exact
-                                        component={ManageCommunitiesServed}/>
-                            <AdminRoute path="/admin/place/taxonomy/food-options" exact component={ManageFoodOptions}/>
-                            <AdminRoute path="/admin/place/taxonomy/language-spoken" exact
-                                        component={ManageLanguagesSpoken}/>
-                            <AdminRoute path="/admin/place/taxonomy/place-category" exact
-                                        component={ManagePlaceCategory}/>
-
-                            <AdminRoute path="/admin/place/taxonomy/bathroom/update/:slug" exact
-                                        component={UpdateBathrooms}/>
-                            <AdminRoute path="/admin/place/taxonomy/business-owner/update/:slug" exact
-                                        component={UpdateBusinessOwner}/>
-                            <AdminRoute path="/admin/place/taxonomy/communities-served/update/:slug" exact
-                                        component={UpdateCommunitiesServed}/>
-                            <AdminRoute path="/admin/place/taxonomy/food-options/update/:slug" exact
-                                        component={UpdateFoodOptions}/>
-                            <AdminRoute path="/admin/place/taxonomy/language-spoken/update/:slug" exact
-                                        component={UpdateLanguagesSpoken}/>
-                            <AdminRoute path="/admin/place/taxonomy/place-category/update/:slug" exact
-                                        component={UpdatePlaceCategory}/>
-
-
-                            <AdminRoute path="/admin/create/place" exact component={CreatePlace}/>
 
                             <AdminRoute path="/admin/users" exact component={ManageUsers}/>
                             <AdminRoute path="/admin/users/update/:slug" exact component={UpdateUser}/>

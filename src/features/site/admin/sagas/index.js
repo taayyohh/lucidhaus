@@ -2,16 +2,9 @@
 
 import {push}                        from 'connected-react-router'
 import {deleteArtist}                from 'features/artist/services'
-import {deleteBathroom}              from 'features/place/admin/taxonomy/bathroom/services'
-import {deleteBusinessOwner}         from 'features/place/admin/taxonomy/businessOwner/services'
-import {deleteCommunitiesServed}     from 'features/place/admin/taxonomy/communitiesServed/services'
-import {deleteFoodOptions}           from 'features/place/admin/taxonomy/foodOptions/services'
-import {deleteLanguageSpoken}        from 'features/place/admin/taxonomy/languageSpoken/services'
-import {deletePlaceCategory}         from 'features/place/admin/taxonomy/placeCategory/services'
-import {deletePlace}                 from 'features/place/services'
-import {deleteProductCategory}   from 'features/shop/services/product/category'
-import {deleteProduct}           from 'features/shop/services/product'
-import {deleteAdaptiveEquipment} from 'features/user/admin/taxonomy/adaptiveEquipment/services'
+import {deleteProduct}               from 'features/shop/services/product'
+import {deleteProductCategory}       from 'features/shop/services/product/category'
+import {deleteAdaptiveEquipment}     from 'features/user/admin/taxonomy/adaptiveEquipment/services'
 import {deleteBodyModification}      from 'features/user/admin/taxonomy/bodyModification/services'
 import {deleteGender}                from 'features/user/admin/taxonomy/gender/services'
 import {deleteLanguage}              from 'features/user/admin/taxonomy/language/services'
@@ -54,20 +47,6 @@ export function* destroyEntity({payload}) {
                 return deleteServiceAnimal
             case 'sexual-orientation':
                 return deleteSexualOrientation
-            case 'bathroom':
-                return deleteBathroom
-            case 'business-owner':
-                return deleteBusinessOwner
-            case 'communities-served':
-                return deleteCommunitiesServed
-            case 'food-options':
-                return deleteFoodOptions
-            case 'language-spoken':
-                return deleteLanguageSpoken
-            case 'place-category':
-                return deletePlaceCategory
-            case 'place':
-                return deletePlace
             case 'product-category':
                 return deleteProductCategory
             case 'product':

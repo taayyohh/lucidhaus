@@ -4,7 +4,6 @@ import albumReducer                           from 'features/album/slice'
 import artistReducer                          from 'features/artist/slice'
 import collaboratorReducer                    from 'features/collaborator/slice'
 import eventReducer                           from 'features/event/slice'
-import placeReducer                           from 'features/place/slice'
 import shopReducer                            from 'features/shop/slice'
 import siteReducer                            from 'features/site/slice'
 import userReducer                            from 'features/user/slice'
@@ -55,7 +54,6 @@ if (!['production'].includes(process.env.NODE_ENV)) {
 
 export default configureStore({
     reducer: {
-        place: placeReducer,
         shop: shopReducer,
         site: siteReducer,
         user: userReducer,

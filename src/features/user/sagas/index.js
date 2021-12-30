@@ -1,12 +1,13 @@
-import {push}                                              from 'connected-react-router'
-import cryptoRandomString                                  from 'crypto-random-string'
-import {signin, signout, signup}                           from 'features/site/services'
+import {takeEvery}               from '@redux-saga/core/effects'
+import {push}                    from 'connected-react-router'
+import cryptoRandomString        from 'crypto-random-string'
+import {signin, signout, signup} from 'features/site/services'
 import {
     confirmTwilioEmailVerification,
     confirmTwilioVerification,
     sendTwilioEmailVerification,
     sendTwilioVerification
-} from 'features/site/services/twilio'
+}                                from 'features/site/services/twilio'
 import {
     addFlaggedReview,
     addPlaceSubmissionToUserHistory,
@@ -15,9 +16,7 @@ import {
     getUserById,
     getUsers,
     verifyUserEmail
-}                                                          from 'features/user/services'
-import {getPlaceById}                                      from 'features/place/services'
-import {takeEvery}                                         from 'redux-saga/dist/redux-saga-effects-npm-proxy.esm'
+}                                from 'features/user/services'
 import {call, put}                  from 'redux-saga/effects'
 import {createEntity, updateEntity} from 'utils/abstractions/crud'
 import {setFormData}                from 'utils/abstractions/setFormData'
@@ -447,18 +446,6 @@ export function* submitPlaceSuccess({payload}) {
     }
 }
 
-export function* getRecentlyViewedPlace({payload}) {
-    try {
-        const place = yield call(getPlaceById, payload)
-        if (!place.error) {
-            yield put({type: 'user/getRecentlyViewedPlaceSuccess', payload: place})
-        } else {
-            yield put({type: 'user/getRecentlyViewedPlaceFailure', payload: place})
-        }
-    } catch (error) {
-        yield put({type: 'user/getPlaceFailure'})
-    }
-}
 
 
 /**
@@ -532,13 +519,4 @@ export function* watchCreateVerificationToken() {
 export function* watchVerifyUser() {
     yield takeEvery('user/verifyUser', verifyUser)
 }
-
-export function* watchFlagReview() {
-    yield takeEvery('user/flagReview', flagReview)
-}
-
-export function* watchGetRecentlyViewedPlace() {
-    yield takeEvery('user/getRecentlyViewedPlace', getRecentlyViewedPlace)
-}
-
 
