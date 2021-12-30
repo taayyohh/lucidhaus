@@ -4,6 +4,7 @@ import {useSelector}                   from 'react-redux'
 import Div                             from 'shared/Basic/Div'
 import Icon                            from 'shared/Basic/Icon'
 import LinkSwitch                      from 'shared/Basic/LinkSwitch'
+import MotionDiv                       from 'shared/Basic/MotionDiv'
 import {menuPanelContext}              from 'shared/Containers/MenuPanelController'
 import {
     cartNumberStyle,
@@ -13,15 +14,14 @@ import {
     headerIconStyle,
     headerMenuIconWrapperStyle
 }                                      from 'shared/Layout/styles/header'
-import {transparent}                   from '../../utils/themer'
-import MotionDiv                       from '../Basic/MotionDiv'
+import {transparent}                   from 'utils/themer'
 import HeaderMenuUserDropdown          from './HeaderMenuUserDropdown'
 import {headerMenuControlWrapperStyle} from './styles'
 
 const HeaderMenuControls = () => {
     const {isAuthenticated, isAdmin, nameFirst} = useSelector(state => state.user)
     const {cart} = useSelector(state => state.shop)
-    const {setPanel, currentPanel} = useContext(menuPanelContext)
+    const {setPanel} = useContext(menuPanelContext)
 
     return (
         <Div theme={headerMenuControlWrapperStyle}>

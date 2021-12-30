@@ -5,6 +5,11 @@ export const userDashboardInfoWrapperStyle = {
     font: globals.fonts.serif,
     lineHeight: [28, .7, 28],
     marginTop: [30, .7, 30],
+    width: 'calc(100% - 100px)',
+    margin: '0 auto',
+    mobile: {
+        width: '100%'
+    },
     child: {
         selector: '> div',
         marginBottom: [20, .7, 20]

@@ -3,13 +3,11 @@ import React, {lazy, Suspense}     from 'react'
 import Div                         from 'shared/Basic/Div'
 import LinkSwitch                  from 'shared/Basic/LinkSwitch'
 import MotionDiv                   from 'shared/Basic/MotionDiv'
-import Span                        from 'shared/Basic/Span'
 import {
     genericCardImageStyle,
     genericCardNameStyle,
     genericCardPriceStyle,
     genericCardProductCategoryStyle,
-    genericCardQuantityStyle,
     genericCardStyle,
     genericCardTextWrapperStyle
 }                                  from 'shared/Cards/styles'

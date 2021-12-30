@@ -225,9 +225,10 @@ const Place = () => {
         })
 
         setTimeout(() => {
-            if(!!place._id) {
+            if (!!place._id) {
                 placesIndex.saveObject(place)
-                    .then(() => {})
+                    .then(() => {
+                    })
                     .catch(error =>
                         console.log('error', error)
                     )

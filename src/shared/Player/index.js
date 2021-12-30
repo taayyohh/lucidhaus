@@ -24,7 +24,7 @@ import {
     playerSongsWrapperStyle,
     playerStyle
 }                                                                                 from 'shared/Player/styles'
-import {auto}                                                                     from 'utils/themer'
+import {sv}                                                                       from 'utils/themer'
 
 const Player = () => {
     const isMobile = useSelector(mobileFlag)
@@ -49,7 +49,10 @@ const Player = () => {
         open: {
             width: !isMobile ? 300 : 'calc(100% - 50px)',
             height: 'auto',
-            borderRadius: 10
+            borderRadius: 10,
+            // transition: {
+            //     delay: .25
+            // }
         },
         closed: {
             width: 50,
@@ -61,15 +64,10 @@ const Player = () => {
 
     const queueListVariants = {
         open: {
-            // height: auto,
-            // transition: {
-            //     ease: 'easeIn',
-            //     duration: .5,
-            //     // delay: .5
-            // }
+            paddingTop: sv(35),
         },
         closed: {
-            // height: 0
+            paddingTop: sv(80)
         }
     }
 
@@ -135,19 +133,17 @@ const Player = () => {
                         animate={isQueueOpen ? 'open' : 'closed'}
                         variants={queueVariants}
                     >
-                        <Div theme={playerQueueInnerStyle}>
+                        <MotionDiv variants={queueListVariants}
+                                   initial={false}
+                                   animate={isQueueOpen ? 'open' : 'closed'}
+                                   theme={playerQueueInnerStyle}>
                             <Icon
                                 icon={isQueueOpen ? windowMinimize : list}
                                 theme={playerMinimizeIconStyle(isQueueOpen)}
                                 onClick={() => setIsQueueOpen(flag => !flag)}
 
                             />
-                            <MotionDiv
-                                theme={playerSongsWrapperStyle}
-                                variants={queueListVariants}
-                                initial={false}
-                                // animate={isQueueOpen ? 'open' : 'closed'}
-                            >
+                            <Div theme={playerSongsWrapperStyle}>
                                 {currentMedia && currentMedia.map((m, i) => {
                                         const currentAudio = currentMedia[currentMediaIndex]?.audio
                                         const isActive = m.audio === currentAudio && currentMediaIndex === i
@@ -172,8 +168,8 @@ const Player = () => {
                                         )
                                     }
                                 )}
-                            </MotionDiv>
-                        </Div>
+                            </Div>
+                        </MotionDiv>
                     </MotionDiv>
                     <Div theme={playerStyle}>
                         <Div theme={playerInnerStyle}>

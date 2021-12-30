@@ -1,5 +1,5 @@
-import {IMAGE_UPLOAD, RICH_TEXT, SELECT, SINGLE_SELECT, TEXT, TOGGLE, UPLOAD_PATHS} from 'config/variables'
-import * as Yup                                                                     from 'yup'
+import {IMAGE_UPLOAD, RICH_TEXT, SINGLE_SELECT, TEXT, TOGGLE, UPLOAD_PATHS} from 'config/variables'
+import * as Yup                                                             from 'yup'
 
 export const albumFields = [
     {

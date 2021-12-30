@@ -18,8 +18,9 @@ import {
     spaceBetween,
     sv,
     transparent,
-    uppercase, white
-} from 'utils/themer'
+    uppercase,
+    white
+}                              from 'utils/themer'
 
 
 export const checkoutDropIn = {
@@ -194,10 +195,12 @@ export const cartSummaryStyle = {
         alignItems: center,
         left: 0,
         zIndex: 2,
-        background: '#d2c8d4',
+        background: '#fff',
         top: 80,
         padding: '10px 25px',
-        borderBottom: '1px solid #000'
+        border: `1px solid ${globals.colors.borderColor}`,
+        borderRadius: 10,
+        boxShadow: '-8px 5px 10px 0px #d5d5d5'
     }
 }
 
@@ -208,16 +211,17 @@ export const cartSummaryTotalStyle = {
     flexDirection: column,
     child: {
         selector: 'span',
-        size: [32, .7, 32]
+        size: [32, .7, 22]
     },
     mobile: {
+        // flexDirection: row,
         fontWeight: 500,
-        size: 32
+        size: [32, .7, 20]
     }
 }
 
 export const cartSummaryLengthStyle = {
-    size: [16, .7, 16]
+    size: [16, .7, 12]
 }
 
 export const cartSummaryIntlDisc = {

@@ -1,25 +1,19 @@
-import {search, shoppingCart}             from 'config/icons'
-import {mobileFlag}                       from 'features/site/slice'
-import React, {useContext}                               from 'react'
-import {useSelector}                                     from 'react-redux'
-import Div                                               from 'shared/Basic/Div'
-import Icon                               from 'shared/Basic/Icon'
-import {menuPanelContext}                 from 'shared/Containers/MenuPanelController'
-import {
-    cartNumberStyle,
-    headerIconStyle,
-    headerMenuIconWrapperStyle,
-    headerSearchIconStyle,
-    headerSearchWrapperStyle
-}                                         from 'shared/Layout/styles/header'
-import MenuPanels                         from 'shared/Menus/MenuPanel'
-import {headerMenu}                       from '../../config/menus/header'
-import {transparent}                      from '../../utils/themer'
-import MotionDiv                          from '../Basic/MotionDiv'
-import HeaderMenuControls                 from './HeaderMenuControls'
-import HeaderMenuItems                    from './HeaderMenuItems'
-import MenuToggle                         from './MenuToggle'
-import {headerMenuStyle, menuToggleStyle} from './styles'
+import {shoppingCart}                                                 from 'config/icons'
+import {headerMenu}                                                   from 'config/menus/header'
+import {mobileFlag}                                                   from 'features/site/slice'
+import React, {useContext}                                            from 'react'
+import {useSelector}                                                  from 'react-redux'
+import Div                                                            from 'shared/Basic/Div'
+import Icon                                                           from 'shared/Basic/Icon'
+import MotionDiv                                                      from 'shared/Basic/MotionDiv'
+import {menuPanelContext}                                             from 'shared/Containers/MenuPanelController'
+import {cartNumberStyle, headerIconStyle, headerMenuIconWrapperStyle} from 'shared/Layout/styles/header'
+import MenuPanels                                                     from 'shared/Menus/MenuPanel'
+import {transparent}                                                  from 'utils/themer'
+import HeaderMenuControls                                             from './HeaderMenuControls'
+import HeaderMenuItems                                                from './HeaderMenuItems'
+import MenuToggle                                                     from './MenuToggle'
+import {headerMenuStyle, menuToggleStyle}                             from './styles'
 
 const HeaderMenu = () => {
     const {setPanel, currentPanel} = useContext(menuPanelContext)

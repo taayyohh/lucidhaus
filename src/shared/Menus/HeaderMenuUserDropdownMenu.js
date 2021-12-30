@@ -1,4 +1,3 @@
-import {adminDashboardMenu}       from 'config/menus/dashboard/admin'
 import {userDashboardMenu}        from 'config/menus/dashboard/user'
 import {globals}                  from 'config/styles'
 import React, {useRef}            from 'react'
@@ -16,7 +15,6 @@ import {
 
 const HeaderMenuUserDropdownMenu = () => {
     const dispatch = useDispatch()
-    const {isAdmin} = useSelector(state => state.user)
     const {closeHeaderMenuDropdown} = useSelector(state => state.site)
     const menuRef = useRef(null)
     const variants = {

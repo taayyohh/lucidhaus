@@ -1,6 +1,6 @@
-import {colorPalette, globals}    from 'config/styles'
-import {dashboardActiveIndicator} from 'shared/Menus/styles'
+import {colorPalette, globals} from 'config/styles'
 import {
+    absolute,
     black,
     borderBox,
     center,
@@ -14,7 +14,7 @@ import {
     relative,
     spaceBetween,
     sv
-}                                 from 'utils/themer'
+}                              from 'utils/themer'
 
 export const albumsWrapperStyle = {
     display: 'grid',
@@ -126,7 +126,13 @@ export const albumSongTrackNumberStyle = {
 }
 
 export const albumSongActiveIndicatorStyle = {
-    ...dashboardActiveIndicator,
+    height: [8, .7, 8],
+    width: [8, .7, 8],
+    borderRadius: [4, .7, 4],
+    position: absolute,
+    top: '50%',
+    marginTop: [-4, .7, -4],
+    background: colorPalette.honeyYellow,
     right: 0
 }
 export const albumTitleStyle = {

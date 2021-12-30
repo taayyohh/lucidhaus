@@ -15,7 +15,6 @@ import {
     RICH_TEXT,
     SELECT,
     SINGLE_SELECT,
-    STATE_CITY,
     TEL,
     TEXT,
     TEXTAREA,

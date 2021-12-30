@@ -1,8 +1,6 @@
+import {colorPalette, globals} from 'config/styles'
 import {
-    colorPalette,
-    globals
-} from 'config/styles'
-import {
+    absolute,
     auto,
     black,
     block,
@@ -11,14 +9,12 @@ import {
     fixed,
     flex,
     flexEnd,
-    grid,
     hidden,
     none,
     pointer,
-    relative, spaceBetween,
-    sv,
+    relative,
     white
-} from 'utils/themer'
+}                              from 'utils/themer'
 
 export const playerStyle = {
     position: fixed,
@@ -63,12 +59,15 @@ export const playerMinimizeStyle = {
 }
 
 export const playerMinimizeIconStyle = isOpen => {
-    console.log('is', isOpen)
     return {
         display: block,
-        // marginBottom: [15, .7, 15],
-        marginTop: !isOpen ? 11 : -3,
-        marginLeft: auto,
+        position: absolute,
+        right: isOpen ? 20 : 14,
+        top: isOpen ? 5 : 12,
+        zIndex: 1,
+        size: [20, .7, 18],
+        // marginTop: !isOpen ? 11 : -3,
+        // marginLeft: auto,
         mobile: {
             size: 18,
             marginTop: isOpen ? -10 : 7,
@@ -87,7 +86,11 @@ export const playerSongsWrapperStyle = {
 }
 
 export const playerQueueInnerStyle = {
-    position: relative
+    position: relative,
+    paddingTop: [35, .7, 15],
+    paddingBottom: [20, .7, 20],
+    paddingLeft: [20, .7, 20],
+    paddingRight: [20, .7, 20]
 }
 
 export const playerQueueStyle = {
@@ -101,19 +104,14 @@ export const playerQueueStyle = {
     width: [300, globals.style.layoutScalingValue, 350],
     maxWidth: [300, globals.style.layoutScalingValue, 350],
     maxHeight: [300, .7, 300],
-    paddingTop: [5, .7, 5],
-    paddingBottom: [20, .7, 20],
-    paddingLeft: [20, .7, 20],
-    paddingRight: [20, .7, 20],
     background: '#FAFAFA',
-    borderRadius: [10, .7, 10],
     border: `1px solid #4d0b69`,
     zIndex: 5,
     overflowY: 'scroll',
     msScrollBar: none,
     ffScrollBar: none,
     hover: {
-      cursor: pointer,
+        cursor: pointer,
     },
     scrollBar: {
         display: none,
@@ -147,8 +145,7 @@ export const playerQueueTrackInnerStyle = isActive => {
     if (isActive)
         return {
             ...base,
-            display: none,
-            backgroundColor: '#afe',
+            backgroundColor: '#cdcdcd',
             child: {
                 selector: 'a',
                 color: white,

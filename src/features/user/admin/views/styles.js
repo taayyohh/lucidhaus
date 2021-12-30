@@ -84,7 +84,7 @@ export const userContentWrapperStyle = {
     width: [1360, globals.style.layoutScalingValue, '100%'],
     mobile: {
         margin: '0 auto',
-        width: 'calc(100% - 50px)',
+        // width: 'calc(100% - 50px)',
 
     }
 }

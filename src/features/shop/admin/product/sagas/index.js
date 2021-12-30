@@ -1,12 +1,24 @@
-import {push}                                     from 'connected-react-router'
-import {addProduct, deleteProduct, updateProduct} from 'features/shop/services/product'
-import {getSignedRequest, uploadFile}             from 'features/site/services/s3'
-import {call, put, takeLatest}                    from 'redux-saga/effects'
-import {setFormData}                              from 'utils/abstractions/setFormData'
-import {updateItem}                               from 'utils/cartHelpers'
+import {push}                         from 'connected-react-router'
+import {addProduct, updateProduct}    from 'features/shop/services/product'
+import {getSignedRequest, uploadFile} from 'features/site/services/s3'
+import {call, put, takeLatest}        from 'redux-saga/effects'
+import {setFormData}                  from 'utils/abstractions/setFormData'
+import {updateItem}                   from 'utils/cartHelpers'
 
 export function* createProduct({payload}) {
-    const {_id, token, name, description, photo, photoFile, quantity, price, internationalShippingCost, isPublished, category} = payload
+    const {
+        _id,
+        token,
+        name,
+        description,
+        photo,
+        photoFile,
+        quantity,
+        price,
+        internationalShippingCost,
+        isPublished,
+        category
+    } = payload
 
     //add to formdata so api can read
     const product = new FormData()
@@ -34,7 +46,20 @@ export function* createProduct({payload}) {
 }
 
 export function* updateProductDetail({payload}) {
-    const {slug, _id, token, name, description, photo, photoFile, quantity, price, internationalShippingCost, isPublished, category} = payload
+    const {
+        slug,
+        _id,
+        token,
+        name,
+        description,
+        photo,
+        photoFile,
+        quantity,
+        price,
+        internationalShippingCost,
+        isPublished,
+        category
+    } = payload
 
     //add to formData so api can read
     const updatedProduct = new FormData()

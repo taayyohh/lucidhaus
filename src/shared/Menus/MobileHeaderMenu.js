@@ -1,17 +1,17 @@
-import {mobileHeaderMenu, mobileUserDashboardMenu, userDashboardMenu} from 'config/menus/dashboard/user'
-import React                                                          from 'react'
+import {mobileHeaderMenu, mobileUserDashboardMenu, userDashboardMenu}               from 'config/menus/dashboard/user'
+import {mobileFlag}                                                                 from 'features/site/slice'
+import React                                                                        from 'react'
 import {useDispatch, useSelector}                                                   from 'react-redux'
 import Div                                                                          from 'shared/Basic/Div'
+import LinkSwitch                                                                   from 'shared/Basic/LinkSwitch'
 import Span                                                                         from 'shared/Basic/Span'
 import {adminMenuStyle}                                                             from 'shared/Layout/Dashboard/admin/styles'
-import {mobileFlag}                                                                 from '../../features/site/slice'
-import LinkSwitch                                                                   from '../Basic/LinkSwitch'
-import {headerButtonSignInStyle, headerButtonSignUpStyle, headerButtonWrapperStyle} from '../Layout/styles/header'
+import {headerButtonSignInStyle, headerButtonSignUpStyle, headerButtonWrapperStyle} from 'shared/Layout/styles/header'
 import HeaderDashboardMenu                                                          from './HeaderDashboardMenu'
 import {headerAccountMenuLinkStyle}                                                 from './styles'
 
 const MobileHeaderMenu = () => {
-    const {nameFirst, isAdmin, isAuthenticated} = useSelector(state => state.user)
+    const {nameFirst, isAuthenticated} = useSelector(state => state.user)
     const dispatch = useDispatch()
     const isMobile = useSelector(mobileFlag)
 

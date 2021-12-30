@@ -34,7 +34,7 @@ const SignUp = () => {
                     fields={signUpFields}
                     validationSchema={validateSignup}
                     dispatchAction={'user/signUp'}
-                    formHeading={'Sign Up'}
+                    formHeading={'Join Us <3'}
                     buttonText={'Sign Up'}
                     theme={signUpFormStyle}
                 />

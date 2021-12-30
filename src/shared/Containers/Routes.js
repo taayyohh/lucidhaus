@@ -7,7 +7,6 @@ import PrivateRoute                           from 'shared/Basic/PrivateRoute'
 import Fallback                               from 'shared/Layout/Fallback'
 import {TransitionAnimations}                 from './TransitionController'
 
-const Home = lazy(() => import('features/site/views/Home'))
 const SignIn = lazy(() => import('features/site/views/SignIn'))
 const SignUp = lazy(() => import('features/site/views/SignUp'))
 const AccountDetails = lazy(() => import('features/user/admin/views/Account'))

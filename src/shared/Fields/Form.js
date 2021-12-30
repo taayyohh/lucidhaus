@@ -73,7 +73,6 @@ const Form = ({
                             {!!children && children?.map((c, i) => (
                                 <Div key={i} theme={{width: '100%'}}>
                                     {c?.type(formik)}
-                                    {console.log('CHIL', children)}
                                 </Div>
                             ))}
                         </>

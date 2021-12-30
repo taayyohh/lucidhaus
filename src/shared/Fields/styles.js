@@ -18,7 +18,6 @@ import {
     relative,
     sv,
     transparent,
-    uppercase,
     white
 }                              from 'utils/themer'
 
@@ -174,8 +173,7 @@ export const defaultFieldErrorStyle = {
     position: absolute,
     right: [5, .7, 5],
     top: [0, .7, 0],
-    textTransform: uppercase,
-    size: [18, .7, 18],
+    size: [13, .7, 13],
     color: globals.colors.errorColor
 }
 
@@ -330,7 +328,7 @@ export const imageDropZoneStyle = {
     },
     close: {
         display: flex,
-        alignItems:center,
+        alignItems: center,
         justifyContent: center,
         height: 50,
         width: 50,
@@ -634,6 +632,4 @@ export const textAreaErrorMessageStyle = {
     color: colorPalette.brightRed
 }
 
-export const textAreaStyle = {
-
-}
+export const textAreaStyle = {}

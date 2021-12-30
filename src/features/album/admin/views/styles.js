@@ -1,6 +1,6 @@
+import {globals}                                              from 'config/styles'
 import {defaultInputStyle}                                    from 'shared/Fields/styles'
 import {auto, borderBox, center, flex, none, sv, transparent} from 'utils/themer'
-import {globals}                                              from '../../../../config/styles'
 
 export const postsWrapperStyle = {
     display: flex,

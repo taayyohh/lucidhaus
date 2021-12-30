@@ -1,5 +1,3 @@
-import {API} from 'config/variables'
-
 export const getAudiusProviders = () =>
     fetch(`https://api.audius.co/`, {
         method: 'GET'
@@ -22,8 +20,7 @@ export const getAudiusUser = ({provider}) => {
         .then(response => {
             return response.json()
         })
-        .then(function(body) {
-            console.log(body);
+        .then(function (body) {
         })
         .catch(error => {
             return error

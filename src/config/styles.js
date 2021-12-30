@@ -19,10 +19,10 @@ export const colorPalette = {
     grayPurple: '#908999',
     borderColor: '#dedede',
     ijGray: '#F2F2F2',
-    forestGreen: '#004722',
-    seaGreen: '#0e834b',
+    forestGreen: '#822cbf',
+    seaGreen: '#59148b',
     seaFoamGreen: '#B7DAC9',
-    paleGreen: '#80A390',
+    paleGreen: '#908999',
     honeyYellow: '#FFB400',
     darkHoneyYellow: '#cd9010'
 }

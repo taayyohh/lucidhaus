@@ -54,7 +54,6 @@ const SingleSelect = ({className, name, errorMessage, field, formik, options, th
                 <Div theme={{...multiSelectOptionSelectedWrapperStyle}}>
                     <Div theme={{...multiSelectOptionSelectedWrapperStyle.heading}}>Selected</Div>
                     <Div theme={{display: 'flex', flexWrap: 'wrap'}}>
-                        {console.log('vaa', value)}
                         {!!value && Array.isArray(value) ? value : [value]?.map((v) => {
                                 const thisOptions = options.filter(item => item.name === field.name)?.[0].options
                                 return (
