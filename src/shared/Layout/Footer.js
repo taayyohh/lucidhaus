@@ -14,6 +14,18 @@ const Footer = ({theme}) =>
         <Div theme={footerStyle.inner}>
             <Div theme={footerStyle.innerLinksWrapper}>
                 <Span theme={footerStyle.copy}>&copy; {moment().format('YYYY')} {siteDisplayName}</Span>
+
+                <Div theme={footerStyle.linksWrapper}>
+                    <LinkSwitch
+                        url={'/privacy'}
+                        children={'Privacy Policy '}
+                    />
+                    <LinkSwitch
+                        url={'/terms'}
+                        children={'Terms of Service'}
+                    />
+                </Div>
+
             </Div>
             <Div theme={footerContactStyle}>
                 <Div theme={footerSocialStyle}>

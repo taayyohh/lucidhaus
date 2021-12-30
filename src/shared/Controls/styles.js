@@ -54,6 +54,12 @@ export const orderCardStyle = {
     border: `1px solid ${globals.colors.borderColor}`
 }
 
+export const genericPageWidthStyle = {
+    width: [1280, globals.style.layoutScalingValue, '100%'],
+    margin: '0 auto',
+    marginTop: [50, .7, 20]
+}
+
 export const genericButtonStyle = {
     border: `1px solid #dadce0`,
     background: colorPalette.seaGreen,

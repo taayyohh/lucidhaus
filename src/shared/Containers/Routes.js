@@ -14,6 +14,8 @@ const VerifyEmail = lazy(() => import('features/site/views/VerifyEmail'))
 const Recover = lazy(() => import('features/site/views/Recover'))
 const Reset = lazy(() => import('features/site/views/Reset'))
 const NotFound = lazy(() => import('features/site/views/NotFound'))
+const Privacy = lazy(() => import('features/site/views/Privacy'))
+const Terms = lazy(() => import('features/site/views/Terms'))
 
 
 const AdminDashboard = lazy(() => import('shared/Layout/Dashboard/admin/AdminDashboard'))
@@ -103,6 +105,8 @@ const Routes = () => {
                     <Suspense fallback={<Fallback/>}>
                         <Switch location={{pathname: currentPath}}>
                             <Route path="/" exact component={Albums}/>
+                            <Route path="/privacy" exact component={Privacy}/>
+                            <Route path="/terms" exact component={Terms}/>
 
 
                             <Route path="/signup" exact component={SignUp}/>
