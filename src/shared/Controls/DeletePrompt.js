@@ -21,8 +21,6 @@ const DeletePrompt = ({destroyAction, type, index, objectID}) => {
     const {shouldDelete, destroy} = confirmDelete
     const dispatch = useDispatch()
 
-    console.log('index', index)
-
     return (
         <>
             {shouldDelete && (

@@ -1,21 +1,12 @@
 /* WATCHERS */
 
-import {push}                        from 'connected-react-router'
-import {deleteArtist}                from 'features/artist/services'
-import {deleteProduct}               from 'features/shop/services/product'
-import {deleteProductCategory}       from 'features/shop/services/product/category'
-import {deleteAdaptiveEquipment}     from 'features/user/admin/taxonomy/adaptiveEquipment/services'
-import {deleteBodyModification}      from 'features/user/admin/taxonomy/bodyModification/services'
-import {deleteGender}                from 'features/user/admin/taxonomy/gender/services'
-import {deleteLanguage}              from 'features/user/admin/taxonomy/language/services'
-import {deleteMethodOfCommunication} from 'features/user/admin/taxonomy/methodOfCommunication/services'
-import {deletePhysicalAppearance}    from 'features/user/admin/taxonomy/physicalAppearance/services'
-import {deletePronoun}               from 'features/user/admin/taxonomy/pronoun/services'
-import {deleteRace}                  from 'features/user/admin/taxonomy/race/services'
-import {deleteServiceAnimal}         from 'features/user/admin/taxonomy/serviceAnimal/services'
-import {deleteSexualOrientation}     from 'features/user/admin/taxonomy/sexualOrientation/services'
-import {deleteReview, deleteUser}    from 'features/user/services'
-import {call, put, takeLatest}       from 'redux-saga/effects'
+import {push}                     from 'connected-react-router'
+import {deleteAlbum}              from 'features/album/services'
+import {deleteArtist}             from 'features/artist/services'
+import {deleteProduct}            from 'features/shop/services/product'
+import {deleteProductCategory}    from 'features/shop/services/product/category'
+import {deleteReview, deleteUser} from 'features/user/services'
+import {call, put, takeLatest}    from 'redux-saga/effects'
 
 
 export function* attemptDestroyEntity({payload}) {
@@ -27,26 +18,8 @@ export function* destroyEntity({payload}) {
         switch (payload.type) {
             case 'artist':
                 return deleteArtist
-            case 'adaptive-equipment':
-                return deleteAdaptiveEquipment
-            case 'body-modification':
-                return deleteBodyModification
-            case 'gender':
-                return deleteGender
-            case 'language':
-                return deleteLanguage
-            case 'method-of-communication':
-                return deleteMethodOfCommunication
-            case 'physical-appearance':
-                return deletePhysicalAppearance
-            case 'pronoun':
-                return deletePronoun
-            case 'race':
-                return deleteRace
-            case 'service-animal':
-                return deleteServiceAnimal
-            case 'sexual-orientation':
-                return deleteSexualOrientation
+            case 'album':
+                return deleteAlbum
             case 'product-category':
                 return deleteProductCategory
             case 'product':
@@ -77,13 +50,10 @@ export function* destroyEntity({payload}) {
             yield put({type: 'user/destroyUserSuccess', payload: {objectID}})
             yield put({type: 'user/signOut'})
             yield put(push('/signin'))
-
-        } else if (type === 'place') {
-            yield put({type: 'place/destroyPlaceSuccess', payload: {objectID}})
         }
         // yield put({type: 'shop/destroyProductSuccess', payload: {objectID}})
         // yield put({type: 'shop/getShop'})
-        yield put(push('/admin/'))
+        // yield put(push('/admin/'))
     } else {
         yield put({type: 'admin/destroyProductFailure'})
     }

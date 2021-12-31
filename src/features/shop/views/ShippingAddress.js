@@ -2,10 +2,14 @@ import {orderFields, validateCheckoutAddress} from 'features/shop/admin/order/fi
 import CheckoutSection                        from 'features/shop/views/CheckoutSection'
 import {shippingAddressStyle}                 from 'features/shop/views/styles'
 import React                                  from 'react'
+import {useSelector}                          from 'react-redux'
 import Form                                   from 'shared/Fields/Form'
 
 const ShippingAddress = () => {
+    const {user} = useSelector(state => state.user)
+    const {nameFirst, email, tel} = user
     const initialValues = {
+        name: nameFirst || '',
         company: '',
         autoAddress: '',
         address: '',
@@ -14,8 +18,8 @@ const ShippingAddress = () => {
         zip: '',
         country: '',
         state: '',
-        phone: '',
-        email: ''
+        phone: tel || '',
+        email: email || ''
     }
 
     return (

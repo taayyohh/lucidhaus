@@ -41,13 +41,14 @@ const Checkout = ({cart}) => {
                     products: cart,
                     deliveryAddress: deliveryAddress,
                     billingAddress: billingAddress,
-                    user: _id || undefined
+                    user: _id || undefined,
+                    name: deliveryAddress.name,
+                    email: deliveryAddress.email,
+                    phone: deliveryAddress.phone
                 }
             })
         )
     }
-
-
 
 
     return (

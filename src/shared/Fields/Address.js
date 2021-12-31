@@ -78,7 +78,7 @@ const Address = ({formik, name}) =>
                     theme={AutoCompleteInputStyle}
                     value={formik.values[name]}
                     {...getInputProps({
-                        placeholder: 'Search By Address or Business Name',
+                        placeholder: 'Search By Address',
                     })}
                 />
                 <Div theme={AutoCompleteSuggestionWrapperStyle}>

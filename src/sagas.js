@@ -115,66 +115,6 @@ import {
     watchAttemptDestroyEntity,
     watchDestroyEntity
 }                                                                           from './features/site/admin/sagas'
-import {
-    watchCreateAdaptiveEquipment,
-    watchGetAdaptiveEquipmentDetail,
-    watchGetAdaptiveEquipmentList,
-    watchUpdateAdaptiveEquipmentDetail
-}                                                                           from './features/user/admin/taxonomy/adaptiveEquipment/sagas'
-import {
-    watchCreateBodyModification,
-    watchGetBodyModificationDetail,
-    watchGetBodyModificationList,
-    watchUpdateBodyModificationDetail
-}                                                                           from './features/user/admin/taxonomy/bodyModification/sagas'
-import {
-    watchCreateGender,
-    watchGetGenderDetail,
-    watchGetGenderList,
-    watchUpdateGenderDetail
-}                                                                           from './features/user/admin/taxonomy/gender/sagas'
-import {
-    watchCreateLanguage,
-    watchGetLanguageDetail,
-    watchGetLanguageList,
-    watchUpdateLanguageDetail
-}                                                                           from './features/user/admin/taxonomy/language/sagas'
-import {
-    watchCreateMethodOfCommunication,
-    watchGetMethodOfCommunicationDetail,
-    watchGetMethodOfCommunicationList,
-    watchUpdateMethodOfCommunicationDetail
-}                                                                           from './features/user/admin/taxonomy/methodOfCommunication/sagas'
-import {
-    watchCreatePhysicalAppearance,
-    watchGetPhysicalAppearanceDetail,
-    watchGetPhysicalAppearanceList,
-    watchUpdatePhysicalAppearanceDetail
-}                                                                           from './features/user/admin/taxonomy/physicalAppearance/sagas'
-import {
-    watchCreatePronoun,
-    watchGetPronounDetail,
-    watchGetPronounList,
-    watchUpdatePronounDetail
-}                                                                           from './features/user/admin/taxonomy/pronoun/sagas'
-import {
-    watchCreateRace,
-    watchGetRaceDetail,
-    watchGetRaceList,
-    watchUpdateRaceDetail
-}                                                                           from './features/user/admin/taxonomy/race/sagas'
-import {
-    watchCreateServiceAnimal,
-    watchGetServiceAnimalDetail,
-    watchGetServiceAnimalList,
-    watchUpdateServiceAnimalDetail
-}                                                                           from './features/user/admin/taxonomy/serviceAnimal/sagas'
-import {
-    watchCreateSexualOrientation,
-    watchGetSexualOrientationDetail,
-    watchGetSexualOrientationList,
-    watchUpdateSexualOrientationDetail
-}                                                                           from './features/user/admin/taxonomy/sexualOrientation/sagas'
 
 
 //TODO: determine best method of combining rootSaga
@@ -222,58 +162,6 @@ export default function* rootSaga() {
         fork(watchConfirmUpdatePhoneNumber),
         fork(watchUpdateUserEmail),
         fork(watchConfirmUpdateEmail),
-
-
-        //user -- taxonomy
-        fork(watchCreateAdaptiveEquipment),
-        fork(watchGetAdaptiveEquipmentList),
-        fork(watchGetAdaptiveEquipmentDetail),
-        fork(watchUpdateAdaptiveEquipmentDetail),
-
-        fork(watchCreateBodyModification),
-        fork(watchGetBodyModificationList),
-        fork(watchGetBodyModificationDetail),
-        fork(watchUpdateBodyModificationDetail),
-
-        fork(watchCreateGender),
-        fork(watchGetGenderList),
-        fork(watchGetGenderDetail),
-        fork(watchUpdateGenderDetail),
-
-        fork(watchCreateLanguage),
-        fork(watchGetLanguageList),
-        fork(watchGetLanguageDetail),
-        fork(watchUpdateLanguageDetail),
-
-        fork(watchCreateMethodOfCommunication),
-        fork(watchGetMethodOfCommunicationList),
-        fork(watchGetMethodOfCommunicationDetail),
-        fork(watchUpdateMethodOfCommunicationDetail),
-
-        fork(watchCreatePhysicalAppearance),
-        fork(watchGetPhysicalAppearanceList),
-        fork(watchGetPhysicalAppearanceDetail),
-        fork(watchUpdatePhysicalAppearanceDetail),
-
-        fork(watchCreatePronoun),
-        fork(watchGetPronounList),
-        fork(watchGetPronounDetail),
-        fork(watchUpdatePronounDetail),
-
-        fork(watchCreateRace),
-        fork(watchGetRaceList),
-        fork(watchGetRaceDetail),
-        fork(watchUpdateRaceDetail),
-
-        fork(watchCreateServiceAnimal),
-        fork(watchGetServiceAnimalList),
-        fork(watchGetServiceAnimalDetail),
-        fork(watchUpdateServiceAnimalDetail),
-
-        fork(watchCreateSexualOrientation),
-        fork(watchGetSexualOrientationList),
-        fork(watchGetSexualOrientationDetail),
-        fork(watchUpdateSexualOrientationDetail),
 
 
         // shop

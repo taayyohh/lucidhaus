@@ -15,6 +15,11 @@ export const orderFields = [
         type: ADDRESS
     },
     {
+        name: 'name',
+        inputLabel: 'Name',
+        type: TEXT
+    },
+    {
         name: 'address',
         inputLabel: 'Address',
         type: TEXT

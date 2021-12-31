@@ -1,16 +1,16 @@
 import {productFields, validateProduct} from 'features/shop/admin/product/fields'
+import {userContentWrapperStyle}        from 'features/user/admin/views/styles'
 import React, {useEffect}               from 'react'
 import {useDispatch, useSelector}       from 'react-redux'
 import Form                             from 'shared/Fields/Form'
 import ContentWrapper                   from 'shared/Layout/ContentWrapper'
 import AdminDashboardWrapper            from 'shared/Layout/Dashboard/admin/AdminDashboardWrapper'
 import {adminFormWrapperStyle}          from 'shared/Layout/Dashboard/admin/styles'
-import {userContentWrapperStyle}        from '../../../../user/admin/views/styles'
 
 const Create = () => {
     const dispatch = useDispatch()
     const {_id, token} = useSelector(state => state.user)
-    const {productCategories} = useSelector(state => state.shop)
+    const {productCategories} = useSelector(state => state.shop.taxonomy)
     const initialValues = {
         _id: _id,
         token: token,

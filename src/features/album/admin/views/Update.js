@@ -94,9 +94,8 @@ const Update = () => {
 
                 <CreateSong/>
                 <DangerZone
-                    key={album.objectID}
-                    attemptDestroyAction={'admin/attemptDestroyAlbum'}
-                    destroyAction={'admin/destroyAlbum'}
+                    attemptDestroyAction={'site/attemptDestroyEntity'}
+                    destroyAction={'site/destroyEntity'}
                     slug={slug}
                     objectID={album.objectID}
                     index={albumsIndex}

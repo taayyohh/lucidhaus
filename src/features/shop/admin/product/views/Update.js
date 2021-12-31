@@ -1,4 +1,5 @@
 import {productFields, validateProduct} from 'features/shop/admin/product/fields'
+import {userContentWrapperStyle}        from 'features/user/admin/views/styles'
 import React, {useContext, useEffect}   from 'react'
 import 'react-image-crop/dist/ReactCrop.css'
 import {useDispatch, useSelector}       from 'react-redux'
@@ -8,7 +9,6 @@ import Form                             from 'shared/Fields/Form'
 import ContentWrapper                   from 'shared/Layout/ContentWrapper'
 import AdminDashboardWrapper            from 'shared/Layout/Dashboard/admin/AdminDashboardWrapper'
 import {adminFormWrapperStyle}          from 'shared/Layout/Dashboard/admin/styles'
-import {userContentWrapperStyle}        from '../../../../user/admin/views/styles'
 
 const Update = () => {
     const dispatch = useDispatch()

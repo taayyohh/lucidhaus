@@ -1,14 +1,5 @@
 import {createSlice}           from '@reduxjs/toolkit'
-import {adaptiveEquipment}     from './admin/taxonomy/adaptiveEquipment/reducers'
-import {bodyModification}      from './admin/taxonomy/bodyModification/reducers'
-import {gender}                from './admin/taxonomy/gender/reducers'
-import {language}              from './admin/taxonomy/language/reducers'
-import {methodOfCommunication} from './admin/taxonomy/methodOfCommunication/reducers'
-import {physicalAppearance}    from './admin/taxonomy/physicalAppearance/reducers'
-import {pronoun}               from './admin/taxonomy/pronoun/reducers'
-import {race}                  from './admin/taxonomy/race/reducers'
-import {serviceAnimal}         from './admin/taxonomy/serviceAnimal/reducers'
-import {sexualOrientation}     from './admin/taxonomy/sexualOrientation/reducers'
+
 
 const initialState = {
     _id: '',
@@ -74,7 +65,6 @@ export const slice = createSlice({
             state.avatar = action.payload.user.avatar
             state.description = action.payload.user.description
             state.email = action.payload.user.email
-            state.ethnicHispanicOrigin = action.payload.user.ethnicHispanicOrigin
             state.handle = action.payload.user.handle
             state.nameMiddle = action.payload.user.nameMiddle
             state.nameFirst = action.payload.user.nameFirst
@@ -169,7 +159,6 @@ export const slice = createSlice({
             state.avatar = action.payload.avatar
             state.description = action.payload.description
             state.email = action.payload.email
-            state.ethnicHispanicOrigin = action.payload.ethnicHispanicOrigin
             state.handle = action.payload.handle
             state.nameMiddle = action.payload.nameMiddle
             state.nameFirst = action.payload.nameFirst
@@ -198,60 +187,12 @@ export const slice = createSlice({
         },
         emailVerificationSuccess: (state, action) => {
             state.isVerified = true
-        },
-        getBookmark: (state, action) => {
-            state.bookmarks = []
-        },
-        getBookmarkSuccess: (state, action) => {
-            state.bookmarks = state.bookmarks.filter(item => item._id === action.payload.place._id).length < 1
-                ? [...state.bookmarks, action.payload.place]
-                : state.bookmarks
-        },
-        getUserReviewsSuccess: (state, action) => {
-            state.reviews = action.payload.reviews
-        },
-        // getUserReviewsSuccess: (state, action) => {
-        //     state.reviews = state.reviews.filter(item => item._id === action.payload.reviews._id).length < 1
-        //         ? [...state.reviews, action.payload.reviews]
-        //         : state.reviews
-        // },
-        getUserReviewedPlaceSuccess: (state, action) => {
-
-        },
-        getPendingPlaceEntitySuccess: (state, action) => {
-            state.pendingPlaces = state.pendingPlaces.filter(item => item._id === action.payload.entity._id).length < 1
-                ? [...state.pendingPlaces, action.payload.entity]
-                : state.pendingPlaces
-        },
-        flagReviewSuccess: (state, action) => {
-
-        },
-        submitPlaceSuccess: (state, action) => {
-            state.placeSubmissionSuccess = true
-        },
-        closeSubmissionPanel: (state) => {
-            state.placeSubmissionSuccess = null
-        },
-        getRecentlyViewedPlaceSuccess: (state, action) => {
-            state.recentlyViewedPlaces = state.recentlyViewedPlaces.filter(item => item._id === action.payload._id).length < 1
-                ? [...state.recentlyViewedPlaces, {...action.payload}]
-                : state.recentlyViewedPlaces
-        },
+        }
 
 
         /*   ADMIN  */
 
         //taxonomy
-        ...adaptiveEquipment,
-        ...bodyModification,
-        ...gender,
-        ...language,
-        ...methodOfCommunication,
-        ...physicalAppearance,
-        ...pronoun,
-        ...race,
-        ...serviceAnimal,
-        ...sexualOrientation
     },
 })
 

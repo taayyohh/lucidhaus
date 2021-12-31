@@ -189,6 +189,7 @@ export const cartSummaryStyle = {
     alignItems: center,
     position: 'fixed',
     width: [150, globals.style.layoutScalingValue, '100%'],
+    borderRadius: [10, .7, 10],
     mobile: {
         display: flex,
         justifyContent: spaceBetween,
@@ -335,6 +336,7 @@ export const shippingAddressStyle = {
     boxShadow: 0,
     border: 0,
     width: '100%',
+    textTransform: 'normal',
     inner: {
         display: grid,
         width: '100%',
