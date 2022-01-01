@@ -73,6 +73,11 @@ export const mobileHeaderMenu = [
         title: 'Artists',
         active: ['artist', 'artists'],
     },
+    {
+        url: '/shop',
+        title: 'Shop',
+        active: ['shop'],
+    }
 ]
 
 

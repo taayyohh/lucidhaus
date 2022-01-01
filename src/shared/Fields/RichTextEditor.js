@@ -9,7 +9,7 @@ import {defaultFieldHeadingStyle, richTextErrorMessageStyle, richTextStyle} from
 
 const RichTextEditor = ({name, formik, className, errorMessage, tooltip, label}) => {
     const config = {
-        toolbar: ['bold', 'italic']
+        toolbar: ['bold', 'italic', 'link']
     }
 
     return (

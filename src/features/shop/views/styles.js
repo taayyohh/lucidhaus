@@ -168,7 +168,7 @@ export const cartStyle = {
     mobile: {
         display: flex,
         flexDirection: column,
-        paddingTop: 100,
+        paddingTop: 20,
         paddingBottom: 100
     },
     showItems: {
@@ -197,7 +197,7 @@ export const cartSummaryStyle = {
         left: 0,
         zIndex: 2,
         background: '#fff',
-        top: 80,
+        top: 0,
         padding: '10px 25px',
         border: `1px solid ${globals.colors.borderColor}`,
         borderRadius: 10,
