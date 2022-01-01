@@ -13,11 +13,13 @@ import {getTotal}                               from 'utils/cartHelpers'
 import {times}                                  from '../../../config/icons'
 import Icon                                     from '../../../shared/Basic/Icon'
 import {menuPanelContext}                       from '../../../shared/Containers/MenuPanelController'
+import {mobileFlag}                             from '../../site/slice'
 import Cart                                     from './Cart'
 import Checkout                                 from './Checkout'
 import {cartStyle}                              from './styles'
 
 const CartPanel = () => {
+    const isMobile = useSelector(mobileFlag)
     const {cart} = useSelector(state => state.shop)
     const {setPanel} = useContext(menuPanelContext)
     const emptyCart = cart.length < 1
@@ -42,11 +44,13 @@ const CartPanel = () => {
                         <Span theme={cartSummaryIntlDisc}>* international shipping costs have been included in the
                             total</Span>
                     )}
-                    <Icon
-                        icon={times}
-                        theme={{position: 'absolute', right: 30, size: 32, top: 20}}
-                        onClick={() => setPanel('')}
-                    />
+                    {isMobile && (
+                        <Icon
+                            icon={times}
+                            theme={{position: 'absolute', right: 30, size: 32, top: 20}}
+                            onClick={() => setPanel('')}
+                        />
+                    )}
                 </Div>
             </Div>
             <Div>
