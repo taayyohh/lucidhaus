@@ -61,7 +61,10 @@ const Checkout = ({cart}) => {
                             braintreeClientToken={braintreeClientToken}
                             setDropInInstance={setDropInInstance}
                         />
-                        {deliveryAddress && (
+                        {(deliveryAddress.name?.length > 0
+                            && deliveryAddress.email?.length > 0
+                            && deliveryAddress.phone?.length > 0
+                        ) && (
                             <Button
                                 onClick={purchase}
                                 children={'Purchase'}
