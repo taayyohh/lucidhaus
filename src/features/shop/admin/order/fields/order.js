@@ -72,6 +72,9 @@ export const orderFields = [
  *
  **/
 export const validateCheckoutAddress = Yup.object().shape({
+    name: Yup
+        .string()
+        .required('*'),
     address: Yup
         .string()
         .required('*'),
