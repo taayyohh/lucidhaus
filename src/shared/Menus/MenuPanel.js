@@ -1,6 +1,7 @@
 import {globals}                     from 'config/styles'
 import CartPanel                     from 'features/shop/views/CartPanel'
 import React, {useContext}           from 'react'
+import {useSelector}                 from 'react-redux'
 import Div                           from 'shared/Basic/Div'
 import {menuPanelContext}            from 'shared/Containers/MenuPanelController'
 import MenuOverlay                   from 'shared/Menus/MenuOverlay'
@@ -8,10 +9,12 @@ import MenuPanelWrapper              from 'shared/Menus/MenuPanelWrapper'
 import MobileHeaderMenu              from 'shared/Menus/MobileHeaderMenu'
 import {headerMenuPanelWrapperStyle} from 'shared/Menus/styles'
 import Player                        from 'shared/Player'
+import {mobileFlag}                  from '../../features/site/slice'
 import SearchPanel                   from './SearchPanel'
 
 const MenuPanels = () => {
     const {currentPanel, setPanel} = useContext(menuPanelContext)
+    const isMobile = useSelector(mobileFlag)
     const setCurrentPanel = () => {
         switch (currentPanel) {
             case 'cart-menu-panel':
@@ -33,15 +36,19 @@ const MenuPanels = () => {
                 children={setCurrentPanel()}
                 name={currentPanel}
             />
-            <MenuOverlay
-                isOpen={!!currentPanel}
-                onClick={
-                    () => {
-                        setPanel(null)
-                        globals.style.resetBody()
+            {((isMobile && currentPanel === 'cart-menu-panel') && (
+                <Div />
+            )) || (
+                <MenuOverlay
+                    isOpen={!!currentPanel}
+                    onClick={
+                        () => {
+                            setPanel(null)
+                            globals.style.resetBody()
+                        }
                     }
-                }
-            />
+                />
+            )}
         </Div>
     )
 }
