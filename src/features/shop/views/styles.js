@@ -195,7 +195,7 @@ export const cartSummaryStyle = {
         justifyContent: spaceBetween,
         alignItems: center,
         left: 0,
-        zIndex: 2,
+        zIndex: 5,
         background: '#fff',
         top: 0,
         padding: '10px 25px',
