@@ -47,6 +47,8 @@ const CreateArtist = lazy(() => import('features/artist/admin/views/Create'))
 const UpdateArtist = lazy(() => import('features/artist/admin/views/Update'))
 const Artist = lazy(() => import('features/artist/views/Artist'))
 const Artists = lazy(() => import('features/artist/views/Artists'))
+const Shows = lazy(() => import('features/artist/views/Artists/Shows'))
+
 
 const CreateProduct = lazy(() => import('features/shop/admin/product/views/Create'))
 const CreateProductCategory = lazy(() => import('features/shop/admin/product/taxonomy/category/Create'))
@@ -54,7 +56,7 @@ const CreateUser = lazy(() => import('features/user/admin/views/Create'))
 const ManageProductCategory = lazy(() => import('features/shop/admin/product/taxonomy/category/Manage'))
 const ManageShopTaxonomy = lazy(() => import('features/shop/admin/product/taxonomy/Manage'))
 
-const Shop = lazy(() => import('features/shop/views/Shop'))
+const Shop = lazy(() => import('features/shop/views'))
 const ManageShop = lazy(() => import('features/shop/admin/product/views/Manage'))
 const ManageOrders = lazy(() => import('features/shop/admin/order/views/Manage'))
 const UserOrders = lazy(() => import('features/user/views/dashboard/Orders'))
@@ -112,6 +114,8 @@ const Routes = () => {
                             <AdminRoute path="/admin/create/artist" exact component={CreateArtist}/>
                             <Route path="/artists" exact component={Artists}/>
                             <Route path="/artists/:slug" exact component={Artist}/>
+
+                            <Route path="/babyfang/shows" exact component={Shows}/>
 
 
                             <AdminRoute path="/admin/collaborators" exact component={ManageCollaborators}/>

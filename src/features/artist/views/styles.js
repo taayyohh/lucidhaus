@@ -1,6 +1,44 @@
 import {colorPalette, globals}                                from 'config/styles'
 import {borderBox, center, column, flex, none, sv, uppercase} from 'utils/themer'
 
+
+//temp
+export const showsWrapperStyle = {
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr',
+    gridGap: sv(50, globals.style.layoutScalingValue),
+    margin: '0 auto',
+    marginTop: [50, .7, 50],
+    maxWidth: [1300, globals.style.layoutScalingValue, '100%'],
+    mobile: {
+        display: flex,
+        flexDirection: column
+    }
+}
+
+export const showsTicketHeadlineStyle = {
+    textAlign: center,
+    size: [50, .7, 30],
+    weight: 700,
+    marginTop: [40, .7, 20]
+}
+
+export const showStyle = {
+    background: '#afe',
+}
+
+export const showLinkStyle = {
+    padding: [50, .7, 50],
+
+    fontSize: [44, .7, 44],
+    textTransform: uppercase,
+    child: {
+        selector: 'a',
+        textDecoration: none
+    }
+
+}
+
 export const artistsWrapperStyle = {
     display: 'grid',
     gridTemplateColumns: '1fr 1fr 1fr',
