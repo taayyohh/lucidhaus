@@ -20,6 +20,8 @@ export function* createEvent({payload}) {
     for (let field of fields)
         setFormData(event, field)
 
+    console.log('p', payload)
+
     const s3Payload = yield call(getSignedRequest, flyerFile)
     if (!!s3Payload.signedRequest) {
         yield call(uploadFile, {file: flyerFile, signedRequest: s3Payload.signedRequest})

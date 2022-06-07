@@ -26,7 +26,7 @@ const Create = () => {
                     initialValues={initialValues}
                     fields={eventFields}
                     validationSchema={validateEvent}
-                    dispatchAction={'event/createEvent'}
+                    dispatchAction={'admin/createEvent'}
                     formHeading={'Create Event'}
                     buttonText={'Create'}
                 />

@@ -48,7 +48,7 @@ const Update = () => {
                     initialValues={initialValues}
                     fields={eventFields}
                     validationSchema={validateEvent}
-                    dispatchAction={'event/updateEvent'}
+                    dispatchAction={'admin/updateEvent'}
                     formHeading={'Update Event'}
                     buttonText={'Update'}
                     theme={adminFormWrapperStyle}
